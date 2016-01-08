@@ -1,0 +1,286 @@
+\documentclass[a4paper]{report}
+\usepackage[english, italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+
+\newcommand{\mychapter}[2]{
+    \setcounter{chapter}{#1}
+    \setcounter{section}{0}
+    \setcounter{subsection}{1}
+    \chapter*{#2}
+    \addcontentsline{toc}{chapter}{#2}
+}
+
+\begin{document}
+
+
+	\tableofcontents
+	
+	\mychapter{1}{Introduzione}
+		\section{Scopo del documento}
+			Lo scopo del seguente documento è quello di definire le norme che l'intero gruppo SWEeneyThreads si impegna a rispettare durante lo svolgimento 
+			del progetto ActorBase. 
+			
+			Ogni membro è tenuto a leggere il documento e a rispettare le norme al fine di dare maggiore uniformità allo svolgimento dei processi, 
+			migliorandone l'efficacia e riducendo il numero di errori.
+			
+			Poichè il gruppo ha deciso di basarsi sulla struttura a processi \emph{ISO/IEC 12207} la struttura di questo documento ne rispecchia 
+			l'organizzazione. In particolare la suddivisione in processi primari, di supporto e organizzativi come in \emph{Figura 1.1}
+			%immagine
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[scale=0.4]{Immagini/"processi 12207".png}
+				\caption{Processi 12207}
+			\end{figure}
+		\section{Scopo del prodotto}
+			Lo scopo del progetto è la realizzazione di un DataBase NoSQL key-value basato sul modello ad Attori con l'obiettivo di fornire una 
+			tecnologia adatta allo sviluppo di moderne applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
+			di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
+		\section{Glossario}
+			Con lo scopo di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il gruppo ha steso un documento 
+			interno che è il \emph{Glossario v1.0.0}. Ogni termine contenuto nel \emph{Glossario} e presente in questo documento verrà marcato 
+			con una "\textit{G}" maiuscola in pedice.
+		\section{Riferimenti}
+			\subsection{Informativi}
+				\begin{itemize}
+					\item Specifiche UTF-8\ped{\textit{G}}: \\ \url{http://unicode.org/faq/utf_bom.html}
+					\item Licenza MIT: \\ \url{https://opensource.org/licenses/MIT}
+					\item Scala Programming Language: \\ \url{http://www.scala-lang.org/}
+					\item Libreria Akka: \\ \url{http://akka.io/}
+					\item ISO/IEC 12207: \\ \url{http://www.iso.org/iso/catalogue_detail?csnumber=43447}
+					\item Piano di progetto: \\ \emph{Piano di Progetto v1.0.0}
+					\item Piano di qualifica: \\ \emph{Piano di Qualifica v1.0.0}
+				\end{itemize}
+			\subsection{Normativi}
+				da fare dopo
+		\section{Diario modifiche}
+			Di seguito viene riportato il diario delle modifiche, in cui vengono elencate le modifiche apportate al documento stesso e da utilizzare 
+			come template in tutti gli altri documenti.
+			
+			\begin{tabularx}{\textwidth}{*4{>{\centering\arraybackslash}X}}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.0.1 & 2016-01-08 & Nicoletti Luca & Aggiunto i capitoli 2 e 3 del documento di Norme di Progetto \\
+				\noalign{\hrule height 1.5pt}
+				1.0.2 & 2016-01-08 & Nicoletti Luca & Merge dei cambiamenti effettuati da me e da Maino Elia \\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+	\mychapter{2}{Processi primari}
+		Sono state definite delle norme relative ai processi che maggiormente riguardano le attività svolte dal gruppo: fornitura e sviluppo 
+		all'interno di quelli primari.
+		\section{Fornitura}
+			\subsection{Studio di fattibilità}
+				I responsabili dello studio di fattibilità del progetto sono i membri che ricoprono il ruolo di \emph{Analisti}. In base alle prime
+				riunioni effettuate, decise dal \emph{Responsabile di progetto}, le preferenze e le idee emerse per ogni singolo 
+				membro del gruppo, essi dovranno stendere il documento (che verrà poi analizzato e valutato da altri membri del gruppo). Lo studio 
+				di fattibilità deve contenere:
+				\begin{itemize}
+					\item \textbf{Dominio:} conoscenza delle tecnologie richieste e del dominio applicativo;
+					\item \textbf{Rapporto costo/benefici:} eventuali prodotti simili già presenti sul mercato, competitori, costo della 
+					realizzazione del prodotto e quantità di requisiti obbligatori;
+					\item \textbf{Individuazione dei rischi:} evidenziare lacune tecniche e di conoscenza del dominio dei membri del gruppo, comprensione
+					dei punti critici, difficoltà nel determinare i requisiti obbligatori e opzionali e nella loro classificazione; 
+				\end{itemize}				 
+			\subsection{Tecniche di analisi e classificazione requisiti}
+				Sempre compito degli analisti, sarà quello di stilare l'analisi dei requisiti. Essi potranno ricavarli da eventuali \emph{Casi 
+				d'uso} emersi da Brainstorming\ped{\textit{G}} o riunioni con il committente.
+				
+				I requisiti saranno elencati secondo un ordine. Ogni requisito seguirà la seguente codifica: \\
+				\begin{center}
+					R[Codice][Importanza][Tipo]
+				\end{center}
+					\textbf{Codice} \\ \\ Un codice univoco ed espresso in modo gerarchico;\\ \\
+					\textbf{Importanza} \\ \\Può assumere i seguenti valori:
+					\begin{itemize}
+						\item \textbf{N:} Necessary (obbligatorio);
+						\item \textbf{D:} Desiderable (desiderabile, a valore aggiunto);
+						\item \textbf{O:} Optional (opzionale).
+					\end{itemize}
+					\textbf{Tipo} \\ \\Può assumere i seguenti valori:
+					\begin{itemize}
+						\item \textbf{F:} funzionale;
+						\item \textbf{Q:} di qualità;
+						\item \textbf{P:} prestazionale;
+						\item \textbf{V:} vincolo.
+					\end{itemize}
+			\subsection{Tecniche di tracciamento dei requisiti}
+				Tutti i requisiti saranno inseriti in un Database, strutturato in modo funzionale dal gruppo. Nel presente Database verranno
+				inserite anche le \emph{Milestones} definite dal responsabile di turno, in modo da poter collegare requisiti e milestones. 
+				Verranno creati degli appositi triggers per automatizzare la validazione dei requisiti tramite completamento manuale delle
+				milestones presenti. Questo compito è competenza dell'\emph{Amministratore}.
+			\subsection{Gestione cambiamento requisiti}
+		\section{Sviluppo}
+			\subsection{Codifica e convenzioni}
+				Di seguito sono riportate le norme che il gruppo andrà a seguire durante la stesura di codice, qualsiasi esso sia.
+				\\ \\
+				\textbf{\LaTeX} \\ \\ 
+				Regole riguardanti \LaTeX :
+				\begin{itemize}
+					\item Ogni file deve iniziare con 3 righe di commento come le seguenti:
+					%immagine
+					\begin{figure}[h!]
+						\centering
+						\includegraphics[scale=0.4]{Immagini/"3commentsline".png}
+						\caption{Commenti ad inizio file}
+					\end{figure}
+					\item Ogni file deve contenere nella prima parte tutti gli **usepackage** necessari
+					\item Tra ogni **begin() e end()** tutto il testo e il codice andrà indentato
+					\item I commenti andranno inseriti in una riga vuota, eventualmente prima della riga di codice a cui fanno riferimento
+					\item I commenti su più righe useranno il comando **begin{comment} - end{comment}**:
+					%immagine
+					\begin{figure}[h!]
+						\centering
+						\includegraphics[scale=0.4]{Immagini/"indent".png}
+						\caption{Indentazione}
+					\end{figure}
+					\item Verrà utilizzato T1 come encoding del font: 
+					\item Verrà utilizzato utf8 come encoding dell'input:
+					\item Verrà utilizzato english, italian come parametro per label: ** in modo da usare inglese e italiano nello stesso documento
+					tenendo italiano come lingua principale
+					\item A fine documento, come commento su più righe, andrà inserita la documentazione e la descrizione (anche breve) del file
+				\end{itemize}
+				\textbf{\emph{Scala}} \\ \\ 
+				Regole riguardanti \emph{Scala} :
+				\begin{itemize}
+					\item
+					\item
+				\end{itemize}
+	\mychapter{3}{Processi di supporto}
+		\section{Documentazione}
+			In questo capitolo si descrivono le convenzioni definite ed adottate dal gruppo riguardanti le 
+			modalità di redazione, verifica e approvazione dei documenti. \\
+			Tutti i documenti ufficiali prodotti da SWEeneyThreads sono scritti utilizzando il linguaggio \LaTeX, compilati e
+			 forniti in formato PDF (per quanto riguarda le versioni digitali).
+			\subsection{Template}
+				Al fine di rendere più rapida e meno incline a differenziazioni la stesura dei diversi documenti è stato prodotto un
+				 template \LaTeX, reperibile nel repository in \verb|Documenti/LaTeX/Codice| %non sono sicuro del path
+			\subsection{Struttura documenti}
+				La struttura dei documenti presenta una suddivisione in capitoli, sezioni e sottosezioni. \\
+				Per quanto riguarda i capitoli, è stato definito un comando personalizzato \LaTeX \space denominato
+				 \verb|\mychapter{}{}|:
+				\begin{verbatim}
+					\newcommand{\mychapter}[2]{
+	    				\setcounter{chapter}{#1}
+	    				\setcounter{section}{0}
+	    				\setcounter{subsection}{1}
+	    				\chapter*{#2}
+	    				\addcontentsline{toc}{chapter}{#2}
+					}
+				\end{verbatim}
+				Per quanto riguarda sezioni e sottosezioni sono stati utilizzati i comandi standard \LaTeX \verb|\section{}| e
+				 \verb|\subsection{}| \\ \\
+				Di seguito viene fornita una descrizione più dettagliata di alcuni elementi di un documento: \\ \\
+				\textbf{Prima pagina} \\ \\ 
+					La prima pagina di un documento presenta gli elementi seguenti:
+					\begin{itemize}
+						\item Nome del gruppo
+						\item Nome del progetto
+						\item Sottotitolo del progetto
+						\item Titolo del documento
+						\item Cognome e nome dei redattori del documento
+						\item Cognome e nome dei verificatori del documento
+						\item Cognome e nome di chi approva il progetto in qualità di responsabile
+						\item Logo del gruppo
+						\item Numero di versione del documento
+						\item Data di rilascio del documento
+					\end{itemize}
+					La prima pagina è parte del template disponibile nel repository. \\ \\
+				\textbf{Indice} \\ \\
+					In ogni documento sono presenti in ordine
+					\begin{itemize}
+						\item Un indice delle sezioni
+						\item Un indice delle tabelle
+						\item Un indice delle figure
+					\end{itemize}
+					Tali indici sono generati automaticamente tramite appositi comandi \LaTeX, l'assenza di figure 
+					e/o tabelle nel documento comporta l'omissione del corrispondente indice. \\ \\
+				\textbf{Formattazione generale delle pagine} \\ \\
+					La formattazione generale di una pagina non prevede particolari personalizzazioni, si basa 
+					sulla formattazione standard di \LaTeX \space usata per documenti di classe "Report". 
+			\subsection{Norme tipografiche}
+				Questa sezione contiene norme tipografiche e ortografiche adottate dal gruppo al fine di garantire uno stile
+				 uniforme e una semantica coerente per tutti i documenti.  \\ \\
+				\textbf{Stile del testo} 
+					\begin{itemize}
+					 \item \textbf{Corsivo:} il corsivo va utilizzato nei casi seguenti:
+					 \begin{itemize}
+					 	\item Citazioni
+					 	\item Nomi particolari
+					 	\item Documenti
+					 	\item Riferimenti
+					 \end{itemize}
+					 A seconda della semantica del testo si utilizzano i comandi \LaTeX \space \verb|\emph{}| e \verb|\textit{}|
+					 \item \textbf{Grassetto:} il grassetto va utilizzato nei casi seguenti:
+					 \begin{itemize}
+					 	\item Elenchi puntati: evidenzia il concetto sviluppato nella continuazione del punto
+					 	\item Titoli di sottosezioni non numerate
+					 \end{itemize}
+					 \item \textbf{Maiuscolo:} una parola completamente in maiuscolo deve indicare un acronimo o una sigla.
+					 \item \textbf{\LaTeX:} ogni riferimento al linguaggio \LaTeX \space va scritto utilizzando il comando
+					  \verb|\LaTeX|
+					\end{itemize}
+				\textbf{Formati} 
+				\begin{itemize}
+					\item \textbf{Percorsi:} 
+					\begin{itemize}
+						\item Indirizzi email e indirizzi web completi: comando \LaTeX \space \verb|\url|
+						\item Indirizzi relativi: comando \LaTeX  \space \verb|\verb|
+					\end{itemize}
+					\item \textbf{Date:} le date presenti nei documenti seguono lo standard ISO 8601:2004:
+					\begin{center}
+						AAAA - MM - GG
+					\end{center}
+					Dove:
+					\begin{itemize}
+						\item AAAA rappresenta l'anno 
+						\item MM rappresenta il mese
+						\item GG rappresenta il giorno
+					\end{itemize}
+					\item \textbf{Ruoli di progetto:} quando si fa riferimento ad un ruolo di progetto questo va scritto in corsivo
+					 (es. \textit{Responsabile})
+					\item \textbf{Documenti:} i riferimenti vanno scritti in corsivo (es. \textit{Analisi dei requisiti})
+					\item \textbf{Nomi dei file:} i nomi dei file vanno scritti utilizzando il comando \LaTeX \space 
+					\verb|\verb| (es. \verb|immagine.png|)
+					\item \textbf{Nomi propri:} I nomi propri seguono la forma "Cognome Nome"
+					\item \textbf{Nome del gruppo:} il nome del gruppo è SWEeneyThreads, la distinzione tra lettere maiuscole e
+					 minuscole va rispettata ogni volta che vi si fa riferimento
+				\end{itemize}
+			\subsection{Componenti grafiche}
+				%paragrafi su:
+				\textbf{Tabelle}
+				\textbf{Immagini} 
+			\subsection{Classificazione documenti}
+			\subsection{Versionamento documenti}
+		\section{Accertamento qualità} %verifica
+			%almeno 2 revisionatori per documento e/o file
+		\section{Qualifica} 
+			%dopo
+		\section{Risoluzione di problemi} 
+			%issue tracking
+	\mychapter{4}{Processi organizzativi}
+		\section{Processi di gestione dell'infrastruttura}
+			\subsection{Ticketing}	
+				%Teamwork
+			\subsection{Versioning}
+				%Usiamo GitHub
+			\subsection{Repository}
+				%come gestiamo GitHub (immgine albero cartelle)
+		\section{Processi di management}
+			\subsection{Ruoli}
+				%Definizione e rotazione
+			\subsection{Comunicazioni}
+				\textbf{Interne}
+				\textbf{Esterne} %Redirect mail al responsabile di turno
+			\subsection{Riunioni}
+				\textbf{Ufficiali} %incontri con il committente, e formali ogni 2 settimane
+				\textbf{Non ufficiali}
+				\textbf{Brainstorming}
+
+\end{document}
