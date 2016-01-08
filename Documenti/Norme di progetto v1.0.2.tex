@@ -153,11 +153,11 @@
 					\item
 				\end{itemize}
 	\mychapter{3}{Processi di supporto}
-		\section{Documentazione}
+		\section{Documentazione} %
 			In questo capitolo si descrivono le convenzioni definite ed adottate dal gruppo riguardanti le 
 			modalità di redazione, verifica e approvazione dei documenti. \\
-			Tutti i documenti ufficiali prodotti da SWEeneyThreads sono scritti utilizzando il linguaggio \LaTeX, compilati e
-			 forniti in formato PDF (per quanto riguarda le versioni digitali).
+			Tutti i documenti ufficiali prodotti da SWEeneyThreads sono scritti utilizzando il linguaggio \LaTeX\ped{\textit{G}}, compilati e
+			 forniti in formato PDF\ped{\textit{G}} (per quanto riguarda le versioni digitali).
 			\subsection{Template}
 				Al fine di rendere più rapida e meno incline a differenziazioni la stesura dei diversi documenti è stato prodotto un
 				 template \LaTeX, reperibile nel repository in \verb|Documenti/LaTeX/Codice| %non sono sicuro del path
@@ -167,11 +167,11 @@
 				 \verb|\mychapter{}{}|:
 				\begin{verbatim}
 					\newcommand{\mychapter}[2]{
-	    				\setcounter{chapter}{#1}
-	    				\setcounter{section}{0}
-	    				\setcounter{subsection}{1}
-	    				\chapter*{#2}
-	    				\addcontentsline{toc}{chapter}{#2}
+    				\setcounter{chapter}{#1}
+    				\setcounter{section}{0}
+    				\setcounter{subsection}{1}
+    				\chapter*{#2}
+    				\addcontentsline{toc}{chapter}{#2}
 					}
 				\end{verbatim}
 				Per quanto riguarda sezioni e sottosezioni sono stati utilizzati i comandi standard \LaTeX \verb|\section{}| e
@@ -233,7 +233,7 @@
 						\item Indirizzi email e indirizzi web completi: comando \LaTeX \space \verb|\url|
 						\item Indirizzi relativi: comando \LaTeX  \space \verb|\verb|
 					\end{itemize}
-					\item \textbf{Date:} le date presenti nei documenti seguono lo standard ISO 8601:2004:
+					\item \textbf{Date:} le date presenti nei documenti seguono lo standard ISO 8601:2004\ped{\textit{G}}:
 					\begin{center}
 						AAAA - MM - GG
 					\end{center}
@@ -252,13 +252,70 @@
 					\item \textbf{Nome del gruppo:} il nome del gruppo è SWEeneyThreads, la distinzione tra lettere maiuscole e
 					 minuscole va rispettata ogni volta che vi si fa riferimento
 				\end{itemize}
+				\textbf{Sigle} \\ \\
+				L'utilizzo di sigle e abbreviazioni per riferirsi a documenti va limitato il più possibile, tuttavia nel caso il loro uso
+				 fosse funzionale alla lettura (come nel caso di tabelle o diagrammi) il loro uso è consentito:
+				\begin{itemize}
+					\item \textbf{SdF:} Studio di Fattibilità
+					\item \textbf{AdR:} Analisi dei Requisiti
+					\item \textbf{GL:} Glossario
+					\item \textbf{NdP:} Norme di Progetto
+					\item \textbf{PdQ:} Piano di Qualifica
+					\item \textbf{PdP:} Piano di Progetto
+					\item \textbf{ST:} Specifica Tecnica
+					\item \textbf{RR:} Revisione dei Requisiti
+					\item \textbf{RP:} Revisione di Progettazione
+					\item \textbf{RQ:} Revisione di Qualifica
+					\item \textbf{RA:} Revisione di Accettazione
+				\end{itemize}
 			\subsection{Componenti grafiche}
-				%paragrafi su:
-				\textbf{Tabelle}
-				\textbf{Immagini} 
+				Le componenti grafiche previste all'interno dei documenti sono immagini e tabelle. Ogni occorrenza di un
+				 elemento grafico è accompagnata da una didascalia indicizzata, in modo da poterla associare alla sezione 
+				 relativa del documento. \\ \\
+				\textbf{Tabelle} \\ \\ 
+					Le tabelle sono definite utilizzando un template in \LaTeX \space realizzato dal gruppo e disponibile nel 
+					repository all'indirizzo \verb|Documenti/Latex/Codice| \\ \\ 
+				\textbf{Immagini}  \\ \\
+					Il formato scelto per le immagini è Portable Network Graphics (PNG\ped{\textit{G}}). \\
+					Le immagini vanno sempre inserite utilizzando la seguente sequenza di comandi \LaTeX:
+					\begin{verbatim}
+						\begin{figure}[h!]
+							\includegraphics[scale=0-1]{Immagini/nome.png}
+							\caption{Titolo - didascalia}
+						\end{figure}
+					\end{verbatim}
 			\subsection{Classificazione documenti}
+				I documenti prodotti dal gruppo si dividono in formali ed informali. \\ \\
+				\textbf{Documenti Formali} \\ \\
+					Quando un documento riceve l'approvazione del \emph{Responsabile} viene definito formale e risulta idoneo
+					al rilascio all'esterno del gruppo. \\
+					Per risultare approvato un documento deve aver completato con successo il percorso di verifica e validazione 
+					descritto nel \emph{Piano di Qualifica}. \\ \\
+				\textbf{Documenti informali} \\ \\
+					Un documento rimane informale finché non viene approvato dal \emph{Responsabile}, durante tale fase 
+					il suo uso è da considerarsi esclusivamente interno al gruppo. \\
+					Alcuni documenti prodotti dal gruppo possono rimanere informali per l'intera durata del loro ciclo di vita.
 			\subsection{Versionamento documenti}
-		\section{Accertamento qualità} %verifica
+				I documenti prodotti dal gruppo devono essere sempre identificati da un numero di versione del tipo:
+				\begin{center}
+					 X.Y.Z
+				\end{center}
+				Dove:
+				\begin{itemize}
+					\item X: è il numero principale di versione, viene incrementato ad ogni uscita formale del documento
+					\item Y: viene incrementato quando si apportano modifiche sostanziali al documento
+					\item Z: viene incrementato quando si apportano modifiche minori al documento
+				\end{itemize}
+				All'interno di un documento quando si intende fare riferimento ad una specifica versione di un altro documento la
+				 notazione da utilizzare è: 
+				\begin{center}
+					\emph{Nome Documento vX.Y.Z}.
+				\end{center}
+				Mentre per fare riferimento ad un file vero e proprio:
+				\begin{center}
+					\verb|NomeDocumento_vX.Y.Z.estensione|
+				\end{center}
+		%\section{Accertamento qualità} %da valutare
 			%almeno 2 revisionatori per documento e/o file
 		\section{Qualifica} 
 			%dopo
