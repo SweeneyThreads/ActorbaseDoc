@@ -64,7 +64,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.2
+			Versione 1.0.3
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -74,8 +74,6 @@
 	
 	
 	\tableofcontents
-	\listoffigures
-	\listoftables
 	
 	\mychapter{1}{Introduzione}
 	\section{Scopo del documento}
@@ -107,13 +105,20 @@
 		\item Specifiche UTF-8\ped{\textit{G}}: \\ \url{http://unicode.org/faq/utf_bom.html}
 		\item Licenza MIT: \\ \url{https://opensource.org/licenses/MIT}
 		\item Scala Programming Language: \\ \url{http://www.scala-lang.org/}
-		\item Libreria Akka: \\ \url{http://akka.io/}
-		\item ISO/IEC 12207: \\ \url{http://www.iso.org/iso/catalogue_detail?csnumber=43447}
+		\item ISO/IEC 12207\ped{\textit{G}}: \\ \url{http://www.iso.org/iso/catalogue_detail?csnumber=43447}
+		\item ISO 8601:2004\ped{\textit{G}}: \\ \url{http://www.iso.org/iso/home/standards/iso8601.htm}
+		\item \LaTeX\ped{\textit{G}}: \\ \url{https://www.latex-project.org}
+		\item Telegram: \\ \url{https://telegram.org}
+		\item Google Drive: \\ \url{https://www.google.com/intl/it_it/drive/}
+		\item Google Hangouts: \\ \url{https://hangouts.google.com}
 		\item Piano di progetto: \\ \emph{Piano di Progetto v1.0.0}
 		\item Piano di qualifica: \\ \emph{Piano di Qualifica v1.0.0}
 	\end{itemize}
 	\subsection{Normativi}
-	da fare dopo
+		\begin{itemize}
+			\item Capitolato d'appalto Actorbase (C1): \\ 
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
+		\end{itemize}
 	\section{Diario modifiche}
 	Di seguito viene riportato il diario delle modifiche, in cui vengono elencate le modifiche apportate al documento stesso e da utilizzare 
 	come template in tutti gli altri documenti.
@@ -122,9 +127,16 @@
 			\noalign{\hrule height 1.5pt}
 			\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 			\noalign{\hrule height 0.5pt}
-			1.0.1 & 2016-01-08 & Nicoletti Luca & Aggiunto i capitoli 2 e 3 del documento di Norme di Progetto \\
+			1.0.0 & 2016-01-08 & Maino Elia Nicoletti Luca & Creazione scheletro documento e struttura organizzativa,
+			 stesura capitolo 1 \\
+			\noalign{\hrule height 0.5pt}
+			1.0.1 & 2016-01-08 & Nicoletti Luca & Stesura capitolo 2 \\
 			\noalign{\hrule height 1.5pt}
-			1.0.2 & 2016-01-08 & Nicoletti Luca & Merge dei cambiamenti effettuati da me e da Maino Elia \\
+			1.0.2 & 2016-01-08 & Maino Elia & Stesura sezione 3.1 \\
+			\noalign{\hrule height 1.5pt}
+			1.0.3 & 2016-01-09 & Nicoletti Luca & Stesura capitolo 4 \\
+			\noalign{\hrule height 1.5pt}
+			1.0.3 & 2016-01-09 & Maino Elia & Completamento stesura capitolo 3 ed integrazione capitolo 4 \\
 			\noalign{\hrule height 1.5pt}
 		\end{tabularx}
 		\caption{Changelog del file \label{tab:table_label}}
@@ -238,7 +250,8 @@
 	Al fine di rendere più rapida e meno incline a differenziazioni la stesura dei diversi documenti è stato prodotto un
 	template \LaTeX, reperibile nel repository in \verb|Actorbase/LaTeX/Templates| %non sono sicuro del path
 	\subsection{Struttura documenti}
-	La struttura dei documenti presenta una suddivisione in capitoli, sezioni e sottosezioni. \\
+	La struttura dei documenti presenta una suddivisione in capitoli, sezioni e sottosezioni. 
+	
 	Per quanto riguarda i capitoli, è stato definito un comando personalizzato \LaTeX \space denominato
 	\verb|\mychapter{}{}|:
 	\begin{verbatim}
@@ -251,7 +264,11 @@
 		}
 	\end{verbatim}
 	Per quanto riguarda sezioni e sottosezioni sono stati utilizzati i comandi standard \LaTeX \verb|\section{}| e
-	\verb|\subsection{}| \\ \\
+	\verb|\subsection{}| 
+
+	La numerazione delle sezioni è utilizzata fino al terzo livello di profondità (x.y.z), dal quarto livello in poi le sottosezioni non 
+	presentano numerazione. Tale scelta è stata presa al fine di rendere più leggibile l'indice.
+	\\ \\
 	Di seguito viene fornita una descrizione più dettagliata di alcuni elementi di un documento: \\ \\
 	\textbf{Prima pagina} \\ \\ 
 	La prima pagina di un documento presenta gli elementi seguenti:
@@ -276,7 +293,10 @@
 		\item Un indice delle figure
 	\end{itemize}
 	Tali indici sono generati automaticamente tramite appositi comandi \LaTeX, l'assenza di figure 
-	e/o tabelle nel documento comporta l'omissione del corrispondente indice. \\ \\
+	e/o tabelle nel documento comporta l'omissione del corrispondente indice. 
+	
+	Data la natura secondaria degli indici relativi alle tabelle e alle figure, si è deciso di posizionarli alla fine del documento. 	L'indice dei contenuti si trova invece subito dopo la pagina iniziale.	
+	\\ \\
 	\textbf{Formattazione generale delle pagine} \\ \\
 	La formattazione generale di una pagina non prevede particolari personalizzazioni, si basa 
 	sulla formattazione standard di \LaTeX \space usata per documenti di tipo "Report". 
@@ -350,7 +370,7 @@
 	relativa del documento. \\ \\
 	\textbf{Tabelle} \\ \\ 
 	Le tabelle sono definite utilizzando un template in \LaTeX \space realizzato dal gruppo e disponibile nel 
-	repository all'indirizzo \verb|Documenti/Latex/Codice| \\ \\ 
+	repository all'indirizzo \verb|Actorbase/LaTeX/Templates| \\ \\ 
 	\textbf{Immagini}  \\ \\
 	Il formato scelto per le immagini è Portable Network Graphics (PNG\ped{\textit{G}}). \\
 	Le immagini vanno sempre inserite utilizzando la seguente sequenza di comandi \LaTeX:
@@ -408,12 +428,15 @@
 	ciclo da capo con un numero di versione incrementato.
 	%\section{Accertamento qualità} %da valutare
 	%almeno 2 revisionatori per documento e/o file
-	\section{Qualifica} 
+	%\section{Qualifica} 
 	%dopo
 	\section{Risoluzione di problemi} 
 	Per quanto riguarda l'individuazione, il tracciamento e la risoluzione di bug e problemi il gruppo ha deciso di 
 	affidarsi ad il servizio di issue tracking \emph{YouTrack} offerto da \emph{JetBrains}. \\ 
-	Per i progetti fino a dieci utenti, il servizio offre 10GB di spazio sul cloud dell'azienda in maniera gratuita.
+	Per i progetti fino a dieci utenti, il servizio offre 10GB di spazio sul cloud dell'azienda in maniera gratuita. 
+	
+	La dashboard \emph{YouTrack} per quanto riguarda il progetto Actorbase è reperibile all'indirizzo
+	 \url{https://actorbase.myjetbrains.com/youtrack/dashboard}
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[scale=0.4]{Immagini/"youtrack".png}
@@ -557,7 +580,11 @@
 		del gruppo di ragionare più tempo su una proposta); inoltre \emph{Telegram} verrà utilizzato per l'invio di files
 		temporanei, di documentazione o informativi. Sarà compito del \emph{Responsabile di progetto} prelevare file di documentazione 
 		e riportarli nella repository adatta, e nel Drive del gruppo.
-		\item \textbf{Videoconferenze:} Per le videoconferenze di gruppo si utilizzerà \emph{Google Hangout}. 
+		
+		La scelta di \emph{Telegram} è dovuta alla possibilità di utilizzare il servizio sia da desktop che da mobile, e alla 
+		possibilità di inviare qualsiasi tipo di file.
+		\item \textbf{Videoconferenze:} Per le videoconferenze di gruppo si utilizzerà \emph{Google Hangouts}. 
+		
 		\'E utilizzabile da tutti i dispositivi e richiede semplicemente un account \emph{Google} di cui disponevano 
 		già tutti i membri del gruppo.
 	\end{itemize}
@@ -565,10 +592,24 @@
 	%Redirect mail al responsabile di turno 
 	Per tutte le comunicazioni esterne va utilizzata la mail ufficiale del gruppo: \href{mailto:sweeneythreads@gmail.com}%
 	{sweeneythreads@gmail.com}. \\ La gestione di 
-	tale indirizzo email spetta all'\emph{Amministratore}. Le email ufficiali devono rispettare le seguenti linee guida:
+	tale indirizzo email spetta al \emph{Responsabile} che dunque risulta essere l'unico componente del gruppo a poter comunicare
+	con il committente i maniera ufficiale. Il \emph{Responsabile} ha il compito di informare gli altri membri del gruppo sulle 
+	discussioni avute con il committente, tale aggiornamento può avvenire a voce durante le riunioni e gli incontri oppure tramite
+	l'inoltro delle email ricevute agli indirizzi personali dei componenti interessati.
+	\\ \\
+	Le email ufficiali devono rispettare le seguenti linee guida:
 	\begin{itemize}
-		\item L'oggetto di una email non può essere ripetuto in altre email
-		\item \dots
+		\item \textbf{Destinatario:} poichè questo indirizzo email va usato esclusivamente per comunicazioni ufficiali il destinatario
+		del messaggio va salvato tra i contatti (funzione di Gmail), nel caso non dovesse già farne parte.
+		\item \textbf{Oggetto:} l'oggetto deve esprimere in maniera chiara ed esaustiva il contenuto dell'email, deve essere breve
+		 e non deve rendere l'email confondibile con le altre preesistenti. 
+		 Nel caso il messaggio fosse una risposta l'oggetto deve essere preceduto dalla particella "Re:", nel caso di un inoltro dalla
+		 particella "I:"
+		\item \textbf{Corpo:} nel caso il messaggio fosse una risposta o un inoltro, il contenuto aggiunto va sempre scritto in testa al
+		fine di non costringere i lettori a scorrere tutta l'email. La cancellazione della restante parte del messaggio è sconsigliata, per
+		facilitare una visione completa della conversazione.
+		\item \textbf{Allegati:} L'aggiunta di allegati al messaggio è consentita con l'unico vincolo di inviare file che possiedono un nome
+		esplicativo o di specificare il contenuto dell'allegato nel corpo se il nome del file potrebbe essere poco comprensibile.
 	\end{itemize}										
 	\subsection{Riunioni}
 	%incontri con il committente, e formali ogni 2 settimane
@@ -599,5 +640,13 @@
 		Ad ogni \emph{Brainstorming}\ped{\emph{G}} sarà anche scelto un \emph{Facilitator} che ricoprirà un ruolo di servizio. Ovvero dovrà far 
 		rispettare le regole di base. Una volta finito il \emph{Brainstorming}\ped{\emph{G}}, il \emph{Rapportator} consegnerà al \emph{Facilitator}
 		gli appunti, che dovrà rielaborarli e stendere un verbale.
+	
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{\listfigurename}
+	\listoffigures
+	
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{\listtablename}
+	\listoftables
 	
 \end{document}
