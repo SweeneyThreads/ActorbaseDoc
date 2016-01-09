@@ -47,8 +47,8 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
-				Elia \textsc{Maino} \\
-				Luca \textsc{Nicoletti} \\
+				Maino\textsc{Elia} \\
+				Nicoletti \textsc{Luca} \\
 			\end{flushleft}
 		\end{minipage}
 		~
@@ -108,6 +108,8 @@
 		\item ISO/IEC 12207\ped{\textit{G}}: \\ \url{http://www.iso.org/iso/catalogue_detail?csnumber=43447}
 		\item ISO 8601:2004\ped{\textit{G}}: \\ \url{http://www.iso.org/iso/home/standards/iso8601.htm}
 		\item \LaTeX\ped{\textit{G}}: \\ \url{https://www.latex-project.org}
+		\item UML\ped{\textit{G}}: \\ \url{http://www.uml.org}
+		\item StarUML: \\ \url{http://staruml.io}
 		\item Telegram: \\ \url{https://telegram.org}
 		\item Google Drive: \\ \url{https://www.google.com/intl/it_it/drive/}
 		\item Google Hangouts: \\ \url{https://hangouts.google.com}
@@ -136,7 +138,7 @@
 			\noalign{\hrule height 1.5pt}
 			1.0.3 & 2016-01-09 & Nicoletti Luca & Stesura capitolo 4 \\
 			\noalign{\hrule height 1.5pt}
-			1.0.3 & 2016-01-09 & Maino Elia & Completamento stesura capitolo 3 ed integrazione capitolo 4 \\
+			1.0.3 & 2016-01-09 & Maino Elia & Completamento stesura capitolo 3 ed integrazione capitoli 2 e 4 \\
 			\noalign{\hrule height 1.5pt}
 		\end{tabularx}
 		\caption{Changelog del file \label{tab:table_label}}
@@ -180,11 +182,51 @@
 		\item \textbf{P:} prestazionale;
 		\item \textbf{V:} vincolo.
 	\end{itemize}
+	\subsection{Casi d'uso}
+		Come detto in precedenza alcuni requisiti possono essere ricavati dai \emph{Casi d'uso}, ad essi si può fare
+		 riferimento anche con la dicitura \emph{use case} o con l'acronimo \emph{UC} nel caso fosse necessario  
+		 utilizzarli in tabelle o diagrammi. 
+		 
+		 I \emph{Casi d'uso} vanno identificati dagli \emph{Analisti}, attraverso una procedura che va dal generale al
+		  particolare. 
+		  \\ \\
+		 Un \emph{caso d'uso} richiede la definizione dei seguenti campi:
+		 \begin{itemize}
+		 	\item Codice gerarchico del caso d'uso
+		 	\item Nome sintetico del caso d'uso
+		 	\item Attori
+		 	\begin{itemize}
+		 		\item Principali
+		 		\item Secondari
+		 	\end{itemize}
+		 	\item Precondizione
+		 	\item Postcondizione
+		 	\item Flusso degli eventi relativi allo scenario principale
+		 	\item Eventuali scenari alternativi
+		 	\item Lista di requisiti dedotti dal \emph{caso d'uso}
+		 \end{itemize}
+		 A tale insieme di informazioni va associato un diagramma di caso d'uso in UML\ped{\textit{G}}. Per la scrittura dei
+		  \emph{casi d'uso} in UML\ped{\textit{G}} il gruppo ha deciso di utilizzare il software StarUML alla versione più recente. La scelta è 
+		 caduta su tale programma poichè è disponibile per tutti i principali sistemi operativi desktop e permette di
+		  utilizzare una versione di prova completa per tutto il tempo del progetto.
+		  \\ \\
+		  \'E degli \emph{Analisti} il compito di inserire tutte le informazioni relative ai casi d'uso e i loro diagrammi nel 
+		  documento di \emph{Analisi dei requisiti}.
+		  \\ \\
+		 Il codice gerarchico del \emph{caso d'uso} ha la forma seguente:
+		 \begin{center}
+		 	UC[codice univoco del padre].[codice progressivo]
+		 \end{center}
+		 il codice progressivo può definire diversi livelli di gerarchia separati da un punto.
 	\subsection{Tecniche di tracciamento dei requisiti}
-	Tutti i requisiti saranno inseriti in un Database, strutturato in modo funzionale dal gruppo. Nel presente Database verranno
+	Tutti i requisiti e casi d'uso saranno inseriti in un Database, strutturato in modo funzionale dal gruppo. Nel presente Database verranno
 	inserite anche le \emph{Milestones} definite dal responsabile di turno, in modo da poter collegare requisiti e milestones. 
 	Verranno creati degli appositi triggers per automatizzare la validazione dei requisiti tramite completamento manuale delle
-	milestones presenti. Questo compito è competenza dell'\emph{Amministratore}.
+	milestones presenti. 
+	\\ \\ 
+	Il Database verrà scritto utilizzando il linguaggio SQL\ped{\textit{G}} e l'ambiente mySQL disponibile gratuitamente.
+	\\ \\
+	Questo compito è competenza dell'\emph{Amministratore}.
 	\subsection{Gestione cambiamento requisiti}
 	Per quanto riguarda il cambiamento dei requisiti, nel Database verrà tenuta una tabella di backup dei "vecchi" requisiti, 
 	nella loro forma di dichiarazione, con un puntatore al "nuovo" requisito, che invece avrà le specifiche aggiornate. È compito del
