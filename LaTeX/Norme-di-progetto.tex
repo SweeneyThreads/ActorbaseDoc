@@ -25,6 +25,8 @@
 	\addcontentsline{toc}{chapter}{#2}
 }
 
+\renewcommand{\abstractname}{Tabella contenuti}
+
 \begin{document}
 	
 	\begin{titlepage}
@@ -55,7 +57,10 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-				\dots
+				\dots \\
+				\emph{Verifica:} \\
+				Biggeri \textsc{Mattia} \\
+				Tommasin \textsc{Davide} \\
 			\end{flushright}
 		\end{minipage}
 		
@@ -64,7 +69,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.3
+			Versione 1.0.4
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -75,10 +80,35 @@
 	
 	\tableofcontents
 	
+	\mychapter{0}{Diario delle modifiche}
+		Di seguito viene riportato il diario delle modifiche, in cui vengono elencate le modifiche apportate al documento 
+		stesso e da utilizzare come template in tutti gli altri documenti.
+		\begin{table}[!h]
+			\begin{tabularx}{\textwidth}{*4{>{\centering\arraybackslash}X}}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.0.4 & 2016-01-09 & Nicoletti Luca & Completata stesura documento, pronto per essere verificato. \\
+				\noalign{\hrule height 0.5pt}
+				1.0.3 & 2016-01-09 & Maino Elia & Completamento stesura capitolo 3 ed integrazione capitoli 2 e 4 \\
+				\noalign{\hrule height 0.5pt}
+				1.0.3 & 2016-01-09 & Nicoletti Luca & Stesura capitolo 4 \\
+				\noalign{\hrule height 0.5pt}
+				1.0.2 & 2016-01-08 & Maino Elia & Stesura sezione 3.1 \\
+				\noalign{\hrule height 0.5pt}
+				1.0.1 & 2016-01-08 & Nicoletti Luca & Stesura capitolo 2 \\
+				\noalign{\hrule height 0.5pt}
+				1.0.0 & 2016-01-08 & Maino Elia Nicoletti Luca & Creazione scheletro documento e struttura organizzativa,
+				 stesura capitolo 1 \\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Changelog del file \label{tab:table_label}}
+		\end{table}
+
 	\mychapter{1}{Introduzione}
 	\section{Scopo del documento}
 	Lo scopo del seguente documento è quello di definire le norme che l'intero gruppo SWEeneyThreads si impegna a rispettare durante lo svolgimento 
-	del progetto ActorBase. 
+	del progetto Actorbase. 
 	
 	Ogni membro è tenuto a leggere il documento e a rispettare le norme al fine di dare maggiore uniformità allo svolgimento dei processi, 
 	migliorandone l'efficacia, riducendo il numero di errori e i tempi di sviluppo.
@@ -113,6 +143,10 @@
 		\item Telegram: \\ \url{https://telegram.org}
 		\item Google Drive: \\ \url{https://www.google.com/intl/it_it/drive/}
 		\item Google Hangouts: \\ \url{https://hangouts.google.com}
+		\item TeamWork: \\ \url{https://www.teamwork.com/}
+		\item IntelliJ: \\ \url{https://www.jetbrains.com/idea/}
+		\item YouTrack: \\ \url{https://www.jetbrains.com/youtrack/}
+		\item GitHub: \\ \url{https://github.com/}
 		\item Piano di progetto: \\ \emph{Piano di Progetto v1.0.0}
 		\item Piano di qualifica: \\ \emph{Piano di Qualifica v1.0.0}
 	\end{itemize}
@@ -121,30 +155,7 @@
 			\item Capitolato d'appalto Actorbase (C1): \\ 
 			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
 		\end{itemize}
-	\section{Diario modifiche}
-	Di seguito viene riportato il diario delle modifiche, in cui vengono elencate le modifiche apportate al documento stesso e da utilizzare 
-	come template in tutti gli altri documenti.
-	\begin{table}[!h]
-		\begin{tabularx}{\textwidth}{*4{>{\centering\arraybackslash}X}}
-			\noalign{\hrule height 1.5pt}
-			\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
-			\noalign{\hrule height 0.5pt}
-			1.0.0 & 2016-01-08 & Maino Elia Nicoletti Luca & Creazione scheletro documento e struttura organizzativa,
-			 stesura capitolo 1 \\
-			\noalign{\hrule height 0.5pt}
-			1.0.1 & 2016-01-08 & Nicoletti Luca & Stesura capitolo 2 \\
-			\noalign{\hrule height 0.5pt}
-			1.0.2 & 2016-01-08 & Maino Elia & Stesura sezione 3.1 \\
-			\noalign{\hrule height 0.5pt}
-			1.0.3 & 2016-01-09 & Nicoletti Luca & Stesura capitolo 4 \\
-			\noalign{\hrule height 0.5pt}
-			1.0.3 & 2016-01-09 & Maino Elia & Completamento stesura capitolo 3 ed integrazione capitoli 2 e 4 \\
-			\noalign{\hrule height 0.5pt}
-			1.0.4 & 2016-01-09 & Nicoletti Luca & Completata stesura documento, pronto per essere verificato. \\
-			\noalign{\hrule height 1.5pt}
-		\end{tabularx}
-		\caption{Changelog del file \label{tab:table_label}}
-	\end{table}
+	
 	\mychapter{2}{Processi primari}
 	Sono state definite delle norme relative ai processi primari che maggiormente riguardano le attività svolte 
 	dal gruppo: fornitura e sviluppo.
@@ -211,6 +222,7 @@
 		 caduta su tale programma poichè è disponibile per tutti i principali sistemi operativi desktop e permette di
 		  utilizzare una versione di prova completa per tutto il tempo del progetto.
 		  \\ \\
+		  %Inserire la e corretta
 		  \'E degli \emph{Analisti} il compito di inserire tutte le informazioni relative ai casi d'uso e i loro diagrammi nel 
 		  documento di \emph{Analisi dei requisiti}.
 		  \\ \\
@@ -220,14 +232,14 @@
 		 \end{center}
 		 il codice progressivo può definire diversi livelli di gerarchia separati da un punto.
 	\subsection{Tecniche di tracciamento dei requisiti}
-	Tutti i requisiti e casi d'uso saranno inseriti in un Database, strutturato in modo funzionale dal gruppo. Nel presente Database verranno
-	inserite anche le \emph{Milestones} definite dal responsabile di turno, in modo da poter collegare requisiti e milestones. 
-	Verranno creati degli appositi triggers per automatizzare la validazione dei requisiti tramite completamento manuale delle
-	milestones presenti. 
-	\\ \\ 
-	Il Database verrà scritto utilizzando il linguaggio SQL e l'ambiente mySQL disponibile gratuitamente.
-	\\ \\
-	Questo compito è competenza dell'\emph{Amministratore}.
+		Tutti i requisiti e casi d'uso saranno inseriti in un Database, strutturato in modo funzionale dal gruppo. Nel presente Database verranno
+		inserite anche le \emph{Milestones} definite dal responsabile di turno, in modo da poter collegare requisiti e milestones. 
+		Verranno creati degli appositi triggers per automatizzare la validazione dei requisiti tramite completamento manuale delle
+		milestones presenti. 
+		\\ \\ 
+		Il Database verrà scritto utilizzando il linguaggio SQL e l'ambiente mySQL disponibile gratuitamente.
+		\\ \\
+		Questo compito è competenza dell'\emph{Amministratore}.
 	\subsection{Gestione cambiamento requisiti}
 	Per quanto riguarda il cambiamento dei requisiti, nel Database verrà tenuta una tabella di backup dei "vecchi" requisiti, 
 	nella loro forma di dichiarazione, con un puntatore al "nuovo" requisito, che invece avrà le specifiche aggiornate. È compito del
@@ -490,6 +502,9 @@
 	\end{figure}
 	\mychapter{4}{Processi organizzativi}
 	\section{Processi di gestione dell'infrastruttura}
+	\subsection{Documentazione di pianificazione}
+		La documentazione di pianificazione viene generata in modo automatico (per quanto riguarda i diagrammi di attività) con il 
+		supporto del software \emph{projectLibre}. 
 	\subsection{Ticketing}	
 	Per quanto riguarda l'emissione e la gestione dei ticket si è scelto di affidarsi alla piattaforma \emph{Teamwork}
 	in quanto:
