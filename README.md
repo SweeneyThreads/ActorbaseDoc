@@ -24,9 +24,11 @@ Si è scelto di tenere qui il glossario dei termini, senza versione, in modo che
   * Incapsulazione
   * Coesione
   * Basso accoppiamento 
+* **Attore:** ruolo dell'utente nell'interazione con il sitema, svolgono il caso d'uso per raggiungere l'obiettivo, sono un buon mezzo di individuazione dei casi d'uso, non includono dettagli implementativi, sui modi di interazione. Vanno identificati secondo un processo.
 * **Baseline:** E' l'insieme di Configuration Item ad una specifica Milestone. Rappresenta cioè un punto dello sviluppo verificato, approvato e garantito. Una volta fissata una baseline il progetto può solo avanzare, è una configurazione a cui si può tornare senza perdite in caso di fallimento.
 * **Best practice:** Prassi (modo di fare) che per esperienza e per studio abbia mostrato di garantire i migliori risultati in circostanze note e specifiche. 
 * **Brainstorming:** Tecnica di analisi dei requisiti che prevede discussioni creative e paritetiche con o senza il committente. Solitamente necessita di un facilitatore, ovvero un partecipante neutrale che fa si che si rispettino le regole, ed un rapporteur, ovvero colui che tiene nota della discussione riportando solo le parti importanti producendo così le “miniature”.
+* **Casi d'uso:** Un caso d'uso é uno specifico modo di utilizzare il sistema da parte di un attore per eseguire una certa funzionalitá del sistema stesso; Una sequenza di transizioni tramite la quale si ottiene un risultato di valore misurabile.
 * **Configuration:** E' un sistema in un suo istante; cambia a seconda di alcune svolte importanti (milestone).
 * **Configurazione:** Vedi Configuration.
 * **Ciclo di vita del software:** Gli stati che il prodotto assume dal concepimento al ritiro.
