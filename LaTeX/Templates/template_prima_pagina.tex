@@ -1,0 +1,69 @@
+%Document-Author: Nicoletti Luca
+%Document-Date: 2016/01/12
+%Document-Description: prima pagina, da COPIARE e sistemare
+
+\documentclass[a4paper]{report}
+\usepackage[english, italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage[table]{xcolor}
+\usepackage{float}
+
+\graphicspath{{../Immagini/}}
+
+\begin{document}
+	\begin{titlepage}
+		% Defines a new command for the horizontal lines, change thickness here
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+		\center  
+		
+		% HEADING SECTION
+		\textsc{\LARGE SweeneyThreads}\\[1.5cm] 
+		\textsc{\Large Actorbase}\\[0.5cm] 
+		\textsc{\large a NoSQL DB based on the Actor model}\\[0.5cm]
+		
+		
+		% TITLE SECTION
+		\HRule \\[0.4cm]
+		{ \huge \bfseries NOME DEL DOCUMENTO}\\[0.4cm] 
+		\HRule \\[1.5cm]
+		
+		% AUTHOR SECTION
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft} \large
+				\emph{Redattori:}\\
+				Cognome \textsc{Nome} \\
+				Cognome \textsc{Nome} \\
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				\emph{Approvazione:} \\
+				\dots \\
+				\emph{Verifica:} \\
+				Cognome \textsc{Nome} \\
+				Cognome \textsc{Nome} \\
+			\end{flushright}
+		\end{minipage}
+		
+		%immagine
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{sweeney.png}
+		\end{figure}
+		\begin{center}
+			VERSIONE DEL DOCUMENTO
+		\end{center}
+		% Date, change the \today to a set date if you want to be precise
+		{\large \today}\\[3cm] 
+		% Fill the rest of the page with whitespace
+		\vfill  
+	\end{titlepage}
+\end{document}

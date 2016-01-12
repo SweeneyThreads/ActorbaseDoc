@@ -1,0 +1,116 @@
+%Document-Author: Cognome Nome + Cognome Nome + ...
+%Document-Date: AAAA-MM-GG
+%Document-Description: Descrizione documento
+
+
+\documentclass[a4paper]{report}
+\usepackage[english, italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\graphicspath{{../Immagini/}}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage[table]{xcolor}
+\usepackage{float}
+
+\newcolumntype{s}{>{\hsize=.21\hsize}X}
+\newcolumntype{f}{>{\hsize=.37\hsize}X}
+\newcolumntype{m}{>{\hsize=.42\hsize}X}
+
+\newcommand{\mychapter}[2]{
+	\setcounter{chapter}{#1}
+	\setcounter{section}{0}
+	\setcounter{subsection}{1}
+	\chapter*{#2}
+	\addcontentsline{toc}{chapter}{#2}
+}
+
+\renewcommand{\abstractname}{Tabella contenuti}
+
+\begin{document}
+	
+	\begin{titlepage}
+		% Defines a new command for the horizontal lines, change thickness here
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+		\center  
+		
+		% HEADING SECTION
+		\textsc{\LARGE SweeneyThreads}\\[1.5cm] 
+		\textsc{\Large Actorbase}\\[0.5cm] 
+		\textsc{\large a NoSQL DB based on the Actor model}\\[0.5cm]
+		
+		
+		% TITLE SECTION
+		\HRule \\[0.4cm]
+		{ \huge \bfseries Titolo documento}\\[0.4cm] 
+		\HRule \\[1.5cm]
+		
+		% AUTHOR SECTION
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft} \large
+				\emph{Redattori:}\\
+				\dots
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				\emph{Approvazione:} \\
+				\dots \\
+				\emph{Verifica:} \\
+				\dots
+			\end{flushright}
+		\end{minipage}
+		
+		%immagine
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{sweeney.png}
+		\end{figure}
+		\begin{center}
+			Versione x.y.z
+		\end{center}
+		% Date, change the \today to a set date if you want to be precise
+		{\large \today}\\[3cm] 
+		% Fill the rest of the page with whitespace
+		\vfill  
+	\end{titlepage}
+	
+	
+	\tableofcontents
+	
+	\mychapter{0}{Diario delle modifiche}
+		\begin{table}[H]
+			\begin{tabularx}{\textwidth}{s f m X}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Diario delle modifiche \label{tab:table_label}}
+		\end{table}
+
+	\mychapter{1}{Introduzione}
+	\section{Scopo del documento}
+		\dots
+	\section{Scopo del prodotto}
+		\dots
+	\section{Riferimenti}
+	\subsection{Informativi}	
+		\dots
+	\subsection{Normativi}
+		\dots
+		
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{\listfigurename}
+	\listoffigures
+	
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{\listtablename}
+	\listoftables
+		
+\end{document}
+	

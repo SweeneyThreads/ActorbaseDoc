@@ -9,7 +9,6 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
-\usepackage{lipsum}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{pifont}
@@ -164,6 +163,7 @@
 				\item TeamWork: \\ \url{https://www.teamwork.com/}
 				\item IntelliJ: \\ \url{https://www.jetbrains.com/idea/}
 				%\item YouTrack: \\ \url{https://www.jetbrains.com/youtrack/}
+				\item ProjectLibre: \\ \url{http://www.projectlibre.org/}
 				\item GitHub: \\ \url{https://github.com/}
 				\item Texmaker: \\ \url{http://www.xm1math.net/texmaker/}
 				\item Free mySQL Hosting: \\ \url{http://www.freemysqlhosting.net/} 
@@ -219,6 +219,18 @@
 		\item \textbf{P:} prestazionale;
 		\item \textbf{V:} vincolo.
 	\end{itemize}
+	I requisiti saranno inseriti in una tabella, che includerà anche un nome per ogni attributo, una fonte
+	 e una breve descrizione. La forma tabellare di un requisito risulta quindi essere:
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{X X X X}
+			\noalign{\hrule height 1.5pt}
+			\rowcolor{orange!85}Codice & Nome & Fonte & Descrizione \\
+			\noalign{\hrule height 1.5pt}
+			R[1.4.5][N][P] & Requisito di qualità & Capitolato & Garantire \dots \\
+			\noalign{\hrule height 1.5pt}
+		\end{tabularx}
+	\end{table}
+
 	\subsection{Casi d'uso}
 		Come detto in precedenza alcuni requisiti possono essere ricavati dai \emph{Casi d'uso}, ad essi si 
 		può fare riferimento anche con la dicitura \emph{use case} o con l'acronimo \emph{UC} nel caso 
@@ -254,8 +266,26 @@
 		 Il codice gerarchico del \emph{caso d'uso} ha la forma seguente:
 		 \begin{center}
 		 	UC[codice univoco del padre].[codice progressivo]
-		 \end{center}Domain
-		 il codice progressivo può definire diversi livelli di gerarchia separati da un punto.
+		 \end{center}
+		 Dove il codice progressivo può definire diversi livelli di gerarchia separati da un punto.
+		 
+		 I casi d'uso saranno espressi in forma tabellare nel documento di \emph{Analisi dei requisiti}
+		 nel seguente modo, in più, ogni caso d'uso sarà accompagnato da un diagramma UML che ne
+		 descriva il flusso di eventi.
+		 \begin{table}[H]
+			\begin{tabularx}{\textwidth}{X | X}\toprule
+				\rowcolor{orange!65}Codice gerarchico & UC[Padre][CodProgressivo] \\
+				Nome sintetico & Caso d'uso X \\
+				\rowcolor{orange!65}Attori & Utente generico\\
+				Pre-condizione & Ammesso che\dots \\
+				\rowcolor{orange!65}Post-condizione & Porto a\dots \\
+				Flusso eventi & Evento1->Evento2->Evento3\\
+				\rowcolor{orange!65}Scenari alternativi & Evento1->Evento3\\
+				Lista requisiti dedotti & R[1.4.5][N][F]\\
+				\bottomrule
+			\end{tabularx}
+		 \end{table}
+
 	\subsection{Tecniche di tracciamento dei requisiti}
 		Tutti i requisiti e casi d'uso saranno inseriti in un Database, strutturato in modo funzionale
 		 dal gruppo. Nel presente Database verranno 	inserite anche le \emph{Milestones} definite 
@@ -267,7 +297,7 @@
 		\emph{Free MySQL Hosting} e utilizzando il servizio offerto da \emph{phpMyAdmin} per
 		la gestione di tale Database.
 		\\ \\
-		Questo compito è competenza dell'\emph{Amministratore}.e l'ambiente mySQL disponibile gratuitamente. 
+		Questo compito è competenza dell'\emph{Amministratore}.
 	\subsection{Gestione cambiamento requisiti}
 	Per quanto riguarda il cambiamento dei requisiti, nel Database verrà tenuta una tabella di backup dei "vecchi" requisiti, 
 	nella loro forma di dichiarazione, con un puntatore al "nuovo" requisito, che invece avrà le specifiche aggiornate. È compito del

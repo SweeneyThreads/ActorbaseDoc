@@ -1,0 +1,45 @@
+%Document-Author: Nicoletti Luca
+%Document-Date: 2016/01/12
+%Document-Description: Template tabelle
+
+\documentclass[a4paper]{report}
+\usepackage[english, italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage[table]{xcolor}
+\usepackage{float}
+
+%Tutte le colonne sotto sono ristrette rispetto a quelle normali, se si vuole una colonna
+% più grande usare X
+%Colonna piccola, per campi piccoli
+\newcolumntype{s}{>{\hsize=.21\hsize}X} 
+%Colonna media, per campi medi
+\newcolumntype{f}{>{\hsize=.37\hsize}X}
+%Colonna grande
+\newcolumntype{m}{>{\hsize=.42\hsize}X}
+
+\begin{document}
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{s f m X}
+			%Linea grossa per inizio tabella
+			\noalign{\hrule height 1.5pt}
+			%Riga colorata di titolo
+			\rowcolor{orange!85} Campo1 & Campo2 & Campo3 & Campo4 \\
+			%Linea grossa per separazione head da corpo
+			\noalign{\hrule height 1.5pt}
+			Dato1 & Dato2 & Dato 3 & Dato4 \\
+			%Linea sottile per separare dati, non da usare sempre
+			\noalign{\hrule height 0.5pt}
+			Dato1 & Dato2 & Dato 3 & Dato4 \\
+			\noalign{\hrule height 0.5pt}
+			Dato1 & Dato2 & Dato 3 & Dato4 \\
+			\noalign{\hrule height 1.5pt}
+		\end{tabularx}
+	\end{table}
+\end{document}
