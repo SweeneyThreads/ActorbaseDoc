@@ -1,0 +1,481 @@
+%Document-Author: Nicoletti Luca + Padovan Tommaso
+%Document-Date: 2016/01/13
+%Document-Description: Documento di Piano di Progetto del gruppo SWEeneyThreads 
+
+\documentclass[a4paper]{report}
+\usepackage[english, italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage[]{appendix}
+
+\graphicspath{{Immagini/}}
+
+\newcolumntype{s}{>{\hsize=.21\hsize}X}
+\newcolumntype{f}{>{\hsize=.37\hsize}X}
+\newcolumntype{m}{>{\hsize=.42\hsize}X}
+
+\newcommand{\mychapter}[2]{
+	\setcounter{chapter}{#1}
+	\setcounter{section}{0}
+	\setcounter{subsection}{1}
+	\chapter*{#2}
+	\addcontentsline{toc}{chapter}{#2}
+}
+
+\renewcommand{\abstractname}{Tabella contenuti}
+
+\begin{document}
+
+	\begin{titlepage}
+		% Defines a new command for the horizontal lines, change thickness here
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+		\center  
+		
+		% HEADING SECTION
+		\textsc{\LARGE SweeneyThreads}\\[1.5cm] 
+		\textsc{\Large Actorbase}\\[0.5cm] 
+		\textsc{\large a NoSQL DB based on the Actor model}\\[0.5cm]
+		
+		
+		% TITLE SECTION
+		\HRule \\[0.4cm]
+		{ \huge \bfseries Piano di progetto}\\[0.4cm] 
+		\HRule \\[1.5cm]
+		
+		% AUTHOR SECTION
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft} \large
+				\emph{Redattori:}\\
+				Nicoletti \textsc{Luca} \\
+				Padovan \textsc{Tommaso} \\
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				\emph{Approvazione:} \\
+				\dots \\
+				\emph{Verifica:} \\
+				Biggeri \textsc{Mattia} \\
+				Tommasin \textsc{Davide} \\
+			\end{flushright}
+		\end{minipage}
+		
+		%immagine
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{sweeney.png}
+		\end{figure}
+		\begin{center}
+			Versione 1.0.0
+		\end{center}
+		% Date, change the \today to a set date if you want to be precise
+		{\large \today}\\[3cm] 
+		% Fill the rest of the page with whitespace
+		\vfill  
+	\end{titlepage}
+	
+	\tableofcontents
+	
+	\mychapter{0}{Diario delle modifiche}
+		\begin{table}[H]
+			\begin{tabularx}{\textwidth}{sfmX}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 1.5pt}
+				1.0.1 & 2016-01-14 & \emph{Amministratore} Nicoletti Luca & Stesura analisi dei rischi e introduzione del documento \\
+				\noalign{\hrule height 0.5pt}
+				1.0.0 & 2016-01-13 & \emph{Amministratore} Nicoletti Luca & Scrittura scheletro logico del documento \\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Diario delle modifiche \label{tab:table_label}}
+		\end{table}
+	
+	\begin{appendices}
+	\mychapter{1}{Organigramma}
+		\section{Redazione}
+		\begin{table}[H]
+			\begin{tabularx}{\textwidth}{X X X}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85}Nominativo & Data di redazione & Firma\\
+				\noalign{\hrule height 1.5pt}
+				Nicoletti Luca & 2016-01-13 & \\
+				\noalign{\hrule height 0.5pt}
+				Padovan Tommaso & 2016-01-13 &\\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Redazione documento \label{tab:table_label}}
+		\end{table}
+		\section{Approvazione}
+		\begin{table}[H]
+			\begin{tabularx}{\textwidth}{X X X}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85}Nominativo & Data di redazione & Firma\\
+				\noalign{\hrule height 1.5pt}
+				Nicoletti Luca & 2016-01-13 & \\
+				\noalign{\hrule height 0.5pt}
+				Padovan Tommaso & 2016-01-13 & \\
+				\noalign{\hrule height 0.5pt}
+				Prof. Vardanega Tullio & & \\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Approvazione documento \label{tab:table_label}}
+		\end{table}
+		\section{Componenti}
+		\begin{table}[H]
+			\begin{tabular}{p{3cm} p{1.6cm} p{5.7cm} p{1cm}}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85}Nominativo & Matricola & E-mail \\
+				\noalign{\hrule height 1.5pt}
+				Paolo Bonato & 1023655 & paolo.bonato.3@studenti.unipd.it\\
+				\noalign{\hrule height 0.5pt}
+				Matteo Bortolazzo & 1073194 & matteo.bortolazzo.1@studenti.unipd.it \\
+				\noalign{\hrule height 0.5pt}
+				Mattia Biggeri & 1074269 & mattia.biggeri@studenti.unipd.it \\
+				\noalign{\hrule height 0.5pt}
+				Elia Maino & 1069880 & elia.maino@studenti.unipd.it \\
+				\noalign{\hrule height 0.5pt}
+				Luca Nicoletti & 1070634 & luca.nicoletti.2@studenti.unipd.it \\
+				\noalign{\hrule height 0.5pt}
+				Tommaso Padovan & 1054128 & tommaso.padovan@studenti.unipd.it \\
+				\noalign{\hrule height 0.5pt}
+				Davide Tommasin & 1073541 & davide.tommasin.1@studenti.unipd.it \\
+				\noalign{\hrule height 1.5pt}
+			\end{tabular}
+			\caption{Componenti SWEeneyThreads \label{tab:table_label}}
+		\end{table}
+		\section{Accetazione componenti}
+		\begin{table}[H]
+			\begin{tabularx}{\textwidth}{X X X}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85}Nominativo & Data di accettazione & Firma\\
+				\noalign{\hrule height 1.5pt}
+				Paolo Bonato & 2015-18-12 & \\
+				\noalign{\hrule height 0.5pt}
+				Matteo Bortolazzo & 2015-18-12 & \\
+				\noalign{\hrule height 0.5pt}
+				Mattia Biggeri & 2015-18-12 & \\
+				\noalign{\hrule height 0.5pt}
+				Elia Maino & 2015-18-12 & \\
+				\noalign{\hrule height 0.5pt}
+				Luca Nicoletti & 2015-18-12 & \\
+				\noalign{\hrule height 0.5pt}
+				Tommaso Padovan & 2015-18-12 & \\
+				\noalign{\hrule height 0.5pt}
+				Davide Tommasin & 2015-18-12 & \\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Accettazione componenti \label{tab:table_label}}
+		\end{table}
+		\section{Definizione dei ruoli}
+			Nel corso dello sviluppo del progetto i membri del gruppo dovranno ricoprire diversi ruoli, rappresentanti 
+			figure aziendali specializzate, indispensabili per il buon esito del progetto. Ogni singolo componente del 
+			gruppo può ricoprire più ruoli, sia contemporaneamente che in distinte fasi del progetto in ogni caso 
+			sempre garantendo assenza di conflitto di interesse tra i ruoli assunti.
+			Tali ruoli sono:
+			\begin{itemize}
+				\item \textbf{Responsabile:} È il responsabile ultimo, per conto del suo gruppo, dei risultati del progetto.
+				\begin{itemize}
+					\item Elabora ed emana piani e scadenze.
+					\item Approva l'emissione di documenti.
+					\item Coordina le attività del gruppo.
+					\item Si relaziona con il controllo di qualità interno al progetto.
+					\item Redige Organigramma e Piano di Progetto.
+					\item Approva l'Offerta e i relativi allegati.
+				\end{itemize}
+				\item \textbf{Amministratore:} È responsabile dell'efficienza e dell'operatività dell'ambiente di sviluppo 
+				oltre che della redazione e attuazione di piani e procedure di Gestione per la Qualità.
+				\begin{itemize}
+					\item Controlla versioni e configurazioni del prodotto. 
+					\item Gestisce l'archivio della documentazione di progetto. 
+					\item Collabora alla redazione del Piano di Progetto. 
+					\item Redige le Norme di Progetto per conto del Responsabile.
+				\end{itemize}
+				\item \textbf{Analista:} È responsabile delle attività di analisi. 
+				\begin{itemize}
+					\item Redige lo Studio di Fattibilità (documento interno al gruppo) e l'Analisi dei Requisiti.
+				\end{itemize}
+				\item \textbf{Progettista:} È responsabile delle attività di progettazione. 
+				\begin{itemize}
+					\item Redige Specifica Tecnica, Definizione di Prodotto e la parte programmatica del Piano di Qualifica.
+				\end{itemize}
+				\item \textbf{Programmatore:} È responsabile delle attività di codifica miranti alla realizzazione del 
+				prodotto e delle componenti di ausilio necessarie per l'esecuzione delle prove di verifica e validazione.
+				\item \textbf{Verificatore:} È responsabile delle attività di verifica.
+				\begin{itemize}
+					\item Redige la parte retrospettiva del Piano di Qualifica che illustra l'esito e la completezza delle 
+					verifiche e delle prove effettuate secondo il piano.
+				\end{itemize}
+			\end{itemize}
+	\end{appendices}
+	
+	\mychapter{1}{Introduzione}
+		\section{Scopo del documento}
+			Il presente documento ha l'intento di specificare la pianificazione secondo la quale saranno portati avanti i 
+			lavori dal gruppo SWEeneyThreads in merito al progetto \emph{Actorbase}.
+			Gli scopi del presente documento sono:
+			\begin{itemize}
+				\item Presentare la pianificazione dei tempi e delle attività, definendo le scadenze e la suddivisione dei lavori
+				\item Preventivare l’utilizzo delle risorse, descrivendo i costi in relazione alla suddivisione del lavoro
+				\item Consuntivare l’utilizzo delle risorse durante l’evolversi dei lavori
+				\item Analizzare i possibili fattori di rischio e descrivere i relativi strumenti di controllo
+			\end{itemize}
+		\section{Riferimenti}
+			\subsection{Informativi}
+				\begin{itemize}
+					\item 
+				\end{itemize}
+			\subsection{Normativi}
+				\begin{itemize}
+					\item \textbf{Capitolato d'appalto: } \\ \url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
+					\item \textbf{Vincoli di organigramma e dettagli tecnici-economici} \\ 
+					\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/PD01b.html}
+				\end{itemize}
+		\section{Ciclo di vita}
+			Il gruppo ha deciso, uninamente di adottare il \textbf{modello incrementale} come modello di ciclo di vita.
+			Tale scelta è stata presa per i vari vantaggi che comporta questo modello di Ciclo di vita\ped{\emph{G}}:
+			\begin{itemize}
+				\item rende più facile la gestione e il controllo del progetto e quindi la stima del preventivo;
+				\item aiuta a definire in moto specifico un'unità permettendo di effettuare test di maggiore dettaglio, ma 
+				in numero contenuto, in modo da riuscire a mantenere positivo il rapporto costi/benefici dei test;
+				\item prevede rilasci multipli e successivi;
+				\item riduce il rischio di fallimento ad ogni iterazione, il che lo rende particolarmente adatto a gruppi 
+				inesperti.
+			\end{itemize}
+			
+			Nello specifico, queste parti si adattano bene al capitolato scelto: ad esempio la modularità. I rilasci 
+			multipli e successivi ci permetteranno di rilasciare prototipi dei singoli \emph{Actors} permettendoci di
+			isolare i requisiti per i successivi incrementi. Questo ciclo di vita permetterà al gruppo di raffinare e 
+			di rivedere, di rilascio in rilascio, i requisiti relativi ai vari \emph{Actors}. Inoltre, prevedendo 
+			\emph{Actors} differenti e indipendenti tra loro, non tutti obbligatori, il \textbf{modello incrementale} 
+			si adatta alla perfezione.
+			
+			Il gruppo ha anche valutato l'utilizzo del \textbf{modello evolutivo}. Esso risulta però inadeguato per alcune sue 
+			caratteristiche non perfettamente aderenti al nostro capitolato:
+			\begin{itemize}
+				\item lo scopo fondamentale di un modello evolutivo è rilasciare molte versioni di un sistema che va 
+				poi sempre più raffinato: nel caso preso in considerazione non è l'intero sistema a dover essere raffinato, 
+				semplicemente si aggiungeranno nuove parti che verrano integrate in modo incrementale;
+				\item il modello incrementale inoltre aiuta a rispondere a bisogni non inizialmente preventivabili, mentre 
+				quelli di \emph{Actorbase} sono perlopiù definiti a priori.
+			\end{itemize}
+			Queste due qualità, come indicato, non sono largamente necessarie; l'adozione di questo modello porterebbe dei 
+			vantaggi modesti a fronte della necessità, molto onerosa, di riattraversare diverse fasi del ciclo di vita.
+		\section{Scadenze}
+			Di seguito vengono riportate le scadenze che il gruppo SWEeneyThreads ha deciso di rispettare e sulle quali 
+			si baserà la pianificazione del progetto:
+			\begin{enumerate}
+				\item Revisione dei requisiti [RR]: 2016-02-16
+				\item Revisione di progettazione [RP]: 2016-04-18
+				\item Revisione di qualifica [RQ]: 2016-05-23
+				\item Revisione di accettazione [RA]: 2016-06-17
+			\end{enumerate}
+	\mychapter{2}{Pianificazione}
+		\section{Analisi}
+		\section{Analisi di dettaglio}
+		\section{Progettazione architetturale}
+		\section{Progettazione di dettaglio}
+		\section{Verifica e validazione}
+	\mychapter{3}{Suddivisione del lavoro}
+		Ogni membro del gruppo, dovrà, durante tutta la durata del progetto, ricoprire almeno una volta ciascuno dei
+		ruoli descritti nell'appendice, sezione A.5. Durante ogni fase\ped{\emph{G}} ogni membro può ricoprire
+		più ruoli contemporaneamente, a patto che non si verifichino dei conflitti di interesse tra i ruoli ricoperti. 
+		Un membro del gruppo non può verificare il suo stesso lavoro.
+		\section{Dettaglio delle fasi}
+			\subsection{Analisi}
+			\subsection{Analisi di dettaglio}
+			\subsection{Progettazione architetturale}
+			\subsection{Progettazione di dettaglio}
+			\subsection{Verifica e validazione}
+		\section{Totali}
+			\subsection{Totale ore di investimento}
+			\subsection{Totale ore rendicontate}
+	\mychapter{4}{Prospetto economico}
+		\section{Analisi}
+		\section{Analisi di dettaglio}
+		\section{Progettazione architetturale}
+		\section{Progettazione di dettaglio}
+		\section{Verifica e validazione}
+		\section{Totali}
+			\subsection{Investimento}
+			\subsection{Preventivo}
+			\subsection{Conclusione}
+	\mychapter{5}{Analisi dei rischi}
+		Al fine di migliorare l'avanzamento del progetto, è stata effettuata un'accurata analisi dei rischi suddivisa in:
+		\begin{itemize}
+			\item \textbf{Identificazione:} in cui si identificano i principali fattori di rischi come:
+			\begin{itemize}
+				\item Variabilità della disponibilità del personale;
+				\item Variabilità delle tecnologie;
+				\item Ritardo o mutazione di requisiti fondamentali;
+				\item Specifiche in ritardo.
+			\end{itemize}
+			\item \textbf{Analisi:} durante la quale si individua la possibilità di occorrenza di ogni rischio, e le conseguenze a cui porterebbe.
+			\item \textbf{Pianificazione:} scelta di tecniche per evitare il verificarsi dei rischi verificati, o per mitigarne gli effetti.
+			\item \textbf{Controllo:} attività svolta durante tutto il ciclo di vita del progetto per prevedere il verificarsi dei rischi
+			ed evitare che si verifichino.
+		\end{itemize}
+		Per ogni rischio individuato viene quindi stilata una lista di attributi quali: la sua probabilità di occorrenza, la gravità delle 
+		conseguenze a cui porterebbe il suo verificarsi, una descrizione, le strategie da utilizzare per la sua rilevazione preventiva e le 
+		contromisure da adottare (nel caso in cui il rischio si verifichi, o nel caso in cui si noti che il rischio sta per verificarsi). \\
+		L'identificazione dei rischi viene gestita a livelli.
+		
+		\section{Livello tecnologico}
+			\subsection{Tecnologie adottate}
+				\subsubsection{Probabilità:}
+					Bassa.
+				\subsubsection{Gravità:}
+					Alta.
+				\subsubsection{Descrizione:}
+					Nessun membro del gruppo ha una conoscenza in tutte le tecnologie utilizzate nel 
+					progetto. È quindi possibile che il gruppo incontri inconvenienti nell'utilizzo 
+					di determinati strumenti o tecnologie.
+				\subsubsection{Contromisure:}
+					L'\emph{Amministratore} è tenuto a fornire documentazione sufficiente riguardante 
+					le tecnologie adottate, in tempo utile per permettere all'intero gruppo di documentarsi 
+					in maniera autonoma.
+			\subsection{Rotture hardware}
+				\subsubsection{Probabilità:}
+					Bassa.
+				\subsubsection{Gravità:}
+					Bassa.
+				\subsubsection{Descrizione:}
+					Il gruppo ha deciso di sfruttare servizi online gratuiti o software open-source per lo 
+					sviluppo del progetto. È quindi da tenere in considerazione il possibile malfunzionamento 
+					di host o di qualche servizio/piattaforma.
+				\subsubsection{Contromisure:}
+					Il gruppo si impegna ad effettuare un backup periodicamente in modo da preventivare un'eventuale 
+					perdita di dati. Questo è compito del \emph{Responsabile di progetto}. La copia di backup sarà mantenuta 
+					sia sul \emph{Drive} del gruppo, sia su un disco rimovibile. Tutti i membri del gruppo hanno a disposizione 
+					un computer di supporto per poter rimanere operativi anche in caso di guasti hardware alle proprie macchine.
+		\section{Livello del personale}
+			\subsection{Inesperienza del gruppo}
+				\subsubsection{Probabilità:} 
+					Media.
+				\subsubsection{Gravità:} 
+					Media.
+				\subsubsection{Descrizione:} 
+					Il gruppo per lo sviluppo del progetto didattico andrà ad utilizzare una tecnologia 
+					con la quale nessuno ha particolare familiarità, questo può portare a ritardi 
+					nella fase di sviluppo dovuti a risoluzione di problemi di primo approccio ad una 
+					nuova tecnologia non conosciuta.
+				\subsubsection{Contromisure:}
+					Il gruppo, per prevenire il verificarsi di questo rischio, ha stabilito di leggersi
+					più di un manuale riguardante \emph{Scala}, il linguaggio di programmazione richiesto
+					dal capitola d'appalto. Inoltre, il gruppo si sta già formando all'utilizzo delle
+					altre tecnologie previste per il corretto svolgimento di ogni fase.
+			\subsection{Variazione disponibilità}
+				\subsubsection{Probabilità:}
+					Media.
+				\subsubsection{Gravità:} 
+					Medio-alta.
+				\subsubsection{Descrizione:}
+					Ogni membro del gruppo ha deciso di dedicare un certo monte ore allo sviluppo del 
+					progetto didattico. Questo monte ore, purtroppo, potrebbe non essere mantenuto da 
+					ciascuno dei membri del gruppo, in quanto possono capitare imprevisti, o sviste.
+				\subsubsection{Contromisure:}
+					Il \emph{Responsabile di progetto} è tenuto ad avvisare qualsiasi membro del gruppo 
+					nel caso in cui, all'avvicinarsi della terminazione di un compito a lui assegnato, 
+					essi mancasse ancora di molte ore, superiori al carico giornaliero previsto. 
+					
+					Come già specificato, ogni membro del gruppo ha preso l'impegno di dedicare tempo 
+					al progetto, e nel caso in cui qualcuno non rispetterà quanto detto, si presume 
+					non sia una cosa voluta o pianificata.
+			\subsection{Problemi tra componenti}
+				\subsubsection{Probabilità:}
+					Media.
+				\subsubsection{Gravità:}
+					Alta.
+				\subsubsection{Descrizione:}
+					SWEeneyThreads è un gruppo nato per questo progetto. Nessuno dei membri al suo interno 
+					ha mai lavorato con tutti gli altri a qualche altro progetto. Inoltre, nessuno dei membri 
+					del gruppo ha mai lavorato in un team così numeroso ad un progetto di questo livello. 
+					Questo potrebbe portare a problemi di collaborazione, ad un carico eccessivo da parte di 
+					alcuni, per sistemare una carenza da parte di altri; questo porterebbe ad avere un clima 
+					poco profiquo durante lo svolgimento del progetto.
+				\subsubsection{Contromisure:}
+					È compito del \emph{Responsabile di progetto} monitorare la nascita di problematiche tra più 
+					individui. Se questo si verificasse, è sempre compito del \emph{Responsabile di progetto} 
+					cercare di organizzare il lavoro cercando di diminuire il più possibile la cooperazione 
+					dei suddetti individui. 
+					
+					La differenza di opinioni in forte contrasto tra due individui verrà esposta al resto del 
+					gruppo che deciderà, per maggioranza, la strada da intraprendere.
+		\section{Livello organizzativo}
+			\subsubsection{Probabilità:} 
+				Media.
+			\subsubsection{Gravità:}
+				Alta.
+			\subsubsection{Descrizione:}
+				Durante la pianificazione di progetto, è possibile che la stima dei tempi, e quindi il
+				preventivo, risulti errata. In particolare, una sottostima dei costi di produzione può 
+				portare ad un ritardo nella consegna dei materiali previsti. 
+			\subsubsection{Contromisure:}
+				La caratteristiche del rischio rilevato implica il dovere, da parte di ogni membro del 
+				gruppo, di controllare periodicamente lo stato dei tickets, in modo da rendersi conto 
+				immediatamente di eventuali ritardi nello svolgimento di \emph{Task}. Particolare attenzione
+				va posta alle attività contrassegnate come critiche. 
+				
+				Per le attività critiche si è deciso di inserire, già durante la loro pianificazione, delle 
+				ore di slack, in modo che un eventuale ritardo non influenzi la durata totale del progetto. 
+				Inoltre il preventivo fornito è maggiorato (se pur non di molto)rispetto a quello calcolato, 
+				il che permette di avere delle ore bonus a disposizione in caso di ritardo.
+		\section{Livello dei requisiti}
+			\subsubsection{Probabilità:} 
+				Media.
+			\subsubsection{Gravità:}
+				Media.
+			\subsubsection{Descrizione:}
+				Durante lo studio del capitolato e la stesura dei requisiti, è possibile che essi non vengano 
+				capiti totalmente dagli analisti. È anche possibile che alcuni aspetti vengano studiati in modo 
+				incompleto o peggio ancora in modo errato. Questo porterebbe a differenze tra le aspettative del 
+				committente e la visione del prodotto del gruppo di lavoro.
+			\subsubsection{Contromisure:}
+				Per evitare che questo rischio si verifichi, durante le fasi di analisi si terranno più incontri 
+				con il committente, in modo da chiarire incertezze su requisiti, o correggere errate interpretazioni 
+				dei requisiti espressi. Inoltre, ogni documento verrà consegnato e valutato dal committente, ad ogni 
+				revisione.
+				
+				Se si verificassero incongruenze tra le due visioni sul proddo, è importante che esse vengano comunicate 
+				al gruppo dal committente al termine di ogni revisione, in modo che le analisi subiscano un miglioramento 
+				incrementale permettendo di ottenerne di affidabili.
+		\section{Livello di valutazione dei costi}
+			\subsubsection{Probabilità:}
+				Bassa.
+			\subsubsection{Gravità:}
+				Alta.
+			\subsubsection{Descrizione:}
+				Il costo per ora di ogni ruolo è stato definito a priori, non era compito del grupo. Spetta invece al 
+				gruppo la stima delle ore di lavoro necessarie per svolgere il progetto.
+			\subsubsection{Contromisure:}
+				Il preventivo è maggiorato, e anche le ore. I prezzi orari per ogni ruolo non è di pertinenza dei membri 
+				del gruppo.
+	\mychapter{6}{Meccanismi di controllo e rendicontazione}
+		\section{Controllo}
+		\section{Rendicontazione}
+	\mychapter{7}{Consuntivo a finire}
+		Questa sezione, lasciata per ultima perchè incrementale, riporta il prospetto economico con i 
+		costi effettivamente sostenuti. Per ogni fase verrà calcolato un conguaglio, offero la differenza
+		tra ore preventivate e spese, esso portà essere:
+		\begin{itemize}
+			\item \textbf{Positivo:} se il preventivo ha superato il consuntivo;
+			\item \textbf{In pari:} se il preventivo e il consuntivo coincidono;
+			\item \textbf{Negativo:} se il consuntivo ha superato il preventivo.
+		\end{itemize}
+		\section{Analisi}
+		%Da aggiungere man-mano
+		%\section{Analisi di dettaglio}
+		%\section{Progettazione architetturale}
+		%\section{Progettazione di dettaglio}
+		%\section{Verifica e validazione}
+
+
+\end{document}
