@@ -460,7 +460,59 @@
 				del gruppo.
 	\mychapter{6}{Meccanismi di controllo e rendicontazione}
 		\section{Controllo}
+			\subsection{Meccanismi di controllo}
+				All'interno dell'ambiente di lavoro sono stati predisposti meccanismi per:
+				\begin{itemize}
+					\item Controllare l'andamento delle attività ed eventuali ritardi;
+					\item \dots
+				\end{itemize}
+			\subsection{Andamento delle ttività}
+				Per monitorare i ritardi sulle attività e acquisire maggiore esperienza per stime future si adotta la 
+				funzione timer di Teamwork. Ogni componente del gruppo è invitato a tenere attivo il timer durante 
+				tutto lo svolgimento delle attività a lui assegnate. In questo modo si può avere una misurazione del 
+				tempo effettivo impiegato da ogni membro per svolgere le attività, che può poi essere confrontata con 
+				la stima fatta a priori.
+				%image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.4]{teamworkTimer}
+					\caption{Timer da attivare durante il lavoro svolto.}
+				\end{figure}
+				Inoltre per ogni attività è predisposta anche una due to date, ovvero la data entro la quale la task deve 
+				essere soddisfatta. Teamwork segnala ogni attività nel riepilogo non completata entro la data di fine con 
+				una scritta rossa che riporta il ritardo. È facile per il responsabile individuare a colpo d'occhio le 
+				task in ritardo e provvedere a comunicare con il/i compenti del gruppo a cui essa è assegnata per capire 
+				le motivazioni del ritardo ed eventualmente rivedere le stime future.
+				%image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.4]{teamworkTaskinRitardo}
+					\caption{Visualizzazione data di scadenza di un task.}
+				\end{figure}
+				Se necessario è possibile impostare notifiche automatiche in prossimità o al superare di una scadenza.
 		\section{Rendicontazione}
+			Il sistema di ticketing adottato, mette a disposizione la rendicontazione delle ore di lavoro svolto da 
+			ciascun componente del gruppo. Inoltre offre la possibilità di esportare tale rendicontazione in formato 
+			compatibile con projectLibre. Per automatizzare questo processo è stato reso disponibile, per uso interno, 
+			a tutti i componenti del gruppo un servizio online (accessibile al link:
+			\url{sweeneytreadaas.altervista.org/roleparser/parser.php} ) che permette di effettuare delle modifiche al 
+			file esportato da Teamwork al fine di:
+			\begin{itemize}
+				\item  Riassegnare ogni attività non più alla singola persona (che ha ruolo, e quindi stipendio variabile) 
+				ma al ruolo che quella stessa persona ricopriva in quel periodo;
+				\item Assegnare, automaticamente, ad ogni ruolo lo stipendio indicato dalle regole di progetto.
+			\end{itemize}
+			Il nuovo file è poi importato all'interno di projectLibre dove è possibile accedere a molte funzionalità utili 
+			alla rendicontazione, come:
+			\begin{itemize}
+				\item Tabelle d'uso delle risorse umane e non;
+				\item RBS delle risorse;
+				\item Report dettagliati di preventivo/consuntivo ad ogni milestone;
+				\item Altri grafici personalizzabili a seconda delle esigenze del gruppo o delle richieste del committente 
+				(ad esempio per singolo componente o singolo ruolo).
+			\end{itemize}
+
+
 	\mychapter{7}{Consuntivo a finire}
 		Questa sezione, lasciata per ultima perchè incrementale, riporta il prospetto economico con i 
 		costi effettivamente sostenuti. Per ogni fase verrà calcolato un conguaglio, offero la differenza
