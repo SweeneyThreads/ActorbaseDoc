@@ -91,6 +91,10 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
+				1.0.3 & 2016-01-16 & \emph{Amministratore} Nicoletti Luca & Inserita introduzione alla Rendicontazione e inserita la descrizione di tutta la macro-fase di Analisi \\
+				\noalign{\hrule height 0.5pt}
+				1.0.2 & 2016-01-15 & \emph{Amministratore} Nicoletti Luca & Inserita introduzione alla Pianificazione e correzzioni da verifica \\
+				\noalign{\hrule height 0.5pt}
 				1.0.1 & 2016-01-14 & \emph{Amministratore} Nicoletti Luca & Stesura analisi dei rischi e introduzione del documento \\
 				\noalign{\hrule height 0.5pt}
 				1.0.0 & 2016-01-13 & \emph{Amministratore} Nicoletti Luca & Scrittura scheletro logico del documento \\
@@ -264,7 +268,7 @@
 				\item lo scopo fondamentale di un modello evolutivo è rilasciare molte versioni di un sistema che va 
 				poi sempre più raffinato: nel caso preso in considerazione non è l'intero sistema a dover essere raffinato, 
 				semplicemente si aggiungeranno nuove parti che verrano integrate in modo incrementale;
-				\item il modello incrementale inoltre aiuta a rispondere a bisogni non inizialmente preventivabili, mentre 
+				\item il modello evolutivo inoltre aiuta a rispondere a bisogni non inizialmente preventivabili, mentre 
 				quelli di \emph{Actorbase} sono perlopiù definiti a priori.
 			\end{itemize}
 			Queste due qualità, come indicato, non sono largamente necessarie; l'adozione di questo modello porterebbe dei 
@@ -279,7 +283,64 @@
 				\item Revisione di accettazione [RA]: 2016-06-17
 			\end{enumerate}
 	\mychapter{2}{Pianificazione}
+		Considerando le scadenze elencate nella sezione 1.4 il gruppo ha deciso di suddividere il progetto in 5 
+		macro-fasi:
+		\begin{itemize}
+			\item Analisi;
+			\item Analisi dettagliata;
+			\item Progettazione architetturale;
+			\item Progettazione dettagliata;
+			\item Verifica e validazione.
+		\end{itemize}
+		Il gruppo ha poi scomposto queste macro-fasi in più attività, ed assegnato a ciascuna di esse delle risorse.
+		Le attività elencate sono poi state suddivise in \emph{Task} in modo da risultare più dettagliati e atomici.
+		Di questi \emph{Task} verrà riportato il \emph{Gantt}\ped{\textit{G}}. Ogni \emph{Task} ha una sua criticità, 
+		e nel \emph{Gantt} questa proprietà viene tradotta assegnandovi un colore diverso. I valori possibili sono:
+		\begin{itemize}
+			\item \textbf{Non critico:} \emph{Task} che possono essere svolti in parallelo ad altri con criticità maggiore,
+			un eventuale ritardo non causerebbe alcuno slittamento nello svolgimento di altri \emph{Task}. Sono indicati nel 
+			\emph{Gantt} con il colore verde;
+			\item \textbf{Neutro:} \emph{Task} a media criticità, possono essere svolti in parallelo ad altri \emph{Task}, ma 
+			un eventuale ritardo in uno di questi provocherebbe slittamenti sulle dipendenze. Nel \emph{Gantt} sono indicati 
+			con il colore giallo;
+			\item \textbf{Critico:} \emph{Task} con forte impatto temporale sull'andamento del progetto. Un ritardo di questi
+			\emph{Task} risulterebbe sicuramente dannoso e causerebbe un ritardo nel completamento di una 
+			\emph{Milestone}\ped{\textit{G}}. Nel \emph{Gantt} sono indicati con il colore rosso.
+		\end{itemize}
+		Ogni \emph{Milestone} nei diagrammi di \emph{Gantt} viene rappresentata come un'attività di durata di 0 (zero) giorni 
+		e coincide con la consegna dei documenti in vista della successiva revisione o l'approvazione di quanto fatto a monte 
+		della \emph{Milestone} stessa. Nel \emph{Gantt} sono indicate con un rombo nero.
+		Ogni attività, composta di più \emph{Task} viene indicata nel \emph{Gantt} con una barra nera.
+		
+		Per la visualizzazione gerarchica delle attività e dei \emph{Task} viene invece utilizzato un diagramma \emph{WBS}\ped{\textit{G}}.
 		\section{Analisi}
+			\textbf{Periodo:} da 2016-01-07 a 2016-01-22 \\
+			Questa macro-fase inizia dopo la \emph{Flipped-classroom}\ped{\textit{G}} sulla documentazione e termina nella data
+			di scadenza della consegna dei documenti necessari per la revisione.\\ Le attività al suo interno sono:
+			\begin{itemize}
+				\item \textbf{Norme di progetto:} La prima attività svolta. Scritta dall'\emph{Amministratore}, serve a normare
+				la metodologia di lavoro del gruppo, è stata svolta per prima in quanto in essa viene normata anche la stesura
+				dei documenti per la consegna. Il rispetto delle norme negli altri documenti verrà certificato dai \emph{Verificatori}; 
+				\item \textbf{Studio di fattibilità:} Viene redatto lo \emph{Studio di fattibilità} del capitolato scelto. Il gruppo è
+				nato in base ad una preferenza sul capitolato, quindi non vi è stata una fase per deciderlo. È un'attività bloccante per
+				l'\emph{Analisi dei requisiti} e per questo viene svolta preventivamente. Conclusa questa fase si inizia l'analisi dei 
+				requisiti;
+				\item \textbf{Analisi dei requisiti:} Viene effettuata una bozza di \emph{Analisi dei requisiti} di alto livello. 
+				Successivamente la fase passa nella sua parte di dettaglio, i requisiti vengono suddivisi in requisiti più specifici e 
+				ne vengono aggiunti degli ulteriori. Questa fase continua fino alla consegna dei documenti;
+				\item \textbf{Piano di progetto:} Il \emph{Responsabile di progetto}, aiutato dall'\emph{Amministratore} redige il 
+				\emph{Piano di progetto}. In questa attività si organizzano i vari \emph{Task} che ogni risorsa andrà a svolgere.\\
+				Questa attività è considerata critica, in quanto regola le altre attività;
+				\item \textbf{Piano di qualifica:} Gli analisti redigono il \emph{Piano di qualifica} in collaborazione con l'
+				\emph{Amministratore} e il \emph{Responsabile};
+				\item \textbf{Glossario:} Questa attività è svolta durante tutta la durata della macro-fase, in quanto chiunque
+				stenda un documento ha libertà di inserire i termini nel \emph{Glossario}. È svolto in parallelo a tutto il resto 
+				della documentazione;
+				\item \textbf{Consegna:} Vengono consegnati tutti i documenti richiesti al committente, insieme ad una lettera di 
+				presentazione. Permette al gruppo di partecipare alla gara d'appalto per il capitolato scelto.
+			\end{itemize}
+			In questa macro-fase i ruoli principalmente coinvolti sono: \emph{Responsabile}, \emph{Amministratore} e \emph{Analista}.
+
 		\section{Analisi di dettaglio}
 		\section{Progettazione architetturale}
 		\section{Progettazione di dettaglio}
@@ -299,6 +360,9 @@
 			\subsection{Totale ore di investimento}
 			\subsection{Totale ore rendicontate}
 	\mychapter{4}{Prospetto economico}
+		Per ciascuna fase del progetto, in questa sezione vengono presentate le ore preventivate di impiego per tutti i 
+		ruoli coinvolti. Si ricorda che le fasi di \emph{Analisi dei requisiti} e \emph{Analisi di dettaglio} non sono 
+		a carico del committente e quindi non saranno considerate nel calcolo delle ore preventivate.
 		\section{Analisi}
 		\section{Analisi di dettaglio}
 		\section{Progettazione architetturale}
@@ -342,7 +406,7 @@
 					L'\emph{Amministratore} è tenuto a fornire documentazione sufficiente riguardante 
 					le tecnologie adottate, in tempo utile per permettere all'intero gruppo di documentarsi 
 					in maniera autonoma.
-			\subsection{Rotture hardware}
+			\subsection{Malfunzionamento degli strumenti utilizzati}
 				\subsubsection{Probabilità:}
 					Bassa.
 				\subsubsection{Gravità:}
@@ -466,7 +530,7 @@
 					\item Controllare l'andamento delle attività ed eventuali ritardi;
 					\item \dots
 				\end{itemize}
-			\subsection{Andamento delle ttività}
+			\subsection{Andamento delle attività}
 				Per monitorare i ritardi sulle attività e acquisire maggiore esperienza per stime future si adotta la 
 				funzione timer di Teamwork. Ogni componente del gruppo è invitato a tenere attivo il timer durante 
 				tutto lo svolgimento delle attività a lui assegnate. In questo modo si può avere una misurazione del 

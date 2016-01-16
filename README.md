@@ -50,10 +50,12 @@ Si è scelto di tenere qui il glossario dei termini, senza versione, in modo che
 
 * **Efficacia:** È determinata dal grado di conformità del prodotto rispetto alle norme vigenti e agli obiettivi prefissati. Un prodotto software finale è da considerarsi tanto più efficace quanto più si avvicina agli obiettivi fissati inizialmente. Perseguire l’efficacia equivale a garantire la qualità del prodotto.
 * **Efficienza:** È inversamente proporzionale alla quantità di risorse impiegate nell’esecuzione delle attività richieste. Perseguire l’efficienza equivale a contenere i costi e i tempi di produzione.
+* **Elicitare:** riferito a concetti o informazioni, ottenerli mediante domande o altri stimoli.
 
 ## F
 
 * **Fase:** Durata temporale entro uno stato di ciclo di vita o una transazione tra essi.
+* **Flipped-classroom:** una flipped-classroom inverte i metodi tradizionali di insegnamento. Gli alunni guardano i concetti a casa, per conto loro, comunicando con altri alunni e con il docente. Durante la lezione disegnata sono loro a condurre l'insegnamento, esponendo concetti e informazioni elicitate a casa.
 
 ## G
 
