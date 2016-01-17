@@ -1,0 +1,167 @@
+%Document-Author: Nicoletti Luca + Padovan Tommaso + Bortolazzo Matteo + Maino Elia + Bonato Paolo
+%Document-Date: 2016/01/13
+%Document-Description: Documento di Piano di qualifica
+
+\documentclass[a4paper]{report}
+\usepackage[english, italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage[]{appendix}
+
+\graphicspath{{Immagini/}}
+
+\newcolumntype{s}{>{\hsize=.21\hsize}X}
+\newcolumntype{f}{>{\hsize=.37\hsize}X}
+\newcolumntype{m}{>{\hsize=.42\hsize}X}
+
+\newcommand{\mychapter}[2]{
+	\setcounter{chapter}{#1}
+	\setcounter{section}{0}
+	\setcounter{subsection}{1}
+	\chapter*{#2}
+	\addcontentsline{toc}{chapter}{#2}
+}
+
+\renewcommand{\abstractname}{Tabella contenuti}
+
+\begin{document}
+	\begin{titlepage}
+		% Defines a new command for the horizontal lines, change thickness here
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+		\center  
+		
+		% HEADING SECTION
+		\textsc{\LARGE SweeneyThreads}\\[1.5cm] 
+		\textsc{\Large Actorbase}\\[0.5cm] 
+		\textsc{\large a NoSQL DB based on the Actor model}\\[0.5cm]
+		
+		
+		% TITLE SECTION
+		\HRule \\[0.4cm]
+		{ \huge \bfseries Piano di qualifica}\\[0.4cm] 
+		\HRule \\[1.5cm]
+		
+		% AUTHOR SECTION
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft} \large
+				\emph{Redattori:}\\
+				Bonato \textsc{Paolo} \\
+				Bortolazzo \textsc{Matteo} \\
+				Maino \textsc{Elia} \\
+				Nicoletti \textsc{Luca} \\
+				Padovan \textsc{Tommaso} \\
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				\emph{Approvazione:} \\
+				Padovan \textsc{Tommaso} \\
+				\emph{Verifica:} \\
+				Biggeri \textsc{Mattia} \\
+				Tommasin \textsc{Davide} \\
+			\end{flushright}
+		\end{minipage}
+		
+		%immagine
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{sweeney.png}
+		\end{figure}
+		\begin{center}
+			Versione 1.0.0
+		\end{center}
+		% Date, change the \today to a set date if you want to be precise
+		{\large \today}\\[3cm] 
+		% Fill the rest of the page with whitespace
+		\vfill  
+	\end{titlepage}
+	
+	\tableofcontents
+	
+	\mychapter{0}{Diario delle modifiche}
+		\begin{table}[H]
+			\begin{tabularx}{\textwidth}{sfmX}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 1.5pt}
+				1.0.0 & 2016-01-17 & \emph{Amministratore} Nicoletti Luca & Scrittura scheletro logico del documento \\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Diario delle modifiche \label{tab:table_label}}
+		\end{table}
+		
+	\mychapter{1}{Introduzione}
+		\section{Scopo del documento}
+			Lo scopo di questo documento è di descrivere le scelte effettuate in merito alle strategie 
+			che il gruppo ha deciso di adottare per raggiungere obiettivi qualitativi e misurabili da 
+			applicare al proprio prodotto. Per soddisfare questi obiettivi sarà necessario attuare un 
+			processo di verifica continuo sulle attività svolte in modo da poter rilevare ed eventualmente 
+			correggere anomalie e incongruenze in modo tempestivo per evitare danni e sprechi di risorse.
+		\section{Scopo del prodotto}
+			Lo scopo del progetto è la realizzazione di un DataBase NoSQL key-value basato sul modello ad 
+			Attori\ped{\textit{G}} con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
+			applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
+			di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
+		\section{Glossario}
+			Con lo scopo di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il 
+			gruppo ha steso un documento interno che è il \emph{Glossario v1.0.0}. La prima occorrenza
+			di ogni termine termine contenuto nel \emph{Glossario} e presente in questo documento verrà 
+			marcato con una "\textit{G}" maiuscola in pedice.
+		\section{Riferimenti}
+			\subsection{Normativi}
+				\begin{itemize}
+					\item \textbf{Norme di progetto:} \\ \emph{Norme di progetto v1.1.1};
+					\item \textbf{Capitolato d'appalto:} \\ \url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}.
+				\end{itemize}
+			\subsection{Formativi}
+				\begin{itemize}
+					\item \textbf{Piano di progetto:} \\ \emph{Piano di progetto v1.0.4};
+					\item \textbf{Slide del corso:} \\ \url{http://www.math.unipd.it/~tullio/IS-1/2015/};
+					\item \textbf{SWEBOK - Version 3:} \\ \url{http://www.computer.org/web/swebok/v3}
+					\item \textbf{\dots}
+				\end{itemize}
+	\mychapter{2}{Visione generale della strategia di verifica}
+		\section{Definizione obiettivi}
+			In questa sezione verranno descritti gli obiettivi di qualità relativi al prodotto che il 
+			gruppo ha deciso di raggiungere e gli obiettivi relativi ai processi che saranno svolti per 
+			il completamento del progetto.
+			\subsection{Qualità di processo}
+			\subsection{Qualità di prodotto}
+		\section{Organizzazione}
+		\section{Pianificazione strategica e temporale}
+		\section{Responsabilità}
+		\section{Strumenti}
+		\section{Analisi}
+			\subsection{Tecniche per l'analisi statica}
+			\subsection{Tecniche per l'analisi dinamica}
+		\section{Misure e metriche}
+			\subsection{Metriche per i processi}
+			\subsection{Metriche per i documenti}
+			\subsection{Metriche per il software}
+		\section{Metodi}
+			\subsection{Analisi dei processi}
+			\subsection{Analisi dei documenti}
+	\mychapter{3}{Gestione amministrativa della revisione}
+		\section{Comunicazione e risoluzione di anomalie}
+			%descrizione anomalia
+		\section{Procedure di controllo qualità per i processi}
+		\section{Procedure di controllo qualità per il prodotto}
+	\mychapter{4}{Resoconto delle attività di verifica}
+		\section{Riassunto delle attività di verifica}
+		%Revisione dei requisiti
+		\section{Tracciamento componenti - requisiti}
+		\section{Dettaglio delle verifiche tramite analisi}
+			\subsection{Processi}
+			\subsection{Documenti}
+		\section{Dettaglio dell'esito delle revisioni}
+	
+\end{document}
