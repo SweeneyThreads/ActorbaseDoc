@@ -74,7 +74,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.0
+			Versione 1.0.3
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -90,7 +90,9 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
-				1.0.2 & 2016-01-17 & \emph{Analista} Maino Elia & Stesura primo insiem di casi d'uso (da 1.x a 4.x) \\
+				1.0.3 & 2016-01-18 & \emph{Analista} Maino Elia & Stesura dei casi d'uso (da 4.x a 5.x) \\
+				\noalign{\hrule height 0.5pt}
+				1.0.2 & 2016-01-17 & \emph{Analista} Maino Elia & Stesura dei casi d'uso (da 1.x a 3.x) \\
 				\noalign{\hrule height 0.5pt}
 				1.0.1 & 2016-01-17 & \emph{Analista} Maino Elia & Stesura caratteristiche generali del prodotto \\
 				\noalign{\hrule height 0.5pt}
@@ -173,10 +175,9 @@
 			\begin{itemize}
 				\item Installazione dell'applicativo
 				\item Connessione ad un server e autenticazione allo stesso
-				\item Modifica delle credenziali di accesso
-				\item Operazioni sugli schemi del database
-				\item Operazioni sulle tabelle del database
-				\item Operazioni sui dati del database
+				\item Gestione dei database presenti sul server
+				\item Operazioni sui singoli database
+				\item Operazioni sulle mappe dei database
 			\end{itemize}
 		\section{Caso d'uso UC1: Installazione}
 			\begin{figure}[H]
@@ -226,8 +227,8 @@
 		 \textbf{Descrizione} \\ \\
 		 L'utente ha appena avviato l'applicativo e intende accedere al sistema. L'utente 
 		 inserisce il nome del server e le proprie credenziali di accesso. Il sistema tenta di connettersi a tale
-		 server. Se la connessione va a buon fine l'utente si trova effettivamente connesso al server
-		 desiderato, altrimenti riceve un messaggio di errore che lo informa del fallimento della connessione.
+		 server. Se la connessione non risulta possibile l'utente riceve un messaggio di errore che lo informa
+		 del fallimento.
 		 Una volta stabilita la connessione il sistema verifica le credenziali di accesso, se le credenziali sono
 		 corrette l'utente risulta connesso a tutti gli effetti, se sono errate riceve un relativo messaggio di 
 		 errore.
@@ -242,8 +243,8 @@
 				Post-condizione & L'utente risulta connesso al server selezionato \\
 				\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
 				\item L'utente inserisce il nome del server a cui intende connettersi
-				\item La connessione riesce
 				\item L'utente inserisce le proprie credenziali
+				\item La connessione riesce
 				\item Il sistema verifica le credenziali inserite
 				\item L'utente risulta connesso
 				\end{enumerate} \\
@@ -256,204 +257,124 @@
 			\end{tabularx}
 			\caption{Caso d'uso UC2}
 		 \end{table}
-	\section{Caso d'uso UC3: Modifica delle credenziali}
+	 \section{Caso d'uso UC3: Operazioni sul server}
 	 	\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.4]{"UC3".png}
+			\includegraphics[scale=0.3]{"UC3".png}
 			\caption{Caso d'uso UC3}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'utente ha già eseguito l'autenticazione e ora desidera modificare le credenziali con cui effettuare 
-	 l'accesso al database. Le credenziali modificabili sono il nome utente e la password. Al termine delle
-	 modifiche le credenziali di accesso contengono i valori aggiornati. Se la modifica non è andata a buon
-	 fine l'utente riceve un messaggio di errore e le credenziali di accesso mantengono i valori precedenti.
+	 L'utente ha effettuato l'autenticazione e risulta correttamente connesso al server. Le credenziali di
+	 accesso determinano i permessi di accesso (stabiliti in un file di configurazione interno), e differenziano
+	 gli utenti tra \emph{utenti standard} e \emph{amministratori}. \\
+	 Un \emph{utente standard} può solo selezionare uno dei database di cui dispone dei permessi di
+	  accesso e su di esso eseguire operazioni di modifica.
+	 Un \emph{amministratore} oltre a disporre degli stessi permessi degli utenti standard, può effettuare
+	 le seguenti operazioni a livello di server:
+	 \begin{itemize}
+	 	\item Creare un nuovo database
+	 	\item Importare un database da file
+	 	\item Esportare un database su file
+	 	\item Rimuovere un database dal server
+	 	\item Gestire i permessi di accesso al server e ai singoli database
+	 \end{itemize}
+	 Poichè \emph{Actorbase} fornisce un'interfaccia da riga di comando, anche un utente standard può
+	 richiedere un'operazione a livello amministratore, in tal caso l'operazione non sarà eseguita e il 
+	 sistema informerà l'utente con un messaggio di errore che lo informa di non avere i permessi 
+	 necessari. Un'operazione legittima può inoltre non andare a buon fine, anche in quel caso l'utente 
+	 riceverà un relativo messaggio di errore.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
 			\rowcolor{orange!65}Codice gerarchico & UC3 \\
-			Nome sintetico & Modifica delle credenziali \\
-			\rowcolor{orange!65}Attore principale & Utente generico\\
-			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato \\
-			Post-condizione & Le credenziali dell'utente risultano modificate \\
-			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente fornisce le nuove credenziali
-			\item Le credenziali vengono aggiornate ai nuovi valori
-			\end{enumerate} \\
-			Scenari alternativi & \begin{enumerate}
-			\item Le modifiche non vengono applicate, l'utente riceve un messaggio di errore
-			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
-			\bottomrule
-		\end{tabularx}
-		\caption{Caso d'uso UC3}
-	 \end{table}
-	 \section{Caso d'uso UC3.1: Modifica username}
-	 	\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.4]{"UC3-1".png}
-			\caption{Caso d'uso UC3.1}
-		\end{figure}
-	 \textbf{Descrizione} \\ \\
-	 L'utente ha selezionato l'opzione "modifica username" dal menu di modifica, inserisce un nuovo valore
-	 per l'username, tale valore viene analizzato (può contenere caratteri non validi o può essere già 
-	 in uso). Se il nuovo valore risulta valido le modifiche vengono completate altrimenti l'utente riceve 
-	 un messaggio di errore che lo informa che i dati da lui inseriti non sono validi e dunque le modifiche non
-	 sono state effettuate.
-		\begin{table}[H]
-		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC3.1 \\
-			Nome sintetico & Modifica username \\
-			\rowcolor{orange!65}Attore principale & Utente generico\\
-			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato ed ha selezionato "modifica
-			 username" dalle opzioni di modifica\\
-			Post-condizione & L'username dell'utente viene modificato \\
-			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il nuovo valore per l'username
-			\item Il nuovo valore viene verificato dal sistema
-			\item L'username contiene il nuovo valore
-			\end{enumerate} \\
-			Scenari alternativi & \begin{enumerate}
-			\item Il nuovo valore risulta non valido, l'utente riceve un messaggio di errore
-			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
-			\bottomrule
-		\end{tabularx}
-		\caption{Caso d'uso UC3.1}
-	 \end{table}
-	 \section{Caso d'uso UC3.2: Modifica password}
-	 	\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.4]{"UC3-2".png}
-			\caption{Caso d'uso UC3.2}
-		\end{figure}
-	 \textbf{Descrizione} \\ \\
-	 L'utente ha selezionato l'opzione "modifica password" dal menu di modifica, inserisce un nuovo valore
-	 per la password, tale valore viene analizzato (può contenere caratteri non validi). 
-	 Se il nuovo valore risulta valido le modifiche vengono completate altrimenti l'utente riceve 
-	 un messaggio di errore che lo informa che i dati da lui inseriti non sono validi e dunque le modifiche non
-	 sono state effettuate.
-		\begin{table}[H]
-		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC3.1 \\
-			Nome sintetico & Modifica password \\
-			\rowcolor{orange!65}Attore principale & Utente generico\\
-			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato ed ha selezionato "modifica
-			 password" dalle opzioni di modifica\\
-			Post-condizione & La password dell'utente viene modificata \\
-			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il nuovo valore per la password
-			\item Il nuovo valore viene verificato dal sistema
-			\item La password contiene il nuovo valore
-			\end{enumerate} \\
-			Scenari alternativi & \begin{enumerate}
-			\item Il nuovo valore risulta non valido, l'utente riceve un messaggio di errore
-			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
-			\bottomrule
-		\end{tabularx}
-		\caption{Caso d'uso UC3.2}
-	 \end{table}
-	 \section{Caso d'uso UC4: Operazioni sugli schemi}
-	 	\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.3]{"UC4".png}
-			\caption{Caso d'uso UC4}
-		\end{figure}
-	 \textbf{Descrizione} \\ \\
-	 L'utente è autenticato e desidera effettuare delle operazioni di modifica sugli schemi del database, 
-	 alcune operazioni sono permesse solo all'utente amministratore dunque nel caso un utente standard
-	 richiedesse al sistema di eseguire una di queste operazioni riceverebbe un messaggio di errore.
-	 Un'operazione può avere due esiti: successo o fallimento, nel secondo caso l'utente riceve un
-	  messaggio d'errore che spiega il perchè del fallimento.
-		\begin{table}[H]
-		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4 \\
-			Nome sintetico & Operazioni sugli schemi \\
-			\rowcolor{orange!65}Attore principale & Utente generico, Utente amministratore\\
-			Attori secondari & Nessuno \\
+			Nome sintetico & Operazioni sul server \\
+			\rowcolor{orange!65}Attore principale & Utente standard, Amministratore\\
+			Attori secondari & Sistema di I/O \\
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato\\
-			Post-condizione & Le operazioni selezionate risultano effettuate \\
+			Post-condizione & L'operazione selezionata risulta effettuata\\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente rischiede una delle operazioni di modifica
-			\item L'operazione rischiesta viene effettuata dal sistema
+			\item L'utente richiede una delle operazioni di modifica
+			\item L'operazione richiesta viene effettuata dal sistema
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
-			\item L'utente non dispone dei permessi necessari ad effettuare le modifiche richieste, l'utente
+			\item L'utente non dispone dei permessi necessari ad effettuare l'operazione richiesta, l'utente
 			riceve un messaggio di errore
 			\item L'operazione richiesta non è stata effettuata, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4}
+		\caption{Caso d'uso UC3}
 	 \end{table}
-	 \section{Caso d'uso UC4.1: Selezione schema}
+	 \section{Caso d'uso UC3.1: Selezione di un database}
 	 	\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.3]{"UC4-1".png}
-			\caption{Caso d'uso UC4.1}
+			\includegraphics[scale=0.3]{"UC3-1".png}
+			\caption{Caso d'uso UC3.1}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'utente seleziona uno schema da una lista di schemi a cui ha accesso, lo schema scelto risulta
-	  selezionato.
+	 L'utente inserisce il nome del database che vuole utilizzare, se tale database esiste sul server e se 
+	 l'utente dispone dei permessi necessari ad accedervi il database risulta selezionato, altrimenti l'utente
+	 riceve un messaggio d'errore esplicativo.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.1 \\
-			Nome sintetico & Operazioni sugli schemi \\
+			\rowcolor{orange!65}Codice gerarchico & UC3.1 \\
+			Nome sintetico & Selezione di un database \\
 			\rowcolor{orange!65}Attore principale & Utente generico\\
 			Attori secondari & Nessuno \\
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato\\
-			Post-condizione & Lo schema risulta selezionato \\
+			Post-condizione & Il database risulta selezionato, l'utente può ora effettuare operazioni su tale
+			database \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente seleziona uno schema tra quelli a cui ha accesso
-			\item Lo schema viene selezionato
+			\item L'utente inserisce il nome del database da selezionare
+			\item Il database viene selezionato
 			\end{enumerate} \\
-			Scenari alternativi &  Nessuno \\
+			Scenari alternativi &  \begin{enumerate}
+			\item Il database selezionato non è presente sul server, l'utente riceve un messaggio di errore
+			\item L'utente non dispone dei permessi necessari ad accedere al database selezionato, l'utente
+			riceve un messaggio di errore
+			\end{enumerate}			 \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.1}
+		\caption{Caso d'uso UC3.1}
 	 \end{table}
-	 \section{Caso d'uso UC4.2: Creazione schema}
+	 \section{Caso d'uso UC3.2: Creazione di un database}
 	 	\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.3]{"UC4-2".png}
-			\caption{Caso d'uso UC4.2}
+			\includegraphics[scale=0.3]{"UC3-2".png}
+			\caption{Caso d'uso UC3.2}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'utente è autenticato e desidera creare uno schema da zero, inserendo un nome. L'utente inserisce il
-	 nome dello schema che vuole creare, il sistema verifica che il nome inserito non violi vincoli di validità e
-	 successivamente crea lo schema rendendone amministratore l'utente.
+	 L'utente è autenticato come \emph{amministratore} e desidera creare un nuovo database sul server. 
+	 \\ L'utente inserisce un nome per il nuovo database, se tale nome risulta valido il database viene
+	  creato, altrimenti l'utente riceve un messaggio di errore. \\
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.2 \\
-			Nome sintetico & Creazione schema \\
-			\rowcolor{orange!65}Attore principale & Utente generico\\
+			\rowcolor{orange!65}Codice gerarchico & UC3.2 \\
+			Nome sintetico & Creazione di un database \\
+			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato\\
-			Post-condizione & Viene creato uno schema il cui nome è quello inserito dall'utente, l'utente
-			risulta amministratore dello schema \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
+			Post-condizione & Viene creato un database il cui nome è quello inserito dall'utente \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce un nome per lo schema
+			\item L'utente inserisce un nome per il database
 			\item Il sistema verifica il nome inserito
-			\item Viene creato uno schema con il nome inserito di cui l'utente è ora amministratore
+			\item Viene creato un database con il nome inserito
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
-			\item Il nome inserito non risulta valido, l'utente riceve un messaggio di errore e lo schema non
+			\item Il nome inserito non risulta valido, l'utente riceve un messaggio di errore e il database non
 			 viene creato
 			\end{enumerate} \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4}
+		\caption{Caso d'uso UC3.2}
 	 \end{table}
-	 \section{Caso d'uso UC4.3: Importazione schema}
+	 \section{Caso d'uso UC3.3: Importazione di un database}
 	 	\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.3]{"UC4-3".png}
-			\caption{Caso d'uso UC4.3}
+			\includegraphics[scale=0.3]{"UC3-3".png}
+			\caption{Caso d'uso UC3.3}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente desidera creare un nuovo schema importandolo da un file presente sul computer. L'utente
@@ -462,117 +383,119 @@
 	  l'utente.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.3 \\
-			Nome sintetico & Importazione schema \\
-			\rowcolor{orange!65}Attore principale & Utente generico\\
+			\rowcolor{orange!65}Codice gerarchico & UC3.3 \\
+			Nome sintetico & Importazione di un database \\
+			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Sistema di I/O \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato\\
-			Post-condizione & \'E stato importato un nuovo schema uguale a quello presente sul file di
-			 importazione di cui l'utente è ora amministratore \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
+			Post-condizione & \'E stato creato un nuovo database sul server con i dati presenti nel file
+			selezionato \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il percorso del file da cui importare lo schema
+			\item L'utente inserisce il percorso del file da cui importare il database
+			\item Il sistema di I/O ottiene il file
 			\item Il sistema verifica il contenuto del file
-			\item Il sistema crea uno schema basato sui dati contenuti nel file
+			\item Il sistema crea un database basato sui dati contenuti nel file
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
-			\item Il file non viene trovato
-			\item Il contenuto del file risulta illeggibile
-			\item Lo schema contenuto nel file non può essere creato perchè viola i vincoli del database
+			\item Il file non viene trovato dal sistema di I/O, l'utente riceve un messaggio di errore
+			\item Il contenuto del file risulta illeggibile, l'utente riceve un messaggio di errore
+			\item Il database contenuto nel file non può essere importato perchè viola dei vincoli del sistema 
+			(es. esiste già un altro database con lo stesso nome), l'utente riceve un messaggio di errore
 			\end{enumerate} \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.3}
+		\caption{Caso d'uso UC3.3}
 	 \end{table}
-	 \section{Caso d'uso UC4.4: Esportazione schema}
+	 \section{Caso d'uso UC3.4: Esportazione di un database}
 	 	\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.28]{"UC4-4".png}
-			\caption{Caso d'uso UC4.4}
+			\includegraphics[scale=0.28]{"UC3-4".png}
+			\caption{Caso d'uso UC3.4}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'utente desidera esportare uno schema presente sul database su un file. L'utente seleziona lo schema
-	 che vuole esportare, specifica il percorso dove il file verrà creato e il nome del file. Il sistema crea un
-	 file contenente i dati dello schema selezionato. Se la scrittura del file non avviene con successo l'utente
-	 riceve un messaggio di errore.
+	 L'utente inserisce il nome del database che vuole esportare, se sul server non esiste nessun database 
+	 con il nome inserito, l'utente riceve un messaggio di errore. \\
+	 Se il database è presente l'utente deve specificare il percorso in cui il file verrà creato, il file avrà come
+	 nome il nome del database. Se la creazione del file non va a buon fine il sistema di I/O informa il 
+	 sistema e l'utente riceve un messaggio di errore.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.4 \\
-			Nome sintetico & Esportazione schema \\
-			\rowcolor{orange!65}Attore principale & Utente generico\\
+			\rowcolor{orange!65}Codice gerarchico & UC3.4 \\
+			Nome sintetico & Esportazione di un database \\
+			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Sistema di I/O \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato\\
-			Post-condizione & Lo schema selezionato viene esportato su un file nella macchina dell'utente \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
+			Post-condizione & Il database selezionato viene esportato su file \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente seleziona lo schema
-			\item L'utente specifica il percorso del file
-			\item L'utente inserisce il nome del file
-			\item Il sistema crea il file contenente i dati dello schema
+			\item L'utente inserisce il nome del database da esportare
+			\item L'utente specifica il percorso del file da creare
+			\item Il sistema crea il file contenente i dati del database
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
-			\item La creazione del file non ha successo
+			\item Il database selezionato non esiste, l'utente riceve un messaggio di errore
+			\item La creazione del file non ha successo, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC4}
 	 \end{table}
-	\section{Caso d'uso UC4.5: Rimozione schema}
+	\section{Caso d'uso UC3.5: Rimozione di un database}
 	 	\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.3]{"UC4-5".png}
-			\caption{Caso d'uso UC4.5}
+			\includegraphics[scale=0.3]{"UC3-5".png}
+			\caption{Caso d'uso UC3.5}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'amministratore seleziona uno degli schemi disponibili e ne richiede l'eliminazione. Il sistema elimina
-	 lo schema selezionato, se l'eliminazione non risulta possibile l'utente riceve un relativo messaggio di 
-	 errore.
+	 L'utente inserisce il nome del database che vuole eliminare dal server, se sul server non è 
+	 presente nessun database con quel nome l'utente riceve un messaggio di errore, altrimenti il database
+	 selezionato viene eliminato.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.5 \\
+			\rowcolor{orange!65}Codice gerarchico & UC3.5 \\
 			Nome sintetico & Rimozione schema \\
-			\rowcolor{orange!65}Attore principale & Utente amministratore\\
+			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato\\
-			Post-condizione & Lo schema selezionato è stato rimosso \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
+			Post-condizione & Il database selezionato è stato rimosso \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente seleziona uno degli schemi di cui è amministratore
-			\item Il sistema rimuove lo schema selezionato
+			\item L'utente inserisce il nome del database da eliminare
+			\item Il sistema rimuove il database selezionato
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
-			\item \'E impossibile rimuovere lo schema selezionato, l'utente riceve un messaggio di errore
+			\item Il database selezionato non esiste, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC4.5}
 	 \end{table}
-	 \section{Caso d'uso UC4.6: Gestione permessi schema}
+	 \section{Caso d'uso UC3.6: Gestione dei permessi}
 	 	\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.3]{"UC4-6".png}
-			\caption{Caso d'uso UC4.6}
+			\includegraphics[scale=0.3]{"UC3-6".png}
+			\caption{Caso d'uso UC3.6}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'amministratore seleziona uno degli schemi disponibili e può:
+	 L'\emph{amministratore} può modificare i permessi di accesso di altri utenti al server e al singolo
+	  database, in particolare può:
 	 \begin{itemize}
-	 	\item Aggiungere un nuovo utente amministratore
-	 	\item Aggiungere un nuovo utente collaboratore
-	 	\item Modificare i permessi degli utenti che possono già accedere allo schema
-	 	\item Rimuovere il permesso di accesso di un utente allo schema
+	 	\item Aggiungere un nuovo utente al server, generando un username e una password
+	 	\item Modificare i permessi di un qualsiasi utente
+	 	\item Rimuovere un utente dalla lista degli utenti del server
 	 \end{itemize}
 	 Ognuna di queste operazioni può avere esito negativo, in tal caso l'amministratore dello schema che ha
 	 richiesto l'operazione riceve un messaggio d'errore esplicativo.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.6 \\
-			Nome sintetico & Gestione permessi schema \\
-			\rowcolor{orange!65}Attore principale & Utente amministratore\\
+			\rowcolor{orange!65}Codice gerarchico & UC3.6 \\
+			Nome sintetico & Gestione dei permessi \\
+			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato\\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
 			Post-condizione & L'operazione di modifica dei permessi è eseguita correttamente \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente seleziona uno degli schemi di cui è amministratore
 			\item L'utente seleziona l'operazione che vuole effettuare
 			\item L'operazione viene effettuata dal sistema
 			\end{enumerate} \\
@@ -582,118 +505,268 @@
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.6}
+		\caption{Caso d'uso UC3.6}
 	 \end{table}
-	 \section{Caso d'uso UC4.6.1: Aggiunta di un amministratore allo schema}
+	 \section{Caso d'uso UC3.6.1: Aggiunta di un utente al server}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC3-6-1".png}
+			\caption{Caso d'uso UC3.6.1}
+		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'amministratore seleziona un utente e lo rende amministratore dello schema. Nel caso l'utente 
-	 selezionato non risultasse valido l'operazione non viene eseguita e l'amministratore riceve un 
-	 messaggio di errore.
+	 L'\emph{amministratore} inserisce un nuovo utente generando un username e una password, se 
+	 l'username inserito risulta già in uso l'inserimento non avviene e l'\emph{amministratore} riceve un
+	 messaggio di errore. Altrimenti l'utente risulta correttamente inserito ed è possibile accedere al server
+	 con relativi username e password. \\
+	 Un utente appena inserito è di tipo standard e non ha accesso a nessun database del server.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
 			\rowcolor{orange!65}Codice gerarchico & UC4.6.1 \\
-			Nome sintetico & Aggiunta di un amministratore allo schema \\
-			\rowcolor{orange!65}Attore principale & Utente amministratore\\
+			Nome sintetico & Aggiunta di un utente al server \\
+			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è amministratore dello schema \\
-			Post-condizione & L'utente selezionato viene aggiunto come amministratore allo schema \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server ed
+			 ha selezionato l'opzione di aggiunta di un utente\\
+			Post-condizione & \'E stato aggiunto un nuovo utente con l'username e la password inseriti\\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente seleziona un utente
-			\item Il sistema verifica che l'utente sia valido
-			\item L'utente selezionato viene aggiunto come amministratore
+			\item L'amministratore inserisce l'username dell'utente da creare
+			\item Il sistema verifica che l'username sia disponibile
+			\item L'amministratore inserisce la password dell'utente da creare
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
-			\item L'utente selezionato non risulta valido, l'utente riceve un messaggio di errore
+			\item L'username inserito non è disponibile, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.6.1}
+		\caption{Caso d'uso UC3.6.1}
 	 \end{table}
-	 \section{Caso d'uso UC4.6.2: Aggiunta di un collaboratore allo schema}
+	 \section{Caso d'uso UC3.6.2: Modifica dei permessi utente}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC3-6-2".png}
+			\caption{Caso d'uso UC3.6.2}
+		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'amministratore seleziona un utente e lo rende collaboratore dello schema. Nel caso l'utente 
-	 selezionato non risultasse valido l'operazione non viene eseguita e l'amministratore riceve un 
-	 messaggio di errore.
+	 L'\emph{amministratore} inserisce l'username dell'utente che vuole modificare, nel caso non esistesse
+	  un utente con tale username riceve un messaggio di errore. \\
+	 I permessi modificabili riguardano:
+	 \begin{itemize}
+	 	\item Il livello di accesso al server: \emph{standard} o \emph{amministratore}
+	 	\item L'accesso ai diversi database
+	 \end{itemize}
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.6.1 \\
-			Nome sintetico & Aggiunta di un collaboratore allo schema \\
-			\rowcolor{orange!65}Attore principale & Utente amministratore\\
+			\rowcolor{orange!65}Codice gerarchico & UC3.6.2 \\
+			Nome sintetico & Modifica dei permessi utente \\
+			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è amministratore dello schema \\
-			Post-condizione & L'utente selezionato viene aggiunto come collaboratore allo schema \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server ed
+			 ha selezionato l'opzione di modifica dei permessi\\
+			Post-condizione & I permessi dell'utente selezionato sono stati modificati correttamente \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente seleziona un utente
-			\item Il sistema verifica che l'utente sia valido
-			\item L'utente selezionato viene aggiunto come collaboratore
+			\item L'amministratore inserisce un username
+			\item Il sistema verifica che esista un utente con tale username
+			\item L'amministratore decide il livello di accesso al server
+			\item L'amministratore decide il livello di accesso ai singoli database
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
-			\item L'utente selezionato non risulta valido, l'utente riceve un messaggio di errore
+			\item L'utente inserito non esiste, l'amministratore riceve un messaggio di errore
 			\end{enumerate} \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.6.2}
+		\caption{Caso d'uso UC3.6.2}
 	 \end{table}
-	 \section{Caso d'uso UC4.6.3: Modifica dei privilegi di accesso}
+	 \section{Caso d'uso UC3.6.3: Rimozione di un utente dal server}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC3-6-3".png}
+			\caption{Caso d'uso UC3.6.3}
+		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'amministratore seleziona un utente che ha già accesso allo schema e ne modifica i privilegi. 
-	 Nel caso l'utente selezionato non risultasse valido l'operazione non viene eseguita e l'amministratore
-	  riceve un messaggio di errore.
+	 L'\emph{amministratore} inserisce l'username dell'utente che vuole rimuovere, nel caso non esistesse
+	  un utente con tale username riceve un messaggio di errore. \\
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.6.3 \\
-			Nome sintetico & Modifica dei privilegi di accesso \\
-			\rowcolor{orange!65}Attore principale & Utente amministratore\\
+			\rowcolor{orange!65}Codice gerarchico & UC3.6.3 \\
+			Nome sintetico & Rimozione di un utente dal server \\
+			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è amministratore dello schema \\
-			Post-condizione & I privilegi di accesso allo schema dell'utente selezionato vengono modificati \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server ed
+			 ha selezionato l'opzione di rimozione di un utente\\
+			Post-condizione & L'utente selezionato è stato rimosso dal server\\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'amministratore seleziona un utente
-			\item Il sistema verifica che l'utente sia valido
-			\item L'amministratore sceglie i privilegi da dare all'utente
-			\item L'utente ottiene i privilegi selezionati
+			\item L'amministratore inserisce un username
+			\item Il sistema verifica che esista un utente con tale username
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
-			\item L'utente selezionato non risulta avere già accesso allo schema, l'utente riceve un messaggio
-			 di errore e l'operazione non viene eseguita
-			 \item L'utente selezionato è già amministratore dello schema, l'operazione non viene eseguita e
-			 L'amministratore che ha richiesto la modifica riceve un messaggio di errore
+			\item L'utente inserito non esiste, l'amministratore riceve un messaggio di errore
 			\end{enumerate} \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.6.3}
+		\caption{Caso d'uso UC3.6.3}
 	 \end{table}
-	 \section{Caso d'uso UC4.6.4: Rimozione di un utente dallo schema}
+	 \section{Caso d'uso UC4: Operazioni sui database}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC4".png}
+			\caption{Caso d'uso UC4}
+		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'amministratore seleziona un utente che ha già accesso allo schema e lo rimuove dallo schema. 
-	 Nel caso l'utente selezionato non risultasse valido l'operazione non viene eseguita e l'amministratore
-	  riceve un messaggio di errore.
+	 L'utente effettua una delle seguenti operazioni:
+	 \begin{itemize}
+	 	\item Aggiunta di una nuova mappa
+	 	\item Modifica del nome di una mappa preesistente
+	 	\item Rimozione di una mappa
+	 \end{itemize}
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.6.4 \\
-			Nome sintetico & Rimozione di un utente dallo schema \\
-			\rowcolor{orange!65}Attore principale & Utente amministratore\\
+			\rowcolor{orange!65}Codice gerarchico & UC4 \\
+			Nome sintetico & Operazioni sui database \\
+			\rowcolor{orange!65}Attore principale & Utente generico\\
 			Attori secondari & Nessuno \\
-			\rowcolor{orange!65}Pre-condizione & L'utente è amministratore dello schema \\
-			Post-condizione & L'utente selezionato viene rimosso dallo schema\\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato e dispone dei permessi di accesso
+			al database\\
+			Post-condizione & L'operazione selezionata è stata effettuata\\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'amministratore seleziona un utente
-			\item Il sistema verifica che l'utente sia valido
-			\item L'utente selezionato viene rimosso dallo schema
+			\item L'utente seleziona una delle operazioni
+			\item Il sistema esegue l'operazione
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
-			\item L'utente selezionato non risulta avere già accesso allo schema, l'utente riceve un messaggio
-			 di errore e l'operazione non viene eseguita
-			 \item L'utente selezionato è già amministratore dello schema, l'operazione non viene eseguita e
-			 L'amministratore che ha richiesto la modifica riceve un messaggio di errore
+			\item L'operazione ha avuto esito negativo, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.6.4}
+		\caption{Caso d'uso UC4}
+	 \end{table}
+	 \section{Caso d'uso UC4.1: Aggiunta di una nuova mappa}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC4-1".png}
+			\caption{Caso d'uso UC4.1}
+		\end{figure}
+	 \textbf{Descrizione} \\ \\
+	 L'utente aggiunge una nuova mappa al database definendone il nome, se tale nome è già associato ad 
+	 un'altra mappa dello stesso database allora la mappa non viene creata e l'utente riceve un messaggio
+	 di errore.
+		\begin{table}[H]
+		\begin{tabularx}{\textwidth}{X | X}\toprule
+			\rowcolor{orange!65}Codice gerarchico & UC4.1 \\
+			Nome sintetico & Aggiunta di una nuova mappa \\
+			\rowcolor{orange!65}Attore principale & Utente generico\\
+			Attori secondari & Nessuno \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato e dispone dei permessi di accesso
+			al database\\
+			Post-condizione & \'E stata aggiunta al database una mappa con il nome inserito\\
+			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
+			\item L'utente inserisce il nome della mappa
+			\end{enumerate} \\
+			Scenari alternativi & \begin{enumerate}
+			\item Il nome inserito è già in uso da un'altra mappa, l'utente riceve un messaggio di errore
+			\end{enumerate} \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Caso d'uso UC4.1}
+	 \end{table}
+	  \section{Caso d'uso UC4.2: Modifica del nome di una mappa preesistente}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC4-2".png}
+			\caption{Caso d'uso UC4.2}
+		\end{figure}
+	 \textbf{Descrizione} \\ \\
+	 L'utente modifica il nome di una mappa preesistente,se il nome inserito non corrisponde a nessuna
+	 mappa del database o se il nome inserito corrisponde al nome di un'altra mappa del database la
+	 modifica viene impedita e l'utente riceve un messaggio di errore.
+		\begin{table}[H]
+		\begin{tabularx}{\textwidth}{X | X}\toprule
+			\rowcolor{orange!65}Codice gerarchico & UC4.2 \\
+			Nome sintetico & Modifica del nome di una mappa preesistente \\
+			\rowcolor{orange!65}Attore principale & Utente generico\\
+			Attori secondari & Nessuno \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato e dispone dei permessi di accesso
+			al database\\
+			Post-condizione & Il nome della mappa selezionata è stato modificato\\
+			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
+			\item L'utente inserisce il nome della mappa da modificare
+			\item L'utente inserisce il nuovo nome della mappa
+			\end{enumerate} \\
+			Scenari alternativi & \begin{enumerate}
+			\item Non esiste una mappa con il nome inserito, l'utente riceve un messaggio di errore
+			\item Il nome inserito è già in uso da un'altra mappa, l'utente riceve un messaggio di errore
+			\end{enumerate} \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Caso d'uso UC4.2}
+	 \end{table}
+	 \section{Caso d'uso UC4.3: Rimozione di una mappa}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC4-3".png}
+			\caption{Caso d'uso UC4.3}
+		\end{figure}
+	 \textbf{Descrizione} \\ \\
+	 L'utente inserisce il nome della mappa che vuole eliminare, se nel database non esiste una mappa con
+	 quel nome l'utente riceve un messaggio di errore.
+		\begin{table}[H]
+		\begin{tabularx}{\textwidth}{X | X}\toprule
+			\rowcolor{orange!65}Codice gerarchico & UC4.3\\
+			Nome sintetico & Rimozione di una mappa\\
+			\rowcolor{orange!65}Attore principale & Utente generico\\
+			Attori secondari & Nessuno \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato e dispone dei permessi di accesso
+			al database\\
+			Post-condizione & La mappa selezionata è stata rimossa\\
+			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
+			\item L'utente inserisce il nome della mappa da rimuovere
+			\end{enumerate} \\
+			Scenari alternativi & \begin{enumerate}
+			\item Non esiste una mappa con il nome inserito, l'utente riceve un messaggio di errore
+			\end{enumerate} \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Caso d'uso UC4.3}
+	 \end{table}
+	 \section{Caso d'uso UC5: Operazioni sulle mappe}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC5".png}
+			\caption{Caso d'uso UC5}
+		\end{figure}
+	 \textbf{Descrizione} \\ \\
+	 L'utente esegue una delle seguenti operazioni:
+	 \begin{itemize}
+	 	\item Inserimento di un item
+	 	\item Cancellazione di un item
+	 	\item Aggiornamento di un item
+	 \end{itemize}
+	 Se l'operazione richiesta ha avuto esito negativo l'utente riceve un messaggio di errore.
+		\begin{table}[H]
+		\begin{tabularx}{\textwidth}{X | X}\toprule
+			\rowcolor{orange!65}Codice gerarchico & UC5\\
+			Nome sintetico & Operazioni sulle mappe\\
+			\rowcolor{orange!65}Attore principale & Utente generico\\
+			Attori secondari & Nessuno \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato e dispone dei permessi di accesso
+			al database\\
+			Post-condizione & L'operazione selezionata è stata eseguita\\
+			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
+			\item L'utente seleziona una delle operazioni
+			\item Il sistema esegue l'operazione
+			\end{enumerate} \\
+			Scenari alternativi & \begin{enumerate}
+			\item L'operazione ha avuto esito negativo, l'utente riceve un messaggio di errore
+			\end{enumerate} \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Caso d'uso UC5}
 	 \end{table}
 	\mychapter{4}{Requisiti}
 	\cleardoublepage
