@@ -15,12 +15,19 @@
 \usepackage[table]{xcolor}
 \usepackage{float}
 \usepackage[]{appendix}
+\usepackage{ltxtable} 
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{longtable}
+\usepackage{multirow}
 
 \graphicspath{{Immagini/}}
 
 \newcolumntype{s}{>{\hsize=.21\hsize}X}
 \newcolumntype{f}{>{\hsize=.37\hsize}X}
 \newcolumntype{m}{>{\hsize=.42\hsize}X}
+\newcolumntype{t}{>{\hsize=.1\hsize}X}
+\newcolumntype{r}{>{\hsize=.3\hsize}X}
 
 \newcommand{\mychapter}[2]{
 	\setcounter{chapter}{#1}
@@ -75,7 +82,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.3
+			Versione 1.0.4
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -91,7 +98,10 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
-				1.0.3 & 2016-01-16 & \emph{Amministratore} Nicoletti Luca & Inserita introduzione alla Rendicontazione e inserita la descrizione di tutta la macro-fase di Analisi \\
+				1.0.4 & 2016-01-16 & \emph{Amministratore} Nicoletti Luca &  Inserite tabelle e programmata l'intera durata del progetto\\
+				\noalign{\hrule height 0.5pt}
+				1.0.3 & 2016-01-16 & \emph{Amministratore} Nicoletti Luca & Inserita introduzione alla Rendicontazione e inserita 
+				la descrizione di tutta la macro-fase di Analisi \\
 				\noalign{\hrule height 0.5pt}
 				1.0.2 & 2016-01-15 & \emph{Amministratore} Nicoletti Luca & Inserita introduzione alla Pianificazione e correzzioni da verifica \\
 				\noalign{\hrule height 0.5pt}
@@ -426,10 +436,140 @@
 		Un membro del gruppo non può verificare il suo stesso lavoro.
 		\section{Dettaglio delle fasi}
 			\subsection{Analisi}
+				Nella fase di \emph{Analisi} ciascun componente dovrà ricoprire i seguenti ruoli:
+				\begin{table}[H]
+					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
+						\noalign{\hrule height 1.5pt}
+						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
+						\noalign{\hrule height 0.5pt}
+						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
+						\noalign{\hrule height 0.5pt}
+						Biggeri Mattia & & & & & & & \\
+						Bonato Paolo & & & & & & & \\ 
+						Bortolazzo Matteo & & & & & & & \\ 
+						Maino Elia & & & & & & & \\
+						Nicoletti Luca & & & & & & & \\
+						Padovan Tommaso & & & & & & & \\
+						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}						
+					\end{tabularx}
+				\end{table}
+				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
+				abbia dedicato ad un determinato ruolo.
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.8]{BCAnalisi.png}
+					\caption{Ore per componente, fase di Analisi.}
+				\end{figure}
 			\subsection{Analisi di dettaglio}
+				Nella fase di \emph{Analisi di dettaglio} ciascun componente dovrà ricoprire i seguenti ruoli:
+				\begin{table}[H]
+					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
+						\noalign{\hrule height 1.5pt}
+						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
+						\noalign{\hrule height 0.5pt}
+						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
+						\noalign{\hrule height 0.5pt}
+						Biggeri Mattia & & & & & & & \\
+						Bonato Paolo & & & & & & & \\ 
+						Bortolazzo Matteo & & & & & & & \\ 
+						Maino Elia & & & & & & & \\
+						Nicoletti Luca & & & & & & & \\
+						Padovan Tommaso & & & & & & & \\
+						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}						
+					\end{tabularx}
+				\end{table}
+				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
+				abbia dedicato ad un determinato ruolo.
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.9]{BCDettaglio.png}
+					\caption{Ore per componente, fase di Analisi di dettaglio.}
+				\end{figure}
 			\subsection{Progettazione architetturale}
-			\subsection{Progettazione di dettaglio}
+				Nella fase di \emph{Progettazione architetturale} ciascun componente dovrà ricoprire i seguenti ruoli:
+				\begin{table}[H]
+					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
+						\noalign{\hrule height 1.5pt}
+						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
+						\noalign{\hrule height 0.5pt}
+						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
+						\noalign{\hrule height 0.5pt}
+						Biggeri Mattia & & & & & & & \\
+						Bonato Paolo & & & & & & & \\ 
+						Bortolazzo Matteo & & & & & & & \\ 
+						Maino Elia & & & & & & & \\
+						Nicoletti Luca & & & & & & & \\
+						Padovan Tommaso & & & & & & & \\
+						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}						
+					\end{tabularx}
+				\end{table}
+				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
+				abbia dedicato ad un determinato ruolo.
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.9]{BCProgettazione.png}
+					\caption{Ore per componente, fase di Progettazione architetturale.}
+				\end{figure}
+			\subsection{Progettazione di dettaglio e codifica}
+				Nella fase di \emph{Progettazione di dettaglio e codifica} ciascun componente dovrà ricoprire i seguenti ruoli:
+				\begin{table}[H]
+					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
+						\noalign{\hrule height 1.5pt}
+						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
+						\noalign{\hrule height 0.5pt}
+						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
+						\noalign{\hrule height 0.5pt}
+						Biggeri Mattia & & & & & & & \\
+						Bonato Paolo & & & & & & & \\ 
+						Bortolazzo Matteo & & & & & & & \\ 
+						Maino Elia & & & & & & & \\
+						Nicoletti Luca & & & & & & & \\
+						Padovan Tommaso & & & & & & & \\
+						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}						
+					\end{tabularx}
+				\end{table}
+				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
+				abbia dedicato ad un determinato ruolo.
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.9]{BCCodifica.png}
+					\caption{Ore per componente, fase di Progettazione di dettaglio e codifica.}
+				\end{figure}
 			\subsection{Verifica e validazione}
+				Nella fase di \emph{Verifica e validazione} ciascun componente dovrà ricoprire i seguenti ruoli:
+				\begin{table}[H]
+					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
+						\noalign{\hrule height 1.5pt}
+						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
+						\noalign{\hrule height 0.5pt}
+						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
+						\noalign{\hrule height 0.5pt}
+						Biggeri Mattia & & & & & & & \\
+						Bonato Paolo & & & & & & & \\ 
+						Bortolazzo Matteo & & & & & & & \\ 
+						Maino Elia & & & & & & & \\
+						Nicoletti Luca & & & & & & & \\
+						Padovan Tommaso & & & & & & & \\
+						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}						
+					\end{tabularx}
+				\end{table}
+				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
+				abbia dedicato ad un determinato ruolo.
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.9]{BCValidazione.png}
+					\caption{Ore per componente, fase di Verifica e validazione.}
+				\end{figure}
 		\section{Totali}
 			\subsection{Totale ore di investimento}
 			\subsection{Totale ore rendicontate}
@@ -440,7 +580,7 @@
 		\section{Analisi}
 		\section{Analisi di dettaglio}
 		\section{Progettazione architetturale}
-		\section{Progettazione di dettaglio}
+		\section{Progettazione di dettaglio e codifica}
 		\section{Verifica e validazione}
 		\section{Totali}
 			\subsection{Investimento}
@@ -664,7 +804,7 @@
 		%Da aggiungere man-mano
 		%\section{Analisi di dettaglio}
 		%\section{Progettazione architetturale}
-		%\section{Progettazione di dettaglio}
+		%\section{Progettazione di dettaglio e codifica}
 		%\section{Verifica e validazione}
 
 	\cleardoublepage
