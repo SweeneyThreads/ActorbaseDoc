@@ -1,0 +1,393 @@
+\newcolumntype{s}{>{\hsize=.37\hsize}X}
+\newcolumntype{f}{>{\hsize=.42\hsize}X}
+\newcolumntype{m}{>{\hsize=.21\hsize}X}
+
+\begin{longtable}{s f m X}  
+			\rowcolor{orange!85}Codice & Nome & Fonte & Descrizione \\
+\endhead
+R[1][N][F] & Creazione STOREKEEPER & Capitolato
+	& Creazione dell'attore STOREKEEPER per mantenere i dati su memoria interna \\
+	\hline
+		R[1.1][N][F] & Elaborazione messaggi STOREKEEPER & Capitolato
+		& Implementazione gestione dei messaggi ricevuti dagli attori STOREKEEPER \\
+		\hline
+			R[1.1.1][N][F] & Elaborazione messaggi aggiunta riga & Capitolato
+			& Aggiunge una riga con la chiave ed il valore presenti nel messaggio \\
+			\hline
+			R[1.1.2][N][F] & Elaborazione messaggi rimozione riga & Capitolato
+			& Rimuove la riga con chiave uguale a quella presente nel messaggio\\
+			\hline
+			R[1.1.3][N][F] & Elaborazione messaggi aggiornamento riga & Capitolato
+			& Aggiorna il valore della riga con chiave uguale a quella presente nel messaggio con il valore presente nel messaggio\\
+			\hline
+			R[1.1.4][N][F] & Elaborazione messaggi lettura riga & Capitolato
+			& Se presente restituisce il valore della riga con chiave uguale a quella presente nel messaggio \\
+			\hline
+			R[1.1.5][O][F] & Elaborazione messaggi di risposta da attori MANAGER & Capitolato
+			& Gestione dei messaggi inviati da attori MANAGER in risposta alla richieste dell'attore STOREKEEPER \\
+			\hline
+		R[1.2][N][F] & Invio messaggi STOREKEEPER & Capitolato
+		& Implementare l'invio dei messaggi dall'attore STOREKEEPER \\
+		\hline
+			R[1.2.1][N][F] & Invio messaggi a WAREHOUSEMAN & Capitolato
+			& Implementazione messaggi di comunicazione con attori WAREHOUSEMAN \\
+			\hline
+				R[1.2.1.1][N][F] & Invio messaggi aggiunta a WAREHOUSEMAN & Capitolato
+				& Implementazione invio del messaggio di aggiunta ad attori WAREHOUSEMAN \\
+				\hline
+				R[1.2.1.2][N][F] & Invio messaggi rimozione a WAREHOUSEMAN & Capitolato
+				& Implementazione invio del messaggio di rimozione ad attori WAREHOUSEMAN \\
+				\hline
+				R[1.2.1.3][N][F] & Invio messaggi aggiornamento a WAREHOUSEMAN & Capitolato
+				& Implementazione invio del messaggio di aggiornamento ad attori WAREHOUSEMAN \\
+				\hline
+			R[1.2.2][N][F] & Invio messaggi risposta lettura a STOREFINDER & Capitolato
+			& Implementazione invio messaggio con la riga richiesta dall'attore STOREFINDER \\
+			\hline
+			R[1.2.3][O][F] & Invio messaggi richiesta proprietà a MANAGER & Capitolato
+			& Implementazione invio messaggi di richiesta all'attore MANAGER delle proprietà interne dello STOREKEEPER\\
+			\hline
+			R[1.2.4][O][F] & Invio messaggi a NINJA & Capitolato
+			& Implementazione messaggi di comunicazione con attori NINJA \\
+			\hline
+				R[1.2.4.1][O][F] & Invio messaggi aggiunta a NINJA & Capitolato
+				& Implementazione invio del messaggio di aggiunta ad attori NINJA \\
+				\hline
+				R[1.2.4.2][O][F] & Invio messaggi rimozione a NINJA & Capitolato
+				& Implementazione invio del messaggio di rimozione ad attori NINJA \\
+				\hline
+				R[1.2.4.3][O][F] & Invio messaggi aggiornamento a NINJA & Capitolato
+				& Implementazione invio del messaggio di aggiornamento ad attori NINJA \\
+				\hline
+		R[1.3][O][F] & Gestione memoria interna & Decisione interna
+		& Implementazione gestione controllata dell'uso della memoria interna \\
+		\hline
+			R[1.3.1][O][F] & Impostazione memoria massima utilizzabile dal sistema & Decisione interna
+			& Implementare la possibilità di impostare un valore massimo di memoria occupabile dal sistema \\
+			\hline
+			R[1.3.2][O][F] & Rilevazione memoria totale ed in uso & Decisione interna
+			& Implementare la rilevazione della memoria totale del sistema e di quella utilizzata \\
+			\hline
+			R[1.3.3][O][F] & Valutazione svuotamento memoria & Decisione interna
+			& Implementare un un sistema che valuti quando liberare memoria \\
+			\hline
+			R[1.3.4][O][F] & Selezionare elementi da rimuovere dalla memoria & Decisione interna
+			& Implementare un sistema che selezioni gli elementi che possono essere rimossi dalla memoria \\
+			\hline
+			R[1.3.5][O][F] & Eliminare elementi selezionati	 & Decisione interna
+			& Implementare l'eliminazione degli elementi selezionati dalla memoria interna \\
+			\hline
+			R[1.3.6][O][F] & Recuperare elementi da disco se necessario & Decisione interna
+			& Implementare il recupero da disco degli elementi rimossi dalla memoria interna \\
+			\hline
+		R[1.4][O][F] & Creazione attori NINJA & Capitolato
+		& Implementare la creazione di nuovi attori NINJA da parte dell'attore STOREKEEPER \\
+		\hline
+	R[2][N][F] & STOREFINDER & Capitolato
+	& Creazione dell'attore STOREFINDER per gestire le richieste \\
+	\hline
+		R[2.1][N][F] & MAIN & Capitolato
+		& Creazione dell'attore MAIN, sottotipo di STOREFINDER\\
+		\hline		
+			R[2.1.1][N][F] & Gestione connessioni & Capitolato
+			& Implementare un sistema che permetta la connessione via rete al server \\
+			\hline
+			R[2.1.2][N][F] & Gestione accesso & Capitolato
+			& Implementare un sistema che permetta l'accesso al server tramite apposite credenziali\\
+			\hline
+				R[2.1.2.1][N][F] & Aggiunta credenziali & Capitolato
+				& Implementare l'aggiunta di nuove credenziali \\
+				\hline
+				R[2.1.2.2][N][F] & Rimozione credenziali & Capitolato
+				& Implementare la rimozione di credenziali \\
+				\hline
+				R[2.1.2.3][N][F] & Memorizzazione tabella credenziali su disco & Capitolato
+				& Implementare il salvataggio su disco delle credenziali \\
+				\hline
+				R[2.1.2.4][N][F] & Lettura tabella credenziali da disco & Capitolato
+				& Implementare la lettura da disco delle credenziali \\
+				\hline
+			R[2.1.3][D][F] & Gestione database (o schemi) & Decisione interna
+			& Implementare un sistema che gestisca più database all'interno dello stesso server \\
+			\hline
+				R[2.1.3.1][D][F] & Aggiunta database & Decisione interna
+				& Implementare l'aggiunta di un nuovo database \\
+				\hline
+				R[2.1.3.2][D][F] & Rimozione database & Decisione interna
+				& Implementare la rimozione di un database \\
+				\hline
+				R[2.1.3.3][D][F] & Rinomina database & Decisione interna
+				& Implementare la rinominazione di un database\\
+				\hline
+				R[2.1.3.4][D][F] & Associazione database-utente & Decisione interna
+				& Implementare un sistema che permetta agli utenti di poter interagire solo con un numero ristretto di database \\
+				\hline	
+					R[2.1.3.4.1][D][F] & Aggiunta privilegi database a utente & Decisione interna
+					& Aggiungere ai privilegi di un utente la modifica di un database \\
+					\hline	
+					R[2.1.3.4.2][D][F] & Rimozione privilegi database a utente & Decisione interna
+					& Rimuovere dai privilegi di un utente la modifica di un database \\
+					\hline				
+			R[2.1.4][N][F] & Creazione attori & Capitolato
+			& Gestire la creazione di nuovi attori da parte degli attori MAIN \\
+			\hline
+				R[2.1.4.1][N][F] & Creazione attori MAIN ad ogni nuova connesione & Capitolato
+				& Permettere all'attore MAIN principale di creare nuovi MAIN per gestire le richieste esterne \\
+				\hline
+				R[2.1.4.2][N][F] & Creazione attori WAREHOUSEMAN per lettura disco & Capitolato
+				& Permettere all'attore MAIN di creare attori WAREHOUSEMAN per leggere i dati presenti su disco all'avvio \\
+				\hline
+				R[2.1.4.3][N][F] & Creazione attori STOREKEEPER & Capitolato
+				& Permettere all'attore MAIN di creare attori STOREKEEPER quando una nuova mappa viene creata dall'utente o quando viene letta da disco \\
+				\hline
+				R[2.1.4.4][N][F] & Creaizone attori STOREFINDER & Capitolato
+				& Permettere all'attore MAIN di creare attori STOREFINDER per gestire le richieste interne \\
+				\hline
+			R[2.1.5][O][F] & Gestione richieste esterne & Capitolato
+			& Implementare un sistema che riconosca un DSL \\
+			\hline
+				R[2.1.5.1][N][F] & Parsing stringa comando & Capitolato
+				& Implementare un sistema che gestisca i comandi inseriti dall'utente \\
+				\hline	
+					R[2.1.5.1.1][N][F] & Invio messaggi in base al comando & Capitolato
+					& Inviare messaggi agli attori adatti dopo un comando utente \\
+					\hline			
+			R[2.1.6][O][F] & Gestione STOREFINDER non MAIN & Capitolato
+			& Gestire le comunicazioni tra attori MAIN e STOREFINDER \\
+			\hline
+				R[2.1.6.1][N][F] & Invio messaggi a STOREFINDER & Capitolato
+				& Implementare l'invio di richieste agli attori STOREFINDER \\
+				\hline
+				R[2.1.6.2][N][F] & Elaborazione messaggi da STOREFINDER & Capitolato
+				& Gestire le risposte degli attori STOREFINDER \\
+				\hline
+				R[2.1.6.3][N][F] & Gestione numero massimo di STOREFINDER & Capitolato
+				& Gestire le impostazioni per il numero massimo di STOREFINDER possibili \\
+				\hline
+			R[2.1.7][O][F] & Importazione & Decisione interna
+			& Implementare un sistema di importazioni di mappe \\
+			\hline
+			R[2.1.8][O][F] & Esportazione & Decisione interna
+			& Implementare un sistema di esportazione di mappe \\
+			\hline
+		R[2.2][N][F] & Elaborazione messaggi STOREFINDER & Capitolato
+		& Gestire le comunicazioni degli attori STOREFINDER non MAIN \\
+		\hline		
+			R[2.2.1][N][F] & Elaborazione messaggi aggiunta riga da MAIN & Capitolato
+			& Gestire i messaggi di aggiunta di una nuova riga \\
+			\hline
+			R[2.2.2][N][F] & Elaborazione messaggi rimozione riga da MAIN & Capitolato
+			& Gestire i messaggi di rimozione di una riga \\
+			\hline
+			R[2.2.3][N][F] & Elaborazione messaggi aggiornamento riga da MAIN & Capitolato
+			& Gestire i messaggi di aggiornamento di una riga \\
+			\hline
+			R[2.2.4][N][F] & Elaborazione messaggi da STOREKEEPER & Capitolato
+			& Gestire le risposte provenienti dagli attori STOREKEEPER \\
+			\hline
+		R[2.3][N][F] & Invio messaggi STOREFINDER & Capitolato
+		& Gestire l'invio di messaggi degli attori STOREKEEPER\\
+		\hline		
+			R[2.3.1][N][F] & Invio messaggi lettura riga a STOREKEEPER & Capitolato
+			& Invio messaggi di lettura riga ad attori STOREKEEPER\\
+			\hline
+			R[2.3.2][N][F] & Invio messaggi aggiunta riga a STOREKEEPER & Capitolato
+			& Invio messaggi di aggiunta di una nuova riga ad attori STOREKEEPER\\
+			\hline
+			R[2.3.3][N][F] & Invio messaggi rimozione riga a STOREKEEPER & Capitolato
+			& Invio messaggi di rimozione riga a STOREKEEPER \\
+			\hline
+			R[2.3.4][N][F] & Invio messaggi aggiornamento riga a STOREKEEPER & Capitolato
+			& Invio messaggi di aggiornamento riga a STOREKEEPER \\
+			\hline
+	R[3][N][F] & WAREHOUSEMAN & Capitolato
+		& Creazione dell'attore WAREHOUSEMAN \\
+		\hline
+		R[3.1][N][F] & Gestione file & Capitolato
+		& Implementare di un sistema per interagire con il filesystem\\
+		\hline		
+			R[3.1.1][N][F] & Creazione file & Capitolato
+			& Implementare la creazione di file su disco \\
+			\hline
+			R[3.1.2][N][F] & Rimozione file & Capitolato
+			& Implementare la rimozione di file su disco \\
+			\hline
+			R[3.1.3][N][F] & Modifica file & Capitolato
+			& Implementare la modifica di file su disco \\
+			\hline
+			R[3.1.4][N][F] & Rinomina file & Capitolato
+			& Implementare la rinomina dei file su disco \\
+			\hline		
+		R[3.2][N][F] & Elaborazione messaggi WAREHOUSEMAN & Capitolato
+		& Gestire la ricezione dei messaggi degli attori WAREHOUSEMAN\\
+		\hline		
+			R[3.2.1][N][F] & Elaborazione messaggi aggiunta riga su file & Capitolato
+			& Gestione messaggio di aggiunta riga su file\\
+			\hline
+			R[3.2.2][N][F] & Elaborazione messaggi rimozione riga da file & Capitolato
+			& Gestione messaggio di rimozione riga da file\\
+			\hline
+			R[3.2.3][N][F] & Elaborazione messaggi aggiornamento riga su file & Capitolato
+			& Gestione messaggio di aggiornamento riga da file\\
+			\hline
+			R[3.2.4][N][F] & Elaborazione messaggi rimozione mappa & Capitolato
+			& Gestione messaggio di rimozione di una mappa \\
+			\hline
+			R[3.2.4][N][F] & Elaborazione messaggi lettura mappe da disco & Capitolato
+			& Gestione messaggio di richiesta lettura mappa da disco all'avvio da parte di MAIN \\
+			\hline
+		R[3.3][N][F] & Invio messaggi WAREHOUSEMAN & Capitolato
+		& Implementare invio messaggi degli attori WAREHOUSEMAN \\
+		\hline		
+			R[3.3.1][N][F] & Invio messaggi conferma a STOREKEEPER & Capitolato
+			& Implementare invio messaggi di conferma salvataggio a STOREKEEPER \\
+			\hline
+			R[3.3.2][N][F] & Invio messaggi mappa su disco a MAIN & Capitolato
+			& Implementare l'invio delle mappe presenti su disco all'attore MAIN \\
+			\hline
+	R[4][O][F] & NINJA & Capitolato
+		& Creazione dell'attore NINJA per il recupero dei dati \\
+		\hline
+		R[4.1][O][F] & Elaborazione messaggi NINJA & Capitolato
+		& Gestione ricezione dei messaggi dagli attori STOREKEEPER\\
+		\hline		
+			R[4.1.1][O][F] & Elaborazione messaggi aggiunta riga a mappa NINJA & Capitolato
+			& Gestione messaggi di aggiunta riga alla mappa \\
+			\hline
+			R[4.1.2][O][F] & Elaborazione messaggi rimozione riga da mappa NINJA & Capitolato
+			& Gestione messaggi di rimozione riga dalla mappa \\
+			\hline
+			R[4.1.3][O][F] & Elaborazione messaggi aggiornamento riga su mappa NINJA & Capitolato
+			& Gestione messaggi di aggiornamento riga nella mappa \\
+			\hline
+		R[4.2][O][F] & Invio messaggi NINJA & Capitolato
+		& Implementare invio messaggi dall'attore NINJA \\
+		\hline		
+			R[4.2.1][O][F] & Invio messaggi conferma a STOREKEEPER & Capitolato
+			& Implementare messaggio di conferma a STOREKEEPER \\
+			\hline
+		R[4.3][O][F] & Cambio tipo a NINJA & Capitolato
+		& Implmentare sitema in grado di trasformare un NINJA in STOREKEEPER quando necessario \\			
+		\hline
+	R[5][O][F] & MANAGER & Capitolato
+	& Creazione attore MANAGER per gestire le proprietà degli attori STOREKEEPER \\
+	\hline
+		R[5.1][O][F] & Elaborazione messaggi MANAGER & Capitolato
+		& Gestione messaggi ricevuti dagli altri attori \\
+		\hline		
+			R[5.1.1][O][F] & Elaborazione messaggi contenenti grandezza massima mappa per STOREKEEPER da MAIN & Capitolato
+			& Gestione messaggi per impostare grandezza massima della mappa interna degli attori STOREKEEPER \\
+			\hline
+		R[5.2][O][F] & Invio messaggi MANAGER & Capitolato
+		& Implementare invio messaggi da MANAGER a STOREKEEPER \\
+		\hline		
+			R[5.2.1][O][F] & Invio grandezza grandezza massima mappa a STOREKEEPER & Capitolato
+			& Implementare invio messaggi contenti la grandezza massima della mappa interna a STOREKEEPER \\
+			\hline
+		R[5.3][O][F] & Creazione nuovi STOREKEEPER & Capitolato
+		& Implementare la creazione di nuovi STOREKEEPER in caso di bisogno \\			
+		\hline
+			R[5.3.1][O][F] & Quando viene creata una nuova mappa & Capitolato
+			& Creare un nuovo STOREKEEPER quando viene richiesta la creazione di una nuova mappa \\
+			\hline
+			R[5.3.2][O][F] & Quando la grandezza di una mappa supera la capienza dello STOREKEEPER & Capitolato
+			& Creare un nuovo STOREKEEPER quando la capienza dalla mappa interna di tutti gli STOREKEEPER è raggiunta \\
+			\hline
+			R[6][N][F] & Programma di setup & UC1
+			 & Implementare un programma di setup che permetta di installare il prodotto sulla propria macchina
+			  \\
+			\hline
+			R[6.1][N][F] & Programma di setup - Installazione completa & UC1
+			 & Implementare una funzione del programma di setup che permetta di installare completamente il
+			  prodotto sulla propria macchina \\
+			\hline
+			R[6.2][D][F] & Programma di setup - Installazione server & UC1
+			 & Implementare una funzione del programma di setup che permetta di installare solamente la parte
+			 server del prodotto sulla propria macchina \\
+			\hline
+			R[6.1][D][F] & Programma di setup - Installazione client & UC1
+			 & Implementare una funzione del programma di setup che permetta di installare solamente la parte
+			 client del prodotto sulla propria macchina \\
+			\hline
+			R[7][O][F] & Implementazione driver & Capitolato
+			 & Implementare un driver JDBC per l'interfacciamento al database \\
+			\hline
+			R[7.1][O][F] & Implementazione driver Scala & Capitolato
+			 & Implementare un driver Scala per l'interfacciamento al database direttamente da programmi 
+			 scritti nel suddetto linguaggio \\
+			\hline
+			R[7.2][O][F] & Implementazione driver Java & Capitolato
+			 & Implementare un driver Java per l'interfacciamento al database direttamente da programmi 
+			 scritti nel suddetto linguaggio \\
+			\hline
+			R[8][N][F] & Definizione di un DSL (\emph{Domain specific language}) & Capitolato, UC3, UC4, UC5
+			 & Definire un DSL per svolgere le operazioni sul database \\
+			\hline
+			R[8.1][N][F] & Comandi a livello server/database & UC3
+			 & Definire dei comandi per poter gestire i database su un server \\
+			\hline
+			R[8.1.1][N][F] & Comando di selezione di un database & UC3.1
+			 & Definire un comando che permetta di selezionare uno specifico database \\
+			\hline
+			R[8.1.2][N][F] & Comando di creazione di un database & UC3.2
+			 & Definire un comando che permetta di creare un nuovo database \\
+			\hline
+			R[8.1.3][N][F] & Comando di rimozione di un database & UC3.5
+			 & Definire un comando che permetta di rimuovere uno specifico database \\
+			\hline
+			R[8.2][N][F] & Comandi a livello di mappe & UC4
+			 & Definire dei comandi per poter gestire le mappe di un database \\
+			\hline
+			R[8.2.1][N][F] & Comando di creazione di una mappa & UC4.1
+			 & Definire un comando che permetta di creare una nuova mappa all'interno di un database, 
+			 dandole un nome \\
+			\hline
+			R[8.2.2][N][F] & Comando di modifica del nome di una mappa & UC4.2
+			 & Definire un comando che permetta di modificare il nome di una mappa preesistente \\
+			\hline
+			R[8.2.3][N][F] & Comando di rimozione di una mappa & UC4.3
+			 & Definire un comando che permetta di rimuovere una mappa da un database \\
+			\hline
+			R[8.3][N][F] & Comandi a livello di righe & UC5
+			 & Definire dei comandi per poter gestire le righe di una mappa \\
+			\hline
+			R[8.3.1][N][F] & Comando di inserimento di una riga & UC5.1
+			 & Definire un comando per inserire una riga (coppia chiave-valore) all'interno di una mappa \\
+			\hline
+			R[8.3.2][N][F] & Comando di ricerca di una chiave & UC5.2
+			 & Definire un comando per ricercare una riga avente una determinata chiave all'interno di una mappa
+			  \\
+			\hline
+			R[8.3.3][N][F] & Comando di rimozione di una riga & UC5.2
+			 & Definire un comando per rimuovere una riga all'interno di una mappa utilizzando la sua chiave\\
+			\hline
+			R[10][N][F] & Implementazione di un'interfaccia da riga di comando & Capitolato, UC2, UC3,
+			UC4, UC5 & Implementare un'interfaccia da riga di comando che permetta di interagire con il
+			database \\
+			\hline
+			R[10.1][N][F] & Interfaccia per connettersi ed autenticarsi a un server & UC2 &
+			Implementare un'interfaccia da riga di comando che permetta connettersi ad un server inserendone
+			l'indirizzo e che permetta di accedervi con username e password \\
+			\hline
+			R[10.2][N][F] & Interfaccia amministratore & UC3, UC3.6 & Implementare un'interfaccia 	da riga
+			di comando che permetta all'amministratore del server di gestire i database su esso presenti e di
+			gestire gli utenti che accedono al server definendone i permessi \\
+			\hline
+			R[10.2.1][N][F] & Interfaccia per inserire un utente & UC3.6.1 &
+			Implementare la possibilità di aggiungere un utente con username e password alla lista di utenti
+			che accedono al server da riga di comando\\
+			\hline
+			R[10.2.2][N][F] & Interfaccia per modificare i permessi utente & UC3.6.2 &
+			Implementare la possibilità di modificare i permessi utente da riga di comando\\
+			\hline
+			R[10.2.3][N][F] & Interfaccia per rimuovere un utente & UC3.6.3 &
+			Implementare la possibilità di rimuovere un utente dalla lista degli utenti che hanno accesso al
+			server da riga di comando \\
+			\hline
+			R[10.3][N][F] & Interfaccia per operazioni su database, mappe, righe & UC3,
+			UC4, UC5 & Implementare un'interfaccia da riga di comando basata sull'utilizzo dei comandi DSL
+			definti, che permetta di interagire con i database effettuando operazioni sui database stessi, sulle
+			mappe e sulle righe\\
+\bottomrule
+\caption{Requisiti funzionali}
+\end{longtable}   

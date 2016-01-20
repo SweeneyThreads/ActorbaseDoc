@@ -9,14 +9,18 @@
 \usepackage[utf8]{inputenc}
 \usepackage{url}
 \usepackage{graphicx}
-\graphicspath{{Immagini/}}
+\graphicspath{{../Immagini/}}
 \usepackage[hidelinks]{hyperref}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{pifont}
 \usepackage[table]{xcolor}
 \usepackage{float}
-
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{ltxtable} 
+\usepackage{geometry}
+\geometry{margin=1in}
 \newcolumntype{s}{>{\hsize=.21\hsize}X}
 \newcolumntype{f}{>{\hsize=.37\hsize}X}
 \newcolumntype{m}{>{\hsize=.42\hsize}X}
@@ -74,7 +78,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.3
+			Versione 1.0.5
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -90,13 +94,20 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
-				1.0.3 & 2016-01-18 & \emph{Analista} Maino Elia & Stesura dei casi d'uso (da 4.x a 5.x) \\
 				\noalign{\hrule height 0.5pt}
-				1.0.2 & 2016-01-17 & \emph{Analista} Maino Elia & Stesura dei casi d'uso (da 1.x a 3.x) \\
+				1.0.5 & 2016-01-20 & \emph{Analista} \newline Bortolazzo Matteo  & Stesura lista dei requisiti dedotti dal capitolato e da analisi interne
+				 \\
+				 \noalign{\hrule height 0.5pt}
+				1.0.4 & 2016-01-19 & \emph{Analisti} \newline Bonato Paolo \newline Maino Elia & Stesura lista dei requisiti dedotti dai casi d'uso
+				 \\
 				\noalign{\hrule height 0.5pt}
-				1.0.1 & 2016-01-17 & \emph{Analista} Maino Elia & Stesura caratteristiche generali del prodotto \\
+				1.0.3 & 2016-01-18 & \emph{Analista} \newline Maino Elia & Stesura dei casi d'uso (da 4.x a 5.x) \\
 				\noalign{\hrule height 0.5pt}
-				1.0.0 & 2016-01-17 & \emph{Analista} Maino Elia & Creazione scheletro documento e stesura introduzione \\
+				1.0.2 & 2016-01-17 & \emph{Analista} \newline Maino Elia & Stesura dei casi d'uso (da 1.x a 3.x) \\
+				\noalign{\hrule height 0.5pt}
+				1.0.1 & 2016-01-17 & \emph{Analista} \newline Maino Elia & Stesura caratteristiche generali del prodotto \\
+				\noalign{\hrule height 0.5pt}
+				1.0.0 & 2016-01-17 & \emph{Analista} \newline Maino Elia & Creazione scheletro documento e stesura introduzione \\
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
 			\caption{Diario delle modifiche \label{tab:table_label}}
@@ -175,9 +186,10 @@
 			\begin{itemize}
 				\item Installazione dell'applicativo
 				\item Connessione ad un server e autenticazione allo stesso
+				\item Gestione del server
 				\item Gestione dei database presenti sul server
-				\item Operazioni sui singoli database
-				\item Operazioni sulle mappe dei database
+				\item Operazioni a livello di mappa
+				\item Operazioni a livello di riga
 			\end{itemize}
 		\section{Caso d'uso UC1: Installazione}
 			\begin{figure}[H]
@@ -213,7 +225,13 @@
 				Scenari alternativi & \begin{enumerate}
 				\item Errore durante l'installazione, l'utente riceve un messaggio
 				\end{enumerate} \\
-				\rowcolor{orange!65}Lista requisiti dedotti & \\
+				\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[6][N][F]
+				\item R[6.1][D][F]
+				\item R[6.2][D][F] 
+				\item R[11][D][Q]
+				\item R[11.1][D][Q]
+				\end{itemize} \\
 				\bottomrule
 			\end{tabularx}
 			\caption{Caso d'uso UC1}
@@ -252,12 +270,18 @@
 				\item Errore durante la connessione, l'utente riceve un messaggio
 				\item Credenziali errate, l'utente riceve un messaggio
 				\end{enumerate} \\
-				\rowcolor{orange!65}Lista requisiti dedotti & \\
+				\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[10][N][F]
+				\item R[10.1][N][F]
+				\item R[11][D][Q]
+				\item R[11.2][D][Q]
+				\item R[11.3][D][Q]
+				\end{itemize} \\
 				\bottomrule
 			\end{tabularx}
 			\caption{Caso d'uso UC2}
 		 \end{table}
-	 \section{Caso d'uso UC3: Operazioni sul server}
+	 \section{Caso d'uso UC3: Operazioni a livello server/database}
 	 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3".png}
@@ -286,7 +310,7 @@
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
 			\rowcolor{orange!65}Codice gerarchico & UC3 \\
-			Nome sintetico & Operazioni sul server \\
+			Nome sintetico & Operazioni a livello server/database \\
 			\rowcolor{orange!65}Attore principale & Utente standard, Amministratore\\
 			Attori secondari & Sistema di I/O \\
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato\\
@@ -300,7 +324,13 @@
 			riceve un messaggio di errore
 			\item L'operazione richiesta non è stata effettuata, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8][N][F]
+				\item R[8.1][N][F]
+				\item R[10][N][F]
+				\item R[11][D][Q]
+				\item R[11.4][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC3}
@@ -312,9 +342,9 @@
 			\caption{Caso d'uso UC3.1}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'utente inserisce il nome del database che vuole utilizzare, se tale database esiste sul server e se 
-	 l'utente dispone dei permessi necessari ad accedervi il database risulta selezionato, altrimenti l'utente
-	 riceve un messaggio d'errore esplicativo.
+	 L'utente inserisce il comando di selezione seguito dal nome del database che vuole utilizzare, se tale
+	  database esiste sul server e se l'utente dispone dei permessi necessari ad accedervi il database risulta
+	   selezionato, altrimenti l'utente riceve un messaggio d'errore esplicativo.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
 			\rowcolor{orange!65}Codice gerarchico & UC3.1 \\
@@ -325,7 +355,7 @@
 			Post-condizione & Il database risulta selezionato, l'utente può ora effettuare operazioni su tale
 			database \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il nome del database da selezionare
+			\item L'utente inserisce il comando si selezione seguito dal nome del database da selezionare
 			\item Il database viene selezionato
 			\end{enumerate} \\
 			Scenari alternativi &  \begin{enumerate}
@@ -333,7 +363,10 @@
 			\item L'utente non dispone dei permessi necessari ad accedere al database selezionato, l'utente
 			riceve un messaggio di errore
 			\end{enumerate}			 \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.1.1][N][F]
+				\item R[11.5][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC3.1}
@@ -346,8 +379,8 @@
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente è autenticato come \emph{amministratore} e desidera creare un nuovo database sul server. 
-	 \\ L'utente inserisce un nome per il nuovo database, se tale nome risulta valido il database viene
-	  creato, altrimenti l'utente riceve un messaggio di errore. \\
+	 \\ L'utente inserisce il comando di creazione seguito dal nome per il nuovo database, se tale nome risulta
+	  valido il database viene creato, altrimenti l'utente riceve un messaggio di errore. \\
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
 			\rowcolor{orange!65}Codice gerarchico & UC3.2 \\
@@ -357,7 +390,7 @@
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
 			Post-condizione & Viene creato un database il cui nome è quello inserito dall'utente \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce un nome per il database
+			\item L'utente inserisce il comando di creazione e un nome per il database
 			\item Il sistema verifica il nome inserito
 			\item Viene creato un database con il nome inserito
 			\end{enumerate} \\
@@ -365,7 +398,10 @@
 			\item Il nome inserito non risulta valido, l'utente riceve un messaggio di errore e il database non
 			 viene creato
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.1.2][N][F]
+				\item R[11.6][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC3.2}
@@ -391,7 +427,7 @@
 			Post-condizione & \'E stato creato un nuovo database sul server con i dati presenti nel file
 			selezionato \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il percorso del file da cui importare il database
+			\item L'utente inserisce il comando di importazione seguito dal percorso del file 
 			\item Il sistema di I/O ottiene il file
 			\item Il sistema verifica il contenuto del file
 			\item Il sistema crea un database basato sui dati contenuti nel file
@@ -428,7 +464,7 @@
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
 			Post-condizione & Il database selezionato viene esportato su file \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il nome del database da esportare
+			\item L'utente inserisce il comando di esportazione seguito dal nome del database da esportare
 			\item L'utente specifica il percorso del file da creare
 			\item Il sistema crea il file contenente i dati del database
 			\end{enumerate} \\
@@ -439,7 +475,7 @@
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4}
+		\caption{Caso d'uso UC3.4}
 	 \end{table}
 	\section{Caso d'uso UC3.5: Rimozione di un database}
 	 	\begin{figure}[H]
@@ -454,22 +490,25 @@
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
 			\rowcolor{orange!65}Codice gerarchico & UC3.5 \\
-			Nome sintetico & Rimozione schema \\
+			Nome sintetico & Rimozione di un database \\
 			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Nessuno \\
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
 			Post-condizione & Il database selezionato è stato rimosso \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il nome del database da eliminare
+			\item L'utente inserisce il coamndo di rimozione seguito dal nome del database da eliminare
 			\item Il sistema rimuove il database selezionato
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
 			\item Il database selezionato non esiste, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.1.3][N][F]
+				\item R[11.5][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.5}
+		\caption{Caso d'uso UC3.5}
 	 \end{table}
 	 \section{Caso d'uso UC3.6: Gestione dei permessi}
 	 	\begin{figure}[H]
@@ -496,13 +535,16 @@
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
 			Post-condizione & L'operazione di modifica dei permessi è eseguita correttamente \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente seleziona l'operazione che vuole effettuare
+			\item L'utente richiede una delle operazioni di modifica dei permessi
 			\item L'operazione viene effettuata dal sistema
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
 			\item \'E impossibile completare l'operazione richiesta, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[10.2][N][F]
+				\item R[11.5][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC3.6}
@@ -521,7 +563,7 @@
 	 Un utente appena inserito è di tipo standard e non ha accesso a nessun database del server.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
-			\rowcolor{orange!65}Codice gerarchico & UC4.6.1 \\
+			\rowcolor{orange!65}Codice gerarchico & UC3.6.1 \\
 			Nome sintetico & Aggiunta di un utente al server \\
 			\rowcolor{orange!65}Attore principale & Amministratore\\
 			Attori secondari & Nessuno \\
@@ -536,7 +578,9 @@
 			Scenari alternativi & \begin{enumerate}
 			\item L'username inserito non è disponibile, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[10.2.1][N][F]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC3.6.1}
@@ -573,7 +617,9 @@
 			Scenari alternativi & \begin{enumerate}
 			\item L'utente inserito non esiste, l'amministratore riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[10.2.2][N][F]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC3.6.2}
@@ -603,19 +649,21 @@
 			Scenari alternativi & \begin{enumerate}
 			\item L'utente inserito non esiste, l'amministratore riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[10.2.3][N][F]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC3.6.3}
 	 \end{table}
-	 \section{Caso d'uso UC4: Operazioni sui database}
+	 \section{Caso d'uso UC4: Operazioni a livello di mappa}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC4".png}
 			\caption{Caso d'uso UC4}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'utente effettua una delle seguenti operazioni:
+	 L'utente effettua una delle seguenti operazioni utilizzando gli appositi comandi DSL:
 	 \begin{itemize}
 	 	\item Aggiunta di una nuova mappa
 	 	\item Modifica del nome di una mappa preesistente
@@ -624,20 +672,25 @@
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
 			\rowcolor{orange!65}Codice gerarchico & UC4 \\
-			Nome sintetico & Operazioni sui database \\
+			Nome sintetico &  Operazioni a livello di mappa \\
 			\rowcolor{orange!65}Attore principale & Utente generico\\
 			Attori secondari & Nessuno \\
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato e dispone dei permessi di accesso
-			al database\\
+			al database, che è già stato selezionato\\
 			Post-condizione & L'operazione selezionata è stata effettuata\\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente seleziona una delle operazioni
+			\item L'utente richiede una delle operazioni
 			\item Il sistema esegue l'operazione
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
 			\item L'operazione ha avuto esito negativo, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.2][N][F]
+				\item R[10][N][F]
+				\item R[10.3][N][F]
+				\item R[11][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC4}
@@ -662,12 +715,15 @@
 			al database\\
 			Post-condizione & \'E stata aggiunta al database una mappa con il nome inserito\\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il nome della mappa
+			\item L'utente inserisce il comando di aggiunta di una mappa seguito dal nome che vuole utilizzare
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
 			\item Il nome inserito è già in uso da un'altra mappa, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.2.1][N][F]
+				\item R[11.10][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC4.1}
@@ -692,6 +748,7 @@
 			al database\\
 			Post-condizione & Il nome della mappa selezionata è stato modificato\\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
+			\item L'utente inserisce il comando di modifica del nome di una mappa
 			\item L'utente inserisce il nome della mappa da modificare
 			\item L'utente inserisce il nuovo nome della mappa
 			\end{enumerate} \\
@@ -699,7 +756,11 @@
 			\item Non esiste una mappa con il nome inserito, l'utente riceve un messaggio di errore
 			\item Il nome inserito è già in uso da un'altra mappa, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.2.2][N][F]
+				\item R[11.9][D][Q]
+				\item R[11.10][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC4.2}
@@ -723,52 +784,205 @@
 			al database\\
 			Post-condizione & La mappa selezionata è stata rimossa\\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il nome della mappa da rimuovere
+			\item L'utente inserisce il comando di rimozione di una mappa seguito dal nome della mappa
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
 			\item Non esiste una mappa con il nome inserito, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.2.3][N][F]
+				\item R[11.9][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC4.3}
 	 \end{table}
-	 \section{Caso d'uso UC5: Operazioni sulle mappe}
+	 \section{Caso d'uso UC5: Operazioni a livello di riga}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC5".png}
 			\caption{Caso d'uso UC5}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
-	 L'utente esegue una delle seguenti operazioni:
+	 L'utente esegue una delle seguenti operazioni utilizzando i relativi comandi DSL:
 	 \begin{itemize}
-	 	\item Inserimento di un item
-	 	\item Cancellazione di un item
-	 	\item Aggiornamento di un item
+	 	\item Inserimento di una riga
+	 	\item Cancellazione di una riga
+	 	\item Aggiornamento di una riga
 	 \end{itemize}
 	 Se l'operazione richiesta ha avuto esito negativo l'utente riceve un messaggio di errore.
 		\begin{table}[H]
 		\begin{tabularx}{\textwidth}{X | X}\toprule
 			\rowcolor{orange!65}Codice gerarchico & UC5\\
-			Nome sintetico & Operazioni sulle mappe\\
+			Nome sintetico & Operazioni a livello di riga\\
 			\rowcolor{orange!65}Attore principale & Utente generico\\
 			Attori secondari & Nessuno \\
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato e dispone dei permessi di accesso
 			al database\\
 			Post-condizione & L'operazione selezionata è stata eseguita\\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente seleziona una delle operazioni
+			\item L'utente richiede una delle operazioni
 			\item Il sistema esegue l'operazione
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
 			\item L'operazione ha avuto esito negativo, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.3][N][F]
+				\item R[10][N][F]
+				\item R[10.3][N][F]
+				\item R[11][D][Q]
+				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC5}
 	 \end{table}
+	 \section{Caso d'uso UC5.1: Inserimento di una riga}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC5-1".png}
+			\caption{Caso d'uso UC5.1}
+		\end{figure}
+	 \textbf{Descrizione} \\ \\
+	 L'utente intende inserire una riga nella mappa selezionata. Nel caso in cui la key inserita
+	 fosse già presente all'interno della mappa si tratterebbe del caso particolare di un aggiornamento.
+		\begin{table}[H]
+		\begin{tabularx}{\textwidth}{X | X}\toprule
+			\rowcolor{orange!65}Codice gerarchico & UC5\\
+			Nome sintetico & Inserimento di una riga\\
+			\rowcolor{orange!65}Attore principale & Utente generico\\
+			Attori secondari & Nessuno \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato, ha selezionato un database a cui ha 
+			accesso e intende operare su una mappa esistente \\
+			Post-condizione & La riga risulta correttamente inserita\\
+			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
+			\item L'utente inserisce il comando di inserimento di una riga specificando:
+			\begin{itemize}
+				\item Il nome della mappa
+				\item Il valore della chiave
+				\item I valori
+			\end{itemize}
+			\end{enumerate} \\
+			Scenari alternativi & Nessuno \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.3.1][N][F]
+				\end{itemize} \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Caso d'uso UC5.1}
+	 \end{table}
+	 \section{Caso d'uso UC5.1.1: Aggiornamento di una riga}
+	 \textbf{Descrizione} \\ \\
+	 L'utente intende aggiornare una riga nella mappa selezionata, inserendo una riga con chiave avente lo
+	  stesso valore della riga da aggiornare.
+		\begin{table}[H]
+		\begin{tabularx}{\textwidth}{X | X}\toprule
+			\rowcolor{orange!65}Codice gerarchico & UC5.1.1\\
+			Nome sintetico & Aggiornamento di una riga\\
+			\rowcolor{orange!65}Attore principale & Utente generico\\
+			Attori secondari & Nessuno \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato, ha selezionato un database a cui ha 
+			accesso e intende operare su una mappa esistente \\
+			Post-condizione & La riga risulta correttamente inserita\\
+			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
+			\item L'utente inserisce il comando di inserimento di una riga specificando:
+			\begin{itemize}
+				\item Il nome della mappa
+				\item Il valore della chiave
+				\item I valori
+			\end{itemize}
+			\end{enumerate} \\
+			Scenari alternativi & Nessuno \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Caso d'uso UC5.1.1}
+	 \end{table}
+	 \section{Caso d'uso UC5.2: Rimozione di una riga}
+	 \begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.3]{"UC5-2".png}
+			\caption{Caso d'uso UC5.2}
+		\end{figure}
+	 \textbf{Descrizione} \\ \\
+	 L'utente intende rimuovere una riga nella mappa selezionata. Nel caso in cui tale riga fosse inesistente
+	 l'utente riceve un messaggio di errore.
+		\begin{table}[H]
+		\begin{tabularx}{\textwidth}{X | X}\toprule
+			\rowcolor{orange!65}Codice gerarchico & UC5.2\\
+			Nome sintetico & Rimozione di una riga\\
+			\rowcolor{orange!65}Attore principale & Utente generico\\
+			Attori secondari & Nessuno \\
+			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato, ha selezionato un database a cui ha 
+			accesso e intende operare su una mappa esistente\\
+			Post-condizione & La riga risulta correttamente inserita\\
+			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
+			\item L'utente inserisce il comando di rimozione di una riga specificando:
+			\begin{itemize}
+				\item Il nome della mappa
+				\item Il valore della chiave
+			\end{itemize}
+			\end{enumerate} \\
+			Scenari alternativi & \begin{enumerate}
+			\item Non esiste una riga con il valore della chiave inserita, l'utente riceve un messaggio di errore
+			\end{enumerate}			 \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+				\item R[8.3.2][N][F]
+				\item R[8.3.3][N][F]
+				\item R[11.11][D][Q]
+				\end{itemize} \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Caso d'uso UC5.2}
+	 \end{table}
+	 
+	 
 	\mychapter{4}{Requisiti}
+		Di seguito vengono riportati tutti i requisiti individuati dal gruppo SWEeneyThreads. \\Tali requisiti
+		derivano dai casi d’uso, dall'analisi del capitolato, dagli scambi di informazioni avvenuti con il
+		\emph{proponente Cardin Riccardo}, oppure da necessità interne. \\
+		La struttura di un requisito è definita nel documento \emph{Norme di progetto v1.1.1 sez 2.1.2}.
+		I requisiti saranno elencati secondo un ordine. Ogni requisito seguirà la seguente codifica: \\
+		\begin{center}
+			R[Codice][Importanza][Tipo]
+		\end{center}
+		\textbf{Codice} \\ \\ Un codice univoco ed espresso in modo gerarchico;\\ \\
+		\textbf{Importanza} \\ \\Può assumere i seguenti valori:
+		\begin{itemize}
+			\item \textbf{N:} Necessary (obbligatorio);
+			\item \textbf{D:} Desiderable (desiderabile, a valore aggiunto);
+			\item \textbf{O:} Optional (opzionale).
+		\end{itemize}
+		\textbf{Tipo} \\ \\Può assumere i seguenti valori:
+		\begin{itemize}
+			\item \textbf{F:} funzionale;
+			\item \textbf{Q:} di qualità;
+			\item \textbf{P:} prestazionale;
+			\item \textbf{V:} vincolo.
+		\end{itemize}
+	
+	\section{Requisiti funzionali}
+	I requisiti funzionali riguardano le funzioni vere e proprie del prodotto. Il soddisfacimento di uno di essi
+	equivale all'implementazione di una funzionalità.
+	\LTXtable{\textwidth}{tabelle_requisiti/funzionali.tex}
+	\section{Requisiti di vincolo}
+	I requisiti di vincolo rappresentano i vincoli che devono essere soddisfatti dal prodotto e che esulano dalle
+	sue caratteristiche funzionali.
+	\LTXtable{\textwidth}{tabelle_requisiti/vincolo.tex}
+	\section{Requisiti di qualità}
+	I requisiti di qualità specificano le operazioni da compiere per far raggiungere al prodotto il livello 
+	qualitativo richiesto.
+	\LTXtable{\textwidth}{tabelle_requisiti/qualita.tex}
+	\section{Requisiti prestazionali}
+	I requisiti prestazionali consentono, al loro soddisfacimento, di far raggiungere al prodotto un determinato
+	livello di prestazioni, non si traducono in nuove funzionaltà per l'utente ma intendono migliorare 
+	la stabilità e la velocità del programma.
+	\LTXtable{\textwidth}{tabelle_requisiti/prestazionali.tex}
+	
+	\section{Tracciamento fonti-requisiti}
+	Di seguito si riporta in forma tabellare l'elenco di requisiti ricavati dalle diverse fonti.
+	\LTXtable{\textwidth}{tabelle_requisiti/fontirequisiti.tex}
+	
 	\cleardoublepage
 	\addcontentsline{toc}{chapter}{\listfigurename}
 	\listoffigures
