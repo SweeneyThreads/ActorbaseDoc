@@ -82,7 +82,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.4
+			Versione 1.0.5
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -98,7 +98,9 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
-				1.0.4 & 2016-01-16 & \emph{Amministratore} Nicoletti Luca &  Inserite tabelle e programmata l'intera durata del progetto\\
+				1.0.5 & 2016-01-20 & \emph{Amministratore} Nicoletti Luca &  Inseriti tabelle costi e riviste suddivisioni. Inseriti grafici dei costi\\
+				\noalign{\hrule height 0.5pt}
+				1.0.4 & 2016-01-19 & \emph{Amministratore} Nicoletti Luca &  Inserite tabelle e programmata l'intera durata del progetto\\
 				\noalign{\hrule height 0.5pt}
 				1.0.3 & 2016-01-16 & \emph{Amministratore} Nicoletti Luca & Inserita introduzione alla Rendicontazione e inserita 
 				la descrizione di tutta la macro-fase di Analisi \\
@@ -196,38 +198,37 @@
 			sempre garantendo assenza di conflitto di interesse tra i ruoli assunti.
 			Tali ruoli sono:
 			\begin{itemize}
-				\item \textbf{Responsabile:} È il responsabile ultimo, per conto del suo gruppo, dei risultati del progetto.
-				\begin{itemize}
-					\item Elabora ed emana piani e scadenze.
-					\item Approva l'emissione di documenti.
-					\item Coordina le attività del gruppo.
-					\item Si relaziona con il controllo di qualità interno al progetto.
-					\item Redige Organigramma e Piano di Progetto.
-					\item Approva l'Offerta e i relativi allegati.
-				\end{itemize}
-				\item \textbf{Amministratore:} È responsabile dell'efficienza e dell'operatività dell'ambiente di sviluppo 
-				oltre che della redazione e attuazione di piani e procedure di Gestione per la Qualità.
-				\begin{itemize}
-					\item Controlla versioni e configurazioni del prodotto. 
-					\item Gestisce l'archivio della documentazione di progetto. 
-					\item Collabora alla redazione del Piano di Progetto. 
-					\item Redige le Norme di Progetto per conto del Responsabile.
-				\end{itemize}
-				\item \textbf{Analista:} È responsabile delle attività di analisi. 
-				\begin{itemize}
-					\item Redige lo Studio di Fattibilità (documento interno al gruppo) e l'Analisi dei Requisiti.
-				\end{itemize}
-				\item \textbf{Progettista:} È responsabile delle attività di progettazione. 
-				\begin{itemize}
-					\item Redige Specifica Tecnica, Definizione di Prodotto e la parte programmatica del Piano di Qualifica.
-				\end{itemize}
-				\item \textbf{Programmatore:} È responsabile delle attività di codifica miranti alla realizzazione del 
-				prodotto e delle componenti di ausilio necessarie per l'esecuzione delle prove di verifica e validazione.
-				\item \textbf{Verificatore:} È responsabile delle attività di verifica.
-				\begin{itemize}
-					\item Redige la parte retrospettiva del Piano di Qualifica che illustra l'esito e la completezza delle 
-					verifiche e delle prove effettuate secondo il piano.
-				\end{itemize}
+				\item \textbf{Responsabile:} Il \emph{Responsabile} rappresenta il progetto presso il fornitore e presso 
+				il committente, accentrando le responsabilità di scelta e approvazione e partecipando al progetto per tutta 
+				la sua durata. Ha responsabilità di pianificazione (elabora ed emana piani e scadenze), di gestione delle 
+				risorse umane e di controllo, coordinamento e gestione delle relazioni esterne. Inoltre approva l'emissione 
+				dei documenti, coordina le attività del gruppo e si relaziona con il controllo di qualità all'interno del 
+				progetto. Per quanto riguarda la documentazione il responsabile redige l'\emph{organigramma} e il 
+				\emph{Piano di progetto} oltre ad approvare l'offerta e i relativi allegati.
+				\item \textbf{Amministratore:} L'\emph{Amministratore} si occupa dell'efficienza e dell'operatività dell'ambiente 
+				di lavoro gestendo risorse, processi e infrastrutture.È inoltre responsabile della redazione e attuazione di piani 
+				e procedure di Gestione per la Qualità, controlla versioni e configurazioni del prodotto e gestisce l'archivio 
+				della documentazione di progetto (librarian). Per quanto riguarda la documentazione l'\emph{Amministratore} 
+				collabora alla redazione del \emph{Piano di progetto} e redige le \emph{Norme di progetto} per conto del responsabile.
+				\item \textbf{Analista:} Il compito principale dell'analista è capire il problema (non fornire una soluzione),
+				tale compito è di importanza fondamentale poichè se il problema viene compreso in modo errato tutto il progetto 
+				è destinato a fallire. L'\emph{Analista} deve conoscere il dominio del problema e avere una vasta esperienza professionale, 
+				in genere un progetto prevede pochi analisti ed essi raramente seguono il progetto fino alla conclusione. Per 
+				quanto riguarda la documentazione l'\emph{Analista} redige lo studio di fattibilità (un documento interno al gruppo) 
+				e l'\emph{Analisi dei requisiti}.
+				\item \textbf{Progettista:} Il compito del \emph{Progettista} è trovare una soluzione (eventualmente tra le tante disponibili) 
+				ed assumersi la responsabilità della decisione presa. I progettisti hanno competenze tecniche e tecnologiche aggiornate 
+				ed ampia esperienza professionale, influiscono fortemente sugli aspetti tecnici e tecnologici del progetto e spesso 
+				ne assumono responsabilità di scelta e gestione, sono pochi e talvolta seguono il progetto fino alla fase di manutenzione. 
+				Per quanto riguarda la documentazione il progettista redige la specifica tecnica, la definizione di prodotto e la parte 
+				programmatica del \emph{Piano di qualifica}.
+				\item \textbf{Programmatore:} Il \emph{Programmatore} svolge un ruolo puramente esecutivo e gode di limitati spazi di libertà. 
+				I programmatori formano storicamente la categoria più popolosa e sono responsabili delle attività di \emph{Codifica} miranti 
+				alla realizzazione del prodotto e delle componenti di ausilio necessarie per l'esecuzione delle prove di verifica e validazione.
+				\item \textbf{Verificatore:} I verificatori sono responsabili delle attività di verifica e partecipano all'intero ciclo di vita 
+				del prodotto, hanno competenze tecniche, esperienza di progetto, conoscenza delle norme, capacità di giudizio e relazione. Per 
+				quanto riguarda la documentazione i verificatori redigono la parte retrospettiva del \emph{piano di qualifica} che illustra l'esito 
+				e la completezza delle verifiche e delle prove effettuate secondo il piano.
 			\end{itemize}
 	\end{appendices}
 	
@@ -375,9 +376,9 @@
 			\subsection{WBS attività}
 			\subsection{Ripartizione ore}
 		\section{Progettazione architetturale}
-			\textbf{Periodo:} da 2016-02-01 a 2016-04-18 \\
-			Questa macro-fase inizia al termine dell'\emph{Analisi di dettaglio} e termina con la seconda 
-			scadenza che il gruppo intende rispettare, la \emph{Revisione di progetto}. In questa fase viene 
+			\textbf{Periodo:} da 2016-02-01 a 2016-03-20 \\
+			Questa macro-fase inizia al termine dell'\emph{Analisi di dettaglio} e termina con la conclusione 
+			della progettazione ad alto livello del progetto, prima della seconda scadenza. In questa fase viene 
 			descritta la struttura logica ad alto livello del prodotto, mentre il suo stato definitivo viene 
 			descritto nella macro-fase successiva. \\
 			Le attività in questa fase sono:
@@ -395,10 +396,11 @@
 			\subsection{WBS attività}
 			\subsection{Ripartizione ore}
 		\section{Progettazione di dettaglio e codifica}
-			\textbf{Periodo:} da 2016-04-19 a 2016-05-23 \\
-			Questa macro-fase ha inizio dopo il resoconto ricevuto successivamente alla \emph{Revisione di progetto} ed ha 
-			il compito di descrivere nel dettaglio l'architettura del prodotto, e la sua realizzazione. La scadenza di questa 
-			fase è definita dalla \emph{Revisione di qualifica}. \\Le attività principali di questa fase sono:
+			\textbf{Periodo:} da 2016-03-21 a 2016-05-23 \\
+			Questa macro-fase ha inizio immediatamente dopo la fine della progettazione di alto livello, attraversa la seconda 
+			scadenza che il gruppo intende rispettare, la \emph{Revisione di progetto} ed ha il compito di descrivere nel dettaglio 
+			l'architettura del prodotto, e la sua realizzazione. La scadenza di questa fase è definita dalla 
+			\emph{Revisione di qualifica}. \\Le attività principali di questa fase sono:
 			\begin{itemize}
 				\item \textbf{Definizione di Prodotto:} in questo definita in modo approfondito la struttura e le relazioni 
 				dei vari componenti del prodotto, basandosi sul documento di \emph{Specifica tecnica}; 
@@ -438,19 +440,17 @@
 			\subsection{Analisi}
 				Nella fase di \emph{Analisi} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
-						\noalign{\hrule height 1.5pt}
+					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
-						\noalign{\hrule height 0.5pt}
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
-						\noalign{\hrule height 0.5pt}
-						Biggeri Mattia & & & & & & & \\
-						Bonato Paolo & & & & & & & \\ 
-						Bortolazzo Matteo & & & & & & & \\ 
-						Maino Elia & & & & & & & \\
-						Nicoletti Luca & & & & & & & \\
-						Padovan Tommaso & & & & & & & \\
-						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}
+						Biggeri Mattia & & & & 7 & 13 & & 20\\
+						Bonato Paolo & & & 18 & & & & 18\\ 
+						Bortolazzo Matteo & & & 19 & & & & 19\\ 
+						Maino Elia & & 8 & 12 & & & & 20\\
+						Nicoletti Luca & & 8 & & 12 & & & 20\\
+						Padovan Tommaso & 7 & & & 12 & & & 19\\
+						Tommasin Davide & & & 8 & & 12 & & 20\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
 				\end{table}
@@ -465,19 +465,17 @@
 			\subsection{Analisi di dettaglio}
 				Nella fase di \emph{Analisi di dettaglio} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
-						\noalign{\hrule height 1.5pt}
+					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
-						\noalign{\hrule height 0.5pt}
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
-						\noalign{\hrule height 0.5pt}
-						Biggeri Mattia & & & & & & & \\
-						Bonato Paolo & & & & & & & \\ 
-						Bortolazzo Matteo & & & & & & & \\ 
-						Maino Elia & & & & & & & \\
-						Nicoletti Luca & & & & & & & \\
-						Padovan Tommaso & & & & & & & \\
-						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}
+						Biggeri Mattia & & & 5 & & & & 5\\
+						Bonato Paolo & 2 & & 3 & & & & 5\\ 
+						Bortolazzo Matteo & & & 1 & & 5 & & 6\\ 
+						Maino Elia & & & & 2 & 5 & & 7\\
+						Nicoletti Luca & 2 & & 4 & & 1 & & 7\\
+						Padovan Tommaso & 1 & & 5 & & & & 6\\
+						Tommasin Davide & & & 6 & & & & 6\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
 				\end{table}
@@ -492,19 +490,17 @@
 			\subsection{Progettazione architetturale}
 				Nella fase di \emph{Progettazione architetturale} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
-						\noalign{\hrule height 1.5pt}
+					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
-						\noalign{\hrule height 0.5pt}
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
-						\noalign{\hrule height 0.5pt}
-						Biggeri Mattia & & & & & & & \\
-						Bonato Paolo & & & & & & & \\ 
-						Bortolazzo Matteo & & & & & & & \\ 
-						Maino Elia & & & & & & & \\
-						Nicoletti Luca & & & & & & & \\
-						Padovan Tommaso & & & & & & & \\
-						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}
+						Biggeri Mattia & 4 & & 20 & & & & 24\\
+						Bonato Paolo & & & 2 & 17 & 15 & & 34\\ 
+						Bortolazzo Matteo & 1 & & 4 & 22 & & & 27\\ 
+						Maino Elia & 1 & & 5 & 22 & & & 28\\
+						Nicoletti Luca & 2 & & 15 & 15 & & & 32\\
+						Padovan Tommaso & & 5 & 7 & 15 & & & 27\\
+						Tommasin Davide & & 2 & 3 & 20 & & & 25\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
 				\end{table}
@@ -519,19 +515,17 @@
 			\subsection{Progettazione di dettaglio e codifica}
 				Nella fase di \emph{Progettazione di dettaglio e codifica} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
-						\noalign{\hrule height 1.5pt}
+					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
-						\noalign{\hrule height 0.5pt}
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
-						\noalign{\hrule height 0.5pt}
-						Biggeri Mattia & & & & & & & \\
-						Bonato Paolo & & & & & & & \\ 
-						Bortolazzo Matteo & & & & & & & \\ 
-						Maino Elia & & & & & & & \\
-						Nicoletti Luca & & & & & & & \\
-						Padovan Tommaso & & & & & & & \\
-						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}
+						Biggeri Mattia & & 5 & & 17 & & 33 & 55\\
+						Bonato Paolo & 3 & & & 16 & 36 & & 55\\ 
+						Bortolazzo Matteo & 6 & 5 & & 15 & & 28 & 54\\ 
+						Maino Elia & 3 & & & 10 & 28 & 14 & 55\\
+						Nicoletti Luca & & & & 25 & & 30 & 55\\
+						Padovan Tommaso & & & 2 & & 25 & 28 & 55\\
+						Tommasin Davide & & & 2 & 18 & 33 & & 53\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
 				\end{table}
@@ -546,19 +540,17 @@
 			\subsection{Verifica e validazione}
 				Nella fase di \emph{Verifica e validazione} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{| r | t | t | t | t | t | t | t |} 
-						\noalign{\hrule height 1.5pt}
+					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
-						\noalign{\hrule height 0.5pt}
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
-						\noalign{\hrule height 0.5pt}
-						Biggeri Mattia & & & & & & & \\
-						Bonato Paolo & & & & & & & \\ 
-						Bortolazzo Matteo & & & & & & & \\ 
-						Maino Elia & & & & & & & \\
-						Nicoletti Luca & & & & & & & \\
-						Padovan Tommaso & & & & & & & \\
-						Tommasin Davide & & & & & & & \\
+						\noalign{\hrule height 1.5pt}
+						Biggeri Mattia & & 2 & & & 10 & 8 & 20\\
+						Bonato Paolo & 1 & 9 & & & 4 & 7 & 21\\ 
+						Bortolazzo Matteo & & 2 & & 10 & 9 & & 21\\ 
+						Maino Elia & & 2 & & 11 & 8 & & 21\\
+						Nicoletti Luca & & & & 10 & 11 & & 21\\
+						Padovan Tommaso & & 2 & & & 16 & 2 & 20\\
+						Tommasin Davide & 4 & 4 & & & 4 & 8 & 20\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
 				\end{table}
@@ -571,20 +563,275 @@
 					\caption{Ore per componente, fase di Verifica e validazione.}
 				\end{figure}
 		\section{Totali}
-			\subsection{Totale ore di investimento}
+			\subsection{Totale ore con investimento}
+				Contando anche le ore di investimento, le ore che ciascun membro dedicherà 
+				allo svolgimento del progetto saranno le seguenti:
+				\begin{table}[H]
+					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
+						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
+						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
+						\noalign{\hrule height 1.5pt}
+						Biggeri Mattia & 4 & 7 & 5 & 44 & 23 & 41 & 124\\
+						Bonato Paolo & 4 & 11 & 23 & 33 & 55 & 7 & 133\\ 
+						Bortolazzo Matteo & 7 & 7 & 24 & 47 & 14 & 28 & 127\\ 
+						Maino Elia & 4 & 10 & 14 & 26 & 63 & 14 & 131\\
+						Nicoletti Luca & 4 & 8 & 4 & 62 & 27 & 30 & 135\\
+						Padovan Tommaso & 8 & 7 & 14 & 27 & 41 & 30 & 127\\
+						Tommasin Davide & 4 & 6 & 11 & 38 & 49 & 8 & 116\\
+						\noalign{\hrule height 1.5pt}						
+					\end{tabularx}
+				\end{table}
+				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
+				abbia dedicato ad un determinato ruolo.
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.9]{BCTotali.png}
+					\caption{Ore per componente, fase di Verifica e validazione.}
+				\end{figure}
 			\subsection{Totale ore rendicontate}
+				Le ore rendicontate, sono minori rispetto alle ore totali, in quanto non sono a 
+				carico del committente le fasi di \emph{Analisi dei requisiti} e l'
+				\emph{Analisi di dettaglio}.
+				\begin{table}[H]
+					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
+						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
+						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
+						\noalign{\hrule height 1.5pt}
+						Biggeri Mattia & 4 & 7 & & 37 & 10 & 41 & 99\\
+						Bonato Paolo & 4 & 9 & 2 & 33 & 55 & 7 & 110\\ 
+						Bortolazzo Matteo & 7 & 7 & 4 & 47 & 9 & 28 & 102\\ 
+						Maino Elia & 4 & 2 & & 26 & 58 & 14 & 104\\
+						Nicoletti Luca & 2 & & & 50 & 26 & 30 & 108\\
+						Padovan Tommaso & & 7 & 9 & 15 & 41 & 30 & 102\\
+						Tommasin Davide & 4 & 6 & 5 & 38 & 37 & 8 & 98\\
+						\noalign{\hrule height 1.5pt}						
+					\end{tabularx}
+				\end{table}
+				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
+				abbia dedicato ad un determinato ruolo.
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.9]{BCRendicontate.png}
+					\caption{Ore per componente, fase di Verifica e validazione.}
+				\end{figure}
 	\mychapter{4}{Prospetto economico}
 		Per ciascuna fase del progetto, in questa sezione vengono presentate le ore preventivate di impiego per tutti i 
 		ruoli coinvolti. Si ricorda che le fasi di \emph{Analisi dei requisiti} e \emph{Analisi di dettaglio} non sono 
 		a carico del committente e quindi non saranno considerate nel calcolo delle ore preventivate.
 		\section{Analisi}
+			Nelle fase di \emph{Analisi}, le ore per ciascun ruolo sono state suddivise in questo modo:
+			\begin{table}[H]
+				\begin{tabularx}{\textwidth}{X X X}
+					\noalign{\hrule height 1.5pt}
+					\rowcolor{orange!85}Ruolo & Ore & Costo \\
+					\noalign{\hrule height 1.5pt}
+					Responsabile & 7 & 140 \\
+					Amministratore & 16 & 480 \\
+					Analista & 57 & 1425\\
+					Progettista & 31 & 682\\
+					Verificatore & 25 & 375\\
+					Programmatore & 0 & 0 \\
+					\noalign{\hrule height 1.5pt}
+				\end{tabularx}
+			\end{table}
+			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
+			costo della fase di \emph{Analisi}.
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCAnalisi}
+				\caption{Ore per ruolo, fase di Analisi.}
+			\end{figure}
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCCostiAnalisi}
+				\caption{Costi per ruolo, fase di Analisi.}
+			\end{figure}
 		\section{Analisi di dettaglio}
+			Nelle fase di \emph{Analisi di dettaglio}, le ore per ciascun ruolo sono state suddivise in questo modo:
+			\begin{table}[H]
+				\begin{tabularx}{\textwidth}{X X X}
+					\noalign{\hrule height 1.5pt}
+					\rowcolor{orange!85}Ruolo & Ore & Costo \\
+					\noalign{\hrule height 1.5pt}
+					Responsabile & 3 & 90 \\
+					Amministratore & 2 & 40 \\
+					Analista & 26 & 650\\
+					Progettista & 0 & 0\\
+					Verificatore & 11 & 165\\
+					Programmatore & 0 & 0 \\
+					\noalign{\hrule height 1.5pt}
+				\end{tabularx}
+			\end{table}
+			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
+			costo della fase di \emph{Analisi di dettaglio}.
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCDettaglio}
+				\caption{Ore per ruolo, fase di Analisi di dettaglio.}
+			\end{figure}
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCCostiDettaglio}
+				\caption{Costi per ruolo, fase di Analisi di dettaglio.}
+			\end{figure}
 		\section{Progettazione architetturale}
+			Nelle fase di \emph{Progettazione architetturale}, le ore per ciascun ruolo sono state suddivise in questo modo:
+			\begin{table}[H]
+				\begin{tabularx}{\textwidth}{X X X}
+					\noalign{\hrule height 1.5pt}
+					\rowcolor{orange!85}Ruolo & Ore & Costo \\
+					\noalign{\hrule height 1.5pt}
+					Responsabile & 8 & 240 \\
+					Amministratore & 7 & 140 \\
+					Analista & 16 & 400\\
+					Progettista & 114 & 2508\\
+					Verificatore & 52 & 780\\
+					Programmatore & 0 & 0 \\
+					\noalign{\hrule height 1.5pt}
+				\end{tabularx}
+			\end{table}
+			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
+			costo della fase di \emph{Progettazione architetturale}.
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCProgettazione}
+				\caption{Ore per ruolo, fase di Progettazione architetturale.}
+			\end{figure}
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCCostiProgettazione}
+				\caption{Costi per ruolo, fase di Progettazione architetturale.}
+			\end{figure}
 		\section{Progettazione di dettaglio e codifica}
+			Nelle fase di \emph{Progettazione di dettaglio e codifica}, le ore per ciascun ruolo sono state suddivise in questo modo:
+			\begin{table}[H]
+				\begin{tabularx}{\textwidth}{X X X}
+					\noalign{\hrule height 1.5pt}
+					\rowcolor{orange!85}Ruolo & Ore & Costo \\
+					\noalign{\hrule height 1.5pt}
+					Responsabile & 12 & 360 \\
+					Amministratore & 10 & 200 \\
+					Analista & 4 & 100\\
+					Progettista & 101 & 2222\\
+					Verificatore & 122 & 1830\\
+					Programmatore & 133 & 1995 \\
+					\noalign{\hrule height 1.5pt}
+				\end{tabularx}
+			\end{table}
+			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
+			costo della fase di \emph{Progettazione di dettaglio e codifica}.
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCCodifica}
+				\caption{Ore per ruolo, fase di Progettazione di dettaglio e codifica.}
+			\end{figure}
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCCostiCodifica}
+				\caption{Costi per ruolo, fase di Progettazione di dettaglio e codifica.}
+			\end{figure}
 		\section{Verifica e validazione}
+			Nelle fase di \emph{Verifica e validazione}, le ore per ciascun ruolo sono state suddivise in questo modo:
+			\begin{table}[H]
+				\begin{tabularx}{\textwidth}{X X X}
+					\noalign{\hrule height 1.5pt}
+					\rowcolor{orange!85}Ruolo & Ore & Costo \\
+					\noalign{\hrule height 1.5pt}
+					Responsabile & 5 & 150 \\
+					Amministratore & 21 & 420 \\
+					Analista & 0 & 0\\
+					Progettista & 31 & 682\\
+					Verificatore & 62 & 930\\
+					Programmatore & 25 & 375 \\
+					\noalign{\hrule height 1.5pt}
+				\end{tabularx}
+			\end{table}
+			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
+			costo della fase di \emph{Verifica e validazione}.
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCValidazione}
+				\caption{Ore per ruolo, fase di Verifica e validazione.}
+			\end{figure}
+			%Image
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.7]{PCCostiValidazione}
+				\caption{Costi per ruolo, fase di Verifica e validazione.}
+			\end{figure}
 		\section{Totali}
 			\subsection{Investimento}
+				Le ore totali previste per la realizzazione del progetto sono riportate nella tabella seguente:
+				\begin{table}[H]
+					\begin{tabularx}{\textwidth}{X X X}
+						\noalign{\hrule height 1.5pt}
+						\rowcolor{orange!85}Ruolo & Ore & Costo \\
+						\noalign{\hrule height 1.5pt}
+						Responsabile & 35 & 1050 \\
+						Amministratore & 56 & 1120 \\
+						Analista & 95 & 2375\\
+						Progettista & 277 & 6094\\
+						Verificatore & 272 & 4080\\
+						Programmatore & 158 & 2370 \\
+						\noalign{\hrule height 1.5pt}
+					\end{tabularx}
+				\end{table}
+				I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
+				costo della realizzazione del progetto.
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.7]{PCTotali}
+					\caption{Ore per ruolo, intero progetto.}
+				\end{figure}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.7]{PCCostiTotali}
+					\caption{Costi per ruolo, intero progetto.}
+				\end{figure}
 			\subsection{Preventivo}
+				Le ore totali previste per la realizzazione del progetto e a carico del committente sono riportate 
+				nella seguente tabella:
+				\begin{table}[H]
+					\begin{tabularx}{\textwidth}{X X X}
+						\noalign{\hrule height 1.5pt}
+						\rowcolor{orange!85}Ruolo & Ore & Costo \\
+						\noalign{\hrule height 1.5pt}
+						Responsabile & 25 & 750 \\
+						Amministratore & 38 & 760 \\
+						Analista & 20 & 500\\
+						Progettista & 246 & 5412\\
+						Verificatore & 236 & 3540\\
+						Programmatore & 158 & 2370 \\
+						\noalign{\hrule height 1.5pt}
+					\end{tabularx}
+				\end{table}
+				I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
+				costo a carico del committente
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.7]{PCRendicontate}
+					\caption{Ore per ruolo, rendicontate.}
+				\end{figure}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.7]{PCCostiRendicontati}
+					\caption{Costi per ruolo, intero progetto.}
+				\end{figure}
 			\subsection{Conclusione}
 	\mychapter{5}{Analisi dei rischi}
 		Al fine di migliorare l'avanzamento del progetto, è stata effettuata un'accurata analisi dei rischi suddivisa in:

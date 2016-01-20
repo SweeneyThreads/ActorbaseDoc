@@ -15,6 +15,8 @@
 \usepackage[table]{xcolor}
 \usepackage{float}
 \usepackage[]{appendix}
+\usepackage{geometry}
+\geometry{margin=1in}
 
 \graphicspath{{Immagini/}}
 
@@ -174,6 +176,73 @@
 					\caption{Fasi del principio PDCA.}
 				\end{figure}
 			\subsection{Qualità di prodotto}
+				Al fine di aumentare il valore del prodotto e di migliorarne il funzionamento è necessario fissare degli obbiettivi
+				qualitativi e garantire che saranno raggiunti.\\
+				Questi obbiettivi sono descritti nell'ISO/IEC 9126 dove sono anche descritte le metriche per misurare gli stessi.\\
+				I criteri valutativi sono suddivisi in 3 aree:
+				\begin{itemize}
+					\item \textbf{Qualità esterna:} Le metriche esterne, specificate nella norma ISO/IEC 9126-2, valutano i
+					comportamenti del prodotto sulla base di prove, dall'operatività e dall'osservazione durante la sua esecuzione, 					in funzione degli obiettivi stabiliti.
+					\item \textbf{Qualità interna:} È specificata nella norma ISO/IEC 9126-3 e si applica al software non
+					eseguibile durante la progettazione e la codifica dello stesso, le misure effettuate consentono di prevedere il
+					livello di qualità esterna ed interna, in quanto gli attributi interni influenzano quelli esterni e di uso
+					\item \textbf{Qualità d'uso:}  Rappresenta la qualità dal punto di vista dell'utente finale, viene raggiunto
+					quando sono raggiunte la qualità esterna e quella interna, le metriche di valutazione sono fornite nella norma
+					ISO/IEC 9126-4.
+				\end{itemize}
+				
+				lo standard ISO/IEC 9126 prevede di suddividere la qualità esterna ed interna in 6 caratteristiche principali tra
+				le quali la funzionalità è l'unico “requisito funzionale”  mentre le altre 5 sono “requisiti di qualità”, ciascuna
+				caratteristica si suddivide in altre sotto caratteristiche che possono essere misurate qualitativamente:
+				\begin{itemize}
+					\item \textbf{Funzionalità:} capacità del prodotto software di fornire funzioni che rispondano
+					a esigenze stabilite
+					\begin{itemize}
+						\item \textbf{Idoneità:} capacità del prodotto software di fornire un insieme di funzioni per attività
+						specifiche prefissate all'utente;
+						\item \textbf{Accuratezza:} capacità del prodotto software di fornire risultati esatti o concordati con in
+						grado di precisione necessario;
+						\item \textbf{Interoperabilità:} capacità del prodotto software di interagire con uno o più sistemi 
+						precedentemente specificati;
+						\item \textbf{Sicurezza:} capacità del prodotto software di proteggere dati e informazioni;
+						\item \textbf{Conformità funzionale:} capacità del prodotto software di aderire a standard, convenzioni
+						o regolamentazioni e prescrizioni in materia di funzionalità.
+					\end{itemize}
+					
+					\item \textbf{Affidabilità:} capacità del prodotto software di mantenere uno specifico livello di prestazioni
+					quando usato
+					\begin{itemize}
+						\item asd
+					\end{itemize}										
+					
+					\item \textbf{Usabilità:} capacità del software di essere capito, imparato, usato e apprezzato dall'utente
+					quando usato
+					\begin{itemize}
+						\item asd					
+					\end{itemize}										
+					
+					\item \textbf{Efficienza:} capacità del software di fornire prestazioni appropriate in relazione alla quantità
+					di risorse in utilizzo
+					\begin{itemize}
+						\item asd
+					\end{itemize}										
+					
+					\item \textbf{Manutenibilità:} capacità del prodotto software di essere modificato e ampliato.
+					\begin{itemize}
+						\item asd
+					\end{itemize}										
+					
+					\item \textbf{Portabilità:} capacità del prodotto software di poter essere trasferito da un ambiente di lavoro
+					ad un altro sia dal punto di vista hardware che per quanto riguarda il sistema operativo
+					\begin{itemize}
+						\item asd
+					\end{itemize}										
+					
+				\end{itemize}
+				
+				
+			
+			
 		\section{Organizzazione}
 		\section{Pianificazione strategica e temporale}
 			Avendo lo scopo di rispettare le scadenze riportate nel Piano di progetto, è necessario che l'attività 
@@ -203,7 +272,7 @@
 			\end{itemize}
 			I \emph{Verificatori} hanno il compito di:
 			\begin{itemize}
-				\item Effettuare la verifica dei documenti con strumenti e metodi proposti nel \emph{Piano di Qualifica};
+				\item Effettuare la verifica dei documenti con strumenti e metodi proposti nel \emph{Piano di Qualifica};7
 				\item Attenersi rigidamente a quanto sancito nelle \emph{Norme di progetto};
 				\item Segnalare tempestivamente un errore, qualora riscontrato;
 				\item Sottoporre i documenti all'approvazione del \emph{Responsabile}, una volta giunti ad uno stadio finale.
@@ -237,6 +306,12 @@
 						\emph{Norme di progetto};
 						\item luoghi dove effettuare le riunioni del gruppo.
 					\end{itemize}
+				Tutti i membri del gruppo hanno a disposizione almeno un computer personale dotato di tutti gli strumenti
+				necessari per il progetto; tutte le macchine in questione sono portatili. Inoltre in caso di rottura o guasto
+				è messo a disposizione un computer di riserva. Sono a disposizione quattro appartamenti a Padova dove
+				effettuare le riunioni. La scelta di quale viene presa di volta in volta a seconda delle disponibilità. Tutti
+				gli appartamenti sono dotati di connessione internet a banda larga.				
+				
 		\section{Strumenti}
 			Le risorse software che si utilizzeranno durante il processo di verifica sono:
 			\begin{itemize}
@@ -315,13 +390,100 @@
 					per arrivare allo stato iniziale, far partire l'esecuzione, inserire gli input specificati e verificare 
 					che l'output sia uguale a quello atteso.
 				\end{itemize}
+				
+				Sono definiti 5 tipi di test:
+				\begin{itemize}
+					\item \textbf{Test di unità:} Una unità viene definita come la più piccola quantità di software che conviene
+					testare singolarmente. Il fine di questi test è cercare di individuare eventuali errori presenti nelle singole
+					unità che compongono l'intero sistema. Essi vengono testati attraverso l'uso di stub, driver e logger. Queste
+					verifiche sono spesso le più onerose, ma anche quelle che portano alla luce il maggior numero di errori, quindi
+					quelle che producono il maggior valore.
+					\item \textbf{Test di integrazione:} Consiste nella verifica di componenti del sistema che vengono aggiunti
+					incrementalmente, è necessario dunque analizzare combinazioni di due o più unità di software. Hanno lo scopo di
+					individuare errori residui nella realizzazione dei singoli moduli, modifiche delle interfacce e comportamenti
+					inaspettati di componenti software preesistenti forniti da terze parti che non si conoscono a fondo. Per la
+					loro realizzazione è necessario usare spesso componenti fittizie non ancora sviluppate, ma che emulano il
+					comportamento atteso.
+					\item \textbf{Test di Sistema:} Consiste nella validazione del prodotto software una volta che siano stati
+					aggiunti tutti i componenti e lo si ritiene giunto ad una versione definitiva. Lo scopo principale è verificare
+					che ci sia totale copertura dei requisiti stabiliti nella fase di Analisi di dettaglio. È obiettivo
+					fondamentale della qualità del processo fare in modo che giunti a questo punto l'esito del test sia comunque
+					positivo, in quanto garantito dal tracciamento dei requisiti.
+					\item \textbf{Test di regressione:} Consiste nell'eseguire nuovamente i test di unità e integrazione in
+					porzioni di software che hanno subito modifiche in maniera da accertare che questi cambiamenti non
+					pregiudichino il funzionamento dei componenti non toccati da questa modifica.
+					\item \textbf{Test di accettazione:} Consiste nel collaudo del prodotto che viene eseguito in presenza del
+					proponente. Un esito positivo di questo test permette il rilascio ufficiale del software.
+					
+				\end{itemize}
+				
 		\section{Misure e metriche}
+			Il processo di verifica, per avere un valore informativo, deve essere quantificabile; le misure rilevate, inoltre,
+			devono essere basate su metriche stabilite a priori. Complice la scarsa esperienza del gruppo alcune metriche stabilite
+			all'inizio potrebbe risultare approssimative, il modello incrementale esposto nel Piano di progetto permetterà però di
+			migliorarne la precisione e l'accuratezza in maniera incrementale.
+			
+			Le tipologie di range ammesse sono due:
+			\begin{itemize}
+				\item \textbf{Accettabile:} Superiore al minimo valore richiesto affinché il prodotto sia accettato.
+				\item \textbf{Ottimale:} Valori entro cui dovrebbe cui dovrebbe collocarsi la misurazione. Non sono vincolanti,
+				ma fortemente consigliati. Misurazioni al di fuori di questi valori necessitano una verifica approfondita e nel
+				caso non si trovi una maniera immediata per farli rientrare le cause di tale scostamento dovranno essere
+				discusse nella successiva riunione.
+			\end{itemize}
 			\subsection{Metriche per i processi}
+				Gli indici scelti per la quantificazione dei processi prendono in considerazione principalmente costi e tempi;
+				hanno lo scopo di mantenere il controllo sui processi e che il progetto segua quanto descritto nel Piano di
+				progetto.
+				
+				Gli indici scelti sono:
+				\begin{itemize}
+					\item \textbf{SV (Schedule Variance):} É un indicatore di efficacia, mostra se si è o meno in linea con la
+					pianificazione temporale rispetto alle attività nella baseline. Una schedule variance positiva indica che il
+					gruppo è in anticipo rispetto al Piano di progetto, che è in ritardo altrimenti.
+					\item \textbf{BV (Budget Variance):} Indica se la spesa sostenuta alla data corrente è superiore o inferiore a
+					quella preventivata. Una budget variance positiva indica che si è speso meno di quanto inizialmente previsto,
+					viceversa altrimenti.		
+				\end{itemize}
 			\subsection{Metriche per i documenti}
 			\subsection{Metriche per il software}
+			
+			
+			
+			
 		\section{Metodi}
+			
 			\subsection{Analisi dei processi}
 			\subsection{Analisi dei documenti}
+				Ogni documento redatto è verificato mediante il seguente protocollo:
+				\begin{itemize}
+					\item \textbf{Controllo sintattico:} Il testo deve venire sottoposto a controllo dell'ortografia con il tool
+					fornito dall'ambiente di sviluppo \LaTeX utilizzato. Alcuni errori non possono essere comunque rilevati da
+					meccanismi automatici, quindi al fine di ottenere correttezza sintattica e semantica i Verificatori
+					effettueranno un walkthrough al fine di ricercare errori sfuggiti al correttore ortografico.
+					\item \textbf{Rispetto delle Norme di progetto:} I Verificatori sono tenuti a verificare che il documento
+					rispetti tutte le norme tipografiche e di struttura del documento riportate nelle Norme di progetto. Porzioni
+					di questa verifica sono automatizzabili, i Verificatori dovranno quindi usare tool ove possibile. 
+					\item \textbf{Inspection secondo checklist:} I Verificatori dovranno scorrere la lista di controllo e
+					verificare che non sia presenti gli errori comuni lì riportati.
+					\item \textbf{Verifica Glossario:} I Verificatori dovranno controllare che tutti i termini contenuti nel 
+					Glossario siano indicati all'interno dei documenti con la G a pedice. 
+					\item \textbf{Calcolo dell'indice di leggibilità:} I Verificatori dovranno calcolare tramite strumenti
+					automatici l'indice Gulpease di leggibilità del testo, nel caso risultasse troppo basso sarà necessario
+					procedere ad un walkthrough, finalizzato alla individuazione di frasi troppo lunghe e complesse.
+					\item \textbf{Miglioramento:} Se nello svolgimento di uno qualunque dei punti precedenti un Verificatore
+					notasse nuove possibilità di automatizzazione dovrà segnalarle e si dovrà cercare o costruire uno strumento per
+					rendere effettiva tale automatizzazione. Inoltre durante le esecuzioni dei walkthrough, i verificatori sono
+					tenuti ad annotare gli errori più frequenti o potenzialmente dannosi rilevati. Tali errori andranno poi ad
+					aggiornare la lista di controllo che verrà utilizzata per le successive inspection.
+				\end{itemize}						
+			
+			
+			
+			
+			
+			
+			
 	\mychapter{3}{Gestione amministrativa della revisione}
 		\section{Comunicazione e risoluzione di anomalie}
 			Una anomalia è una violazione da parte di un documento, o unità di codice, di una o più delle seguenti condizioni:
@@ -354,10 +516,43 @@
 				\item \textbf{Quality Assurance:} garantisce il raggiungimento degli obiettivi di qualità, in maniera preventiva. 
 				In questo modo si riduce drasticamente il ricorso a tecniche retrospettive, e con esse si riducono le iterazioni.
 			\end{itemize}
+	
 	\mychapter{4}{Resoconto delle attività di verifica}
 		\section{Riassunto delle attività di verifica}
-		%Revisione dei requisiti
+			Durante la stesura della documentazione sono stati verificati ad ogni modifica sostanziale la documentazione stessa, i
+			casi d'uso e i requisiti; è stato in oltre verificato se i processi si sono svolti in maniera corretta.
+			\subsection{Documentazione}
+				I documenti sono stati verificati tramite walkthrough da due persone differenti seguendo il seguente protocollo:
+				\begin{itemize}
+					\item Verifica della sintassi e della correzione ortografica
+					\item Verifica della chiarezza espositiva
+					\item Verifica del rispetto delle Norme Di Progetto v1.1.1 capitolo 3.1
+					\item Verifica dell'uniformità dei termini rispetto allo stesso documento
+					\item Verifica dell'uniformità dei termini rispetto agli altri documenti
+					\item Verifica che i termini che lo necessitano siano stati inseriti nel glossario
+					\item Produzione dei un file .txt contenente tutti gli errori al fine di mostrare le correzioni necessarie e
+					facilitare la stesura della checklist degli errori più frequenti
+				\end{itemize}
+				In seguito i documenti sono stati nuovamente verificati tramite inspection utilizzando la checklist precedentemente
+				stilata.
+			
+			\subsection{Casi d'uso}
+				I casi d'uso sono stati verificati sempre tramite walkthrough ponendo l'attenzione sui seguenti punti:
+				\begin{itemize}
+					\item Uniformità dei termini usati tra i vari uc
+					\item Uniformità tra l'immagine dei diagrammi e la spiegazione della suddetta
+					\item Correttezza del codice utilizzato rispetto a quanto definito nelle norme di progetto v1.1.1 capitolo
+					2.3.1
+					\item Uniformità dei casi d'uso rispetto al capitolato
+					\item Rispetto della struttura definita nelle norme di progetto v1.1.1 capitolo 2.3.1
+				\end{itemize}
+
+				I Casi d'uso sono stati successivamente ricontrollati all'interno del documento di Analisi Dei Requisiti come
+				descritto in 4.1.
+			\subsection{Requisiti}
+				
 		\section{Tracciamento componenti - requisiti}
+		
 		\section{Dettaglio delle verifiche tramite analisi}
 			\subsection{Processi}
 			\subsection{Documenti}
