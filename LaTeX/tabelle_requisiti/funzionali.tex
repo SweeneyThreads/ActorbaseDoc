@@ -1,3 +1,4 @@
+
 \newcolumntype{s}{>{\hsize=.37\hsize}X}
 \newcolumntype{f}{>{\hsize=.42\hsize}X}
 \newcolumntype{m}{>{\hsize=.21\hsize}X}
@@ -5,11 +6,11 @@
 \begin{longtable}{s f m X}  
 			\rowcolor{orange!85}Codice & Nome & Fonte & Descrizione \\
 \endhead
-R[1][N][F] & Creazione STOREKEEPER & Capitolato
+R[1][N][F] & STOREKEEPER & Capitolato
 	& Creazione dell'attore STOREKEEPER per mantenere i dati su memoria interna \\
 	\hline
-		R[1.1][N][F] & Elaborazione messaggi STOREKEEPER & Capitolato
-		& Implementazione gestione dei messaggi ricevuti dagli attori STOREKEEPER \\
+		R[1.1][N][F] & Elaborazione messaggi ricevuti STOREKEEPER & Capitolato
+		& Gestire i messaggi ricevuti da STOREKEEPER \\
 		\hline
 			R[1.1.1][N][F] & Elaborazione messaggi aggiunta riga & Capitolato
 			& Aggiunge una riga con la chiave ed il valore presenti nel messaggio \\
@@ -27,37 +28,37 @@ R[1][N][F] & Creazione STOREKEEPER & Capitolato
 			& Gestione dei messaggi inviati da attori MANAGER in risposta alla richieste dell'attore STOREKEEPER \\
 			\hline
 		R[1.2][N][F] & Invio messaggi STOREKEEPER & Capitolato
-		& Implementare l'invio dei messaggi dall'attore STOREKEEPER \\
+		& Creazione messaggi da inviare da STOREKEEPER \\
 		\hline
 			R[1.2.1][N][F] & Invio messaggi a WAREHOUSEMAN & Capitolato
-			& Implementazione messaggi di comunicazione con attori WAREHOUSEMAN \\
+			& Creazione messaggi da inviare a WAREHOUSEMAN \\
 			\hline
 				R[1.2.1.1][N][F] & Invio messaggi aggiunta a WAREHOUSEMAN & Capitolato
-				& Implementazione invio del messaggio di aggiunta ad attori WAREHOUSEMAN \\
+				& Creazione messaggi di aggiunta riga da inviare a WAREHOUSEMAN \\
 				\hline
 				R[1.2.1.2][N][F] & Invio messaggi rimozione a WAREHOUSEMAN & Capitolato
-				& Implementazione invio del messaggio di rimozione ad attori WAREHOUSEMAN \\
+				& Creazione messaggi di rimozione riga da inviare a WAREHOUSEMAN \\
 				\hline
 				R[1.2.1.3][N][F] & Invio messaggi aggiornamento a WAREHOUSEMAN & Capitolato
-				& Implementazione invio del messaggio di aggiornamento ad attori WAREHOUSEMAN \\
+				& Creazione messaggi di aggiornamento riga da inviare a WAREHOUSEMAN \\
 				\hline
-			R[1.2.2][N][F] & Invio messaggi risposta lettura a STOREFINDER & Capitolato
-			& Implementazione invio messaggio con la riga richiesta dall'attore STOREFINDER \\
+			R[1.2.2][N][F] & Invio messaggi risposta a STOREFINDER & Capitolato
+			& Creazione messaggi di risposta a comando da inviare a STOREFINDER \\
 			\hline
 			R[1.2.3][O][F] & Invio messaggi richiesta proprietà a MANAGER & Capitolato
-			& Implementazione invio messaggi di richiesta all'attore MANAGER delle proprietà interne dello STOREKEEPER\\
+			& Creazione messaggi di richiesta proprietà interne a MANAGER \\
 			\hline
 			R[1.2.4][O][F] & Invio messaggi a NINJA & Capitolato
-			& Implementazione messaggi di comunicazione con attori NINJA \\
+			& Creazione messaggi da inviare a NINJA \\
 			\hline
 				R[1.2.4.1][O][F] & Invio messaggi aggiunta a NINJA & Capitolato
-				& Implementazione invio del messaggio di aggiunta ad attori NINJA \\
+				& Creazione messaggi di aggiunta riga da inviare a NINJA \\
 				\hline
 				R[1.2.4.2][O][F] & Invio messaggi rimozione a NINJA & Capitolato
-				& Implementazione invio del messaggio di rimozione ad attori NINJA \\
+				& Creazione messaggi di rimozione riga da inviare a NINJA \\
 				\hline
 				R[1.2.4.3][O][F] & Invio messaggi aggiornamento a NINJA & Capitolato
-				& Implementazione invio del messaggio di aggiornamento ad attori NINJA \\
+				& Creazione messaggi di aggiornamento riga da inviare a NINJA \\
 				\hline
 		R[1.3][O][F] & Gestione memoria interna & Decisione interna
 		& Implementazione gestione controllata dell'uso della memoria interna \\
@@ -69,10 +70,10 @@ R[1][N][F] & Creazione STOREKEEPER & Capitolato
 			& Implementare la rilevazione della memoria totale del sistema e di quella utilizzata \\
 			\hline
 			R[1.3.3][O][F] & Valutazione svuotamento memoria & Decisione interna
-			& Implementare un un sistema che valuti quando liberare memoria \\
+			& Implementare un sistema che valuti quando è necessario svuotare la memoria interna \\
 			\hline
 			R[1.3.4][O][F] & Selezionare elementi da rimuovere dalla memoria & Decisione interna
-			& Implementare un sistema che selezioni gli elementi che possono essere rimossi dalla memoria \\
+			& Implementare la selezione degli elementi che possono essere rimossi dalla memoria \\
 			\hline
 			R[1.3.5][O][F] & Eliminare elementi selezionati	 & Decisione interna
 			& Implementare l'eliminazione degli elementi selezionati dalla memoria interna \\
@@ -80,7 +81,7 @@ R[1][N][F] & Creazione STOREKEEPER & Capitolato
 			R[1.3.6][O][F] & Recuperare elementi da disco se necessario & Decisione interna
 			& Implementare il recupero da disco degli elementi rimossi dalla memoria interna \\
 			\hline
-		R[1.4][O][F] & Creazione attori NINJA & Capitolato
+		R[1.4][O][F] & Creazione attori NINJA & Capitolato 
 		& Implementare la creazione di nuovi attori NINJA da parte dell'attore STOREKEEPER \\
 		\hline
 	R[2][N][F] & STOREFINDER & Capitolato
@@ -90,10 +91,10 @@ R[1][N][F] & Creazione STOREKEEPER & Capitolato
 		& Creazione dell'attore MAIN, sottotipo di STOREFINDER\\
 		\hline		
 			R[2.1.1][N][F] & Gestione connessioni & Capitolato
-			& Implementare un sistema che permetta la connessione via rete al server \\
+			& Implementare la connessione via rete al server \\
 			\hline
 			R[2.1.2][N][F] & Gestione accesso & Capitolato
-			& Implementare un sistema che permetta l'accesso al server tramite apposite credenziali\\
+			& Implementare l'accesso al server tramite apposite credenziali\\
 			\hline
 				R[2.1.2.1][N][F] & Aggiunta credenziali & Capitolato
 				& Implementare l'aggiunta di nuove credenziali \\
@@ -108,7 +109,7 @@ R[1][N][F] & Creazione STOREKEEPER & Capitolato
 				& Implementare la lettura da disco delle credenziali \\
 				\hline
 			R[2.1.3][D][F] & Gestione database (o schemi) & Decisione interna
-			& Implementare un sistema che gestisca più database all'interno dello stesso server \\
+			& Implementare la gestione di più database all'interno dello stesso server \\
 			\hline
 				R[2.1.3.1][D][F] & Aggiunta database & Decisione interna
 				& Implementare l'aggiunta di un nuovo database \\
@@ -117,10 +118,10 @@ R[1][N][F] & Creazione STOREKEEPER & Capitolato
 				& Implementare la rimozione di un database \\
 				\hline
 				R[2.1.3.3][D][F] & Rinomina database & Decisione interna
-				& Implementare la rinominazione di un database\\
+				& Implementare la rinomina di un database\\
 				\hline
 				R[2.1.3.4][D][F] & Associazione database-utente & Decisione interna
-				& Implementare un sistema che permetta agli utenti di poter interagire solo con un numero ristretto di database \\
+				& Implementare l'associazione utente-database per la visibilità controllata \\
 				\hline	
 					R[2.1.3.4.1][D][F] & Aggiunta privilegi database a utente & Decisione interna
 					& Aggiungere ai privilegi di un utente la modifica di un database \\
@@ -144,67 +145,67 @@ R[1][N][F] & Creazione STOREKEEPER & Capitolato
 				& Permettere all'attore MAIN di creare attori STOREFINDER per gestire le richieste interne \\
 				\hline
 			R[2.1.5][O][F] & Gestione richieste esterne & Capitolato
-			& Implementare un sistema che riconosca un DSL \\
+			& Implementare il riconoscimento di un DSL \\
 			\hline
 				R[2.1.5.1][N][F] & Parsing stringa comando & Capitolato
-				& Implementare un sistema che gestisca i comandi inseriti dall'utente \\
+				& Implementare la gestione dei comandi inseriti dall'utente \\
 				\hline	
 					R[2.1.5.1.1][N][F] & Invio messaggi in base al comando & Capitolato
 					& Inviare messaggi agli attori adatti dopo un comando utente \\
 					\hline			
-			R[2.1.6][O][F] & Gestione STOREFINDER non MAIN & Capitolato
+			R[2.1.6][O][F] & Gestione STOREFINDER & Capitolato
 			& Gestire le comunicazioni tra attori MAIN e STOREFINDER \\
 			\hline
 				R[2.1.6.1][N][F] & Invio messaggi a STOREFINDER & Capitolato
-				& Implementare l'invio di richieste agli attori STOREFINDER \\
+				& Creazione messaggi da inviare a STOREFINDER \\
 				\hline
 				R[2.1.6.2][N][F] & Elaborazione messaggi da STOREFINDER & Capitolato
-				& Gestire le risposte degli attori STOREFINDER \\
+				& Gestire i messaggi di risposta ricevuti da STOREFINDER \\
 				\hline
 				R[2.1.6.3][N][F] & Gestione numero massimo di STOREFINDER & Capitolato
 				& Gestire le impostazioni per il numero massimo di STOREFINDER possibili \\
 				\hline
 			R[2.1.7][O][F] & Importazione & Decisione interna
-			& Implementare un sistema di importazioni di mappe \\
+			& Implementare l'importazione di database \\
 			\hline
 			R[2.1.8][O][F] & Esportazione & Decisione interna
-			& Implementare un sistema di esportazione di mappe \\
+			& Implementare l'esportazione di database \\
 			\hline
-		R[2.2][N][F] & Elaborazione messaggi STOREFINDER & Capitolato
-		& Gestire le comunicazioni degli attori STOREFINDER non MAIN \\
+		R[2.2][N][F] & Elaborazione messaggi ricevuti STOREFINDER & Capitolato
+		& Gestione messaggi ricevuti da STOREFINDER \\
 		\hline		
-			R[2.2.1][N][F] & Elaborazione messaggi aggiunta riga da MAIN & Capitolato
-			& Gestire i messaggi di aggiunta di una nuova riga \\
+			R[2.2.1][N][F] & Elaborazione messaggi di aggiunta da MAIN & Capitolato
+			& Gestire i messaggi ricevuti di aggiunta riga da MAIN \\
 			\hline
-			R[2.2.2][N][F] & Elaborazione messaggi rimozione riga da MAIN & Capitolato
-			& Gestire i messaggi di rimozione di una riga \\
+			R[2.2.2][N][F] & Elaborazione messaggi di rimozione riga da MAIN & Capitolato
+			& Gestire i messaggi ricevuti di rimozione riga da MAIN \\
 			\hline
-			R[2.2.3][N][F] & Elaborazione messaggi aggiornamento riga da MAIN & Capitolato
-			& Gestire i messaggi di aggiornamento di una riga \\
+			R[2.2.3][N][F] & Elaborazione messaggi di aggiornamento riga da MAIN & Capitolato
+			& Gestire i messaggi ricevuti di aggiornamento riga da MAIN \\
 			\hline
 			R[2.2.4][N][F] & Elaborazione messaggi da STOREKEEPER & Capitolato
-			& Gestire le risposte provenienti dagli attori STOREKEEPER \\
+			& Gestire i messaggi di risposta ricevuti da MAIN \\
 			\hline
 		R[2.3][N][F] & Invio messaggi STOREFINDER & Capitolato
-		& Gestire l'invio di messaggi degli attori STOREKEEPER\\
+		& Creazione messaggi da inviare da STOREFINDER \\
 		\hline		
 			R[2.3.1][N][F] & Invio messaggi lettura riga a STOREKEEPER & Capitolato
-			& Invio messaggi di lettura riga ad attori STOREKEEPER\\
+			& Creazione messaggi di lettura riga da inviare a STOREKEEPER\\
 			\hline
 			R[2.3.2][N][F] & Invio messaggi aggiunta riga a STOREKEEPER & Capitolato
-			& Invio messaggi di aggiunta di una nuova riga ad attori STOREKEEPER\\
+			& Creazione messaggi di aggiunta riga da inviare a STOREKEEPER\\
 			\hline
 			R[2.3.3][N][F] & Invio messaggi rimozione riga a STOREKEEPER & Capitolato
-			& Invio messaggi di rimozione riga a STOREKEEPER \\
+			& Creazione messaggi di rimozione riga da inviare a STOREKEEPER\\
 			\hline
 			R[2.3.4][N][F] & Invio messaggi aggiornamento riga a STOREKEEPER & Capitolato
-			& Invio messaggi di aggiornamento riga a STOREKEEPER \\
+			& Creazione messaggi di aggiornamento riga da inviare a STOREKEEPER\\
 			\hline
 	R[3][N][F] & WAREHOUSEMAN & Capitolato
-		& Creazione dell'attore WAREHOUSEMAN \\
+		& Creazione dell'attore WAREHOUSEMAN per l'interazione con il filesystem \\
 		\hline
 		R[3.1][N][F] & Gestione file & Capitolato
-		& Implementare di un sistema per interagire con il filesystem\\
+		& Implementare l'integrazione tra WAREHOUSEMAN e filesystem \\
 		\hline		
 			R[3.1.1][N][F] & Creazione file & Capitolato
 			& Implementare la creazione di file su disco \\
@@ -218,71 +219,71 @@ R[1][N][F] & Creazione STOREKEEPER & Capitolato
 			R[3.1.4][N][F] & Rinomina file & Capitolato
 			& Implementare la rinomina dei file su disco \\
 			\hline		
-		R[3.2][N][F] & Elaborazione messaggi WAREHOUSEMAN & Capitolato
-		& Gestire la ricezione dei messaggi degli attori WAREHOUSEMAN\\
+		R[3.2][N][F] & Elaborazione messaggi ricevuti WAREHOUSEMAN & Capitolato
+		& Gestire i messaggi ricevuti da WAREHOUSEMAN \\
 		\hline		
 			R[3.2.1][N][F] & Elaborazione messaggi aggiunta riga su file & Capitolato
-			& Gestione messaggio di aggiunta riga su file\\
+			& Gestire i messaggi di aggiunta riga su file ricevuti da STOREKEEPER  \\
 			\hline
 			R[3.2.2][N][F] & Elaborazione messaggi rimozione riga da file & Capitolato
-			& Gestione messaggio di rimozione riga da file\\
+			& Gestire i messaggi di rimozione riga su file ricevuti da STOREKEEPER  \\
 			\hline
 			R[3.2.3][N][F] & Elaborazione messaggi aggiornamento riga su file & Capitolato
-			& Gestione messaggio di aggiornamento riga da file\\
+			& Gestire i messaggi di aggiornamento riga su file ricevuti da STOREKEEPER  \\
 			\hline
 			R[3.2.4][N][F] & Elaborazione messaggi rimozione mappa & Capitolato
-			& Gestione messaggio di rimozione di una mappa \\
+			& Gestire i messaggi di rimozione mappa ricevuti da STOREKEEPER  \\
 			\hline
 			R[3.2.4][N][F] & Elaborazione messaggi lettura mappe da disco & Capitolato
-			& Gestione messaggio di richiesta lettura mappa da disco all'avvio da parte di MAIN \\
+			& Gestire i messaggi di richiesta di lettura filesystem ricevuti da MAIN  \\
 			\hline
 		R[3.3][N][F] & Invio messaggi WAREHOUSEMAN & Capitolato
-		& Implementare invio messaggi degli attori WAREHOUSEMAN \\
+		& Creazione messaggi da inviare da WAREHOUSEMAN \\
 		\hline		
 			R[3.3.1][N][F] & Invio messaggi conferma a STOREKEEPER & Capitolato
-			& Implementare invio messaggi di conferma salvataggio a STOREKEEPER \\
+			& Creazione messaggi di risposta da inviare da STOREKEEPER \\
 			\hline
-			R[3.3.2][N][F] & Invio messaggi mappa su disco a MAIN & Capitolato
-			& Implementare l'invio delle mappe presenti su disco all'attore MAIN \\
+			R[3.3.2][N][F] & Invio messaggi risposta a MAIN & Capitolato
+			& Creazione messaggi di risposta da inviare da MAIN \\
 			\hline
 	R[4][O][F] & NINJA & Capitolato
 		& Creazione dell'attore NINJA per il recupero dei dati \\
 		\hline
-		R[4.1][O][F] & Elaborazione messaggi NINJA & Capitolato
-		& Gestione ricezione dei messaggi dagli attori STOREKEEPER\\
+		R[4.1][O][F] & Elaborazione messaggi ricevuti NINJA & Capitolato
+		& Gestire i messaggi ricevuti da NINJA  \\
 		\hline		
 			R[4.1.1][O][F] & Elaborazione messaggi aggiunta riga a mappa NINJA & Capitolato
-			& Gestione messaggi di aggiunta riga alla mappa \\
+			& Gestire i messaggi di aggiunta riga ricevuti da STOREKEEPER  \\
 			\hline
 			R[4.1.2][O][F] & Elaborazione messaggi rimozione riga da mappa NINJA & Capitolato
-			& Gestione messaggi di rimozione riga dalla mappa \\
+			& Gestire i messaggi di rimozione riga ricevuti da STOREKEEPER  \\
 			\hline
 			R[4.1.3][O][F] & Elaborazione messaggi aggiornamento riga su mappa NINJA & Capitolato
-			& Gestione messaggi di aggiornamento riga nella mappa \\
+			& Gestire i messaggi di aggiornamento riga ricevuti da STOREKEEPER  \\
 			\hline
 		R[4.2][O][F] & Invio messaggi NINJA & Capitolato
-		& Implementare invio messaggi dall'attore NINJA \\
+		& Creazione messaggi da inviare da NINJA \\
 		\hline		
 			R[4.2.1][O][F] & Invio messaggi conferma a STOREKEEPER & Capitolato
-			& Implementare messaggio di conferma a STOREKEEPER \\
+			& Creazione messaggi di conferma da inviare da STOREKEEPER \\
 			\hline
-		R[4.3][O][F] & Cambio tipo a NINJA & Capitolato
-		& Implmentare sitema in grado di trasformare un NINJA in STOREKEEPER quando necessario \\			
+		R[4.3][O][F] & Cambio interfaccia NINJA & Capitolato
+		& Implementare la possibilità di mutare a STOREKEEPER quando necessario \\			
 		\hline
 	R[5][O][F] & MANAGER & Capitolato
 	& Creazione attore MANAGER per gestire le proprietà degli attori STOREKEEPER \\
 	\hline
-		R[5.1][O][F] & Elaborazione messaggi MANAGER & Capitolato
-		& Gestione messaggi ricevuti dagli altri attori \\
+		R[5.1][O][F] & Elaborazione messaggi ricevuti da MANAGER & Capitolato
+		& Gestire i messaggi ricevuti da MANAGER \\
 		\hline		
 			R[5.1.1][O][F] & Elaborazione messaggi contenenti grandezza massima mappa per STOREKEEPER da MAIN & Capitolato
 			& Gestione messaggi per impostare grandezza massima della mappa interna degli attori STOREKEEPER \\
 			\hline
 		R[5.2][O][F] & Invio messaggi MANAGER & Capitolato
-		& Implementare invio messaggi da MANAGER a STOREKEEPER \\
+		& Creazione messaggi da inviare da MANAGER \\
 		\hline		
-			R[5.2.1][O][F] & Invio grandezza grandezza massima mappa a STOREKEEPER & Capitolato
-			& Implementare invio messaggi contenti la grandezza massima della mappa interna a STOREKEEPER \\
+			R[5.2.1][O][F] & Invio messaggi contenenti le proprietà a STOREKEEPER & Capitolato
+			& Creazione messaggi di risposta contenenti le proprietà da inviare da STOREKEEPER \\
 			\hline
 		R[5.3][O][F] & Creazione nuovi STOREKEEPER & Capitolato
 		& Implementare la creazione di nuovi STOREKEEPER in caso di bisogno \\			

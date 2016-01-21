@@ -66,9 +66,10 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-				\dots \\
+				Padovan Tommaso \\
 				\emph{Verifica:} \\
-				\dots
+				Biggeri Mattia \\
+				Tommasin Davide 
 			\end{flushright}
 		\end{minipage}
 		
@@ -78,7 +79,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.5
+			Versione 1.0.6
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -95,6 +96,9 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 0.5pt}
+				1.0.6 & 2016-01-21 & \emph{Analisti} \newline Bonato Paolo \newline Bortolazzo Matteo\newline Maino Elia  & Correzioni
+				 \\
+				 \noalign{\hrule height 0.5pt}
 				1.0.5 & 2016-01-20 & \emph{Analista} \newline Bortolazzo Matteo  & Stesura lista dei requisiti dedotti dal capitolato e da analisi interne
 				 \\
 				 \noalign{\hrule height 0.5pt}
@@ -133,10 +137,14 @@
 		marcato con una "\textit{G}" maiuscola in pedice.
 	\section{Riferimenti}
 	\subsection{Informativi}	
-		\dots
+		\begin{itemize}
+			\item \textbf{Slide dell'insegnamento Ingegneria del software mod.A:} \\
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/E02.pdf}
+		\end{itemize}
 	\subsection{Normativi}
 		\begin{itemize}
-			\item Capitolato d'appalto Actorbase (C1): \\ 
+			\item \textbf{Norme di progetto:} \emph{Norme di progetto v1.1.1}
+			\item \textbf{Capitolato d'appalto Actorbase (C1):} \\ 
 			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
 		\end{itemize}
 	\mychapter{2}{Caratteristiche generali del prodotto}
@@ -438,7 +446,9 @@
 			\item Il database contenuto nel file non può essere importato perchè viola dei vincoli del sistema 
 			(es. esiste già un altro database con lo stesso nome), l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+			\item R[2.1.7][O][F]
+			\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC3.3}
@@ -472,7 +482,9 @@
 			\item Il database selezionato non esiste, l'utente riceve un messaggio di errore
 			\item La creazione del file non ha successo, l'utente riceve un messaggio di errore
 			\end{enumerate} \\
-			\rowcolor{orange!65}Lista requisiti dedotti & \\
+			\rowcolor{orange!65}Lista requisiti dedotti & \begin{itemize}
+			\item R[2.1.8][O][F]
+			\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
 		\caption{Caso d'uso UC3.4}
