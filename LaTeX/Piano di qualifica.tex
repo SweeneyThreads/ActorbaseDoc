@@ -15,8 +15,7 @@
 \usepackage[table]{xcolor}
 \usepackage{float}
 \usepackage[]{appendix}
-\usepackage{geometry}
-\geometry{margin=1in}
+\usepackage{amsmath}
 
 \graphicspath{{Immagini/}}
 
@@ -79,7 +78,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.1
+			Versione 1.0.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -95,6 +94,8 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
+				1.0.2 & 2016-01-17 & \emph{Amministratore} \newline Tommaso Padovan & Aggiunta qualità di prodotto, Analisi e 						Metriche \\
+				\noalign{\hrule height 0.5pt}
 				1.0.1 & 2016-01-17 & \emph{Amministratori} Nicoletti Luca + Tommaso Padovan & Visione generale della 
 				strategia di verifica e Gestione amministrativa della revisione \\
 				\noalign{\hrule height 0.5pt}
@@ -212,38 +213,91 @@
 					\item \textbf{Affidabilità:} capacità del prodotto software di mantenere uno specifico livello di prestazioni
 					quando usato
 					\begin{itemize}
-						\item asd
+						\item \textbf{Maturità:} capacità del prodotto software di non fallire a causa di errori nel software;
+						\item \textbf{Tolleranza agli errori:} capacità del prodotto software di mantenere un adeguato livello di
+						prestazioni e funzioni in caso di errori software o di violazioni;
+						\item \textbf{Capacità di recupero:} capacità del prodotto software di ristabilire un adeguato livello di
+						performance e di recuperare i dati in caso di errori;
+						\item \textbf{Conformità di affidabilità:} capacità del prodotto software di aderire a standard,
+						convenzioni o regolamentazioni in materia di affidabilità.
 					\end{itemize}										
 					
 					\item \textbf{Usabilità:} capacità del software di essere capito, imparato, usato e apprezzato dall'utente
 					quando usato
 					\begin{itemize}
-						\item asd					
+						\item \textbf{Comprensibilità:} capacità del prodotto software di far comprendere al utente se il
+						prodotto è adatto ad uno specifico scopo;
+						\item \textbf{Apprendibilità:} capacità del prodotto software di ridurre all'utente il tempo necessario
+						per apprendere le sue funzioni;
+						\item \textbf{Operabilità:} capacità del prodotto software di essere utilizzato dall'utente in modo
+						controllato
+						\item \textbf{Attrattiva:} capacità del prodotto software di creare interesse nell'utente;
+						\item \textbf{Conformità di usabilità:} capacità del prodotto software di aderire a standard, convenzioni
+						o regolamentazioni in materia di usabilità.
 					\end{itemize}										
 					
 					\item \textbf{Efficienza:} capacità del software di fornire prestazioni appropriate in relazione alla quantità
 					di risorse in utilizzo
 					\begin{itemize}
-						\item asd
+						\item \textbf{Comportamento temporale:} capacità del software di fornire tempi di risposta e di
+						elaborazione adeguati sotto condizioni determinate;
+						\item \textbf{Utilizzo di risorse:} capacità del prodotto software di utilizzare quantità e tipo di
+						risorse adeguate durante la sua esecuzione;
+						\item \textbf{Conformità di efficienza:} capacità del prodotto software di aderire a standard,
+						convenzioni o regolamentazioni in materia di efficienza.
 					\end{itemize}										
 					
 					\item \textbf{Manutenibilità:} capacità del prodotto software di essere modificato e ampliato.
 					\begin{itemize}
-						\item asd
+						\item \textbf{Analizzabilità:} rappresenta la facilità con la quale è possibile analizzare il software alla
+						ricerca di carenze e difetti;
+						\item \textbf{Modificabilità:} capacità del prodotto software di permettere l'implementazione di una
+						specifica modifica o di un aggiornamento;
+						\item \textbf{Stabilità:} capacità del prodotto software di evitare effetti indesiderati causati da uno o
+						più aggiornamenti o modifiche;
+						\item \textbf{Testabilità:} capacità del prodotto software di consentire una facile validazione di una
+						versione modificata del software;
+						\item \textbf{Conformità di manutenibilità:} capacità del prodotto software di aderire a standard,
+						convenzioni o regolamentazioni in materia di manutenibilità.
 					\end{itemize}										
 					
 					\item \textbf{Portabilità:} capacità del prodotto software di poter essere trasferito da un ambiente di lavoro
 					ad un altro sia dal punto di vista hardware che per quanto riguarda il sistema operativo
 					\begin{itemize}
-						\item asd
+						\item \textbf{Adattabilità:} capacità del prodotto software di essere adattato a diversi ambienti di
+						lavoro senza la necessità di effettuare modifiche aggiuntive;
+						\item \textbf{Installabilità:} capacità del prodotto software di poter essere installato in specifici
+						ambienti;
+						\item \textbf{Coesistenza:} capacità del prodotto software di coesistere in ambienti comuni con altri
+						software indipendenti condividendo risorse comuni;
+						\item \textbf{Sostituibilità:} capacità del prodotto software di poter sostituire un software analogo o
+						simile nello stesso ambiente;
+						\item \textbf{Conformità di portabilità:} capacità del prodotto software di aderire a standard,
+						convenzioni o regolamentazioni in materia di portabilità.
 					\end{itemize}										
 					
 				\end{itemize}
 				
-				
+				Per la qualità d'uso invece vengono invece definite le seguenti caratteristiche:
+				\begin{itemize}
+					\item \textbf{Efficacia:} la capacità del prodotto di consentire agli utenti di raggiungere gli obiettivi
+					specificati con precisione sufficiente e completezza. 
+					\item \textbf{Produttività:} la capacità di consentire agli utenti di utilizzare una quantità di risorse
+					appropriate in relazione all'efficacia ottenuta in contesto d'uso definito. 
+					\item \textbf{Soddisfazione:} è la capacità del prodotto di soddisfare gli utenti. 
+					\item \textbf{Sicurezza:} rappresenta la capacità del prodotto di avere accettabili livelli di rischio per
+					quanto riguarda i danni alle persone, al software, ad apparecchiature o all'ambiente operativo d'uso. 
+				\end{itemize}
 			
 			
 		\section{Organizzazione}
+			Ognuna delle fasi descritte nel Piano di progetto necessita di differenti attività di verifica, a causa della
+			diversità degli output attesi.
+			\begin{itemize}
+				\item \textbf{Analisi:} Si devono seguire le attività di verifica descritte nella sezione 2.9 di questo documento.
+			\end{itemize}
+		
+		
 		\section{Pianificazione strategica e temporale}
 			Avendo lo scopo di rispettare le scadenze riportate nel Piano di progetto, è necessario che l'attività 
 			di verifica, sia del codice che della documentazione, sia sistematica e ben organizzata; in questo modo 
@@ -445,7 +499,38 @@
 					quella preventivata. Una budget variance positiva indica che si è speso meno di quanto inizialmente previsto,
 					viceversa altrimenti.		
 				\end{itemize}
+				
+				
 			\subsection{Metriche per i documenti}
+				Come metrica di riferimento per i documenti prodotti si è scelto di utilizzare un \emph{indice di leggibilità}.
+				Tra i molti disponibili si è scelto di utilizzare l'indice Gulpease, in quanto:
+				\begin{itemize}
+					\item È l'unico tarato appositamente per la lingua italiana.
+					\item Utilizza la lunghezza delle parole in lettere anziché in sillabe, quindi è più semplice da automatizzare
+					\item Considera la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere
+					\item Permette di misurare la complessità dello stile di un documento
+				\end{itemize}
+				La formula per il suo calcolo è la seguente:
+				\begin{align*}
+					89+\frac{300\cdot(numero\ delle\ frasi)-10\cdot(numero\ delle\ lettere)}{numero\ delle\ parole}
+				\end{align*}
+				
+				I risultati sono compresi tra 0 e 100, dove il valore "100" indica la leggibilità più alta e "0" la leggibilità
+				più bassa. In generale risulta che testi con un indice
+				\begin{itemize}
+					\item inferiore a 80 sono difficili da leggere per chi ha la licenza elementare
+					\item inferiore a 60 sono difficili da leggere per chi ha la licenza media
+					\item inferiore a 40 sono difficili da leggere per chi ha un diploma superiore
+				\end{itemize}
+	
+				Il gruppo si atterrà ai seguenti parametri:
+				\begin{itemize}
+					\item Range di accettazione: [35|100]
+					\item Range di ottimale: [45|100]
+				\end{itemize}
+				
+				
+			
 			\subsection{Metriche per il software}
 			
 			
@@ -476,13 +561,7 @@
 					rendere effettiva tale automatizzazione. Inoltre durante le esecuzioni dei walkthrough, i verificatori sono
 					tenuti ad annotare gli errori più frequenti o potenzialmente dannosi rilevati. Tali errori andranno poi ad
 					aggiornare la lista di controllo che verrà utilizzata per le successive inspection.
-				\end{itemize}						
-			
-			
-			
-			
-			
-			
+				\end{itemize}								
 			
 	\mychapter{3}{Gestione amministrativa della revisione}
 		\section{Comunicazione e risoluzione di anomalie}
