@@ -14,6 +14,8 @@
 \usepackage{pifont}
 \usepackage[table]{xcolor}
 \usepackage{float}
+\usepackage{geometry}
+\geometry{margin=1in}
 
 \graphicspath{{Immagini/}}
 
@@ -74,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.1.1
+			Versione 1.1.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -91,6 +93,8 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
+				1.1.2 & 2016-01-20 & \emph{Amministratore} \newline Nicoletti Luca & Modifica margini, inserita norma sui margini\\
+				\noalign{\hrule height 0.5pt}
 				1.1.1 & 2016-01-11 & \emph{Amministratori} Maino Elia, Nicoletti Luca & Stesura norme commit e politiche di 
 				ticketing, correzione errori  \\
 				\noalign{\hrule height 0.5pt}
@@ -126,7 +130,7 @@
 		allo svolgimento dei processi, 
 		migliorandone l'efficacia, riducendo il numero di errori e i tempi di sviluppo.
 		
-		Poichè il gruppo ha deciso di basarsi sulla struttura a processi \emph{ISO/IEC 12207}\ped{\textit{G}} 
+		Poichè il gruppo ha deciso di basarsi sulla struttura a processi \emph{ISO/IEC 12207} 
 		la struttura di questo documento ne rispecchia 
 		l'organizzazione. In particolare la suddivisione in processi primari, di supporto e organizzativi.
 		%immagine
@@ -137,7 +141,7 @@
 		\end{figure}
 	\section{Scopo del prodotto}
 		Lo scopo del progetto è la realizzazione di un DataBase NoSQL key-value basato sul modello ad 
-		Attori\ped{\textit{G}} con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
+		Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
 		applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
 		di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
 	\section{Glossario}
@@ -148,12 +152,12 @@
 	\section{Riferimenti}
 		\subsection{Informativi}
 			\begin{itemize}
-				\item Specifiche UTF-8\ped{\textit{G}}: \\ \url{http://unicode.org/faq/utf_bom.html}
+				\item Specifiche UTF-8: \\ \url{http://unicode.org/faq/utf_bom.html}
 				\item Licenza MIT: \\ \url{https://opensource.org/licenses/MIT}
 				\item Scala Programming Language: \\ \url{http://www.scala-lang.org/}
-				\item ISO/IEC 12207\ped{\textit{G}}: \\ \url{http://www.iso.org/iso/catalogue_detail?
+				\item ISO/IEC 12207: \\ \url{http://www.iso.org/iso/catalogue_detail?
 				csnumber=43447}
-				\item ISO 8601:2004\ped{\textit{G}}: \\ \url{http://www.iso.org/iso/home/standards/iso8601.htm}
+				\item ISO 8601:2004: \\ \url{http://www.iso.org/iso/home/standards/iso8601.htm}
 				\item \LaTeX: \\ \url{https://www.latex-project.org}
 				\item UML: \\ \url{http://www.uml.org}
 				\item StarUML: \\ \url{http://staruml.io}
@@ -198,7 +202,7 @@
 	\end{itemize}				 
 	\subsection{Tecniche di analisi e classificazione requisiti}
 	Sempre compito degli analisti, sarà quello di stilare l'analisi dei requisiti. Essi potranno ricavarli 
-	da eventuali \emph{Casi d'uso} emersi da Brainstorming\ped{\textit{G}} o riunioni con il committente.
+	da eventuali \emph{Casi d'uso} emersi da Brainstorming o riunioni con il committente.
 	
 	I requisiti saranno elencati secondo un ordine. Ogni requisito seguirà la seguente codifica: \\
 	\begin{center}
@@ -438,11 +442,14 @@
 		Il Diario delle modifiche non è incluso nella numerazione delle sezioni, si trova dopo l'indice e prima di qualsiasi
 		 capitolo numerato
 	\subsubsection{Formattazione generale delle pagine}
-	La formattazione generale di una pagina non prevede particolari personalizzazioni, si basa 
-	sulla formattazione standard di \LaTeX \space usata per documenti di classe "Report". 
+		La formattazione generale di una pagina prevede la diminuzione dei margini destri e sinistri, ma non prevede
+		altre modifiche importanti e si basa, per tutte le altre regole, sulla formattazione standard di \LaTeX \space 
+		usata per i documenti di classe "Report".\\
+		Per effettuare la modifica viene usato i seguenti comandi: \\ \\
+		\verb|\usepackage{geometry}| \\ \verb|\geometry{margin=1in}|. \\
 	\subsection{Norme tipografiche}
-	Questa sezione contiene norme tipografiche e ortografiche adottate dal gruppo al fine di garantire uno stile
-	uniforme e una semantica coerente per tutti i documenti.  
+		Questa sezione contiene norme tipografiche e ortografiche adottate dal gruppo al fine di garantire uno stile
+		uniforme e una semantica coerente per tutti i documenti.  
 	\subsubsection{Stile del testo}
 		Il font utilizzato in tutti i documenti formali scritti dal gruppo sarà il \emph{Computer Modern}, ovvero
 		quello standard utilizzato da \LaTeX.
@@ -471,7 +478,7 @@
 			\item Indirizzi web completi: comando \LaTeX \space \verb|\url|;
 			\item Indirizzi relativi: comando \LaTeX  \space \verb|\verb|.
 		\end{itemize}
-		\item \textbf{Date:} le date presenti nei documenti seguono lo standard ISO 8601:2004\ped{\textit{G}}:
+		\item \textbf{Date:} le date presenti nei documenti seguono lo standard ISO 8601:2004:
 		\begin{center}
 			AAAA - MM - GG
 		\end{center}
@@ -815,7 +822,7 @@
 		sono tenuti a richiedere una riunioni ufficiale straordinaria, che dovrà essere approvata dall'\emph{Amministratore}. In caso 
 		contrario, tutte le scelte non rilevanti non necessitano di approvazione. 
 		\subsubsection{Brainstorming}
-		I \emph{Brainstorming}\ped{\emph{G}} vengono tenuti sotto richiesta di qualsiasi membro del gruppo, e approvati, se per motivazioni
+		I \emph{Brainstorming} vengono tenuti sotto richiesta di qualsiasi membro del gruppo, e approvati, se per motivazioni
 		valide, dal \emph{Responsabile di progetto}. Un \emph{Brainstorming}ha durata minima di un'ora e massima di due; durante il quale
 		ogni membro ricopre un ruolo di egual importanza rispetto agli altri, le decisioni vengono prese all'unisono o con la maggioranza 
 		dei membri a favore, non è compito del \emph{Responsabile di progetto} approvare le soluzioni emerse da un \emph{Brainstorming}.

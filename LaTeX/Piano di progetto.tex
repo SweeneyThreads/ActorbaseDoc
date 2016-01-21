@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage{booktabs}
+\usepackage{eurosym}
 \usepackage{tabularx}
 \usepackage{pifont}
 \usepackage[table]{xcolor}
@@ -23,11 +24,13 @@
 
 \graphicspath{{Immagini/}}
 
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
 \newcolumntype{s}{>{\hsize=.21\hsize}X}
 \newcolumntype{f}{>{\hsize=.37\hsize}X}
 \newcolumntype{m}{>{\hsize=.42\hsize}X}
 \newcolumntype{t}{>{\hsize=.1\hsize}X}
 \newcolumntype{r}{>{\hsize=.3\hsize}X}
+\newcolumntype{k}{>{\hsize=.4\hsize}X}
 
 \newcommand{\mychapter}[2]{
 	\setcounter{chapter}{#1}
@@ -82,7 +85,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.5
+			Versione 1.2.0
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -98,28 +101,46 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
-				1.0.5 & 2016-01-20 & \emph{Amministratore} Nicoletti Luca &  Inseriti tabelle costi e riviste suddivisioni. Inseriti grafici dei costi\\
+				1.2.0 & 2016-01-20 & \emph{Responsabile} \newline Padovan Tommaso &  Approvazione documento \\
 				\noalign{\hrule height 0.5pt}
-				1.0.4 & 2016-01-19 & \emph{Amministratore} Nicoletti Luca &  Inserite tabelle e programmata l'intera durata del progetto\\
+				1.1.2 & 2016-01-19 & \emph{Amministratore} \newline Nicoletti Luca &  Inseriti i riferimenti \\
 				\noalign{\hrule height 0.5pt}
-				1.0.3 & 2016-01-16 & \emph{Amministratore} Nicoletti Luca & Inserita introduzione alla Rendicontazione e inserita 
-				la descrizione di tutta la macro-fase di Analisi \\
+				1.1.1 & 2016-01-18 & \emph{Amministratori} \newline Nicoletti Luca , \newline Padovan Tommaso &  Apportate le 
+				modifiche rilevate necessarie dai Verificatori \\
 				\noalign{\hrule height 0.5pt}
-				1.0.2 & 2016-01-15 & \emph{Amministratore} Nicoletti Luca & Inserita introduzione alla Pianificazione e correzzioni da verifica \\
+				1.1.0 & 2016-01-18 & \emph{Verificatori} \newline Biggeri Mattia , \newline Tommasin Davide &  Verificato il 
+				documento, assegnato ai responsabili una lista di sistemazioni da apportare\\
 				\noalign{\hrule height 0.5pt}
-				1.0.1 & 2016-01-14 & \emph{Amministratore} Nicoletti Luca & Stesura analisi dei rischi e introduzione del documento \\
+				1.0.6 & 2016-01-18 & \emph{Amministratore} \newline Nicoletti Luca , \newline Padovan Tommaso &  Inserite 
+				le caption ad ogni tabella, inseriti i Gantt per ogni fase, \\
 				\noalign{\hrule height 0.5pt}
-				1.0.0 & 2016-01-13 & \emph{Amministratore} Nicoletti Luca & Scrittura scheletro logico del documento \\
+				1.0.5 & 2016-01-17 & \emph{Amministratore} \newline Nicoletti Luca &  Inseriti tabelle costi 
+				e riviste suddivisioni. Inseriti grafici dei costi\\
+				\noalign{\hrule height 0.5pt}
+				1.0.4 & 2016-01-17 & \emph{Amministratore} \newline Nicoletti Luca &  Inserite tabelle e programmata 
+				l'intera durata del progetto\\
+				\noalign{\hrule height 0.5pt}
+				1.0.3 & 2016-01-16 & \emph{Amministratori} \newline Nicoletti Luca, \newline Padovan Tommaso & Inserita 
+				introduzione alla Rendicontazione e inserita la descrizione di tutta la macro-fase di Analisi \\
+				\noalign{\hrule height 0.5pt}
+				1.0.2 & 2016-01-15 & \emph{Amministratore} \newline Nicoletti Luca & Inserita introduzione alla 
+				Pianificazione e correzioni da verifica \\
+				\noalign{\hrule height 0.5pt}
+				1.0.1 & 2016-01-14 & \emph{Amministratore} \newline Nicoletti Luca & Stesura analisi dei rischi e 
+				introduzione del documento \\
+				\noalign{\hrule height 0.5pt}
+				1.0.0 & 2016-01-13 & \emph{Amministratore} \newline Nicoletti Luca & Scrittura scheletro logico del documento \\
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
-			\caption{Diario delle modifiche \label{tab:table_label}}
+			\caption{Diario delle modifiche } 
+			\label{DModifiche}
 		\end{table}
 	
 	\begin{appendices}
 	\mychapter{1}{Organigramma}
 		\section{Redazione}
 		\begin{table}[H]
-			\begin{tabularx}{\textwidth}{X X X}
+			\begin{tabularx}{\textwidth}{Y Y Y}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85}Nominativo & Data di redazione & Firma\\
 				\noalign{\hrule height 1.5pt}
@@ -128,11 +149,12 @@
 				Padovan Tommaso & 2016-01-13 &\\
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
-			\caption{Redazione documento \label{tab:table_label}}
+			\caption{Redazione documento } 
+			\label{RedDocumento}
 		\end{table}
 		\section{Approvazione}
 		\begin{table}[H]
-			\begin{tabularx}{\textwidth}{X X X}
+			\begin{tabularx}{\textwidth}{Y Y Y}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85}Nominativo & Data di redazione & Firma\\
 				\noalign{\hrule height 1.5pt}
@@ -143,11 +165,12 @@
 				Prof. Vardanega Tullio & & \\
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
-			\caption{Approvazione documento \label{tab:table_label}}
+			\caption{Approvazione documento } 
+			\label{AppDocumento}
 		\end{table}
 		\section{Componenti}
 		\begin{table}[H]
-			\begin{tabular}{p{3cm} p{1.6cm} p{5.7cm} p{1cm}}
+			\begin{tabularx}{\textwidth}{r r k}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85}Nominativo & Matricola & E-mail \\
 				\noalign{\hrule height 1.5pt}
@@ -165,12 +188,13 @@
 				\noalign{\hrule height 0.5pt}
 				Davide Tommasin & 1073541 & davide.tommasin.1@studenti.unipd.it \\
 				\noalign{\hrule height 1.5pt}
-			\end{tabular}
-			\caption{Componenti SWEeneyThreads \label{tab:table_label}}
+			\end{tabularx}
+			\caption{Componenti SWEeneyThreads } 
+			\label{ComponentiGruppo}
 		\end{table}
 		\section{Accetazione componenti}
 		\begin{table}[H]
-			\begin{tabularx}{\textwidth}{X X X}
+			\begin{tabularx}{\textwidth}{Y Y Y}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85}Nominativo & Data di accettazione & Firma\\
 				\noalign{\hrule height 1.5pt}
@@ -189,7 +213,8 @@
 				Davide Tommasin & 2015-18-12 & \\
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
-			\caption{Accettazione componenti \label{tab:table_label}}
+			\caption{Accettazione componenti } 
+			\label{AccComponenti}
 		\end{table}
 		\section{Definizione dei ruoli}
 			Nel corso dello sviluppo del progetto i membri del gruppo dovranno ricoprire diversi ruoli, rappresentanti 
@@ -246,7 +271,18 @@
 		\section{Riferimenti}
 			\subsection{Informativi}
 				\begin{itemize}
-					\item 
+					\item \textbf{Software Engineering - Ian Sommerville - 9\ap{th} Edition(2010):}
+					\begin{itemize}
+						\item Part 4: Software Management.
+					\end{itemize}
+					\item \textbf{Slide dell'insegnamento di Ingegneria del Software mod. A:}
+					\begin{itemize}
+						\item Il ciclo di vita del software;
+						\item Gestione di progetto.
+					\end{itemize}
+					\url{http://www.math.unipd.it/~tullio/IS-1/2015/}
+					\item \textbf{Metriche di progetto:} \\
+					\url{https://it.wikipedia.org/wiki/Metriche_di_progetto}
 				\end{itemize}
 			\subsection{Normativi}
 				\begin{itemize}
@@ -256,7 +292,7 @@
 				\end{itemize}
 		\section{Ciclo di vita}
 			Il gruppo ha deciso, uninamente di adottare il \textbf{modello incrementale} come modello di ciclo di vita.
-			Tale scelta è stata presa per i vari vantaggi che comporta questo modello di Ciclo di vita\ped{\emph{G}}:
+			Tale scelta è stata presa per i vari vantaggi che comporta questo modello di Ciclo di vita:
 			\begin{itemize}
 				\item rende più facile la gestione e il controllo del progetto e quindi la stima del preventivo;
 				\item aiuta a definire in moto specifico un'unità permettendo di effettuare test di maggiore dettaglio, ma 
@@ -305,7 +341,7 @@
 		\end{itemize}
 		Il gruppo ha poi scomposto queste macro-fasi in più attività, ed assegnato a ciascuna di esse delle risorse.
 		Le attività elencate sono poi state suddivise in \emph{Task} in modo da risultare più dettagliati e atomici.
-		Di questi \emph{Task} verrà riportato il \emph{Gantt}\ped{\textit{G}}. Ogni \emph{Task} ha una sua criticità, 
+		Di questi \emph{Task} verrà riportato il \emph{Gantt}. Ogni \emph{Task} ha una sua criticità, 
 		e nel \emph{Gantt} questa proprietà viene tradotta assegnandovi un colore diverso. I valori possibili sono:
 		\begin{itemize}
 			\item \textbf{Non critico:} \emph{Task} che possono essere svolti in parallelo ad altri con criticità maggiore,
@@ -313,17 +349,17 @@
 			\emph{Gantt} con il colore blu;
 			\item \textbf{Critico:} \emph{Task} con forte impatto temporale sull'andamento del progetto. Un ritardo di questi
 			\emph{Task} risulterebbe sicuramente dannoso e causerebbe un ritardo nel completamento di una 
-			\emph{Milestone}\ped{\textit{G}}. Nel \emph{Gantt} sono indicati con il colore rosso.
+			\emph{Milestone}. Nel \emph{Gantt} sono indicati con il colore rosso.
 		\end{itemize}
 		Ogni \emph{Milestone} nei diagrammi di \emph{Gantt} viene rappresentata come un'attività di durata di 0 (zero) giorni 
 		e coincide con la consegna dei documenti in vista della successiva revisione o l'approvazione di quanto fatto a monte 
 		della \emph{Milestone} stessa. Nel \emph{Gantt} sono indicate con un rombo nero.
 		Ogni attività, composta di più \emph{Task} viene indicata nel \emph{Gantt} con una barra nera.
 		
-		Per la visualizzazione gerarchica delle attività e dei \emph{Task} viene invece utilizzato un diagramma \emph{WBS}\ped{\textit{G}}.
+		Per la visualizzazione gerarchica delle attività e dei \emph{Task} viene invece utilizzato un diagramma \emph{WBS}.
 		\section{Analisi}
 			\textbf{Periodo:} da 2016-01-07 a 2016-01-22 \\
-			Questa macro-fase inizia dopo la \emph{Flipped-classroom}\ped{\textit{G}} sulla documentazione e termina nella data
+			Questa macro-fase inizia dopo la \emph{Flipped-classroom} sulla documentazione e termina nella data
 			di scadenza della consegna dei documenti necessari per la revisione.\\ Le attività al suo interno sono:
 			\begin{itemize}
 				\item \textbf{Norme di progetto:} La prima attività svolta. Scritta dall'\emph{Amministratore}, serve a normare
@@ -349,13 +385,26 @@
 			\end{itemize}
 			In questa macro-fase i ruoli principalmente coinvolti sono: \emph{Responsabile}, \emph{Amministratore} e \emph{Analista}.
 			\subsection{Gantt attività}
+				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.4]{gantt-analisi}
-					\caption{Gantt attività - fase di analisi.}
+					\includegraphics[scale=0.4]{GanttAnalisi}
+					\caption{Gantt attività - fase di Analisi.}
 				\end{figure}
 			\subsection{WBS attività}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.5]{WBSAnalisi}
+					\caption{Work Breakdown Structure - fase di Analisi.}
+				\end{figure}
 			\subsection{Ripartizione ore}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.6]{ROAnalisi}
+					\caption{Ripartizione ore - fase di Analisi.}
+				\end{figure}
 
 		\section{Analisi di dettaglio}
 			\textbf{Periodo:} da 2016-01-23 a 2016-03-01 \\
@@ -368,13 +417,26 @@
 			In questa macro-fase i ruoli maggiormente coinvolti sono: \emph{Responsabile}, \emph{Amministratore} 
 			e \emph{Analista}.
 			\subsection{Gantt attività}
+				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.5]{gantt-analisidettaglio}
-					\caption{Gantt attività - fase di analisi.}
+					\includegraphics[scale=0.5]{GanttDettaglio}
+					\caption{Gantt attività - fase di Analisi di dettaglio.}
 				\end{figure}
 			\subsection{WBS attività}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.5]{WBSDettaglio}
+					\caption{Work Breakdown Structure - fase di Analisi.}
+				\end{figure}
 			\subsection{Ripartizione ore}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.6]{RODettaglio}
+					\caption{Ripartizione ore - fase di Analisi di dettaglio.}
+				\end{figure}
 		\section{Progettazione architetturale}
 			\textbf{Periodo:} da 2016-02-01 a 2016-03-20 \\
 			Questa macro-fase inizia al termine dell'\emph{Analisi di dettaglio} e termina con la conclusione 
@@ -393,8 +455,27 @@
 			\emph{Progettista}, \emph{Verificatore} e  \emph{Analista}.
 
 			\subsection{Gantt attività}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.4]{GanttProgettazione}
+					\caption{Gantt attività - fase di Progettazione architetturale.}
+				\end{figure}
 			\subsection{WBS attività}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.3]{WBSProgettazione}
+					\caption{Work Breakdown Structure - fase di Analisi.}
+				\end{figure}
 			\subsection{Ripartizione ore}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.6]{ROProgettazione}
+					\caption{Ripartizione ore - fase di Progettazione architetturale.}
+				\end{figure}
+				
 		\section{Progettazione di dettaglio e codifica}
 			\textbf{Periodo:} da 2016-03-21 a 2016-05-23 \\
 			Questa macro-fase ha inizio immediatamente dopo la fine della progettazione di alto livello, attraversa la seconda 
@@ -415,8 +496,26 @@
 			\emph{Progettista} e \emph{Verificatore}.
 
 			\subsection{Gantt attività}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.4]{GanttCodifica}
+					\caption{Gantt attività - fase di Progettazione di dettaglio e codifica.}
+				\end{figure}
 			\subsection{WBS attività}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.3]{WBSCodifica}
+					\caption{Work Breakdown Structure - fase di Progettazione di dettaglio e codifica.}
+				\end{figure}
 			\subsection{Ripartizione ore}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.6]{ROCodifica}
+					\caption{Ripartizione ore - fase di Progettazione di dettaglio e codifica.}
+				\end{figure}
 		\section{Verifica e validazione}
 			\textbf{Periodo:} da 2016-05-24 a 2016-06-19 \\
 			Ultima macro-fase del progetto, in questa fase, successiva alla \emph{Revisione di qualifica} il gruppo 
@@ -429,30 +528,51 @@
 				\emph{Revisione di qualifica} e preparati per la \emph{Revisione di accettazione}.
 			\end{itemize}
 			\subsection{Gantt attività}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.4]{GanttValidazione}
+					\caption{Gantt attività - fase di Verifica e validazione.}
+				\end{figure}
 			\subsection{WBS attività}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.5]{WBSValidazione}
+					\caption{Work Breakdown Structure - fase di Verifica e validazione.}
+				\end{figure}
 			\subsection{Ripartizione ore}
+				%Image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.6]{ROValidazione}
+					\caption{Ripartizione ore - fase di Verifica e validazione.}
+				\end{figure}
+
 	\mychapter{3}{Suddivisione del lavoro}
 		Ogni membro del gruppo, dovrà, durante tutta la durata del progetto, ricoprire almeno una volta ciascuno dei
-		ruoli descritti nell'appendice, sezione A.5. Durante ogni fase\ped{\emph{G}} ogni membro può ricoprire
+		ruoli descritti nell'appendice, sezione A.5. Durante ogni fase ogni membro può ricoprire
 		più ruoli contemporaneamente, a patto che non si verifichino dei conflitti di interesse tra i ruoli ricoperti. 
 		Un membro del gruppo non può verificare il suo stesso lavoro.
 		\section{Dettaglio delle fasi}
 			\subsection{Analisi}
 				Nella fase di \emph{Analisi} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
+					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
 						\noalign{\hrule height 1.5pt}
-						Biggeri Mattia & & & & 7 & 13 & & 20\\
-						Bonato Paolo & & & 18 & & & & 18\\ 
-						Bortolazzo Matteo & & & 19 & & & & 19\\ 
-						Maino Elia & & 8 & 12 & & & & 20\\
-						Nicoletti Luca & & 8 & & 12 & & & 20\\
-						Padovan Tommaso & 7 & & & 12 & & & 19\\
-						Tommasin Davide & & & 8 & & 12 & & 20\\
+						\multicolumn{1}{r|}{Biggeri Mattia} & & & & 7 & 13 & & 20\\
+						\multicolumn{1}{r|}{Bonato Paolo} & & & 18 & & & & 18\\ 
+						\multicolumn{1}{r|}{Bortolazzo Matteo} & & & 19 & & & & 19\\ 
+						\multicolumn{1}{r|}{Maino Elia} & & 8 & 12 & & & & 20\\
+						\multicolumn{1}{r|}{Nicoletti Luca} & & 8 & & 12 & & & 20\\
+						\multicolumn{1}{r|}{Padovan Tommaso} & 7 & & & 12 & & & 19\\
+						\multicolumn{1}{r|}{Tommasin Davide} & & & 8 & & 12 & & 20\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
+				\caption{Ripartizione ore - fase di Analisi. } 
+				\label{TRAnalisi}
 				\end{table}
 				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
 				abbia dedicato ad un determinato ruolo.
@@ -465,19 +585,21 @@
 			\subsection{Analisi di dettaglio}
 				Nella fase di \emph{Analisi di dettaglio} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
+					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
 						\noalign{\hrule height 1.5pt}
-						Biggeri Mattia & & & 5 & & & & 5\\
-						Bonato Paolo & 2 & & 3 & & & & 5\\ 
-						Bortolazzo Matteo & & & 1 & & 5 & & 6\\ 
-						Maino Elia & & & & 2 & 5 & & 7\\
-						Nicoletti Luca & 2 & & 4 & & 1 & & 7\\
-						Padovan Tommaso & 1 & & 5 & & & & 6\\
-						Tommasin Davide & & & 6 & & & & 6\\
+						\multicolumn{1}{r|}{Biggeri Mattia} & & & 5 & & & & 5\\
+						\multicolumn{1}{r|}{Bonato Paolo} & 2 & & 3 & & & & 5\\ 
+						\multicolumn{1}{r|}{Bortolazzo Matteo} & & & 1 & & 5 & & 6\\ 
+						\multicolumn{1}{r|}{Maino Elia} & & & & 2 & 5 & & 7\\
+						\multicolumn{1}{r|}{Nicoletti Luca} & 2 & & 4 & & 1 & & 7\\
+						\multicolumn{1}{r|}{Padovan Tommaso} & 1 & & 5 & & & & 6\\
+						\multicolumn{1}{r|}{Tommasin Davide} & & & 6 & & & & 6\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
+					\caption{Ripartizione ore - fase di Analisi di dettaglio. } 
+					\label{TRDettaglio}
 				\end{table}
 				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
 				abbia dedicato ad un determinato ruolo.
@@ -490,19 +612,21 @@
 			\subsection{Progettazione architetturale}
 				Nella fase di \emph{Progettazione architetturale} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
+					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
 						\noalign{\hrule height 1.5pt}
-						Biggeri Mattia & 4 & & 20 & & & & 24\\
-						Bonato Paolo & & & 2 & 17 & 15 & & 34\\ 
-						Bortolazzo Matteo & 1 & & 4 & 22 & & & 27\\ 
-						Maino Elia & 1 & & 5 & 22 & & & 28\\
-						Nicoletti Luca & 2 & & 15 & 15 & & & 32\\
-						Padovan Tommaso & & 5 & 7 & 15 & & & 27\\
-						Tommasin Davide & & 2 & 3 & 20 & & & 25\\
+						\multicolumn{1}{r|}{Biggeri Mattia} & 4 & & 20 & & & & 24\\
+						\multicolumn{1}{r|}{Bonato Paolo} & & & 2 & 17 & 15 & & 34\\ 
+						\multicolumn{1}{r|}{Bortolazzo Matteo} & 1 & & 4 & 22 & & & 27\\ 
+						\multicolumn{1}{r|}{Maino Elia} & 1 & & 5 & 22 & & & 28\\
+						\multicolumn{1}{r|}{Nicoletti Luca} & 2 & & 15 & 15 & & & 32\\
+						\multicolumn{1}{r|}{Padovan Tommaso} & & 5 & 7 & 15 & & & 27\\
+						\multicolumn{1}{r|}{Tommasin Davide} & & 2 & 3 & 20 & & & 25\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
+					\caption{Ripartizione ore - fase di Progettazione architetturale. } 
+					\label{TRProgettazione}
 				\end{table}
 				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
 				abbia dedicato ad un determinato ruolo.
@@ -515,19 +639,21 @@
 			\subsection{Progettazione di dettaglio e codifica}
 				Nella fase di \emph{Progettazione di dettaglio e codifica} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
+					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
 						\noalign{\hrule height 1.5pt}
-						Biggeri Mattia & & 5 & & 17 & & 33 & 55\\
-						Bonato Paolo & 3 & & & 16 & 36 & & 55\\ 
-						Bortolazzo Matteo & 6 & 5 & & 15 & & 28 & 54\\ 
-						Maino Elia & 3 & & & 10 & 28 & 14 & 55\\
-						Nicoletti Luca & & & & 25 & & 30 & 55\\
-						Padovan Tommaso & & & 2 & & 25 & 28 & 55\\
-						Tommasin Davide & & & 2 & 18 & 33 & & 53\\
+						\multicolumn{1}{r|}{Biggeri Mattia} & & 5 & & 17 & & 33 & 55\\
+						\multicolumn{1}{r|}{Bonato Paolo} & 3 & & & 16 & 36 & & 55\\ 
+						\multicolumn{1}{r|}{Bortolazzo Matteo} & 6 & 5 & & 15 & & 28 & 54\\ 
+						\multicolumn{1}{r|}{Maino Elia} & 3 & & & 10 & 28 & 14 & 55\\
+						\multicolumn{1}{r|}{Nicoletti Luca} & & & & 25 & & 30 & 55\\
+						\multicolumn{1}{r|}{Padovan Tommaso} & & & 2 & & 25 & 28 & 55\\
+						\multicolumn{1}{r|}{Tommasin Davide} & & & 2 & 18 & 33 & & 53\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
+					\caption{Ripartizione ore - fase di Progettazione di dettaglio e codifica. } 
+					\label{TRCodifica}
 				\end{table}
 				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
 				abbia dedicato ad un determinato ruolo.
@@ -540,19 +666,21 @@
 			\subsection{Verifica e validazione}
 				Nella fase di \emph{Verifica e validazione} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
+					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
 						\noalign{\hrule height 1.5pt}
-						Biggeri Mattia & & 2 & & & 10 & 8 & 20\\
-						Bonato Paolo & 1 & 9 & & & 4 & 7 & 21\\ 
-						Bortolazzo Matteo & & 2 & & 10 & 9 & & 21\\ 
-						Maino Elia & & 2 & & 11 & 8 & & 21\\
-						Nicoletti Luca & & & & 10 & 11 & & 21\\
-						Padovan Tommaso & & 2 & & & 16 & 2 & 20\\
-						Tommasin Davide & 4 & 4 & & & 4 & 8 & 20\\
+						\multicolumn{1}{r|}{Biggeri Mattia} & & 2 & & & 10 & 8 & 20\\
+						\multicolumn{1}{r|}{Bonato Paolo} & 1 & 9 & & & 4 & 7 & 21\\ 
+						\multicolumn{1}{r|}{Bortolazzo Matteo} & & 2 & & 10 & 9 & & 21\\ 
+						\multicolumn{1}{r|}{Maino Elia} & & 2 & & 11 & 8 & & 21\\
+						\multicolumn{1}{r|}{Nicoletti Luca} & & & & 10 & 11 & & 21\\
+						\multicolumn{1}{r|}{Padovan Tommaso} & & 2 & & & 16 & 2 & 20\\
+						\multicolumn{1}{r|}{Tommasin Davide} & 4 & 4 & & & 4 & 8 & 20\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
+					\caption{Ripartizione ore - fase di Verifica e validazione. } 
+					\label{TRVeV}
 				\end{table}
 				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
 				abbia dedicato ad un determinato ruolo.
@@ -567,19 +695,21 @@
 				Contando anche le ore di investimento, le ore che ciascun membro dedicherà 
 				allo svolgimento del progetto saranno le seguenti:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
+					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
 						\noalign{\hrule height 1.5pt}
-						Biggeri Mattia & 4 & 7 & 5 & 44 & 23 & 41 & 124\\
-						Bonato Paolo & 4 & 11 & 23 & 33 & 55 & 7 & 133\\ 
-						Bortolazzo Matteo & 7 & 7 & 24 & 47 & 14 & 28 & 127\\ 
-						Maino Elia & 4 & 10 & 14 & 26 & 63 & 14 & 131\\
-						Nicoletti Luca & 4 & 8 & 4 & 62 & 27 & 30 & 135\\
-						Padovan Tommaso & 8 & 7 & 14 & 27 & 41 & 30 & 127\\
-						Tommasin Davide & 4 & 6 & 11 & 38 & 49 & 8 & 116\\
+						\multicolumn{1}{r|}{Biggeri Mattia} & 4 & 7 & 5 & 44 & 23 & 41 & 124\\
+						\multicolumn{1}{r|}{Bonato Paolo} & 4 & 11 & 23 & 33 & 55 & 7 & 133\\ 
+						\multicolumn{1}{r|}{Bortolazzo Matteo} & 7 & 7 & 24 & 47 & 14 & 28 & 127\\ 
+						\multicolumn{1}{r|}{Maino Elia} & 4 & 10 & 14 & 26 & 63 & 14 & 131\\
+						\multicolumn{1}{r|}{Nicoletti Luca} & 4 & 8 & 4 & 62 & 27 & 30 & 135\\
+						\multicolumn{1}{r|}{Padovan Tommaso} & 8 & 7 & 14 & 27 & 41 & 30 & 127\\
+						\multicolumn{1}{r|}{Tommasin Davide} & 4 & 6 & 11 & 38 & 49 & 8 & 116\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
+					\caption{Ripartizione ore - totale con investimento. } 
+					\label{TRTotale}
 				\end{table}
 				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
 				abbia dedicato ad un determinato ruolo.
@@ -594,19 +724,21 @@
 				carico del committente le fasi di \emph{Analisi dei requisiti} e l'
 				\emph{Analisi di dettaglio}.
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{ r t t t t t t t } 
+					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
 						\noalign{\hrule height 1.5pt}
-						Biggeri Mattia & 4 & 7 & & 37 & 10 & 41 & 99\\
-						Bonato Paolo & 4 & 9 & 2 & 33 & 55 & 7 & 110\\ 
-						Bortolazzo Matteo & 7 & 7 & 4 & 47 & 9 & 28 & 102\\ 
-						Maino Elia & 4 & 2 & & 26 & 58 & 14 & 104\\
-						Nicoletti Luca & 2 & & & 50 & 26 & 30 & 108\\
-						Padovan Tommaso & & 7 & 9 & 15 & 41 & 30 & 102\\
-						Tommasin Davide & 4 & 6 & 5 & 38 & 37 & 8 & 98\\
+						\multicolumn{1}{r|}{Biggeri Mattia} & 4 & 7 & & 37 & 10 & 41 & 99\\
+						\multicolumn{1}{r|}{Bonato Paolo} & 4 & 9 & 2 & 33 & 55 & 7 & 110\\ 
+						\multicolumn{1}{r|}{Bortolazzo Matteo} & 7 & 7 & 4 & 47 & 9 & 28 & 102\\ 
+						\multicolumn{1}{r|}{Maino Elia} & 4 & 2 & & 26 & 58 & 14 & 104\\
+						\multicolumn{1}{r|}{Nicoletti Luca} & 2 & & & 50 & 26 & 30 & 108\\
+						\multicolumn{1}{r|}{Padovan Tommaso} & & 7 & 9 & 15 & 41 & 30 & 102\\
+						\multicolumn{1}{r|}{Tommasin Davide} & 4 & 6 & 5 & 38 & 37 & 8 & 98\\
 						\noalign{\hrule height 1.5pt}						
 					\end{tabularx}
+					\caption{Ripartizione ore - totale rendicontate. } 
+					\label{TRRendicontate}
 				\end{table}
 				I valori sono rappresentati nel grafico, per semplificare la visualizzazione di quante ore ciascun membro 
 				abbia dedicato ad un determinato ruolo.
@@ -623,7 +755,7 @@
 		\section{Analisi}
 			Nelle fase di \emph{Analisi}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
-				\begin{tabularx}{\textwidth}{X X X}
+				\begin{tabularx}{\textwidth}{Y Y Y}
 					\noalign{\hrule height 1.5pt}
 					\rowcolor{orange!85}Ruolo & Ore & Costo \\
 					\noalign{\hrule height 1.5pt}
@@ -633,8 +765,12 @@
 					Progettista & 31 & 682\\
 					Verificatore & 25 & 375\\
 					Programmatore & 0 & 0 \\
+					\noalign{\hrule height 0.5pt}
+					\textbf{Totali} & 136 & 3012 \\
 					\noalign{\hrule height 1.5pt}
 				\end{tabularx}
+				\caption{Costo ore - fase di Analisi. } 
+				\label{TCAnalisi}
 			\end{table}
 			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
 			costo della fase di \emph{Analisi}.
@@ -653,7 +789,7 @@
 		\section{Analisi di dettaglio}
 			Nelle fase di \emph{Analisi di dettaglio}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
-				\begin{tabularx}{\textwidth}{X X X}
+				\begin{tabularx}{\textwidth}{Y Y Y}
 					\noalign{\hrule height 1.5pt}
 					\rowcolor{orange!85}Ruolo & Ore & Costo \\
 					\noalign{\hrule height 1.5pt}
@@ -663,8 +799,12 @@
 					Progettista & 0 & 0\\
 					Verificatore & 11 & 165\\
 					Programmatore & 0 & 0 \\
+					\noalign{\hrule height 0.5pt}
+					\textbf{Totali} & 42 & 945 \\
 					\noalign{\hrule height 1.5pt}
 				\end{tabularx}
+				\caption{Costo ore - fase di Analisi di dettaglio. } 
+				\label{TCDettaglio}
 			\end{table}
 			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
 			costo della fase di \emph{Analisi di dettaglio}.
@@ -683,7 +823,7 @@
 		\section{Progettazione architetturale}
 			Nelle fase di \emph{Progettazione architetturale}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
-				\begin{tabularx}{\textwidth}{X X X}
+				\begin{tabularx}{\textwidth}{Y Y Y}
 					\noalign{\hrule height 1.5pt}
 					\rowcolor{orange!85}Ruolo & Ore & Costo \\
 					\noalign{\hrule height 1.5pt}
@@ -693,8 +833,12 @@
 					Progettista & 114 & 2508\\
 					Verificatore & 52 & 780\\
 					Programmatore & 0 & 0 \\
+					\noalign{\hrule height 0.5pt}
+					\textbf{Totali} & 197 & 4068 \\
 					\noalign{\hrule height 1.5pt}
 				\end{tabularx}
+				\caption{Costo ore - fase di Progettazione architetturale. } 
+				\label{TCProgettazione}
 			\end{table}
 			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
 			costo della fase di \emph{Progettazione architetturale}.
@@ -713,7 +857,7 @@
 		\section{Progettazione di dettaglio e codifica}
 			Nelle fase di \emph{Progettazione di dettaglio e codifica}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
-				\begin{tabularx}{\textwidth}{X X X}
+				\begin{tabularx}{\textwidth}{Y Y Y}
 					\noalign{\hrule height 1.5pt}
 					\rowcolor{orange!85}Ruolo & Ore & Costo \\
 					\noalign{\hrule height 1.5pt}
@@ -723,8 +867,12 @@
 					Progettista & 101 & 2222\\
 					Verificatore & 122 & 1830\\
 					Programmatore & 133 & 1995 \\
+					\noalign{\hrule height 0.5pt}
+					\textbf{Totali} & 382 & 6707 \\
 					\noalign{\hrule height 1.5pt}
 				\end{tabularx}
+				\caption{Costo ore - fase di Progettazione di dettaglio e codifica. }
+				\label{TCCodifica}
 			\end{table}
 			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
 			costo della fase di \emph{Progettazione di dettaglio e codifica}.
@@ -743,7 +891,7 @@
 		\section{Verifica e validazione}
 			Nelle fase di \emph{Verifica e validazione}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
-				\begin{tabularx}{\textwidth}{X X X}
+				\begin{tabularx}{\textwidth}{Y Y Y}
 					\noalign{\hrule height 1.5pt}
 					\rowcolor{orange!85}Ruolo & Ore & Costo \\
 					\noalign{\hrule height 1.5pt}
@@ -753,8 +901,12 @@
 					Progettista & 31 & 682\\
 					Verificatore & 62 & 930\\
 					Programmatore & 25 & 375 \\
+					\noalign{\hrule height 0.5pt}
+					\textbf{Totali} & 144 & 2557 \\
 					\noalign{\hrule height 1.5pt}
 				\end{tabularx}
+				\caption{Costo ore - fase di Verifica e validazione. } 
+				\label{TCVeV}
 			\end{table}
 			I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
 			costo della fase di \emph{Verifica e validazione}.
@@ -774,7 +926,7 @@
 			\subsection{Investimento}
 				Le ore totali previste per la realizzazione del progetto sono riportate nella tabella seguente:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{X X X}
+					\begin{tabularx}{\textwidth}{Y Y Y}
 						\noalign{\hrule height 1.5pt}
 						\rowcolor{orange!85}Ruolo & Ore & Costo \\
 						\noalign{\hrule height 1.5pt}
@@ -784,8 +936,12 @@
 						Progettista & 277 & 6094\\
 						Verificatore & 272 & 4080\\
 						Programmatore & 158 & 2370 \\
+						\noalign{\hrule height 0.5pt}
+						\textbf{Totali} & 893 & 17089 \\
 						\noalign{\hrule height 1.5pt}
 					\end{tabularx}
+				\caption{Costo ore - totale con investimento. } 
+				\label{TCTotaleInvestimento}
 				\end{table}
 				I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
 				costo della realizzazione del progetto.
@@ -805,7 +961,7 @@
 				Le ore totali previste per la realizzazione del progetto e a carico del committente sono riportate 
 				nella seguente tabella:
 				\begin{table}[H]
-					\begin{tabularx}{\textwidth}{X X X}
+					\begin{tabularx}{\textwidth}{Y Y Y}
 						\noalign{\hrule height 1.5pt}
 						\rowcolor{orange!85}Ruolo & Ore & Costo \\
 						\noalign{\hrule height 1.5pt}
@@ -815,8 +971,12 @@
 						Progettista & 246 & 5412\\
 						Verificatore & 236 & 3540\\
 						Programmatore & 158 & 2370 \\
+						\noalign{\hrule height 0.5pt}
+						\textbf{Totali} & 723 & 13332 \\
 						\noalign{\hrule height 1.5pt}
 					\end{tabularx}
+				\caption{Costo ore - totale rendicontate.}
+				\label{TCRendicontati}
 				\end{table}
 				I seguenti grafici mostrano come ogni ruolo e il rispettivo costo abbiano influito sul calcolo del totale 
 				costo a carico del committente
@@ -830,9 +990,16 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.7]{PCCostiRendicontati}
-					\caption{Costi per ruolo, intero progetto.}
+					\caption{Costi per ruolo, rendicontati.}
 				\end{figure}
 			\subsection{Conclusione}
+				Il costo totale per lo sviluppo del progetto, indicato nella \hyperref[TCRendicontati]{Tabella 4.19} viene 
+				arrotondato a 13.500\euro. L'arrotondamento per eccesso è una precauzione in quanto le stime di ore di lavoro 
+				necessarie per ogni task e attività potrebbero rilevarsi insufficienti. In questo modo, anche sforando di qualche 
+				ora il gruppo è assicurato, e riuscirà più facilmente a rimanere all'interno dei costi preventivati.
+				
+				Inoltre, se uno dei rischi successivamente analizzati dovesse presentarsi, il gruppo avrà comunque a disposizione 
+				un monte ore non nullo per rimediare ai danni causati dal verificarsi del rischio.
 	\mychapter{5}{Analisi dei rischi}
 		Al fine di migliorare l'avanzamento del progetto, è stata effettuata un'accurata analisi dei rischi suddivisa in:
 		\begin{itemize}
@@ -983,13 +1150,15 @@
 			\subsubsection{Contromisure:}
 				Il preventivo è maggiorato, e anche le ore. I prezzi orari per ogni ruolo non è di pertinenza dei membri 
 				del gruppo.
+
 	\mychapter{6}{Meccanismi di controllo e rendicontazione}
 		\section{Controllo}
 			\subsection{Meccanismi di controllo}
 				All'interno dell'ambiente di lavoro sono stati predisposti meccanismi per:
 				\begin{itemize}
 					\item Controllare l'andamento delle attività ed eventuali ritardi;
-					\item \dots
+					\item Permettere un aggiornamento facilitato della pianificazione;
+					\item Rendicontare le ore di lavoro spese nelle varie attività.
 				\end{itemize}
 			\subsection{Andamento delle attività}
 				Per monitorare i ritardi sulle attività e acquisire maggiore esperienza per stime future si adotta la 
@@ -1003,7 +1172,7 @@
 					\includegraphics[scale=0.4]{teamworkTimer}
 					\caption{Timer da attivare durante il lavoro svolto.}
 				\end{figure}
-				Inoltre per ogni attività è predisposta anche una due to date, ovvero la data entro la quale la task deve 
+				Inoltre per ogni attività è predisposta anche una \emph{due to date}, ovvero la data entro la quale la task deve 
 				essere soddisfatta. Teamwork segnala ogni attività nel riepilogo non completata entro la data di fine con 
 				una scritta rossa che riporta il ritardo. È facile per il responsabile individuare a colpo d'occhio le 
 				task in ritardo e provvedere a comunicare con il/i compenti del gruppo a cui essa è assegnata per capire 
@@ -1015,27 +1184,23 @@
 					\caption{Visualizzazione data di scadenza di un task.}
 				\end{figure}
 				Se necessario è possibile impostare notifiche automatiche in prossimità o al superare di una scadenza.
-		\section{Rendicontazione}
-			Il sistema di ticketing adottato, mette a disposizione la rendicontazione delle ore di lavoro svolto da 
-			ciascun componente del gruppo. Inoltre offre la possibilità di esportare tale rendicontazione in formato 
-			compatibile con projectLibre. Per automatizzare questo processo è stato reso disponibile, per uso interno, 
-			a tutti i componenti del gruppo un servizio online (accessibile al link:
-			\url{http://sweeneytreadaas.altervista.org/roleparser/parser.php} ) che permette di effettuare delle modifiche al 
-			file esportato da Teamwork al fine di:
-			\begin{itemize}
-				\item  Riassegnare ogni attività non più alla singola persona (che ha ruolo, e quindi stipendio variabile) 
-				ma al ruolo che quella stessa persona ricopriva in quel periodo;
-				\item Assegnare, automaticamente, ad ogni ruolo lo stipendio indicato dalle regole di progetto.
-			\end{itemize}
-			Il nuovo file è poi importato all'interno di projectLibre dove è possibile accedere a molte funzionalità utili 
-			alla rendicontazione, come:
-			\begin{itemize}
-				\item Tabelle d'uso delle risorse umane e non;
-				\item RBS delle risorse;
-				\item Report dettagliati di preventivo/consuntivo ad ogni milestone;
-				\item Altri grafici personalizzabili a seconda delle esigenze del gruppo o delle richieste del committente 
-				(ad esempio per singolo componente o singolo ruolo).
-			\end{itemize}
+				Il sistema di ticketing adottato fornisce un calendario in cui vengono indicate le date stimate di inizio e fine
+				di ogni attività.\\
+				Ogni membro del gruppo può consultarlo liberamente per pianificare il proprio lavoro in base agli altri
+				impegni privati.
+				
+			\subsection{Controllo metriche di progetto}
+				L'introduzione delle metriche nel progetto fornisce una maniera il più possibile oggettiva e sistematica per
+				misurare le performance del gruppo. Dal punto di vista del controllo del progetto le metriche impiegate sono:
+				\begin{itemize}
+					\item Budget Variance
+					\item Schedule Variance
+				\end{itemize}
+				Questi indicatori permetto al team di:
+				\begin{itemize}
+					\item Identificare i problemi di costo/schedulazione prima che diventino criticità;
+					\item Aiutare il team a focalizzarsi sul completamento delle proprie attività.
+				\end{itemize}
 
 
 	\mychapter{7}{Consuntivo a finire}
@@ -1048,6 +1213,36 @@
 			\item \textbf{Negativo:} se il consuntivo ha superato il preventivo.
 		\end{itemize}
 		\section{Analisi}
+			Si riporta di seguito il consuntivo della fase di \emph{Analisi}. \\
+			La tabella sottostante riporta le differenze delle ore tra preventivo e consuntivo, divise per ruolo. 
+			Un segno positivo indica che sono state necessarie più ore del previsto, un segno negativo indica che sono 
+			state impiegate meno ore di quelle presenti nel preventivo.
+						
+			\begin{table}[H]
+				\begin{tabularx}{\textwidth}{Y Y Y}
+					\noalign{\hrule height 1.5pt}
+					\rowcolor{orange!85}Ruolo & Ore & Costo \\
+					\noalign{\hrule height 1.5pt}
+					Responsabile & -\space 1 & -\space 30 \\
+					Amministratore & 0 & 0 \\
+					Analista & -\space 2 & -\space 50\\
+					Progettista & +\space 1 & +\space 22\\
+					Verificatore & +\space 2 & +\space 20\\
+					Programmatore & 0 & 0 \\
+					\noalign{\hrule height 0.5pt}
+					\textbf{Totali} & 0 & -\space 38 \\
+					\noalign{\hrule height 1.5pt}
+				\end{tabularx}
+				\caption{Differenza consuntivo/preventivo - fase di Analisi. } 
+				\label{DCPAnalisi}
+			\end{table}
+			\subsection{Conclusioni}
+				Lo svolgimento della fase di \emph{Analisi} discosta leggermente da quello programmato e 
+				visualizzabile nel \emph{Gantt}. Il gruppo ha impiegato lo stesso monte ore previste, ma 
+				ricoprendo ruoli diversi da quelli previsti, portando ad un conguaglio positivo.
+				
+				Tale differenza non influenzerà in alcun modo il costo totale del progetto in quanto le ore 
+				di lavoro in questa fase non sono a carico del committente e vengono quindi emesse dal preventivo.
 		%Da aggiungere man-mano
 		%\section{Analisi di dettaglio}
 		%\section{Progettazione architetturale}
