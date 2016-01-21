@@ -7,7 +7,7 @@
 			\rowcolor{orange!85}Codice & Nome & Fonte & Descrizione \\
 \endhead
 R[1][N][F] & STOREKEEPER & Capitolato
-	& Creazione dell'attore STOREKEEPER per mantenere i dati su memoria interna \\
+	& Creazione dell'actor STOREKEEPER per mantenere i dati su memoria interna \\
 	\hline
 		R[1.1][N][F] & Elaborazione messaggi ricevuti STOREKEEPER & Capitolato
 		& Gestire i messaggi ricevuti da STOREKEEPER \\
@@ -25,7 +25,7 @@ R[1][N][F] & STOREKEEPER & Capitolato
 			& Se presente restituisce il valore della riga con chiave uguale a quella presente nel messaggio \\
 			\hline
 			R[1.1.5][O][F] & Elaborazione messaggi di risposta da attori MANAGER & Capitolato
-			& Gestione dei messaggi inviati da attori MANAGER in risposta alla richieste dell'attore STOREKEEPER \\
+			& Gestione dei messaggi inviati da attori MANAGER in risposta alla richieste dell'actor STOREKEEPER \\
 			\hline
 		R[1.2][N][F] & Invio messaggi STOREKEEPER & Capitolato
 		& Creazione messaggi da inviare da STOREKEEPER \\
@@ -82,13 +82,13 @@ R[1][N][F] & STOREKEEPER & Capitolato
 			& Implementare il recupero da disco degli elementi rimossi dalla memoria interna \\
 			\hline
 		R[1.4][O][F] & Creazione attori NINJA & Capitolato 
-		& Implementare la creazione di nuovi attori NINJA da parte dell'attore STOREKEEPER \\
+		& Implementare la creazione di nuovi attori NINJA da parte dell'actor STOREKEEPER \\
 		\hline
 	R[2][N][F] & STOREFINDER & Capitolato
-	& Creazione dell'attore STOREFINDER per gestire le richieste \\
+	& Creazione dell'actor STOREFINDER per gestire le richieste \\
 	\hline
 		R[2.1][N][F] & MAIN & Capitolato
-		& Creazione dell'attore MAIN, sottotipo di STOREFINDER\\
+		& Creazione dell'actor MAIN, sottotipo di STOREFINDER\\
 		\hline		
 			R[2.1.1][N][F] & Gestione connessioni & Capitolato
 			& Implementare la connessione via rete al server \\
@@ -133,16 +133,16 @@ R[1][N][F] & STOREKEEPER & Capitolato
 			& Gestire la creazione di nuovi attori da parte degli attori MAIN \\
 			\hline
 				R[2.1.4.1][N][F] & Creazione attori MAIN ad ogni nuova connesione & Capitolato
-				& Permettere all'attore MAIN principale di creare nuovi MAIN per gestire le richieste esterne \\
+				& Permettere all'actor MAIN principale di creare nuovi MAIN per gestire le richieste esterne \\
 				\hline
 				R[2.1.4.2][N][F] & Creazione attori WAREHOUSEMAN per lettura disco & Capitolato
-				& Permettere all'attore MAIN di creare attori WAREHOUSEMAN per leggere i dati presenti su disco all'avvio \\
+				& Permettere all'actor MAIN di creare attori WAREHOUSEMAN per leggere i dati presenti su disco all'avvio \\
 				\hline
 				R[2.1.4.3][N][F] & Creazione attori STOREKEEPER & Capitolato
-				& Permettere all'attore MAIN di creare attori STOREKEEPER quando una nuova mappa viene creata dall'utente o quando viene letta da disco \\
+				& Permettere all'actor MAIN di creare attori STOREKEEPER quando una nuova mappa viene creata dall'utente o quando viene letta da disco \\
 				\hline
 				R[2.1.4.4][N][F] & Creaizone attori STOREFINDER & Capitolato
-				& Permettere all'attore MAIN di creare attori STOREFINDER per gestire le richieste interne \\
+				& Permettere all'actor MAIN di creare attori STOREFINDER per gestire le richieste interne \\
 				\hline
 			R[2.1.5][O][F] & Gestione richieste esterne & Capitolato
 			& Implementare il riconoscimento di un DSL \\
@@ -165,10 +165,10 @@ R[1][N][F] & STOREKEEPER & Capitolato
 				R[2.1.6.3][N][F] & Gestione numero massimo di STOREFINDER & Capitolato
 				& Gestire le impostazioni per il numero massimo di STOREFINDER possibili \\
 				\hline
-			R[2.1.7][O][F] & Importazione & Decisione interna
+			R[2.1.7][O][F] & Importazione & Decisione interna, UC3.3
 			& Implementare l'importazione di database \\
 			\hline
-			R[2.1.8][O][F] & Esportazione & Decisione interna
+			R[2.1.8][O][F] & Esportazione & Decisione interna, UC3.4
 			& Implementare l'esportazione di database \\
 			\hline
 		R[2.2][N][F] & Elaborazione messaggi ricevuti STOREFINDER & Capitolato
@@ -202,7 +202,7 @@ R[1][N][F] & STOREKEEPER & Capitolato
 			& Creazione messaggi di aggiornamento riga da inviare a STOREKEEPER\\
 			\hline
 	R[3][N][F] & WAREHOUSEMAN & Capitolato
-		& Creazione dell'attore WAREHOUSEMAN per l'interazione con il filesystem \\
+		& Creazione dell'actor WAREHOUSEMAN per l'interazione con il filesystem \\
 		\hline
 		R[3.1][N][F] & Gestione file & Capitolato
 		& Implementare l'integrazione tra WAREHOUSEMAN e filesystem \\
@@ -247,7 +247,7 @@ R[1][N][F] & STOREKEEPER & Capitolato
 			& Creazione messaggi di risposta da inviare da MAIN \\
 			\hline
 	R[4][O][F] & NINJA & Capitolato
-		& Creazione dell'attore NINJA per il recupero dei dati \\
+		& Creazione dell'actor NINJA per il recupero dei dati \\
 		\hline
 		R[4.1][O][F] & Elaborazione messaggi ricevuti NINJA & Capitolato
 		& Gestire i messaggi ricevuti da NINJA  \\
@@ -271,7 +271,7 @@ R[1][N][F] & STOREKEEPER & Capitolato
 		& Implementare la possibilità di mutare a STOREKEEPER quando necessario \\			
 		\hline
 	R[5][O][F] & MANAGER & Capitolato
-	& Creazione attore MANAGER per gestire le proprietà degli attori STOREKEEPER \\
+	& Creazione actor MANAGER per gestire le proprietà degli attori STOREKEEPER \\
 	\hline
 		R[5.1][O][F] & Elaborazione messaggi ricevuti da MANAGER & Capitolato
 		& Gestire i messaggi ricevuti da MANAGER \\

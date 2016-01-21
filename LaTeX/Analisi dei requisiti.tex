@@ -79,7 +79,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.6
+			Versione 1.2.0
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -96,8 +96,13 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 0.5pt}
-				1.0.6 & 2016-01-21 & \emph{Analisti} \newline Bonato Paolo \newline Bortolazzo Matteo\newline Maino Elia  & Correzioni
+				1.2.0 & 2016-01-21 & \emph{Responsabile} \newline Padovan Tommaso  & Approvazione documento
 				 \\
+				 \noalign{\hrule height 0.5pt}
+				1.1.1 & 2016-01-21 & \emph{Analisti} \newline Bonato Paolo \newline Bortolazzo Matteo\newline Maino Elia  & Correzioni degli errori individuati nella verifica
+				 \\
+				 \noalign{\hrule height 0.5pt}
+				1.1.0 & 2016-01-21 & \emph{Verificatori} \newline Biggeri Mattia \newline Tommasin Davide  & Verifica del documento \\
 				 \noalign{\hrule height 0.5pt}
 				1.0.5 & 2016-01-20 & \emph{Analista} \newline Bortolazzo Matteo  & Stesura lista dei requisiti dedotti dal capitolato e da analisi interne
 				 \\
@@ -127,14 +132,13 @@
 		offrirà al momento del rilascio.
 	\section{Scopo del prodotto}
 		Lo scopo del progetto è la realizzazione di un DataBase NoSQL key-value basato sul modello ad 
-		Attori\ped{\textit{G}} con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
+		Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
 		applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
 		di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
 	\section{Glossario}
 		Con lo scopo di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il 
-		gruppo ha steso un documento interno che è il \emph{Glossario v1.0.0}. La prima occorrenza
-		di ogni termine termine contenuto nel \emph{Glossario} e presente in questo documento verrà 
-		marcato con una "\textit{G}" maiuscola in pedice.
+      gruppo ha steso un documento interno che è il \emph{Glossario v1.0.3}. In esso saranno definiti, in modo
+      chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
 	\section{Riferimenti}
 	\subsection{Informativi}	
 		\begin{itemize}
@@ -203,7 +207,7 @@
 			\begin{figure}[H]
 				\centering
 				\includegraphics[scale=0.3]{"UC1".png}
-				\caption{Caso d'uso UC1}
+				\caption{Caso d'uso UC1 - Installazione}
 			\end{figure}
 		 \textbf{Descrizione} \\ \\
 		 L'utente è in possesso dei file necessari a far partire il programma di setup. Una volta avviato
@@ -242,13 +246,13 @@
 				\end{itemize} \\
 				\bottomrule
 			\end{tabularx}
-			\caption{Caso d'uso UC1}
+			\caption{Caso d'uso UC1 - Installazione}
 		 \end{table}
 	\section{Caso d'uso UC2: Connessione ed autenticazione}
 		 	\begin{figure}[H]
 				\centering
 				\includegraphics[scale=0.3]{"UC2".png}
-				\caption{Caso d'uso UC2}
+				\caption{Caso d'uso UC2 - Connessione ed autenticazione}
 			\end{figure}
 		 \textbf{Descrizione} \\ \\
 		 L'utente ha appena avviato l'applicativo e intende accedere al sistema. L'utente 
@@ -287,13 +291,13 @@
 				\end{itemize} \\
 				\bottomrule
 			\end{tabularx}
-			\caption{Caso d'uso UC2}
+			\caption{Caso d'uso UC2 - Connessione ed autenticazione}
 		 \end{table}
 	 \section{Caso d'uso UC3: Operazioni a livello server/database}
 	 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3".png}
-			\caption{Caso d'uso UC3}
+			\caption{Caso d'uso UC3 - Operazioni a livello server/database}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente ha effettuato l'autenticazione e risulta correttamente connesso al server. Le credenziali di
@@ -341,13 +345,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3}
+		\caption{Caso d'uso UC3 - Operazioni a livello server/database}
 	 \end{table}
 	 \section{Caso d'uso UC3.1: Selezione di un database}
 	 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3-1".png}
-			\caption{Caso d'uso UC3.1}
+			\caption{Caso d'uso UC3.1 - Selezione di un database}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente inserisce il comando di selezione seguito dal nome del database che vuole utilizzare, se tale
@@ -363,7 +367,7 @@
 			Post-condizione & Il database risulta selezionato, l'utente può ora effettuare operazioni su tale
 			database \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il comando si selezione seguito dal nome del database da selezionare
+			\item L'utente inserisce il comando di selezione seguito dal nome del database da selezionare
 			\item Il database viene selezionato
 			\end{enumerate} \\
 			Scenari alternativi &  \begin{enumerate}
@@ -377,13 +381,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3.1}
+		\caption{Caso d'uso UC3.1 - Selezione di un database}
 	 \end{table}
 	 \section{Caso d'uso UC3.2: Creazione di un database}
 	 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3-2".png}
-			\caption{Caso d'uso UC3.2}
+			\caption{Caso d'uso UC3.2 - Creazione di un database}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente è autenticato come \emph{amministratore} e desidera creare un nuovo database sul server. 
@@ -412,13 +416,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3.2}
+		\caption{Caso d'uso UC3.2 - Creazione di un database}
 	 \end{table}
 	 \section{Caso d'uso UC3.3: Importazione di un database}
 	 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3-3".png}
-			\caption{Caso d'uso UC3.3}
+			\caption{Caso d'uso UC3.3 - Importazione di un database}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente desidera creare un nuovo schema importandolo da un file presente sul computer. L'utente
@@ -451,13 +455,13 @@
 			\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3.3}
+		\caption{Caso d'uso UC3.3 - Importazione di un database}
 	 \end{table}
 	 \section{Caso d'uso UC3.4: Esportazione di un database}
 	 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.28]{"UC3-4".png}
-			\caption{Caso d'uso UC3.4}
+			\caption{Caso d'uso UC3.4 - Esportazione di un database}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente inserisce il nome del database che vuole esportare, se sul server non esiste nessun database 
@@ -487,13 +491,13 @@
 			\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3.4}
+		\caption{Caso d'uso UC3.4 - Esportazione di un database}
 	 \end{table}
 	\section{Caso d'uso UC3.5: Rimozione di un database}
 	 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3-5".png}
-			\caption{Caso d'uso UC3.5}
+			\caption{Caso d'uso UC3.5 - Rimozione di un database}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente inserisce il nome del database che vuole eliminare dal server, se sul server non è 
@@ -508,7 +512,7 @@
 			\rowcolor{orange!65}Pre-condizione & L'utente è autenticato come amministratore del server\\
 			Post-condizione & Il database selezionato è stato rimosso \\
 			\rowcolor{orange!65}Flusso eventi & \begin{enumerate}
-			\item L'utente inserisce il coamndo di rimozione seguito dal nome del database da eliminare
+			\item L'utente inserisce il comando di rimozione seguito dal nome del database da eliminare
 			\item Il sistema rimuove il database selezionato
 			\end{enumerate} \\
 			Scenari alternativi & \begin{enumerate}
@@ -520,13 +524,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3.5}
+		\caption{Caso d'uso UC3.5 - Rimozione di un database}
 	 \end{table}
 	 \section{Caso d'uso UC3.6: Gestione dei permessi}
 	 	\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3-6".png}
-			\caption{Caso d'uso UC3.6}
+			\caption{Caso d'uso UC3.6 - Gestione dei permessi}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'\emph{amministratore} può modificare i permessi di accesso di altri utenti al server e al singolo
@@ -559,13 +563,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3.6}
+		\caption{Caso d'uso UC3.6 - Gestione dei permessi}
 	 \end{table}
 	 \section{Caso d'uso UC3.6.1: Aggiunta di un utente al server}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3-6-1".png}
-			\caption{Caso d'uso UC3.6.1}
+			\caption{Caso d'uso UC3.6.1 - Aggiunta di un utente al server}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'\emph{amministratore} inserisce un nuovo utente generando un username e una password, se 
@@ -595,13 +599,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3.6.1}
+		\caption{Caso d'uso UC3.6.1 - Aggiunta di un utente al server}
 	 \end{table}
 	 \section{Caso d'uso UC3.6.2: Modifica dei permessi utente}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3-6-2".png}
-			\caption{Caso d'uso UC3.6.2}
+			\caption{Caso d'uso UC3.6.2 - Modifica dei permessi utente}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'\emph{amministratore} inserisce l'username dell'utente che vuole modificare, nel caso non esistesse
@@ -634,13 +638,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3.6.2}
+		\caption{Caso d'uso UC3.6.2 - Modifica dei permessi utente}
 	 \end{table}
 	 \section{Caso d'uso UC3.6.3: Rimozione di un utente dal server}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC3-6-3".png}
-			\caption{Caso d'uso UC3.6.3}
+			\caption{Caso d'uso UC3.6.3 - Rimozione di un utente dal server}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'\emph{amministratore} inserisce l'username dell'utente che vuole rimuovere, nel caso non esistesse
@@ -666,13 +670,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC3.6.3}
+		\caption{Caso d'uso UC3.6.3 - Rimozione di un utente dal server}
 	 \end{table}
 	 \section{Caso d'uso UC4: Operazioni a livello di mappa}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC4".png}
-			\caption{Caso d'uso UC4}
+			\caption{Caso d'uso UC4 - Operazioni a livello di mappa}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente effettua una delle seguenti operazioni utilizzando gli appositi comandi DSL:
@@ -705,13 +709,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4}
+		\caption{Caso d'uso UC4 - Operazioni a livello di mappa}
 	 \end{table}
 	 \section{Caso d'uso UC4.1: Aggiunta di una nuova mappa}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC4-1".png}
-			\caption{Caso d'uso UC4.1}
+			\caption{Caso d'uso UC4.1 - Aggiunta di una nuova mappa}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente aggiunge una nuova mappa al database definendone il nome, se tale nome è già associato ad 
@@ -738,13 +742,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.1}
+		\caption{Caso d'uso UC4.1 - Aggiunta di una nuova mappa}
 	 \end{table}
 	  \section{Caso d'uso UC4.2: Modifica del nome di una mappa preesistente}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC4-2".png}
-			\caption{Caso d'uso UC4.2}
+			\caption{Caso d'uso UC4.2 - Modifica del nome di una mappa preesistente}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente modifica il nome di una mappa preesistente,se il nome inserito non corrisponde a nessuna
@@ -775,13 +779,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.2}
+		\caption{Caso d'uso UC4.2 - Modifica del nome di una mappa preesistente}
 	 \end{table}
 	 \section{Caso d'uso UC4.3: Rimozione di una mappa}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC4-3".png}
-			\caption{Caso d'uso UC4.3}
+			\caption{Caso d'uso UC4.3 - Rimozione di una mappa}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente inserisce il nome della mappa che vuole eliminare, se nel database non esiste una mappa con
@@ -807,13 +811,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC4.3}
+		\caption{Caso d'uso UC4.3 - Rimozione di una mappa}
 	 \end{table}
 	 \section{Caso d'uso UC5: Operazioni a livello di riga}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC5".png}
-			\caption{Caso d'uso UC5}
+			\caption{Caso d'uso UC5 - Operazioni a livello di riga}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente esegue una delle seguenti operazioni utilizzando i relativi comandi DSL:
@@ -847,13 +851,13 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC5}
+		\caption{Caso d'uso UC5 - Operazioni a livello di riga}
 	 \end{table}
 	 \section{Caso d'uso UC5.1: Inserimento di una riga}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC5-1".png}
-			\caption{Caso d'uso UC5.1}
+			\caption{Caso d'uso UC5.1 - Inserimento di una riga}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente intende inserire una riga nella mappa selezionata. Nel caso in cui la key inserita
@@ -881,7 +885,7 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC5.1}
+		\caption{Caso d'uso UC5.1 - Inserimento di una riga}
 	 \end{table}
 	 \section{Caso d'uso UC5.1.1: Aggiornamento di una riga}
 	 \textbf{Descrizione} \\ \\
@@ -908,13 +912,13 @@
 			\rowcolor{orange!65}Lista requisiti dedotti & \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC5.1.1}
+		\caption{Caso d'uso UC5.1.1 - Aggiornamento di una riga}
 	 \end{table}
 	 \section{Caso d'uso UC5.2: Rimozione di una riga}
 	 \begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.3]{"UC5-2".png}
-			\caption{Caso d'uso UC5.2}
+			\caption{Caso d'uso UC5.2 - Rimozione di una riga}
 		\end{figure}
 	 \textbf{Descrizione} \\ \\
 	 L'utente intende rimuovere una riga nella mappa selezionata. Nel caso in cui tale riga fosse inesistente
@@ -945,7 +949,7 @@
 				\end{itemize} \\
 			\bottomrule
 		\end{tabularx}
-		\caption{Caso d'uso UC5.2}
+		\caption{Caso d'uso UC5.2 - Rimozione di una riga}
 	 \end{table}
 	 
 	 
