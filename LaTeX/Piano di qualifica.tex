@@ -16,6 +16,7 @@
 \usepackage{float}
 \usepackage[]{appendix}
 \usepackage{amsmath}
+\usepackage{eurosym}
 
 \graphicspath{{Immagini/}}
 
@@ -78,7 +79,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.2
+			Versione 1.0.4
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -114,20 +115,20 @@
 			correggere anomalie e incongruenze in modo tempestivo per evitare danni e sprechi di risorse.
 		\section{Scopo del prodotto}
 			Lo scopo del progetto è la realizzazione di un DataBase NoSQL key-value basato sul modello ad 
-			Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
+			Attori\ped{\textit{G}} con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
 			applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
 			di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
 		\section{Glossario}
 			Con lo scopo di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il 
-			gruppo ha steso un documento interno che è il \emph{Glossario v1.0.3}. In esso saranno definiti, in modo
-			chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
+	      gruppo ha steso un documento interno che è il \emph{Glossario v1.0.3}. In esso saranno definiti, in modo
+	      chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
 		\section{Riferimenti}
 			\subsection{Normativi}
 				\begin{itemize}
 					\item \textbf{Norme di progetto:} \\ \emph{Norme di progetto v1.1.1};
 					\item \textbf{Capitolato d'appalto:} \\ \url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}.
 				\end{itemize}
-			\subsection{Formativi}
+			\subsection{Informativi}
 				\begin{itemize}
 					\item \textbf{Piano di progetto:} \\ \emph{Piano di progetto v1.0.4};
 					\item \textbf{Slide del corso:} \\ \url{http://www.math.unipd.it/~tullio/IS-1/2015/};
@@ -150,7 +151,7 @@
 				all'effettivo miglioramento dei processi devono essere sempre ripetibili, oggettivi e comparabili.
 				\emph{SPICE} definisce livelli di maturità del processo:
 				\begin{itemize}
-					\item[0] - Incompete
+					\item[0] - Incomplete
 					\item[1] - Performed
 					\item[2] - Managed
 					\item[3] - Established
@@ -182,7 +183,8 @@
 				I criteri valutativi sono suddivisi in 3 aree:
 				\begin{itemize}
 					\item \textbf{Qualità esterna:} Le metriche esterne, specificate nella norma ISO/IEC 9126-2, valutano i
-					comportamenti del prodotto sulla base di prove, dall'operatività e dall'osservazione durante la sua esecuzione, 					in funzione degli obiettivi stabiliti.
+					comportamenti del prodotto sulla base di prove, dall'operatività e dall'osservazione durante la sua esecuzione,
+					in funzione degli obiettivi stabiliti.
 					\item \textbf{Qualità interna:} È specificata nella norma ISO/IEC 9126-3 e si applica al software non
 					eseguibile durante la progettazione e la codifica dello stesso, le misure effettuate consentono di prevedere il
 					livello di qualità esterna ed interna, in quanto gli attributi interni influenzano quelli esterni e di uso
@@ -290,11 +292,29 @@
 			
 			
 		\section{Organizzazione}
-			Ognuna delle fasi descritte nel Piano di progetto necessita di differenti attività di verifica, a causa della
-			diversità degli output attesi.
+			Il processo di verifica inizia fin dal primo rilascio ufficiale nella repository di un documento vX.0.0, il risultato 
+			del processo di verifica cambia la versione del documento, incrementandone la versione al secondo livello di profondità, 
+			il documento quindi passa a vX.1.0. Ogni modifica apportata al documento ne aumenta la versione all'ultimo livello di 
+			profondità. Una volta completate le modifiche e le verifiche continue sui documenti, esso passa nella fase di validazione,
+			a carico del responsabile, che ne fa cambiare la versione al secondo livello di priorità. 
+			
+			Come descritto nelle norme, il primo valore in una versione verrà cambiato ad ogni consegna.
+			
+			Grazie al diario delle modifiche è più facile individuare dove concentrare l’attenzione nelle verifiche successive 
+			alla prima, in quanto sono segnate le sezioni che sono state aggiunte o che hanno subito dei cambiamenti dall’ultima
+			 verifica, evitando cosi di controllare sempre tutto il documento ad ogni rilascio di versione, per cui ottimizzando 
+			 il tempo necessario al controllo.
+
+			Per ognuna delle 5 fasi del progetto descritte nel \emph{Piano di Progetto v 1.0.5}, sono necessarie diverse attività 
+			di verifica a causa dei diversi output ottenuti:
+
 			\begin{itemize}
-				\item \textbf{Analisi:} Si devono seguire le attività di verifica descritte nella sezione 2.9 di questo documento.
+				\item \textbf{Analisi:} Si devono seguire le attività di verifica descritte nella sezione 2.9.2 e 2.9.1 sui processi 
+				e sui documenti attuati.
 			\end{itemize}
+			
+			Come detto in precedenza conclusa la verifica, ha inizio il processo di approvazione. Durante questo processo è compito 
+			del Responsabile di Progetto accertarsi che i prodotto ottenuti siano conformi a quanto pianificato e progettato.
 		
 		
 		\section{Pianificazione strategica e temporale}
@@ -531,13 +551,74 @@
 				
 			
 			\subsection{Metriche per il software}
-			
-			
+				Questo capitolo è da intendere come una dichiarazione di intenti e probabilmente verrà rivisto quando inizieremo 
+				realmente la fase di programmazione.
+
+				Al fine di perseguire gli obbiettivi sulla qualità del software, vorremmo applicare le seguenti metriche:
+				\begin{itemize}
+					\item \textbf{Attributi per classe:}
+						Un grande numero di attributi interni ad una classe mostra probabilmente la necessità di suddividere la classe 
+						in più classi relazionate tra di se.
+						\begin{itemize}
+							\item Valori accettati: 0-18
+							\item Valori ottimali: 2-9
+						\end{itemize}
+
+					\item \textbf{Numero livelli annidamento:}
+						Mostra il livello di annidamento dei metodi, un numero alto implica una bassa astrazione del codice ed 
+						un elevata complessità.
+						\begin{itemize}
+							\item Valori accettati:1-8
+							\item Valori ottimali:1-4
+						\end{itemize}
+
+					\item \textbf{Numero parametri per metodo:}
+						Un valore elevato indica che probabilmente il metodo ha un sovraccarico di funzionalità
+						\begin{itemize}
+							\item Valori accettati:0-8
+							\item Valori ottimali:0-5
+						\end{itemize}
+
+					\item \textbf{Linee di codice per linee di commento:}
+						È la percentuale di righe di commento rispetto al totale delle righe di codice. Utile per la manutenibilità.
+						\begin{itemize}
+							\item Valori accettati: 20\%-70\%
+							\item Valori ottimali: 30\%-50\%
+						\end{itemize}
+
+					\item \textbf{Accoppiamento afferente:}
+						Indica il numero di classi esterne da un package che dipendono da esso, un grande valore indica una forte 
+						dipendenza del software per il package in questione, un valore basso invece indica una bassa utilità del 
+						package per il resto del software.
+						\begin{itemize}
+							\item Valori accettati: da decidere
+							\item Valori ottimali: da decidere
+						\end{itemize}
+
+					\item \textbf{accoppiamento efferente:}
+					Il numero di classi di un package che dipendono da package esterni, un valore basso indica che il package ha 
+					numerose funzionalità indipendenti dal resto del software.
+						\begin{itemize}
+							\item Valori accettati: da decidere
+							\item Valori ottimali: da decidere
+						\end{itemize}
+			\end{itemize}
 			
 			
 		\section{Metodi}
 			
 			\subsection{Analisi dei processi}
+				I processi compiuti durante una fase verranno analizzati secondo il seguente protocollo:
+				\begin{itemize}
+					\item \textbf{Controllo delle metriche:}
+						Alla conclusione di ogni fase del progetto si calcolano gli indici definiti nella sezione 2.8.1 confrontando 
+						le macroattività preventivate nel \emph{Piano di progetto} con i dati effettivi riscontrati dal sistema di ticketing.
+					\item \textbf{Analisi PDCA:}
+						Secondo il ciclo PDCA una fase di progetto ha inizio con la pianificazione di come possono essere migliorati i processi. 
+						Durante la fase vengono attuati i cambiamenti prefissati e alla fine viene effettuato un controllo. Se un processo 
+						risulta essere migliore viene adottato in modo definitivo, se invece risulta inalterato o addirittura peggiore i 
+						cambiamenti vengono scartati.
+				\end{itemize}
 			\subsection{Analisi dei documenti}
 				Ogni documento redatto è verificato mediante il seguente protocollo:
 				\begin{itemize}
@@ -628,12 +709,67 @@
 				I Casi d'uso sono stati successivamente ricontrollati all'interno del documento di \emph{Analisi Dei Requisiti} come
 				descritto in 4.1.
 			\subsection{Requisiti}
+				I requisiti sono stati controllati tramite walkthrough seguendo il seguente protocollo:
+					\begin{itemize}
+						\item Verifica che la fonte del requisito sia corretta.
+						\item In caso che la fonte sia un UC, verifica se è l'UC corretto e se sarebbe possibile dedurre altri requisiti dallo stesso.
+						\item Verifica uniformità dei termini tra i requisiti.
+						\item Rispetto del codice e della struttura definiti nelle \emph{Norme di Progetto v1.1.1} capitolo 2.1.2.
+						\item I Casi d'uso sono stati successivamente ricontrollati all'interno del documento di \emph{Analisi Dei Requisiti} 
+						come descritto in 4.1.
+					\end{itemize}
+			\subsection{Processi}
+				I processi sono stati verificati dal responsabile grazie all'utilizzo di teamwork controllando le seguenti condizioni:
+				\begin{itemize}
+					\item Che la verifica non sia stata effettuata dallo stesso che ha prodotto il materiale da verificare.
+					\item Che i documenti siano stati prodotti nell'ordine e nei tempi corretti.
+					\item Che le ore di verifica siano almeno 30\% delle ore totali.
+					\item Che le riunioni e i brainstorming si siano svolti come definito nelle \emph{Norme di Progetto v1.1.1} capitolo 4.2.3.
+				\end{itemize}
 				
 		\section{Tracciamento componenti - requisiti}
 		
 		\section{Dettaglio delle verifiche tramite analisi}
 			\subsection{Processi}
+				Vengono qui di seguito riportate le macro attività della fase di analisi con associati i relativi valori di SV e BV.
+					\begin{table}[H]
+						\begin{tabularx}{\textwidth}{m f s X}
+							\noalign{\hrule height 1.5pt}
+							\rowcolor{orange!85} Macro-attività & SV & BV \\
+							\noalign{\hrule height 1.5pt}
+								Norme di progetto & ore 1 & \euro \ 30 \\
+							\noalign{\hrule height 0.5pt}
+								Studio di fattibilità & ore 2 & \euro \ 50 \\
+							\noalign{\hrule height 0.5pt}
+								Analisi dei requisiti & ore -2 & \euro \ -20 \\
+							\noalign{\hrule height 0.5pt}
+								Piano di progetto & ore -1 & \euro \ -22 \\
+							\noalign{\hrule height 0.5pt}
+								Piano di qualifica & ore 0 & \euro \ 0 \\
+							\noalign{\hrule height 1.5pt}
+						\end{tabularx}
+						\caption{Tabella delle attività con SV e BV }
+						\label{SVBVTable}
+					\end{table}
+					
+				Da questi dati si può dedurre che:
+					\begin{itemize}
+						\item I tempi impiegati hanno subito delle leggere variazioni e grazie agli slack inseriti nel 
+						\emph{Piano di progetto} non ci sono stati ritardi significativi.
+						\item Il costo effettivo è molto vicino a quanto preventivato nel \emph{Piano di progetto} anche se 
+						alcuni picchi, specie nello studio di fattibilità, significano che è possibile migliorare la 
+						pianificazione dei processi.
+					\end{itemize}
+			
+				Durante la prima fase di analisi le problematiche riscontrate sui processi sono dovute per la maggior parte 
+				all'inesperienza del gruppo. A questa fase seguirà una pianificazione su come migliorare i processi che sono 
+				risultati più critici.
+				
 			\subsection{Documenti}
 		\section{Dettaglio dell'esito delle revisioni}
+			Il progetto prevede quattro revisioni formali a cui sottoporsi, per mezzo delle quali il Committente potrà segnalare 
+			le eventuali problematiche riscontrate. Ogni revisione prevede una valutazione globale del progetto ed una valutazione 
+			dettagliata per ciascun documento prodotto. Grazie alle segnalazioni ricevute sarà possibile individuare le criticità 
+			e gli errori che verranno corretti per poter avanzare alla fase successiva con una baseline verificata.
 	
 \end{document}
