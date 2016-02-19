@@ -2,7 +2,7 @@
 %Document-Date: 2016/01/13
 %Document-Description: Documento di Piano di Progetto del gruppo SWEeneyThreads 
 
-\documentclass[a4paper]{report}
+\documentclass[a4paper]{article}
 \usepackage[english, italian]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -31,14 +31,6 @@
 \newcolumntype{t}{>{\hsize=.1\hsize}X}
 \newcolumntype{r}{>{\hsize=.3\hsize}X}
 \newcolumntype{k}{>{\hsize=.4\hsize}X}
-
-\newcommand{\mychapter}[2]{
-	\setcounter{chapter}{#1}
-	\setcounter{section}{0}
-	\setcounter{subsection}{1}
-	\chapter*{#2}
-	\addcontentsline{toc}{chapter}{#2}
-}
 
 \renewcommand{\abstractname}{Tabella contenuti}
 
@@ -95,12 +87,18 @@
 	
 	\tableofcontents
 	
-	\mychapter{0}{Diario delle modifiche}
+	\newpage 
+	\section*{Diario delle modifiche}
 		\begin{table}[H]
 			\begin{tabularx}{\textwidth}{sfmX}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
+				2.0.0 & 2016-02-19 & \emph{Responsabile} \newline Nicoletti Luca &  Prime modifiche post risultati consegna RR. 
+				Spostata la sezione dei rischi prima della pianificazione. Rimosso tutti i "capitoli" e sostituiti con sezioni 
+				come suggerito nella correzione. Cambiato la classe del documento in "article", rimosso il comando creato
+				per la formazione di capitoli. \\
+				\noalign{\hrule height 0.5pt}
 				1.2.0 & 2016-01-20 & \emph{Responsabile} \newline Padovan Tommaso &  Approvazione documento \\
 				\noalign{\hrule height 0.5pt}
 				1.1.2 & 2016-01-19 & \emph{Amministratore} \newline Nicoletti Luca &  Inseriti i riferimenti \\
@@ -137,8 +135,9 @@
 		\end{table}
 	
 	\begin{appendices}
-	\mychapter{1}{Organigramma}
-		\section{Redazione}
+	\newpage 
+	\section{Organigramma}
+		\subsection{Redazione}
 		\begin{table}[H]
 			\begin{tabularx}{\textwidth}{Y Y Y}
 				\noalign{\hrule height 1.5pt}
@@ -152,7 +151,7 @@
 			\caption{Redazione documento } 
 			\label{RedDocumento}
 		\end{table}
-		\section{Approvazione}
+		\subsection{Approvazione}
 		\begin{table}[H]
 			\begin{tabularx}{\textwidth}{Y Y Y}
 				\noalign{\hrule height 1.5pt}
@@ -168,7 +167,7 @@
 			\caption{Approvazione documento } 
 			\label{AppDocumento}
 		\end{table}
-		\section{Componenti}
+		\subsection{Componenti}
 		\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r r k}
 				\noalign{\hrule height 1.5pt}
@@ -192,7 +191,7 @@
 			\caption{Componenti SWEeneyThreads } 
 			\label{ComponentiGruppo}
 		\end{table}
-		\section{Accetazione componenti}
+		\subsection{Accetazione componenti}
 		\begin{table}[H]
 			\begin{tabularx}{\textwidth}{Y Y Y}
 				\noalign{\hrule height 1.5pt}
@@ -216,7 +215,7 @@
 			\caption{Accettazione componenti } 
 			\label{AccComponenti}
 		\end{table}
-		\section{Definizione dei ruoli}
+		\subsection{Definizione dei ruoli}
 			Nel corso dello sviluppo del progetto i membri del gruppo dovranno ricoprire diversi ruoli, rappresentanti 
 			figure aziendali specializzate, indispensabili per il buon esito del progetto. Ogni singolo componente del 
 			gruppo può ricoprire più ruoli, sia contemporaneamente che in distinte fasi del progetto in ogni caso 
@@ -236,7 +235,7 @@
 				della documentazione di progetto (librarian). Per quanto riguarda la documentazione l'\emph{Amministratore} 
 				collabora alla redazione del \emph{Piano di progetto} e redige le \emph{Norme di progetto} per conto del responsabile.
 				\item \textbf{Analista:} Il compito principale dell'analista è capire il problema (non fornire una soluzione),
-				tale compito è di importanza fondamentale poichè se il problema viene compreso in modo errato tutto il progetto 
+				tale compito è di importanza fondamentale poiché se il problema viene compreso in modo errato tutto il progetto 
 				è destinato a fallire. L'\emph{Analista} deve conoscere il dominio del problema e avere una vasta esperienza professionale, 
 				in genere un progetto prevede pochi analisti ed essi raramente seguono il progetto fino alla conclusione. Per 
 				quanto riguarda la documentazione l'\emph{Analista} redige lo studio di fattibilità (un documento interno al gruppo) 
@@ -257,19 +256,20 @@
 			\end{itemize}
 	\end{appendices}
 	
-	\mychapter{1}{Introduzione}
-		\section{Scopo del documento}
+	\newpage 
+	\section{Introduzione}
+		\subsection{Scopo del documento}
 			Il presente documento ha l'intento di specificare la pianificazione secondo la quale saranno portati avanti i 
 			lavori dal gruppo SWEeneyThreads in merito al progetto \emph{Actorbase}.
 			Gli scopi del presente documento sono:
 			\begin{itemize}
 				\item Presentare la pianificazione dei tempi e delle attività, definendo le scadenze e la suddivisione dei lavori
-				\item Preventivare l’utilizzo delle risorse, descrivendo i costi in relazione alla suddivisione del lavoro
-				\item Consuntivare l’utilizzo delle risorse durante l’evolversi dei lavori
+				\item Preventivare l'utilizzo delle risorse, descrivendo i costi in relazione alla suddivisione del lavoro
+				\item Consuntivare l'utilizzo delle risorse durante l'evolversi dei lavori
 				\item Analizzare i possibili fattori di rischio e descrivere i relativi strumenti di controllo
 			\end{itemize}
-		\section{Riferimenti}
-			\subsection{Informativi}
+		\subsection{Riferimenti}
+			\subsubsection{Informativi}
 				\begin{itemize}
 					\item \textbf{Software Engineering - Ian Sommerville - 9\ap{th} Edition(2010):}
 					\begin{itemize}
@@ -284,14 +284,14 @@
 					\item \textbf{Metriche di progetto:} \\
 					\url{https://it.wikipedia.org/wiki/Metriche_di_progetto}
 				\end{itemize}
-			\subsection{Normativi}
+			\subsubsection{Normativi}
 				\begin{itemize}
 					\item \textbf{Capitolato d'appalto: } \\ \url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
 					\item \textbf{Vincoli di organigramma e dettagli tecnici-economici} \\ 
 					\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/PD01b.html}
 				\end{itemize}
-		\section{Ciclo di vita}
-			Il gruppo ha deciso, uninamente di adottare il \textbf{modello incrementale} come modello di ciclo di vita.
+		\subsection{Ciclo di vita}
+			Il gruppo ha deciso, unanimemente di adottare il \textbf{modello incrementale} come modello di ciclo di vita.
 			Tale scelta è stata presa per i vari vantaggi che comporta questo modello di Ciclo di vita:
 			\begin{itemize}
 				\item rende più facile la gestione e il controllo del progetto e quindi la stima del preventivo;
@@ -314,13 +314,13 @@
 			\begin{itemize}
 				\item lo scopo fondamentale di un modello evolutivo è rilasciare molte versioni di un sistema che va 
 				poi sempre più raffinato: nel caso preso in considerazione non è l'intero sistema a dover essere raffinato, 
-				semplicemente si aggiungeranno nuove parti che verrano integrate in modo incrementale;
+				semplicemente si aggiungeranno nuove parti che verranno integrate in modo incrementale;
 				\item il modello evolutivo inoltre aiuta a rispondere a bisogni non inizialmente preventivabili, mentre 
 				quelli di \emph{Actorbase} sono perlopiù definiti a priori.
 			\end{itemize}
 			Queste due qualità, come indicato, non sono largamente necessarie; l'adozione di questo modello porterebbe dei 
 			vantaggi modesti a fronte della necessità, molto onerosa, di riattraversare diverse fasi del ciclo di vita.
-		\section{Scadenze}
+		\subsection{Scadenze}
 			Di seguito vengono riportate le scadenze che il gruppo SWEeneyThreads ha deciso di rispettare e sulle quali 
 			si baserà la pianificazione del progetto:
 			\begin{enumerate}
@@ -330,7 +330,133 @@
 				\item Revisione di accettazione [RA]: 2016-06-17
 			\end{enumerate}
 			
-	\mychapter{2}{Pianificazione}
+		\newpage 
+	\section{Analisi dei rischi}
+		Al fine di migliorare l'avanzamento del progetto, è stata effettuata un'accurata analisi dei rischi suddivisa in:
+		\begin{itemize}
+			\item \textbf{Identificazione:} in cui si identificano i principali fattori di rischi come:
+			\begin{itemize}
+				\item Variabilità della disponibilità del personale;
+				\item Variabilità delle tecnologie;
+				\item Ritardo o mutazione di requisiti fondamentali;
+				\item Specifiche in ritardo.
+			\end{itemize}
+			\item \textbf{Analisi:} durante la quale si individua la possibilità di occorrenza di ogni rischio, e le conseguenze a cui porterebbe.
+			\item \textbf{Pianificazione:} scelta di tecniche per evitare il verificarsi dei rischi verificati, o per mitigarne gli effetti.
+			\item \textbf{Controllo:} attività svolta durante tutto il ciclo di vita del progetto per prevedere il verificarsi dei rischi
+			ed evitare che si verifichino.
+		\end{itemize}
+		Per ogni rischio individuato viene quindi stilata una lista di attributi quali: la sua probabilità di occorrenza, la gravità delle 
+		conseguenze a cui porterebbe il suo verificarsi, una descrizione, le strategie da utilizzare per la sua rilevazione preventiva e le 
+		contromisure da adottare (nel caso in cui il rischio si verifichi, o nel caso in cui si noti che il rischio sta per verificarsi). \\
+		L'identificazione dei rischi viene gestita a livelli.
+		
+		\subsection{Livello tecnologico}
+			\subsubsection{Tecnologie adottate}
+				\textbf{Probabilità:} Bassa.
+				\\ \textbf{Gravità:} Alta.
+				\\ \textbf{Descrizione:} Nessun membro del gruppo ha una conoscenza in tutte le tecnologie utilizzate nel 
+					progetto. È quindi possibile che il gruppo incontri inconvenienti nell'utilizzo 
+					di determinati strumenti o tecnologie.
+				\\ \textbf{Contromisure:} L'\emph{Amministratore} è tenuto a fornire documentazione sufficiente riguardante 
+					le tecnologie adottate, in tempo utile per permettere all'intero gruppo di documentarsi 
+					in maniera autonoma.
+			\subsubsection{Malfunzionamento degli strumenti utilizzati}
+				 \textbf{Probabilità:} Bassa.
+				\\ \textbf{Gravità:} Bassa.
+				\\ \textbf{Descrizione:} Il gruppo ha deciso di sfruttare servizi online gratuiti o software open-source per lo 
+					sviluppo del progetto. È quindi da tenere in considerazione il possibile malfunzionamento 
+					di host o di qualche servizio/piattaforma.
+				\\ \textbf{Contromisure:} Il gruppo si impegna ad effettuare un backup periodicamente in modo da preventivare un'eventuale 
+					perdita di dati. Questo è compito del \emph{Responsabile di progetto}. La copia di backup sarà mantenuta 
+					sia sul \emph{Drive} del gruppo, sia su un disco rimovibile. Tutti i membri del gruppo hanno a disposizione 
+					un computer di supporto per poter rimanere operativi anche in caso di guasti hardware alle proprie macchine.
+		\subsection{Livello del personale}
+			\subsubsection{Inesperienza del gruppo}
+				 \textbf{Probabilità:} Media.
+				\\ \textbf{Gravità:} Media.
+				\\ \textbf{Descrizione:} Il gruppo per lo sviluppo del progetto didattico andrà ad utilizzare una tecnologia 
+					con la quale nessuno ha particolare familiarità, questo può portare a ritardi 
+					nella fase di sviluppo dovuti a risoluzione di problemi di primo approccio ad una 
+					nuova tecnologia non conosciuta.
+				\\ \textbf{Contromisure:} Il gruppo, per prevenire il verificarsi di questo rischio, ha stabilito di leggersi
+					più di un manuale riguardante \emph{Scala}, il linguaggio di programmazione richiesto
+					dal capitola d'appalto. Inoltre, il gruppo si sta già formando all'utilizzo delle
+					altre tecnologie previste per il corretto svolgimento di ogni fase.
+			\subsubsection{Variazione disponibilità}
+				 \textbf{Probabilità:} Media.
+				\\ \textbf{Gravità:} Medio-alta.
+				\\ \textbf{Descrizione:} Ogni membro del gruppo ha deciso di dedicare un certo monte ore allo sviluppo del 
+					progetto didattico. Questo monte ore, purtroppo, potrebbe non essere mantenuto da 
+					ciascuno dei membri del gruppo, in quanto possono capitare imprevisti, o sviste.
+				\\ \textbf{Contromisure:} Il \emph{Responsabile di progetto} è tenuto ad avvisare qualsiasi membro del gruppo 
+					nel caso in cui, all'avvicinarsi della terminazione di un compito a lui assegnato, 
+					essi mancasse ancora di molte ore, superiori al carico giornaliero previsto. 
+					
+					Come già specificato, ogni membro del gruppo ha preso l'impegno di dedicare tempo 
+					al progetto, e nel caso in cui qualcuno non rispetterà quanto detto, si presume 
+					non sia una cosa voluta o pianificata.
+			\subsubsection{Problemi tra componenti}
+				 \textbf{Probabilità:} Media.
+				\\ \textbf{Gravità:} Alta.
+				\\ \textbf{Descrizione:} SWEeneyThreads è un gruppo nato per questo progetto. Nessuno dei membri al suo interno 
+					ha mai lavorato con tutti gli altri a qualche altro progetto. Inoltre, nessuno dei membri 
+					del gruppo ha mai lavorato in un team così numeroso ad un progetto di questo livello. 
+					Questo potrebbe portare a problemi di collaborazione, ad un carico eccessivo da parte di 
+					alcuni, per sistemare una carenza da parte di altri; questo porterebbe ad avere un clima 
+					poco proficuo durante lo svolgimento del progetto.
+				\\ \textbf{Contromisure:} È compito del \emph{Responsabile di progetto} monitorare la nascita di problematiche tra più 
+					individui. Se questo si verificasse, è sempre compito del \emph{Responsabile di progetto} 
+					cercare di organizzare il lavoro cercando di diminuire il più possibile la cooperazione 
+					dei suddetti individui. 
+					
+					La differenza di opinioni in forte contrasto tra due individui verrà esposta al resto del 
+					gruppo che deciderà, per maggioranza, la strada da intraprendere.
+		\subsection{Livello organizzativo}
+			 \textbf{Probabilità:} Media.
+			\\ \textbf{Gravità:} Alta.
+			\\ \textbf{Descrizione:} Durante la pianificazione di progetto, è possibile che la stima dei tempi, e quindi il
+				preventivo, risulti errata. In particolare, una sottostima dei costi di produzione può 
+				portare ad un ritardo nella consegna dei materiali previsti. 
+			\\ \textbf{Contromisure:} La caratteristiche del rischio rilevato implica il dovere, da parte di ogni membro del 
+				gruppo, di controllare periodicamente lo stato dei tickets, in modo da rendersi conto 
+				immediatamente di eventuali ritardi nello svolgimento di \emph{Task}. Particolare attenzione
+				va posta alle attività contrassegnate come critiche. 
+				
+				Per le attività critiche si è deciso di inserire, già durante la loro pianificazione, delle 
+				ore di slack, in modo che un eventuale ritardo non influenzi la durata totale del progetto. 
+				Inoltre il preventivo fornito è maggiorato (se pur non di molto)rispetto a quello calcolato, 
+				il che permette di avere delle ore bonus a disposizione in caso di ritardo.
+		\subsection{Livello dei requisiti}
+			\textbf{Probabilità:} Media.
+			\\ 
+			\textbf{Gravità:} Media.
+			\\ 
+			\textbf{Descrizione:} Durante lo studio del capitolato e la stesura dei requisiti, è possibile che essi non vengano 
+				capiti totalmente dagli analisti. È anche possibile che alcuni aspetti vengano studiati in modo 
+				incompleto o peggio ancora in modo errato. Questo porterebbe a differenze tra le aspettative del 
+				committente e la visione del prodotto del gruppo di lavoro.
+			\\ 
+			\textbf{Contromisure:} Per evitare che questo rischio si verifichi, durante le fasi di analisi si terranno più incontri 
+				con il committente, in modo da chiarire incertezze su requisiti, o correggere errate interpretazioni 
+				dei requisiti espressi. Inoltre, ogni documento verrà consegnato e valutato dal committente, ad ogni 
+				revisione.
+				
+				Se si verificassero incongruenze tra le due visioni sul prodotto, è importante che esse vengano comunicate 
+				al gruppo dal committente al termine di ogni revisione, in modo che le analisi subiscano un miglioramento 
+				incrementale permettendo di ottenerne di affidabili.
+		\subsection{Livello di valutazione dei costi}
+			\textbf{Probabilità:} Bassa.
+			\\ \textbf{Gravità:} Alta.
+			\\ \textbf{Descrizione:} Il costo per ora di ogni ruolo è stato definito a priori, non era compito del gruppo. Spetta invece al 
+				gruppo la stima delle ore di lavoro necessarie per svolgere il progetto.
+			\\ \textbf{Contromisure:} Il preventivo è maggiorato, e anche le ore. I prezzi orari per ogni ruolo non è di pertinenza dei membri 
+				del gruppo.
+		\subsection{Attualizzazione dei rischi}
+			To fill with the most likely risks of each period.	
+	
+	\newpage 
+	\section{Pianificazione}
 		Considerando le scadenze elencate nella sezione 1.4 il gruppo ha deciso di suddividere il progetto in 5 
 		macro-fasi:
 		\begin{itemize}
@@ -358,12 +484,12 @@
 		Ogni attività, composta di più \emph{Task} viene indicata nel \emph{Gantt} con una barra nera.
 		
 		Per la visualizzazione gerarchica delle attività e dei \emph{Task} viene invece utilizzato un diagramma \emph{WBS}.
-		\section{Analisi}
+		\subsection{Analisi}
 			\textbf{Periodo:} da 2016-01-07 a 2016-01-22 \\
 			Questa macro-fase inizia dopo la \emph{Flipped-classroom} sulla documentazione e termina nella data
 			di scadenza della consegna dei documenti necessari per la revisione.\\ Le attività al suo interno sono:
 			\begin{itemize}
-				\item \textbf{Norme di progetto:} La prima attività svolta. Scritta dall'\emph{Amministratore}, serve a normare
+				\item \textbf{Norme di progetto:} La prima attività svolta. Scritta dal'\emph{Amministratore}, serve a normare
 				la metodologia di lavoro del gruppo, è stata svolta per prima in quanto in essa viene normata anche la stesura
 				dei documenti per la consegna. Il rispetto delle norme negli altri documenti verrà certificato dai \emph{Verificatori}; 
 				\item \textbf{Studio di fattibilità:} Viene redatto lo \emph{Studio di fattibilità} del capitolato scelto. Il gruppo è
@@ -373,7 +499,7 @@
 				\item \textbf{Analisi dei requisiti:} Viene effettuata una bozza di \emph{Analisi dei requisiti} di alto livello. 
 				Successivamente la fase passa nella sua parte di dettaglio, i requisiti vengono suddivisi in requisiti più specifici e 
 				ne vengono aggiunti degli ulteriori. Questa fase continua fino alla consegna dei documenti;
-				\item \textbf{Piano di progetto:} Il \emph{Responsabile di progetto}, aiutato dall'\emph{Amministratore} redige il 
+				\item \textbf{Piano di progetto:} Il \emph{Responsabile di progetto}, aiutato dal'\emph{Amministratore} redige il 
 				\emph{Piano di progetto}. In questa attività si organizzano i vari \emph{Task} che ogni risorsa andrà a svolgere.\\
 				Questa attività è considerata critica, in quanto regola le altre attività;
 				\item \textbf{Piano di qualifica:} Gli analisti redigono il \emph{Piano di qualifica} in collaborazione con l'
@@ -385,21 +511,21 @@
 				presentazione. Permette al gruppo di partecipare alla gara d'appalto per il capitolato scelto.
 			\end{itemize}
 			In questa macro-fase i ruoli principalmente coinvolti sono: \emph{Responsabile}, \emph{Amministratore} e \emph{Analista}.
-			\subsection{Gantt attività}
+			\subsubsection{Gantt attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.4]{GanttAnalisi}
 					\caption{Gantt attività - fase di Analisi.}
 				\end{figure}
-			\subsection{WBS attività}
+			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.5]{WBSAnalisi}
 					\caption{Work Breakdown Structure - fase di Analisi.}
 				\end{figure}
-			\subsection{Ripartizione ore}
+			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
@@ -407,7 +533,7 @@
 					\caption{Ripartizione ore - fase di Analisi.}
 				\end{figure}
 
-		\section{Analisi di dettaglio}
+		\subsection{Analisi di dettaglio}
 			\textbf{Periodo:} da 2016-01-23 a 2016-03-01 \\
 			Questa fase ha inizio subito dopo la consegna dei documenti alla \emph{Revisione dei requisiti}, la
 			prima scadenza che il gruppo intende rispettare; con l'inizio della macro-fase successiva, ovvero la 
@@ -417,28 +543,28 @@
 			Le attività sono le stesse della fase di \emph{Analisi}, escluso lo \emph{Studio di fattibilità}. 
 			In questa macro-fase i ruoli maggiormente coinvolti sono: \emph{Responsabile}, \emph{Amministratore} 
 			e \emph{Analista}.
-			\subsection{Gantt attività}
+			\subsubsection{Gantt attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.5]{GanttDettaglio}
 					\caption{Gantt attività - fase di Analisi di dettaglio.}
 				\end{figure}
-			\subsection{WBS attività}
+			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.5]{WBSDettaglio}
 					\caption{Work Breakdown Structure - fase di Analisi.}
 				\end{figure}
-			\subsection{Ripartizione ore}
+			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.6]{RODettaglio}
 					\caption{Ripartizione ore - fase di Analisi di dettaglio.}
 				\end{figure}
-		\section{Progettazione architetturale}
+		\subsection{Progettazione architetturale}
 			\textbf{Periodo:} da 2016-02-01 a 2016-03-20 \\
 			Questa macro-fase inizia al termine dell'\emph{Analisi di dettaglio} e termina con la conclusione 
 			della progettazione ad alto livello del progetto, prima della seconda scadenza. In questa fase viene 
@@ -455,21 +581,21 @@
 			In questa fase i ruoli principalmente coinvolti sono: \emph{Responsabile}, \emph{Amministratore},
 			\emph{Progettista}, \emph{Verificatore} e  \emph{Analista}.
 
-			\subsection{Gantt attività}
+			\subsubsection{Gantt attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.4]{GanttProgettazione}
 					\caption{Gantt attività - fase di Progettazione architetturale.}
 				\end{figure}
-			\subsection{WBS attività}
+			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.3]{WBSProgettazione}
 					\caption{Work Breakdown Structure - fase di Analisi.}
 				\end{figure}
-			\subsection{Ripartizione ore}
+			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
@@ -477,7 +603,7 @@
 					\caption{Ripartizione ore - fase di Progettazione architetturale.}
 				\end{figure}
 				
-		\section{Progettazione di dettaglio e codifica}
+		\subsection{Progettazione di dettaglio e codifica}
 			\textbf{Periodo:} da 2016-03-21 a 2016-05-23 \\
 			Questa macro-fase ha inizio immediatamente dopo la fine della progettazione di alto livello, attraversa la seconda 
 			scadenza che il gruppo intende rispettare, la \emph{Revisione di progetto} ed ha il compito di descrivere nel dettaglio 
@@ -496,28 +622,28 @@
 			In questa fase i ruoli principalmente coinvolti sono: \emph{Responsabile}, \emph{Amministratore},
 			\emph{Progettista} e \emph{Verificatore}.
 
-			\subsection{Gantt attività}
+			\subsubsection{Gantt attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.4]{GanttCodifica}
 					\caption{Gantt attività - fase di Progettazione di dettaglio e codifica.}
 				\end{figure}
-			\subsection{WBS attività}
+			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.3]{WBSCodifica}
 					\caption{Work Breakdown Structure - fase di Progettazione di dettaglio e codifica.}
 				\end{figure}
-			\subsection{Ripartizione ore}
+			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.6]{ROCodifica}
 					\caption{Ripartizione ore - fase di Progettazione di dettaglio e codifica.}
 				\end{figure}
-		\section{Verifica e validazione}
+		\subsection{Verifica e validazione}
 			\textbf{Periodo:} da 2016-05-24 a 2016-06-19 \\
 			Ultima macro-fase del progetto, in questa fase, successiva alla \emph{Revisione di qualifica} il gruppo 
 			intende effettuare gli ultimi test di verifica, e la validazione del prodotto. Il termine ultimo, di questa 
@@ -528,21 +654,21 @@
 				\item \textbf{Incremento e verifica:} tutti i documenti verranno aggiornati in base al risultato della 
 				\emph{Revisione di qualifica} e preparati per la \emph{Revisione di accettazione}.
 			\end{itemize}
-			\subsection{Gantt attività}
+			\subsubsection{Gantt attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.4]{GanttValidazione}
 					\caption{Gantt attività - fase di Verifica e validazione.}
 				\end{figure}
-			\subsection{WBS attività}
+			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.5]{WBSValidazione}
 					\caption{Work Breakdown Structure - fase di Verifica e validazione.}
 				\end{figure}
-			\subsection{Ripartizione ore}
+			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
@@ -550,13 +676,14 @@
 					\caption{Ripartizione ore - fase di Verifica e validazione.}
 				\end{figure}
 
-	\mychapter{3}{Suddivisione del lavoro}
+	\newpage 
+	\section{Suddivisione del lavoro}
 		Ogni membro del gruppo, dovrà, durante tutta la durata del progetto, ricoprire almeno una volta ciascuno dei
 		ruoli descritti nell'appendice, sezione A.5. Durante ogni fase ogni membro può ricoprire
 		più ruoli contemporaneamente, a patto che non si verifichino dei conflitti di interesse tra i ruoli ricoperti. 
 		Un membro del gruppo non può verificare il suo stesso lavoro.
-		\section{Dettaglio delle fasi}
-			\subsection{Analisi}
+		\subsection{Dettaglio delle fasi}
+			\subsubsection{Analisi}
 				Nella fase di \emph{Analisi} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
 					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
@@ -583,7 +710,7 @@
 					\includegraphics[scale=0.8]{BCAnalisi.png}
 					\caption{Ore per componente, fase di Analisi.}
 				\end{figure}
-			\subsection{Analisi di dettaglio}
+			\subsubsection{Analisi di dettaglio}
 				Nella fase di \emph{Analisi di dettaglio} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
 					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
@@ -610,7 +737,7 @@
 					\includegraphics[scale=0.9]{BCDettaglio.png}
 					\caption{Ore per componente, fase di Analisi di dettaglio.}
 				\end{figure}
-			\subsection{Progettazione architetturale}
+			\subsubsection{Progettazione architetturale}
 				Nella fase di \emph{Progettazione architetturale} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
 					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
@@ -637,7 +764,7 @@
 					\includegraphics[scale=0.9]{BCProgettazione.png}
 					\caption{Ore per componente, fase di Progettazione architetturale.}
 				\end{figure}
-			\subsection{Progettazione di dettaglio e codifica}
+			\subsubsection{Progettazione di dettaglio e codifica}
 				Nella fase di \emph{Progettazione di dettaglio e codifica} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
 					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
@@ -664,7 +791,7 @@
 					\includegraphics[scale=0.9]{BCCodifica.png}
 					\caption{Ore per componente, fase di Progettazione di dettaglio e codifica.}
 				\end{figure}
-			\subsection{Verifica e validazione}
+			\subsubsection{Verifica e validazione}
 				Nella fase di \emph{Verifica e validazione} ciascun componente dovrà ricoprire i seguenti ruoli:
 				\begin{table}[H]
 					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
@@ -691,8 +818,8 @@
 					\includegraphics[scale=0.9]{BCValidazione.png}
 					\caption{Ore per componente, fase di Verifica e validazione.}
 				\end{figure}
-		\section{Totali}
-			\subsection{Totale ore con investimento}
+		\subsection{Totali}
+			\subsubsection{Totale ore con investimento}
 				Contando anche le ore di investimento, le ore che ciascun membro dedicherà 
 				allo svolgimento del progetto saranno le seguenti:
 				\begin{table}[H]
@@ -720,7 +847,7 @@
 					\includegraphics[scale=0.9]{BCTotali.png}
 					\caption{Ore per componente, fase di Verifica e validazione.}
 				\end{figure}
-			\subsection{Totale ore rendicontate}
+			\subsubsection{Totale ore rendicontate}
 				Le ore rendicontate, sono minori rispetto alle ore totali, in quanto non sono a 
 				carico del committente le fasi di \emph{Analisi dei requisiti} e l'
 				\emph{Analisi di dettaglio}.
@@ -749,11 +876,12 @@
 					\includegraphics[scale=0.9]{BCRendicontate.png}
 					\caption{Ore per componente, fase di Verifica e validazione.}
 				\end{figure}
-	\mychapter{4}{Prospetto economico}
+	\newpage 
+	\section{Prospetto economico}
 		Per ciascuna fase del progetto, in questa sezione vengono presentate le ore preventivate di impiego per tutti i 
 		ruoli coinvolti. Si ricorda che le fasi di \emph{Analisi dei requisiti} e \emph{Analisi di dettaglio} non sono 
 		a carico del committente e quindi non saranno considerate nel calcolo delle ore preventivate.
-		\section{Analisi}
+		\subsection{Analisi}
 			Nelle fase di \emph{Analisi}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
 				\begin{tabularx}{\textwidth}{Y Y Y}
@@ -787,7 +915,7 @@
 				\includegraphics[scale=0.7]{PCCostiAnalisi}
 				\caption{Costi per ruolo, fase di Analisi.}
 			\end{figure}
-		\section{Analisi di dettaglio}
+		\subsection{Analisi di dettaglio}
 			Nelle fase di \emph{Analisi di dettaglio}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
 				\begin{tabularx}{\textwidth}{Y Y Y}
@@ -821,7 +949,7 @@
 				\includegraphics[scale=0.7]{PCCostiDettaglio}
 				\caption{Costi per ruolo, fase di Analisi di dettaglio.}
 			\end{figure}
-		\section{Progettazione architetturale}
+		\subsection{Progettazione architetturale}
 			Nelle fase di \emph{Progettazione architetturale}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
 				\begin{tabularx}{\textwidth}{Y Y Y}
@@ -855,7 +983,7 @@
 				\includegraphics[scale=0.7]{PCCostiProgettazione}
 				\caption{Costi per ruolo, fase di Progettazione architetturale.}
 			\end{figure}
-		\section{Progettazione di dettaglio e codifica}
+		\subsection{Progettazione di dettaglio e codifica}
 			Nelle fase di \emph{Progettazione di dettaglio e codifica}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
 				\begin{tabularx}{\textwidth}{Y Y Y}
@@ -889,7 +1017,7 @@
 				\includegraphics[scale=0.7]{PCCostiCodifica}
 				\caption{Costi per ruolo, fase di Progettazione di dettaglio e codifica.}
 			\end{figure}
-		\section{Verifica e validazione}
+		\subsection{Verifica e validazione}
 			Nelle fase di \emph{Verifica e validazione}, le ore per ciascun ruolo sono state suddivise in questo modo:
 			\begin{table}[H]
 				\begin{tabularx}{\textwidth}{Y Y Y}
@@ -923,8 +1051,8 @@
 				\includegraphics[scale=0.7]{PCCostiValidazione}
 				\caption{Costi per ruolo, fase di Verifica e validazione.}
 			\end{figure}
-		\section{Totali}
-			\subsection{Investimento}
+		\subsection{Totali}
+			\subsubsection{Investimento}
 				Le ore totali previste per la realizzazione del progetto sono riportate nella tabella seguente:
 				\begin{table}[H]
 					\begin{tabularx}{\textwidth}{Y Y Y}
@@ -958,7 +1086,7 @@
 					\includegraphics[scale=0.7]{PCCostiTotali}
 					\caption{Costi per ruolo, intero progetto.}
 				\end{figure}
-			\subsection{Preventivo}
+			\subsubsection{Preventivo}
 				Le ore totali previste per la realizzazione del progetto e a carico del committente sono riportate 
 				nella seguente tabella:
 				\begin{table}[H]
@@ -993,7 +1121,7 @@
 					\includegraphics[scale=0.7]{PCCostiRendicontati}
 					\caption{Costi per ruolo, rendicontati.}
 				\end{figure}
-			\subsection{Conclusione}
+			\subsubsection{Conclusione}
 				Il costo totale per lo sviluppo del progetto, indicato nella \hyperref[TCRendicontati]{Tabella 4.19} viene 
 				arrotondato a 13.500\euro. L'arrotondamento per eccesso è una precauzione in quanto le stime di ore di lavoro 
 				necessarie per ogni task e attività potrebbero rilevarsi insufficienti. In questo modo, anche sforando di qualche 
@@ -1001,167 +1129,18 @@
 				
 				Inoltre, se uno dei rischi successivamente analizzati dovesse presentarsi, il gruppo avrà comunque a disposizione 
 				un monte ore non nullo per rimediare ai danni causati dal verificarsi del rischio.
-	\mychapter{5}{Analisi dei rischi}
-		Al fine di migliorare l'avanzamento del progetto, è stata effettuata un'accurata analisi dei rischi suddivisa in:
-		\begin{itemize}
-			\item \textbf{Identificazione:} in cui si identificano i principali fattori di rischi come:
-			\begin{itemize}
-				\item Variabilità della disponibilità del personale;
-				\item Variabilità delle tecnologie;
-				\item Ritardo o mutazione di requisiti fondamentali;
-				\item Specifiche in ritardo.
-			\end{itemize}
-			\item \textbf{Analisi:} durante la quale si individua la possibilità di occorrenza di ogni rischio, e le conseguenze a cui porterebbe.
-			\item \textbf{Pianificazione:} scelta di tecniche per evitare il verificarsi dei rischi verificati, o per mitigarne gli effetti.
-			\item \textbf{Controllo:} attività svolta durante tutto il ciclo di vita del progetto per prevedere il verificarsi dei rischi
-			ed evitare che si verifichino.
-		\end{itemize}
-		Per ogni rischio individuato viene quindi stilata una lista di attributi quali: la sua probabilità di occorrenza, la gravità delle 
-		conseguenze a cui porterebbe il suo verificarsi, una descrizione, le strategie da utilizzare per la sua rilevazione preventiva e le 
-		contromisure da adottare (nel caso in cui il rischio si verifichi, o nel caso in cui si noti che il rischio sta per verificarsi). \\
-		L'identificazione dei rischi viene gestita a livelli.
-		
-		\section{Livello tecnologico}
-			\subsection{Tecnologie adottate}
-				\subsubsection{Probabilità:}
-					Bassa.
-				\subsubsection{Gravità:}
-					Alta.
-				\subsubsection{Descrizione:}
-					Nessun membro del gruppo ha una conoscenza in tutte le tecnologie utilizzate nel 
-					progetto. È quindi possibile che il gruppo incontri inconvenienti nell'utilizzo 
-					di determinati strumenti o tecnologie.
-				\subsubsection{Contromisure:}
-					L'\emph{Amministratore} è tenuto a fornire documentazione sufficiente riguardante 
-					le tecnologie adottate, in tempo utile per permettere all'intero gruppo di documentarsi 
-					in maniera autonoma.
-			\subsection{Malfunzionamento degli strumenti utilizzati}
-				\subsubsection{Probabilità:}
-					Bassa.
-				\subsubsection{Gravità:}
-					Bassa.
-				\subsubsection{Descrizione:}
-					Il gruppo ha deciso di sfruttare servizi online gratuiti o software open-source per lo 
-					sviluppo del progetto. È quindi da tenere in considerazione il possibile malfunzionamento 
-					di host o di qualche servizio/piattaforma.
-				\subsubsection{Contromisure:}
-					Il gruppo si impegna ad effettuare un backup periodicamente in modo da preventivare un'eventuale 
-					perdita di dati. Questo è compito del \emph{Responsabile di progetto}. La copia di backup sarà mantenuta 
-					sia sul \emph{Drive} del gruppo, sia su un disco rimovibile. Tutti i membri del gruppo hanno a disposizione 
-					un computer di supporto per poter rimanere operativi anche in caso di guasti hardware alle proprie macchine.
-		\section{Livello del personale}
-			\subsection{Inesperienza del gruppo}
-				\subsubsection{Probabilità:} 
-					Media.
-				\subsubsection{Gravità:} 
-					Media.
-				\subsubsection{Descrizione:} 
-					Il gruppo per lo sviluppo del progetto didattico andrà ad utilizzare una tecnologia 
-					con la quale nessuno ha particolare familiarità, questo può portare a ritardi 
-					nella fase di sviluppo dovuti a risoluzione di problemi di primo approccio ad una 
-					nuova tecnologia non conosciuta.
-				\subsubsection{Contromisure:}
-					Il gruppo, per prevenire il verificarsi di questo rischio, ha stabilito di leggersi
-					più di un manuale riguardante \emph{Scala}, il linguaggio di programmazione richiesto
-					dal capitola d'appalto. Inoltre, il gruppo si sta già formando all'utilizzo delle
-					altre tecnologie previste per il corretto svolgimento di ogni fase.
-			\subsection{Variazione disponibilità}
-				\subsubsection{Probabilità:}
-					Media.
-				\subsubsection{Gravità:} 
-					Medio-alta.
-				\subsubsection{Descrizione:}
-					Ogni membro del gruppo ha deciso di dedicare un certo monte ore allo sviluppo del 
-					progetto didattico. Questo monte ore, purtroppo, potrebbe non essere mantenuto da 
-					ciascuno dei membri del gruppo, in quanto possono capitare imprevisti, o sviste.
-				\subsubsection{Contromisure:}
-					Il \emph{Responsabile di progetto} è tenuto ad avvisare qualsiasi membro del gruppo 
-					nel caso in cui, all'avvicinarsi della terminazione di un compito a lui assegnato, 
-					essi mancasse ancora di molte ore, superiori al carico giornaliero previsto. 
-					
-					Come già specificato, ogni membro del gruppo ha preso l'impegno di dedicare tempo 
-					al progetto, e nel caso in cui qualcuno non rispetterà quanto detto, si presume 
-					non sia una cosa voluta o pianificata.
-			\subsection{Problemi tra componenti}
-				\subsubsection{Probabilità:}
-					Media.
-				\subsubsection{Gravità:}
-					Alta.
-				\subsubsection{Descrizione:}
-					SWEeneyThreads è un gruppo nato per questo progetto. Nessuno dei membri al suo interno 
-					ha mai lavorato con tutti gli altri a qualche altro progetto. Inoltre, nessuno dei membri 
-					del gruppo ha mai lavorato in un team così numeroso ad un progetto di questo livello. 
-					Questo potrebbe portare a problemi di collaborazione, ad un carico eccessivo da parte di 
-					alcuni, per sistemare una carenza da parte di altri; questo porterebbe ad avere un clima 
-					poco proficuo durante lo svolgimento del progetto.
-				\subsubsection{Contromisure:}
-					È compito del \emph{Responsabile di progetto} monitorare la nascita di problematiche tra più 
-					individui. Se questo si verificasse, è sempre compito del \emph{Responsabile di progetto} 
-					cercare di organizzare il lavoro cercando di diminuire il più possibile la cooperazione 
-					dei suddetti individui. 
-					
-					La differenza di opinioni in forte contrasto tra due individui verrà esposta al resto del 
-					gruppo che deciderà, per maggioranza, la strada da intraprendere.
-		\section{Livello organizzativo}
-			\subsubsection{Probabilità:} 
-				Media.
-			\subsubsection{Gravità:}
-				Alta.
-			\subsubsection{Descrizione:}
-				Durante la pianificazione di progetto, è possibile che la stima dei tempi, e quindi il
-				preventivo, risulti errata. In particolare, una sottostima dei costi di produzione può 
-				portare ad un ritardo nella consegna dei materiali previsti. 
-			\subsubsection{Contromisure:}
-				La caratteristiche del rischio rilevato implica il dovere, da parte di ogni membro del 
-				gruppo, di controllare periodicamente lo stato dei tickets, in modo da rendersi conto 
-				immediatamente di eventuali ritardi nello svolgimento di \emph{Task}. Particolare attenzione
-				va posta alle attività contrassegnate come critiche. 
-				
-				Per le attività critiche si è deciso di inserire, già durante la loro pianificazione, delle 
-				ore di slack, in modo che un eventuale ritardo non influenzi la durata totale del progetto. 
-				Inoltre il preventivo fornito è maggiorato (se pur non di molto)rispetto a quello calcolato, 
-				il che permette di avere delle ore bonus a disposizione in caso di ritardo.
-		\section{Livello dei requisiti}
-			\subsubsection{Probabilità:} 
-				Media.
-			\subsubsection{Gravità:}
-				Media.
-			\subsubsection{Descrizione:}
-				Durante lo studio del capitolato e la stesura dei requisiti, è possibile che essi non vengano 
-				capiti totalmente dagli analisti. È anche possibile che alcuni aspetti vengano studiati in modo 
-				incompleto o peggio ancora in modo errato. Questo porterebbe a differenze tra le aspettative del 
-				committente e la visione del prodotto del gruppo di lavoro.
-			\subsubsection{Contromisure:}
-				Per evitare che questo rischio si verifichi, durante le fasi di analisi si terranno più incontri 
-				con il committente, in modo da chiarire incertezze su requisiti, o correggere errate interpretazioni 
-				dei requisiti espressi. Inoltre, ogni documento verrà consegnato e valutato dal committente, ad ogni 
-				revisione.
-				
-				Se si verificassero incongruenze tra le due visioni sul prodotto, è importante che esse vengano comunicate 
-				al gruppo dal committente al termine di ogni revisione, in modo che le analisi subiscano un miglioramento 
-				incrementale permettendo di ottenerne di affidabili.
-		\section{Livello di valutazione dei costi}
-			\subsubsection{Probabilità:}
-				Bassa.
-			\subsubsection{Gravità:}
-				Alta.
-			\subsubsection{Descrizione:}
-				Il costo per ora di ogni ruolo è stato definito a priori, non era compito del gruppo. Spetta invece al 
-				gruppo la stima delle ore di lavoro necessarie per svolgere il progetto.
-			\subsubsection{Contromisure:}
-				Il preventivo è maggiorato, e anche le ore. I prezzi orari per ogni ruolo non è di pertinenza dei membri 
-				del gruppo.
 
-	\mychapter{6}{Meccanismi di controllo e rendicontazione}
-		\section{Controllo}
-			\subsection{Meccanismi di controllo}
+	\newpage 
+	\section{Meccanismi di controllo e rendicontazione}
+		\subsection{Controllo}
+			\subsubsection{Meccanismi di controllo}
 				All'interno dell'ambiente di lavoro sono stati predisposti meccanismi per:
 				\begin{itemize}
 					\item Controllare l'andamento delle attività ed eventuali ritardi;
 					\item Permettere un aggiornamento facilitato della pianificazione;
 					\item Rendicontare le ore di lavoro spese nelle varie attività.
 				\end{itemize}
-			\subsection{Andamento delle attività}
+			\subsubsection{Andamento delle attività}
 				Per monitorare i ritardi sulle attività e acquisire maggiore esperienza per stime future si adotta la 
 				funzione timer di Teamwork. Ogni componente del gruppo è invitato a tenere attivo il timer durante 
 				tutto lo svolgimento delle attività a lui assegnate. In questo modo si può avere una misurazione del 
@@ -1190,7 +1169,7 @@
 				Ogni membro del gruppo può consultarlo liberamente per pianificare il proprio lavoro in base agli altri
 				impegni privati.
 				
-			\subsection{Controllo metriche di progetto}
+			\subsubsection{Controllo metriche di progetto}
 				L'introduzione delle metriche nel progetto fornisce una maniera il più possibile oggettiva e sistematica per
 				misurare le performance del gruppo. Dal punto di vista del controllo del progetto le metriche impiegate sono:
 				\begin{itemize}
@@ -1204,7 +1183,8 @@
 				\end{itemize}
 
 
-	\mychapter{7}{Consuntivo a finire}
+	\newpage 
+	\section{Consuntivo a finire}
 		Questa sezione, lasciata per ultima perchè incrementale, riporta il prospetto economico con i 
 		costi effettivamente sostenuti. Per ogni fase verrà calcolato un conguaglio, ovvero la differenza
 		tra ore preventivate e spese, esso potrà essere:
@@ -1213,7 +1193,7 @@
 			\item \textbf{In pari:} se il preventivo e il consuntivo coincidono;
 			\item \textbf{Negativo:} se il consuntivo ha superato il preventivo.
 		\end{itemize}
-		\section{Analisi}
+		\subsection{Analisi}
 			Si riporta di seguito il consuntivo della fase di \emph{Analisi}. \\
 			La tabella sottostante riporta le differenze delle ore tra preventivo e consuntivo, divise per ruolo. 
 			Un segno positivo indica che sono state necessarie più ore del previsto, un segno negativo indica che sono 
@@ -1237,7 +1217,7 @@
 				\caption{Differenza consuntivo/preventivo - fase di Analisi. } 
 				\label{DCPAnalisi}
 			\end{table}
-			\subsection{Conclusioni}
+			\subsubsection{Conclusioni}
 				Lo svolgimento della fase di \emph{Analisi} discosta leggermente da quello programmato e 
 				visualizzabile nel \emph{Gantt}. Il gruppo ha impiegato lo stesso monte ore previste, ma 
 				ricoprendo ruoli diversi da quelli previsti, portando ad un conguaglio positivo.
@@ -1245,10 +1225,10 @@
 				Tale differenza non influenzerà in alcun modo il costo totale del progetto in quanto le ore 
 				di lavoro in questa fase non sono a carico del committente e vengono quindi emesse dal preventivo.
 		%Da aggiungere man-mano
-		%\section{Analisi di dettaglio}
-		%\section{Progettazione architetturale}
-		%\section{Progettazione di dettaglio e codifica}
-		%\section{Verifica e validazione}
+		%\subsection{Analisi di dettaglio}
+		%\subsection{Progettazione architetturale}
+		%\subsection{Progettazione di dettaglio e codifica}
+		%\subsection{Verifica e validazione}
 
 	\cleardoublepage
 	\addcontentsline{toc}{chapter}{\listfigurename}

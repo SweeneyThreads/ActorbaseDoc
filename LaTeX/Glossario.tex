@@ -3,7 +3,7 @@
 %Document-Description: Glossario
 
 
-\documentclass[a4paper]{report}
+\documentclass[a4paper]{article}
 \usepackage[english, italian]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -23,13 +23,6 @@
 \newcolumntype{f}{>{\hsize=.37\hsize}X}
 \newcolumntype{m}{>{\hsize=.42\hsize}X}
 
-\newcommand{\mychapter}[2]{
-	\setcounter{chapter}{#1}
-	\setcounter{section}{0}
-	\setcounter{subsection}{1}
-	\chapter*{#2}
-	\addcontentsline{toc}{chapter}{#2}
-}
 
 \begin{document}
 	
@@ -84,12 +77,16 @@
 	
 	
 	
-	\mychapter{0}{Diario delle modifiche}
+	\section*{Diario delle modifiche}
 		\begin{table}[H]
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
+				2.0.0 & 2016-02-19 & \emph{Responsabile} \newline Nicoletti Luca & Prime modifiche post consegna RR: tolto il comando
+				per la creazione di paragrafi da noi introdotto, sostituiti tutti i "paragrafi" con sezioni; cambiata classe del 
+				documento da "report" ad "article" come consigliato nella correzione. \\
+				\noalign{\hrule height 0.5pt}
 				1.1.0 & 2016-01-21 & \emph{Verificatore} \newline Tommasin Davide & Verificato il documento \\
 				\noalign{\hrule height 0.5pt}
 				1.0.3 & 2016-01-21 & \emph{Analista} \newline Maino Elia & Inserimento voci \\
@@ -104,32 +101,17 @@
 			\caption{Diario delle modifiche \label{tab:table_label}}
 		\end{table}
 
-	\mychapter{1}{Introduzione}
-	\section{Scopo del documento}
-		In questo documento sono raccolti tutti i termini che possono risultare sconosciuti ad un lettore
-		esterno o che possono generare ambiguità. Per ognuno di essi si riporta una breve definizione
-		che aiuti a chiarirne il significato.
-	\section{Scopo del prodotto}
-		Lo scopo del progetto è la realizzazione di un DataBase NoSQL key-value basato sul modello ad 
-		Attori\ped{\textit{G}} con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
-		applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
-		di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
-	\section{Riferimenti}
-	\subsection{Informativi}	
-		\begin{itemize}
-			\item \textbf{Slide dell'insegnamento Ingegneria del software mod.A:} \\
-			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/E02.pdf}
-			\item \textbf{Wikipedia:} \\
-			\url{https://it.wikipedia.org/wiki/Pagina_principale}
-		\end{itemize}
-	\subsection{Normativi}
-		\begin{itemize}
-			\item \textbf{Norme di progetto:} \emph{Norme di progetto v1.1.2}
-		\end{itemize}
-		
+%	\subsection{Informativi}	
+%		\begin{itemize}
+%			\item \textbf{Slide dell'insegnamento Ingegneria del software mod.A:} \\
+%			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/E02.pdf}
+%			\item \textbf{Wikipedia:} \\
+%			\url{https://it.wikipedia.org/wiki/Pagina_principale}
+%		\end{itemize}
+	
+	\newpage
 
-
-	\mychapter{1}{A}
+	\section*{A}
 		\begin{itemize}
 			\item \textbf{Actor:} Actor si riferisce agli attori all'interno del progetto Actorbase, 
 			non al ruolo dell'utente nell'interazione con il sistema. Un Actor può essere StoreKeeper, 
@@ -165,7 +147,7 @@
 			\item \textbf{Attore:} Elemento esterno di un caso d'uso che interagisce con il sistema. 
 		\end{itemize}
 		
-	\mychapter{2}{B}
+	\section*{B}
 		\begin{itemize}
 			\item \textbf{Baseline:} E' l'insieme di Configuration Item consolidato ad una specifica Milestone. Rappresenta 
 			cioè un punto dello sviluppo verificato, approvato e garantito.\'E una configurazione a cui si può tornare senza perdite
@@ -178,7 +160,7 @@
 			le parti importanti producendo così le “miniature”.
 		\end{itemize}
 		
-	\mychapter{3}{C}
+	\section*{C}
 		\begin{itemize}
 			\item \textbf{Casi d'uso:} Un caso d'uso é la descrizione di un'interazione tra uno o più attori esterni ed il sistema, al
 			fine di effettuare una determinata operazione. I casi d'uso sono utili per identificare requisiti in quanto descrivono
@@ -199,11 +181,11 @@
 			\end{itemize}
 		\end{itemize}
 		
-	\mychapter{4}{D}
+	\section*{D}
 		\begin{itemize}
 			\item \textbf{Design pattern:} Soluzione progettuale ad un problema ricorrente. 
 		\end{itemize}
-	\mychapter{5}{E}
+	\section*{E}
 		\begin{itemize}
 			\item \textbf{Efficacia:} È determinata dal grado di conformità del prodotto rispetto alle norme vigenti e 
 			agli obiettivi prefissati. Un prodotto software finale è da considerarsi tanto più efficace quanto più si 
@@ -213,19 +195,19 @@
 			\item \textbf{Elicitare:} Riferito a concetti o informazioni, ottenerli mediante domande o altri stimoli.
 		\end{itemize}
 		
-	\mychapter{6}{F}
+	\section*{F}
 		\begin{itemize}
 			\item \textbf{Fase:} Durata temporale entro uno stato di ciclo di vita o una transazione tra essi.
 		\end{itemize}
 		
-	\mychapter{7}{G}
+	\section*{G}
 		\begin{itemize}
 			\item \textbf{Gantt (diagramma di):} Diagramma per la dislocazione temporale delle attività. Per ogni 
 			attività indica durata temporale, sequenzialità/parallelismo con le altre. Permette di confrontare le 
 			stime con progressi reali.
 		\end{itemize}
 		
-	\mychapter{8}{I}
+	\section*{I}
 		\begin{itemize}
 			\item \textbf{Incremento:} Procedere per incrementi significa aggiungere (o togliere) a un impianto base, 
 			la caratteristica fondamentale dell’incremento è l’utilizzare un solo tipo di operazione, non si torna sui 
@@ -257,19 +239,19 @@
 			non sa garantire un termine al processo di sviluppo, quindi è non quantificabile.
 		\end{itemize}
 	
-	\mychapter{9}{J}	
+	\section*{J}	
 	\begin{itemize}
 		\item \textbf{JVM:} La macchina virtuale Java, detta anche Java Virtual Machine o JVM, è il componente della piattaforma
 		 Java che esegue i programmi tradotti in bytecode dopo una prima compilazione.
 	\end{itemize}
 	
-	\mychapter{10}{L}
+	\section*{L}
 	\begin{itemize}
 		\item \textbf{LaTeX:} LaTeX  è un linguaggio di markup usato per la preparazione di testi basato sul programma di
 		 composizione tipografica TEX.
 	\end{itemize}
 		
-	\mychapter{11}{M}
+	\section*{M}
 		\begin{itemize}
 			\item \textbf{Manutenibilità/Manutenzione:} Qualità fondamentale del sw che si presenta in diverse forme:
 			\begin{itemize}
@@ -289,19 +271,19 @@
 			\item \textbf{Modularità:} Fa si che i processi siano tra loro relazionati in modo chiaro e distinto.		
 		\end{itemize}
 		
-	\mychapter{12}{N}
+	\section*{N}
 	\begin{itemize}
 		\item \textbf{NoSQL:} NoSQL è un movimento che promuove sistemi software dove la persistenza dei dati è caratterizzata dal fatto di non utilizzare il modello relazionale, di solito usato dai database tradizionali (RDBMS).
 	\end{itemize}
 		
-	\mychapter{13}{O}
+	\section*{O}
 		\begin{itemize}	
 			\item \textbf{Opportunità:} Un’offerta relativa a un prodotto software non implica necessariamente un’opportunità 
 			(sw già esistente, progetto irrealizzabile, ...) dunque è compito del software engineer valutare la presenza di 
 			opportunità al momento di accettare o meno la commissione.	
 		\end{itemize}
 		
-	\mychapter{14}{P}
+	\section*{P}
 		\begin{itemize}
 			\item \textbf{PERT (diagramma di):} Acronimo di Program Evaluation and Review Technique. È una tecnica di project management 
 			(un diagramma) nato per ridurre i tempi ed i costi per la progettazione. Con questa tecnica si tengono sotto 
@@ -336,7 +318,7 @@
 			il beneficio ottenibile ne rende improduttivo l’uso.
 		\end{itemize}
 		
-	\mychapter{15}{R}
+	\section*{R}
 		\begin{itemize}
 			\item \textbf{Requisito:}  Una delle primissime attività da svolgere per quanto riguarda lo sviluppo è la 
 			definizione dei requisiti del prodotto, un sistema software sarà considerato efficace se e solo se si dimostrerà 
@@ -354,7 +336,7 @@
 			\item \textbf{Ruolo:} Funzione aziendale assegnata a progetto.
 		\end{itemize}
 		
-	\mychapter{16}{S}
+	\section*{S}
 		\begin{itemize}
 			\item \textbf{Servizio:} Mezzo per fornire valore all'utente, agevolando il raggiungimento dei suoi obiettivi, 
 			sollevandolo da costi e rischi.
@@ -378,20 +360,20 @@
 			\end{itemize}
 		\end{itemize}
 		
-	\mychapter{17}{T}
+	\section*{T}
 		\begin{itemize}	
 			\item \textbf{Task:} Compito organizzativo ottenuto dalla frantumazione di un processo. Generalmente è delle 
 			dimensioni adeguate per essere svolto da una solo persona ed è parallelizzabile.
 		\end{itemize}
 		
-	\mychapter{18}{U}
+	\section*{U}
 		\begin{itemize}	
 			\item \textbf{UML:} Famiglia di notazioni grafiche che si basano su un singolo meta-modello e servono a supportare la descrizione e il progetto dei sistemi software	
 			\item \textbf{UTF-8:} (Unicode Transformation Format, 8 bit) è una codifica dei caratteri Unicode in sequenze 
 			di lunghezza variabile di byte, creata da Rob Pike e Ken Thompson. UTF-8 usa gruppi di byte per rappresentare i caratteri Unicode.		
 		\end{itemize}
 		
-	\mychapter{19}{V}
+	\section*{V}
 		\begin{itemize}
 			\item \textbf{Validazione:} Serve ad accertare che il prodotto realizzato corrisponda alle attese (Did I 
 			built the right system?) ed è rivolta ai prodotti finali.
@@ -399,7 +381,7 @@
 			errori. Si confronta ciò che si sta facendo con le regole che si devono rispettare. (Am I building the system right?)	
 		\end{itemize}
 		
-	\mychapter{20}{W}
+	\section*{W}
 		\begin{itemize}
 			\item \textbf{WBS:} Vedi Work Breakdown Structrure.
 			\item \textbf{Work Breakdown Structure:} Identifica l'elenco di tutte le attività di un progetto. Le WBS sono 
