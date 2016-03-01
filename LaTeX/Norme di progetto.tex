@@ -25,24 +25,33 @@
 
 \renewcommand{\abstractname}{Tabella contenuti}
 
+\newcommand{\UC}{\emph{Casi d'uso}\space}
+\newcommand{\PdP}{\emph{Piano di progetto}\space}
+\newcommand{\PdQ}{\emph{Piano di qualifica}\space}
+\newcommand{\NdP}{\emph{Norme di progetto}\space}
+\newcommand{\GL}{\emph{Glossario}\space}
+\newcommand{\AdR}{\emph{Analisi dei requisiti}\space}
+\newcommand{\SdF}{\emph{Studio di fattibilità}\space}
+\newcommand{\ST}{\emph{Specifica tecnica}\space}
+
 \begin{document}
-	
+
 	\begin{titlepage}
 		% Defines a new command for the horizontal lines, change thickness here
-		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
-		\center  
-		
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+		\center
+
 		% HEADING SECTION
-		\textsc{\LARGE SweeneyThreads}\\[1.5cm] 
-		\textsc{\Large Actorbase}\\[0.5cm] 
+		\textsc{\LARGE SWEeneyThreads}\\[1.5cm]
+		\textsc{\Large Actorbase}\\[0.5cm]
 		\textsc{\large a NoSQL DB based on the Actor model}\\[0.5cm]
-		
-		
+
+
 		% TITLE SECTION
 		\HRule \\[0.4cm]
-		{ \huge \bfseries Norme di progetto}\\[0.4cm] 
+		{ \huge \bfseries Norme di progetto}\\[0.4cm]
 		\HRule \\[1.5cm]
-		
+
 		% AUTHOR SECTION
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushleft} \large
@@ -57,11 +66,11 @@
 				\emph{Approvazione:} \\
 				Padovan Tommaso \\
 				\emph{Verifica:} \\
-				Biggeri \textsc{Mattia} \\
-				Tommasin \textsc{Davide} \\
+				Biggeri Mattia \\
+				Tommasin Davide \\
 			\end{flushright}
 		\end{minipage}
-		
+
 		%immagine
 		\begin{figure}[H]
 			\centering
@@ -71,23 +80,27 @@
 			Versione 1.0.1
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
-		{\large \today}\\[3cm] 
+		{\large \today}\\[3cm]
 		% Fill the rest of the page with whitespace
-		\vfill  
+		\vfill
 	\end{titlepage}
-	
-	
+
+
 	\tableofcontents
-	
-	\newpage 
+
+	\newpage
 	\section*{Diario delle modifiche}
 		\begin{table}[H]
 			\begin{tabularx}{\textwidth}{sfmX}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
+				1.0.2 & 2016-03-01 & \emph{Responsabile} \newline Nicoletti Luca & Modifiche apportate a tutti gli errori riscontrati dall'analisi 
+				effettuata in data odierna. Inserita norma per nuovi comandi per scrivere riferimenti a dei documenti o a dei termini di glossario 
+				in sezione 2.2.2.\\
+				\noalign{\hrule height 0.5pt}
 				1.0.1 & 2016-02-23 & \emph{Responsabile} \newline Nicoletti Luca & Prime modifiche post revisione RR: riviste le norme riguardanti
-				il versionamento dei documenti in sezione 3.1.13; modificata l'intera tabella del diario delle modifiche; inserita norma riguardante 
+				il versionamento dei documenti in sezione 3.1.13; modificata l'intera tabella del diario delle modifiche; inserita norma riguardante
 				i termini presenti nel glossario per ogni documento.\\
 				\noalign{\hrule height 0.5pt}
 				1.0.0 & 2016-01-18 & \emph{Responsabile} \newline Padovan Tommasin & Documento approvato, pronto alla consegna\\
@@ -96,13 +109,13 @@
 				\noalign{\hrule height 0.5pt}
 				0.1.2 & 2016-01-17 & \emph{Amministratore} \newline Nicoletti Luca & Modifica margini, inserita norma sui margini\\
 				\noalign{\hrule height 0.5pt}
-				0.1.1 & 2016-01-11 & \emph{Amministratori} Maino Elia, Nicoletti Luca & Stesura norme riguardanti commit e politiche di 
+				0.1.1 & 2016-01-11 & \emph{Amministratori} Maino Elia, Nicoletti Luca & Stesura norme riguardanti commit e politiche di
 				ticketing, correzione errori  \\
 				\noalign{\hrule height 0.5pt}
-				0.1.0 & 2016-01-10 & \emph{Verificatori} Biggeri Mattia, Tommasin Davide & Verifica del documento  \\	
+				0.1.0 & 2016-01-10 & \emph{Verificatori} Biggeri Mattia, Tommasin Davide & Verifica del documento  \\
 				\noalign{\hrule height 0.5pt}
-				0.0.6 & 2016-01-09 & \emph{Amministratore} Nicoletti Luca & Stesura norme riguardanti documentazione di pianificazione, correzione 
-				errori  \\	
+				0.0.6 & 2016-01-09 & \emph{Amministratore} Nicoletti Luca & Stesura norme riguardanti documentazione di pianificazione, correzione
+				errori  \\
 				\noalign{\hrule height 0.5pt}
 				0.0.5 & 2016-01-09 & \emph{Amministratore} Maino Elia & Stesura norme riguardanti risoluzione problemi, versioning, comunicazioni
 				e casi d'uso \\
@@ -111,10 +124,10 @@
 				\noalign{\hrule height 0.5pt}
 				0.0.3 & 2016-01-08 & \emph{Amministratore} Maino Elia & Stesura norme Documentazione\\
 				\noalign{\hrule height 0.5pt}
-				0.0.2 & 2016-01-08 & \emph{Amministratore} Nicoletti Luca & Stesura norme riguardanti Studio di fattibilità e requisiti, 
+				0.0.2 & 2016-01-08 & \emph{Amministratore} Nicoletti Luca & Stesura norme riguardanti Studio di fattibilità e requisiti,
 				codifica \LaTeX \space e \emph{Scala} \\
 				\noalign{\hrule height 0.5pt}
-				0.0.1 & 2016-01-08 & \emph{Amministratori} Maino Elia, Nicoletti Luca & Creazione scheletro documento e struttura 
+				0.0.1 & 2016-01-08 & \emph{Amministratori} Maino Elia, Nicoletti Luca & Creazione scheletro documento e struttura
 				organizzativa: inserite le sezioni: Introduzione, Processi primari, Processi di supporto, Processi organizzativi
 				 Stesura Introduzione  \\
 				\noalign{\hrule height 1.5pt}
@@ -122,19 +135,19 @@
 			\caption{Diario delle modifiche \label{tab:table_label}}
 		\end{table}
 
-	\newpage 
+	\newpage
 	\section{Introduzione}
 		\subsection{Scopo del documento}
-			Lo scopo del seguente documento è quello di definire le norme che l'intero gruppo SWEeneyThreads si 
-			impegna a rispettare durante lo svolgimento 
-			del progetto Actorbase. 
-			
-			Ogni membro è tenuto a leggere il documento e a rispettare le norme al fine di dare maggiore uniformità 
-			allo svolgimento dei processi, 
+			Lo scopo del seguente documento è quello di definire le norme che l'intero gruppo SWEeneyThreads si
+			impegna a rispettare durante lo svolgimento
+			del progetto Actorbase.
+
+			Ogni membro è tenuto a leggere il documento e a rispettare le norme al fine di dare maggiore uniformità
+			allo svolgimento dei processi,
 			migliorandone l'efficacia, riducendo il numero di errori e i tempi di sviluppo.
-			
-			Poichè il gruppo ha deciso di basarsi sulla struttura a processi \emph{ISO/IEC 12207} 
-			la struttura di questo documento ne rispecchia 
+
+			Poiché il gruppo ha deciso di basarsi sulla struttura a processi \emph{ISO/IEC 12207}
+			la struttura di questo documento ne rispecchia
 			l'organizzazione. In particolare la suddivisione in processi primari, di supporto e organizzativi.
 			%immagine
 			\begin{figure}[H]
@@ -143,12 +156,12 @@
 				\caption{Processi ISO/IEC 12207}
 			\end{figure}
 		\subsection{Scopo del prodotto}
-			Lo scopo del progetto è la realizzazione di un DataBase NoSQL key-value basato sul modello ad 
-			Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
-			applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
+			Lo scopo del progetto è la realizzazione di un DataBase NoSQL key-value basato sul modello ad
+			Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne
+			applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità
 			di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
 		\subsection{Glossario}
-			Con lo scopo di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il 
+			Con lo scopo di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il
 	      	gruppo ha steso un documento interno che è il \emph{Glossario v1.0.3}. In esso saranno definiti, in modo
 	      	chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo. In ogni documento,
 	      	ogni occorrenza di un termine presente nel glossario, verrà contrassegnata con una G a pedice come la seguente:
@@ -184,35 +197,35 @@
 				\end{itemize}
 			\subsubsection{Normativi}
 				\begin{itemize}
-					\item Capitolato d'appalto Actorbase (C1): \\ 
+					\item Capitolato d'appalto Actorbase (C1): \\
 					\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
 				\end{itemize}
-	
-	\newpage 
+
+	\newpage
 	\section{Processi primari}
-		Sono state definite delle norme relative ai processi primari che maggiormente riguardano le attività 
+		Sono state definite delle norme relative ai processi primari che maggiormente riguardano le attività
 		svolte dal gruppo: fornitura e sviluppo.
 		\subsection{Fornitura}
 		\subsubsection{Studio di fattibilità}
-		I responsabili dello studio di fattibilità del progetto sono i membri che ricoprono il ruolo di 
-		\emph{Analisti}. In base alle prime riunioni effettuate, decise dal \emph{Responsabile di progetto}, le 
-		preferenze e le idee emerse per ogni singolo membro del gruppo, essi dovranno stendere il documento 
-		(che verrà poi analizzato e valutato da altri 	membri del gruppo). Lo studio di fattibilità deve 
-		contenere:
+		Lo \emph{Studio di fattibilità} del progetto deve essere steso dai membri che ricoprono il ruolo di 
+		\emph{Analisti} sulla base delle prime riunioni effettuate, decise dal \emph{Responsabile di progetto},
+		e delle preferenze espresse da ogni singolo membro del gruppo.
+		In seguito il documento verrà analizzato e valutato da altri membri del gruppo. 
+		Lo \emph{Studio di fattibilità} deve contenere:
 		\begin{itemize}
 			\item \textbf{Dominio:} conoscenza delle tecnologie richieste e del dominio applicativo;
-			\item \textbf{Rapporto costo/benefici:} eventuali prodotti simili già presenti sul mercato, 
-			competitori, costo della 
+			\item \textbf{Rapporto costo/benefici:} eventuali prodotti simili già presenti sul mercato,
+			competitori, costo della
 			realizzazione del prodotto e quantità di requisiti obbligatori;
-			\item \textbf{Individuazione dei rischi:} evidenziare lacune tecniche e di conoscenza del dominio 
+			\item \textbf{Individuazione dei rischi:} evidenziare lacune tecniche e di conoscenza del dominio
 			dei membri del gruppo, comprensione
-			dei punti critici, difficoltà nel determinare i requisiti obbligatori e opzionali e nella loro 
-			classificazione; 
-		\end{itemize}				 
+			dei punti critici, difficoltà nel determinare i requisiti obbligatori e opzionali e nella loro
+			classificazione;
+		\end{itemize}
 		\subsubsection{Tecniche di analisi e classificazione requisiti}
-		Sempre compito degli analisti, sarà quello di stilare l'analisi dei requisiti. Essi potranno ricavarli 
-		da eventuali \emph{Casi d'uso} emersi da Brainstorming o riunioni con il committente.
-		
+		Sempre compito degli \emph{Analisti}, sarà quello di stilare l'\emph{Analisi dei requisiti}. Essi potranno ricavarli
+		da eventuali \UC emersi da Brainstorming o riunioni con il committente.
+
 		I requisiti saranno elencati secondo un ordine. Ogni requisito seguirà la seguente codifica: \\
 		\begin{center}
 			R[Codice][Importanza][Tipo]
@@ -242,37 +255,37 @@
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
 		\end{table}
-	
+
 		\subsubsection{Casi d'uso}
-			Come detto in precedenza alcuni requisiti possono essere ricavati dai \emph{Casi d'uso}, ad essi si 
-			può fare riferimento anche con la dicitura \emph{use case} o con l'acronimo \emph{UC} nel caso 
-			fosse  necessario utilizzarli in tabelle o diagrammi. 
-			 
-			 I \emph{Casi d'uso} vanno identificati dagli \emph{Analisti}, attraverso una procedura che va dal 
-			 generale al particolare. 
+			Come detto in precedenza alcuni requisiti possono essere ricavati dai \UC, ad essi si
+			può fare riferimento anche con la dicitura \emph{use case} o con l'acronimo \emph{UC} nel caso
+			fosse  necessario utilizzarli in tabelle o diagrammi.
+
+			 I \UC vanno identificati dagli \emph{Analisti}, attraverso una procedura che va dal
+			 generale al particolare.
 			  \\ \\
 			 Un \emph{caso d'uso} richiede la definizione dei seguenti campi:
 			 \begin{itemize}
-			 	\item Codice gerarchico 
+			 	\item Codice gerarchico
 			 	\item Nome sintetico
 			 	\item Attori
 			 	\begin{itemize}
 			 		\item Principali
 			 		\item Secondari
 			 	\end{itemize}
-			 	\item Precondizione
-			 	\item Postcondizione
+			 	\item Pre-condizione
+			 	\item Post-condizione
 			 	\item Flusso degli eventi relativi allo scenario principale
 			 	\item Eventuali scenari alternativi
-			 	\item Lista di requisiti dedotti 
+			 	\item Lista di requisiti dedotti
 			 \end{itemize}
-			 A tale insieme di informazioni va associato un diagramma di caso d'uso in UML. Per la 
-			 scrittura dei \emph{casi d'uso} in UML il gruppo ha deciso di utilizzare il software
-			  \emph{StarUML} alla versione 2.5.1. La scelta è  caduta su tale programma poichè 
+			 A tale insieme di informazioni va associato un diagramma di caso d'uso in UML. Per la
+			 scrittura dei \UC in UML il gruppo ha deciso di utilizzare il software
+			  \emph{StarUML} alla versione 2.5.1. La scelta è  caduta su tale programma poiché
 			  è disponibile per tutti i principali sistemi operativi desktop e permette di
 			   utilizzare una versione di prova completa per tutto il tempo del progetto.
 			  \\ \\
-			  È degli \emph{Analisti} il compito di inserire tutte le informazioni relative ai casi 
+			  È degli \emph{Analisti} il compito di inserire tutte le informazioni relative ai casi
 			  d'uso e i loro diagrammi nel documento di \emph{Analisi dei requisiti}.
 			  \\ \\
 			 Il codice gerarchico del \emph{caso d'uso} ha la forma seguente:
@@ -280,10 +293,10 @@
 			 	UC[codice univoco del padre].[codice progressivo]
 			 \end{center}
 			 Dove il codice progressivo può definire diversi livelli di gerarchia separati da un punto.
-			 
-			 I casi d'uso saranno espressi in forma tabellare nel documento di \emph{Analisi dei requisiti}
+
+			 I \UC saranno espressi in forma tabellare nel documento di \emph{Analisi dei requisiti}
 			 nel seguente modo, in più, ogni caso d'uso sarà accompagnato da un diagramma UML che ne
-			 descriva il flusso di eventi.
+			 descrive il flusso di eventi.
 			 \begin{table}[H]
 				\begin{tabularx}{\textwidth}{X | X}\toprule
 					\rowcolor{orange!65}Codice gerarchico & UC[Padre][CodProgressivo] \\
@@ -297,24 +310,24 @@
 					\bottomrule
 				\end{tabularx}
 			 \end{table}
-	
+
 		\subsubsection{Tecniche di tracciamento dei requisiti}
-			Tutti i requisiti e casi d'uso saranno inseriti in un Database, strutturato in modo funzionale
-			 dal gruppo. Nel presente Database verranno 	inserite anche le \emph{Milestones} definite 
-			 dal responsabile di turno, in modo da poter collegare requisiti e milestones. Verranno 
+			Tutti i requisiti e \UC saranno inseriti in un Database, strutturato in modo funzionale
+			 dal gruppo. Nel presente Database verranno inserite anche le \emph{Milestones} definite
+			 dal responsabile di turno, in modo da poter collegare requisiti e \emph{Milestones}. Verranno
 			 creati degli appositi triggers per automatizzare la validazione dei requisiti tramite
-			  completamento manuale delle	milestones presenti. 
-			\\ \\ 
+			  completamento manuale delle \emph{Milestones} presenti.
+			\\ \\
 			Il Database verrà scritto utilizzando il linguaggio SQL, sfruttando l'hosting gratuito
 			\emph{altervista} e utilizzando il servizio proprietario per la gestione di tale database.
 			\\ \\
 			Questo compito è di responsabilità dell'\emph{Amministratore}.
 		\subsubsection{Gestione cambiamento requisiti}
-		Per quanto riguarda il cambiamento dei requisiti, nel Database verrà tenuta una tabella di backup dei "vecchi" requisiti, 
+		Per quanto riguarda il cambiamento dei requisiti, nel Database verrà tenuta una tabella di backup dei "vecchi" requisiti,
 		nella loro forma di dichiarazione, con un puntatore al "nuovo" requisito, che invece avrà le specifiche aggiornate. È compito del
 		\emph{Responsabile di progetto} mantenere aggiornata la tabella dei requisiti, copiando prima il requisito che necessita di cambiamento
 		nella tabella dei vecchi requisiti, e poi aggiornando il requisito stesso.
-		
+
 		Tutto questo al fine unico di avere una tracciabilità del cambiamento dei requisiti visionabile a posteriori.
 		\subsection{Sviluppo}
 		\subsubsection{Codifica e convenzioni}
@@ -330,7 +343,7 @@
 				\caption{\LaTeX \space - Commenti ad inizio file}
 			\end{figure}
 			\item Ogni file deve contenere nella prima parte tutti gli \verb|\usepackage{}| necessari
-			\item I commenti andranno inseriti in una riga vuota, eventualmente prima della riga di 
+			\item I commenti andranno inseriti in una riga vuota, eventualmente prima della riga di
 			codice a cui fanno riferimento
 			\item I commenti su più righe useranno il comando \\ \verb|\begin{comment} - \end{comment}|
 			\item Tra ogni \verb|\begin{PART}| e \verb|\end{PART}| tutto il testo e il codice andrà indentato:
@@ -340,7 +353,7 @@
 				\includegraphics[scale=0.4]{Immagini/"indent".png}
 				\caption{\LaTeX \space - Indentazione 1}
 			\end{figure}
-			\item Per quanto riguarda il comando personalizzato \verb|\newpage \section{}{}| o altre sezione \verb|\subsection{}|, \verb|\subsubsection{}| 
+			\item Per quanto riguarda il comando personalizzato \verb|\newpage \section{}{}| o altre sezione \verb|\subsection{}|, \verb|\subsubsection{}|
 			verranno comunque indentate le parti innestate al loro interno come segue:
 			%immagine
 			\begin{figure}[H]
@@ -350,10 +363,10 @@
 			\end{figure}
 			\item Verrà utilizzato T1 come encoding del font: \\ \verb|\usepackage[T1]{fontenc}|
 			\item Verrà utilizzato utf8 come encoding dell'input: \\ \verb|\usepackage[utf8]{inputenc}|
-			\item Verrà utilizzato english, italian come parametro per babel: \\ 
-			\verb|\usepackage[english, italian]{babel}| in modo da usare inglese e italiano nello 
+			\item Verrà utilizzato english, italian come parametro per babel: \\
+			\verb|\usepackage[english, italian]{babel}| in modo da usare inglese e italiano nello
 			stesso documento tenendo italiano come lingua principale
-			\item Prima di ogni immagine, verrà inserito un commento su una riga, come definito 
+			\item Prima di ogni immagine, verrà inserito un commento su una riga, come definito
 			sopra, per facilitarne l'individuazione:
 			%immagine
 			\begin{figure}[H]
@@ -363,31 +376,45 @@
 			\end{figure}
 			\item A fine documento, come commento su più righe, andrà inserita la documentazione e la descrizione (anche breve) del file
 		\end{itemize}
+		Per la facilitazione della scrittura dei vari nomi dei documenti, e di alcuni termini del glossario sono stati inseriti dei comandi 
+		in \LaTeX :
+		\begin{itemize}
+			\item \verb|\newcommand{\US}{\emph{Casi d'uso}\space}|
+			\item \verb|\newcommand{\PdP}{\emph{Piano di progetto}\space}|
+			\item \verb|\newcommand{\PdQ}{\emph{Piano di qualifica}\space}|
+			\item \verb|\newcommand{\NdP}{\emph{Norme di progetto}\space}|
+			\item \verb|\newcommand{\GL}{\emph{Glossario}\space}|
+			\item \verb|\newcommand{\AdR}{\emph{Analisi dei requisiti}\space}|
+			\item \verb|\newcommand{\SdF}{\emph{Studio di fattibilità}\space}|
+			\item \verb|\newcommand{\ST}{\emph{Specifica tecnica}\space}|
+		\end{itemize}
+		Questa lista di comandi sarà incrementale, in quanto appunto contiene termini di glossario, che possono aumentare di numero nel corso
+		dello sviluppo del progetto.
 		\subsubsection{\emph{Scala}}
 		Tutte le regole di indentazione, assegnazione dei nomi, scrittura delle parentesi, nominazione file, e documentazione sono quelle
 		definite dalla documentazione ufficiale di \emph{Scala}: \url{http://docs.scala-lang.org/style/}
-		
-	\newpage 
+
+	\newpage
 	\section{Processi di supporto}
-		\subsection{Documentazione} 
-		In questo capitolo si descrivono le convenzioni definite e adottate dal gruppo riguardanti le 
+		\subsection{Documentazione}
+		In questo capitolo si descrivono le convenzioni definite e adottate dal gruppo riguardanti le
 		modalità di redazione, verifica e approvazione dei documenti.
-		
-		Tutti i documenti formali prodotti da SWEeneyThreads sono scritti utilizzando il linguaggio \LaTeX, 
-		compilati e forniti in formato PDF (per quanto riguarda le versioni digitali). Per la stesura dei 
+
+		Tutti i documenti formali prodotti da SWEeneyThreads sono scritti utilizzando il linguaggio \LaTeX,
+		compilati e forniti in formato PDF (per quanto riguarda le versioni digitali). Per la stesura dei
 		documenti il gruppo utilizzerà il software \emph{Texmaker}.
 		\subsubsection{Template}
 		Al fine di rendere più rapida e meno incline a differenziazioni la stesura dei diversi documenti è stato prodotto un
 		template \LaTeX, reperibile nel repository in \verb|Actorbase/LaTeX/Templates|.
 		\subsubsection{Struttura documenti}
-		La struttura dei documenti presenta una suddivisione in sezioni, sottosezioni e ulteriori sotto-sottosezioni. 
+		La struttura dei documenti presenta una suddivisione in sezioni, sottosezioni e ulteriori sotto-sottosezioni.
 		Tutti le sezioni, sottosezioni e sotto-sottosezioni sono state create usando i comandi standard \LaTeX \space
 		\verb|\section{}|, \verb|\subsection{}| e \verb|\subsubsection{}|.
-	
+
 		La numerazione delle sezioni è utilizzata fino al terzo livello di profondità (x.y.z), dal quarto livello in poi le sottosezioni
 		 non presentano numerazione. Tale scelta è stata presa al fine di rendere più leggibile l'indice.
 		\\ \\
-		Di seguito viene fornita una descrizione più dettagliata di alcuni elementi di un documento: 
+		Di seguito viene fornita una descrizione più dettagliata di alcuni elementi di un documento:
 		\subsubsection{Prima pagina}
 		La prima pagina di un documento presenta gli elementi seguenti:
 		\begin{itemize}
@@ -402,7 +429,7 @@
 			\item Numero di versione del documento
 			\item Data di rilascio del documento
 		\end{itemize}
-		La prima pagina è parte del template disponibile nel repository. 
+		La prima pagina è parte del template disponibile nel repository.
 		\subsubsection{Indice}
 			In ogni documento sono presenti in ordine
 			\begin{itemize}
@@ -410,13 +437,13 @@
 				\item Un indice delle tabelle;
 				\item Un indice delle figure.
 			\end{itemize}
-			Tali indici sono generati automaticamente tramite appositi comandi \LaTeX, l'assenza di figure 
-			e/o tabelle nel documento comporta l'omissione del corrispondente indice. 
-			
+			Tali indici sono generati automaticamente tramite appositi comandi \LaTeX, l'assenza di figure
+			e/o tabelle nel documento comporta l'omissione del corrispondente indice.
+
 		Data la natura secondaria degli indici relativi alle tabelle e alle figure, si è deciso di posizionarli alla fine del documento.
-		L'indice dei contenuti si trova invece subito dopo la pagina iniziale.	
-		\subsubsection{Diario delle modifiche} 
-			Ogni documento deve contenere una sezione denominata "Diario delle modifiche" in cui annotare tutte le 
+		L'indice dei contenuti si trova invece subito dopo la pagina iniziale.
+		\subsubsection{Diario delle modifiche}
+			Ogni documento deve contenere una sezione denominata "Diario delle modifiche" in cui annotare tutte le
 			attività svolte sul documento.
 			\\ \\
 			Lo schema della tabella è il seguente:
@@ -427,8 +454,8 @@
 				più di uno);
 				\item \textbf{Descrizione:} descrizione delle modifiche apportate al documento.
 			\end{itemize}
-			La compilazione della tabella è un attività obbligatoria nel caso di modifiche rilevanti al documento. Un documento 
-			non può cambiare di versione senza che tale cambiamento venga annotato nella tabella, nel caso di modifiche 
+			La compilazione della tabella è un attività obbligatoria nel caso di modifiche rilevanti al documento. Un documento
+			non può cambiare di versione senza che tale cambiamento venga annotato nella tabella, nel caso di modifiche
 			minori che non cambiano di molto il contenuto (es. correggere un accento) la tabella può rimanere invariata.
 			\begin{table}[H]
 				\begin{tabularx}{\textwidth}{s f m X}
@@ -437,18 +464,18 @@
 					\noalign{\hrule height 1.5pt}
 				\end{tabularx}
 				\caption{Schema del diario delle modifiche \label{tab:table_label}}
-			\end{table} 
+			\end{table}
 			Il Diario delle modifiche non è incluso nella numerazione delle sezioni, si trova dopo l'indice e prima di qualsiasi
 			 capitolo numerato
 		\subsubsection{Formattazione generale delle pagine}
 			La formattazione generale di una pagina prevede la diminuzione dei margini destri e sinistri, ma non prevede
-			altre modifiche importanti e si basa, per tutte le altre regole, sulla formattazione standard di \LaTeX \space 
+			altre modifiche importanti e si basa, per tutte le altre regole, sulla formattazione standard di \LaTeX \space
 			usata per i documenti di classe "Report".\\
 			Per effettuare la modifica viene usato i seguenti comandi: \\ \\
 			\verb|\usepackage{geometry}| \\ \verb|\geometry{margin=1in}|. \\
 		\subsubsection{Norme tipografiche}
 			Questa sezione contiene norme tipografiche e ortografiche adottate dal gruppo al fine di garantire uno stile
-			uniforme e una semantica coerente per tutti i documenti.  
+			uniforme e una semantica coerente per tutti i documenti.
 		\subsubsection{Stile del testo}
 			Il font utilizzato in tutti i documenti formali scritti dal gruppo sarà il \emph{Computer Modern}, ovvero
 			quello standard utilizzato da \LaTeX.
@@ -471,7 +498,7 @@
 		\end{itemize}
 		\subsubsection{Formati}
 		\begin{itemize}
-			\item \textbf{Percorsi:} 
+			\item \textbf{Percorsi:}
 			\begin{itemize}
 				\item Indirizzi email : comando \LaTeX \space \verb|\href{mailto:nome@dominio}{nome@dominio}|;
 				\item Indirizzi web completi: comando \LaTeX \space \verb|\url|;
@@ -490,7 +517,7 @@
 			\item \textbf{Ruoli di progetto:} quando si fa riferimento ad un ruolo di progetto questo va scritto in corsivo
 			e con la prima lettera maiuscola (es. \textit{Responsabile}).
 			\item \textbf{Documenti:} i riferimenti vanno scritti in corsivo (es. \textit{Analisi dei requisiti}).
-			\item \textbf{Nomi dei file:} i nomi dei file vanno scritti utilizzando il comando \LaTeX \space 
+			\item \textbf{Nomi dei file:} i nomi dei file vanno scritti utilizzando il comando \LaTeX \space
 			\verb|\verb| (es. \verb|immagine.png|).
 			\item \textbf{Nomi propri:} I nomi propri seguono la forma "Cognome Nome".
 			\item \textbf{Nome del gruppo:} il nome del gruppo è SWEeneyThreads, la distinzione tra lettere maiuscole e
@@ -514,11 +541,11 @@
 		\end{itemize}
 		\subsubsection{Componenti grafiche}
 		Le componenti grafiche previste all'interno dei documenti sono immagini e tabelle. Ogni occorrenza di un
-		elemento grafico è accompagnata da una didascalia indicizzata, in modo da poterla associare alla sezione 
-		relativa del documento. 
+		elemento grafico è accompagnata da una didascalia indicizzata, in modo da poterla associare alla sezione
+		relativa del documento.
 		\textbf{Tabelle}
-		Le tabelle sono definite utilizzando un template in \LaTeX \space realizzato dal gruppo e disponibile nel 
-		repository all'indirizzo \verb|Actorbase/LaTeX/Templates| 
+		Le tabelle sono definite utilizzando un template in \LaTeX \space realizzato dal gruppo e disponibile nel
+		repository all'indirizzo \verb|Actorbase/LaTeX/Templates|
 		\textbf{Immagini}
 		Il formato scelto per le immagini è Portable Network Graphics (PNG). \\
 		Le immagini vanno sempre inserite utilizzando la seguente sequenza di comandi \LaTeX:
@@ -530,14 +557,14 @@
 			\end{figure}
 		\end{verbatim}
 		\subsubsection{Classificazione documenti}
-		I documenti prodotti dal gruppo si dividono in formali e informali. 
+		I documenti prodotti dal gruppo si dividono in formali e informali.
 		\textbf{Documenti formali}
 		Quando un documento riceve l'approvazione del \emph{Responsabile} viene definito formale e risulta idoneo
 		al rilascio all'esterno del gruppo. \\
-		Per risultare approvato un documento deve aver completato con successo il percorso di verifica e validazione 
-		descritto nel \emph{Piano di Qualifica}. 
+		Per risultare approvato un documento deve aver completato con successo il percorso di verifica e validazione
+		descritto nel \emph{Piano di Qualifica}.
 		\textbf{Documenti informali}
-		Un documento rimane informale finché non viene approvato dal \emph{Responsabile}, durante tale fase 
+		Un documento rimane informale finché non viene approvato dal \emph{Responsabile}, durante tale fase
 		il suo uso è da considerarsi esclusivamente interno al gruppo. \\
 		Alcuni documenti prodotti dal gruppo possono rimanere informali per l'intera durata del loro ciclo di vita.
 		\subsubsection{Versionamento documenti}
@@ -552,7 +579,7 @@
 			\item Z: viene incrementato quando si apportano modifiche minori al documento.
 		\end{itemize}
 		All'interno di un documento quando si intende fare riferimento ad una specifica versione di un altro documento la
-		notazione da utilizzare è: 
+		notazione da utilizzare è:
 		\begin{center}
 			\emph{Nome Documento vX.Y.Z}.
 		\end{center}
@@ -577,12 +604,12 @@
 		%DA INSERIRE APPENA AVVIATO IL PDQ!
 		% IMPORTANTE RICORDARSI
 		%\subsection{Accertamento qualità}
-		%\subsection{Qualifica} 
-		%\subsection{Risoluzione di problemi} 
-		%Per quanto riguarda l'individuazione, il tracciamento e la risoluzione di bug e problemi il gruppo ha deciso di 
-		%affidarsi ad il servizio di issue tracking \emph{YouTrack} offerto da \emph{JetBrains}. \\ 
-		%Per i progetti fino a dieci utenti, il servizio offre 10GB di spazio sul cloud dell'azienda in maniera gratuita. 
-		
+		%\subsection{Qualifica}
+		%\subsection{Risoluzione di problemi}
+		%Per quanto riguarda l'individuazione, il tracciamento e la risoluzione di bug e problemi il gruppo ha deciso di
+		%affidarsi ad il servizio di issue tracking \emph{YouTrack} offerto da \emph{JetBrains}. \\
+		%Per i progetti fino a dieci utenti, il servizio offre 10GB di spazio sul cloud dell'azienda in maniera gratuita.
+
 		%La dashboard \emph{YouTrack} per quanto riguarda il progetto Actorbase è reperibile all'indirizzo
 		% \url{https://actorbase.myjetbrains.com/youtrack/dashboard}
 		 %immagine
@@ -591,7 +618,7 @@
 		%	\includegraphics[scale=0.4]{Immagini/"youtrack".png}
 		%	\caption{YouTrack - logo}
 		%\end{figure}
-	\newpage 
+	\newpage
 	\section{Processi organizzativi}
 	\subsection{Processi di gestione dell'infrastruttura}
 	\subsubsection{Documentazione di pianificazione}
@@ -604,10 +631,10 @@
 			\item Portabilità, in quanto basato su \emph{Java};
 			\item Open-source;
 			\item Genera automaticamente diagrammi di Gantt, WBS e PERT;
-			\item Calcola automaticamente i costi, sia totali che per singola attività/risorsa, 
+			\item Calcola automaticamente i costi, sia totali che per singola attività/risorsa,
 			aiutando a tenere sotto controllo il budget.
 		\end{itemize}
-	\subsubsection{Ticketing}	
+	\subsubsection{Ticketing}
 	\textbf{Scelta della piattaforma di ticketing}
 	Per quanto riguarda l'emissione e la gestione dei ticket si è scelto di affidarsi alla piattaforma \emph{Teamwork}
 	in quanto:
@@ -619,11 +646,11 @@
 		\item Include un ottimo Task management (priorità, task history, possibilità di aggiungere in automatico task ricorrenti);
 		\item Notifiche sms e \emph{Notification group}.
 	\end{itemize}
-	
-	
-	La principale alternativa presa in considerazione è stata \emph{Zoho}, ma non è stata ritenuta all'altezza in quanto offre 
+
+
+	La principale alternativa presa in considerazione è stata \emph{Zoho}, ma non è stata ritenuta all'altezza in quanto offre
 	meno features. Segue una breve lista per mettere a confronto le principali funzionalità messe a disposizione dalle due piattaforme: \\
-	
+
 	\begin{table}[H]
 		\begin{tabularx}{\textwidth}{*2{>{\centering\arraybackslash}X}}
 			\noalign{\hrule height 1.5pt}
@@ -643,17 +670,17 @@
 		\end{tabularx}
 		\caption{Zoho / Teamwork - Lista features \label{tab:table_label}}
 	\end{table}
-	
+
 	%immagine
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.4]{Immagini/"zohovstw".png}
 		\caption{Zoho / Teamwork - Rating delle features a confronto}
 	\end{figure}
-	
+
 	Secondo \emph{SoftwareInsider} (\url{softwareinsider.com}) sono molto simili nelle funzionalità principali;
 	ma \emph{Teamwork} offre alcuni strumenti in più per la gestione di processi software tradizionali.
-	
+
 	I principali:\\
 	\begin{table}[H]
 		\begin{tabularx}{\textwidth}{*3{>{\centering\arraybackslash}X}}
@@ -669,7 +696,7 @@
 		\end{tabularx}
 		\caption{Zoho / Teamwork - Differenza strumenti \label{tab:table_label}}
 	\end{table}
-	
+
 	Come task management \emph{Zoho} offre solamente delle To-do List, mentre \emph{Teamwork} ha anche le seguenti
 	feature:
 	\begin{itemize}
@@ -682,15 +709,15 @@
 	ma questo risulta irrilevante per il nostro gruppo, in quanto per la comunicazione real-time viene
 	adottato un sistema diverso.
 	\textbf{Politiche di ticketing}
-		I Ticket devono essere assegnati dal \emph{Responsabile}. Poiché un ticket assegna una o più attività ad una o più 
-		persone, chi riceve un ticket può generare altri ticket relativi a sotto attività da lui individuate per tenere traccia 
+		I Ticket devono essere assegnati dal \emph{Responsabile}. Poiché un ticket assegna una o più attività ad una o più
+		persone, chi riceve un ticket può generare altri ticket relativi a sotto attività da lui individuate per tenere traccia
 		dello sviluppo in maniera più chiara. In ogni caso a tutti gli altri membri del gruppo non è assolutamente permessa la
 		 generazione di ticket esterni ad attività già assegnate.
 	\subsubsection{Versioning}
 	Per gestire il versionamento il gruppo utilizza \emph{GitHub}. Tale scelta è dovuta sia ad un apprezzamento
-	comune da parte dei membri del gruppo per la piattaforma, che ad una richiesta esplicita di pubblicazione del 
+	comune da parte dei membri del gruppo per la piattaforma, che ad una richiesta esplicita di pubblicazione del
 	progetto sulla stessa da parte del committente. \\
-	\'E stato creato un account ufficiale del gruppo, raggiungibile all'indirizzo 
+	\'E stato creato un account ufficiale del gruppo, raggiungibile all'indirizzo
 	\url{https://github.com/SweeneyThreads}
 	%immagine
 	\begin{figure}[H]
@@ -699,12 +726,12 @@
 		\caption{Account GitHub SWEeneyThreads}
 	\end{figure}
 	\subsubsection{Repository}
-	Sono state previste diverse \emph{Repository} necessarie allo sviluppo del progetto: Actorbase, 
+	Sono state previste diverse \emph{Repository} necessarie allo sviluppo del progetto: Actorbase,
 	RR, RP, RQ, RA. 	Actorbase conterrà tutti i file del prodotto da sviluppare, mentre le
-	 \emph{Repository} RR, RP, RQ e RA si riferiscono alle 4 consegne del progetto previste: 
+	 \emph{Repository} RR, RP, RQ e RA si riferiscono alle 4 consegne del progetto previste:
 	 revisione dei requisiti, revisione di progettazione, revisione di qualifica, revisione di
-	  accettazione. Effettuata la consegna del materiale, la \emph{Repository} 
-	  \verb|Actorbase/| verrà copiata in quella corrispondente, che servirà quindi come 
+	  accettazione. Effettuata la consegna del materiale, la \emph{Repository}
+	  \verb|Actorbase/| verrà copiata in quella corrispondente, che servirà quindi come
 	  backup della \emph{Baseline} a cui fa riferimento.
 	%immagine
   	\begin{figure}[H]
@@ -719,68 +746,68 @@
 		\item Progetto.
 	\end{itemize}
 	\textbf{Documenti}
-	Nella cartella \verb|Actorbase/Documenti/| verranno inseriti tutti i pdf generati dal comando \verb|pdflatex nome-documento.tex|. Non 
-	saranno presenti altri file in questa cartella. I documenti saranno divisi in \emph{Interni}, \emph{Esterni} e 
+	Nella cartella \verb|Actorbase/Documenti/| verranno inseriti tutti i pdf generati dal comando \verb|pdflatex nome-documento.tex|. Non
+	saranno presenti altri file in questa cartella. I documenti saranno divisi in \emph{Interni}, \emph{Esterni} e
 	\emph{Verbali} per questo saranno create delle sottodirectory: \verb|Actorbase/Documenti/Interni|, \verb|Actorbase/Documenti/Esterni|
 	e \verb|Actorbase/Documenti/Verbali|.
 	\textbf{LaTeX}
 	Nella cartella \verb|Actorbase/LaTeX/| saranno presenti tutti i file \verb|*.tex| pronti per la compilazione. In questa cartella verrà inserita
 	anche una cartella\\ \verb|Actorbase/LaTeX/Immagini/| contenente tutte le immagini necessarie alla compilazione dei file.
 	Inoltre verrà aggiunta una cartella \verb|Actorbase/LaTeX/Templates/| contenente i templates per la stesura di documenti e per il
-	disegno appropriato di tabelle. 
+	disegno appropriato di tabelle.
 	\textbf{Progetto}
 	La cartella \verb|Actorbase/Progetto/| contiene tutti i file che compongono il prodotto richiesto nel capitolato. Sarà  un progetto in
 	\emph{Scala} che seguirà gli standard sopra citati.
 	\textbf{Normative per i commit}
-		Si è deciso di dare a tutti i membri del gruppo la possibilità di effettuare commit sul master-branch del repository 
-		senza dover attendere l'approvazione di un account centrale. Tale scelta impone però la definizione di alcune norme 
+		Si è deciso di dare a tutti i membri del gruppo la possibilità di effettuare commit sul master-branch del repository
+		senza dover attendere l'approvazione di un account centrale. Tale scelta impone però la definizione di alcune norme
 		di commit da rispettare:
 		\begin{itemize}
 			\item I commit devono seguire l'emissione di un ticket. Tale norma serve ad evitare un eccessivo numero di
 			 commit sul repository contenenti poche modifiche;
 			\item Nel caso il commit interessasse un documento o un file, il numero di versione dello stesso deve risultare
 			 aggiornato;
-			\item Nella descrizione del commit è obbligatorio inserire una descrizione delle modifiche effettuate. \'E preferito  
-			l'uso di elenchi puntati, la forma discorsiva va utilizzata solo se non è possibile esprimere il contenuto come 
+			\item Nella descrizione del commit è obbligatorio inserire una descrizione delle modifiche effettuate. \'E preferito
+			l'uso di elenchi puntati, la forma discorsiva va utilizzata solo se non è possibile esprimere il contenuto come
 			elenco.
 		\end{itemize}
 	\subsection{Processi di management}
 	\subsubsection{Ruoli}
-		Per quanto riguarda i ruoli, il gruppo utilizzerà quelli definiti nelle slide 7-11 disponibili all'indirizzo: 
+		Per quanto riguarda i ruoli, il gruppo utilizzerà quelli definiti nelle slide 7-11 disponibili all'indirizzo:
 		\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/L04.pdf}. È stato deciso, unanimemente, che le rotazioni dei ruoli principali
 		come \emph{Amministratore} e \emph{Responsabile di progetto} avverrano ogni 2 settimane. Come stabilito, una persona può ricoprire
-		contemporaneamente più ruoli, la rotazione di altri ruoli come \emph{Analista}, \emph{Progettista} e \emph{Programmatore} potrà avvenire 
-		meno frequentemente, in quanto potrebbe risultare dannoso dover abbandonare un'attività di analisi o di programmazione prima della sua 
-		conclusione. 
-		
+		contemporaneamente più ruoli, la rotazione di altri ruoli come \emph{Analista}, \emph{Progettista} e \emph{Programmatore} potrà avvenire
+		meno frequentemente, in quanto potrebbe risultare dannoso dover abbandonare un'attività di analisi o di programmazione prima della sua
+		conclusione.
+
 		Il gruppo stabilisce la rotazione dei ruoli in base alle attività, ai task, e alla disponibilità fornita da ogni membro.
-		
-		È possibile ottenere in qualsiasi momento una panoramica dei ruoli assegnati tramite l'apposita sezione del 
+
+		È possibile ottenere in qualsiasi momento una panoramica dei ruoli assegnati tramite l'apposita sezione del
 		progetto creato su \emph{Teamwork}, all'indirizzo\\ \url{https://actorbase.teamwork.com/projects/188894/projectroles}.
 	\subsubsection{Comunicazioni}
 	Le comunicazioni possono avvenire tra membri del gruppo (interne), o tra il gruppo e terzi (esterne). Gli
-	strumenti utilizzati differiscono a seconda della tipologia della comunicazione. 
+	strumenti utilizzati differiscono a seconda della tipologia della comunicazione.
 	\textbf{Interne}
 	\begin{itemize}
-		\item \textbf{Chat:} Per le comunicazioni interne il gruppo ha deciso di adottare una chat di messaggistica 
-		istantanea: \emph{Telegram}. All'interno di questo mezzo di comunicazione verranno concordate date e orari 
-		delle riunioni; comunicati eventuali ritardi ai meeting; proposte idee informali, che verranno poi riproposte 
-		in modo ufficiale alle riunioni (questo per evitare di dimenticarsene o per lasciare tempo agli altri membri 
+		\item \textbf{Chat:} Per le comunicazioni interne il gruppo ha deciso di adottare una chat di messaggistica
+		istantanea: \emph{Telegram}. All'interno di questo mezzo di comunicazione verranno concordate date e orari
+		delle riunioni; comunicati eventuali ritardi ai meeting; proposte idee informali, che verranno poi riproposte
+		in modo ufficiale alle riunioni (questo per evitare di dimenticarsene o per lasciare tempo agli altri membri
 		del gruppo di ragionare più tempo su una proposta); inoltre \emph{Telegram} verrà utilizzato per l'invio di files
-		temporanei, di documentazione o informativi. Sarà compito del \emph{Responsabile di progetto} prelevare file di documentazione 
+		temporanei, di documentazione o informativi. Sarà compito del \emph{Responsabile di progetto} prelevare file di documentazione
 		e riportarli nella repository adatta, e nel Drive del gruppo.
-		
-		La scelta di \emph{Telegram} è dovuta alla possibilità di utilizzare il servizio sia da desktop che da mobile, e alla 
+
+		La scelta di \emph{Telegram} è dovuta alla possibilità di utilizzare il servizio sia da desktop che da mobile, e alla
 		possibilità di inviare qualsiasi tipo di file;
 		\item \textbf{Videoconferenze:} Per le videoconferenze di gruppo si utilizzerà \emph{Google Hangouts}.
-		
-		È utilizzabile da tutti i dispositivi e richiede semplicemente un account \emph{Google} di cui disponevano 
+
+		È utilizzabile da tutti i dispositivi e richiede semplicemente un account \emph{Google} di cui disponevano
 		già tutti i membri del gruppo.
 	\end{itemize}
 	\textbf{Esterne}
 	Per tutte le comunicazioni esterne va utilizzata la mail ufficiale del gruppo: \href{mailto:sweeneythreads@gmail.com}{sweeneythreads@gmail.com}.
 	 \\ La gestione di tale indirizzo email spetta al \emph{Responsabile} che dunque risulta essere l'unico componente del gruppo a poter comunicare
-	con il committente i maniera ufficiale. Il \emph{Responsabile} ha il compito di informare gli altri membri del gruppo sulle 
+	con il committente i maniera ufficiale. Il \emph{Responsabile} ha il compito di informare gli altri membri del gruppo sulle
 	discussioni avute con il committente, tale aggiornamento può avvenire a voce durante le riunioni e gli incontri oppure tramite
 	l'inoltro delle email ricevute agli indirizzi personali dei componenti interessati.
 	\\ \\
@@ -789,7 +816,7 @@
 		\item \textbf{Destinatario:} poiché questo indirizzo email va usato esclusivamente per comunicazioni ufficiali il destinatario
 		del messaggio va salvato tra i contatti (funzione di Gmail), nel caso non dovesse già farne parte;
 		\item \textbf{Oggetto:} l'oggetto deve esprimere in maniera chiara ed esaustiva il contenuto dell'email, deve essere breve
-		 e non deve rendere l'email confondibile con le altre preesistenti. 
+		 e non deve rendere l'email confondibile con le altre preesistenti.
 		 Nel caso il messaggio fosse una risposta l'oggetto deve essere preceduto dalla particella "Re:", nel caso di un inoltro dalla
 		 particella "I:";
 		\item \textbf{Corpo:} nel caso il messaggio fosse una risposta o un inoltro, il contenuto aggiunto va sempre scritto in testa al
@@ -797,46 +824,46 @@
 		facilitare una visione completa della conversazione;
 		\item \textbf{Allegati:} L'aggiunta di allegati al messaggio è consentita con l'unico vincolo di inviare file che possiedono un nome
 		esplicativo o di specificare il contenuto dell'allegato nel corpo se il nome del file potrebbe essere poco comprensibile.
-	\end{itemize}										
+	\end{itemize}
 	\subsubsection{Riunioni}
 		\textbf{Ufficiali}
 		Le riunioni sono divise in due: con o senza presenza del committente. Il gruppo si impegna a tenere almeno una riunione
-		ufficiale senza presenza del committente ogni due settimane. Le riunioni hanno una durata minima di due ore, che potrà 
+		ufficiale senza presenza del committente ogni due settimane. Le riunioni hanno una durata minima di due ore, che potrà
 		essere prolungata a piacere, in questo caso, nel verbale di riunione dovrà comparire di quanto si è superato il tempo
 		previsto durante la riunione, e il motivo del prolungamento. Queste modifiche sono a carico del \emph{Responsabile di progetto}.
 		I verbali prodotto andranno inseriti nella \emph{Repository} \verb|Actorbase/Documenti/Verbali|, che verrà suddivisa in due
 		sottocartelle per i verbali interni e quelli esterni.
-		
+
 		Le riunioni con presenza del committente, andranno concordate secondo le norme di comunicazioni esterne con quest'ultimo
 		e comunicate tramite i mezzi di comunicazione interni a tutti i membri del gruppo, ognuno dei quali è fortemente tenuto ad
-		essere presente. Potranno verificarsi casi in cui non tutti i membri del gruppo potranno presentarsi alle riunioni con 
+		essere presente. Potranno verificarsi casi in cui non tutti i membri del gruppo potranno presentarsi alle riunioni con
 		presenza del committente, ma non potrà verificarsi l'assenza del \emph{Responsabile di progetto} e dell'\emph{Amministratore}.
 		I quali sono tenuti a riferire quanto emerso dalle riunioni a tutti i restanti membri assenti. Nelle riunioni con il
 		committente può verificarsi un cambiamento riguardante ad un requisito, in questo caso il cambiamento va inserito nel
 		verbale, che deve essere messo a disposizione del committente nella cartella \verb|Actorbase/Documenti/Verbali/Esterni|.
 		\textbf{Non ufficiali}
 		Le riunioni non ufficiali sono da considerarsi riunioni tra pochi membri del gruppo, ad esempio tra i due realizzatori di questo
-		stesso documento, o incontri occasionali avvenuti senza comunicazioni nei canali ufficiali. Queste riunioni non necessitano di 
+		stesso documento, o incontri occasionali avvenuti senza comunicazioni nei canali ufficiali. Queste riunioni non necessitano di
 		una stesura di un verbale; se da queste riunioni emergesse un grave errore, o una comunicazione importante, i membri presenti
-		sono tenuti a richiedere una riunioni ufficiale straordinaria, che dovrà essere approvata dal'\emph{Amministratore}. In caso 
-		contrario, tutte le scelte non rilevanti non necessitano di approvazione. 
+		sono tenuti a richiedere una riunioni ufficiale straordinaria, che dovrà essere approvata dal'\emph{Amministratore}. In caso
+		contrario, tutte le scelte non rilevanti non necessitano di approvazione.
 		\textbf{Brainstorming}
 		I \emph{Brainstorming} vengono tenuti sotto richiesta di qualsiasi membro del gruppo, e approvati, se per motivazioni
 		valide, dal \emph{Responsabile di progetto}. Un \emph{Brainstorming}ha durata minima di un'ora e massima di due; durante il quale
-		ogni membro ricopre un ruolo di egual importanza rispetto agli altri, le decisioni vengono prese all'unisono o con la maggioranza 
+		ogni membro ricopre un ruolo di egual importanza rispetto agli altri, le decisioni vengono prese all'unisono o con la maggioranza
 		dei membri a favore, non è compito del \emph{Responsabile di progetto} approvare le soluzioni emerse da un \emph{Brainstorming}.
-		
-		Durante un \emph{Brainstorming} ci sarà un membro con il compito di scrivere le \emph{Minute}, ovvero un \emph{Notaio}. 
-		Ad ogni \emph{Brainstorming} sarà anche scelto un \emph{Moderatore} che ricoprirà un ruolo di servizio. Ovvero dovrà far 
+
+		Durante un \emph{Brainstorming} ci sarà un membro con il compito di scrivere le \emph{Minute}, ovvero un \emph{Notaio}.
+		Ad ogni \emph{Brainstorming} sarà anche scelto un \emph{Moderatore} che ricoprirà un ruolo di servizio. Ovvero dovrà far
 		rispettare le regole di base. Una volta finito il \emph{Brainstorming}, il \emph{Notaio} dovrà riorganizzare gli appunti
 		presi in un verbale ordinato.
-	
+
 	\cleardoublepage
 	\addcontentsline{toc}{chapter}{\listfigurename}
 	\listoffigures
-	
+
 	\cleardoublepage
 	\addcontentsline{toc}{chapter}{\listtablename}
 	\listoftables
-	
+
 \end{document}
