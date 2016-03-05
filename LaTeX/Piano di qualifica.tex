@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 %Document-Author: Nicoletti Luca + Padovan Tommaso + Bortolazzo Matteo + Maino Elia + Bonato Paolo
 %Document-Date: 2016/01/13
 %Document-Description: Documento di Piano di qualifica
@@ -79,7 +88,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.1.0
+			Versione 1.1.1
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -95,6 +104,8 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
+				1.1.1 & 2016-01-17 & \emph{Amministratore} \newline Biggeri Mattia & spostamento sezioni 2.1 e 4 in appendice, sezioni 2.8 e 2.9 al posto di 2.1\\
+				\noalign{\hrule height 0.5pt}
 				1.1.0 & 2016-01-17 & \emph{Verificatore} \newline Biggeri Mattia & Verificato il documento e comunicato errori \\
 				\noalign{\hrule height 0.5pt}
 				1.0.4 & 2016-01-17 & \emph{Amministratori} \newline Nicoletti Luca + \newline Tommaso Padovan & Miglioramento sezione Metriche e Analisi \\
@@ -140,10 +151,403 @@
 					\item \textbf{\dots}
 				\end{itemize}
 	\mychapter{2}{Visione generale della strategia di verifica}
-		\section{Definizione obiettivi}
+		
+			\section{Definizione obiettivi}
 			In questa sezione verranno descritti gli obiettivi di qualità relativi al prodotto che il 
 			gruppo ha deciso di raggiungere e gli obiettivi relativi ai processi che saranno svolti per 
 			il completamento del progetto.
+			per la stesura di questo documento e per la definizione delle metriche e degli strumenti atti a garantire la qualità del prodotto abbiamo seguito quanto definito in Appendice 4.5.1 e 4.5.2. 
+	
+\section{Misure e metriche}
+			Il processo di verifica, per avere un valore informativo, deve essere quantificabile; le misure rilevate, inoltre,
+			devono essere basate su metriche stabilite a priori. Complice la scarsa esperienza del gruppo alcune metriche stabilite
+			all'inizio potrebbe risultare approssimative, il modello incrementale esposto nel Piano di progetto permetterà però di
+			migliorarne la precisione e l'accuratezza in maniera incrementale.
+			
+			Le tipologie di range ammesse sono due:
+			\begin{itemize}
+				\item \textbf{Accettabile:} Superiore al minimo valore richiesto affinché il prodotto sia accettato.
+				\item \textbf{Ottimale:} Valori entro cui dovrebbe collocarsi la misurazione. Non sono vincolanti,
+				ma fortemente consigliati. Misurazioni al di fuori di questi valori necessitano una verifica approfondita e nel
+				caso non si trovi una maniera immediata per farli rientrare le cause di tale scostamento dovranno essere
+				discusse nella successiva riunione.
+			\end{itemize}
+			\subsection{Metriche per i processi}
+				Gli indici scelti per la quantificazione dei processi prendono in considerazione principalmente costi e tempi;
+				hanno lo scopo di mantenere il controllo sui processi e che il progetto segua quanto descritto nel Piano di
+				progetto.
+				
+				Gli indici scelti sono:
+				\begin{itemize}
+					\item \textbf{SV (Schedule Variance):} É un indicatore di efficacia, mostra se si è o meno in linea con la
+					pianificazione temporale rispetto alle attività nella baseline. Una schedule variance positiva indica che il
+					gruppo è in anticipo rispetto al Piano di progetto, che è in ritardo altrimenti.
+					\item \textbf{BV (Budget Variance):} Indica se la spesa sostenuta alla data corrente è superiore o inferiore a
+					quella preventivata. Una budget variance positiva indica che si è speso meno di quanto inizialmente previsto,
+					viceversa altrimenti.		
+				\end{itemize}
+				
+				
+			\subsection{Metriche per i documenti}
+				Come metrica di riferimento per i documenti prodotti si è scelto di utilizzare un \emph{indice di leggibilità}.
+				Tra i molti disponibili si è scelto di utilizzare l'indice Gulpease, in quanto:
+				\begin{itemize}
+					\item È l'unico tarato appositamente per la lingua italiana.
+					\item Utilizza la lunghezza delle parole in lettere anziché in sillabe, quindi è più semplice da automatizzare
+					\item Considera la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere
+					\item Permette di misurare la complessità dello stile di un documento
+				\end{itemize}
+				La formula per il suo calcolo è la seguente:
+				\begin{align*}
+					89+\frac{300\cdot(numero\ delle\ frasi)-10\cdot(numero\ delle\ lettere)}{numero\ delle\ parole}
+				\end{align*}
+				
+				I risultati sono compresi tra 0 e 100, dove il valore "100" indica la leggibilità più alta e "0" la leggibilità
+				più bassa. In generale risulta che testi con un indice
+				\begin{itemize}
+					\item inferiore a 80 sono difficili da leggere per chi ha la licenza elementare
+					\item inferiore a 60 sono difficili da leggere per chi ha la licenza media
+					\item inferiore a 40 sono difficili da leggere per chi ha un diploma superiore
+				\end{itemize}
+	
+				Il gruppo si atterrà ai seguenti parametri:
+				\begin{itemize}
+					\item Range di accettazione: [35|100]
+					\item Range di ottimale: [45|100]
+				\end{itemize}
+				
+				
+			
+			\subsection{Metriche per il software}
+				Questo capitolo è da intendere come una dichiarazione di intenti e probabilmente verrà rivisto quando inizieremo 
+				realmente la fase di programmazione.
+
+				Al fine di perseguire gli obbiettivi sulla qualità del software, vorremmo applicare le seguenti metriche:
+				\begin{itemize}
+					\item \textbf{Attributi per classe:}
+						Un grande numero di attributi interni ad una classe mostra probabilmente la necessità di suddividere la classe 
+						in più classi relazionate tra di se.
+						\begin{itemize}
+							\item Valori accettati: 0-18
+							\item Valori ottimali: 2-9
+						\end{itemize}
+
+					\item \textbf{Numero livelli annidamento:}
+						Mostra il livello di annidamento dei metodi, un numero alto implica una bassa astrazione del codice ed 
+						un elevata complessità.
+						\begin{itemize}
+							\item Valori accettati:1-8
+							\item Valori ottimali:1-4
+						\end{itemize}
+
+					\item \textbf{Numero parametri per metodo:}
+						Un valore elevato indica che probabilmente il metodo ha un sovraccarico di funzionalità
+						\begin{itemize}
+							\item Valori accettati:0-8
+							\item Valori ottimali:0-5
+						\end{itemize}
+
+					\item \textbf{Linee di codice per linee di commento:}
+						È la percentuale di righe di commento rispetto al totale delle righe di codice. Utile per la manutenibilità.
+						\begin{itemize}
+							\item Valori accettati: 20\%-70\%
+							\item Valori ottimali: 30\%-50\%
+						\end{itemize}
+
+					\item \textbf{Accoppiamento afferente:}
+						Indica il numero di classi esterne da un package che dipendono da esso, un grande valore indica una forte 
+						dipendenza del software per il package in questione, un valore basso invece indica una bassa utilità del 
+						package per il resto del software.
+						\begin{itemize}
+							\item Valori accettati: da decidere
+							\item Valori ottimali: da decidere
+						\end{itemize}
+
+					\item \textbf{Accoppiamento efferente:}
+					Il numero di classi di un package che dipendono da package esterni, un valore basso indica che il package ha 
+					numerose funzionalità indipendenti dal resto del software.
+						\begin{itemize}
+							\item Valori accettati: da decidere
+							\item Valori ottimali: da decidere
+						\end{itemize}
+			\end{itemize}
+			
+			
+					\section{Strumenti}
+			Le risorse software che si utilizzeranno durante il processo di verifica sono:
+			\begin{itemize}
+				\item \textbf{\emph{TexMaker}:} un ambiente grafico Open-Source per \LaTeX cross-platform, permette 
+				la compilazione rapida e la visualizzazione del PDF generato;
+				\item \textbf{\emph{Scalastyle}:} analizzatore statico che rileva potenziali problemi nel codice
+				 (\url{https://github.com/scalastyle/scalastyle});
+				\item \textbf{\emph{Scapegoat}:} un altro analizzatore statico che si concentra maggiormente sugli 
+				standard di stile e di coding (\url{https://github.com/sksamuel/scapegoat});
+				\item \textbf{\emph{CLOC (Count Lines Of Code)}:} misura alcune metriche riguardanti il codice 
+				sorgente in vari linguaggi, tra cui \emph{Scala} (\url{cloc.sourceforge.net});
+				\item \textbf{\emph{ScalaTest}:} framework per i test su Scala (\url{http://www.scalatest.org/}).
+			\end{itemize}
+		\section{Metodi}
+			
+			\subsection{Analisi dei processi}
+				I processi compiuti durante una fase verranno analizzati secondo il seguente protocollo:
+				\begin{itemize}
+					\item \textbf{Controllo delle metriche:}
+						Alla conclusione di ogni fase del progetto si calcolano gli indici definiti nella sezione 2.8.1 confrontando 
+						le macroattività preventivate nel \emph{Piano di progetto} con i dati effettivi riscontrati dal sistema di ticketing.
+					\item \textbf{Analisi PDCA:}
+						Secondo il ciclo PDCA una fase di progetto ha inizio con la pianificazione di come possono essere migliorati i processi. 
+						Durante la fase vengono attuati i cambiamenti prefissati e alla fine viene effettuato un controllo. Se un processo 
+						risulta essere migliore viene adottato in modo definitivo, se invece risulta inalterato o addirittura peggiore i 
+						cambiamenti vengono scartati.
+				\end{itemize}
+			\subsection{Analisi dei documenti}
+				Ogni documento redatto è verificato mediante il seguente protocollo:
+				\begin{itemize}
+					\item \textbf{Controllo sintattico:} Il testo deve venire sottoposto a controllo dell'ortografia con il tool
+					fornito dall'ambiente di sviluppo \LaTeX utilizzato. Alcuni errori non possono essere comunque rilevati da
+					meccanismi automatici, quindi al fine di ottenere correttezza sintattica e semantica i Verificatori
+					effettueranno un walkthrough al fine di ricercare errori sfuggiti al correttore ortografico.
+					\item \textbf{Rispetto delle Norme di progetto:} I Verificatori sono tenuti a verificare che il documento
+					rispetti tutte le norme tipografiche e di struttura del documento riportate nelle Norme di progetto. Porzioni
+					di questa verifica sono automatizzabili, i Verificatori dovranno quindi usare tool ove possibile. 
+					\item \textbf{Inspection secondo checklist:} I Verificatori dovranno scorrere la lista di controllo e
+					verificare che non sia presenti gli errori comuni lì riportati.
+					\item \textbf{Verifica Glossario:} I Verificatori dovranno controllare che tutti i termini contenuti nel 
+					Glossario siano indicati all'interno dei documenti con la G a pedice. 
+					\item \textbf{Calcolo dell'indice di leggibilità:} I Verificatori dovranno calcolare tramite strumenti
+					automatici l'indice Gulpease di leggibilità del testo, nel caso risultasse troppo basso sarà necessario
+					procedere ad un walkthrough, finalizzato alla individuazione di frasi troppo lunghe e complesse.
+					\item \textbf{Miglioramento:} Se nello svolgimento di uno qualunque dei punti precedenti un Verificatore
+					notasse nuove possibilità di automatizzazione dovrà segnalarle e si dovrà cercare o costruire uno strumento per
+					rendere effettiva tale automatizzazione. Inoltre durante le esecuzioni dei walkthrough, i verificatori sono
+					tenuti ad annotare gli errori più frequenti o potenzialmente dannosi rilevati. Tali errori andranno poi ad
+					aggiornare la lista di controllo che verrà utilizzata per le successive inspection.
+				\end{itemize}		
+		\section{Organizzazione}
+			Il processo di verifica inizia fin dal primo rilascio ufficiale nella repository di un documento vX.0.0, il risultato 
+			del processo di verifica cambia la versione del documento, incrementandone la versione al secondo livello di profondità, 
+			il documento quindi passa a vX.1.0. Ogni modifica apportata al documento ne aumenta la versione all'ultimo livello di 
+			profondità. Una volta completate le modifiche e le verifiche continue sui documenti, esso passa nella fase di validazione,
+			a carico del responsabile, che ne fa cambiare la versione al secondo livello di priorità. 
+			
+			Come descritto nelle norme, il primo valore in una versione verrà cambiato ad ogni consegna.
+			
+			Grazie al diario delle modifiche è più facile individuare dove concentrare l’attenzione nelle verifiche successive 
+			alla prima, in quanto sono segnate le sezioni che sono state aggiunte o che hanno subito dei cambiamenti dall’ultima
+			 verifica, evitando cosi di controllare sempre tutto il documento ad ogni rilascio di versione, per cui ottimizzando 
+			 il tempo necessario al controllo.
+
+			Per ognuna delle 5 fasi del progetto descritte nel \emph{Piano di Progetto v 1.0.5}, sono necessarie diverse attività 
+			di verifica a causa dei diversi output ottenuti:
+
+			\begin{itemize}
+				\item \textbf{Analisi:} Si devono seguire le attività di verifica descritte nella sezione 2.9.2 e 2.9.1 sui processi 
+				e sui documenti attuati.
+			\end{itemize}
+			
+			Come detto in precedenza conclusa la verifica, ha inizio il processo di approvazione. Durante questo processo è compito 
+			del Responsabile di Progetto accertarsi che i prodotto ottenuti siano conformi a quanto pianificato e progettato.
+		
+		
+		\section{Pianificazione strategica e temporale}
+			Avendo lo scopo di rispettare le scadenze riportate nel Piano di progetto, è necessario che l'attività 
+			di verifica, sia del codice che della documentazione, sia sistematica e ben organizzata; in questo modo 
+			l'individuazione, e quindi la correzione degli errori avverrà il prima possibile, limitando la diffusione 
+			degli stessi.\\
+			Per cercare di ridurre il numero degli errori, e quindi semplificare l'attività di verifica, ogni fase 
+			di codifica o documentazione sarà preceduta da una fase di studio preliminare. Evitando le imprecisioni 
+			di natura concettuale si ridurranno le correzioni necessarie.
+			
+			Di seguito vengono riportate le scadenze previste:
+			\begin{itemize}
+				\item \textbf{Revisione dei requisiti:} 2016-01-22;
+				\item \textbf{Revisione di progettazione:} 2016-04-18;
+				\item \textbf{Revisione di qualifica:} 2016-05-23;
+				\item \textbf{Revisione di accettazione:} 2016-06-17.
+			\end{itemize}
+		\section{Responsabilità}
+			Il \emph{Responsabile di progetto} ha il compito di:
+			\begin{itemize}
+				\item Accertarsi che le attività di verifica vengano svolte sistematicamente secondo quanto 
+				riportato nelle \emph{Norme di progetto};
+				\item Accertarsi che vengano rispettati ruoli e competenze assegnate nel \emph{Piano di progetto};
+				\item Verificare che non ci siano conflitti di interesse tra redattori e \emph{Verificatori};
+				\item Aprire ed assegnare i ticket principali e le task-list;
+				\item Approvare un documento e sancirne la distribuzione.
+			\end{itemize}
+			I \emph{Verificatori} hanno il compito di:
+			\begin{itemize}
+				\item Effettuare la verifica dei documenti con strumenti e metodi proposti nel \emph{Piano di Qualifica};
+				\item Attenersi rigidamente a quanto sancito nelle \emph{Norme di progetto};
+				\item Segnalare tempestivamente un errore, qualora riscontrato;
+				\item Sottoporre i documenti all'approvazione del \emph{Responsabile}, una volta giunti ad uno stadio finale.
+			\end{itemize}
+		\section{Risorse}
+			Per la realizzazione del progetto sono necessarie risorse sia umane che tecnologiche.
+			\subsection{Risorse umane}
+				Vengono descritte nel dettaglio nel \emph{Piano di progetto} e sono:
+				\begin{itemize}
+					\item \emph{Responsabile di progetto};
+					\item \emph{Amministratore};
+					\item \emph{Analista};
+					\item \emph{Progettista};
+					\item \emph{Programmatore};
+					\item \emph{Verificatore}.
+				\end{itemize}
+			\subsection{Risorse software}
+				Sono necessari tutti i software utili
+				\begin{itemize}
+					\item alla gestione di documentazione in \LaTeX;
+					\item alla creazione di diagrammi UML;
+					\item allo sviluppo di codice \emph{Scala};
+					\item a semplificare ed automatizzare la verifica;
+					\item a semplificare ed automatizzare la pianificazione e la documentazione della stessa;
+					\item a semplificare ed automatizzare la comunicazione interna tra i membri del gruppo;
+					\item a gestire test ed analisi sul codice.
+				\end{itemize}
+				\subsection{Risorse hardware}
+					\begin{itemize}
+						\item computer dotati di tutti i software descritti nel \emph{Piano di qualifica} e nelle
+						\emph{Norme di progetto};
+						\item luoghi dove effettuare le riunioni del gruppo.
+					\end{itemize}
+				Tutti i membri del gruppo hanno a disposizione almeno un computer personale dotato di tutti gli strumenti
+				necessari per il progetto; tutte le macchine in questione sono portatili. Inoltre in caso di rottura o guasto
+				è messo a disposizione un computer di riserva. Sono a disposizione quattro appartamenti a Padova dove
+				effettuare le riunioni. La scelta di quale viene presa di volta in volta a seconda delle disponibilità. Tutti
+				gli appartamenti sono dotati di connessione internet a banda larga.				
+				
+
+		\section{Analisi}
+			\subsection{Tecniche per l'analisi statica}
+				L'analisi statica non richiede l'esecuzione del codice in oggetto, ed è quindi applicabile sia 
+				alla documentazione che al codice. Permette di individuare errori ed anomalie al più presto possibile, 
+				scongiurandone la diffusione. \\ Essa può essere svolta in due modi distinti.
+				\subsubsection{Walkthrough}
+					Si svolge effettuando una lettura critica a pettine. Questa tecnica viene utilizzata prevalentemente 
+					nelle prime fasi del progetto, in cui non si ha ne una adeguata esperienza, ne uno storico degli errori 
+					più comuni che permetta una indagine più mirata. I Verificatori, tramite questa tecnica, saranno in 
+					grado di stilare una lista di errori più frequenti, potendo così applicare successivamente la tecnica 
+					\emph{Inspection}. Il \emph{Walkthrough} è una tecnica onerosa e richiede l'intervento di più persone. 
+					Dopo una fase iniziale in cui i Verificatori leggono il documento ed individuano potenziali errori essi 
+					devono essere discussi in una riunione con altri componenti del gruppo per accertare che non siano dei 
+					falsi positivi.
+				\subsubsection{Inspection}
+					È una tecnica molto meno onerosa. Consiste nel controllare alcune parti dei documenti che si sono rivelate 
+					maggiormente prone ad errori. Per ottenere questo risultato è necessario avere una lista di controllo che 
+					indichi quali sono le parti da controllare in maniera mirata. Essa viene stilata durante le fasi di 
+					\emph{Walkthrough}. Un altro motivo per cui la \emph{Inspection} è preferibile è il fatto che essa richiede 
+					l'intervento dei soli verificatori, che poi possono procedere alla correzione della maggior parte degli errori, 
+					oppure ad aprire un ticket riguardante quelli che non sono di immediata risoluzione.\\
+					
+					
+				Durante l'applicazione del \emph{Walkthrough} ai documenti sono state riportate le tipologie di errori più frequenti, 
+				esse costituiscono quindi la lista di controllo per le verifiche ad \emph{Inspection}:
+				\begin{itemize}
+					\item \textbf{Norme stilistiche:}
+					\begin{itemize}
+						\item Nome del documento: non viene utilizzata la macro predisposta;
+						\item Versione del documento in prima pagina errata;
+						\item Immagini mancanti;
+						\item Spazi lasciati vuoti per aggiunte successive e non rimossi;
+						\item Mancanza di uniformità delle espressioni all'interno dello stesso documento;
+						\item Mancanze nella sezione dei riferimenti.
+					\end{itemize}
+					\item \textbf{Italiano:}
+					\begin{itemize}
+						\item Doppie;
+						\item Accenti.
+					\end{itemize}
+					\item \textbf{\LaTeX :}
+					\begin{itemize}
+						\item mancanza dell'indice delle immagini e delle tabelle.
+					\end{itemize}
+					\item \textbf{UML:}
+					\begin{itemize}
+						\item incongruenze tra l'immagine contenente i diagrammi e la descrizione testuale della stessa;
+						\item errori nel testo delle immagini dovute a copia-incolla.
+					\end{itemize}
+				\end{itemize}
+			\subsection{Tecniche per l'analisi dinamica}
+				Questo tipo di analisi richiede una esecuzione di parte del programma, quindi ovviamente non applica 
+				ai documenti ma solo al codice. Il suo obiettivo è rilevare errori o difetti di implementazione 
+				mediante l'uso di test che devono essere necessariamente ripetibili: solo un test che produca lo 
+				stesso output partendo dallo stesso ambiente e lo stesso input può è capace di riscontrare problemi. 
+				L'attore che esegue un test deve definire a priori ed avere il pieno controllo su:
+				\begin{itemize}
+					\item \textbf{Ambiente:} insieme di hardware a software come sistema operativo e altri programmi o 
+					processi in esecuzione;
+					\item \textbf{Specifiche:} definizione degli input e dei relativi output attesi, che sono ripetibili 
+					in quanto si postula di essere in un ambiente deterministico;
+					\item \textbf{Procedure:} descrizione delle azioni compiute dall'attore (umano o computer che sia) 
+					per arrivare allo stato iniziale, far partire l'esecuzione, inserire gli input specificati e verificare 
+					che l'output sia uguale a quello atteso.
+				\end{itemize}
+				
+				Sono definiti 5 tipi di test:
+				\begin{itemize}
+					\item \textbf{Test di unità:} Una unità viene definita come la più piccola quantità di software che conviene
+					testare singolarmente. Il fine di questi test è cercare di individuare eventuali errori presenti nelle singole
+					unità che compongono l'intero sistema. Essi vengono testati attraverso l'uso di stub, driver e logger. Queste
+					verifiche sono spesso le più onerose, ma anche quelle che portano alla luce il maggior numero di errori, quindi
+					quelle che producono il maggior valore.
+					\item \textbf{Test di integrazione:} Consiste nella verifica di componenti del sistema che vengono aggiunti
+					incrementalmente, è necessario dunque analizzare combinazioni di due o più unità di software. Hanno lo scopo di
+					individuare errori residui nella realizzazione dei singoli moduli, modifiche delle interfacce e comportamenti
+					inaspettati di componenti software preesistenti forniti da terze parti che non si conoscono a fondo. Per la
+					loro realizzazione è necessario usare spesso componenti fittizie non ancora sviluppate, ma che emulano il
+					comportamento atteso.
+					\item \textbf{Test di Sistema:} Consiste nella validazione del prodotto software una volta che siano stati
+					aggiunti tutti i componenti e lo si ritiene giunto ad una versione definitiva. Lo scopo principale è verificare
+					che ci sia totale copertura dei requisiti stabiliti nella fase di Analisi di dettaglio. È obiettivo
+					fondamentale della qualità del processo fare in modo che giunti a questo punto l'esito del test sia comunque
+					positivo, in quanto garantito dal tracciamento dei requisiti.
+					\item \textbf{Test di regressione:} Consiste nell'eseguire nuovamente i test di unità e integrazione in
+					porzioni di software che hanno subito modifiche in maniera da accertare che questi cambiamenti non
+					pregiudichino il funzionamento dei componenti non toccati da questa modifica.
+					\item \textbf{Test di accettazione:} Consiste nel collaudo del prodotto che viene eseguito in presenza del
+					proponente. Un esito positivo di questo test permette il rilascio ufficiale del software.
+					
+				\end{itemize}
+				
+										
+			
+	\mychapter{3}{Gestione amministrativa della revisione}
+		\section{Comunicazione e risoluzione di anomalie}
+			Una anomalia è una violazione da parte di un documento, o unità di codice, di una o più delle seguenti condizioni:
+			\begin{itemize}
+				\item Conformità alla norme tipografiche o di codifica;
+				\item Appartenenza al range di accettabilità per tutte le metriche descritte nella \emph{Sezione 2};
+				\item Congruenza del prodotto con funzionalità indicate nell'\emph{analisi dei requisiti};
+				\item Congruenza del codice con il design del prodotto.
+			\end{itemize}
+			Se un \emph{Verificatore} dovesse trovare una anomalia egli è tenuto ad aprire un sotto-ticket all'interno 
+			della task-list a lui assegnata. Nel caso la risoluzione del ticket avesse la necessità di essere strutturato 
+			in sotto-attività sarà compito del \emph{Responsabile} aprire una nuova task-list ed assegnarla alle figure coinvolte.
+
+		\section{Procedure di controllo qualità per i processi}
+			La qualità del processo viene garantita da:
+			\begin{itemize}
+				\item \textbf{Pianificazione:} i processi devono essere pianificati nel dettaglio, in maniera da determinare 
+				i punti e le tempistiche in cui effettuare controlli;
+				\item \textbf{Controllo:} i controlli pianificati devono essere eseguiti in maniera oggettiva e neutrale, 
+				quindi con strumenti automatici ovunque possibile;
+				\item \textbf{Miglioramento continuo:} è garantita dall'applicazione del principio \emph{PDCA}.
+			\end{itemize}
+		\section{Procedure di controllo qualità per il prodotto}
+			La qualità del prodotto viene garantita da:
+			\begin{itemize}
+				\item \textbf{Comprensione ed analisi del dominio};
+				\item \textbf{Verifica:} determina che l'output di una fase sia consistente, completo e corretto. 
+				Deve essere eseguita costantemente per tutta la durata del progetto, ma cercando di essere minimamente invasiva;
+				\item \textbf{Validazione:} conferma oggettivamente che il prodotto sia conforme alle aspettative;
+				\item \textbf{Quality Assurance:} garantisce il raggiungimento degli obiettivi di qualità, in maniera preventiva. 
+				In questo modo si riduce drasticamente il ricorso a tecniche retrospettive, e con esse si riducono le iterazioni.
+			\end{itemize}
+		
+		\mychapter{4}{Appendice}
+			\section{Qualità}
+Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi atti a garantire la qualità del prodotto.
 			\subsection{Qualità di processo}
 				Per garantire la qualità del prodotto è necessario garantire anche quella dei processi necessari 
 				al suo completamento. A questo scopo si è deciso di adottare lo standard 
@@ -293,395 +697,8 @@
 					\item \textbf{Sicurezza:} rappresenta la capacità del prodotto di avere accettabili livelli di rischio per
 					quanto riguarda i danni alle persone, al software, ad apparecchiature o all'ambiente operativo d'uso. 
 				\end{itemize}
-			
-			
-		\section{Organizzazione}
-			Il processo di verifica inizia fin dal primo rilascio ufficiale nella repository di un documento vX.0.0, il risultato 
-			del processo di verifica cambia la versione del documento, incrementandone la versione al secondo livello di profondità, 
-			il documento quindi passa a vX.1.0. Ogni modifica apportata al documento ne aumenta la versione all'ultimo livello di 
-			profondità. Una volta completate le modifiche e le verifiche continue sui documenti, esso passa nella fase di validazione,
-			a carico del responsabile, che ne fa cambiare la versione al secondo livello di priorità. 
-			
-			Come descritto nelle norme, il primo valore in una versione verrà cambiato ad ogni consegna.
-			
-			Grazie al diario delle modifiche è più facile individuare dove concentrare l’attenzione nelle verifiche successive 
-			alla prima, in quanto sono segnate le sezioni che sono state aggiunte o che hanno subito dei cambiamenti dall’ultima
-			 verifica, evitando cosi di controllare sempre tutto il documento ad ogni rilascio di versione, per cui ottimizzando 
-			 il tempo necessario al controllo.
-
-			Per ognuna delle 5 fasi del progetto descritte nel \emph{Piano di Progetto v 1.0.5}, sono necessarie diverse attività 
-			di verifica a causa dei diversi output ottenuti:
-
-			\begin{itemize}
-				\item \textbf{Analisi:} Si devono seguire le attività di verifica descritte nella sezione 2.9.2 e 2.9.1 sui processi 
-				e sui documenti attuati.
-			\end{itemize}
-			
-			Come detto in precedenza conclusa la verifica, ha inizio il processo di approvazione. Durante questo processo è compito 
-			del Responsabile di Progetto accertarsi che i prodotto ottenuti siano conformi a quanto pianificato e progettato.
-		
-		
-		\section{Pianificazione strategica e temporale}
-			Avendo lo scopo di rispettare le scadenze riportate nel Piano di progetto, è necessario che l'attività 
-			di verifica, sia del codice che della documentazione, sia sistematica e ben organizzata; in questo modo 
-			l'individuazione, e quindi la correzione degli errori avverrà il prima possibile, limitando la diffusione 
-			degli stessi.\\
-			Per cercare di ridurre il numero degli errori, e quindi semplificare l'attività di verifica, ogni fase 
-			di codifica o documentazione sarà preceduta da una fase di studio preliminare. Evitando le imprecisioni 
-			di natura concettuale si ridurranno le correzioni necessarie.
-			
-			Di seguito vengono riportate le scadenze previste:
-			\begin{itemize}
-				\item \textbf{Revisione dei requisiti:} 2016-01-22;
-				\item \textbf{Revisione di progettazione:} 2016-04-18;
-				\item \textbf{Revisione di qualifica:} 2016-05-23;
-				\item \textbf{Revisione di accettazione:} 2016-06-17.
-			\end{itemize}
-		\section{Responsabilità}
-			Il \emph{Responsabile di progetto} ha il compito di:
-			\begin{itemize}
-				\item Accertarsi che le attività di verifica vengano svolte sistematicamente secondo quanto 
-				riportato nelle \emph{Norme di progetto};
-				\item Accertarsi che vengano rispettati ruoli e competenze assegnate nel \emph{Piano di progetto};
-				\item Verificare che non ci siano conflitti di interesse tra redattori e \emph{Verificatori};
-				\item Aprire ed assegnare i ticket principali e le task-list;
-				\item Approvare un documento e sancirne la distribuzione.
-			\end{itemize}
-			I \emph{Verificatori} hanno il compito di:
-			\begin{itemize}
-				\item Effettuare la verifica dei documenti con strumenti e metodi proposti nel \emph{Piano di Qualifica};
-				\item Attenersi rigidamente a quanto sancito nelle \emph{Norme di progetto};
-				\item Segnalare tempestivamente un errore, qualora riscontrato;
-				\item Sottoporre i documenti all'approvazione del \emph{Responsabile}, una volta giunti ad uno stadio finale.
-			\end{itemize}
-		\section{Risorse}
-			Per la realizzazione del progetto sono necessarie risorse sia umane che tecnologiche.
-			\subsection{Risorse umane}
-				Vengono descritte nel dettaglio nel \emph{Piano di progetto} e sono:
-				\begin{itemize}
-					\item \emph{Responsabile di progetto};
-					\item \emph{Amministratore};
-					\item \emph{Analista};
-					\item \emph{Progettista};
-					\item \emph{Programmatore};
-					\item \emph{Verificatore}.
-				\end{itemize}
-			\subsection{Risorse software}
-				Sono necessari tutti i software utili
-				\begin{itemize}
-					\item alla gestione di documentazione in \LaTeX;
-					\item alla creazione di diagrammi UML;
-					\item allo sviluppo di codice \emph{Scala};
-					\item a semplificare ed automatizzare la verifica;
-					\item a semplificare ed automatizzare la pianificazione e la documentazione della stessa;
-					\item a semplificare ed automatizzare la comunicazione interna tra i membri del gruppo;
-					\item a gestire test ed analisi sul codice.
-				\end{itemize}
-				\subsection{Risorse hardware}
-					\begin{itemize}
-						\item computer dotati di tutti i software descritti nel \emph{Piano di qualifica} e nelle
-						\emph{Norme di progetto};
-						\item luoghi dove effettuare le riunioni del gruppo.
-					\end{itemize}
-				Tutti i membri del gruppo hanno a disposizione almeno un computer personale dotato di tutti gli strumenti
-				necessari per il progetto; tutte le macchine in questione sono portatili. Inoltre in caso di rottura o guasto
-				è messo a disposizione un computer di riserva. Sono a disposizione quattro appartamenti a Padova dove
-				effettuare le riunioni. La scelta di quale viene presa di volta in volta a seconda delle disponibilità. Tutti
-				gli appartamenti sono dotati di connessione internet a banda larga.				
-				
-		\section{Strumenti}
-			Le risorse software che si utilizzeranno durante il processo di verifica sono:
-			\begin{itemize}
-				\item \textbf{\emph{TexMaker}:} un ambiente grafico Open-Source per \LaTeX cross-platform, permette 
-				la compilazione rapida e la visualizzazione del PDF generato;
-				\item \textbf{\emph{Scalastyle}:} analizzatore statico che rileva potenziali problemi nel codice
-				 (\url{https://github.com/scalastyle/scalastyle});
-				\item \textbf{\emph{Scapegoat}:} un altro analizzatore statico che si concentra maggiormente sugli 
-				standard di stile e di coding (\url{https://github.com/sksamuel/scapegoat});
-				\item \textbf{\emph{CLOC (Count Lines Of Code)}:} misura alcune metriche riguardanti il codice 
-				sorgente in vari linguaggi, tra cui \emph{Scala} (\url{cloc.sourceforge.net});
-				\item \textbf{\emph{ScalaTest}:} framework per i test su Scala (\url{http://www.scalatest.org/}).
-			\end{itemize}
-		\section{Analisi}
-			\subsection{Tecniche per l'analisi statica}
-				L'analisi statica non richiede l'esecuzione del codice in oggetto, ed è quindi applicabile sia 
-				alla documentazione che al codice. Permette di individuare errori ed anomalie al più presto possibile, 
-				scongiurandone la diffusione. \\ Essa può essere svolta in due modi distinti.
-				\subsubsection{Walkthrough}
-					Si svolge effettuando una lettura critica a pettine. Questa tecnica viene utilizzata prevalentemente 
-					nelle prime fasi del progetto, in cui non si ha ne una adeguata esperienza, ne uno storico degli errori 
-					più comuni che permetta una indagine più mirata. I Verificatori, tramite questa tecnica, saranno in 
-					grado di stilare una lista di errori più frequenti, potendo così applicare successivamente la tecnica 
-					\emph{Inspection}. Il \emph{Walkthrough} è una tecnica onerosa e richiede l'intervento di più persone. 
-					Dopo una fase iniziale in cui i Verificatori leggono il documento ed individuano potenziali errori essi 
-					devono essere discussi in una riunione con altri componenti del gruppo per accertare che non siano dei 
-					falsi positivi.
-				\subsubsection{Inspection}
-					È una tecnica molto meno onerosa. Consiste nel controllare alcune parti dei documenti che si sono rivelate 
-					maggiormente prone ad errori. Per ottenere questo risultato è necessario avere una lista di controllo che 
-					indichi quali sono le parti da controllare in maniera mirata. Essa viene stilata durante le fasi di 
-					\emph{Walkthrough}. Un altro motivo per cui la \emph{Inspection} è preferibile è il fatto che essa richiede 
-					l'intervento dei soli verificatori, che poi possono procedere alla correzione della maggior parte degli errori, 
-					oppure ad aprire un ticket riguardante quelli che non sono di immediata risoluzione.\\
-					
-					
-				Durante l'applicazione del \emph{Walkthrough} ai documenti sono state riportate le tipologie di errori più frequenti, 
-				esse costituiscono quindi la lista di controllo per le verifiche ad \emph{Inspection}:
-				\begin{itemize}
-					\item \textbf{Norme stilistiche:}
-					\begin{itemize}
-						\item Nome del documento: non viene utilizzata la macro predisposta;
-						\item Versione del documento in prima pagina errata;
-						\item Immagini mancanti;
-						\item Spazi lasciati vuoti per aggiunte successive e non rimossi;
-						\item Mancanza di uniformità delle espressioni all'interno dello stesso documento;
-						\item Mancanze nella sezione dei riferimenti.
-					\end{itemize}
-					\item \textbf{Italiano:}
-					\begin{itemize}
-						\item Doppie;
-						\item Accenti.
-					\end{itemize}
-					\item \textbf{\LaTeX :}
-					\begin{itemize}
-						\item mancanza dell'indice delle immagini e delle tabelle.
-					\end{itemize}
-					\item \textbf{UML:}
-					\begin{itemize}
-						\item incongruenze tra l'immagine contenente i diagrammi e la descrizione testuale della stessa;
-						\item errori nel testo delle immagini dovute a copia-incolla.
-					\end{itemize}
-				\end{itemize}
-			\subsection{Tecniche per l'analisi dinamica}
-				Questo tipo di analisi richiede una esecuzione di parte del programma, quindi ovviamente non applica 
-				ai documenti ma solo al codice. Il suo obiettivo è rilevare errori o difetti di implementazione 
-				mediante l'uso di test che devono essere necessariamente ripetibili: solo un test che produca lo 
-				stesso output partendo dallo stesso ambiente e lo stesso input può è capace di riscontrare problemi. 
-				L'attore che esegue un test deve definire a priori ed avere il pieno controllo su:
-				\begin{itemize}
-					\item \textbf{Ambiente:} insieme di hardware a software come sistema operativo e altri programmi o 
-					processi in esecuzione;
-					\item \textbf{Specifiche:} definizione degli input e dei relativi output attesi, che sono ripetibili 
-					in quanto si postula di essere in un ambiente deterministico;
-					\item \textbf{Procedure:} descrizione delle azioni compiute dall'attore (umano o computer che sia) 
-					per arrivare allo stato iniziale, far partire l'esecuzione, inserire gli input specificati e verificare 
-					che l'output sia uguale a quello atteso.
-				\end{itemize}
-				
-				Sono definiti 5 tipi di test:
-				\begin{itemize}
-					\item \textbf{Test di unità:} Una unità viene definita come la più piccola quantità di software che conviene
-					testare singolarmente. Il fine di questi test è cercare di individuare eventuali errori presenti nelle singole
-					unità che compongono l'intero sistema. Essi vengono testati attraverso l'uso di stub, driver e logger. Queste
-					verifiche sono spesso le più onerose, ma anche quelle che portano alla luce il maggior numero di errori, quindi
-					quelle che producono il maggior valore.
-					\item \textbf{Test di integrazione:} Consiste nella verifica di componenti del sistema che vengono aggiunti
-					incrementalmente, è necessario dunque analizzare combinazioni di due o più unità di software. Hanno lo scopo di
-					individuare errori residui nella realizzazione dei singoli moduli, modifiche delle interfacce e comportamenti
-					inaspettati di componenti software preesistenti forniti da terze parti che non si conoscono a fondo. Per la
-					loro realizzazione è necessario usare spesso componenti fittizie non ancora sviluppate, ma che emulano il
-					comportamento atteso.
-					\item \textbf{Test di Sistema:} Consiste nella validazione del prodotto software una volta che siano stati
-					aggiunti tutti i componenti e lo si ritiene giunto ad una versione definitiva. Lo scopo principale è verificare
-					che ci sia totale copertura dei requisiti stabiliti nella fase di Analisi di dettaglio. È obiettivo
-					fondamentale della qualità del processo fare in modo che giunti a questo punto l'esito del test sia comunque
-					positivo, in quanto garantito dal tracciamento dei requisiti.
-					\item \textbf{Test di regressione:} Consiste nell'eseguire nuovamente i test di unità e integrazione in
-					porzioni di software che hanno subito modifiche in maniera da accertare che questi cambiamenti non
-					pregiudichino il funzionamento dei componenti non toccati da questa modifica.
-					\item \textbf{Test di accettazione:} Consiste nel collaudo del prodotto che viene eseguito in presenza del
-					proponente. Un esito positivo di questo test permette il rilascio ufficiale del software.
-					
-				\end{itemize}
-				
-		\section{Misure e metriche}
-			Il processo di verifica, per avere un valore informativo, deve essere quantificabile; le misure rilevate, inoltre,
-			devono essere basate su metriche stabilite a priori. Complice la scarsa esperienza del gruppo alcune metriche stabilite
-			all'inizio potrebbe risultare approssimative, il modello incrementale esposto nel Piano di progetto permetterà però di
-			migliorarne la precisione e l'accuratezza in maniera incrementale.
-			
-			Le tipologie di range ammesse sono due:
-			\begin{itemize}
-				\item \textbf{Accettabile:} Superiore al minimo valore richiesto affinché il prodotto sia accettato.
-				\item \textbf{Ottimale:} Valori entro cui dovrebbe collocarsi la misurazione. Non sono vincolanti,
-				ma fortemente consigliati. Misurazioni al di fuori di questi valori necessitano una verifica approfondita e nel
-				caso non si trovi una maniera immediata per farli rientrare le cause di tale scostamento dovranno essere
-				discusse nella successiva riunione.
-			\end{itemize}
-			\subsection{Metriche per i processi}
-				Gli indici scelti per la quantificazione dei processi prendono in considerazione principalmente costi e tempi;
-				hanno lo scopo di mantenere il controllo sui processi e che il progetto segua quanto descritto nel Piano di
-				progetto.
-				
-				Gli indici scelti sono:
-				\begin{itemize}
-					\item \textbf{SV (Schedule Variance):} É un indicatore di efficacia, mostra se si è o meno in linea con la
-					pianificazione temporale rispetto alle attività nella baseline. Una schedule variance positiva indica che il
-					gruppo è in anticipo rispetto al Piano di progetto, che è in ritardo altrimenti.
-					\item \textbf{BV (Budget Variance):} Indica se la spesa sostenuta alla data corrente è superiore o inferiore a
-					quella preventivata. Una budget variance positiva indica che si è speso meno di quanto inizialmente previsto,
-					viceversa altrimenti.		
-				\end{itemize}
-				
-				
-			\subsection{Metriche per i documenti}
-				Come metrica di riferimento per i documenti prodotti si è scelto di utilizzare un \emph{indice di leggibilità}.
-				Tra i molti disponibili si è scelto di utilizzare l'indice Gulpease, in quanto:
-				\begin{itemize}
-					\item È l'unico tarato appositamente per la lingua italiana.
-					\item Utilizza la lunghezza delle parole in lettere anziché in sillabe, quindi è più semplice da automatizzare
-					\item Considera la lunghezza della parola e la lunghezza della frase rispetto al numero delle lettere
-					\item Permette di misurare la complessità dello stile di un documento
-				\end{itemize}
-				La formula per il suo calcolo è la seguente:
-				\begin{align*}
-					89+\frac{300\cdot(numero\ delle\ frasi)-10\cdot(numero\ delle\ lettere)}{numero\ delle\ parole}
-				\end{align*}
-				
-				I risultati sono compresi tra 0 e 100, dove il valore "100" indica la leggibilità più alta e "0" la leggibilità
-				più bassa. In generale risulta che testi con un indice
-				\begin{itemize}
-					\item inferiore a 80 sono difficili da leggere per chi ha la licenza elementare
-					\item inferiore a 60 sono difficili da leggere per chi ha la licenza media
-					\item inferiore a 40 sono difficili da leggere per chi ha un diploma superiore
-				\end{itemize}
-	
-				Il gruppo si atterrà ai seguenti parametri:
-				\begin{itemize}
-					\item Range di accettazione: [35|100]
-					\item Range di ottimale: [45|100]
-				\end{itemize}
-				
-				
-			
-			\subsection{Metriche per il software}
-				Questo capitolo è da intendere come una dichiarazione di intenti e probabilmente verrà rivisto quando inizieremo 
-				realmente la fase di programmazione.
-
-				Al fine di perseguire gli obbiettivi sulla qualità del software, vorremmo applicare le seguenti metriche:
-				\begin{itemize}
-					\item \textbf{Attributi per classe:}
-						Un grande numero di attributi interni ad una classe mostra probabilmente la necessità di suddividere la classe 
-						in più classi relazionate tra di se.
-						\begin{itemize}
-							\item Valori accettati: 0-18
-							\item Valori ottimali: 2-9
-						\end{itemize}
-
-					\item \textbf{Numero livelli annidamento:}
-						Mostra il livello di annidamento dei metodi, un numero alto implica una bassa astrazione del codice ed 
-						un elevata complessità.
-						\begin{itemize}
-							\item Valori accettati:1-8
-							\item Valori ottimali:1-4
-						\end{itemize}
-
-					\item \textbf{Numero parametri per metodo:}
-						Un valore elevato indica che probabilmente il metodo ha un sovraccarico di funzionalità
-						\begin{itemize}
-							\item Valori accettati:0-8
-							\item Valori ottimali:0-5
-						\end{itemize}
-
-					\item \textbf{Linee di codice per linee di commento:}
-						È la percentuale di righe di commento rispetto al totale delle righe di codice. Utile per la manutenibilità.
-						\begin{itemize}
-							\item Valori accettati: 20\%-70\%
-							\item Valori ottimali: 30\%-50\%
-						\end{itemize}
-
-					\item \textbf{Accoppiamento afferente:}
-						Indica il numero di classi esterne da un package che dipendono da esso, un grande valore indica una forte 
-						dipendenza del software per il package in questione, un valore basso invece indica una bassa utilità del 
-						package per il resto del software.
-						\begin{itemize}
-							\item Valori accettati: da decidere
-							\item Valori ottimali: da decidere
-						\end{itemize}
-
-					\item \textbf{Accoppiamento efferente:}
-					Il numero di classi di un package che dipendono da package esterni, un valore basso indica che il package ha 
-					numerose funzionalità indipendenti dal resto del software.
-						\begin{itemize}
-							\item Valori accettati: da decidere
-							\item Valori ottimali: da decidere
-						\end{itemize}
-			\end{itemize}
-			
-			
-		\section{Metodi}
-			
-			\subsection{Analisi dei processi}
-				I processi compiuti durante una fase verranno analizzati secondo il seguente protocollo:
-				\begin{itemize}
-					\item \textbf{Controllo delle metriche:}
-						Alla conclusione di ogni fase del progetto si calcolano gli indici definiti nella sezione 2.8.1 confrontando 
-						le macroattività preventivate nel \emph{Piano di progetto} con i dati effettivi riscontrati dal sistema di ticketing.
-					\item \textbf{Analisi PDCA:}
-						Secondo il ciclo PDCA una fase di progetto ha inizio con la pianificazione di come possono essere migliorati i processi. 
-						Durante la fase vengono attuati i cambiamenti prefissati e alla fine viene effettuato un controllo. Se un processo 
-						risulta essere migliore viene adottato in modo definitivo, se invece risulta inalterato o addirittura peggiore i 
-						cambiamenti vengono scartati.
-				\end{itemize}
-			\subsection{Analisi dei documenti}
-				Ogni documento redatto è verificato mediante il seguente protocollo:
-				\begin{itemize}
-					\item \textbf{Controllo sintattico:} Il testo deve venire sottoposto a controllo dell'ortografia con il tool
-					fornito dall'ambiente di sviluppo \LaTeX utilizzato. Alcuni errori non possono essere comunque rilevati da
-					meccanismi automatici, quindi al fine di ottenere correttezza sintattica e semantica i Verificatori
-					effettueranno un walkthrough al fine di ricercare errori sfuggiti al correttore ortografico.
-					\item \textbf{Rispetto delle Norme di progetto:} I Verificatori sono tenuti a verificare che il documento
-					rispetti tutte le norme tipografiche e di struttura del documento riportate nelle Norme di progetto. Porzioni
-					di questa verifica sono automatizzabili, i Verificatori dovranno quindi usare tool ove possibile. 
-					\item \textbf{Inspection secondo checklist:} I Verificatori dovranno scorrere la lista di controllo e
-					verificare che non sia presenti gli errori comuni lì riportati.
-					\item \textbf{Verifica Glossario:} I Verificatori dovranno controllare che tutti i termini contenuti nel 
-					Glossario siano indicati all'interno dei documenti con la G a pedice. 
-					\item \textbf{Calcolo dell'indice di leggibilità:} I Verificatori dovranno calcolare tramite strumenti
-					automatici l'indice Gulpease di leggibilità del testo, nel caso risultasse troppo basso sarà necessario
-					procedere ad un walkthrough, finalizzato alla individuazione di frasi troppo lunghe e complesse.
-					\item \textbf{Miglioramento:} Se nello svolgimento di uno qualunque dei punti precedenti un Verificatore
-					notasse nuove possibilità di automatizzazione dovrà segnalarle e si dovrà cercare o costruire uno strumento per
-					rendere effettiva tale automatizzazione. Inoltre durante le esecuzioni dei walkthrough, i verificatori sono
-					tenuti ad annotare gli errori più frequenti o potenzialmente dannosi rilevati. Tali errori andranno poi ad
-					aggiornare la lista di controllo che verrà utilizzata per le successive inspection.
-				\end{itemize}								
-			
-	\mychapter{3}{Gestione amministrativa della revisione}
-		\section{Comunicazione e risoluzione di anomalie}
-			Una anomalia è una violazione da parte di un documento, o unità di codice, di una o più delle seguenti condizioni:
-			\begin{itemize}
-				\item Conformità alla norme tipografiche o di codifica;
-				\item Appartenenza al range di accettabilità per tutte le metriche descritte nella \emph{Sezione 2};
-				\item Congruenza del prodotto con funzionalità indicate nell'\emph{analisi dei requisiti};
-				\item Congruenza del codice con il design del prodotto.
-			\end{itemize}
-			Se un \emph{Verificatore} dovesse trovare una anomalia egli è tenuto ad aprire un sotto-ticket all'interno 
-			della task-list a lui assegnata. Nel caso la risoluzione del ticket avesse la necessità di essere strutturato 
-			in sotto-attività sarà compito del \emph{Responsabile} aprire una nuova task-list ed assegnarla alle figure coinvolte.
-
-		\section{Procedure di controllo qualità per i processi}
-			La qualità del processo viene garantita da:
-			\begin{itemize}
-				\item \textbf{Pianificazione:} i processi devono essere pianificati nel dettaglio, in maniera da determinare 
-				i punti e le tempistiche in cui effettuare controlli;
-				\item \textbf{Controllo:} i controlli pianificati devono essere eseguiti in maniera oggettiva e neutrale, 
-				quindi con strumenti automatici ovunque possibile;
-				\item \textbf{Miglioramento continuo:} è garantita dall'applicazione del principio \emph{PDCA}.
-			\end{itemize}
-		\section{Procedure di controllo qualità per il prodotto}
-			La qualità del prodotto viene garantita da:
-			\begin{itemize}
-				\item \textbf{Comprensione ed analisi del dominio};
-				\item \textbf{Verifica:} determina che l'output di una fase sia consistente, completo e corretto. 
-				Deve essere eseguita costantemente per tutta la durata del progetto, ma cercando di essere minimamente invasiva;
-				\item \textbf{Validazione:} conferma oggettivamente che il prodotto sia conforme alle aspettative;
-				\item \textbf{Quality Assurance:} garantisce il raggiungimento degli obiettivi di qualità, in maniera preventiva. 
-				In questo modo si riduce drasticamente il ricorso a tecniche retrospettive, e con esse si riducono le iterazioni.
-			\end{itemize}
-	
-	\mychapter{4}{Resoconto delle attività di verifica}
-		\section{Riassunto delle attività di verifica}
+				\section{Resoconto delle attività di verifica}
+				\subsection{Riassunto delle attività di verifica}
 			Durante la stesura della documentazione sono stati verificati ad ogni modifica sostanziale la documentazione stessa, i
 			casi d'uso e i requisiti; è stato in oltre verificato se i processi si sono svolti in maniera corretta.
 			\subsection{Documentazione}
@@ -770,10 +787,11 @@
 				risultati più critici.
 				
 			\subsection{Documenti}
-		\section{Dettaglio dell'esito delle revisioni}
+	\section{Dettaglio dell'esito delle revisioni}
 			Il progetto prevede quattro revisioni formali a cui sottoporsi, per mezzo delle quali il Committente potrà segnalare 
 			le eventuali problematiche riscontrate. Ogni revisione prevede una valutazione globale del progetto ed una valutazione 
 			dettagliata per ciascun documento prodotto. Grazie alle segnalazioni ricevute sarà possibile individuare le criticità 
 			e gli errori che verranno corretti per poter avanzare alla fase successiva con una baseline verificata.
+				
 	
 \end{document}
