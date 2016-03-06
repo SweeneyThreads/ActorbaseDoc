@@ -78,7 +78,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.2.1
+			Versione 1.2.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -94,6 +94,9 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.2.2 & 2016-03-06 & \emph{Analista} \newline Maino Elia & Ridefinizione dei casi d'uso: stesura di diagrammi e descrizioni da UC 3.2 a UC 3.11
+				\\
 				\noalign{\hrule height 0.5pt}
 				1.2.1 & 2016-03-05 & \emph{Analista} \newline Maino Elia & Ridefinizione dei casi d'uso: stesura di diagrammi e descrizioni fino a UC 3.1
 				 \\
@@ -265,7 +268,7 @@
 				\textbf{Flusso eventi} & \begin{enumerate}
 				\item L'utente inserisce il comando \texttt{CONNECT} (UC 1.1)
 				\item L'utente inserisce l'indirizzo del server (UC 1.2)
-				\item L'utente inserisce username e password (UC 1.3)
+				\item L'utente inserisce username e password (UC 1.3) e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
@@ -278,7 +281,7 @@
 		 \end{table} 
 	 
 	 
-	\subsection{UC 1.1: Inserimento comando \texttt{CONNECT} }
+	\subsection{UC 1.1: Inserimento comando di connessione}
 	 \textbf{Descrizione}
 	 \\ \\
 	 L'utente intende effettuare una connessione al server, deve avviare la procedura di connessione inserendo il comando \texttt{CONNECT} da terminale.
@@ -286,7 +289,7 @@
 			\begin{tabularx}{\textwidth}{r  X}
 				\textbf{Codice gerarchico} & UC1.1 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Inserimento comando \texttt{CONNECT} \\
+				\textbf{Nome sintetico} & Inserimento comando di connessione\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente non autenticato\\
 				\noalign{\hrule height 0.5pt}
@@ -306,7 +309,7 @@
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 1.1 - Inserimento comando \texttt{CONNECT}}
+			\caption{Caso d'uso UC 1.1 - Inserimento comando di connessione}
 		 \end{table} 	 
 	 
 	 
@@ -361,8 +364,8 @@
 				\textbf{Post-condizione} & L'utente ha inserito con successo username e password \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il proprio username
-				\item L'utente inserisce la password 
+				\item L'utente scrive su terminale il proprio username
+				\item L'utente scrive su terminale la password 
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
@@ -405,7 +408,7 @@
 				\textbf{Post-condizione} & L'utente ha visualizzato le informazioni di aiuto richieste\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando relativo all'aiuto richiesto
+				\item L'utente inserisce il comando relativo all'aiuto richiesto e preme invio
 				\item L'utente riceve le informazioni di aiuto stampate sul terminale
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
@@ -517,7 +520,7 @@
 				\textbf{Post-condizione} & L'operazione sui database selezionata è stata eseguita con successo\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando per l'operazione richiesta
+				\item L'utente inserisce il comando e le informazioni necessarie per l'operazione richiesta e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & \begin{enumerate}
@@ -554,7 +557,7 @@
 				\textbf{Post-condizione} & L'utente riceve la lista dei database presenti stampata a video\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando \texttt{SHOWDB}
+				\item L'utente inserisce il comando \texttt{SHOWDB} e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
@@ -567,8 +570,814 @@
 		 \end{table} 	 
 	 
 	 
+	 \subsection{UC 3.2: Esportazione di database}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 3-2 Esportazione di database".png}
+				\caption{Diagramma di UC3.2: Esportazione di database}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare l'esportazione di tutti i database presenti o di un database specifico, utilizzando il comando \texttt{EXPORT} seguito dal nome del database da esportare (opzionale) e dal percorso locale in cui si vuole esportare il database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Esportazione di database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende esportare dei database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha esportato con successo i database selezionati\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando \texttt{EXPORT} (UC 3.2.1)
+				\item L'utente inserisce le informazioni di esportazione (UC 3.2.2 o UC 3.2.3) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.2 - Esportazione di database}
+		 \end{table}
+		 
+		 
+		  \subsection{UC 3.2.1: Inserimento comando di esportazione}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare un'esportazione di database. Per avviare la procedura di esportazione deve inserire il relativo comando \texttt{EXPORT}.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.2.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di esportazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende esportare dei database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di esportazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando \texttt{EXPORT}
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.2.1 - Inserimento comando di esportazione}
+		 \end{table} 	 
+		 
+		 \subsection{UC 3.2.2: Esportazione di tutti i database}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare un'esportazione di tutti i database. Ha inserito il comando di connessione e ora deve inserire il percorso locale in cui vuole esportare i database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.2.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Esportazione di tutti i database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende esportare tutti i database e ha inserito il comando di esportazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente i dati per esportare tutti i database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il percorso locale in cui vuole esportare i database 
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.2.2 - Esportazione di tutti i database}
+		 \end{table} 
+		 
+		 \subsection{UC 3.2.3: Esportazione di un singolo database}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare un'esportazione di un singolo database. Ha inserito il comando di connessione e ora deve inserire il nome del database da esportare seguito dal percorso locale in cui vuole esportare i database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.2.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Esportazione di un singolo database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende esportare un singolo database e ha inserito il comando di esportazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente i dati per esportare un singolo database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome del database che vuole esportare
+				\item L'utente scrive su terminale il percorso locale in cui vuole esportare il database 
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.2.3 - Esportazione di un singolo database}
+		 \end{table} 		 	
 	 
 	 
+	 
+	 \subsection{UC 3.3: Importazione di database}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 3-3 Importazione di database".png}
+				\caption{Diagramma di UC3.3: Importazione di database}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare l'importazione di un database utilizzando il comando \texttt{IMPORT} seguito dal percorso locale da cui si vuole importare il database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Importazione di database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende importare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha importato con successo il database selezionato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando \texttt{IMPORT} (UC 3.3.1)
+				\item L'utente inserisce il percorso di importazione (UC 3.3.2) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.3 - Importazione di database}
+		 \end{table}
+	 
+	 
+	 \subsection{UC 3.3.1: Inserimento comando di importazione}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare l'esportazione di un database. Per avviare la procedura di importazione deve inserire il relativo comando \texttt{IMPORT}.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.3.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di importazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende importare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di importazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando \texttt{IMPORT}
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.3.1 - Inserimento comando di importazione}
+		 \end{table} 	 
+		 
+		 \subsection{UC 3.3.2: Inserimento percorso di importazione}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare l'esportazione di un database. Ha inserito il comando di importazione e ora deve inserire il percorso da cui importare i dati.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.3.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento percorso di importazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha inserito il comando di importazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il percorso di importazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il percorso di importazione
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.3.2 - Inserimento percorso di importazione}
+		 \end{table} 	 
+		 
+		 
+		 \subsection{UC 3.4: Creazione database}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 3-4 Creazione database".png}
+				\caption{Diagramma di UC3.4: Creazione database}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende creare un nuovo database inserendo il comando di creazione seguito dal nome del database da creare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.4 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Creazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende creare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha creato con successo un database con il nome inserito\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di creazione database (UC 3.4.1)
+				\item L'utente inserisce il nome del database da creare (UC 3.4.2) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.4 - Creazione database}
+		 \end{table}
+		 
+		 
+		  \subsection{UC 3.4.1: Inserimento comando di creazione database}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende creare un nuovo database, a tal fine deve come prima cosa inserire il comando di creazione di database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.4.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di creazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende creare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di creazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di creazione database
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.4.1 - Inserimento comando di creazione database}
+		 \end{table}
+		 
+		 \subsection{UC 3.4.2: Inserimento nome database da creare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende creare un nuovo database, ha inserito il comando di creazione database e ora deve inserire il nome che intende dare al nuovo database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.4.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nome database da creare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha inserito il comando di creazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nome del database da creare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome del database da creare
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.4.2 - Inserimento nome database da creare}
+		 \end{table}
+		 
+		 
+		 \subsection{UC 3.5: Eliminazione database}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 3-5 Eliminazione database".png}
+				\caption{Diagramma di UC3.5: Eliminazione database}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende eliminare un database presente sul server inserendo il comando per eliminare un database, seguito dal nome del database da eliminare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.5 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Eliminazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende eliminare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha eliminato con successo il database selezionato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di eliminazione database (UC 3.5.1)
+				\item L'utente inserisce il nome del database da eliminare (UC 3.5.2) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.5 - Eliminazione database}
+		 \end{table}
+		 
+		 
+		\subsection{UC 3.5.1: Inserimento comando di eliminazione database}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende eliminare un database presente sul server, a tal fine deve per prima cosa scrivere su terminale il comando di eliminazione database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.5.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di eliminazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende eliminare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di eliminazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di eliminazione database
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.5.1 - Inserimento comando di eliminazione database}
+		 \end{table}		 
+		  
+		\subsection{UC 3.5.2: Inserimento nome database da eliminare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende eliminare un database presente sul server, ha inserito il comando di eliminazione database e ora deve inserire il nome del database da eliminare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.5.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nome database da eliminare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende eliminare un database e ha inserito il comando di eliminazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nome del database da eliminare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome del database da eliminare
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.5.2 - Inserimento nome database da eliminare}
+		 \end{table}		 
+		 
+		\subsection{UC 3.6: Rinominazione database}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 3-6 Rinominazione database".png}
+				\caption{Diagramma di UC3.6: Rinominazione database}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rinominare un database presente sul server inserendo il comando per rinominare un database, seguito dal nome del database da rinominare e il nuovo nome.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.6 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Rinominazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rinominare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha rinominato con successo il database selezionato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di rinominazione database (UC 3.6.1)
+				\item L'utente inserisce il nome del database da rinominare (UC 3.6.2)
+				\item L'utente inserisce il nuovo nome per il database (UC 3.6.3) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.6 - Rinominazione database}
+		 \end{table}		 
+		 
+		 \subsection{UC 3.6.1: Inserimento comando di rinominazione database}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rinominare un database presente sul server, a tal fine deve per prima cosa inserire il comando di rinominazione database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.6.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di rinominazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rinominare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di rinominazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di rinominazione database
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.6.1 - Inserimento comando di rinominazione database}
+		 \end{table}		 
+		 
+		 \subsection{UC 3.6.2: Inserimento nome database da rinominare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rinominare un database presente sul server, ha inserito il comando per rinominare un database, ora deve inserire il nome del database che vuole rinominare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.6.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nome database da rinominare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rinominare un database e ha inserito il comando di rinominazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nome del database da rinominare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome del database da rinominare
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.6.2 - Inserimento nome database da rinominare}
+		 \end{table}		 
+		 
+		 \subsection{UC 3.6.3: Inserimento nuovo nome database}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rinominare un database presente sul server, ha inserito il comando per rinominare un database e il nome del database che vuole rinominare, ora deve inserire il nuovo nome per il database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.6.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nuovo nome database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rinominare un database e ha inserito il comando di rinominazione database seguito dal nome del database da rinominare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nuovo nome per il database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nuovo nome per il database
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.6.3 - Inserimento nuovo nome database}
+		 \end{table}		 
+		 
+		 
+		 \subsection{UC 3.7: Selezione di un database}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 3-7 Selezione di un database".png}
+				\caption{Diagramma di UC3.7: Selezione di un database}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende selezionare uno dei database presenti sul server al fine di effettuare operazioni a livello di mappa o item su di esso. Per selezionare un database l'utente deve inserire l'apposito comando da terminale, seguito dal nome del database che vuole selezionare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.7 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Selezione di un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende selezionare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha selezionato con successo il database richiesto\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di selezione database (UC 3.7.1)
+				\item L'utente inserisce il nome del database da selezionare (UC 3.7.2) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.7 - Selezione di un database}
+		 \end{table}	
+		 
+		 
+		 \subsection{UC 3.7.1: Inserimento comando di selezione database}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende selezionare uno dei database presenti sul server al fine di effettuare operazioni a livello di mappa o item su di esso. Per effettuare l'operazione di selezione deve in primo luogo inserire il comando di selezione database da terminale.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.7.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di selezione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende selezionare un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di selezione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di selezione database 
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.7.1 - Inserimento comando di selezione database}
+		 \end{table}		 
+		 
+		 \subsection{UC 3.7.2: Inserimento nome database da selezionare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha inserito il comando per selezionare un database, ora deve inserire il nome del database da selezionare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.7.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nome database da selezionare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende selezionare un database e ha inserito il comando di selezione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nome del database da selezionare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome del database da selezionare 
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.7.2 - Inserimento nome database da selezionare}
+		 \end{table}		 	
+		 
+		 \subsection{UC 3.8: Errore esportazione fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto l'esportazione di uno o più database, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.8 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore esportazione fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di esportazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessun database è stato esportato, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.8 - Errore esportazione fallita}
+		 \end{table}		 	 	 	 
+		 
+		 
+		 \subsection{UC 3.9: Errore importazione fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto l'importazione di un database, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.9 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore importazione fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di importazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessun database è stato importato, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.9 - Errore importazione fallita}
+		 \end{table}	
+		 
+		 \subsection{UC 3.10: Errore creazione fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto la creazione di un database, l'operazione è fallita (per nome inserito errato o per problemi di creazione) dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.10 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore creazione fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di creazione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessun database è stato creato, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.10 - Errore creazione fallita}
+		 \end{table}			
+		 
+		 \subsection{UC 3.11: Errore database inesistente}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha tentato di accedere ad un database non presente sul server. L'accesso al database richiesto è fallito, l'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.11 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore database inesistente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto l'accesso ad un determinato database, inserendone il nome\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & Il database richiesto non è presente sul server, l'utente ha ricevuto un messaggio di errore e la possibilità di inserire un nuovo comando\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.11 - Errore database inesistente}
+		 \end{table}			
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 	 
 	\newpage \section{Requisiti}
 		Di seguito vengono riportati tutti i requisiti individuati dal gruppo SWEeneyThreads. \\Tali requisiti
