@@ -45,6 +45,7 @@ Si è scelto di tenere qui il glossario dei termini, senza versione, in modo che
 ## D
 
 * **Design pattern:** Soluzione progettuale ad un problema ricorrente. Definisce una funzionalità, ma lasciando dei gradi di libertà d'uso.
+* **Driver: ** Il driver simula un'unità chiamante. È l'opposto dello Stub, che invece simula un'unità chiamata. 
 
 ## E
 
@@ -136,7 +137,7 @@ Spesso un requisito lato utente si trasforma in molti requisiti lato soluzione.
   * Team di sviluppo
   * Clienti
   * Utenti Finali
-
+* **Stub: ** porzione di codice utilizzata in sostituzione di altre funzionalità software. Uno stub può simulare il comportamento di codice esistente  e temporaneo sostituto di codice ancora da sviluppare.
 ## T
 
 * **Task:** Compito organizzativo ottenuto dalla frantumazione di un processo. Generalmente è delle dimensioni adeguate per essere svolto da una solo persona ed è parallelizzabile.
