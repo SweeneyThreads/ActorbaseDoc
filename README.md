@@ -14,7 +14,7 @@ Si è scelto di tenere qui il glossario dei termini, senza versione, in modo che
   * Sufficienza
   * Comprensibilità
   * Modularità
-  * Robustezza 
+  * Robustezza
   * Flessibilità
   * Riusabilità
   * Efficienza
@@ -25,13 +25,13 @@ Si è scelto di tenere qui il glossario dei termini, senza versione, in modo che
   * Semplicità
   * Incapsulazione
   * Coesione
-  * Basso accoppiamento 
+  * Basso accoppiamento
 * **Attore:** ruolo dell'utente nell'interazione con il sitema, svolgono il caso d'uso per raggiungere l'obiettivo, sono un buon mezzo di individuazione dei casi d'uso, non includono dettagli implementativi, sui modi di interazione. Vanno identificati secondo un processo.
 
 ## B
 
 * **Baseline:** E' l'insieme di Configuration Item ad una specifica Milestone. Rappresenta cioè un punto dello sviluppo verificato, approvato e garantito. Una volta fissata una baseline il progetto può solo avanzare, è una configurazione a cui si può tornare senza perdite in caso di fallimento.
-* **Best practice:** Prassi (modo di fare) che per esperienza e per studio abbia mostrato di garantire i migliori risultati in circostanze note e specifiche. 
+* **Best practice:** Prassi (modo di fare) che per esperienza e per studio abbia mostrato di garantire i migliori risultati in circostanze note e specifiche.
 * **Brainstorming:** Tecnica di analisi dei requisiti che prevede discussioni creative e paritetiche con o senza il committente. Solitamente necessita di un facilitatore, ovvero un partecipante neutrale che fa si che si rispettino le regole, ed un rapporteur, ovvero colui che tiene nota della discussione riportando solo le parti importanti producendo così le “miniature”.
 
 ## C
@@ -45,7 +45,7 @@ Si è scelto di tenere qui il glossario dei termini, senza versione, in modo che
 ## D
 
 * **Design pattern:** Soluzione progettuale ad un problema ricorrente. Definisce una funzionalità, ma lasciando dei gradi di libertà d'uso.
-* **Driver: ** Il driver simula un'unità chiamante. È l'opposto dello Stub, che invece simula un'unità chiamata. 
+* **Driver:** Il driver simula un'unità chiamante. È l'opposto dello Stub, che invece simula un'unità chiamata.
 
 ## E
 
@@ -88,7 +88,7 @@ Più risulta semplice eseguire queste operazioni più si considera il prodotto s
 ## O
 
 * **Opportunità:** Un’offerta relativa a un prodotto software non implica necessariamente un’opportunità (sw già esistente, progetto irrealizzabile, ...) dunque è compito del software engineer valutare la presenza di opportunità al momento di accettare o meno la commissione.
-* **Organizzazione di processo:** 
+* **Organizzazione di processo:**
   * **Pianificare (plan):** Definire attività, scadenze, responsabilità, risorse utili a raggiungere specifici obiettivi di miglioramento.
   * **Eseguire (do):** Eseguire le attività secondo i piani.
   * **Valutare (check):** Verificare l’esito delle azioni di miglioramento rispetto alle attese.
@@ -137,7 +137,7 @@ Spesso un requisito lato utente si trasforma in molti requisiti lato soluzione.
   * Team di sviluppo
   * Clienti
   * Utenti Finali
-* **Stub: ** porzione di codice utilizzata in sostituzione di altre funzionalità software. Uno stub può simulare il comportamento di codice esistente  e temporaneo sostituto di codice ancora da sviluppare.
+* **Stub:** porzione di codice utilizzata in sostituzione di altre funzionalità software. Uno stub può simulare il comportamento di codice esistente  e temporaneo sostituto di codice ancora da sviluppare.
 ## T
 
 * **Task:** Compito organizzativo ottenuto dalla frantumazione di un processo. Generalmente è delle dimensioni adeguate per essere svolto da una solo persona ed è parallelizzabile.

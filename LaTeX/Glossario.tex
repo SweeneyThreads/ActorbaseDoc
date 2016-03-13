@@ -67,7 +67,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.2
+			Versione 1.3.0
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -83,22 +83,25 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
-				1.0.2 & 2016-02-23 & \emph{Responsabile} \newline Nicoletti Luca & Rivista l'intera tabella del diario delle modifiche 
+				1.3.0 & 2016-03-09 & \emph{Progettista} \newline Nicoletti Luca & Inseriti i termini Stub e Driver. Corretta la definizione 
+				di Attore.\\
+				\noalign{\hrule height 0.5pt}
+				1.2.2 & 2016-02-23 & \emph{Responsabile} \newline Nicoletti Luca & Rivista l'intera tabella del diario delle modifiche 
 				secondo le indicazioni  \\
 				\noalign{\hrule height 0.5pt}
-				1.0.1 & 2016-02-19 & \emph{Responsabile} \newline Nicoletti Luca & Prime modifiche post consegna RR: tolto il comando
+				1.2.1 & 2016-02-19 & \emph{Responsabile} \newline Nicoletti Luca & Prime modifiche post consegna RR: tolto il comando
 				per la creazione di paragrafi da noi introdotto, sostituiti tutti i "paragrafi" con sezioni; cambiata classe del 
 				documento da "report" ad "article" come consigliato nella correzione. \\
 				\noalign{\hrule height 0.5pt}
-				1.0.0 & 2016-01-21 & \emph{Verificatore} \newline Tommasin Davide & Verificato il documento \\
+				1.1.0 & 2016-01-21 & \emph{Verificatore} \newline Tommasin Davide & Verificato il documento \\
 				\noalign{\hrule height 0.5pt}
-				0.0.4 & 2016-01-21 & \emph{Analista} \newline Maino Elia & Inserimento voci \\
+				1.0.3 & 2016-01-21 & \emph{Analista} \newline Maino Elia & Inserimento voci \\
 				\noalign{\hrule height 0.5pt}
-				0.0.3 & 2016-01-21 & \emph{Amministratore} \newline Nicoletti Luca & Riordinato il documento, tolto indice \\
+				1.0.2 & 2016-01-21 & \emph{Amministratore} \newline Nicoletti Luca & Riordinato il documento, tolto indice \\
 				\noalign{\hrule height 0.5pt}
-				0.0.2 & 2016-01-21 & \emph{Amministratore} \newline Nicoletti Luca & Sistemati elenchi puntati interni \\
+				1.0.1 & 2016-01-21 & \emph{Amministratore} \newline Nicoletti Luca & Sistemati elenchi puntati interni \\
 				\noalign{\hrule height 0.5pt}
-				0.0.1 & 2016-01-21 & \emph{Analista} \newline Maino Elia & Stesura scheletro documento e Introduzione \\
+				1.0.0 & 2016-01-21 & \emph{Analista} \newline Maino Elia & Stesura scheletro documento e Introduzione \\
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
 			\caption{Diario delle modifiche \label{tab:table_label}}
@@ -147,7 +150,9 @@
 				\item  Coesione
 				\item  Basso accoppiamento
 			\end{itemize}
-			\item \textbf{Attore:} Elemento esterno di un caso d'uso che interagisce con il sistema. 
+			\item \textbf{Attore:}  ruolo dell'utente nell'interazione con il sitema, svolgono il caso d'uso per raggiungere l'obiettivo, 
+			sono un buon mezzo di individuazione dei casi d'uso, non includono dettagli implementativi, sui modi di interazione. Vanno 
+			identificati secondo un processo.
 		\end{itemize}
 		
 	\section*{B}
@@ -168,7 +173,8 @@
 			\item \textbf{Casi d'uso:} Un caso d'uso é la descrizione di un'interazione tra uno o più attori esterni ed il sistema, al
 			fine di effettuare una determinata operazione. I casi d'uso sono utili per identificare requisiti in quanto descrivono
 			i modi in cui il prodotto verrà utilizzato.
-			\item \textbf{Commit:} Un commit si effettua quando si copiano le modifiche eseguite sui file locali nella directory del repository  (il software di controllo versione controlla quali file sono stati modificati dall’ultima sincronizzazione).
+			\item \textbf{Commit:} Un commit si effettua quando si copiano le modifiche eseguite sui file locali nella directory del 
+			repository  (il software di controllo versione controlla quali file sono stati modificati dall’ultima sincronizzazione).
 			\item \textbf{Configuration:} E' un sistema in un suo istante; cambia a seconda di alcune svolte importanti (milestone).
 			\item \textbf{Configurazione:} Vedi Configuration.
 			\item \textbf{Ciclo di vita del software:} Gli stati che il prodotto assume dal concepimento al ritiro.
@@ -187,6 +193,7 @@
 	\section*{D}
 		\begin{itemize}
 			\item \textbf{Design pattern:} Soluzione progettuale ad un problema ricorrente. 
+			\item \textbf{Driver:} Il driver simula un'unità chiamante. È l'opposto dello Stub, che invece simula un'unità chiamata.
 		\end{itemize}
 	\section*{E}
 		\begin{itemize}
@@ -361,6 +368,8 @@
 			  	\item  Clienti
 			  	\item  Utenti Finali
 			\end{itemize}
+			\item \textbf{Stub:} porzione di codice utilizzata in sostituzione di altre funzionalità software. Uno stub può 
+			simulare il comportamento di codice esistente e temporaneo sostituto di codice ancora da sviluppare.			
 		\end{itemize}
 		
 	\section*{T}
@@ -371,7 +380,8 @@
 		
 	\section*{U}
 		\begin{itemize}	
-			\item \textbf{UML:} Famiglia di notazioni grafiche che si basano su un singolo meta-modello e servono a supportare la descrizione e il progetto dei sistemi software	
+			\item \textbf{UML:} Famiglia di notazioni grafiche che si basano su un singolo meta-modello e servono a supportare la 
+			descrizione e il progetto dei sistemi software	
 			\item \textbf{UTF-8:} (Unicode Transformation Format, 8 bit) è una codifica dei caratteri Unicode in sequenze 
 			di lunghezza variabile di byte, creata da Rob Pike e Ken Thompson. UTF-8 usa gruppi di byte per rappresentare i caratteri Unicode.		
 		\end{itemize}
