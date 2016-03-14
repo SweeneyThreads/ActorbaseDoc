@@ -56,19 +56,17 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
-				Bonato Paolo \\
-				Bortolazzo Matteo \\
-				Maino Elia
+				Maino Elia \\
+				Tommasin Davide
 			\end{flushleft}
 		\end{minipage}
 		~
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-				Padovan Tommaso \\
-				\emph{Verifica:} \\
 				Biggeri Mattia \\
-				Tommasin Davide 
+				\emph{Verifica:} \\
+				Bortolazzo Paolo
 			\end{flushright}
 		\end{minipage}
 		
@@ -78,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.2.2
+			Versione 1.3.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -95,6 +93,9 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.3.2 & 2016-03-06 & \emph{Progettista} \newline Maino Elia \newline \emph{Analista} \newline Tommasin Davide & Ridefinizione dei casi d'uso: stesura di diagrammi e descrizioni da UC 3.12 a UC 4.12
+				\\
 				\noalign{\hrule height 0.5pt}
 				1.3.1 & 2016-03-06 & \emph{Analista} \newline Maino Elia & Ridefinizione dei casi d'uso: stesura di diagrammi e descrizioni da UC 3.2 a UC 3.11
 				\\
@@ -488,11 +489,11 @@
 		 \end{table} 	
 	 
 	 
-	 \subsection{UC 3: Operazioni sui database}
+	 \subsection{UC 3: Operazioni a livello server}
 	 \begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.2]{UC/"UC 3 Operazioni sui database".png}
-				\caption{Diagramma di UC3: Operazioni sui database}
+				\includegraphics[scale=0.2]{UC/"UC 3 Operazioni a livello server".png}
+				\caption{Diagramma di UC3: Operazioni a livello server}
 			\end{figure}
 	\textbf{Descrizione} 
 	\\ \\
@@ -530,13 +531,14 @@
 				\item L'utente ha richiesto un'operazione di importazione e questa è fallita, l'operazione non viene eseguita e l'utente riceve un messaggio di errore (UC 3.9)
 				\item L'utente ha richiesto la creazione di un nuovo database sul server, la creazione è fallita e l'utente riceve un messaggio di errore (UC 3.10)
 				\item L'utente ha tentato di accedere ad un database non presente sul server, l'accesso è fallito e l'utente riceve un messaggio di errore (UC 3.11)
+				\item L'utente ha richiesto un'operazione di selezione di un database non disponendo dei permessi di lettura per tale database, la selezione non viene effettuata e l'utente riceve un messaggio di errore (UC 3.12)
 \end{enumerate}				 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 3 - Operazioni sui database}
+			\caption{Caso d'uso UC 3 - Operazioni a livello server}
 		 \end{table} 
 	 
 	 
@@ -596,8 +598,7 @@
 				\textbf{Post-condizione} & L'utente ha esportato con successo i database selezionati\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando \texttt{EXPORT} (UC 3.2.1)
-				\item L'utente inserisce le informazioni di esportazione (UC 3.2.2 o UC 3.2.3) e preme invio
+				\item L'utente inserisce le informazioni di esportazione (UC 3.2.1 o UC 3.2.2) e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
@@ -610,44 +611,13 @@
 		 \end{table}
 		 
 		 
-		  \subsection{UC 3.2.1: Inserimento comando di esportazione}
-	\textbf{Descrizione} 
-	\\ \\
-	L'utente intende effettuare un'esportazione di database. Per avviare la procedura di esportazione deve inserire il relativo comando \texttt{EXPORT}.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC3.2.1 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Inserimento comando di esportazione\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende esportare dei database\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di esportazione\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente scrive su terminale il comando \texttt{EXPORT}
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
-				\item ...
-				\end{itemize} 
-			\end{tabularx}
-			\caption{Caso d'uso UC 3.2.1 - Inserimento comando di esportazione}
-		 \end{table} 	 
-		 
-		 \subsection{UC 3.2.2: Esportazione di tutti i database}
+		 \subsection{UC 3.2.1: Esportazione di tutti i database}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente intende effettuare un'esportazione di tutti i database. Ha inserito il comando di connessione e ora deve inserire il percorso locale in cui vuole esportare i database.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC3.2.2 \\
+				\textbf{Codice gerarchico} & UC3.2.1 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Esportazione di tutti i database\\
 				\noalign{\hrule height 0.5pt}
@@ -660,6 +630,7 @@
 				\textbf{Post-condizione} & L'utente ha inserito correttamente i dati per esportare tutti i database\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di esportazione
 				\item L'utente scrive su terminale il percorso locale in cui vuole esportare i database 
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
@@ -669,16 +640,16 @@
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 3.2.2 - Esportazione di tutti i database}
+			\caption{Caso d'uso UC 3.2.1 - Esportazione di tutti i database}
 		 \end{table} 
 		 
-		 \subsection{UC 3.2.3: Esportazione di un singolo database}
+		 \subsection{UC 3.2.2: Esportazione di un singolo database}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente intende effettuare un'esportazione di un singolo database. Ha inserito il comando di connessione e ora deve inserire il nome del database da esportare seguito dal percorso locale in cui vuole esportare i database.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC3.2.3 \\
+				\textbf{Codice gerarchico} & UC3.2.2 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Esportazione di un singolo database\\
 				\noalign{\hrule height 0.5pt}
@@ -691,6 +662,7 @@
 				\textbf{Post-condizione} & L'utente ha inserito correttamente i dati per esportare un singolo database\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di esportazione
 				\item L'utente scrive su terminale il nome del database che vuole esportare
 				\item L'utente scrive su terminale il percorso locale in cui vuole esportare il database 
 				\end{enumerate} \\
@@ -701,7 +673,7 @@
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 3.2.3 - Esportazione di un singolo database}
+			\caption{Caso d'uso UC 3.2.2 - Esportazione di un singolo database}
 		 \end{table} 		 	
 	 
 	 
@@ -1367,11 +1339,961 @@
 				\end{itemize} 
 			\end{tabularx}
 			\caption{Caso d'uso UC 3.11 - Errore database inesistente}
-		 \end{table}			
+		 \end{table}		
+		 
+		 \subsection{UC 3.12: Errore permessi lettura insufficienti}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha tentato di accedere ad un database esistente, non avendo i permessi necessari per accedere al database. L'accesso al database richiesto è fallito, l'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.12 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore permessi lettura insufficienti\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto l'accesso ad un determinato database, inserendone il nome\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & Il database richiesto è presente sul server ma l'utente non ha i permessi per accedervi, l'utente ha ricevuto un messaggio di errore e la possibilità di inserire un nuovo comando\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.12 - Errore permessi lettura insufficienti}
+		 \end{table}		
 		 
 		 
 		 
+		 \subsection{UC 4: Operazioni a livello database}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.2]{UC/"UC 4 Operazioni a livello database".png}
+				\caption{Diagramma di UC4: Operazioni a livello database}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha effettuato correttamente la connessione e ha selezionato un database di cui dispone dei permessi di accesso. Su tale database può effettuare diverse operazioni a livello di mappa:
+	\begin{itemize}
+	\item Visualizzare la lista delle mappe presenti
+	\item Creare una mappa
+	\item Eliminare una mappa
+	\item Rinominare una mappa presente
+	\item Selezionare una mappa per effettuare operazioni a livello di item su di essa
+	\item Visualizzare i permessi di accesso al database
+	\item Modificare i permessi di accesso al database
+	\end{itemize}
+	Queste operazioni possono portare a diverse situazioni di errore. In tal caso non viene eseguita alcuna operazione e l'utente riceve un messaggio di errore esplicativo. 
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Operazioni a livello database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha selezionato correttamente un database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione sul database selezionata è stata eseguita correttamente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando e le informazioni necessarie per l'operazione richiesta e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & \begin{enumerate}
+				\item L'utente ha richiesto la creazione di una nuova mappa, la creazione è fallita e l'utente riceve un messaggio di errore (UC 4.8)
+				\item L'utente ha richiesto un'operazione di modifica del database ma non dispone dei permessi di scrittura per tale database, l'operazione non viene effettuata e l'utente riceve un messaggio di errore (UC 4.9)
+				\item L'utente ha tentato di accedere ad una mappa non presente, l'accesso è fallito e l'utente riceve un messaggio di errore (UC 4.10)
+				\item L'utente ha richiesto un'operazione relativa ai permessi di accesso al database non disponendo dei permessi di amministrazione necessari, l'operazione viene rifiutata e l'utente riceve un messaggio di errore (UC 4.11)
+\end{enumerate}				 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4 - Operazioni sulle mappe}
+		 \end{table} 
 		 
+		 
+		 \subsection{UC 4.1: Visualizzazione lista delle mappe}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende visualizzare la lista delle mappe che compongono il database su cui sta operando. Inserisce quindi il comando \texttt{SHOW} e il sistema stampa sul terminale la lista.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Visualizzazione lista delle mappe\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende visualizzare la lista delle mappe che compongono il database selezionato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente riceve la lista delle mappe presenti stampata a video\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando \texttt{SHOW} e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.1 - Visualizzazione lista delle mappe}
+		 \end{table} 
+		 
+		 
+		 \subsection{UC 4.2: Creazione mappa}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 4-2 Creazione mappa".png}
+				\caption{Diagramma di UC4.2: Creazione mappa}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende creare una nuova mappa inserendo il comando di creazione seguito dal nome della mappa da creare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Creazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende creare una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha creato con successo una mappa con il nome inserito\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di creazione mappa(UC 4.2.1)
+				\item L'utente inserisce il nome della mappa da creare (UC 4.2.2) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.2 - Creazione mappa}
+		 \end{table}
+		 
+		 
+		  \subsection{UC 4.2.1: Inserimento comando di creazione mappa}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende creare una nuova mappa, a tal fine deve come prima cosa inserire il comando di creazione di una mappa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.2.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di creazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende creare una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di creazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di creazione mappa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.2.1 - Inserimento comando di creazione mappa}
+		 \end{table}
+		 
+		 \subsection{UC 4.2.2: Inserimento nome mappa da creare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende creare una nuova mappa, ha inserito il comando di creazione di una mappa e ora deve inserire il nome che intende dare alla nuova mappa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.2.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nome mappa da creare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha inserito il comando di creazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nome della mappa da creare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome della mappa da creare
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.2.2 - Inserimento nome mappa da creare}
+		 \end{table}
+		 
+		 
+		 \subsection{UC 4.3: Eliminazione mappa}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 4-3 Eliminazione mappa".png}
+				\caption{Diagramma di UC4.3: Eliminazione mappa}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende eliminare una mappa presente nel database selezionato in precedenza, inserendo il comando per eliminare una mappa, seguito dal nome della mappa da eliminare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Eliminazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende eliminare una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha eliminato con successo la mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di eliminazione mappa (UC 4.3.1)
+				\item L'utente inserisce il nome della mappa da eliminare (UC 4.3.2) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.3 - Eliminazione mappa}
+		 \end{table}
+		 
+		 
+		\subsection{UC 4.3.1: Inserimento comando di eliminazione mappa}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende eliminare una mappa, a tal fine deve per prima cosa scrivere su terminale il comando di eliminazione di una mappa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.3.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di eliminazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende eliminare una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di eliminazione di una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di eliminazione mappa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.3.1 - Inserimento comando di eliminazione mappa}
+		 \end{table}		 
+		  
+		\subsection{UC 4.3.2: Inserimento nome mappa da eliminare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende eliminare una mappa, ha inserito il comando di eliminazione di una mappa e ora deve inserire il nome della mappa da eliminare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.3.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nome mappa da eliminare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende eliminare una mappa e ha inserito il comando di eliminazione di una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nome della mappa da eliminare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome della mappa da eliminare
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.3.2 - Inserimento nome mappa da eliminare}
+		 \end{table}		 
+		 
+		\subsection{UC 4.4: Rinominazione mappa}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 4-4 Rinominazione mappa".png}
+				\caption{Diagramma di UC4.4: Rinominazione mappa}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rinominare una mappa inserendo il comando per rinominare una mappa, seguito dal nome della mappa da rinominare e il nuovo nome.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.4 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Rinominazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rinominare una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha rinominato con successo la mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di rinominazione mappa (UC 4.4.1)
+				\item L'utente inserisce il nome della mappa da rinominare (UC 4.4.2)
+				\item L'utente inserisce il nuovo nome per la mappa (UC 4.4.3) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.4 - Rinominazione mappa}
+		 \end{table}		 
+		 
+		 \subsection{UC 4.4.1: Inserimento comando di rinominazione mappa}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rinominare una mappa, a tal fine deve per prima cosa inserire il comando di rinominazione mappa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.4.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di rinominazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rinominare una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di rinominazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di rinominazione mappa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.4.1 - Inserimento comando di rinominazione mappa}
+		 \end{table}		 
+		 
+		 \subsection{UC 4.4.2: Inserimento nome mappa da rinominare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rinominare una mappa, ha inserito il comando per rinominare una mappa, ora deve inserire il nome della mappa che vuole rinominare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.4.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nome mappa da rinominare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rinominare una mappa e ha inserito il comando di rinominazione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nome della mappa da rinominare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome della mappa da rinominare
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.4.2 - Inserimento nome mappa da rinominare}
+		 \end{table}		 
+		 
+		 \subsection{UC 4.4.3: Inserimento nuovo nome mappa}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rinominare una mappa, ha inserito il comando per rinominare una mappa e il nome della mappa che vuole rinominare, ora deve inserire il nuovo nome per la mappa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.4.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nuovo nome mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rinominare una mapa e ha inserito il comando di rinominazione mappa seguito dal nome della mappa da rinominare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nuovo nome per la mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nuovo nome per la mappa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.4.3 - Inserimento nuovo nome mappa}
+		 \end{table}		 
+		 
+		 
+		 \subsection{UC 4.5: Selezione mappa}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 4-5 Selezione mappa".png}
+				\caption{Diagramma di UC4.5: Selezione mappa}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende selezionare una delle mappe che compongono il database su cui sta operando al fine di effettuare operazioni a livello di item su di essa. Per selezionare una mappa l'utente deve inserire l'apposito comando da terminale, seguito dal nome della mappa che vuole selezionare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.5 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Selezione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende selezionare una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha selezionato con successo la mappa richiesta\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di selezione mappa (UC 4.5.1)
+				\item L'utente inserisce il nome della mappa da selezionare (UC 4.5.2) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.5 - Selezione mappa}
+		 \end{table}	
+		 
+		 
+		 \subsection{UC 4.5.1: Inserimento comando di selezione mappa}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende selezionare una delle mappe che compongono il database. Per effettuare l'operazione di selezione deve in primo luogo inserire il comando di selezione mappa da terminale.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.5.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di selezione mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende selezionare una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di selezione mappa \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di selezione mappa 
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.5.1 - Inserimento comando di selezione mappa}
+		 \end{table}		 
+		 
+		 \subsection{UC 4.5.2: Inserimento nome mappa da selezionare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha inserito il comando per selezionare una mappa, ora deve inserire il nome della mappa da selezionare.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.5.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nome mappa da selezionare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende selezionare una mappa e ha inserito il comando di selezione mappa \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nome della mappa da selezionare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome della mappa da selezionare 
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.5.2 - Inserimento nome mappa da selezionare}
+		 \end{table}		
+		 
+		 \subsection{UC 4.6: Visualizzazione permessi accesso}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{UC/"UC 4-6 Visualizzazione permessi".png}
+				\caption{Diagramma di UC4.6: Visualizzazione aiuto}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+L'utente avente i permessi di amministratore, vuole visualizzare i permessi di altri utenti. Ha a disposizione due possibilità: 
+	\begin{itemize}
+		\item Visualizzare a lista dei permessi relativi all'intero database
+		\item Visualizzare i permessi di accesso al database per un singolo utente
+	\end{itemize}
+	La prima modalità stampa sul terminale la lista completa degli utenti che hanno un qualche tipo di accesso al database selezionato, con relativi permessi di amministrazione, scrittura e lettura. \\
+	La modalità di visualizzazione permessi utente singolo richiede l'inserimento del nome dell'utente per cui si richiedono le informazioni, stampa sul terminale il nome dell'utente seguito dai suoi permessi.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.6 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Visualizzazione permessi accesso \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende visualizzare i permessi di uno o tutti gli utenti\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha visualizzato i permessi di uno o tutti gli utenti\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando relativo alla visualizzazione richiesta e preme invio
+				\item L'utente riceve le informazioni di visualizzazione permessi stampate sul terminale
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.6 - Visualizzazione permessi accesso}
+		 \end{table} 
+		 
+		 
+		 \subsection{UC 4.6.1: Visualizzazione lista permessi}
+	 \textbf{Descrizione}
+	 \\ \\
+	 L'utente sta effettuando l'operazione di visualizzazione dei permessi e intende inserire il comando di visualizzazione lista permessi.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r  X}
+				\textbf{Codice gerarchico} & UC4.6.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Visualizzazione lista permessi \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente vuole visualizzare i permessi di tutti gli utenti che hanno un qualche tipo di accesso al database selezionato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando di visualizzazione lista permessi\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di visualizzazione lista permessi
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.6.1 - Visualizzazione lista permessi }
+		 \end{table} 	
+	 
+	 
+	 \subsection{UC 4.6.2: Visualizzazione permessi utente singolo}
+	 \textbf{Descrizione}
+	 \\ \\
+	 L'utente sta effettuando l'operazione di visualizzazione dei permessi di uno specifico utente.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r  X}
+				\textbf{Codice gerarchico} & UC4.6.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Visualizzazione permessi utente singolo \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente vuole visualizzare i permessi di uno specifico utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando visualizzazione permessi utente singolo\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di visualizzazione permessi seguito dal nome dell'utente di cui vuole visualizzare i permessi
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.6.2 - Visualizzazione permessi utente singolo}
+		 \end{table}
+ 		 
+		 
+		 
+		 \subsection{UC 4.7: Modifica permessi accesso}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 4-7 Modifica permessi".png}
+				\caption{Diagramma di UC 4.7: Modifica permessi accesso}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+L'utente avente i permessi di amministratore, vuole modificare i permessi di amministrazione, scrittura, lettura di un utente.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.7 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Modifica permessi accesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende modificare i permessi di un determinato utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha modificato con successo i permessi di un determinato utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di modifica permessi (UC 4.7.1)
+				\item L'utente inserisce il nome dell'utente a cui verranno modificati i permessi (UC 4.7.2)
+				\item L'utente inserisce i valori dei nuovi permessi (UC 4.7.3) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...																
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.7 - Modifica permessi}
+		 \end{table}	
+		 
+		 
+		 \subsection{UC 4.7.1: Inserimento comando modifica permessi}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente avente permessi di amministratore, ha intenzione di modificare i permessi di un altro utente. Per effettuare l'operazione di modifica deve prima di tutto inserire il comando di modifica permessi da terminale.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.7.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando modifica permessi\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende modificare i permessi di un determinato utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di modifica permessi\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di modifica permessi
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...								
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.7.1 - Inserimento comando modifica permessi}
+		 \end{table}		 
+		 
+		 \subsection{UC 4.7.2: Inserimento nome utente da modificare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha inserito il comando per modificare i permessi, ora deve inserire il nome dell'utente a cui verranno modificati i permessi.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.7.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nome utente da modificare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\				
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} &  L'utente intende modificare i permessi di un determinato utente e ha inserito il comando di modifica permessi\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo il nome dell'utente a cui verranno modificati i permessi\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nome dell'utente a cui verranno modificati i permessi 
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...																
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.7.2 - Inserimento nome utente da modificare}
+		 \end{table}
+		 
+		 \subsection{UC 4.7.3: Inserimento nuovi permessi}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha inserito il comando per modificare i permessi e il nome dell'utente a cui verranno modificati i permessi, ora deve inserire i valori dei nuovi permessi da assegnare all'utente.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.7.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento nuovi permessi\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\				
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} &  L'utente intende modificare i permessi di un determinato utente, ha inserito il comando di modifica permessi e il nome utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo i nuovi permessi\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il nuovi permessi da applicare all'utente precedentemente selezionato
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...																
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.7.3 - Inserimento nuovi permessi}
+		 \end{table}
+		 
+		 
+		 \subsection{UC 4.8: Errore creazione mappa fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto l'operazione di creazione di una nuova mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.8 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore creazione mappa fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di creazione mappa sul database selezionato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessuna mappa è stato creata, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.8 - Errore creazione mappa fallita}
+		 \end{table}	
+		 
+		  \subsection{UC 4.9: Errore permessi di scrittura insufficienti}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto un'operazione che modifica il contenuto o la struttura del database selezionato. L'utente però non dispone dei permessi di scrittura necessari all'operazione, questa non viene effettuata e l'utente riceve un messaggio di errore informativo seguito dalla possibilità di inserire un nuovo comando.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.9 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore permessi di scrittura insufficienti\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di modifica\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessuna modifica al database è stata effettuata, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.9 - Errore permessi di scrittura insufficienti}
+		 \end{table}	
+		 
+		 \subsection{UC 4.10: Errore mappa inesistente}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto un accesso ad una mappa non presente nel database, l'accesso è fallito e l'utente riceve un messaggio di errore informativo e la può inserire un nuovo comando.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.10 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore mappa inesistente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di accesso a una mappa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.10 - Errore mappa inesistente}
+		 \end{table}							
+		 
+		 \subsection{UC 4.11: Errore permessi amministratore insufficienti}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto un'operazione che accede ai permessi del database senza disporre dei permessi necessari di amministrazione, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.11 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore permessi amministratore insufficienti\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione che accede ai permessi senza disporre dei permessi amministrativi necessari\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.11 - Errore permessi amministratore insufficienti}
+		 \end{table}		
+		 
+		 
+		 \subsection{UC 4.12: Errore modifica permessi fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto di modificare i permessi di un determinato utente, l'operazione è fallita perché ha inserito valori di permessi non validi dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.12 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore modifica permessi fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di modifica permessi\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessun permesso di un determinato utente è stato cambiato, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.12 - Errore modifica permessi fallita}
+		 \end{table}	
 		 
 		 
 		 
