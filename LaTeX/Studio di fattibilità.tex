@@ -1,0 +1,329 @@
+%Document-Author: Bonato Paolo + Bortolazzo Matteo + Maino Elia
+%Document-Date: 2016-01-12
+%Document-Description: Studio di fattibilità relativo al capitolato C1
+
+
+\documentclass[a4paper]{article}
+\usepackage[english, italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\graphicspath{{Immagini/}}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lipsum}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\newcolumntype{s}{>{\hsize=.21\hsize}X}
+\newcolumntype{f}{>{\hsize=.37\hsize}X}
+\newcolumntype{m}{>{\hsize=.42\hsize}X}
+
+\renewcommand{\abstractname}{Tabella contenuti}
+
+\begin{document}
+	
+	\begin{titlepage}
+		% Defines a new command for the horizontal lines, change thickness here
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+		\center  
+		
+		% HEADING SECTION
+		\textsc{\LARGE SweeneyThreads}\\[1.5cm] 
+		\textsc{\Large Actorbase}\\[0.5cm] 
+		\textsc{\large a NoSQL DB based on the Actor model}\\[0.5cm]
+		
+		
+		% TITLE SECTION
+		\HRule \\[0.4cm]
+		{ \huge \bfseries Studio di fattibilità}\\[0.4cm] 
+		\HRule \\[1.5cm]
+		
+		% AUTHOR SECTION
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft} \large
+				\emph{Redattori:}\\
+				Bonato Paolo \\
+				Bortolazzo Matteo \\
+				Maino Elia \\
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				\emph{Approvazione:} \\
+				Padovan Tommaso \\
+				\emph{Verifica:} \\
+				Biggeri Mattia \\
+				Tommasin Davide \\
+			\end{flushright}
+		\end{minipage}
+		
+		%immagine
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{sweeney.png}
+		\end{figure}
+		\begin{center}
+			Versione 1.2.0
+		\end{center}
+		% Date, change the \today to a set date if you want to be precise
+		{\large \today}\\[3cm] 
+		% Fill the rest of the page with whitespace
+		\vfill  
+	\end{titlepage}
+	
+	
+	\tableofcontents
+	
+	\newpage
+	\section*{Diario delle modifiche}
+		\begin{table}[H]
+			\begin{tabularx}{\textwidth}{s f m X}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 1.5pt}
+				1.2.0 & 2016-01-14 & \emph{Analista} Tommasin Davide \newline \emph{Progettista} Nicoletti Luca & Aggiunta Sezione 3: 
+				Capitolati non intrapresi. Nella sezione sono state inserite per ogni capitolato le ragioni principali per le 
+				quali essi sono stati scartati. \\
+				\noalign{\hrule height 0.5pt}
+				1.1.0 & 2016-01-14 & \emph{Verificatore} Tommasin Davide & Verificato il documento \\
+				\noalign{\hrule height 0.5pt}
+				1.0.2 & 2016-01-14 & \emph{Analista} Maino Elia & Stesura considerazioni finali \\
+				\noalign{\hrule height 0.5pt}
+				1.0.1 & 2016-01-13 & \emph{Analisti} Bonato Paolo, Bortolazzo Matteo, Maino Elia & 
+				Stesura sezioni riguardanti il dominio, costi e benefici \\
+				\noalign{\hrule height 0.5pt}
+				1.0.0 & 2016-01-12 & \emph{Analista} Maino Elia & Creazione scheletro del documento e stesura introduzione \\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Diario delle modifiche \label{tab:table_label}}
+		\end{table}
+
+	\newpage	
+	\section{Introduzione}
+	\subsection{Scopo del documento}
+		Lo scopo del seguente documento è descrivere le motivazioni che hanno portato alla scelta del 
+		capitolato C1 da parte del gruppo SWEeneyThreads. 
+	\subsection{Scopo del prodotto}
+		Lo scopo del progetto è la realizzazione di un DataBase NoSQL key-value basato sul modello ad 
+		Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
+		applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
+		di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
+	\subsection{Glossario}
+		Con lo scopo di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il 
+      gruppo ha steso un documento interno che è il \emph{Glossario v1.0.3}. In esso saranno definiti, in modo
+      chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
+	\subsection{Riferimenti}
+	\subsubsection{Informativi}	
+		\begin{itemize}
+			\item \textbf{Capitolato d'appalto C1:} Actorbase: a NoSQL DB based on the Actor model \\
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
+			\item \textbf{Capitolato d'appalto C2:} CLIPS: Communication \& Localisation with Indoor
+			 Positioning Systems \\
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C2p.pdf}
+			\item \textbf{Capitolato d'appalto C3:} UMAP: un motore per l'analisi predittiva in ambiente
+			 Internet of Things \\
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C3p.pdf}
+			\item \textbf{Capitolato d'appalto C4:} MaaS: MongoDB as an admin Service \\
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C4p.pdf}
+			\item \textbf{Capitolato d'appalto C5:} Quizzipedia: software per la gestione di questionari \\
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C5p.pdf}
+			\item \textbf{Capitolato d'appalto C6:} SiVoDiM: Sintesi Vocale per Dispositivi Mobili \\
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C6p.pdf}
+		\end{itemize}
+	\subsubsection{Normativi}
+		\begin{itemize}
+			\item \textbf{Norme di progetto:} \emph{Norme di progetto v1.1.1}
+		\end{itemize}
+
+	\newpage	
+	\section{Scelta del capitolato C1}
+		\subsection{Descrizione del capitolato}
+			Il capitolato C1, il cui committente e proponente è \emph{Cardin Riccardo}, riguarda lo sviluppo 
+			di un database NoSQL di tipo key-value basato sul modello ad attori.
+			\\ \\
+			Le richieste principali esposte nel capitolato sono le seguenti:
+			\begin{itemize}
+				\item L'utilizzo della libreria Akka;
+				\item L'utilizzo del linguaggio Scala o Java;
+				\item Lo sviluppo dei tre attori principali: \textsc{Storekeeper},
+				 \textsc{Storefinder} e \textsc{Warehouseman}.
+			\end{itemize}
+		\subsection{Dominio applicativo}
+			Il capitolato si prefigge l'obiettivo di creare un database di tipo key-value NoSQL basato sul
+			modello ad attori. \\
+			Negli ultimi anni i database NoSQL stanno diventando sempre più popolari  rispetto ai tradizionali
+			database relazionali (un esempio può essere MongoDB) per un insieme di caratteristiche tra cui: 
+			\begin{itemize}
+				\item Maggiore libertà progettuale;
+				\item Scalabilità orizzontale;
+				\item Supporto per strutture dati diverse.
+			\end{itemize}
+			Con l'avanzare del cloud c'è bisogno di sistemi flessibili e distribuiti che scalino facilmente in modo
+			orizzontale. \\
+			Il database si propone di essere reattivo, quindi orientato agli eventi, responsivo, resiliente e
+			scalabile per far fronte ad enormi moli di dati con tempi di risposta molto brevi. \\
+			L'intera applicazione verrà eseguita sulla Java Virtual Machine (JVM) in ambiente
+			 desktop.
+		\subsection{Dominio tecnologico}
+			Visto il dominio applicativo dei database NoSQL, per la realizzazione del progetto al gruppo è
+			necessaria una conoscenza approfondita dei seguenti campi:
+			\begin{itemize}
+				\item \textbf{Database NoSQL di tipo key-value:} conoscenza della struttura di questo 
+				particolare tipo di database;
+				\item \textbf{Modello ad attori:} conoscenza del modello matematico di 
+				esecuzione concorrente su cui si basa l'implementazione del database;
+				\item \textbf{Akka:} conoscenza approfondita di questa libreria che fornisce 
+				 un'implementazione del modello ad attori su JVM;
+				\item \textbf{Scala:} conoscenza di questo specifico linguaggio di programmazione;
+				\item \textbf{JVM:} conoscenze di base del funzionamento della macchina virtuale di Java.
+			\end{itemize}
+		\subsection{Criticità potenziali e costi}
+			Tutte le tecnologie richieste per la realizzazione del progetto sono gratuite quindi non è richiesto
+			un'impegno monetario per utilizzarle, tuttavia essendo in gran parte nuove per i membri del gruppo 
+			l'acquisizione delle competenze necessarie richiederà un investimento non banale in termini di
+			 tempo.
+			\\ \\
+			Nello specifico l'uso delle seguenti tecnologie può essere fonte di criticità:
+			\begin{itemize}
+				\item \textbf{Database NoSQL key-value:} il gruppo ha buona padronanza con l'ambiente dei 
+				database di tipo relazionale (SQL). Lo studio dei database NoSQL parte dunque 
+				da una buona conoscenza di base per quanto riguarda l'ambito dei database in generale;
+				\item \textbf{Scala:} il linguaggio consigliato per lo sviluppo del progetto risulta essere Scala, 
+				nessun componente del gruppo possiede padronanza in tale linguaggio, essa andrà dunque 
+				acquisita prima della fase di progettazione;
+				\item \textbf{Modello ad attori e libreria Akka:} i componenti del gruppo conoscono
+				 discretamente il modello ad attori il cui studio va quindi semplicemente approfondito. La 
+				 libreria, invece, non è mai stata utilizzata da nessun componente, il suo utilizzo richiede dunque
+				 uno studio completo che dovrà avvenire prima della fase di progettazione;
+				 \item \textbf{JVM:} il gruppo possiede una buona conoscenza del linguaggio Java e una 
+				 discreta conoscenza del suo ambiente di esecuzione JVM, tale conoscenza va quindi
+				  approfondita.
+			\end{itemize}
+		\subsection{Analisi del mercato e benefici}
+			Attualmente sul mercato esistono pochi database distribuiti open-source, ancor meno con una
+			struttura key-value e nessuno che applichi il modello ad attori, il che rende Actorbase un prodotto
+			potenzialmente unico. 
+			\\ \\
+			Inoltre citando il capitolato stesso:
+			\begin{center}
+				\emph{Le capacità di calcolo richieste dalle applicazioni attuali rendono obsoleto e inadeguato
+				il modello di gestione dei dati relazionale. \dots \space Dal 2009, sempre più insistentemente si
+				stanno facendo strada una serie di modelli non relazionali, definiti NoSQL.}
+			\end{center}
+			Il prodotto quindi non rappresenta solamente una novità nel mondo dei database, ma risponde 
+			anche alle esigenze concrete del mercato attuale, basandosi sul modello NoSQL.\\
+			Il rilascio su licenza MIT permetterà infine una potenziale rapida crescita del progetto grazie al
+			possibile apporto della comunità.
+		\subsection{Considerazioni e valutazioni finali}
+			Conseguentemente alle considerazioni esposte nelle sezioni precedenti il gruppo ha definito un 
+			insieme di aspetti positivi e negativi del capitolato:
+			\subsubsection{Aspetti positivi}
+				\begin{itemize}
+					\item \textbf{Interesse:} i componenti del gruppo hanno manifestato un interesse elevato 
+					nei confronti del dominio applicativo e delle tecnologie necessarie allo sviluppo;
+					\item \textbf{Novità:} il prodotto rappresenta un'implementazione originale del modello 
+					NoSQL key-value, non ancora disponibile nel mercato open source;
+					\item \textbf{Esperienza:} lo sviluppo del prodotto permetterà ai membri del gruppo di 
+					acquisire competenze utili nel proseguimento della carriera, come Scala e i database NoSQL;
+					\item \textbf{Curiosità nei confronti del linguaggio di programmazione:} il progetto permette 
+					di prendere confidenza con un linguaggio di programmazione moderno come Scala.
+					\item \textbf{Licenza:} il rilascio del prodotto con licenza MIT fornisce interessanti
+					 prospettive future di utilizzo e sviluppo;
+					\item \textbf{Sviluppo futuro:} Il proponente si è dichiarato disponibile a proporre un piano
+					successivo di sviluppo del prodotto nel caso in cui i risultati ottenuti e le prospettive lo
+					 consentano.
+				\end{itemize}
+			\subsubsection{Aspetti negativi}
+				Gli aspetti negativi individuati nel capitolato sono fondamentalmente collegati alle competenze 
+				richieste, che al momento il gruppo non possiede e i cui tempi di acquisizione possono essere
+				potenziale causa di ritardi sullo sviluppo.
+				
+	\newpage
+	\section{Capitolati non intrapresi}
+		In questa sezione, verranno analizzati, in modo parziale e abbastanza superficiale, tutti gli altri capitolati esposti. Questi capitolati 
+		sono tutti stati scartati, per diversi motivi che verranno elencati e spiegati di seguito.
+		\subsection{C2 - CLIPS}
+			\subsubsection{Valutazione generale}
+				Questo capitolato è stato trovato interessante da quasi tutti i membri del gruppo, ma è stato scartato in quanto:
+				\begin{itemize}
+					\item necessita di un'idea, il capitolato infatti non presentava una richiesta precisa su cosa si dovesse andare 
+					a sviluppare;
+					\item imponeva regole fisse sulle tecnologie da utilizzare (beacon obbligatori);
+					\item la tecnologia imposta presenta instabilità e immaturità, è infatti ancora in fase di sviluppo.
+				\end{itemize}
+			\subsubsection{Potenziali criticità}
+				I principali rischi nell'intraprendere lo sviluppo di questo capitolato sono dovuti appunto all'immaturità della tecnologia beacon.
+				Questo potrebbe portare a modifiche di implementazione in fase di sviluppo, che potrebbero richiedere di effettuare tabula rasa di ciò 
+				che si era progettato e implementato. Essendo una tecnologia ancora ai suoi albori, la documentazione non è ai livelli di quelle 
+				riguardanti tecnologie con ampio sostegno, anche da parte della community.
+				Il capitolato richiedeva anche l'utilizzo di un'area dove testare la tecnologia. Nessuno dei membri poteva mettere a disposizione 
+				un posto in cui testare le cose sviluppate e non è stato ritenuto opportuno sfruttare degli ambienti aperti in quanto si potrebbe 
+				essere intralciati da altri utilizzatori di tali ambienti.
+				
+		\subsection{C3 - UMAP}
+			\subsubsection{Valutazione generale}
+				I principali motivi che hanno portato a scartare questo capitolato sono stati i seguenti:
+				\begin{itemize}
+					\item Eccessiva complessità del capitolato;
+					\item Elevato numero di componenti differenti da dover implementare;
+					\item Tecnologie ampiamente sconosciute dalla maggioranza del gruppo.
+				\end{itemize}
+			\subsubsection{Potenziali criticità}
+				Si è riscontrato che oltre a non conoscere adeguatamente la tecnologia richiesta, il capitolato presente troppe parti differenti 
+				che necessitano di essere implementate, per cui il rischio di non riuscire a calcolare adeguatamente i tempi ed i costi necessari 
+				per lo svolgimento del capitolato. 
+				
+		\subsection{C4 - MaaS}
+			\subsubsection{Valutazione generale}
+				Il gruppo ha riscontrato i seguenti fattori negativi nel capitolato:
+				\begin{itemize}
+					\item Scarso interesse da parte del gruppo;
+					\item Presentazione del capitolato e dei suoi obbiettivi poco chiara;
+					\item Programmazione lato server richiesta;
+					\item Richiesta solamente la "traduzione" di un progetto già presente.
+				\end{itemize}
+			\subsubsection{Potenziali criticità}
+				Oltre a non aver attirato l'attenzione del gruppo, il capitolato ha esposto in modo poco chiaro quali obiettivi fossero necessari per 
+				il suo completamento. Inoltre non era richiesta la progettazione di qualcosa di nuovo, ma solamente la modifica, appunto, la transazione 
+				a lato server di un prodotto già progettato e sviluppato in precedenza.
+				
+		\subsection{C5 - Quizzipedia}
+			\subsubsection{Valutazione generale}
+				Si è scelto di scartare questo capitolato per queste ragioni:
+				\begin{itemize}
+					\item Il gruppo ha presentato un interesse particolarmente basso verso questo capitolato;
+					\item Le tecnologie richieste erano già state usate in precedenza, per progetti più piccoli da tutti i membri del gruppo;
+					\item Presenza di numerosi prodotti concorrenti, similari a quello richiesto.
+				\end{itemize}
+			\subsubsection{Potenziali criticità}
+				Non si sono riscontrate particolari criticità su questo capitolato, se non che il prodotto da sviluppare presenta già al giorno d'oggi 
+				dei rivali sul mercato. 
+				
+		\subsection{C6 - SiVoDiM}
+			\subsubsection{Valutazione generale}
+				Il gruppo ha deciso di scartare questo capitolato in quanto:
+				\begin{itemize}
+					\item Il progetto è troppo libero, non sono stati esposti in modo chiaro gli scopi del capitolato;
+					\item Dominio tecnologico interamente sconosciuto a tutti i membri del gruppo.
+				\end{itemize}
+			\subsubsection{Potenziali criticità}
+				Il capitolato, essendo eccessivamente libero, comportava un dispendio di tempo sensibile da parte del gruppo per poter valutare la 
+				sua complessità e i suoi costi. Queste valutazioni potevano essere fatte solamente dopo aver studiato il campo applicativo richiesto 
+				che era sconosciuto all'intero gruppo. 
+				
+	%\cleardoublepage
+	%\addcontentsline{toc}{chapter}{\listfigurename}
+	%\listoffigures
+	
+	%\cleardoublepage
+	%\addcontentsline{toc}{section}{\listtablename}
+	%\listoftables
+		
+\end{document} 
