@@ -17,6 +17,9 @@
 \usepackage{geometry}
 \geometry{margin=1in}
 
+\usepackage{multirow}
+
+
 \graphicspath{{Immagini/}}
 
 \newcolumntype{s}{>{\hsize=.21\hsize}X}
@@ -256,18 +259,29 @@
 			 nel seguente modo, in più, ogni caso d'uso sarà accompagnato da un diagramma UML che ne
 			 descrive il flusso di eventi.
 			 \begin{table}[H]
-				\begin{tabularx}{\textwidth}{X | X}\toprule
-					\rowcolor{orange!65}Codice gerarchico & UC[Padre][CodProgressivo] \\
-					Nome sintetico & Caso d'uso X \\
-					\rowcolor{orange!65}Attori & Utente generico\\
-					Pre-condizione & Ammesso che\dots \\
-					\rowcolor{orange!65}Post-condizione & Porto a\dots \\
-					Flusso eventi & Evento1->Evento2->Evento3\\
-					\rowcolor{orange!65}Scenari alternativi & Evento1->Evento3\\
-					Lista requisiti dedotti & R[1.4.5][N][F]\\
-					\bottomrule
-				\end{tabularx}
-			 \end{table}
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Connessione al server \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente non autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha avviato l'interfaccia CLI, non è autenticato e intende connettersi ad un server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente risulta connesso al server \\
+				\noalign{\hrule height 0.5pt}
+				\multirow{3}{*}{\textbf{Flusso eventi}} & 1. L'utente inserisce il comando \texttt{CONNECT} (UC 1.1) \\
+				& 2. L'utente inserisce l'indirizzo del server (UC 1.2) \\
+				& 3. L'utente inserisce username e password (UC 1.3) e preme invio \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots
+			\end{tabularx}
+			\caption{Caso d'uso UC 1 - Connessione al server}
+		 \end{table}
 
 		\subsubsection{Tecniche di tracciamento dei requisiti}
 			Tutti i requisiti e Casi d'uso\ped{\emph{G}} saranno inseriti in un Database, strutturato in modo funzionale
