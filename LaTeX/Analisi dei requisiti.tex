@@ -42,7 +42,7 @@
 		\center  
 		
 		% HEADING SECTION
-		\textsc{\LARGE SweeneyThreads}\\[1.5cm] 
+		\textsc{\LARGE SWEeneyThreads}\\[1.5cm] 
 		\textsc{\Large Actorbase}\\[0.5cm] 
 		\textsc{\large a NoSQL DB based on the Actor model}\\[0.5cm]
 		
@@ -66,7 +66,7 @@
 				\emph{Approvazione:} \\
 				Biggeri Mattia \\
 				\emph{Verifica:} \\
-				Bortolazzo Paolo
+				Bonato Paolo 
 			\end{flushright}
 		\end{minipage}
 		
@@ -76,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.3.2
+			Versione 1.3.3
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -94,7 +94,10 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 0.5pt}
-				1.3.2 & 2016-03-06 & \emph{Progettista} \newline Maino Elia \newline \emph{Analista} \newline Tommasin Davide & Ridefinizione dei casi d'uso: stesura di diagrammi e descrizioni da UC 3.12 a UC 4.12
+				1.3.3 & 2016-03-15 & \emph{Progettista} \newline Maino Elia & Ridefinizione dei casi d'uso: stesura di diagrammi e descrizioni da UC 4.12 a UC 7
+				\\
+				\noalign{\hrule height 0.5pt}
+				1.3.2 & 2016-03-14 & \emph{Progettista} \newline Maino Elia \newline \emph{Analista} \newline Tommasin Davide & Ridefinizione dei casi d'uso: stesura di diagrammi e descrizioni da UC 3.12 a UC 4.12
 				\\
 				\noalign{\hrule height 0.5pt}
 				1.3.1 & 2016-03-06 & \emph{Analista} \newline Maino Elia & Ridefinizione dei casi d'uso: stesura di diagrammi e descrizioni da UC 3.2 a UC 3.11
@@ -170,7 +173,7 @@
 		Il prodotto si pone l'obiettivo di fornire un database NoSQL basato sul modello ad attori che possa 
 		essere utilizzato con successo dalle cosiddette \emph{Reactive Applications}, ovvero applicazioni
 		orientate agli eventi, scalabili, resilienti e responsive. Per tali applicazioni il paradigma di accesso 
-		ai dati basato su database di tipo relazionale risulta non applicabile, poichè troppo limitante, sono 
+		ai dati basato su database di tipo relazionale risulta non applicabile, poiché troppo limitante, sono 
 		dunque necessarie nuove forme di gestione dell'informazione, \emph{Actorbase} intende proporsi 
 		come una valida opzione.
 	\subsection{Funzioni principali del prodotto}
@@ -214,7 +217,7 @@
 			\item Analisi del capitolato C1 Actorbase
 			\item Confronti con il committente \emph{Cardin Riccardo}
 			\item Riunioni e discussioni interne al gruppo
-			\item Analisi della struttura e delle funzionalità di altri database non realzionali
+			\item Analisi della struttura e delle funzionalità di altri database non relazionali
 		\end{itemize}
 		La struttura di un caso d'uso è definita nel documento \emph{Norme di progetto v1.1.1 sez 2.1.3}.
 		\subsection{Attori}
@@ -224,7 +227,14 @@
 			\item \textbf{Utente non autenticato:} è l'utente che ha avviato l'applicativo e interagisce con la CLI senza aver ancora effettuato con successo l'operazione di connessione al server;
 			\item \textbf{Utente autenticato:} è l'utente che ha già effettuato con successo l'operazione di connessione ad un server che utilizza \emph{Actorbase}. 
 		\end{itemize}
-		\emph{Actorbase} non prevede un meccanismo di permessi per quanto riguarda i dati presenti su un server. Una volta che l'utente si è autenticato con successo ha la possibilità di effettuare tutte le operazioni disponibili. Per tale motivo non è presente un utente amministratore, in quanto l'amministrazione del server è già una funzionalità garantita all'utente autenticato.
+		\emph{Actorbase} prevede un meccanismo di permessi per controllare l'accesso ai diversi database presenti sul server. Quando un utente crea un nuovo database riceve i permessi di amministrazione per esso: oltre a poter leggere e scrivere i dati, egli può cambiare i permessi di accesso a tale database per gli altri utenti del server. \\ 
+		Ricapitolando esistono tre permessi di accesso ad un singolo database (elencati in ordine di privilegi garantiti):
+		\begin{itemize}
+		\item Amministrazione
+		\item Scrittura
+		\item Lettura
+		\end{itemize}
+		Il sistema di permessi è applicato solamente al livello database, non ci sono permessi specifici per mappe o altri elementi.
 		\subsection{Visione ad alto livello delle interazioni tramite CLI}
 		 	\begin{figure}[H]
 				\centering
@@ -253,7 +263,7 @@
 			\end{figure}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha appena avviato l'interfaccia CLI dell'applicativo e intende connettersi ad un server contenente i database utilizzando il comando \texttt{CONNECT} (UC 1.1). L'utente deve inserire l'indirizzo del server (UC 1.2) e successivamente l'username e la password necessari per l'accesso (UC 1.3), nel caso in cui il tentativo di connessione dovesse fallire, l'utente riceve un messaggio di errore informativo.
+	L'utente ha appena avviato l'interfaccia CLI dell'applicativo e intende connettersi ad un server contenente i database utilizzando il comando di connessione (UC 1.1). L'utente deve inserire l'indirizzo del server (UC 1.2) e successivamente l'username e la password necessari per l'accesso (UC 1.3), nel caso in cui il tentativo di connessione dovesse fallire, l'utente riceve un messaggio di errore informativo.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC1 \\
@@ -269,7 +279,7 @@
 				\textbf{Post-condizione} & L'utente risulta connesso al server \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando \texttt{CONNECT} (UC 1.1)
+				\item L'utente inserisce il comando di connessione (UC 1.1)
 				\item L'utente inserisce l'indirizzo del server (UC 1.2)
 				\item L'utente inserisce username e password (UC 1.3) e preme invio
 				\end{enumerate} \\
@@ -287,7 +297,7 @@
 	\subsection{UC 1.1: Inserimento comando di connessione}
 	 \textbf{Descrizione}
 	 \\ \\
-	 L'utente intende effettuare una connessione al server, deve avviare la procedura di connessione inserendo il comando \texttt{CONNECT} da terminale.
+	 L'utente intende effettuare una connessione al server, deve avviare la procedura di connessione inserendo il comando di connessione da terminale.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r  X}
 				\textbf{Codice gerarchico} & UC1.1 \\
@@ -330,7 +340,7 @@
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha inserito il comando \texttt{CONNECT}\\
+				\textbf{Pre-condizione} & L'utente ha inserito il comando di connessione\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Post-condizione} & L'utente ha inserito con successo l'indirizzo del server \\
 				\noalign{\hrule height 0.5pt}
@@ -391,7 +401,7 @@
 	\\ \\
 	L'utente (autenticato o non) intende ricevere un aiuto su come utilizzare i comandi di \emph{Actorbase}. Ha a disposizione due possibilità: 
 	\begin{itemize}
-	\item Aiuto semplice/generale
+	\item Aiuto generico
 	\item Aiuto specifico
 	\end{itemize}
 	La prima modalità stampa sul terminale la lista completa dei comandi esistenti con relativa nota esplicativa sul loro comportamento. \\
@@ -425,7 +435,7 @@
 		 \end{table} 
 		 
 		 
-		 \subsection{UC 2.1: Aiuto semplice}
+		 \subsection{UC 2.1: Aiuto generico}
 	 \textbf{Descrizione}
 	 \\ \\
 	 L'utente sta effettuando l'operazione di visualizzazione dell'aiuto e intende inserire il comando di aiuto semplice.
@@ -433,15 +443,15 @@
 			\begin{tabularx}{\textwidth}{r  X}
 				\textbf{Codice gerarchico} & UC2.1 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Aiuto semplice\\
+				\textbf{Nome sintetico} & Aiuto generico \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente non autenticato e Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende ricevere un aiuto generale\\
+				\textbf{Pre-condizione} & L'utente intende ricevere un aiuto generico \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando di aiuto semplice/generale\\
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando di aiuto generico\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
 				\item L'utente inserisce il comando \texttt{HELP}
@@ -453,7 +463,7 @@
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 2.1 - Aiuto semplice}
+			\caption{Caso d'uso UC 2.1 - Aiuto generico}
 		 \end{table} 	
 	 
 	 
@@ -614,7 +624,7 @@
 		 \subsection{UC 3.2.1: Esportazione di tutti i database}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente intende effettuare un'esportazione di tutti i database. Ha inserito il comando di connessione e ora deve inserire il percorso locale in cui vuole esportare i database.
+	L'utente intende effettuare un'esportazione di tutti i database. Inserisce il comando di esportazione e il percorso locale in cui vuole esportare i database.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.2.1 \\
@@ -646,7 +656,7 @@
 		 \subsection{UC 3.2.2: Esportazione di un singolo database}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente intende effettuare un'esportazione di un singolo database. Ha inserito il comando di connessione e ora deve inserire il nome del database da esportare seguito dal percorso locale in cui vuole esportare i database.
+	L'utente intende effettuare un'esportazione di un singolo database. Inserisce il comando di esportazione e il nome del database da esportare seguito dal percorso locale in cui vuole esportare i database.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.2.2 \\
@@ -719,7 +729,7 @@
 	 \subsection{UC 3.3.1: Inserimento comando di importazione}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente intende effettuare l'esportazione di un database. Per avviare la procedura di importazione deve inserire il relativo comando \texttt{IMPORT}.
+	L'utente intende effettuare l'importazione di un database. Per avviare la procedura di importazione deve inserire il relativo comando \texttt{IMPORT}.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.3.1 \\
@@ -750,7 +760,7 @@
 		 \subsection{UC 3.3.2: Inserimento percorso di importazione}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente intende effettuare l'esportazione di un database. Ha inserito il comando di importazione e ora deve inserire il percorso da cui importare i dati.
+	L'utente intende effettuare l'importazione di un database. Ha inserito il comando di importazione e ora deve inserire il percorso da cui importare i dati.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.3.2 \\
@@ -1280,7 +1290,7 @@
 		 \subsection{UC 3.10: Errore creazione fallita}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha richiesto la creazione di un database, l'operazione è fallita (per nome inserito errato o per problemi di creazione) dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
+	L'utente ha richiesto la creazione di un database, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.10 \\
@@ -1383,13 +1393,13 @@
 			\end{figure}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha effettuato correttamente la connessione e ha selezionato un database di cui dispone dei permessi di accesso. Su tale database può effettuare diverse operazioni a livello di mappa:
+	L'utente ha effettuato correttamente la connessione e ha selezionato un database di cui dispone dei permessi di accesso. Su tale database può effettuare diverse operazioni a livello database:
 	\begin{itemize}
 	\item Visualizzare la lista delle mappe presenti
 	\item Creare una mappa
 	\item Eliminare una mappa
 	\item Rinominare una mappa presente
-	\item Selezionare una mappa per effettuare operazioni a livello di item su di essa
+	\item Selezionare una mappa per effettuare operazioni su di essa
 	\item Visualizzare i permessi di accesso al database
 	\item Modificare i permessi di accesso al database
 	\end{itemize}
@@ -1423,7 +1433,7 @@
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 4 - Operazioni sulle mappe}
+			\caption{Caso d'uso UC 4 - Operazioni a livello database}
 		 \end{table} 
 		 
 		 
@@ -1902,7 +1912,7 @@
 	\\ \\
 L'utente avente i permessi di amministratore, vuole visualizzare i permessi di altri utenti. Ha a disposizione due possibilità: 
 	\begin{itemize}
-		\item Visualizzare a lista dei permessi relativi all'intero database
+		\item Visualizzare la lista dei permessi relativi all'intero database
 		\item Visualizzare i permessi di accesso al database per un singolo utente
 	\end{itemize}
 	La prima modalità stampa sul terminale la lista completa degli utenti che hanno un qualche tipo di accesso al database selezionato, con relativi permessi di amministrazione, scrittura e lettura. \\
@@ -1971,7 +1981,7 @@ L'utente avente i permessi di amministratore, vuole visualizzare i permessi di a
 	 \subsection{UC 4.6.2: Visualizzazione permessi utente singolo}
 	 \textbf{Descrizione}
 	 \\ \\
-	 L'utente sta effettuando l'operazione di visualizzazione dei permessi di uno specifico utente.
+	 L'utente sta effettuando l'operazione di visualizzazione dei permessi e intende visualizzare i permessi di un singolo utente.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r  X}
 				\textbf{Codice gerarchico} & UC4.6.2 \\
@@ -2201,7 +2211,7 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 		 \subsection{UC 4.10: Errore mappa inesistente}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha richiesto un accesso ad una mappa non presente nel database, l'accesso è fallito e l'utente riceve un messaggio di errore informativo e la può inserire un nuovo comando.
+	L'utente ha richiesto un accesso ad una mappa non presente nel database, l'accesso è fallito e l'utente riceve un messaggio di errore informativo e può inserire un nuovo comando.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC4.10 \\
@@ -2295,7 +2305,962 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 			\caption{Caso d'uso UC 4.12 - Errore modifica permessi fallita}
 		 \end{table}	
 		 
+		 \subsection{UC 5: Operazioni a livello mappa}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.2]{UC/"UC 5 Operazioni a livello mappa".png}
+				\caption{Diagramma di UC5: Operazioni a livello mappa}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha effettuato correttamente la connessione e ha selezionato un database di cui dispone dei permessi di accesso, ha successivamente selezionato una delle mappe che compongono database e su tale mappa intende effettuare una delle seguenti operazioni:
+	\begin{itemize}
+	\item Visualizzare la lista delle chiavi della mappa
+	\item Ricercare un item per chiave
+	\item Inserire un nuovo item
+	\item Aggiornare un item già presente sostituendo il campo value o aggiungendo dati in coda
+	\item Rimuovere un item
+	\end{itemize}
+	Queste operazioni possono portare a diverse situazioni di errore. In tal caso non viene eseguita alcuna operazione e l'utente riceve un messaggio di errore esplicativo. \\
+	Inoltre le operazioni che modificano il contenuto della mappa, e quindi del database di cui essa fa parte, possono provocare un messaggio di errore nel caso in cui l'utente disponesse solo di permessi di lettura sul database attualmente selezionato (vedi UC 4.9).
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Operazioni a livello mappa \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha selezionato correttamente un database di cui dispone almeno dei permessi di lettura e una mappa al suo interno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione sulla mappa selezionata è stata eseguita correttamente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando e le informazioni necessarie per l'operazione richiesta e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & \begin{enumerate}
+				\item L'utente ha richiesto l'inserimento di un nuovo item ma questo è fallito (ad esempio perché la chiave inserita è già presente). L'utente riceve un messaggio di errore informativo (UC 5.7)
+				\item L'utente ha richiesto un'operazione che accede ad un determinato item tramite la chiave inserita dall'utente. Non è stato trovato nessun item con tale chiave dunque l'operazione è fallita e l'utente riceve un messaggio di errore informativo (UC 5.8)
+				\item L'utente ha richiesto un'operazione di modifica di un item ma questa è fallita, l'utente riceve un messaggio di errore informativo (UC 5.9)
+				\item L'utente ha richiesto la rimozione di un item ma questa è fallita, l'utente riceve un messaggio di errore informativo (UC 5.10)
+\end{enumerate}				 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5 - Operazioni a livello mappa}
+		 \end{table} 
 		 
+		 
+		 \subsection{UC 5.1: Visualizzazione chiavi della mappa}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende visualizzare la lista delle chiavi degli item che compongono la mappa selezionata. L'utente inserisce il comando di visualizzazione lista chiavi e preme invio, il sistema stampa su terminale la lista delle chiavi convertite in stringa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Visualizzazione chiavi della mappa \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende visualizzare la lista delle chiavi degli item che compongono la mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha ricevuto la lista delle chiavi convertite a stringa stampata su terminale\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di visualizzazione lista chiavi e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.1 - Visualizzazione chiavi della mappa}
+		 \end{table} 
+		 
+		 
+		 \subsection{UC 5.2: Ricerca per chiave}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.2]{UC/"UC 5-2 Ricerca per chiave".png}
+				\caption{Diagramma di UC5.2: Ricerca per chiave}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare una query sulla mappa selezionata. La ricerca avviene inserendo il comando di ricerca seguito dal valore della chiave, tale valore può essere fornito in due modi:
+	\begin{itemize}
+	\item Con una stringa 
+	\item Con un file
+	\end{itemize}
+	La ricerca restituisce il valore dell'item corrispondente alla chiave inserita, convertito in stringa e stampato su terminale.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Ricerca per chiave \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende effettuare una query sulla mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha ricevuto il valore dell'item corrispondente alla chiave inserita stampato su terminale in formato stringa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di ricerca (UC 5.2.1)
+				\item L'utente inserisce il valore della chiave come stringa (UC 5.2.2) o come file (UC 5.2.3) e preme invio
+				\item L'utente riceve il valore dell'item stampato su terminale come stringa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & \begin{enumerate}
+				\item L'utente ha scelto di usare un file come chiave di ricerca, l'accesso a tale file è fallito. L'operazione va ripetuta e l'utente riceve un messaggio di errore (UC 5.2.4)
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.2 - Ricerca per chiave}
+		 \end{table} 
+		 
+		 
+		  \subsection{UC 5.2.1: Inserimento comando di ricerca}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare una query sulla mappa selezionata. Per prima cosa l'utente deve scrivere su terminale l'apposito comando di ricerca.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.2.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di ricerca \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende effettuare una query sulla mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando di ricerca\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di ricerca item
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.2.1 - Inserimento comando di ricerca}
+		 \end{table} 
+		 
+		 \subsection{UC 5.2.2: Utilizzo di un file come chiave}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare una query sulla mappa selezionata. L'utente intende utilizzare come chiave di ricerca un file presente sul computer, per far questo deve inserire il percorso del file rispettando la sintassi del tipo \texttt{file(percorso)}.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.2.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Utilizzo di un file come chiave \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende effettuare una query sulla mappa selezionata ed utilizzare come chiave di query un file\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando per utilizzare un file come chiave, il contenuto del file viene usato come chiave\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando per utilizzare un file, comprensivo del percorso del file
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.2.2 - Utilizzo di un file come chiave}
+		 \end{table} 
+		 
+		 
+		 \subsection{UC 5.2.3: Utilizzo di una stringa come chiave}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende effettuare una query sulla mappa selezionata. L'utente intende utilizzare come chiave di ricerca una stringa, deve quindi inserire la stringa tra apici doppi.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.2.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Utilizzo di una stringa come chiave \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende effettuare una query sulla mappa selezionata ed utilizzare come chiave di query una stringa\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente la stringa da usare come chiave\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale la stringa tra apici doppi
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.2.3 - Utilizzo di una stringa come chiave}
+		 \end{table} 
+		 
+		 
+		 \subsection{UC 5.2.4: Errore file non trovato/Illeggibile}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha tentato di utilizzare un file come valore da utilizzare per l'operazione, l'accesso a tale file è fallito. Il file non è stato utilizzato e l'utente riceve un messaggio di errore informativo.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.2.4 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore file non trovato/Illeggibile \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha tentato di utilizzare un file come valore da utilizzare per l'operazione, l'accesso a tale file è fallito\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha ricevuto un messaggio di errore informativo, il file non è stato utilizzato e l'utente può inserire un nuovo comando\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.2.4 - Errore file non trovato/Illeggibile}
+		 \end{table} 
+		 
+		 \subsection{UC 5.3: Inserimento di un item}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.2]{UC/"UC 5-3 Inserimento item".png}
+				\caption{Diagramma di UC5.3: Inserimento di un item}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende inserire un item (coppia chiave-valore) nella mappa selezionata. Deve inserire il comando di inserimento, il valore della chiave e il valore del valore e premere invio. L'item viene creato dal sistema ed è ora parte della mappa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento di un item \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende inserire un item nella mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito con successo l'item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di inserimento item (UC 5.3.1)
+				\item L'utente inserisce il valore della chiave (UC 5.3.2)
+				\item L'utente inserisce il valore dell'item (UC 5.3.3)
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.3 - Inserimento di un item}
+		 \end{table} 
+		 
+		 \subsection{UC 5.3.1: Inserimento comando di inserimento item}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende inserire un item nella mappa selezionata. Per prima cosa l'utente deve scrivere su terminale l'apposito comando di inserimento item.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.3.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di inserimento item \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende inserire un item nella mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando di inserimento item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di inserimento item
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.3.1 - Inserimento comando di inserimento item}
+		 \end{table} 
+		 
+		 \subsection{UC 5.3.2: Inserimento chiave item da inserire}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende inserire un item nella mappa selezionata. Ha scritto su terminale il comando di inserimento item, ora deve inserire una chiave per l'item. La chiave può essere inserita secondo le due modalità descritte in UC5.2.2 e UC5.2.3 ovvero come file o come stringa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.3.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento chiave item da inserire\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende inserire un item nella mappa selezionata e ha scritto su terminale il comando di inserimento item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente la chiave per l'item da inserire\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce la chiave come file o come stringa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.3.2 - Inserimento chiave item da inserire}
+		 \end{table} 
+		 
+		 \subsection{UC 5.3.3: Inserimento valore item da inserire}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende inserire un item nella mappa selezionata. Ha scritto su terminale il comando di inserimento item seguito dalla chiave, ora deve inserire un valore per l'item. Il valore può essere inserito in due modi:
+	\begin{itemize}
+	\item Come file
+	\item Come stringa
+	\end{itemize}
+	La sintassi relativa all'inserimento per file o stringa è la stessa descritta nei casi d'uso UC5.2.2 e UC5.2.3 che definiscono l'inserimento di un valore per la chiave di un item.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.3.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento valore item da inserire\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende inserire un item nella mappa selezionata e ha scritto su terminale il comando di inserimento item seguito dalla chiave dell'item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il valore per l'item da inserire\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il valore come file o come stringa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.3.3 - Inserimento valore item da inserire}
+		 \end{table} 
+		 
+		 
+		 \subsection{UC 5.4: Aggiornamento di un item}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.2]{UC/"UC 5-4 Aggiornamento item".png}
+				\caption{Diagramma di UC5.4: Aggiornamento di un item}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende aggiornare il valore di un item esistente. Per effettuare questa operazione deve selezionare l'item attraverso la sua chiave e inserire il nuovo valore.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.4 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Aggiornamento di un item \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende aggiornare un item della mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha aggiornato con successo il valore dell'item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di aggiornamento item (UC 5.4.1)
+				\item L'utente inserisce il valore della chiave dell'item da aggiornare (UC 5.4.2)
+				\item L'utente inserisce il nuovo valore dell'item (UC 5.4.3)
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.4 - Aggiornamento di un item}
+		 \end{table} 
+		 
+		 \subsection{UC 5.4.1: Inserimento comando di aggiornamento item}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende aggiornare il valore di un item esistente. Per prima cosa l'utente deve scrivere su terminale l'apposito comando di aggiornamento item.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.4.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di aggiornamento item \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende aggiornare il valore di un item esistente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando di aggiornamento item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di aggiornamento item
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.4.1 - Inserimento comando di aggiornamento item}
+		 \end{table} 
+		 
+		 \subsection{UC 5.4.2: Inserimento chiave item da aggiornare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende aggiornare un item nella mappa selezionata. Ha scritto su terminale il comando di aggiornamento item, ora deve inserire una chiave per ottenere l'item. La chiave può essere inserita secondo le due modalità descritte in UC5.2.2 e UC5.2.3 ovvero come file o come stringa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.4.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento chiave item da aggiornare \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende aggiornare il valore di un item nella mappa selezionata e ha scritto su terminale il comando di aggiornamento item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente la chiave per l'item che vuole aggiornare\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce la chiave come file o come stringa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.4.2 - Inserimento chiave item da aggiornare}
+		 \end{table} 
+		 
+		 \subsection{UC 5.4.3: Inserimento valore item da aggiornare}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende aggiornare il valore di un item della mappa selezionata. Ha scritto su terminale il comando di aggiornamento item seguito dalla chiave, ora deve inserire un nuovo valore per l'item. Il valore può essere inserito in due modi:
+	\begin{itemize}
+	\item Come file
+	\item Come stringa
+	\end{itemize}
+	La sintassi relativa all'inserimento per file o stringa è la stessa descritta nei casi d'uso UC5.2.2 e UC5.2.3 che definiscono l'inserimento di un valore per la chiave di un item.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.4.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento valore item da aggiornare \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende aggiornare il valore di un item della mappa selezionata e ha scritto su terminale il comando di aggiornamento item seguito dalla chiave dell'item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il nuovo valore per l'item da aggiornare \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il nuovo valore come file o come stringa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.4.3 - Inserimento valore item da aggiornare}
+		 \end{table} 
+		 
+		 
+		 \subsection{UC 5.5: Aggiunta di un valore in coda a un item}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.2]{UC/"UC 5-5 Append item".png}
+				\caption{Diagramma di UC5.5: Aggiunta di un valore in coda a un item}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende aggiungere dei dati in coda al valore di un item. Deve accedere all'item tramite la sua chiave e poi inserire i dati che vuole aggiungere.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.5 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Aggiunta di un valore in coda a un item \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende aggiungere dei dati in coda al valore di un item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha aggiunto con successo il valore inserito in coda all'item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di append (UC 5.5.1)
+				\item L'utente inserisce il valore della chiave dell'item su cui effettuare append (UC 5.5.2)
+				\item L'utente inserisce il valore da aggiungere in coda (UC 5.5.3) e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.5 - Aggiunta di un valore in coda a un item}
+		 \end{table} 
+		 
+		 \subsection{UC 5.5.1: Inserimento comando di append}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende aggiungere dei dati in coda al valore di un item esistente. Per prima cosa l'utente deve scrivere su terminale l'apposito comando di append.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.5.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di append \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende aggiungere dei dati in coda al valore di un item\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando di append\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di append
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.5.1 - Inserimento comando di append}
+		 \end{table} 
+		 
+		 \subsection{UC 5.5.2: Inserimento chiave item su cui effettuare l'append}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende aggiungere dei dati in coda al valore di un item esistente. Ha scritto su terminale il comando di append, ora deve inserire una chiave per ottenere l'item. La chiave può essere inserita secondo le due modalità descritte in UC5.2.2 e UC5.2.3 ovvero come file o come stringa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.5.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento chiave item su cui effettuare l'append \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende aggiungere dei dati in coda al valore di un item esistente nella mappa selezionata e ha scritto su terminale il comando di append\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente la chiave per l'item a cui vuole aggiungere un valore in coda\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce la chiave come file o come stringa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.5.2 - Inserimento chiave item su cui effettuare l'append}
+		 \end{table} 
+		 
+		 \subsection{UC 5.5.3: Inserimento valore da aggiungere in coda}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende aggiungere dei dati in coda al valore di un item esistente. Ha scritto su terminale il comando di append seguito dalla chiave, ora deve inserire il valore da aggiungere in coda. Il valore può essere inserito in due modi:
+	\begin{itemize}
+	\item Come file
+	\item Come stringa
+	\end{itemize}
+	La sintassi relativa all'inserimento per file o stringa è la stessa descritta nei casi d'uso UC5.2.2 e UC5.2.3 che definiscono l'inserimento di un valore per la chiave di un item.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.5.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento valore da aggiungere in coda \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende aggiungere dei dati in coda al valore di un item esistente. Ha scritto su terminale il comando di append seguito dalla chiave\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il valore da inserire in coda \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il valore da inserire in coda come file o come stringa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.5.3 - Inserimento valore da aggiungere in coda}
+		 \end{table} 
+		 
+		 
+		 \subsection{UC 5.6: Rimozione di un item}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.2]{UC/"UC 5-6 Rimozione item".png}
+				\caption{Diagramma di UC5.6: Rimozione di un item}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rimuovere un item dalla mappa selezionata. Deve inserire l'apposito comando di rimozione item, seguito dalla chiave dell'item che vuole rimuovere.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.6 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Rimozione di un item \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rimuovere un item dalla mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha rimosso con successo l'item richiesto\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di rimozione item (UC 5.6.1)
+				\item L'utente inserisce il valore della chiave dell'item da rimuovere (UC 5.6.2)
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.6 - Rimozione di un item}
+		 \end{table} 
+		 
+		 \subsection{UC 5.6.1: Inserimento comando di rimozione item}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rimuovere un item dalla mappa selezionata. Per prima cosa l'utente deve scrivere su terminale l'apposito comando di rimozione item.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.6.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di rimozione item \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rimuovere un item dalla mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando di rimozione item \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente scrive su terminale il comando di rimozione item
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.6.1 - Inserimento comando di rimozione item}
+		 \end{table} 
+		 
+		 \subsection{UC 5.6.2: Inserimento chiave item da rimuovere}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende rimuovere un item dalla mappa selezionata. Ha scritto su terminale il comando di rimozione item, ora deve inserire una chiave per ottenere l'item da eliminare. La chiave può essere inserita secondo le due modalità descritte in UC5.2.2 e UC5.2.3 ovvero come file o come stringa.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.6.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento chiave item da rimuovere \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende rimuovere un item dalla mappa selezionata e ha scritto su terminale il comando di rimozione item \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha inserito correttamente la chiave per l'item che vuole rimuovere\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce la chiave come file o come stringa
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.6.2 - Inserimento chiave item da rimuovere}
+		 \end{table} 
+		 
+		 
+		 \subsection{UC 5.7: Errore inserimento item fallito}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha tentato di inserire un nuovo item nella mappa selezionata. L'inserimento è fallito, l'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.7 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore inserimento item fallito\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha cercato di inserire un nuovo item nella mappa selezionata e l'inserimento è fallito\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha ricevuto un messaggio di errore informativo e la possibilità di inserire un nuovo comando\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.7 - Errore inserimento item fallito}
+		 \end{table}	
+
+\subsection{UC 5.8: Errore item non presente}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha provato a ricercare, modificare o eliminare un item non presente nella mappa selezionata. L'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.8 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore item non presente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha cercato di ricercare, modificare o eliminare un item non presente nella mappa selezionata. \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & Ricerca, modifica o rimozione dell'item fallita, l'utente ha ricevuto un messaggio di errore e la possibilità di inserire un nuovo comando\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.8 -Errore item non presente}
+		 \end{table}	
+		 
+\subsection{UC 5.9: Errore modifica item fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha tentato di modificare il valore di un item della mappa selezionata. La modifica dell'item è fallita, l'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.9 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore modifica item fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha cercato di modificare un item nella mappa selezionata.\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & La modifica dell'item è fallita, l'utente ha ricevuto un messaggio di errore e la possibilità di inserire un nuovo comando\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.9 - Errore modifica item fallita}
+		 \end{table}
+		 
+\subsection{UC 5.10: Errore rimozione item fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha cercato di rimuovere un item dalla mappa selezionata. La rimozione di un item è fallita, l'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC5.10 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore rimozione item fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha cercato di rimuovere un item dalla mappa selezionata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & La rimozione dell'item è fallita, l'utente ha ricevuto un messaggio di errore e la possibilità di inserire un nuovo comando\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 5.10 - Errore rimozione item fallita}
+		 \end{table}
+		 
+		 \subsection{UC 6: Disconnessione}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente è autenticato, intende disconnettersi dal server utilizzando l'apposito comando da terminale.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC6 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Disconnessione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende disconnettersi dal server a cui è attualmente connesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente risulta non connesso ad un server, può ora effettuare una connessione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di disconnessione e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 6 - Disconnessione}
+		 \end{table}
+		 
+		 \subsection{UC 7: Errore connessione fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha tentato di connettersi ad un server ma il tentativo di connessione è fallito. L'utente non risulta connesso ad un server, riceve un messaggio di errore informativo stampato su terminale e la possibilità di inserire un nuovo comando.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC7 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore connessione fallita \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente non autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha tentato di connettersi ad un server ma il tentativo di connessione è fallito\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente non risulta connesso e ha ricevuto un messaggio di errore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo della mancata connessione
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 7 - Errore connessione fallita}
+		 \end{table}
 		 
 		 
 		 
