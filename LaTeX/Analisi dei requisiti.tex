@@ -76,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.3.3
+			Versione 1.3.4
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -93,6 +93,9 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.3.4 & 2016-03-17 & \emph{Progettista} \newline Maino Elia & Ridefinizione dei casi d'uso relativi alle operazioni ad alto livello lato client e lato server
+				\\
 				\noalign{\hrule height 0.5pt}
 				1.3.3 & 2016-03-15 & \emph{Progettista} \newline Maino Elia & Ridefinizione dei casi d'uso: stesura di diagrammi e descrizioni da UC 4.12 a UC 7
 				\\
@@ -222,10 +225,11 @@
 		La struttura di un caso d'uso è definita nel documento \emph{Norme di progetto v1.1.1 sez 2.1.3}.
 		\subsection{Attori}
 		L'interazione degli utenti con l'applicativo avverrà tramite una CLI (Command Line Interface).
-		Sono state individuate due tipologie principali di attori che interagiscono con il sistema:
+		Sono state individuate tre tipologie principali di attori che interagiscono con il sistema:
 		\begin{itemize}
 			\item \textbf{Utente non autenticato:} è l'utente che ha avviato l'applicativo e interagisce con la CLI senza aver ancora effettuato con successo l'operazione di connessione al server;
 			\item \textbf{Utente autenticato:} è l'utente che ha già effettuato con successo l'operazione di connessione ad un server che utilizza \emph{Actorbase}. 
+			\item \textbf{Amministratore server:} è l'amministratore del server su cui è in funzione \emph{Actorbase}, è un \emph{utente autenticato} che dispone di funzionalità di gestione avanzate.
 		\end{itemize}
 		\emph{Actorbase} prevede un meccanismo di permessi per controllare l'accesso ai diversi database presenti sul server. Quando un utente crea un nuovo database riceve i permessi di amministrazione per esso: oltre a poter leggere e scrivere i dati, egli può cambiare i permessi di accesso a tale database per gli altri utenti del server. \\ 
 		Ricapitolando esistono tre permessi di accesso ad un singolo database (elencati in ordine di privilegi garantiti):
@@ -235,21 +239,27 @@
 		\item Lettura
 		\end{itemize}
 		Il sistema di permessi è applicato solamente al livello database, non ci sono permessi specifici per mappe o altri elementi.
-		\subsection{Visione ad alto livello delle interazioni tramite CLI}
+		\subsection{Visione ad alto livello delle interazioni tramite interfaccia client}
 		 	\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.2]{UC/"Actorbase".png}
-				\caption{Interazioni tramite CLI}
+				\includegraphics[scale=0.2]{UC/"Actorbase client".png}
+				\caption{Interazioni tramite interfaccia client}
 			\end{figure}
 			Il diagramma in figura illustra le principali operazioni che un utente (autenticato e non) può
-			 effettuare sul sistema tramite l'interfaccia da riga di comando. 
+			 effettuare sul sistema tramite l'interfaccia client da riga di comando. 
 			\begin{itemize}
 				\item Connessione al server
 				\item Visualizzazione di un aiuto
-				\item Operazioni a livello di database
-				\item Operazioni a livello di mappa
-				\item Operazioni a livello di riga
+				\item Operazioni a livello server
+				\item Operazioni a livello database
+				\item Operazioni a livello mappa
 				\item Disconnessione dal server
+			\end{itemize}
+			Se l'utente autenticato è l'amministratore del server, egli ha a disposizione delle funzionalità di gestione aggiuntive, quali:
+			\begin{itemize}
+			\item Gestione degli utenti che hanno accesso al server
+			\item Gestione dei server su cui effettuare la distribuzione del database
+			\item Gestione delle impostazioni del server
 			\end{itemize}
 	In ogni momento un utente può inserire un comando inesistente o non utilizzabile in quel determinato momento. In tal caso nessuna azione viene eseguita dal programma e l'utente riceve un messaggio di errore esplicativo seguito dalla possibilità di inserire un nuovo comando.	 
 	 
@@ -1784,7 +1794,7 @@
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende rinominare una mapa e ha inserito il comando di rinominazione mappa seguito dal nome della mappa da rinominare\\
+				\textbf{Pre-condizione} & L'utente intende rinominare una mappa e ha inserito il comando di rinominazione mappa seguito dal nome della mappa da rinominare\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Post-condizione} & L'utente ha inserito con successo il nuovo nome per la mappa\\
 				\noalign{\hrule height 0.5pt}
@@ -3263,6 +3273,19 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 		 \end{table}
 		 
 		 
+		 \subsection{Visione ad alto livello delle interazioni tramite interfaccia server}
+		 	\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.2]{UC/"Actorbase server".png}
+				\caption{Interazioni tramite interfaccia server}
+			\end{figure}
+			Il diagramma in figura illustra l'interfaccia CLI lato server. Tale interfaccia va avviata per far partire il server principale di \emph{Actorbase}. Se l'interfaccia server viene avviata su un server non configurato si avvia automaticamente la procedura di configurazione del server. 
+			\\ 
+			Se il server è già configurato, l'avvio dell'interfaccia server avvia automaticamente il server, e stampa il log delle varie operazioni che vengono effettuate su di esso.
+			\\ 
+			Per arrestare il server, l'amministratore del server deve inserire l'apposito comando da questa interfaccia.
+		 
+		 
 		 
 		 
 		 
@@ -3270,7 +3293,7 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 	 
 	\newpage \section{Requisiti}
 		Di seguito vengono riportati tutti i requisiti individuati dal gruppo SWEeneyThreads. \\Tali requisiti
-		derivano dai casi d’uso, dall'analisi del capitolato, dagli scambi di informazioni avvenuti con il
+		derivano dai casi d'uso, dall'analisi del capitolato, dagli scambi di informazioni avvenuti con il
 		\emph{proponente Cardin Riccardo}, oppure da necessità interne. \\
 		La struttura di un requisito è definita nel documento \emph{Norme di progetto v1.1.1 sez 2.1.2}.
 		I requisiti saranno elencati secondo un ordine. Ogni requisito seguirà la seguente codifica: \\
@@ -3306,7 +3329,7 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 	\LTXtable{\textwidth}{tabelle_requisiti/qualita.tex}
 	\subsection{Requisiti prestazionali}
 	I requisiti prestazionali consentono, al loro soddisfacimento, di far raggiungere al prodotto un determinato
-	livello di prestazioni, non si traducono in nuove funzionaltà per l'utente ma intendono migliorare 
+	livello di prestazioni, non si traducono in nuove funzionalità per l'utente ma intendono migliorare 
 	la stabilità e la velocità del programma.
 	\LTXtable{\textwidth}{tabelle_requisiti/prestazionali.tex}
 	
