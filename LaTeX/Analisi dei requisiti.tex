@@ -76,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.3.4
+			Versione 1.3.5
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -93,6 +93,9 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.3.5 & 2016-03-17 & \emph{Progettista} \newline Padovan Tommaso & Aggiunta caso d'uso riguardante la terminazione dell' interfaccia client (UC14)
+				\\
 				\noalign{\hrule height 0.5pt}
 				1.3.4 & 2016-03-17 & \emph{Progettista} \newline Maino Elia & Ridefinizione dei casi d'uso relativi alle operazioni ad alto livello lato client e lato server
 				\\
@@ -3271,6 +3274,39 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 			\end{tabularx}
 			\caption{Caso d'uso UC 7 - Errore connessione fallita}
 		 \end{table}
+		 
+		 
+		 \subsection{UC 14: Chiusura interfaccia client}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha concluso il suo lavoro, da il comando di uscita e preme invio terminare la shell.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC14 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Chiusura interfaccia client \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente non autenticato e Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha digitato il comando di uscita e ha premuto invio\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'interfaccia client è terminata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di uscita e preme invio
+				\item L'interfaccia client viene terminata
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 14 - Chiusura interfaccia client}
+	\end{table}
 		 
 		 
 		 \subsection{Visione ad alto livello delle interazioni tramite interfaccia server}
