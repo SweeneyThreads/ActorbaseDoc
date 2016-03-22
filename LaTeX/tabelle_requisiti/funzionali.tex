@@ -228,7 +228,105 @@ R[1][N][F] & Implementazione del sistema lato server & Capitolato
 	
 	
 	
-	
+	R[1.5][N][F] & Operazioni a livello mappe & UC5
+	& Implementare le operazioni eseguibili a livello mappe definite in UC5\\
+	\hline
+	R[1.5.1][N][F] & Elaborazione richiesta visualizzazione chiavi della mappa & UC5.1
+	& Implementare l'elaborazione di una richiesta di visualizzazione della lista delle chiavi presenti nella mappa selezionata dal client\\
+	\hline
+	R[1.5.1.1][N][F] & Elaborazione comando visualizzazione chiavi della mappa & UC5.1
+	& Implementare il riconoscimento del comando di visualizzazione della lista delle chiavi\\
+	\hline
+	R[1.5.1.2][N][F] & Invio lista chiavi al client & UC5.1
+	& Inviare al client la lista delle chiavi presenti nella mappa selezionata\\
+	\hline
+	R[1.5.2][N][F] & Elaborazione richiesta ricerca per chiave & UC5.2
+	& Implementare l'elaborazione di una richiesta di ricerca di un item attraverso la chiave nella mappa selezionata dal client\\
+	\hline
+	R[1.5.2.1][N][F] & Elaborazione comando ricerca per chiave & UC5.2.1
+	& Implementare il riconoscimento del comando di ricerca di un item attraverso la chiave\\
+	\hline
+	R[1.5.2.2][N][F] & Lettura chiave & UC5.2.3 UC5.3.2 UC5.4.2 UC5.5.2
+	& Implementare la lettura della chiave dal comando\\
+	\hline
+	R[1.5.2.3][N][F] & Ricerca di un item attraverso la chiave & UC5.2.3 UC5.3.2 UC5.4.2 UC5.5.2
+	& Implementare la ricerca di un item attraverso la chiave vista come una stringa\\
+	\hline
+	R[1.5.2.4][N][F] & Invio valore al client & UC5.2
+	& Inviare al client il valore associato alla chiave\\
+	\hline
+	R[1.5.2.5][N][F] & Invio messaggio al client item non presente & UC5.8 UC5.2.3 UC5.4.2 UC5.5.2
+	& Inviare al client un messaggio di item non presente nella mappa\\
+	\hline
+	R[1.5.3][N][F] & Elaborazione richiesta inserimento item & UC5.3
+	& Implementare l'elaborazione di una richiesta di inserimento di un item nella mappa selezionata dal client\\
+	\hline
+	R[1.5.3.1][N][F] & Elaborazione comando inserimento item & UC5.3.1
+	& Implementare il riconoscimento del comando di inserimento di un item nella mappa\\
+	\hline
+	R[1.5.3.2][N][F] & Controllo validità chiave & UC5.3.2
+	& Implementare il controllo della validità della chiave\\
+	\hline
+	R[1.5.3.3][N][F] & Inserimento nuovo item & UC5.3
+	& Inserire nella mappa la coppia chiave-valore fornita dall'utente\\
+	\hline
+	R[1.5.3.4][N][F] & Invio messaggio al client successo inserimento item & UC5.3
+	& Inviare al client un messaggio di inserimento item avvenuto con successo\\
+	\hline
+	R[1.5.3.5][N][F] & Invio messaggio al client inserimento item fallito & UC5.7
+	& Inviare al client un messaggio di inserimento item fallito\\
+	\hline
+	R[1.5.4][N][F] & Elaborazione richiesta aggiornamento item & UC5.4
+	& Implementare l'elaborazione di una richiesta di aggiornamento di un item della mappa selezionata dal client\\
+	\hline
+	R[1.5.4.1][N][F] & Elaborazione comando aggiornamento item & UC5.4.1
+	& Implementare il riconoscimento del comando di aggiornamento di un item della mappa\\
+	\hline
+	R[1.5.4.2][N][F] & Controllo esistenza item da aggiornare & UC5.4.2
+	& Implementare il controllo dell'esistenza dell'item da aggiornare\\
+	\hline
+	R[1.5.4.3][N][F] & Sovrascrittura valore item & UC5.4.3
+	& Sovrascrivere il valore dell'item da aggiornare\\
+	\hline
+	R[1.5.4.4][N][F] & Invio messaggio al client successo aggiornamento item & UC5.4
+	& Inviare al client un messaggio di aggiornamento item avvenuto con successo\\
+	\hline
+	R[1.5.4.5][N][F] & Invio messaggio al client modifica item fallita & UC5.9 UC5.4 UC5.5
+	& Inviare al client un messaggio di modifica dell'item fallita\\
+	\hline
+	R[1.5.5][N][F] & Elaborazione richiesta di append & UC5.5
+	& Implementare l'elaborazione di una richiesta di append al valore di un item della mappa selezionata dal client\\
+	\hline
+	R[1.5.5.1][N][F] & Elaborazione comando di append & UC5.5.1
+	& Implementare il riconoscimento del comando di append\\
+	\hline
+	R[1.5.5.2][N][F] & Controllo esistenza item per append & UC5.5.2
+	& Implementare il controllo dell'esistenza dell'item sul quale eseguire l'append\\
+	\hline
+	R[1.5.5.3][N][F] & Append in coda al valore di un item & UC5.5
+	& Aggiungere in coda al valore dell'item il valore inserito\\
+	\hline
+	R[1.5.5.4][N][F] & Invio messaggio al client successo append & UC5.5
+	& Inviare al client un messaggio di append avvenuto con successo\\
+	\hline
+	R[1.5.6][N][F] & Elaborazione richiesta di rimozione item & UC5.6
+	& Implementare l'elaborazione di una richiesta di rimozione di un item della mappa selezionata dal client\\
+	\hline
+	R[1.5.6.1][N][F] & Elaborazione comando di rimozione item & UC5.6.1
+	& Implementare il riconoscimento del comando di rimozione di un itemt\\
+	\hline
+	R[1.5.6.2][N][F] & Controllo esistenza item per rimozione & UC5.6.2
+	& Implementare il controllo dell'esistenza dell'item da rimuovere\\
+	\hline
+	R[1.5.6.3][N][F] & Rimozione dell'item dalla mappa & UC5.6
+	& Rimuovere l'item dalla mappa\\
+	\hline
+	R[1.5.6.4][N][F] & Invio messaggio al client successo rimozione item & UC5.6
+	& Inviare un messaggio al client di rimozione item avvenuta con successo\\
+	\hline
+	R[1.5.6.5][N][F] & Invio messaggio al client rimozione item fallita & UC5.10 UC5.6
+	& Inviare un messaggio al client di rimozione item fallita\\
+	\hline
 	
 	
 	
