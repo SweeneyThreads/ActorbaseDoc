@@ -254,18 +254,16 @@
 			Il diagramma in figura illustra le principali operazioni che un utente (autenticato e non) può
 			 effettuare sul sistema tramite l'interfaccia client da riga di comando. 
 			\begin{itemize}
-				\item Connessione al server
-				\item Visualizzazione di un aiuto
-				\item Operazioni a livello server
-				\item Operazioni a livello database
-				\item Operazioni a livello mappa
-				\item Disconnessione dal server
-			\end{itemize}
-			Se l'utente autenticato è l'amministratore del server, egli ha a disposizione delle funzionalità di gestione aggiuntive, quali:
-			\begin{itemize}
-			\item Gestione degli utenti che hanno accesso al server
-			\item Gestione dei server su cui effettuare la distribuzione del database
-			\item Gestione delle impostazioni del server
+				\item Connessione al server (UC1)
+				\begin{itemize}
+					\item Errore connessione fallita (UC7)
+				\end{itemize}
+				\item Visualizzazione di un aiuto (UC2)
+				\item Operazioni a livello server (UC3)
+				\item Operazioni a livello database (UC4)
+				\item Operazioni a livello mappa (UC5)
+				\item Disconnessione dal server (UC6)
+				\item Chiusura dell'interfaccia (UC8)
 			\end{itemize}
 	In ogni momento un utente può inserire un comando inesistente o non utilizzabile in quel determinato momento. In tal caso nessuna azione viene eseguita dal programma e l'utente riceve un messaggio di errore esplicativo seguito dalla possibilità di inserire un nuovo comando.	 
 	 
@@ -556,8 +554,9 @@
 				\item L'utente ha richiesto un'operazione di esportazione e questa è fallita, l'operazione non viene eseguita e l'utente riceve un messaggio di errore (UC 3.8)
 				\item L'utente ha richiesto un'operazione di importazione e questa è fallita, l'operazione non viene eseguita e l'utente riceve un messaggio di errore (UC 3.9)
 				\item L'utente ha richiesto la creazione di un nuovo database sul server, la creazione è fallita e l'utente riceve un messaggio di errore (UC 3.10)
-				\item L'utente ha tentato di accedere ad un database non presente sul server, l'accesso è fallito e l'utente riceve un messaggio di errore (UC 3.11)
-				\item L'utente ha richiesto un'operazione di selezione di un database non disponendo dei permessi di lettura per tale database, la selezione non viene effettuata e l'utente riceve un messaggio di errore (UC 3.12)
+				\item L'utente ha richiesto l'eliminazione di un database dal server, l'eliminazione è fallita e l'utente riceve un messaggio di errore (UC 3.11)
+				\item L'utente ha richiesto la rinominazione di un database sul server, la rinominazione è fallita e l'utente riceve un messaggio di errore (UC 3.12)
+				\item L'utente ha richiesto un'operazione di selezione di un database non disponendo dei permessi di lettura per tale database, la selezione non viene effettuata e l'utente riceve un messaggio di errore (UC 3.13)
 \end{enumerate}				 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
@@ -1335,23 +1334,23 @@
 			\caption{Caso d'uso UC 3.10 - Errore creazione fallita}
 		 \end{table}			
 		 
-		 \subsection{UC 3.11: Errore database inesistente}
+		 \subsection{UC 3.11: Errore eliminazione fallita}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha tentato di accedere ad un database non presente sul server. L'accesso al database richiesto è fallito, l'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
+	L'utente ha richiesto l'eliminazione di un database, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.11 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore database inesistente\\
+				\textbf{Nome sintetico} & Errore eliminazione fallita\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha richiesto l'accesso ad un determinato database, inserendone il nome\\
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di eliminazione database\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il database richiesto non è presente sul server, l'utente ha ricevuto un messaggio di errore e la possibilità di inserire un nuovo comando\\
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessun database è stato eliminato, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
 				\item L'utente riceve un messaggio di errore informativo sul terminale
@@ -1364,26 +1363,26 @@
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 3.11 - Errore database inesistente}
+			\caption{Caso d'uso UC 3.11 - Errore eliminazione fallita}
 		 \end{table}		
 		 
-		 \subsection{UC 3.12: Errore permessi lettura insufficienti}
+		 \subsection{UC 3.12: Errore rinominazione fallita}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha tentato di accedere ad un database esistente, non avendo i permessi necessari per accedere al database. L'accesso al database richiesto è fallito, l'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
+	L'utente ha richiesto la rinominazione di un database, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.12 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore permessi lettura insufficienti\\
+				\textbf{Nome sintetico} & Errore rinominazione fallita\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha richiesto l'accesso ad un determinato database, inserendone il nome\\
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di rinominazione database\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il database richiesto è presente sul server ma l'utente non ha i permessi per accedervi, l'utente ha ricevuto un messaggio di errore e la possibilità di inserire un nuovo comando\\
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, il database selezionato non è stato rinominato, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
 				\item L'utente riceve un messaggio di errore informativo sul terminale
@@ -1396,9 +1395,41 @@
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 3.12 - Errore permessi lettura insufficienti}
-		 \end{table}		
+			\caption{Caso d'uso UC 3.12 - Errore rinominazione fallita}
+		 \end{table}			
 		 
+		 
+		 \subsection{UC 3.13: Errore selezione database fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto la selezione di un database, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC3.13 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore selezione database fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di selezione database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, il database richiesto non è stato selezionato, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 3.13 - Errore selezione database fallita}
+		 \end{table}			
 		 
 		 
 		 \subsection{UC 4: Operazioni a livello database}
@@ -1440,9 +1471,11 @@
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & \begin{enumerate}
 				\item L'utente ha richiesto la creazione di una nuova mappa, la creazione è fallita e l'utente riceve un messaggio di errore (UC 4.8)
-				\item L'utente ha richiesto un'operazione di modifica del database ma non dispone dei permessi di scrittura per tale database, l'operazione non viene effettuata e l'utente riceve un messaggio di errore (UC 4.9)
-				\item L'utente ha tentato di accedere ad una mappa non presente, l'accesso è fallito e l'utente riceve un messaggio di errore (UC 4.10)
-				\item L'utente ha richiesto un'operazione relativa ai permessi di accesso al database non disponendo dei permessi di amministrazione necessari, l'operazione viene rifiutata e l'utente riceve un messaggio di errore (UC 4.11)
+				\item L'utente ha richiesto l'eliminazione di una mappa del database, l'operazione è fallita e l'utente riceve un messaggio di errore (UC 4.9)
+				\item L'utente ha tentato di rinominare una mappa, la rinomina è fallita e l'utente riceve un messaggio di errore (UC 4.10)
+				\item L'utente ha tentato di selezionare una mappa, la selezione è fallita e l'utente riceve un messaggio di errore (UC 4.11)
+				\item L'utente ha richiesto la visualizzazione dei permessi di accesso al database selezionato non disponendo dei permessi di amministrazione su tale database (UC 4.12)
+				\item L'utente ha richiesto una modifica dei permessi di accesso al database selezionato, la modifica è fallita e l'utente riceve un messaggio di errore (UC 4.13)
 \end{enumerate}				 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
@@ -2192,23 +2225,23 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 			\caption{Caso d'uso UC 4.8 - Errore creazione mappa fallita}
 		 \end{table}	
 		 
-		  \subsection{UC 4.9: Errore permessi di scrittura insufficienti}
+		 \subsection{UC 4.9: Errore eliminazione mappa fallita}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha richiesto un'operazione che modifica il contenuto o la struttura del database selezionato. L'utente però non dispone dei permessi di scrittura necessari all'operazione, questa non viene effettuata e l'utente riceve un messaggio di errore informativo seguito dalla possibilità di inserire un nuovo comando.
+	L'utente ha richiesto l'operazione di eliminazione di una mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC4.9 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore permessi di scrittura insufficienti\\
+				\textbf{Nome sintetico} & Errore eliminazione mappa fallita\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di modifica\\
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di eliminazione mappa sul database selezionato\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessuna modifica al database è stata effettuata, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessuna mappa è stato eliminata, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
 				\item L'utente riceve un messaggio di errore informativo sul terminale
@@ -2221,26 +2254,26 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.9 - Errore permessi di scrittura insufficienti}
+			\caption{Caso d'uso UC 4.9 - Errore eliminazione mappa fallita}
 		 \end{table}	
 		 
-		 \subsection{UC 4.10: Errore mappa inesistente}
+		 \subsection{UC 4.10: Errore rinominazione mappa fallita}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha richiesto un accesso ad una mappa non presente nel database, l'accesso è fallito e l'utente riceve un messaggio di errore informativo e può inserire un nuovo comando.
+	L'utente ha richiesto l'operazione di rinominazione di una mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC4.10 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore mappa inesistente\\
+				\textbf{Nome sintetico} & Errore rinominazione mappa fallita\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di accesso a una mappa\\
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di rinominazione mappa sul database selezionato\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessuna mappa è stato creata, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
 				\item L'utente riceve un messaggio di errore informativo sul terminale
@@ -2253,26 +2286,26 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.10 - Errore mappa inesistente}
-		 \end{table}							
+			\caption{Caso d'uso UC 4.10 - Errore rinominazione mappa fallita}
+		 \end{table}	
 		 
-		 \subsection{UC 4.11: Errore permessi amministratore insufficienti}
+		 \subsection{UC 4.11: Errore selezione mappa fallita}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha richiesto un'operazione che accede ai permessi del database senza disporre dei permessi necessari di amministrazione, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
+	L'utente ha richiesto l'operazione di selezione di una mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC4.11 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore permessi amministratore insufficienti\\
+				\textbf{Nome sintetico} & Errore selezione mappa fallita\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione che accede ai permessi senza disporre dei permessi amministrativi necessari\\
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di selezione mappa sul database selezionato\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessuna mappa è stato creata, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
 				\item L'utente riceve un messaggio di errore informativo sul terminale
@@ -2285,17 +2318,49 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.11 - Errore permessi amministratore insufficienti}
-		 \end{table}		
+			\caption{Caso d'uso UC 4.11 - Errore selezione mappa fallita}
+		 \end{table}	
 		 
+		  \subsection{UC 4.12: Errore permessi di amministrazione database insufficienti}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto la visualizzazione dei permessi di accesso al database selezionato non disponendo dei permessi amministrativi necessari. La visualizzazione fallisce e l'utente riceve un messaggio di errore informativo unito alla possibilità di richiedere una nuova operazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC4.12 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore permessi di amministrazione database insufficienti\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente autenticato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto la visualizzazione dei permessi di accesso al database\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, la lista dei permessi non è stata visualizzata, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo sul terminale
+				\item L'utente riceve la possibilità di inserire un nuovo comando
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 4.12 - Errore permessi di amministrazione database insufficienti}
+		 \end{table}	
 		 
-		 \subsection{UC 4.12: Errore modifica permessi fallita}
+		
+		 \subsection{UC 4.13: Errore modifica permessi fallita}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente ha richiesto di modificare i permessi di un determinato utente, l'operazione è fallita perché ha inserito valori di permessi non validi dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.12 \\
+				\textbf{Codice gerarchico} & UC4.13 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Errore modifica permessi fallita\\
 				\noalign{\hrule height 0.5pt}
@@ -2318,7 +2383,7 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.12 - Errore modifica permessi fallita}
+			\caption{Caso d'uso UC 4.13 - Errore modifica permessi fallita}
 		 \end{table}	
 		 
 		 \subsection{UC 5: Operazioni a livello mappa}
@@ -2358,10 +2423,9 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & \begin{enumerate}
-				\item L'utente ha richiesto l'inserimento di un nuovo item ma questo è fallito (ad esempio perché la chiave inserita è già presente). L'utente riceve un messaggio di errore informativo (UC 5.7)
-				\item L'utente ha richiesto un'operazione che accede ad un determinato item tramite la chiave inserita dall'utente. Non è stato trovato nessun item con tale chiave dunque l'operazione è fallita e l'utente riceve un messaggio di errore informativo (UC 5.8)
-				\item L'utente ha richiesto un'operazione di modifica di un item ma questa è fallita, l'utente riceve un messaggio di errore informativo (UC 5.9)
-				\item L'utente ha richiesto la rimozione di un item ma questa è fallita, l'utente riceve un messaggio di errore informativo (UC 5.10)
+				\item L'utente ha richiesto l'inserimento di un nuovo item ma questo è fallito. L'utente riceve un messaggio di errore informativo (UC 5.7)
+				\item L'utente ha richiesto un'operazione di modifica di un item ma questa è fallita, l'utente riceve un messaggio di errore informativo (UC 5.8)
+				\item L'utente ha richiesto la rimozione di un item ma questa è fallita, l'utente riceve un messaggio di errore informativo (UC 5.9)
 \end{enumerate}				 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
@@ -3120,45 +3184,14 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 			\caption{Caso d'uso UC 5.7 - Errore inserimento item fallito}
 		 \end{table}	
 
-\subsection{UC 5.8: Errore item non presente}
-	\textbf{Descrizione} 
-	\\ \\
-	L'utente ha provato a ricercare, modificare o eliminare un item non presente nella mappa selezionata. L'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC5.8 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore item non presente\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha cercato di ricercare, modificare o eliminare un item non presente nella mappa selezionata. \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Ricerca, modifica o rimozione dell'item fallita, l'utente ha ricevuto un messaggio di errore e la possibilità di inserire un nuovo comando\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente riceve un messaggio di errore informativo sul terminale
-				\item L'utente riceve la possibilità di inserire un nuovo comando
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
-				\item ...
-				\end{itemize} 
-			\end{tabularx}
-			\caption{Caso d'uso UC 5.8 -Errore item non presente}
-		 \end{table}	
-		 
-\subsection{UC 5.9: Errore modifica item fallita}
+
+\subsection{UC 5.8: Errore modifica item fallita}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente ha tentato di modificare il valore di un item della mappa selezionata. La modifica dell'item è fallita, l'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC5.9 \\
+				\textbf{Codice gerarchico} & UC5.8 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Errore modifica item fallita\\
 				\noalign{\hrule height 0.5pt}
@@ -3181,16 +3214,16 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 5.9 - Errore modifica item fallita}
+			\caption{Caso d'uso UC 5.8 - Errore modifica item fallita}
 		 \end{table}
 		 
-\subsection{UC 5.10: Errore rimozione item fallita}
+\subsection{UC 5.9: Errore rimozione item fallita}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente ha cercato di rimuovere un item dalla mappa selezionata. La rimozione di un item è fallita, l'utente riceve un messaggio informativo e la possibilità di richiedere una nuova operazione.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC5.10 \\
+				\textbf{Codice gerarchico} & UC5.9 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Errore rimozione item fallita\\
 				\noalign{\hrule height 0.5pt}
@@ -3213,7 +3246,7 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 5.10 - Errore rimozione item fallita}
+			\caption{Caso d'uso UC 5.9 - Errore rimozione item fallita}
 		 \end{table}
 		 
 		 \subsection{UC 6: Disconnessione}
@@ -3279,13 +3312,13 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 		 \end{table}
 		 
 		 
-		 \subsection{UC 14: Chiusura interfaccia client}
+		 \subsection{UC 8: Chiusura interfaccia client}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente ha concluso il suo lavoro, da il comando di uscita e preme invio terminare la shell.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC14 \\
+				\textbf{Codice gerarchico} & UC8 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Chiusura interfaccia client \\
 				\noalign{\hrule height 0.5pt}
@@ -3308,7 +3341,7 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 				\item ...
 				\end{itemize} 
 			\end{tabularx}
-			\caption{Caso d'uso UC 14 - Chiusura interfaccia client}
+			\caption{Caso d'uso UC 8 - Chiusura interfaccia client}
 	\end{table}
 		 
 		 
@@ -3323,6 +3356,162 @@ L'utente avente i permessi di amministratore, vuole modificare i permessi di amm
 			Se il server è già configurato, l'avvio dell'interfaccia server avvia automaticamente il server, e stampa il log delle varie operazioni che vengono effettuate su di esso.
 			\\ 
 			Per arrestare il server, l'amministratore del server deve inserire l'apposito comando da questa interfaccia.
+			
+			 \subsection{UC 9: Configurazione iniziale del server}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha avviato l'interfaccia server su un server in cui non è presente una configurazione \emph{Actorbase}. Il sistema rileva automaticamente l'assenza di configurazione e presenta all'utente la procedura di configurazione del server. 
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC9 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Configurazione iniziale del server \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server che non presenta una configurazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & Il server presenta una configurazione \emph{Actorbase} e risulta correttamente avviato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce la porta di accesso al server
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 9 - Configurazione iniziale del server}
+	\end{table}
+	
+	\subsection{UC 10: Visualizzazione log operazioni sul server}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha avviato correttamente un server contenente una configurazione \emph{Actorbase}, l'interfaccia mostra automaticamente il log delle varie operazioni che vengono effettuate sul server stesso.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC10 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Visualizzazione log operazioni sul server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha inviato l'applicativo su un server configurato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha ricevuto stampato su terminale il log delle operazioni effettuate sul server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item Il sistema stampa il log delle operazioni sull'interfaccia terminale
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 10 - Visualizzazione log operazioni sul server}
+	\end{table}
+	
+	\subsection{UC 11: Arresto del server}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende arrestare \emph{Actorbase} sul server inserendo l'apposito comando.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC11 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Arresto del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & Il server è avviato e l'utente intende arrestarlo\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & Il server risulta correttamente arrestato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di arresto server e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 11 - Arresto del server}
+	\end{table}
+	
+	\subsection{UC 11: Arresto del server}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente intende arrestare \emph{Actorbase} sul server inserendo l'apposito comando.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC11 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Arresto del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & Il server è avviato e l'utente intende arrestarlo\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & Il server risulta correttamente arrestato\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di arresto server e preme invio
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 11 - Arresto del server}
+	\end{table}
+	
+	\subsection{UC 12: Errore configurazione del server fallita}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha inserito i dati di configurazione del server ma la procedura è fallita. Il sistema informa l'utente con un messaggio e lo invita a ripetere la configurazione.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC12 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore configurazione del server fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & La configurazione del server è fallita\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha ricevuto un messaggio di errore informativo e può effettuare un nuovo tentativo di configurazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un messaggio di errore informativo
+				\item L'utente può effettuare una nuova configurazione
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \begin{itemize}
+				\item ...
+				\end{itemize} 
+			\end{tabularx}
+			\caption{Caso d'uso UC 12 - Errore configurazione del server fallita}
+	\end{table}
 		 
 		 
 		 

@@ -9,582 +9,417 @@
 R[1][N][F] & Implementazione del sistema lato server & Capitolato
 	& Implementazione della parte server di \emph{Actorbase} \\
 	\hline
-	R[1.1][N][F] & Implementazione interfaccia CLI lato server & Capitolato
+	R[1.1][N][F] & Configurazione di un'istanza \emph{Actorbase} su un server & Capitolato
+	& Implementazione di una configurazione riconoscibile dall'applicativo lato server per caricare il sistema all'avvio del server \\
+	\hline
+	R[1.1.1][N][F] & File configurazione impostazioni server & Capitolato
+	& Definire un file di impostazioni del server \emph{Actorbase} \\
+	\hline
+	R[1.1.2][N][F] & File utenti server & Capitolato
+	& Definire un file contenente la lista degli utenti che possono accedere al server \emph{Actorbase} attraverso un applicativo client \\
+	\hline
+	R[1.1.3][N][F] & File database distribuiti & Capitolato
+	& Definire un file contenente una lista dei server su cui effettuare la distribuzione  \\
+	\hline
+	R[1.2][N][F] & Implementazione interfaccia CLI lato server & Capitolato
 	& Implementazione dell'interfaccia da riga di comando per gestire le operazioni lato server \\
 	\hline
-		R[1.1.1][N][F] & Controllo presenza configurazioni & UC11
-	& Implementazione controllo sulla presenza di una configurazione \emph{Actorbase} sul server all'avvio dell'interfaccia server \\
+		R[1.2.1][N][F] & Modalità configurazione server & UC11
+	& Implementazione un controllo sulla presenza di una configurazione \emph{Actorbase} sul server all'avvio dell'interfaccia server \\
 	\hline
-	R[1.1.2][N][F] & Configurazione iniziale impostazioni server & UC11
+	R[1.2.2][N][F] & Configurazione iniziale impostazioni server & UC11
 	& Implementazione della modalità di configurazione iniziale di \emph{Actorbase} sul server su cui è stata avviato l'applicativo server nel caso in cui non fosse presente una configurazione \\
 	\hline
-	R[1.1.2.1][N][F] & Scelta porta connessione al server & UC11
+	R[1.2.2.1][N][F] & Scelta porta connessione al server & UC11
 	& Implementazione della scelta della porta da utilizzare come ingresso alla connessione \\
 	\hline
-	R[1.1.2.2][N][F] & Scelta username amministratore server & UC11
-	& Implementazione della scelta dell'username con cui accedere al sistema come amministratore \\
-	\hline
-	R[1.1.2.3][N][F] & Scelta password amministratore server & UC11
-	& Implementazione della scelta della password con cui accedere al sistema come amministratore \\
-	\hline
-	R[1.1.2.4][N][F] & Messaggio inizializzazione server & UC11
-	& Fornire all'utente un messaggio informativo sul processo di inizializzazione della configurazione \emph{Actorbase sul server} \\
-	\hline
-	R[1.1.2.5][N][F] & Elaborazione dati di configurazione server inseriti & UC11
+	R[1.2.2.2][N][F] & Elaborazione dati di configurazione server inseriti & UC11
 	& Gestire i dati di configurazione server inseriti dall'utente durante il processo di configurazione \\
 	\hline
-	R[1.1.2.5.1][N][F] & Configurazione server effettuata con successo & UC11
+	R[1.2.2.2.1][N][F] & Messaggio inizializzazione server & UC11
+	& Fornire all'utente un messaggio informativo sul processo di inizializzazione della configurazione \emph{Actorbase sul server} \\
+	\hline
+	R[1.2.2.2.2][N][F] & Configurazione server effettuata con successo & UC11
 	& Nel caso in cui i dati inseriti siano validi configurare una nuova istanza di \emph{Actorbase} sul server e informare l'utente del successo dell'operazione di configurazione\\
 	\hline
-	R[1.1.2.5.2][N][F] & Configurazione server fallita & UC13
+	R[1.2.2.2.3][N][F] & Configurazione server fallita & UC13
 	& Nel caso in cui i dati inseriti non siano validi informare l'utente con un messaggio di errore esplicativo\\
 	\hline
-	R[1.1.2.5.2.1][N][F] & Porta già utilizzata da un altro servizio & UC13
-	& Nel caso in cui la porta richiesta durante la configurazione del server fosse già in uso da un altro servizio, o in generale non disponibile, implementare un messaggio di errore informativo\\
+	R[1.2.3][N][F] & Riapertura configurazione esistente & UC11
+	& Implementare la riapertura automatica della configurazione presente nel caso sul server fosse già stata configurata un'istanza di \emph{Actorbase} e si avviasse l'interfaccia lato server \\
 	\hline
-	R[1.1.2.5.2.2][N][F] & Impostazione username amministratore fallita & UC13
-	& Nel caso in cui l'username inserito durante la configurazione del server fosse  non disponibile o contenesse caratteri non validi, implementare un messaggio di errore informativo\\
+	R[1.2.4][N][F] & Log delle operazioni sul terminale & 
+	& Implementare la visualizzazione automatica di messaggi di log sull'interfaccia da terminale lato server in relazione alle operazioni che vengono effettuate sullo stesso server \\
 	\hline
-	R[1.1.2.5.2.3][N][F] & Impostazione password amministratore fallita & UC13
-	& Nel caso in cui la password inserita durante la configurazione del server contenesse caratteri non validi, implementare un messaggio di errore informativo\\
+	R[1.2.5][N][F] & Arresto del server & UC12
+	& Implementare l'arresto del server dall'interfaccia CLI lato server attraverso un apposito comando \\
 	\hline
-	R[1.1.3][N][F] & Arresto del server & UC12
-	& Implementare l'arresto del server dall'interfaccia CLI lato server attraverso un apposito comando\\
+	R[1.3][N][F] & Gestione richiesta connessione di un client & UC1
+	& Implementare un'interfaccia per la gestione di una richiesta di connessione da parte di un client che accetti un nome utente e una password\\
 	\hline
-	R[1.1.4][N][F] & Riapertura configurazione esistente & UC11
-	& Implementare la riapertura automatica della configurazione presente nel caso sul server fosse già stata configurata un'istanza di \emph{Actorbase} e si avviasse l'interfaccia lato server\\
+	R[1.3.1][N][F] & Elaborazione nome utente & UC1.2
+	& Implementare l'elaborazione del nome utente inviato dal client che intende connettersi\\
 	\hline
-	R[1.2][N][F] & Elaborazione richiesta connessione & UC1
-	& Implementare l'elaborazione di una richiesta di connessione da parte di un client\\
-	\hline
-	R[1.2.1][N][F] & Elaborazione comando connessione & UC1.1
-	& Implementare l'elaborazione del comando DSL di richiesta di connessione\\
-	\hline
-	R[1.2.2][N][F] & Elaborazione nome utente & UC1.2
-	& Implementare l'elaborazione del nome utente che intende connettersi\\
-	\hline
-	R[1.2.3][N][F] & Elaborazione password utente & UC1.3
+	R[1.3.2][N][F] & Elaborazione password utente & UC1.3
 	& Implementare l'elaborazione della password immessa dall'utente che intende connettersi\\
 	\hline
-	R[1.2.4][N][F] & Conferma connessione & UC1
+	R[1.3.3][N][F] & Apertura nuova connessione & UC1.3
+	& Implementare l'elaborazione della password immessa dall'utente che intende connettersi\\
+	\hline
+	R[1.3.3][N][F] & Conferma connessione & UC1
 	& Confermare al client che ha richiesto la connessione il successo della stessa\\
 	\hline
-	R[1.2.4][N][F] & Connessione fallita & UC7
+	R[1.3.4][N][F] & Connessione fallita & UC7
 	& Informare il client del fallimento del tentativo di connessione\\
 	\hline
-	R[1.3][N][F] & Operazioni a livello server & UC3
-	& Implementare le operazioni eseguibili a livello server definite in UC3\\
+	R[1.4][N][F] & Gestione delle operazioni a livello server & UC3
+	& Implementare delle interfacce per consentire ad un client di eseguire le operazioni a livello server definite in UC3\\
 	\hline
-	R[1.3.1][N][F] & Elaborazione richiesta visualizzazione lista database & UC3.1
-	& Implementare l'elaborazione di una richiesta di visualizzazione della lista dei database presenti da parte di un client\\
+	R[1.4.1][O][F] & Gestione richiesta visualizzazione lista database & UC3.1
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di visualizzazione della lista dei database presenti da parte di un client\\
 	\hline
-	R[1.3.1.1][N][F] & Elaborazione comando visualizzazione lista database & UC3.1
-	& Implementare il riconoscimento del comando di visualizzazione lista database all'interno di un messaggio ricevuto da un client\\
-	\hline
-	R[1.3.1.2][N][F] & Selezione in base ai permessi dell'utente & UC3.1
+	R[1.4.1.1][O][F] & Selezione in base ai permessi dell'utente & UC3.1
 	& Implementare un filtro selettivo sulla lista dei database da fornire al client basato sui permessi dell'utente che ha richiesto la lista\\
 	\hline
-	R[1.3.1.3][N][F] & Invio lista database visualizzabili al client & UC3.1
-	& Implementare l'invio di un messaggio di risposta al client, contenente la lista dei database da esso visualizzabili\\
+	R[1.4.1.1.1][O][F] & Messaggio richiesta visualizzazione lista database actor MAIN & UC3.1
+	& Definire un messaggio inviabile all'actor MAIN per richiedere la lista dei database \\
 	\hline
-	R[1.3.2][N][F] & Elaborazione richiesta di esportazione database & UC3.2
-	& Implementare l'elaborazione di una richiesta di esportazione database presenti da parte di un client\\
+	R[1.4.1.2][O][F] & Invio lista database visualizzabili al client & UC3.1
+	& Implementare una risposta al client, contenente la lista dei database da esso visualizzabili\\
 	\hline
-	R[1.3.2.1][N][F] & Elaborazione comando di esportazione singolo & UC3.2.2
-	& Implementare il riconoscimento e l'elaborazione del comando di esportazione di un singolo database\\
+	R[1.4.2][O][F] & Gestione richiesta di esportazione database & UC3.2
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di esportazione database presenti da parte di un client\\
 	\hline
-	R[1.3.2.1.1][N][F] & Messaggio database da esportare non presente & UC3.2.2
-	& Controllare la presenza del database richiesto e inviare al client un messaggio informativo nel caso in cui il database per cui è stata richiesta l'esportazione non fosse presente\\
+	R[1.4.2.1][O][F] & Gestione richiesta di esportazione singolo database & UC3.2.2
+	& Fornire un'interfaccia per la richiesta di esportazione di un singolo database\\
 	\hline
-	R[1.3.2.2][N][F] & Elaborazione comando di esportazione completa & UC3.2.1
-	& Implementare il riconoscimento e l'elaborazione del comando di esportazione di tutti i database\\
+	R[1.4.2.1.1][O][F] & Database da esportare non presente & UC3.2.2
+	& Gestire il caso in cui il database richiesto per l'esportazione non fosse presente sul server\\
 	\hline
-	R[1.3.2.3][N][F] & Filtro database da esportare in base ai permessi utente & UC3.2
+	R[1.4.2.1.2][O][F] & Permessi insufficienti per il database da esportare & UC3.2.2
+	& Gestire il caso in cui l'utente il client che richiede l'esportazione del database non avesse i permessi di lettura necessari su tale singolo database \\
+	\hline
+	R[1.4.2.2][O][F] & Gestione richiesta di esportazione completa & UC3.2.1
+	& Fornire un'interfaccia per l'esportazione di tutti i database presenti sul server\\
+	\hline
+	R[1.4.2.3][O][F] & Filtro database da esportare in base ai permessi utente & UC3.2
 	& Implementare un filtro selettivo sui database da esportare in base ai permessi di lettura dell'utente che ha richiesto l'operazione\\
 	\hline
-	R[1.3.2.4][N][F] & Creazione file esportazione & UC3.2
+	R[1.4.2.4][O][F] & Creazione file esportazione & UC3.2
 	& Creare dei file di esportazione per i diversi database che si devono esportare sul client\\
 	\hline
-	R[1.3.2.5][N][F] & Invio file di esportazione al client & UC3.2
+	R[1.4.2.5][O][F] & Invio file di esportazione al client & UC3.2
 	& Inviare i file di esportazione precedentemente generati al client che li ha richiesti\\
 	\hline
-	R[1.3.3][N][F] & Elaborazione richiesta di importazione database & UC3.3
-	& Implementare l'elaborazione di una richiesta di importazione di un database da parte di un client\\
+	R[1.4.3][O][F] & Gestione richiesta di importazione database & UC3.3
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di importazione di un database da parte di un client\\
 	\hline
-	R[1.3.3.1][N][F] & Elaborazione comando di importazione database & UC3.3.1
-	& Implementare il riconoscimento del comando di importazione database\\
-	\hline
-	R[1.3.3.2][N][F] & Gestione del contenuto del file di importazione & UC3.3
+	R[1.4.3.1][O][F] & Gestione del contenuto del file di importazione & UC3.3
 	& Gestire il contenuto del file di importazione inviato dal client\\
 	\hline
-	R[1.3.3.2.1][N][F] & Messaggio file di importazione illeggibile & UC3.3
-	& Implementare un controllo di integrità e un parse sul file di importazione inviato dal client, nel caso in cui questo controllo non andasse a buon fine annullare l'importazione e informare il client con un messaggio\\
+	R[1.4.3.1.1][O][F] & File di importazione illeggibile & UC3.3
+	& Gestire il caso in cui il contenuto del file inviato dal client fosse illeggibile\\
 	\hline
-	R[1.3.3.2.2][N][F] & Messaggio database da importare già presente & UC3.3
-	& Nel caso in cui il database da importare fosse già presente sul server, annullare l'importazione e informare il client che ha richiesto l'importazione con un messaggio\\
+	R[1.4.3.1.2][O][F] & Database da importare già presente & UC3.3
+	& Gestire il caso in cui il database esistesse già sul server un database con lo stesso nome del database da importare \\
 	\hline
-	R[1.3.3.3][N][F] & Creazione database contenuto nel file di importazione & UC3.3
+	R[1.4.3.2][O][F] & Creazione database contenuto nel file di importazione & UC3.3
 	& Creare un database utilizzando i dati estratti dal file di importazione\\
 	\hline
-	R[1.3.3.4][N][F] & Messaggio importazione avvenuta con successo & UC3.3
-	& Informare il client con un messaggio del successo dell'operazione di importazione\\
+	R[1.4.3.3][O][F] & Importazione avvenuta con successo & UC3.3
+	& Informare il client del successo dell'operazione di importazione\\
 	\hline
-	R[1.3.4][N][F] & Elaborazione richiesta di creazione database & UC3.4
-	& Implementare l'elaborazione di una richiesta di creazione di un database da parte di un client\\
+	R[1.4.4][N][F] & Gestione richiesta di creazione database & UC3.4
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di creazione di un database da parte di un client\\
 	\hline
-	R[1.3.4.1][N][F] & Elaborazione comando di creazione database & UC3.4.1
-	& Implementare il riconoscimento del comando di creazione database\\
+	R[1.4.4.1][N][F] & Controllo nome database da creare & UC3.4.2
+	& Implementare un controllo sul nome del database da creare\\
 	\hline
-	R[1.3.4.2][N][F] & Lettura nome database da creare & UC3.4.2
-	& Implementare il riconoscimento del nome del database da creare\\
+	R[1.4.4.1.1][N][F] & Nome database da creare non valido & UC3.4.2
+	& Gestire il caso in cui il nome del database da creare, inviato dal client non rispettasse le regole sintattiche dei nomi dei database \emph{Actorbase}\\
 	\hline
-	R[1.3.4.3][N][F] & Creazione di un nuovo database sul server & UC3.4
-	& Creare un nuovo database sul server con il nome inviato dal client assieme al comando\\
+	R[1.4.4.2][N][F] & Creazione di un nuovo database sul server & UC3.4
+	& Creare un nuovo database sul server con il nome inviato dal client \\
 	\hline
-	R[1.3.4.4][N][F] & Messaggio creazione database avvenuta con successo & UC3.4
-	& Informare un client con un messaggio informativo nel caso in cui il database richiesto fosse stato creato con successo sul server\\
+	R[1.4.4.2.1][N][F] & Messaggio actor MAIN creazione database & UC3.4
+	& Definire un messaggio inviabile all'actor MAIN per richiedere la creazione di un database \\
 	\hline
-	R[1.3.4.5][N][F] & Messaggio creazione database fallita & UC3.4
-	& Informare un client con un messaggio informativo nel caso in cui la creazione richiesta fosse fallita\\
+	R[1.4.4.2.2][N][F] & Messaggio actor STOREFINDER creazione database & UC3.4
+	& Definire un messaggio inviabile all'actor STOREFINDER per richiedere la creazione di un database \\
 	\hline
-	R[1.3.5][N][F] & Elaborazione richiesta di eliminazione database & UC3.5
-	& Implementare l'elaborazione di una richiesta di eliminazione di un database da parte di un client\\
+	R[1.4.4.3][N][F] & Creazione database avvenuta con successo & UC3.4
+	& Informare il client nel caso in cui il database richiesto fosse stato creato con successo sul server\\
 	\hline
-	R[1.3.5.1][N][F] & Elaborazione comando di creazione database & UC3.5.1
-	& Implementare il riconoscimento del comando di eliminazione database\\
+	R[1.4.4.4][N][F] & Creazione database fallita & UC3.4
+	& Informare il client nel caso in cui la creazione richiesta fosse fallita\\
 	\hline
-	R[1.3.5.2][N][F] & Lettura nome database da eliminare & UC3.5.2
-	& Implementare il riconoscimento del nome del database da eliminare \\
+	R[1.4.5][N][F] & Gestione richiesta di eliminazione database & UC3.5
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di eliminazione di un database da parte di un client\\
 	\hline
-	R[1.3.5.3][N][F] & Eliminazione del database dal server & UC3.5
-	& Eliminare il database col nome inviato dal client assieme al comando di eliminazione database\\
+	R[1.4.5.1][N][F] & Controllo nome database da eliminare & UC3.5.2
+	& Implementare un controllo sul nome del database da eliminare \\
 	\hline
-	R[1.3.5.4][N][F] & Messaggio eliminazione database avvenuta con successo & UC3.5
-	& Informare un client con un messaggio informativo nel caso in cui il database richiesto fosse stato eliminato con successo dal server\\
+	R[1.4.5.1.1][N][F] & Nome database da eliminare non valido & UC3.5.2
+	& Gestire il caso in cui il nome del database da eliminare, inviato dal client non rispettasse le regole sintattiche dei nomi dei database \emph{Actorbase}\\
 	\hline
-	R[1.3.5.5][N][F] & Messaggio eliminazione database fallita & UC3.4
-	& Informare un client con un messaggio informativo nel caso in cui la eliminazione  richiesta fosse fallita\\
+	R[1.4.5.2][N][F] & Eliminazione del database dal server & UC3.5
+	& Eliminare il database col nome inviato dal client dal server\\
 	\hline
-	R[1.3.6][N][F] & Elaborazione richiesta di rinominazione database & UC3.6
-	& Implementare l'elaborazione di una richiesta di rinominazione di un database da parte di un client\\
+	R[1.4.5.2.1][N][F] & Messaggio all'actor MAIN eliminazione database & UC3.5
+	& Definire un messaggio inviabile all'actor MAIN per richiedere l'eliminazione di un database\\
 	\hline
-	R[1.3.6.1][N][F] & Elaborazione comando di rinominazione database & UC3.6.1
-	& Implementare il riconoscimento del comando di rinominazione database\\
+	R[1.4.5.2.2][N][F] & Messaggio all'actor STOREFINDER eliminazione database & UC3.5
+	& Definire un messaggio inviabile all'actor STOREFINDER per richiedere l'eliminazione di un database\\
 	\hline
-	R[1.3.6.2][N][F] & Lettura nome database da rinominare & UC3.6.2
-	& Implementare il riconoscimento del nome del database da rinominare \\
+	R[1.4.5.2.3][N][F] & Messaggio dall'actor STOREFINDER all'actor STOREKEEPER eliminazione database & UC3.5
+	& Definire un messaggio inviabile dall'actor STOREFINDER agli actor STOREKEEPER che compongono il database per richiedere l'eliminazione\\
 	\hline
-	R[1.3.6.3][N][F] & Lettura nuovo nome database da rinominare & UC3.6.3
-	& Implementare il riconoscimento del nuovo nome da assegnare al database da rinominare\\
+	R[1.4.5.2.4][N][F] & Messaggio dall'actor STOREKEEPER all'actor WAREHOUSEMAN eliminazione database & UC3.5
+	& Definire un messaggio inviabile dall'actor STOREKEEPER agli actor WAREHOUSEMAN ad esso collegati per richiedere l'eliminazione di un database\\
 	\hline
-	R[1.3.6.4][N][F] & Rinomina del database & UC3.6
+	R[1.4.5.3][N][F] & Eliminazione database avvenuta con successo & UC3.5
+	& Informare il client nel caso in cui il database richiesto fosse stato eliminato con successo dal server\\
+	\hline
+	R[1.4.5.4][N][F] & Eliminazione database fallita & UC3.4
+	& Informare il client nel caso in cui la eliminazione richiesta fosse fallita\\
+	\hline
+	R[1.4.6][O][F] & Gestione richiesta di rinominazione database & UC3.6
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di rinominazione di un database da parte di un client\\
+	\hline
+	R[1.4.6.1][O][F] & Controllo nome database da rinominare & UC3.6.2
+	& Implementare un controllo sul nome del database da rinominare \\
+	\hline
+	R[1.4.6.1.1][N][F] & Nome database da eliminare non valido & UC3.6.2
+	& Gestire il caso in cui il nome del database da rinominare, inviato dal client non rispettasse le regole sintattiche dei nomi dei database \emph{Actorbase}\\
+	R[1.4.6.2][O][F] & Controllo nuovo nome database da rinominare & UC3.6.3
+	& Implementare un controllo sul nuovo nome da assegnare al database da rinominare\\
+	\hline
+	R[1.4.6.2.1][N][F] & Nome database da eliminare non valido & UC3.6.3
+	& Gestire il caso in cui il nuovo nome del database da rinominare, inviato dal client non rispettasse le regole sintattiche dei nomi dei database \emph{Actorbase}\\
+	R[1.4.6.3][O][F] & Rinomina del database & UC3.6
 	& Implementare la rinominazione del database\\
 	\hline
-	R[1.3.6.5][N][F] & Messaggio rinominazione database avvenuta con successo & UC3.6
-	& Informare un client con un messaggio informativo nel caso in cui il database richiesto fosse stato rinominato con successo sul server\\
+	R[1.4.6.4][O][F] & Rinominazione database avvenuta con successo & UC3.6
+	& Informare il client nel caso in cui il database richiesto fosse stato rinominato con successo sul server\\
 	\hline
-	R[1.3.6.6][N][F] & Messaggio creazione database fallita & UC3.6
-	& Informare un client con un messaggio informativo nel caso in cui la rinominazione richiesta fosse fallita\\
+	R[1.4.6.5][O][F] & Creazione database fallita & UC3.6
+	& Informare il client nel caso in cui la rinominazione richiesta fosse fallita\\
 	\hline
-	R[1.3.7][N][F] & Elaborazione richiesta di selezione database & UC3.7
-	& Implementare l'elaborazione di una richiesta di selezione di un database da parte di un client\\
+	R[1.4.7][N][F] & Gestione richiesta di selezione database & UC3.7
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di selezione di un database da parte di un client\\
 	\hline
-	R[1.3.7.1][N][F] & Elaborazione comando di selezione database & UC3.7.1
-	& Implementare il riconoscimento del comando di selezione database\\
+	R[1.4.7.1][N][F] & Controllo nome database da selezionare & UC3.7.2
+	& Implementare un controllo sul nome del database da selezionare \\
 	\hline
-	R[1.3.7.2][N][F] & Lettura nome database da selezionare & UC3.7.2
-	& Implementare il riconoscimento del nome del database da selezionare \\
+	R[1.4.7.1.1][N][F] & Nome database da selezionare non valido & UC3.7.2
+	& Gestire il caso in cui il nuovo nome del database da selezionare, inviato dal client non rispettasse le regole sintattiche dei nomi dei database \emph{Actorbase} \\
 	\hline
-	R[1.3.7.3][N][F] & Selezione del database richiesto & UC3.7
-	& Selezionare il database richiesto dal client\\
+	R[1.4.7.2][N][F] & Selezione del database richiesto & UC3.7
+	& Selezionare il database richiesto dal client \\
 	\hline
-	R[1.3.7.4][N][F] & Messaggio selezione database avvenuta con successo & UC3.7
-	& Informare un client con un messaggio informativo nel caso in cui il database richiesto fosse stato selezionato con successo\\
+	R[1.4.7.3][N][F] & Selezione database avvenuta con successo & UC3.7
+	& Informare il client nel caso in cui il database richiesto fosse stato selezionato con successo\\
 	\hline
-	R[1.3.7.5][N][F] & Messaggio selezione database fallita & UC3.7
-	& Informare un client con un messaggio informativo nel caso in cui la selezione  richiesta fosse fallita\\
-	\hline
-	R[1.4][N][F] & Operazioni a livello database & UC4
-	& Implementare le operazioni eseguibili a livello database definite in UC4\\
-	\hline
-	R[1.4.1][N][F] & Elaborazione richiesta visualizzazione lista mappe & UC4.1
-	& Implementare l'elaborazione di una richiesta di visualizzazione della lista delle mappe presenti nel database selezionato dal client\\
-	\hline
-	R[1.4.1.1][N][F] & Elaborazione comando visualizzazione lista mappe & UC4.1
-	& Implementare il riconoscimento del comando di visualizzazione lista mappe\\
-	\hline
-	R[1.4.1.2][N][F] & Invio lista mappe al client & UC4.1
-	& Inviare al client la lista delle mappe che compongono il database da esso selezionato\\
-	\hline
-	R[1.4.2][N][F] & Elaborazione richiesta creazione mappa & UC4.2
-	& Implementare l'elaborazione di una richiesta di creazione di una nuova mappa nel database selezionato dal client\\
-	\hline
-	R[1.4.2.1][N][F] & Elaborazione comando creazione mappa & UC4.2.1
-	& Implementare il riconoscimento del comando di creazione di una nuova mappa\\
-	\hline
-	R[1.4.2.2][N][F] & Lettura nome mappa da creare & UC4.2.2
-	& Implementare il riconoscimento del nome della mappa da creare\\
+	R[1.4.7.4][N][F] & Messaggio selezione database fallita & UC3.7
+	& Informare il client nel caso in cui la selezione  richiesta fosse fallita\\
 	\hline
 	
 	
 	
-	R[1.5][N][F] & Operazioni a livello mappe & UC5
+	
+	
+	R[1.5][N][F] & Operazioni a livello database & UC4
+	& Implementare delle interfacce per consentire ad un client di eseguire le operazioni a livello database definite in UC4\\
+	\hline
+	R[1.5.1][O][F] & Gestione richiesta visualizzazione lista mappe & UC4.1
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di visualizzazione della lista delle mappe presenti nel database selezionato dal client\\
+	\hline
+	R[1.5.1.1][O][F] & Invio lista mappe al client & UC4.1
+	& Implementare una risposta al client, contenente la lista delle mappe che compongono il database da esso selezionato\\
+	\hline
+	R[1.5.2][N][F] & Gestione richiesta creazione mappa & UC4.2
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di creazione di una nuova mappa nel database selezionato dal client\\
+	\hline
+	R[1.5.2.1][N][F] & Controllo nome mappa da creare & UC4.2.2
+	& Implementare un controllo sul nome della mappa da creare\\
+	\hline
+	R[1.5.2.1.1][N][F] & Nome mappa da creare non valido & UC4.8
+	& Gestire il caso in cui il nome della mappa da creare, inviato dal client non rispettasse le regole sintattiche dei nomi delle mappe \emph{Actorbase}\\
+	\hline
+	R[1.5.2.2][N][F] & Creazione di una nuova mappa & UC4.2
+	& Creare una nuova mappa con il nome inviato dal client all'interno del database selezionato dall'utente \\
+	\hline
+	R[1.5.2.3][N][F] & Creazione mappa avvenuta con successo & UC4.2
+	& Informare il client nel caso in cui la mappa richiesta fosse stata creata con successo sul server\\
+	\hline
+	R[1.5.2.4][N][F] & Creazione mappa fallita & UC4.8
+	& Informare il client nel caso in cui la creazione richiesta fosse fallita\\
+	\hline
+	R[1.5.3][N][F] & Gestione richiesta eliminazione mappa & UC4.3
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di eliminazione di una mappa dal database selezionato dal client\\
+	\hline
+	R[1.5.3.1][N][F] & Controllo nome mappa da eliminare & UC4.3.2
+	& Implementare un controllo sul nome della mappa da eliminare\\
+	\hline
+	R[1.5.3.1.1][N][F] & Nome mappa da eliminare non valido & UC4.9
+	& Gestire il caso in cui il nome della mappa da eliminare, inviato dal client non rispettasse le regole sintattiche dei nomi delle mappe \emph{Actorbase}\\
+	\hline
+	R[1.5.3.2][N][F] & Eliminazione di una mappa & UC4.3
+	& Eliminare la mappa con il nome inviato dal client dal database selezionato dall'utente \\
+	\hline
+	R[1.5.3.3][N][F] & Eliminazione mappa avvenuta con successo & UC4.3
+	& Informare il client nel caso in cui la mappa richiesta fosse stata eliminata con successo dal server\\
+	\hline
+	R[1.5.3.4][N][F] & Eliminazione mappa fallita & UC4.9
+	& Informare il client nel caso in cui l'eliminazione della mappa richiesta fosse fallita\\
+	\hline
+	R[1.5.4][O][F] & Gestione richiesta rinominazione mappa & UC4.4
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di rinominazione di una mappa del database selezionato dal client\\
+	\hline
+	R[1.5.4.1][O][F] & Controllo nome mappa da rinominare & UC4.4.2
+	& Implementare un controllo sul nome della mappa da rinominare\\
+	\hline
+	R[1.5.4.1.1][O][F] & Nome mappa da rinominare non valido & UC4.4.2
+	& Gestire il caso in cui il nome della mappa da rinominare, inviato dal client non rispettasse le regole sintattiche dei nomi delle mappe \emph{Actorbase}\\
+	\hline
+	R[1.5.4.2][O][F] & Controllo nuovo nome mappa da rinominare & UC4.4.3
+	& Implementare un controllo sul nuovo nome della mappa da rinominare\\
+	\hline
+	R[1.5.4.2.1][O][F] & Nuovo nome mappa da rinominare non valido & UC4.4.3
+	& Gestire il caso in cui il nuovo nome della mappa da rinominare, inviato dal client non rispettasse le regole sintattiche dei nomi delle mappe \emph{Actorbase}\\
+	\hline
+	R[1.5.4.3][O][F] & Rinomina della mappa & UC4.4
+	& Rinominare la mappa richiesta dal client con il nuovo nome inviato\\
+	\hline
+	R[1.5.4.4][O][F] & Rinominazione mappa avvenuta con successo & UC4.4
+	& Informare il client nel caso in  cui la mappa richiesta fosse stata rinominata con successo\\
+	\hline
+	R[1.5.4.5][O][F] & Rinominazione mappa fallita & UC4.10
+	& Informare il client nel caso in la rinominazione della mappa fosse fallita\\
+	\hline
+	R[1.5.5][N][F] & Gestione richiesta di selezione mappa & UC4.5
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di selezione di una mappa da parte di un client\\
+	\hline
+	R[1.5.5.1][N][F] & Controllo nome mappa da selezionare & UC4.5.2
+	& Implementare un controllo sul nome della mappa da selezionare \\
+	\hline
+	R[1.5.5.1.1][N][F] & Nome mappa da selezionare non valido & UC4.5.2
+	& Gestire il caso in cui il nome della mappa da selezionare, inviato dal client non rispettasse le regole sintattiche dei nomi delle mappe \emph{Actorbase} \\
+	\hline
+	R[1.5.5.2][N][F] & Selezione della mappa richiesta & UC4.5
+	& Selezionare la mappa richiesta dal client \\
+	\hline
+	R[1.5.5.3][N][F] & Selezione mappa avvenuta con successo & UC4.5
+	& Informare il client nel caso in cui la mappa richiesta fosse stata selezionata con successo\\
+	\hline
+	R[1.5.5.4][N][F] & Messaggio selezione mappa fallita & UC4.11
+	& Informare il client nel caso in cui la selezione della mappa richiesta fosse fallita\\
+	\hline
+	R[1.5.6][O][F] & Gestione richiesta di visualizzazione permessi accesso al database & UC4.6
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di visualizzazione dei permessi di accesso al database selezionato da parte di un client\\
+	\hline
+	R[1.5.7][O][F] & Gestione richiesta modifica permessi di accesso al database & UC4.7
+	& Implementare un'interfaccia per l'elaborazione di una richiesta di modifica dei permessi di accesso al database da parte di un client\\
+	\hline
+	R[1.6][N][F] & Operazioni a livello mappe & UC5
 	& Implementare le operazioni eseguibili a livello mappe definite in UC5\\
 	\hline
-	R[1.5.1][N][F] & Elaborazione richiesta visualizzazione chiavi della mappa & UC5.1
+	R[1.6.1][N][F] & Elaborazione richiesta visualizzazione chiavi della mappa & UC5.1
 	& Implementare l'elaborazione di una richiesta di visualizzazione della lista delle chiavi presenti nella mappa selezionata dal client\\
 	\hline
-	R[1.5.1.1][N][F] & Elaborazione comando visualizzazione chiavi della mappa & UC5.1
+	R[1.6.1.1][N][F] & Elaborazione comando visualizzazione chiavi della mappa & UC5.1
 	& Implementare il riconoscimento del comando di visualizzazione della lista delle chiavi\\
 	\hline
-	R[1.5.1.2][N][F] & Invio lista chiavi al client & UC5.1
+	R[1.6.1.2][N][F] & Invio lista chiavi al client & UC5.1
 	& Inviare al client la lista delle chiavi presenti nella mappa selezionata\\
 	\hline
-	R[1.5.2][N][F] & Elaborazione richiesta ricerca per chiave & UC5.2
+	R[1.6.2][N][F] & Elaborazione richiesta ricerca per chiave & UC5.2
 	& Implementare l'elaborazione di una richiesta di ricerca di un item attraverso la chiave nella mappa selezionata dal client\\
 	\hline
-	R[1.5.2.1][N][F] & Elaborazione comando ricerca per chiave & UC5.2.1
+	R[1.6.2.1][N][F] & Elaborazione comando ricerca per chiave & UC5.2.1
 	& Implementare il riconoscimento del comando di ricerca di un item attraverso la chiave\\
 	\hline
-	R[1.5.2.2][N][F] & Lettura chiave & UC5.2.3 UC5.3.2 UC5.4.2 UC5.5.2
+	R[1.6.2.2][N][F] & Lettura chiave & UC5.2.3 UC5.3.2 UC5.4.2 UC5.5.2
 	& Implementare la lettura della chiave dal comando\\
 	\hline
-	R[1.5.2.3][N][F] & Ricerca di un item attraverso la chiave & UC5.2.3 UC5.3.2 UC5.4.2 UC5.5.2
+	R[1.6.2.3][N][F] & Ricerca di un item attraverso la chiave & UC5.2.3 UC5.3.2 UC5.4.2 UC5.5.2
 	& Implementare la ricerca di un item attraverso la chiave vista come una stringa\\
 	\hline
-	R[1.5.2.4][N][F] & Invio valore al client & UC5.2
+	R[1.6.2.4][N][F] & Invio valore al client & UC5.2
 	& Inviare al client il valore associato alla chiave\\
 	\hline
-	R[1.5.2.5][N][F] & Invio messaggio al client item non presente & UC5.8 UC5.2.3 UC5.4.2 UC5.5.2
+	R[1.6.2.5][N][F] & Invio messaggio al client item non presente & UC5.8 UC5.2.3 UC5.4.2 UC5.5.2
 	& Inviare al client un messaggio di item non presente nella mappa\\
 	\hline
-	R[1.5.3][N][F] & Elaborazione richiesta inserimento item & UC5.3
+	R[1.6.3][N][F] & Elaborazione richiesta inserimento item & UC5.3
 	& Implementare l'elaborazione di una richiesta di inserimento di un item nella mappa selezionata dal client\\
 	\hline
-	R[1.5.3.1][N][F] & Elaborazione comando inserimento item & UC5.3.1
+	R[1.6.3.1][N][F] & Elaborazione comando inserimento item & UC5.3.1
 	& Implementare il riconoscimento del comando di inserimento di un item nella mappa\\
 	\hline
-	R[1.5.3.2][N][F] & Controllo validità chiave & UC5.3.2
+	R[1.6.3.2][N][F] & Controllo validità chiave & UC5.3.2
 	& Implementare il controllo della validità della chiave\\
 	\hline
-	R[1.5.3.3][N][F] & Inserimento nuovo item & UC5.3
+	R[1.6.3.3][N][F] & Inserimento nuovo item & UC5.3
 	& Inserire nella mappa la coppia chiave-valore fornita dall'utente\\
 	\hline
-	R[1.5.3.4][N][F] & Invio messaggio al client successo inserimento item & UC5.3
+	R[1.6.3.4][N][F] & Invio messaggio al client successo inserimento item & UC5.3
 	& Inviare al client un messaggio di inserimento item avvenuto con successo\\
 	\hline
-	R[1.5.3.5][N][F] & Invio messaggio al client inserimento item fallito & UC5.7
+	R[1.6.3.5][N][F] & Invio messaggio al client inserimento item fallito & UC5.7
 	& Inviare al client un messaggio di inserimento item fallito\\
 	\hline
-	R[1.5.4][N][F] & Elaborazione richiesta aggiornamento item & UC5.4
+	R[1.6.4][N][F] & Elaborazione richiesta aggiornamento item & UC5.4
 	& Implementare l'elaborazione di una richiesta di aggiornamento di un item della mappa selezionata dal client\\
 	\hline
-	R[1.5.4.1][N][F] & Elaborazione comando aggiornamento item & UC5.4.1
+	R[1.6.4.1][N][F] & Elaborazione comando aggiornamento item & UC5.4.1
 	& Implementare il riconoscimento del comando di aggiornamento di un item della mappa\\
 	\hline
-	R[1.5.4.2][N][F] & Controllo esistenza item da aggiornare & UC5.4.2
+	R[1.6.4.2][N][F] & Controllo esistenza item da aggiornare & UC5.4.2
 	& Implementare il controllo dell'esistenza dell'item da aggiornare\\
 	\hline
-	R[1.5.4.3][N][F] & Sovrascrittura valore item & UC5.4.3
+	R[1.6.4.3][N][F] & Sovrascrittura valore item & UC5.4.3
 	& Sovrascrivere il valore dell'item da aggiornare\\
 	\hline
-	R[1.5.4.4][N][F] & Invio messaggio al client successo aggiornamento item & UC5.4
+	R[1.6.4.4][N][F] & Invio messaggio al client successo aggiornamento item & UC5.4
 	& Inviare al client un messaggio di aggiornamento item avvenuto con successo\\
 	\hline
-	R[1.5.4.5][N][F] & Invio messaggio al client modifica item fallita & UC5.9 UC5.4 UC5.5
+	R[1.6.4.5][N][F] & Invio messaggio al client modifica item fallita & UC5.9 UC5.4 UC5.5
 	& Inviare al client un messaggio di modifica dell'item fallita\\
 	\hline
-	R[1.5.5][N][F] & Elaborazione richiesta di append & UC5.5
+	R[1.6.5][N][F] & Elaborazione richiesta di append & UC5.5
 	& Implementare l'elaborazione di una richiesta di append al valore di un item della mappa selezionata dal client\\
 	\hline
-	R[1.5.5.1][N][F] & Elaborazione comando di append & UC5.5.1
+	R[1.6.5.1][N][F] & Elaborazione comando di append & UC5.5.1
 	& Implementare il riconoscimento del comando di append\\
 	\hline
-	R[1.5.5.2][N][F] & Controllo esistenza item per append & UC5.5.2
+	R[1.6.5.2][N][F] & Controllo esistenza item per append & UC5.5.2
 	& Implementare il controllo dell'esistenza dell'item sul quale eseguire l'append\\
 	\hline
-	R[1.5.5.3][N][F] & Append in coda al valore di un item & UC5.5
+	R[1.6.5.3][N][F] & Append in coda al valore di un item & UC5.5
 	& Aggiungere in coda al valore dell'item il valore inserito\\
 	\hline
-	R[1.5.5.4][N][F] & Invio messaggio al client successo append & UC5.5
+	R[1.6.5.4][N][F] & Invio messaggio al client successo append & UC5.5
 	& Inviare al client un messaggio di append avvenuto con successo\\
 	\hline
-	R[1.5.6][N][F] & Elaborazione richiesta di rimozione item & UC5.6
+	R[1.6.6][N][F] & Elaborazione richiesta di rimozione item & UC5.6
 	& Implementare l'elaborazione di una richiesta di rimozione di un item della mappa selezionata dal client\\
 	\hline
-	R[1.5.6.1][N][F] & Elaborazione comando di rimozione item & UC5.6.1
+	R[1.6.6.1][N][F] & Elaborazione comando di rimozione item & UC5.6.1
 	& Implementare il riconoscimento del comando di rimozione di un itemt\\
 	\hline
-	R[1.5.6.2][N][F] & Controllo esistenza item per rimozione & UC5.6.2
+	R[1.6.6.2][N][F] & Controllo esistenza item per rimozione & UC5.6.2
 	& Implementare il controllo dell'esistenza dell'item da rimuovere\\
 	\hline
-	R[1.5.6.3][N][F] & Rimozione dell'item dalla mappa & UC5.6
+	R[1.6.6.3][N][F] & Rimozione dell'item dalla mappa & UC5.6
 	& Rimuovere l'item dalla mappa\\
 	\hline
-	R[1.5.6.4][N][F] & Invio messaggio al client successo rimozione item & UC5.6
+	R[1.6.6.4][N][F] & Invio messaggio al client successo rimozione item & UC5.6
 	& Inviare un messaggio al client di rimozione item avvenuta con successo\\
 	\hline
-	R[1.5.6.5][N][F] & Invio messaggio al client rimozione item fallita & UC5.10 UC5.6
+	R[1.6.6.5][N][F] & Invio messaggio al client rimozione item fallita & UC5.10 UC5.6
 	& Inviare un messaggio al client di rimozione item fallita\\
 	\hline
-	
-	
-	
-R[3][N][F] & Sistema ad attori & Capitolato
-	& Implementazione della logica di gestione dei dati basata sul sistema ad attori descritto dal capitolato \\
-	\hline
-R[3.1][N][F] & Implementazione dell'attore Storekeeper & Capitolato
-	& Implementazione dell'attore Storekeeper per mantenere i dati su memoria principale \\
-	\hline
-		R[3.1.1][N][F] & Gestione messaggi ricevuti da Storekeeper & Capitolato
-		& Implementare la gestione dei messaggi ricevuti da attori di tipo Storekeeper \\
-		\hline
-			R[3.1.1.1][N][F] & Gestione messaggi aggiunta item & Capitolato \newline UC5.3
-			& Aggiunge una item con la chiave ed il valore presenti nel messaggio \\
-			\hline
-			R[3.1.1.2][N][F] & Gestione messaggi rimozione item & Capitolato \newline UC5.6
-			& Rimuove la item con chiave uguale a quella presente nel messaggio\\
-			\hline
-			R[3.1.1.3][N][F] & Gestione messaggi aggiornamento item & Capitolato \newline UC5.4 \newline UC5.5
-			& Aggiorna il valore della item con chiave uguale a quella presente nel messaggio con il valore presente nel messaggio\\
-			\hline
-			R[3.1.1.4][N][F] & Gestione messaggi lettura item & Capitolato \newline UC5 \newline UC5.2
-			& Se presente restituisce il valore della item con chiave uguale a quella presente nel messaggio \\
-			\hline
-			R[3.1.1.5][O][F] & Gestione messaggi di risposta da attori Manager & Capitolato
-			& Gestione da parte degli attori Storekeeper dei messaggi ricevuti da attori Manager in risposta alla richieste inviate \\
-			\hline
-		R[3.1.2][N][F] & Messaggi inviabili da Storekeeper & Capitolato
-		& Implementazione dei messaggi che un attore Storekeeper deve poter inviare \\
-		\hline
-			R[3.1.2.1][N][F] & Messaggi inviabili da Storekeeper a Warehouseman & Capitolato
-			& Implementazione dei messaggi che un attore Storekeeper deve poter inviare a un attore  Warehouseman \\
-			\hline
-				R[3.1.2.1.1][N][F] & Invio messaggi aggiunta da Storekeeper a Warehouseman & Capitolato \newline UC5.3
-				& Implementazione messaggi di aggiunta item da inviare a Warehouseman \\
-				\hline
-				R[3.1.2.1.2][N][F] & Invio messaggi rimozione da Storekeeper a Warehouseman & Capitolato \newline UC5.6
-				& Implementazione messaggi di rimozione item da inviare a Warehouseman \\
-				\hline
-				R[3.1.2.1.3][N][F] & Invio messaggi aggiornamento da Storekeeper a Warehouseman & Capitolato \newline UC5.4 \newline UC5.5
-				& Implementazione messaggi di aggiornamento item da inviare a Warehouseman \\
-				\hline
-			R[3.1.2.2][N][F] & Messaggi inviabili da Storekeeper a Storefinder & Capitolato
-			& Implementazione messaggi di risposta al comando da inviare a attori di tipo Storefinder \\
-			\hline
-			R[3.1.2.3][O][F] & Messaggi inviabili da Storekeeper a Manager & Capitolato
-			& Implementazione messaggi di richiesta proprietà interne a attori di tipo Manager \\
-			\hline
-			R[3.1.2.4][O][F] & Messaggi inviabili da Storekeeper a Ninja & Capitolato
-			& Implementazione messaggi da inviare a attori di tipo Ninja \\
-			\hline
-				R[3.1.2.4.1][O][F] & Invio messaggi aggiunta da Storekeeper a Ninja & Capitolato \newline UC5.3
-				& Creazione messaggi di aggiunta item da inviare a Ninja \\
-				\hline
-				R[3.1.2.4.2][O][F] & Invio messaggi rimozione da Storekeeper a Ninja & Capitolato \newline UC.6
-				& Creazione messaggi di rimozione item da inviare a Ninja \\
-				\hline
-				R[3.1.2.4.3][O][F] & Invio messaggi aggiornamento da Storekeeper a Ninja & Capitolato \newline UC5.4 \newline UC5.5
-				& Creazione messaggi di aggiornamento item da inviare a Ninja \\
-				\hline
-		R[3.1.3][O][F] & Gestione memoria principale & Decisione interna
-		& Implementazione gestione controllata dell'uso della memoria principale \\
-		\hline
-			R[3.1.3.1][O][F] & Impostazione memoria massima utilizzabile dal sistema & Decisione interna
-			& Implementare la possibilità di impostare un valore massimo di memoria occupabile dal sistema \\
-			\hline
-			R[3.1.3.2][O][F] & Rilevazione memoria totale ed in uso & Decisione interna
-			& Implementare la rilevazione della memoria totale del sistema e di quella utilizzata \\
-			\hline
-			R[3.1.3.3][O][F] & Valutazione svuotamento memoria & Decisione interna
-			& Implementare un sistema che valuti quando è necessario svuotare la memoria interna \\
-			\hline
-			R[3.1.3.4][O][F] & Selezionare elementi da rimuovere dalla memoria & Decisione interna
-			& Implementare la selezione degli elementi che possono essere rimossi dalla memoria \\
-			\hline
-			R[3.1.3.5][O][F] & Eliminare elementi selezionati	 & Decisione interna
-			& Implementare l'eliminazione degli elementi selezionati dalla memoria interna \\
-			\hline
-			R[3.1.3.6][O][F] & Recuperare elementi da disco se necessario & Decisione interna
-			& Implementare il recupero da disco degli elementi rimossi dalla memoria interna \\
-			\hline
-		R[3.1.4][O][F] & Creazione attori Ninja da parte di Storekeeper & Capitolato 
-		& Implementare la creazione di nuovi attori Ninja da parte dell'attore Storekeeper \\
-		\hline
-	R[3.2][N][F] & Implementazione dell'attore Storefinder & Capitolato
-	& Implementazione dell'actor Storefinder per gestire le richieste \\
-	\hline
-		R[3.2.1][N][F] & Implementazione dell'attore Storefinder Main & Capitolato
-		& Implementazione dell'actor Main, sottotipo di Storefinder\\
-		\hline		
-			R[3.2.1.1][N][F] & Gestione connessioni da parte dell'attore Main & Capitolato \newline UC1
-			& Implementare la connessione via rete al server \\
-			\hline
-			R[3.2.1.3][D][F] & Gestione database tramite l'attore Main & Decisione interna \newline UC3
-			& Implementare la gestione di più database all'interno dello stesso server \\
-			\hline	
-			R[3.2.1.4][N][F] & Creazione attori da parte dell'attore Main & Capitolato
-			& Implementare e gestire la creazione di nuovi attori da parte degli attori Main \\
-			\hline
-				R[3.2.1.4.1][N][F] & Creazione attori Main ad ogni nuova connessione & Capitolato \newline UC1
-				& Permettere all'actor Main principale di creare nuovi Main per gestire molteplici connessione da parte di diversi client \\
-				\hline
-				R[3.2.1.4.2][N][F] & Creazione attori Warehouseman da parte di attori Main& Capitolato
-				& Permettere all'actor Main di creare attori Warehouseman per leggere i dati presenti su disco all'avvio \\
-				\hline
-				R[3.2.1.4.3][N][F] & Creazione attori Storekeeper da parte di attori Main & Capitolato \newline UC4
-				& Permettere all'actor Main di creare attori Storekeeper quando una nuova mappa viene creata dall'utente o quando viene letta da disco \\
-				\hline
-				R[3.2.1.4.4][N][F] & Creazione attori Storefinder da parte di attori Main & Capitolato
-				& Permettere all'actor Main di creare attori Storefinder per gestire le richieste interne \\
-				\hline
-			R[3.2.1.5][O][F] & Gestione richieste esterne da parte dell'attore Main & Capitolato
-			& Implementare il riconoscimento dei comandi DSL da parte dell'attore Main\\
-			\hline
-				R[3.2.1.5.1][N][F] & Parsing stringa comando & Capitolato
-				& Implementare la gestione dei comandi inseriti dall'utente \\
-				\hline	
-					R[3.2.1.5.1.1][N][F] & Invio messaggi in base al comando & Capitolato
-					& Inviare messaggi agli attori adatti dopo un comando utente \\
-					\hline			
-			R[3.2.1.6][O][F] & Implementazione messaggi tra attori Storefinder e attori Main & Capitolato
-			& Gestire le comunicazioni tra attori Main e Storefinder \\
-			\hline
-				R[3.2.1.6.1][N][F] & Messaggi da Main a Storefinder & Capitolato
-				& Creazione messaggi da inviare a Storefinder \\
-				\hline
-				R[3.2.1.6.2][N][F] & Messaggi da Storefinder a Main & Capitolato
-				& Gestire i messaggi di risposta ricevuti da Storefinder \\
-				\hline
-				R[3.2.1.6.3][N][F] & Gestione numero massimo di Storefinder & Capitolato
-				& Gestire le impostazioni per il numero massimo di Storefinder possibili \\
-				\hline
-			R[3.2.1.7][O][F] & Gestione dell'importazione di database da attore Main & Decisione interna \newline UC3.3
-			& Implementare la gestione dell'importazione di database attraverso un attore di tipo Main\\
-			\hline
-			R[3.2.1.8][O][F] & Gestione dell'esportazione di database da attore Main & Decisione interna \newline UC3.2
-			& Implementare la gestione dell'esportazione di database attraverso un attore di tipo Main \\
-			\hline
-		R[3.2.2][N][F] & Gestione messaggi ricevuti da attori Storefinder & Capitolato
-		& Implementare la gestione dei messaggi che un attore di tipo Storefinder può ricevere\\
-		\hline		
-			R[3.2.2.1][N][F] & Gestione messaggi di aggiunta item da Main & Capitolato \newline UC5.3
-			& Gestire i messaggi ricevuti di aggiunta item da Main \\
-			\hline
-			R[3.2.2.2][N][F] & Gestione messaggi di rimozione item da Main & Capitolato \newline UC5.6
-			& Gestire i messaggi ricevuti di rimozione item da Main \\
-			\hline
-			R[3.2.2.3][N][F] & Gestione messaggi di aggiornamento item da Main & Capitolato \newline UC5.5 \newline UC5.4
-			& Gestire i messaggi ricevuti di aggiornamento item da Main \\
-			\hline
-			R[3.2.2.4][N][F] & Gestione messaggi ricevuti da Storekeeper & Capitolato
-			& Gestire i messaggi di risposta ricevuti da attori di tipo Storekeeper \\
-			\hline
-		R[3.2.3][N][F] & Messaggi inviabili da Storefinder & Capitolato
-		& Implementazione dei messaggi inviabili da  attori di tipo Storefinder \\
-		\hline		
-			R[3.2.3.1][N][F] & Messaggio lettura item a Storekeeper & Capitolato
-			& Creazione messaggi di lettura item da inviare a Storekeeper\\
-			\hline
-			R[3.2.3.2][N][F] & Messaggio aggiunta item a Storekeeper & Capitolato
-			& Creazione messaggi di aggiunta item da inviare a Storekeeper\\
-			\hline
-			R[3.2.3.3][N][F] & Messaggio rimozione item a Storekeeper & Capitolato
-			& Creazione messaggi di rimozione item da inviare a Storekeeper\\
-			\hline
-			R[3.2.3.4][N][F] & Messaggio aggiornamento item a Storekeeper & Capitolato
-			& Creazione messaggi di aggiornamento item da inviare a Storekeeper\\
-			\hline
-	R[3.3][N][F] & Implementazione dell'attore Warehouseman & Capitolato
-		& Creazione dell'actor Warehouseman per l'interazione con il filesystem \\
-		\hline
-		R[3.3.1][N][F] & Gestione file tramite Warehouseman & Capitolato
-		& Implementare l'integrazione tra Warehouseman e filesystem \\
-		\hline		
-			R[3.3.1.1][N][F] & Creazione file tramite Warehouseman & Capitolato
-			& Implementare la creazione di file su disco \\
-			\hline
-			R[3.3.1.2][N][F] & Rimozione file tramite Warehouseman & Capitolato
-			& Implementare la rimozione di file su disco \\
-			\hline
-			R[3.3.1.3][N][F] & Modifica file tramite Warehouseman & Capitolato
-			& Implementare la modifica di file su disco \\
-			\hline
-			R[3.3.1.4][N][F] & Rinomina file tramite Warehouseman & Capitolato
-			& Implementare la rinomina dei file su disco \\
-			\hline		
-		R[3.3.2][N][F] & Gestione messaggi ricevuti da Warehouseman & Capitolato
-		& Gestire i messaggi ricevuti da Warehouseman \\
-		\hline		
-			R[3.3.2.1][N][F] & Elaborazione messaggi aggiunta item su file & Capitolato
-			& Gestire i messaggi di aggiunta item su file ricevuti da Storekeeper  \\
-			\hline
-			R[3.3.2.2][N][F] & Elaborazione messaggi rimozione item da file & Capitolato
-			& Gestire i messaggi di rimozione item su file ricevuti da Storekeeper  \\
-			\hline
-			R[3.3.2.3][N][F] & Elaborazione messaggi aggiornamento item su file & Capitolato
-			& Gestire i messaggi di aggiornamento item su file ricevuti da Storekeeper  \\
-			\hline
-			R[3.3.2.4][N][F] & Elaborazione messaggi rimozione mappa & Capitolato
-			& Gestire i messaggi di rimozione mappa ricevuti da Storekeeper  \\
-			\hline
-			R[3.3.2.4][N][F] & Elaborazione messaggi lettura mappe da disco & Capitolato
-			& Gestire i messaggi di richiesta di lettura filesystem ricevuti da Main  \\
-			\hline
-		R[3.3.3][N][F] & Messaggi inviabili da Warehouseman & Capitolato
-		& Creazione messaggi da inviare da Warehouseman \\
-		\hline		
-			R[3.3.3.1][N][F] & Invio messaggi conferma a Storekeeper & Capitolato
-			& Creazione messaggi di risposta da inviare da Storekeeper \\
-			\hline
-			R[3.3.3.2][N][F] & Invio messaggi risposta a Main & Capitolato
-			& Creazione messaggi di risposta da inviare da Main \\
-			\hline
-	R[3.4][O][F] & Implementazione dell'attore Ninja & Capitolato
-		& Creazione dell'actor Ninja per il recupero dei dati \\
-		\hline
-		R[3.4.1][O][F] & Gestione messaggi ricevuti da Ninja & Capitolato
-		& Gestire i messaggi ricevuti da Ninja  \\
-		\hline		
-			R[3.4.1.1][O][F] & Gestione messaggi aggiunta item a mappa Ninja & Capitolato
-			& Gestire i messaggi di aggiunta item ricevuti da Storekeeper  \\
-			\hline
-			R[3.4.1.2][O][F] & Gestione messaggi rimozione item da mappa Ninja & Capitolato
-			& Gestire i messaggi di rimozione item ricevuti da Storekeeper  \\
-			\hline
-			R[3.4.1.3][O][F] & Gestione messaggi aggiornamento item su mappa Ninja & Capitolato
-			& Gestire i messaggi di aggiornamento item ricevuti da Storekeeper  \\
-			\hline
-		R[3.4.2][O][F] & Messaggi inviabili da attori Ninja & Capitolato
-		& Creazione messaggi da inviare da Ninja \\
-		\hline		
-			R[3.4.2.1][O][F] & Invio messaggi conferma a Storekeeper & Capitolato
-			& Creazione messaggi di conferma da inviare da Storekeeper \\
-			\hline
-		R[3.4.3][O][F] & Trasformazione di un attore Ninja in Storekeeper & Capitolato
-		& Implementare la possibilità di mutare a Storekeeper quando necessario \\			
-		\hline
-	R[3.5][O][F] & Imlpementazione dell'attore Manager & Capitolato
-	& Creazione actor Manager per gestire le proprietà degli attori Storekeeper \\
-	\hline
-		R[3.5.1][O][F] & Gestione messaggi ricevuti da Manager & Capitolato
-		& Gestire i messaggi ricevuti da Manager \\
-		\hline		
-			R[3.5.1.1][O][F] & Gestione messaggi contenenti grandezza massima mappa per Storekeeper da Main & Capitolato
-			& Gestione messaggi per impostare grandezza massima della mappa interna degli attori Storekeeper \\
-			\hline
-		R[3.5.2][O][F] & Messaggi inviabili da attori Manager & Capitolato
-		& Creazione messaggi da inviare da Manager \\
-		\hline		
-			R[3.5.2.1][O][F] & Messaggio contenente le proprietà a Storekeeper & Capitolato
-			& Creazione messaggi di risposta contenenti le proprietà da inviare da Storekeeper \\
-			\hline
-		R[3.5.3][O][F] & Creazione nuovi attori Storekeeper & Capitolato
-		& Implementare la creazione di nuovi Storekeeper in caso di bisogno \\			
-		\hline
-			R[4][N][F] & Definizione di un DSL (\emph{Domain specific language}) & Capitolato \newline UC1 \newline UC2 \newline UC3 \newline UC4 \newline UC5
-			 & Definire un DSL per svolgere le operazioni sul database \\
-			\hline
 \bottomrule
 \caption{Requisiti funzionali}
 \end{longtable}   
