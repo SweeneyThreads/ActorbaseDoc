@@ -71,10 +71,10 @@
 	R[1.3.3][N][F] & Apertura nuova connessione & UC1.3
 	& Implementare l'elaborazione della password immessa dall'utente che intende connettersi\\
 	\hline
-	R[1.3.3][N][F] & Conferma connessione & UC1
+	R[1.3.4][N][F] & Conferma connessione & UC1
 	& Confermare al client che ha richiesto la connessione il successo della stessa\\
 	\hline
-	R[1.3.4][N][F] & Connessione fallita & UC7
+	R[1.3.5][N][F] & Connessione fallita & UC7
 	& Informare il client del fallimento del tentativo di connessione\\
 	\hline
 	R[1.4][N][F] & Gestione delle operazioni a livello server & UC3
@@ -83,11 +83,14 @@
 	R[1.4.1][O][F] & Gestione richiesta visualizzazione lista database & UC3.1
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di visualizzazione della lista dei database presenti da parte di un client\\
 	\hline
-	R[1.4.1.1][O][F] & Richiesta visualizzazione lista database actor MAIN & UC3.1
-	& Definire un messaggio inviabile all'actor MAIN per richiedere la lista dei database \\
+	R[1.4.1.1][O][F] & Utilizzo actor MAIN per visualizzazione lista database & UC3.1
+	& Utilizzare un actor di tipo MAIN per implementare la funzionalità di visualizzazione lista database presenti sul server \\
+	\hline
+	R[1.4.1.1.1][O][F] & Messaggio inviabile a actor MAIN per visualizzazione lista database & UC3.1
+	& Definire un messaggio inviabile ad actor di tipo MAIN per richiedere la visualizzazione della lista di database \\
 	\hline
 	R[1.4.1.2][O][F] & Selezione in base ai permessi dell'utente & UC3.1
-	& Implementare un filtro selettivo sulla lista dei database da fornire al client basato sui permessi dell'utente che ha richiesto la lista\\
+	& Implementare un filtro selettivo sulla lista dei database da fornire al client basato sui permessi dell'utente che ha richiesto la lista. I permessi sono definiti nell'apposito file di configurazione\\
 	\hline
 	R[1.4.1.3][O][F] & Invio lista database visualizzabili al client & UC3.1
 	& Implementare una risposta al client, contenente la lista dei database da esso visualizzabili\\
@@ -148,23 +151,26 @@
 	R[1.4.4.2][N][F] & Creazione di un nuovo database sul server & UC3.4
 	& Creare un nuovo database sul server con il nome inviato dal client \\
 	\hline
-	R[1.4.4.2.1][N][F] & Actor MAIN creazione database & UC3.4 \newline Capitolato
-	& Implementare la creazione di un nuovo database tramite actor di tipo MAIN \\
+	R[1.4.4.2.1][N][F] & Utilizzo actor MAIN  per creazione database & UC3.4 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di creazione database provenienti dall'esterno \\
 	\hline
-	R[1.4.4.2.2][N][F] & Actor STOREFINDER creazione database & UC3.4 \newline Capitolato
-	& Implementare la creazione di un nuovo database tramite actor di tipo STOREFINDER \\
+	R[1.4.4.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per creazione database & UC3.4 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere la creazione di un nuovo database sul server \\
 	\hline
-	R[1.4.4.2.3][N][F] & Actor STOREKEEPER creazione database & UC3.4 \newline Capitolato
-	& Implementare la creazione di un nuovo database tramite actor di tipo STOREKEEPER \\
+	R[1.4.4.2.2][N][F] & Utilizzo actor STOREFINDER per creazione database & UC3.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di creazione di un database \\
 	\hline
-	R[1.4.4.2.4][N][F] & Actor WAREHOUSEMAN creazione database & UC3.4 \newline Capitolato
-	& Implementare la creazione di un nuovo database tramite actor di tipo WAREHOUSEMAN \\
+	R[1.4.4.2.3][N][F] & Utilizzo actor STOREKEEPER creazione database & UC3.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di creazione di un database \\
 	\hline
-	R[1.4.4.2.5][O][F] & Actor NINJA creazione database & UC3.4 \newline Capitolato
-	& Implementare la creazione di un nuovo database tramite actor di tipo NINJA  \\
+	R[1.4.4.2.4][N][F] & Utilizzo actor WAREHOUSEMAN creazione database & UC3.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di creazione di un database \\
 	\hline
-	R[1.4.4.2.5][O][F] & Actor MANAGER creazione database & UC3.4 \newline Capitolato
-	& Implementare la creazione di un nuovo database tramite actor di tipo MANAGER \\
+	R[1.4.4.2.5][O][F] &  Utilizzo actor NINJA creazione database & UC3.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di creazione di un database \\
+	\hline
+	R[1.4.4.2.6][O][F] & Utilizzo actor MANAGER creazione database & UC3.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo MANAGER nell'operazione di creazione di un database \\
 	\hline
 	R[1.4.4.3][N][F] & Creazione database avvenuta con successo & UC3.4
 	& Informare il client nel caso in cui il database richiesto fosse stato creato con successo sul server\\
@@ -185,17 +191,26 @@
 	R[1.4.5.2][N][F] & Eliminazione del database dal server & UC3.5
 	& Eliminare il database col nome inviato dal client dal server\\
 	\hline
-	R[1.4.5.2.1][N][F] & Messaggio all'actor MAIN eliminazione database & UC3.5
-	& Definire un messaggio inviabile all'actor MAIN per richiedere l'eliminazione di un database\\
+	R[1.4.5.2.1][N][F] & Utilizzo actor MAIN  per eliminazione database & UC3.5 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di eliminazione database provenienti dall'esterno \\
 	\hline
-	R[1.4.5.2.2][N][F] & Messaggio all'actor STOREFINDER eliminazione database & UC3.5
-	& Definire un messaggio inviabile all'actor STOREFINDER per richiedere l'eliminazione di un database\\
+	R[1.4.5.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per creazione database & UC3.5 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere l'eliminazione di un database dal server \\
 	\hline
-	R[1.4.5.2.3][N][F] & Messaggio dall'actor STOREFINDER all'actor STOREKEEPER eliminazione database & UC3.5
-	& Definire un messaggio inviabile dall'actor STOREFINDER agli actor STOREKEEPER che compongono il database per richiedere l'eliminazione\\
+	R[1.4.5.2.2][N][F] & Utilizzo actor STOREFINDER per eliminazione database & UC3.5 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di eliminazione di un database \\
 	\hline
-	R[1.4.5.2.4][N][F] & Messaggio dall'actor STOREKEEPER all'actor WAREHOUSEMAN eliminazione database & UC3.5
-	& Definire un messaggio inviabile dall'actor STOREKEEPER agli actor WAREHOUSEMAN ad esso collegati per richiedere l'eliminazione di un database\\
+	R[1.4.5.2.3][N][F] & Utilizzo actor STOREKEEPER eliminazione database & UC3.5 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di eliminazione di un database \\
+	\hline
+	R[1.4.5.2.4][N][F] & Utilizzo actor WAREHOUSEMAN eliminazione database & UC3.5 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di eliminazione di un database \\
+	\hline
+	R[1.4.5.2.5][O][F] &  Utilizzo actor NINJA eliminazione database & UC3.5 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di eliminazione di un database \\
+	\hline
+	R[1.4.5.2.6][O][F] & Utilizzo actor MANAGER eliminazione database & UC3.5 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo MANAGER nell'operazione di eliminazione di un database \\
 	\hline
 	R[1.4.5.3][N][F] & Eliminazione database avvenuta con successo & UC3.5
 	& Informare il client nel caso in cui il database richiesto fosse stato eliminato con successo dal server\\
@@ -209,22 +224,43 @@
 	R[1.4.6.1][O][F] & Controllo nome database da rinominare & UC3.6.2
 	& Implementare un controllo sul nome del database da rinominare \\
 	\hline
-	R[1.4.6.1.1][N][F] & Nome database da eliminare non valido & UC3.6.2
+	R[1.4.6.1.1][N][F] & Nome database da rinominare non valido & UC3.6.2
 	& Gestire il caso in cui il nome del database da rinominare, inviato dal client non rispettasse le regole sintattiche dei nomi 
 	dei database \emph{Actorbase}\\
 	R[1.4.6.2][O][F] & Controllo nuovo nome database da rinominare & UC3.6.3
 	& Implementare un controllo sul nuovo nome da assegnare al database da rinominare\\
 	\hline
-	R[1.4.6.2.1][N][F] & Nome database da eliminare non valido & UC3.6.3
+	R[1.4.6.2.1][N][F] & Nome database da rinominare non valido & UC3.6.3
 	& Gestire il caso in cui il nuovo nome del database da rinominare, inviato dal client non rispettasse le regole sintattiche 
 	dei nomi dei database \emph{Actorbase}\\
 	R[1.4.6.3][O][F] & Rinomina del database & UC3.6
 	& Implementare la rinominazione del database\\
 	\hline
+	R[1.4.6.3.1][N][F] & Utilizzo actor MAIN  per rinominazione database & UC3.6 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di rinominazione database provenienti dall'esterno \\
+	\hline
+	R[1.4.6.3.1.1][N][F] & Messaggio inviabile a actor MAIN  per rinominazione database & UC3.6 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere la rinominazione di un database sul server \\
+	\hline
+	R[1.4.6.3.2][N][F] & Utilizzo actor STOREFINDER per rinominazione database & UC3.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di rinominazione di un database \\
+	\hline
+	R[1.4.6.3.3][N][F] & Utilizzo actor STOREKEEPER rinominazione database & UC3.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di rinominazione di un database \\
+	\hline
+	R[1.4.6.3.4][N][F] & Utilizzo actor WAREHOUSEMAN rinominazione database & UC3.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di rinominazione di un database \\
+	\hline
+	R[1.4.6.3.5][O][F] &  Utilizzo actor NINJA rinominazione database & UC3.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di rinominazione di un database \\
+	\hline
+	R[1.4.6.3.6][O][F] & Utilizzo actor MANAGER rinominazione database & UC3.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo MANAGER nell'operazione di rinominazione di un database \\
+	\hline
 	R[1.4.6.4][O][F] & Rinominazione database avvenuta con successo & UC3.6
 	& Informare il client nel caso in cui il database richiesto fosse stato rinominato con successo sul server\\
 	\hline
-	R[1.4.6.5][O][F] & Creazione database fallita & UC3.6
+	R[1.4.6.5][O][F] & Rinominazione database fallita & UC3.6
 	& Informare il client nel caso in cui la rinominazione richiesta fosse fallita\\
 	\hline
 	R[1.4.7][N][F] & Gestione richiesta di selezione database & UC3.7
@@ -240,6 +276,12 @@
 	R[1.4.7.2][N][F] & Selezione del database richiesto & UC3.7
 	& Selezionare il database richiesto dal client \\
 	\hline
+	R[1.4.7.2.1][N][F] & Utilizzo actor MAIN per selezione database & UC3.7
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di selezione di un database provenienti dall'esterno \\
+	\hline
+	R[1.4.7.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per selezione database & UC3.7 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere la selezione di un database sul server \\
+	\hline
 	R[1.4.7.3][N][F] & Selezione database avvenuta con successo & UC3.7
 	& Informare il client nel caso in cui il database richiesto fosse stato selezionato con successo\\
 	\hline
@@ -253,7 +295,13 @@
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di visualizzazione della lista delle mappe presenti nel database 
 	selezionato dal client\\
 	\hline
-	R[1.5.1.1][O][F] & Invio lista mappe al client & UC4.1
+	R[1.5.1.1][O][F] & Utilizzo actor MAIN per visualizzazione lista mappe & UC4.1
+	& Utilizzare un actor di tipo MAIN per implementare la funzionalità di visualizzazione lista mappe del database selezionato dal client \\
+	\hline
+	R[1.5.1.1.1][O][F] & Messaggio inviabile a actor MAIN per visualizzazione lista mappe & UC4.1
+	& Definire un messaggio inviabile ad actor di tipo MAIN per richiedere la visualizzazione della lista delle mappe che compongono il database selezionato \\
+	\hline
+	R[1.5.1.2][O][F] & Invio lista mappe al client & UC4.1
 	& Implementare una risposta al client, contenente la lista delle mappe che compongono il database da esso selezionato\\
 	\hline
 	R[1.5.2][N][F] & Gestione richiesta creazione mappa & UC4.2
@@ -268,6 +316,27 @@
 	\hline
 	R[1.5.2.2][N][F] & Creazione di una nuova mappa & UC4.2
 	& Creare una nuova mappa con il nome inviato dal client all'interno del database selezionato dall'utente \\
+	\hline
+	R[1.5.2.2.1][N][F] & Utilizzo actor MAIN per creazione mappa & UC4.2 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di creazione mappa provenienti dall'esterno \\
+	\hline
+	R[1.5.2.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per creazione mappa & UC4.2 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere la creazione di una nuova mappa nel database selezionato \\
+	\hline
+	R[1.5.2.2.2][N][F] & Utilizzo actor STOREFINDER per creazione mappa & UC4.2 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di creazione di una mappa \\
+	\hline
+	R[1.5.2.2.3][N][F] & Utilizzo actor STOREKEEPER creazione mappa & UC4.2 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di creazione di una mappa \\
+	\hline
+	R[1.5.2.2.4][N][F] & Utilizzo actor WAREHOUSEMAN creazione mappa & UC4.2 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di creazione di una mappa \\
+	\hline
+	R[1.5.2.2.5][O][F] &  Utilizzo actor NINJA creazione mappa & UC4.2 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di creazione di una mappa \\
+	\hline
+	R[1.5.2.2.6][O][F] & Utilizzo actor MANAGER creazione mappa & UC4.2 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo MANAGER nell'operazione di creazione di una mappa \\
 	\hline
 	R[1.5.2.3][N][F] & Creazione mappa avvenuta con successo & UC4.2
 	& Informare il client nel caso in cui la mappa richiesta fosse stata creata con successo sul server\\
@@ -287,6 +356,27 @@
 	\hline
 	R[1.5.3.2][N][F] & Eliminazione di una mappa & UC4.3
 	& Eliminare la mappa con il nome inviato dal client dal database selezionato dall'utente \\
+	\hline
+	R[1.5.3.2.1][N][F] & Utilizzo actor MAIN per eliminazione mappa & UC4.3 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di eliminazione mappa provenienti dall'esterno \\
+	\hline
+	R[1.5.3.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per eliminazione mappa & UC4.3 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere la eliminazione di una mappa nel database selezionato \\
+	\hline
+	R[1.5.3.2.2][N][F] & Utilizzo actor STOREFINDER per eliminazione mappa & UC4.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di eliminazione di una mappa \\
+	\hline
+	R[1.5.3.2.3][N][F] & Utilizzo actor STOREKEEPER eliminazione mappa & UC4.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di eliminazione di una mappa \\
+	\hline
+	R[1.5.3.2.4][N][F] & Utilizzo actor WAREHOUSEMAN eliminazione mappa & UC4.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di eliminazione di una mappa \\
+	\hline
+	R[1.5.3.2.5][O][F] &  Utilizzo actor NINJA eliminazione mappa & UC4.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di eliminazione di una mappa \\
+	\hline
+	R[1.5.3.2.6][O][F] & Utilizzo actor MANAGER eliminazione mappa & UC4.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo MANAGER nell'operazione di eliminazione di una mappa \\
 	\hline
 	R[1.5.3.3][N][F] & Eliminazione mappa avvenuta con successo & UC4.3
 	& Informare il client nel caso in cui la mappa richiesta fosse stata eliminata con successo dal server\\
@@ -314,6 +404,27 @@
 	R[1.5.4.3][O][F] & Rinomina della mappa & UC4.4
 	& Rinominare la mappa richiesta dal client con il nuovo nome inviato\\
 	\hline
+	R[1.5.4.3.1][N][F] & Utilizzo actor MAIN per rinomina mappa & UC4.4 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di rinomina mappa provenienti dall'esterno \\
+	\hline
+	R[1.5.4.3.1.1][N][F] & Messaggio inviabile a actor MAIN  per rinomina mappa & UC4.4 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere la rinomina di una mappa nel database selezionato \\
+	\hline
+	R[1.5.4.3.2][N][F] & Utilizzo actor STOREFINDER per rinomina mappa & UC4.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di rinomina di una mappa \\
+	\hline
+	R[1.5.4.3.3][N][F] & Utilizzo actor STOREKEEPER rinomina mappa & UC4.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di rinomina di una mappa \\
+	\hline
+	R[1.5.4.3.4][N][F] & Utilizzo actor WAREHOUSEMAN rinomina mappa & UC4.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di rinomina di una mappa \\
+	\hline
+	R[1.5.4.3.5][O][F] &  Utilizzo actor NINJA rinomina mappa & UC4.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di rinomina di una mappa \\
+	\hline
+	R[1.5.4.3.6][O][F] & Utilizzo actor MANAGER rinomina mappa & UC4.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo MANAGER nell'operazione di rinomina di una mappa \\
+	\hline
 	R[1.5.4.4][O][F] & Rinominazione mappa avvenuta con successo & UC4.4
 	& Informare il client nel caso in  cui la mappa richiesta fosse stata rinominata con successo\\
 	\hline
@@ -332,6 +443,12 @@
 	\hline
 	R[1.5.5.2][N][F] & Selezione della mappa richiesta & UC4.5
 	& Selezionare la mappa richiesta dal client \\
+	\hline
+	R[1.5.5.2.1][N][F] & Utilizzo actor MAIN per selezione mappa & UC3.7
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di selezione di una mappa provenienti dall'esterno \\
+	\hline
+	R[1.5.5.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per selezione mappa & UC3.7 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere la selezione di una mappa del database selezionato in precedenza \\
 	\hline
 	R[1.5.5.3][N][F] & Selezione mappa avvenuta con successo & UC4.5
 	& Informare il client nel caso in cui la mappa richiesta fosse stata selezionata con successo\\
@@ -353,7 +470,13 @@
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di visualizzazione della lista delle chiavi presenti nella mappa selezionata 
 	da parte di un client\\
 	\hline
-	R[1.6.1.1][O][F] & Invio lista chiavi al client & UC5.1
+	R[1.6.1.1][O][F] & Utilizzo actor MAIN per visualizzazione lista chiavi & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2
+	& Utilizzare un actor di tipo MAIN per implementare la funzionalità di visualizzazione lista chiavi della mappa selezionata dal client \\
+	\hline
+	R[1.6.1.1.1][O][F] & Messaggio inviabile a actor MAIN per visualizzazione lista chiavi & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2
+	& Definire un messaggio inviabile ad actor di tipo MAIN per richiedere la visualizzazione della lista delle chiavi della mappa selezionata \\
+	\hline
+	R[1.6.1.2][O][F] & Invio lista chiavi al client & UC5.1
 	& Implementare un'interfaccia per inviare al client la lista delle chiavi presenti nella mappa selezionata\\
 	\hline
 	R[1.6.2][N][F] & Gestione richiesta ricerca per chiave & UC5.2
@@ -364,7 +487,22 @@
 	& Implementare la lettura della chiave dal comando\\
 	\hline
 	R[1.6.2.2][N][F] & Ricerca di un item attraverso la chiave & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2
-	& Implementare la ricerca di un item attraverso la chiave fornita dal comando interpretata come una stringa\\
+	& Implementare la ricerca di un item attraverso la chiave fornita dal comando interpretata come una stringa \\
+	\hline
+	R[1.6.2.2.1][N][F] & Utilizzo actor MAIN per ricerca item & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di ricerca item provenienti dall'esterno \\
+	\hline
+	R[1.6.2.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per ricerca item & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere la ricerca di un item nella mappa selezionata \\
+	\hline
+	R[1.6.2.2.2][N][F] & Utilizzo actor STOREFINDER per ricerca item & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di ricerca item \\
+	\hline
+	R[1.6.2.2.3][N][F] & Utilizzo actor STOREKEEPER ricerca item & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di ricerca item \\
+	\hline
+	R[1.6.2.2.4][N][F] & Utilizzo actor WAREHOUSEMAN ricerca item & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di ricerca item \\
 	\hline
 	R[1.6.2.3][N][F] & Invio valore al client & UC5.2
 	& Implementare un'interfaccia per inviare al client il valore associato alla chiave ricercata\\
@@ -381,6 +519,27 @@
 	R[1.6.3.2][N][F] & Inserimento nuovo item & UC5.3
 	& Implementare l'inserimento nella mappa della coppia chiave-valore fornita dall'utente\\
 	\hline
+	R[1.6.3.2.1][N][F] & Utilizzo actor MAIN per inserimento item & UC5.3 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di inserimento di un item provenienti dall'esterno \\
+	\hline
+	R[1.6.3.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per inserimento item & UC5.3 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere l'inserimento di un item nella mappa selezionata \\
+	\hline
+	R[1.6.3.2.2][N][F] & Utilizzo actor STOREFINDER per inserimento item & UC5.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di inserimento di un item \\
+	\hline
+	R[1.6.3.2.3][N][F] & Utilizzo actor STOREKEEPER inserimento item & UC5.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di inserimento di un item \\
+	\hline
+	R[1.6.3.2.4][N][F] & Utilizzo actor WAREHOUSEMAN inserimento item & UC5.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di inserimento di un item \\
+	\hline
+	R[1.6.3.2.5][O][F] &  Utilizzo actor NINJA inserimento item & UC5.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di inserimento di un item \\
+	\hline
+	R[1.6.3.2.6][O][F] & Utilizzo actor MANAGER inserimento item & UC5.3 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo MANAGER nell'operazione di inserimento di un item \\
+	\hline
 	R[1.6.3.3][N][F] & Inserimento item avvenuto con successo & UC5.3
 	& Informare il client che inserimento dell'item è avvenuto con successo\\
 	\hline
@@ -395,6 +554,24 @@
 	\hline
 	R[1.6.4.2][N][F] & Aggiornamento valore item & UC5.4.3
 	& Sovrascrivere il valore dell'item da aggiornare\\
+	\hline
+	R[1.6.4.2.1][N][F] & Utilizzo actor MAIN per aggiornamento valore item & UC5.4 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di aggiornamento del valore di un item provenienti dall'esterno \\
+	\hline
+	R[1.6.4.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per aggiornamento valore item & UC5.4 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere l'aggiornamento del valore di un item nella mappa selezionata \\
+	\hline
+	R[1.6.4.2.2][N][F] & Utilizzo actor STOREFINDER per aggiornamento valore item & UC5.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di aggiornamento del valore di un item \\
+	\hline
+	R[1.6.4.2.3][N][F] & Utilizzo actor STOREKEEPER aggiornamento valore item & UC5.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di aggiornamento del valore di un item \\
+	\hline
+	R[1.6.4.2.4][N][F] & Utilizzo actor WAREHOUSEMAN aggiornamento valore item & UC5.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di aggiornamento del valore di un item \\
+	\hline
+	R[1.6.4.2.5][O][F] &  Utilizzo actor NINJA aggiornamento valore item & UC5.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di aggiornamento del valore di un item \\
 	\hline
 	R[1.6.4.3][N][F] & Aggiornamento item avvenuto con successo & UC5.4
 	& Informare il client dell'aggiornamento item avvenuto con successo\\
@@ -411,6 +588,24 @@
 	R[1.6.5.2][O][F] & Append in coda al valore di un item & UC5.5
 	& Aggiungere in coda al valore dell'item il valore inserito\\
 	\hline
+	R[1.6.5.2.1][O][F] & Utilizzo actor MAIN per append valore item & UC5.5 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di append in coda al valore di un item provenienti dall'esterno \\
+	\hline
+	R[1.6.5.2.1.1][O][F] & Messaggio inviabile a actor MAIN  per append valore item & UC5.5 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere l'append in coda al valore di un item nella mappa selezionata \\
+	\hline
+	R[1.6.5.2.2][O][F] & Utilizzo actor STOREFINDER per append valore item & UC5.5 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di append in coda al valore di un item \\
+	\hline
+	R[1.6.5.2.3][O][F] & Utilizzo actor STOREKEEPER append valore item & UC5.5 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di append in coda al valore di un item \\
+	\hline
+	R[1.6.5.2.4][O][F] & Utilizzo actor WAREHOUSEMAN append valore item & UC5.5 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di append in coda al valore di un item \\
+	\hline
+	R[1.6.5.2.5][O][F] &  Utilizzo actor NINJA append valore item & UC5.4 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di append in coda al valore di un item \\
+	\hline
 	R[1.6.5.3][O][F] & Append avvenuto con successo & UC5.5
 	& Informare il client dell'append avvenuto con successo\\
 	\hline
@@ -425,6 +620,27 @@
 	\hline
 	R[1.6.6.2][N][F] & Rimozione dell'item dalla mappa & UC5.6
 	& Rimuovere l'item dalla mappa\\
+	\hline
+	R[1.6.6.2.1][N][F] & Utilizzo actor MAIN per rimozione item & UC5.6 \newline Capitolato
+	& Utilizzare un actor di tipo MAIN per accettare le richieste di rimozione di un item provenienti dall'esterno \\
+	\hline
+	R[1.6.6.2.1.1][N][F] & Messaggio inviabile a actor MAIN  per rimozione item & UC5.6 \newline Capitolato
+	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere la rimozione di un item dalla mappa selezionata \\
+	\hline
+	R[1.6.6.2.2][N][F] & Utilizzo actor STOREFINDER per rimozione item & UC5.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di rimozione di un item \\
+	\hline
+	R[1.6.6.2.3][N][F] & Utilizzo actor STOREKEEPER rimozione item & UC5.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di rimozione di un item \\
+	\hline
+	R[1.6.6.2.4][N][F] & Utilizzo actor WAREHOUSEMAN rimozione item & UC5.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di rimozione di un item \\
+	\hline
+	R[1.6.6.2.5][O][F] &  Utilizzo actor NINJA rimozione item & UC5.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo NINJA da associare ai relativi actor STOREKEEPER nell'operazione di rimozione di un item \\
+	\hline
+	R[1.6.6.2.6][O][F] & Utilizzo actor MANAGER rimozione item & UC5.6 \newline Capitolato
+	& Definire l'utilizzo e il comportamento di actor di tipo MANAGER nell'operazione di rimozione di un item \\
 	\hline
 	R[1.6.6.3][N][F] & Rimozione item avvenuta con successo & UC5.6
 	& Informare il client della rimozione dell'item avvenuta con successo\\
