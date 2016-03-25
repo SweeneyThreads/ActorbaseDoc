@@ -7,7 +7,6 @@
 			\rowcolor{orange!85}Codice & Nome & Fonte & Descrizione \\
 \endhead
 
-%=================================================================================================================================================
 	R[1][N][F] & Implementazione del sistema lato server & Capitolato
 	& Implementazione della parte server di \emph{Actorbase} \\
 	\hline
@@ -26,7 +25,7 @@
 	R[1.2][N][F] & Implementazione interfaccia CLI lato server & Capitolato
 	& Implementazione dell'interfaccia da riga di comando per gestire le operazioni lato server \\
 	\hline
-		R[1.2.1][N][F] & Modalità configurazione server & UC11
+	R[1.2.1][N][F] & Modalità configurazione server & UC11
 	& Implementazione un controllo sulla presenza di una configurazione \emph{Actorbase} sul server all'avvio dell'interfaccia server \\
 	\hline
 	R[1.2.2][N][F] & Configurazione iniziale impostazioni server & UC11
@@ -84,13 +83,13 @@
 	R[1.4.1][O][F] & Gestione richiesta visualizzazione lista database & UC3.1
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di visualizzazione della lista dei database presenti da parte di un client\\
 	\hline
-	R[1.4.1.1][O][F] & Selezione in base ai permessi dell'utente & UC3.1
-	& Implementare un filtro selettivo sulla lista dei database da fornire al client basato sui permessi dell'utente che ha richiesto la lista\\
-	\hline
-	R[1.4.1.1.1][O][F] & Messaggio richiesta visualizzazione lista database actor MAIN & UC3.1
+	R[1.4.1.1][O][F] & Richiesta visualizzazione lista database actor MAIN & UC3.1
 	& Definire un messaggio inviabile all'actor MAIN per richiedere la lista dei database \\
 	\hline
-	R[1.4.1.2][O][F] & Invio lista database visualizzabili al client & UC3.1
+	R[1.4.1.2][O][F] & Selezione in base ai permessi dell'utente & UC3.1
+	& Implementare un filtro selettivo sulla lista dei database da fornire al client basato sui permessi dell'utente che ha richiesto la lista\\
+	\hline
+	R[1.4.1.3][O][F] & Invio lista database visualizzabili al client & UC3.1
 	& Implementare una risposta al client, contenente la lista dei database da esso visualizzabili\\
 	\hline
 	R[1.4.2][O][F] & Gestione richiesta di esportazione database & UC3.2
@@ -149,11 +148,23 @@
 	R[1.4.4.2][N][F] & Creazione di un nuovo database sul server & UC3.4
 	& Creare un nuovo database sul server con il nome inviato dal client \\
 	\hline
-	R[1.4.4.2.1][N][F] & Messaggio actor MAIN creazione database & UC3.4
-	& Definire un messaggio inviabile all'actor MAIN per richiedere la creazione di un database \\
+	R[1.4.4.2.1][N][F] & Actor MAIN creazione database & UC3.4 \newline Capitolato
+	& Implementare la creazione di un nuovo database tramite actor di tipo MAIN \\
 	\hline
-	R[1.4.4.2.2][N][F] & Messaggio actor STOREFINDER creazione database & UC3.4
-	& Definire un messaggio inviabile all'actor STOREFINDER per richiedere la creazione di un database \\
+	R[1.4.4.2.2][N][F] & Actor STOREFINDER creazione database & UC3.4 \newline Capitolato
+	& Implementare la creazione di un nuovo database tramite actor di tipo STOREFINDER \\
+	\hline
+	R[1.4.4.2.3][N][F] & Actor STOREKEEPER creazione database & UC3.4 \newline Capitolato
+	& Implementare la creazione di un nuovo database tramite actor di tipo STOREKEEPER \\
+	\hline
+	R[1.4.4.2.4][N][F] & Actor WAREHOUSEMAN creazione database & UC3.4 \newline Capitolato
+	& Implementare la creazione di un nuovo database tramite actor di tipo WAREHOUSEMAN \\
+	\hline
+	R[1.4.4.2.5][O][F] & Actor NINJA creazione database & UC3.4 \newline Capitolato
+	& Implementare la creazione di un nuovo database tramite actor di tipo NINJA  \\
+	\hline
+	R[1.4.4.2.5][O][F] & Actor MANAGER creazione database & UC3.4 \newline Capitolato
+	& Implementare la creazione di un nuovo database tramite actor di tipo MANAGER \\
 	\hline
 	R[1.4.4.3][N][F] & Creazione database avvenuta con successo & UC3.4
 	& Informare il client nel caso in cui il database richiesto fosse stato creato con successo sul server\\
@@ -235,11 +246,6 @@
 	R[1.4.7.4][N][F] & Messaggio selezione database fallita & UC3.7
 	& Informare il client nel caso in cui la selezione  richiesta fosse fallita\\
 	\hline
-	
-	
-	
-	
-	
 	R[1.5][N][F] & Operazioni a livello database & UC4
 	& Implementare delle interfacce per consentire ad un client di eseguire le operazioni a livello database definite in UC4\\
 	\hline
@@ -340,116 +346,94 @@
 	R[1.5.7][O][F] & Gestione richiesta modifica permessi di accesso al database & UC4.7
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di modifica dei permessi di accesso al database da parte di un client\\
 	\hline
-	
-	
-	R[1.6][N][F] & Gestione delle operazioni a livello mappe & UC5
+	R[1.6][N][F] & Gestione delle operazioni a livello mappa & UC5
 	& Implementare delle interfacce per consentire ad un client di eseguire le operazioni a livello mappa definite in UC5\\
 	\hline
-	R[1.6.1][N][F] & Gestione richiesta visualizzazione chiavi della mappa & UC5.1
+	R[1.6.1][O][F] & Gestione richiesta visualizzazione chiavi della mappa & UC5.1
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di visualizzazione della lista delle chiavi presenti nella mappa selezionata 
 	da parte di un client\\
 	\hline
-	R[1.6.1.1][N][F] & Elaborazione comando visualizzazione chiavi della mappa & UC5.1
-	& Implementare il riconoscimento del comando che visualizza la lista delle chiavi presenti nella mappa selezionata\\
-	\hline
-	R[1.6.1.2][N][F] & Invio lista chiavi al client & UC5.1
+	R[1.6.1.1][O][F] & Invio lista chiavi al client & UC5.1
 	& Implementare un'interfaccia per inviare al client la lista delle chiavi presenti nella mappa selezionata\\
 	\hline
 	R[1.6.2][N][F] & Gestione richiesta ricerca per chiave & UC5.2
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di ricerca di un item attraverso la chiave nella mappa 
 	selezionata dal client\\
 	\hline
-	R[1.6.2.1][N][F] & Elaborazione comando ricerca per chiave & UC5.2.1
-	& Implementare il riconoscimento del comando che effettua la ricerca di un item attraverso la chiave\\
-	\hline
-	R[1.6.2.2][N][F] & Lettura chiave & UC5.2.3 UC5.3.2 UC5.4.2 UC5.5.2
+	R[1.6.2.1][N][F] & Lettura chiave & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2
 	& Implementare la lettura della chiave dal comando\\
 	\hline
-	R[1.6.2.3][N][F] & Ricerca di un item attraverso la chiave & UC5.2.3 UC5.3.2 UC5.4.2 UC5.5.2
+	R[1.6.2.2][N][F] & Ricerca di un item attraverso la chiave & UC5.2.3 \newline UC5.3.2 \newline UC5.4.2 \newline UC5.5.2
 	& Implementare la ricerca di un item attraverso la chiave fornita dal comando interpretata come una stringa\\
 	\hline
-	R[1.6.2.4][N][F] & Invio valore al client & UC5.2
+	R[1.6.2.3][N][F] & Invio valore al client & UC5.2
 	& Implementare un'interfaccia per inviare al client il valore associato alla chiave ricercata\\
 	\hline
-	R[1.6.2.5][N][F] & Invio messaggio al client item non presente & UC5.8 UC5.2.3 UC5.4.2 UC5.5.2
-	& Implementare l'invio al client di un messaggio di item non presente nella mappa\\
+	R[1.6.2.4][N][F] & Item non presente & UC5.8 \newline UC5.2.3 \newline UC5.4.2  \newline UC5.5.2
+	& Informare il client nel caso in cui l'item non fosse presente nella mappa\\
 	\hline
 	R[1.6.3][N][F] & Gestione richiesta inserimento item & UC5.3
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di inserimento di un item nella mappa selezionata dal client\\
 	\hline
-	R[1.6.3.1][N][F] & Elaborazione comando inserimento item & UC5.3.1
-	& Implementare il riconoscimento del comando che effettua l'inserimento di un item nella mappa\\
+	R[1.6.3.1][N][F] & Controllo item già presente & UC5.3
+	& Controllare che non esista già un item con chiave uguale alla chiave inviata dal client, in tal caso cancellare l'inserimento\\
 	\hline
-	R[1.6.3.2][N][F] & Controllo validità chiave & UC5.3.2
-	& Implementare il controllo della validità della chiave\\
-	\hline
-	R[1.6.3.3][N][F] & Inserimento nuovo item & UC5.3
+	R[1.6.3.2][N][F] & Inserimento nuovo item & UC5.3
 	& Implementare l'inserimento nella mappa della coppia chiave-valore fornita dall'utente\\
 	\hline
-	R[1.6.3.4][N][F] & Invio messaggio al client inserimento item avvenuto con successo & UC5.3
-	& Inviare al client un messaggio di inserimento item avvenuto con successo\\
+	R[1.6.3.3][N][F] & Inserimento item avvenuto con successo & UC5.3
+	& Informare il client che inserimento dell'item è avvenuto con successo\\
 	\hline
-	R[1.6.3.5][N][F] & Invio messaggio al client inserimento item fallito & UC5.7
-	& Inviare al client un messaggio di inserimento item fallito\\
+	R[1.6.3.4][N][F] & Inserimento item fallito & UC5.7
+	& Informare il client nel caso in cui l'inserimento dell'item fosse fallito\\
 	\hline
 	R[1.6.4][N][F] & Gestione richiesta aggiornamento item & UC5.4
 	& Implementare un'interfaccia l'elaborazione di una richiesta di aggiornamento di un item della mappa selezionata dal client\\
 	\hline
-	R[1.6.4.1][N][F] & Elaborazione comando aggiornamento item & UC5.4.1
-	& Implementare il riconoscimento del comando che effettua l'aggiornamento di un item della mappa\\
+	R[1.6.4.1][N][F] & Ricerca item da aggiornare & UC5.4.2
+	& Ricercare l'item da aggiornare\\
 	\hline
-	R[1.6.4.2][N][F] & Controllo esistenza item da aggiornare & UC5.4.2
-	& Implementare il controllo dell'esistenza dell'item da aggiornare\\
-	\hline
-	R[1.6.4.3][N][F] & Aggiornamento valore item & UC5.4.3
+	R[1.6.4.2][N][F] & Aggiornamento valore item & UC5.4.3
 	& Sovrascrivere il valore dell'item da aggiornare\\
 	\hline
-	R[1.6.4.4][N][F] & Invio messaggio al client aggiornamento item avvenuto con successo & UC5.4
-	& Inviare al client un messaggio di aggiornamento item avvenuto con successo\\
+	R[1.6.4.3][N][F] & Aggiornamento item avvenuto con successo & UC5.4
+	& Informare il client dell'aggiornamento item avvenuto con successo\\
 	\hline
-	R[1.6.4.5][N][F] & Invio messaggio al client modifica item fallita & UC5.9 UC5.4 UC5.5
+	R[1.6.4.4][N][F] & Aggiornamento item fallito & UC5.9 \newline UC5.4 \newline UC5.5
 	& Inviare al client un messaggio di modifica dell'item fallita\\
 	\hline
-	R[1.6.5][N][F] & Gestione richiesta di append & UC5.5
+	R[1.6.5][O][F] & Gestione richiesta di append & UC5.5
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di append al valore di un item della mappa selezionata dal client\\
 	\hline
-	R[1.6.5.1][N][F] & Elaborazione comando di append & UC5.5.1
-	& Implementare il riconoscimento del comando di append\\
+	R[1.6.5.1][O][F] & Ricerca item per append & UC5.5.2
+	& Ricercare l'item sul quale effettuare l'append\\
 	\hline
-	R[1.6.5.2][N][F] & Controllo esistenza item per append & UC5.5.2
-	& Implementare il controllo dell'esistenza dell'item sul quale eseguire il comando\\
-	\hline
-	R[1.6.5.3][N][F] & Append in coda al valore di un item & UC5.5
+	R[1.6.5.2][O][F] & Append in coda al valore di un item & UC5.5
 	& Aggiungere in coda al valore dell'item il valore inserito\\
 	\hline
-	R[1.6.5.4][N][F] & Invio messaggio al client append avvenuto con successo & UC5.5
-	& Inviare al client un messaggio di append avvenuto con successo\\
+	R[1.6.5.3][O][F] & Append avvenuto con successo & UC5.5
+	& Informare il client dell'append avvenuto con successo\\
+	\hline
+	R[1.6.5.4][O][F] & Append fallito & UC5.5
+	& Informare il client dell'append fallito\\
 	\hline
 	R[1.6.6][N][F] & Gestione richiesta di rimozione item & UC5.6
 	& Implementare un'interfaccia per l'elaborazione di una richiesta di rimozione di un item della mappa selezionata dal client\\
 	\hline
-	R[1.6.6.1][N][F] & Elaborazione comando di rimozione item & UC5.6.1
-	& Implementare il riconoscimento del comando di rimozione di un itemt\\
+	R[1.6.6.1][N][F] & Ricerca item da rimuovere & UC5.6.2
+	& Ricercare l'item da rimuovere, all'interno della mappa selezionata\\
 	\hline
-	R[1.6.6.2][N][F] & Controllo esistenza item per rimozione & UC5.6.2
-	& Implementare il controllo dell'esistenza dell'item da rimuovere\\
-	\hline
-	R[1.6.6.3][N][F] & Rimozione dell'item dalla mappa & UC5.6
+	R[1.6.6.2][N][F] & Rimozione dell'item dalla mappa & UC5.6
 	& Rimuovere l'item dalla mappa\\
 	\hline
-	R[1.6.6.4][N][F] & Invio messaggio al client rimozione item avvenuta con successo & UC5.6
-	& Inviare un messaggio al client di rimozione item avvenuta con successo\\
+	R[1.6.6.3][N][F] & Rimozione item avvenuta con successo & UC5.6
+	& Informare il client della rimozione dell'item avvenuta con successo\\
 	\hline
-	R[1.6.6.5][N][F] & Invio messaggio al client rimozione item fallita & UC5.10 UC5.6
-	& Inviare un messaggio al client di rimozione item fallita\\
+	R[1.6.6.4][N][F] & Rimozione item fallita & UC5.10 \newline UC5.6
+	& Informare il client del fallimento dell'operazione di rimozione item\\
 	\hline
-%=================================================================================================================================================
-	
-	
-%=================================================================================================================================================
 	R[2][N][F] & Implementazione del sistema lato client & Capitolato & Implementazione della parte client di \emph{Actorbase} \\
 	\hline
-	%
 	R[2.1][N][F] & Gestione richiesta di connessione ad un server & UC1 & Implementare un'interfaccia per effettuare la connessione ad un server \\
 	\hline
 	R[2.1.1][N][F] & Comando DSL di connessione & UC1 & Definire un comando DSL per l'operazione di connessione \\
@@ -463,22 +447,21 @@
 	\hline
 	R[2.1.2.3][N][F] & Lettura della password  associata & UC1 & Estrarre dal comando la password associata all'username per il login sul server\\
 	\hline
-	R[2.1.3][N][F] & Invio della richiesta di connessione & UC1 & Acquisiti i dati necessari da riga di comando effettua una richiesta di connessione 
+	R[2.1.3][N][F] & Invio della richiesta di connessione & UC1 & Acquisiti i dati necessari da riga di comando effettuare una richiesta di connessione 
 	al server specificato \\
 	\hline
-	R[2.1.4][N][F] & Aggiornamento mappa di HELP & UC1 & Aggiorna la mappa di HELP \\
+	R[2.1.4][N][F] & Aggiornamento mappa di HELP & UC1 & Aggiornare la mappa di HELP \\
 	\hline
-	R[2.1.4.1][N][F] & Prelevamento mappa di HELP & UC1 & Preleva dalla risposta di connessione effettuata del server la mappa aggiornata di HELP \\
+	R[2.1.4.1][N][F] & Prelevamento mappa di HELP & UC1 & Prelevare dalla risposta di connessione effettuata del server la mappa aggiornata di HELP \\
 	\hline
-	R[2.1.4.2][N][F] & Sovrascrizione mappa di HELP & UC1 & Sovrascrive la mappa di HELP locale con quella prelevata dalla risposta del server \\
+	R[2.1.4.2][N][F] & Sovrascrittura mappa di HELP & UC1 & Sovrascrivere la mappa di HELP locale con quella prelevata dalla risposta del server \\
 	\hline
-	R[2.1.5][N][F] & Messaggio connessione avvenuta con successo & UC1 & Stampa il messaggio di connessione avvenuta con successo \\
+	R[2.1.5][N][F] & Messaggio connessione avvenuta con successo & UC1 & Stampare il messaggio di connessione avvenuta con successo \\
 	\hline
-	R[2.1.6][N][F] & Messaggio connessione non riuscita & UC1 & Stampa il messaggio di connessione non avvenuta \\
+	R[2.1.6][N][F] & Messaggio connessione non riuscita & UC1 & Stampare il messaggio di connessione non avvenuta \\
 	\hline
-	R[2.1.7][N][F] & Messaggio connessione rifiutata & UC1 & Stampa il messaggio di connessione rifiutata dal server \\
+	R[2.1.7][N][F] & Messaggio connessione rifiutata & UC1 & Stampare il messaggio di connessione rifiutata dal server \\
 	\hline
-	%
 	R[2.2][N][F] & Gestione richiesta di disconnessione dal server & UC6 & Implementare un'interfaccia per effettuare la disconnessione dal server \\
 	\hline
 	R[2.2.1][N][F] & Comando DSL di disconnessione & UC6 & Definire un comando DSL per l'operazione di disconnessione \\
@@ -491,77 +474,72 @@
 	\hline
 	R[2.2.5][N][F] & Messaggio disconnessione avvenuta con successo & UC6 & Stampa il messaggio di disconnessione avvenuta con successo \\
 	\hline
-	%
-	R[2.3][N][F] & Gestione comando di HELP & UC2 & Implementare un'interfaccia che restituisca un aiuto all'utente \\
+	R[2.3][O][F] & Gestione comando di HELP & UC2 & Implementare un'interfaccia che restituisca un aiuto all'utente \\
 	\hline
-	R[2.3.1][N][F] & Comando DSL di HELP generico & UC2.1 & Definire un comando DSL per l'operazione di HELP generico \\
+	R[2.3.1][O][F] & Comando DSL di HELP generico & UC2.1 & Definire un comando DSL per l'operazione di HELP generico \\
 	\hline
-	R[2.3.2][N][F] & Gestione del comando di HELP generico & UC2.1 & Implementare un'interfaccia per la visualizzazione di aiuto generico \\
+	R[2.3.2][O][F] & Gestione del comando di HELP generico & UC2.1 & Implementare un'interfaccia per la visualizzazione di aiuto generico \\
 	\hline
-	R[2.3.2.1][N][F] & Riconoscimento del comando di HELP generico & UC2.1 & Riconoscere tramite parse il comando di HELP generico \\
+	R[2.3.2.1][O][F] & Riconoscimento del comando di HELP generico & UC2.1 & Riconoscere tramite parse il comando di HELP generico \\
 	\hline
-	R[2.3.2.2][N][F] & Stampa dell'aiuto generale & UC2.1 & Stampa la lista di comandi disponibili con una breve descrizione \\
+	R[2.3.2.2][O][F] & Stampa dell'aiuto generale & UC2.1 & Stampa la lista di comandi disponibili con una breve descrizione \\
 	\hline
-	R[2.3.3][N][F] & Comando DSL di HELP specifico & UC2.1 & Definire un comando DSL per l'operazione di HELP specifico \\
+	R[2.3.3][O][F] & Comando DSL di HELP specifico & UC2.1 & Definire un comando DSL per l'operazione di HELP specifico \\
 	\hline
-	R[2.3.4][N][F] &  Gestione del comando di HELP specifico & UC2.2 & Implementare un'interfaccia per la visualizzazione di aiuto specifico \\
+	R[2.3.4][O][F] &  Gestione del comando di HELP specifico & UC2.2 & Implementare un'interfaccia per la visualizzazione di aiuto specifico \\
 	\hline
-	R[2.3.4.1][N][F] & Riconoscimento del comando di HELP specifico & UC2.1 & Riconoscere tramite parse il comando di HELP specifico \\
+	R[2.3.4.1][O][F] & Riconoscimento del comando di HELP specifico & UC2.1 & Riconoscere tramite parse il comando di HELP specifico \\
 	\hline
-	R[2.3.4.2][N][F] & Lettura del comando da ricercare & UC2.1 & Estrarre dal comando il nome del comando di cui restituire le informazioni specifiche \\
+	R[2.3.4.2][O][F] & Lettura del comando da ricercare & UC2.1 & Estrarre dal comando il nome del comando di cui restituire le informazioni specifiche \\
 	\hline
-	R[2.3.4.3][N][F] & Stampa delle informazioni specifiche del comando & UC2.1 & Preleva dalla mappa di HELP aggiornata le informazioni dettagliate del 
+	R[2.3.4.3][O][F] & Stampa delle informazioni specifiche del comando & UC2.1 & Preleva dalla mappa di HELP aggiornata le informazioni dettagliate del 
 	comando desiderato e le stampa \\
 	\hline
-	%
-	R[2.4][N][F] & Gestione comando di SHOWDB & UC3.1 & Implementare un'interfaccia che restituisca la lista di database presenti nel server \\
+	R[2.4][O][F] & Gestione comando di SHOWDB & UC3.1 & Implementare un'interfaccia che restituisca la lista di database presenti nel server \\
 	\hline
-	R[2.4.1][N][F] & Comando DSL di SHOWDB & UC3.1 & Definire un comando DSL per l'operazione di SHOWDB \\
+	R[2.4.1][O][F] & Comando DSL di SHOWDB & UC3.1 & Definire un comando DSL per l'operazione di SHOWDB \\
 	\hline
-	R[2.4.2][N][F] & Riconoscimento del comando di SHOWDB & UC3.1 & Riconoscere tramite parse il comando di SHOWDB \\
+	R[2.4.2][O][F] & Riconoscimento del comando di SHOWDB & UC3.1 & Riconoscere tramite parse il comando di SHOWDB \\
 	\hline
-	R[2.4.3][N][F] & Invio della richiesta di visualizzazione de database & UC3.1 & Invia al server il comando DSL di SHOWDB per poter visualizzare 
+	R[2.4.3][O][F] & Invio della richiesta di visualizzazione de database & UC3.1 & Invia al server il comando DSL di SHOWDB per poter visualizzare 
 	la lista di tutti i database presenti nel server \\
 	\hline
-	R[2.4.4][N][F] & Stampa la lista dei database & UC3.1 & Stampa la risposta ricevuta dal server contenente la lista dei database a cui l'utente ha 
+	R[2.4.4][O][F] & Stampa la lista dei database & UC3.1 & Stampa la risposta ricevuta dal server contenente la lista dei database a cui l'utente ha 
 	accesso \\
 	\hline
-	%
-	R[2.5][N][F] & Gestione comando di EXPORTDB & UC3.2 & Implementare un'interfaccia che permetta l'esportazione su file di back-up di un database 
+	R[2.5][O][F] & Gestione comando di EXPORTDB & UC3.2 & Implementare un'interfaccia che permetta l'esportazione su file di back-up di un database 
 	specifico \\
 	\hline
-	R[2.5.1][N][F] & Comando DSL di EXPORTDB & UC3.2 & Definire un comando DSL per l'operazione di EXPORTDB \\
+	R[2.5.1][O][F] & Comando DSL di EXPORTDB & UC3.2 & Definire un comando DSL per l'operazione di EXPORTDB \\
 	\hline
-	R[2.5.2][N][F] & Riconoscimento del comando di EXPORTDB & UC3.2 & Riconoscere tramite parse il comando di EXPORTDB \\
+	R[2.5.2][O][F] & Riconoscimento del comando di EXPORTDB & UC3.2 & Riconoscere tramite parse il comando di EXPORTDB \\
 	\hline
-	R[2.5.2.1][N][F] & Lettura del nome del database da esportare  & UC3.1 & Estrae dal comando il nome del database che l'utente intende esportare \\
+	R[2.5.2.1][O][F] & Lettura del nome del database da esportare  & UC3.1 & Estrae dal comando il nome del database che l'utente intende esportare \\
 	\hline
-	R[2.5.3][N][F] & Invio della richiesta di EXPORTDB & UC3.2 & Invia al server la richiesta di esportare il database con il nome estrapolato dal 
+	R[2.5.3][O][F] & Invio della richiesta di EXPORTDB & UC3.2 & Invia al server la richiesta di esportare il database con il nome estrapolato dal 
 	comando inserito dall'utente \\
 	\hline
-	R[2.5.4][N][F] & Salvataggio database & UC3.2 & Salva su disco il file ricevuto dal server rappresentate il database esportato \\
+	R[2.5.4][O][F] & Salvataggio database & UC3.2 & Salva su disco il file ricevuto dal server rappresentate il database esportato \\
 	\hline
-	R[2.5.5][N][F] & Messaggio esportazione fallita & UC3.8 & Stampa il messaggio di esportazione fallita \\
+	R[2.5.5][O][F] & Messaggio esportazione fallita & UC3.8 & Stampa il messaggio di esportazione fallita \\
 	\hline
-	%
-	R[2.6][N][F] & Gestione comando di IMPORTDB & UC3.3 & Implementare un'interfaccia che permetta l'importazione di un database da un file di back-up 
+	R[2.6][O][F] & Gestione comando di IMPORTDB & UC3.3 & Implementare un'interfaccia che permetta l'importazione di un database da un file di back-up 
 	presente su disco \\
 	\hline
-	R[2.6.1][N][F] & Comando DSL di IMPORTDB & UC3.3 & Definire un comando DSL per l'operazione di IMPORTDB \\
+	R[2.6.1][O][F] & Comando DSL di IMPORTDB & UC3.3 & Definire un comando DSL per l'operazione di IMPORTDB \\
 	\hline
-	R[2.6.2][N][F] & Riconoscimento del comando di IMPORTDB & UC3.3 & Riconoscere tramite parse il comando di IMPORTDB \\
+	R[2.6.2][O][F] & Riconoscimento del comando di IMPORTDB & UC3.3 & Riconoscere tramite parse il comando di IMPORTDB \\
 	\hline
-	R[2.6.2.1][N][F] & Lettura del nome del file da importare  & UC3.3 & Estrae dal comando il nome del file che l'utente intende importare come un 
+	R[2.6.2.1][O][F] & Lettura del nome del file da importare  & UC3.3 & Estrae dal comando il nome del file che l'utente intende importare come un 
 	database \\
 	\hline
-	R[2.6.3][N][F] & Invio della richiesta di IMPORT & UC3.3 & Invia al server la richiesta di importare il file con il nome estrapolato dal 
+	R[2.6.3][O][F] & Invio della richiesta di IMPORT & UC3.3 & Invia al server la richiesta di importare il file con il nome estrapolato dal 
 	comando inserito dall'utente \\
 	\hline
-	R[2.6.4][N][F] & Messaggio importazione avvenuta con successo & UC3.3 & Stampa il messaggio di importazione avvenuta con successo \\
+	R[2.6.4][O][F] & Messaggio importazione avvenuta con successo & UC3.3 & Stampa il messaggio di importazione avvenuta con successo \\
 	\hline
-	R[2.6.5][N][F] & Messaggio importazione fallita & UC3.8 & Stampa il messaggio di importazione fallita \\
+	R[2.6.5][O][F] & Messaggio importazione fallita & UC3.8 & Stampa il messaggio di importazione fallita \\
 	\hline
-	%
 	R[2.7][N][F] & Gestione comando di CREATEDB & UC3.4 & Implementare un'interfaccia che inserisca un database all'interno del server a cui si 
 	è connessi  \\
 	\hline
@@ -577,7 +555,6 @@
 	\hline
 	R[2.7.5][N][F] & Messaggio creazione fallita & UC3.10 & Stampa il messaggio di creazione del database fallita \\
 	\hline
-	%
 	R[2.8][N][F] & Gestione comando di DELETEDB & UC3.5 & Implementare un'interfaccia che elimini il database desiderato dal server \\
 	\hline
 	R[2.8.1][N][F] & Comando DSL di DELETEDB & UC3.5 & Definire un comando DSL per l'operazione di DELETEDB \\
@@ -599,35 +576,33 @@
 	R[2.8.5.2][N][F] & Messaggio eliminazione fallita & UC3.11 & Stampa il messaggio di eliminazione del database fallita, l'utente 
 	non ha i permessi necessari \\
 	\hline
-	%
-	R[2.9][N][F] & Gestione comando di RENAMEDB & UC3.6 & Implementare un'interfaccia che rinomini il database desiderato \\
+	R[2.9][O][F] & Gestione comando di RENAMEDB & UC3.6 & Implementare un'interfaccia che rinomini il database desiderato \\
 	\hline
-	R[2.9.1][N][F] & Comando DSL di RENAMEDB & UC3.6 & Definire un comando DSL per l'operazione di RENAMEDB \\
+	R[2.9.1][O][F] & Comando DSL di RENAMEDB & UC3.6 & Definire un comando DSL per l'operazione di RENAMEDB \\
 	\hline
-	R[2.9.2][N][F] & Riconoscimento del comando di RENAMEDB & UC3.6 & Riconoscere tramite parse il comando di RENAMEDB \\
+	R[2.9.2][O][F] & Riconoscimento del comando di RENAMEDB & UC3.6 & Riconoscere tramite parse il comando di RENAMEDB \\
 	\hline
-	R[2.9.2.1][N][F] & Lettura del nome del database che si vuole rinominare & UC3.6 & Estrae dal comando il nome del database che l'utente 
+	R[2.9.2.1][O][F] & Lettura del nome del database che si vuole rinominare & UC3.6 & Estrae dal comando il nome del database che l'utente 
 	intende rinominare \\
 	\hline
-	R[2.9.2.2][N][F] & Lettura del nuovo nome del database & UC3.6 & Estrae dal comando il nuovo nome che l'utente intende fornire al database \\
+	R[2.9.2.2][O][F] & Lettura del nuovo nome del database & UC3.6 & Estrae dal comando il nuovo nome che l'utente intende fornire al database \\
 	\hline
-	R[2.9.3][N][F] & Invio della richiesta di RENAMEDB & UC3.6 & Invia al server la richiesta di rinominare il database con il nome estrapolato 
+	R[2.9.3][O][F] & Invio della richiesta di RENAMEDB & UC3.6 & Invia al server la richiesta di rinominare il database con il nome estrapolato 
 	dal comando, fornendo il nuovo nome per il database \\
 	\hline
-	R[2.9.4][N][F] & Messaggio rinomina avvenuta con successo & UC3.6 & Stampa il messaggio di rinomina del database avvenuta con successo \\
+	R[2.9.4][O][F] & Messaggio rinomina avvenuta con successo & UC3.6 & Stampa il messaggio di rinomina del database avvenuta con successo \\
 	\hline
-	R[2.9.5][N][F] & Messaggio rinomina fallita & UC3.12 & Stampa il messaggio di rinomina del database fallita \\
+	R[2.9.5][O][F] & Messaggio rinomina fallita & UC3.12 & Stampa il messaggio di rinomina del database fallita \\
 	\hline
-	R[2.9.5.1][N][F] & Messaggio rinomina fallita, nome già utilizzato& UC3.12 & Stampa il messaggio di rinomina del database fallita perché il nome 
+	R[2.9.5.1][O][F] & Messaggio rinomina fallita, nome già utilizzato& UC3.12 & Stampa il messaggio di rinomina del database fallita perché il nome 
 	é già utilizzato da un altro database \\
 	\hline
-	R[2.9.5.2][N][F] & Messaggio rinomina fallita, database non esistente & UC3.12 & Stampa il messaggio di rinomina del database fallita perché il 
+	R[2.9.5.2][O][F] & Messaggio rinomina fallita, database non esistente & UC3.12 & Stampa il messaggio di rinomina del database fallita perché il 
 	database selezionato non è presente \\
 	\hline
-	R[2.9.5.2][N][F] & Messaggio rinomina fallita, permessi insufficienti & UC3.12 & Stampa il messaggio di rinomina del database fallita perché 
+	R[2.9.5.2][O][F] & Messaggio rinomina fallita, permessi insufficienti & UC3.12 & Stampa il messaggio di rinomina del database fallita perché 
 	l'utente non ha i permessi necessari \\
 	\hline
-	%
 	R[2.10][N][F] & Gestione comando di USEDB & UC3.7 & Implementare un'interfaccia che selezioni il database desiderato \\
 	\hline
 	R[2.10.1][N][F] & Comando DSL di USEDB & UC3.7 & Definire un comando DSL per l'operazione di USEDB \\
@@ -650,7 +625,6 @@
 	R[2.10.5.2][N][F] & Messaggio selezione fallita, database non presente & UC3.12 & Stampa il messaggio di selezione del database fallita perché il 
 	database non é presente \\
 	\hline
-	%
 	
 \bottomrule
 \caption{Requisiti funzionali}
