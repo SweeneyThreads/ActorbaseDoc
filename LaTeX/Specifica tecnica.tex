@@ -92,6 +92,8 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+                \noalign{\hrule height 0.5pt}
+				1.0.1 & 2016-03-26 & \emph{Progettisti} \newline Bonato Paolo \newline Biggeri Mattia \newline Padovan Tommaso \newline Tommasin Davide \newline Bortolazzo Matteo & Prima stesura di Architettura generale (sezinoe 3) e componenti (sezione 4)\\
 				\noalign{\hrule height 0.5pt}
 				1.0.0 & 2016-03-24 & \emph{Analisti} \newline Bonato Paolo \newline Biggeri Mattia & Creazione scheletro documento, stesura introduzione, definizione di metodo e formalismo di specifica. \\
 				\noalign{\hrule height 1.5pt}
@@ -156,14 +158,45 @@
 			Ogni classe sarà dotata di una breve descrizione e ne saranno specificate le responsabilità, le classi ereditate, le sottoclassi e le relazioni con altre classi.
 			Successivamente saranno mostrati e descritti i diagrammi delle attività che coinvolgono l'utente.
 			Infine si illustreranno degli esempi di utilizzo dei design pattern nell'architettura del sistema.
-		\subsection{Architettura generale} 
- 
-	 
+		\subsection{Architettura generale}
+        	Il sistema ha un architettura generale di tipo client-server.
+            Il server ha un architettura di tipo event-driven basata sul modello ad attori ed espone delle API tramite socket TCP.
+            Il client ha un architettura di tipo Model-View-Controller con interfaccia da linea di comando e comunica con il server  grazie ad un driver tramite connessione TCP.
+            
 	\newpage 
 	\section{Componenti}
-	
+		\subsection{Server}
+        	Le componenti principali del server sono gli attori:
+            \begin{itemize}
+				\item \textbf{Storekeeper:} Mantengono fisicamente in memoria le mappe chiave/valore
+                \item \textbf{Ninja:} Sono associati ad uno Storekeeper. Risiedono in nodi differenti da questi ultimi, ma in continuo aggiornamento con essi. Permettono di mantenere la consistenza del database anche in caso di caduta di uno Storekeeper; in questo caso un Ninja verrà eletto nuovo Storekeeper.
+                \item \textbf{Storefinder:} Si occupano di ricevere richieste dall'esterno e instradarle ai rispettivi Storefinder, virtualmente ogni Storefinder definisce un indice sulla chiave della mappa. Il loro numero è veriabile e può essere configurato. Uno degli Storefinder è definito \textbf{main} e funge da punto di accesso al database.
+                \item \textbf{Warehousemen:} Si interfaciano con gli Storekeeper e trascrivono persistentemente le rispettive mappe su disco.
+                \item \textbf{Manager:} Ricevono le richieste di gestione degli attori di tipo Storekeeper, ad esempio sono responsabili del numero massimo di coppie chiave/valore contenute in un'istanza di Storekeeper.
+			\end{itemize}
+            
+        \subsection{Client}
+        	Il client ha struttura MVC.
+            \begin{itemize}
+				\item \textbf{Model:}
+                	Il Model è la componente che si occupa di comunicare con il server usando i metodi del driver. E notifica la view quando avviene un cambiamento nel suo stato.
+                \item \textbf{View:}
+                	La View è la componente che interagisce con l'utente mediante interfaccia a linea di comando. L'utente può usare il DSL per interrogare il Model. La View esegue delle \emph{state query} sul model per avere le informazioni aggiornate.
+                \item \textbf{Controller:}
+                	Il Controller è la componenente che esegue il parsing dei comandi del DSL inseriti nella View e li notifica al Model.			
+			\end{itemize}
+        
+        \subsection{Driver}
+        	Il Driver è una libreria, invocando i metodi della quale è possibile effettuare richieste TCP verso le API esposte dal Server.
+    
 	\newpage 
 	\section{Package}
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.3]{Packages_generale.png}
+			\caption{Architettura generale, vista Package}
+		\end{figure}
+	
 		\subsection{Lato server}
 			\subsubsection{package server 1}
 				% Immagine
@@ -221,4 +254,3 @@
 	\listoftables
 		
 \end{document}
-	
