@@ -648,8 +648,10 @@
 	R[1.6.6.4][N][F] & Rimozione item fallita & UC5.10 \newline UC5.6
 	& Informare il client del fallimento dell'operazione di rimozione item\\
 	\hline
+	%%%%
 	R[2][N][F] & Implementazione del sistema lato client & Capitolato & Implementazione della parte client di \emph{Actorbase} \\
 	\hline
+	%
 	R[2.1][N][F] & Gestione richiesta di connessione ad un server & UC1 & Implementare un'interfaccia per effettuare la connessione ad un server \\
 	\hline
 	R[2.1.1][N][F] & Comando DSL di connessione & UC1 & Definire un comando DSL per l'operazione di connessione \\
@@ -678,6 +680,7 @@
 	\hline
 	R[2.1.7][N][F] & Messaggio connessione rifiutata & UC1 & Stampare il messaggio di connessione rifiutata dal server \\
 	\hline
+	%
 	R[2.2][N][F] & Gestione richiesta di disconnessione dal server & UC6 & Implementare un'interfaccia per effettuare la disconnessione dal server \\
 	\hline
 	R[2.2.1][N][F] & Comando DSL di disconnessione & UC6 & Definire un comando DSL per l'operazione di disconnessione \\
@@ -690,6 +693,7 @@
 	\hline
 	R[2.2.5][N][F] & Messaggio disconnessione avvenuta con successo & UC6 & Stampa il messaggio di disconnessione avvenuta con successo \\
 	\hline
+	%
 	R[2.3][O][F] & Gestione comando di HELP & UC2 & Implementare un'interfaccia che restituisca un aiuto all'utente \\
 	\hline
 	R[2.3.1][O][F] & Comando DSL di HELP generico & UC2.1 & Definire un comando DSL per l'operazione di HELP generico \\
@@ -711,6 +715,7 @@
 	R[2.3.4.3][O][F] & Stampa delle informazioni specifiche del comando & UC2.1 & Preleva dalla mappa di HELP aggiornata le informazioni dettagliate del 
 	comando desiderato e le stampa \\
 	\hline
+	%
 	R[2.4][O][F] & Gestione comando di SHOWDB & UC3.1 & Implementare un'interfaccia che restituisca la lista di database presenti nel server \\
 	\hline
 	R[2.4.1][O][F] & Comando DSL di SHOWDB & UC3.1 & Definire un comando DSL per l'operazione di SHOWDB \\
@@ -723,6 +728,7 @@
 	R[2.4.4][O][F] & Stampa la lista dei database & UC3.1 & Stampa la risposta ricevuta dal server contenente la lista dei database a cui l'utente ha 
 	accesso \\
 	\hline
+	%
 	R[2.5][O][F] & Gestione comando di EXPORTDB & UC3.2 & Implementare un'interfaccia che permetta l'esportazione su file di back-up di un database 
 	specifico \\
 	\hline
@@ -739,6 +745,7 @@
 	\hline
 	R[2.5.5][O][F] & Messaggio esportazione fallita & UC3.8 & Stampa il messaggio di esportazione fallita \\
 	\hline
+	%
 	R[2.6][O][F] & Gestione comando di IMPORTDB & UC3.3 & Implementare un'interfaccia che permetta l'importazione di un database da un file di back-up 
 	presente su disco \\
 	\hline
@@ -756,6 +763,7 @@
 	\hline
 	R[2.6.5][O][F] & Messaggio importazione fallita & UC3.8 & Stampa il messaggio di importazione fallita \\
 	\hline
+	%
 	R[2.7][N][F] & Gestione comando di CREATEDB & UC3.4 & Implementare un'interfaccia che inserisca un database all'interno del server a cui si 
 	è connessi  \\
 	\hline
@@ -771,6 +779,7 @@
 	\hline
 	R[2.7.5][N][F] & Messaggio creazione fallita & UC3.10 & Stampa il messaggio di creazione del database fallita \\
 	\hline
+	%
 	R[2.8][N][F] & Gestione comando di DELETEDB & UC3.5 & Implementare un'interfaccia che elimini il database desiderato dal server \\
 	\hline
 	R[2.8.1][N][F] & Comando DSL di DELETEDB & UC3.5 & Definire un comando DSL per l'operazione di DELETEDB \\
@@ -792,6 +801,7 @@
 	R[2.8.5.2][N][F] & Messaggio eliminazione fallita & UC3.11 & Stampa il messaggio di eliminazione del database fallita, l'utente 
 	non ha i permessi necessari \\
 	\hline
+	%
 	R[2.9][O][F] & Gestione comando di RENAMEDB & UC3.6 & Implementare un'interfaccia che rinomini il database desiderato \\
 	\hline
 	R[2.9.1][O][F] & Comando DSL di RENAMEDB & UC3.6 & Definire un comando DSL per l'operazione di RENAMEDB \\
@@ -819,6 +829,7 @@
 	R[2.9.5.2][O][F] & Messaggio rinomina fallita, permessi insufficienti & UC3.12 & Stampa il messaggio di rinomina del database fallita perché 
 	l'utente non ha i permessi necessari \\
 	\hline
+	%
 	R[2.10][N][F] & Gestione comando di USEDB & UC3.7 & Implementare un'interfaccia che selezioni il database desiderato \\
 	\hline
 	R[2.10.1][N][F] & Comando DSL di USEDB & UC3.7 & Definire un comando DSL per l'operazione di USEDB \\
@@ -841,6 +852,219 @@
 	R[2.10.5.2][N][F] & Messaggio selezione fallita, database non presente & UC3.12 & Stampa il messaggio di selezione del database fallita perché il 
 	database non é presente \\
 	\hline
+	%
+	R[2.11][N][F] & Gestione comando di SHOW & UC4.1 & Implementare un'interfaccia che visualizzi l'elenco delle mappe presenti nel database selezionato\\
+	\hline
+	R[2.11.1][N][F] & Comando DSL di SHOW & UC4.1 & Definire un comando DSL per l'operazione di SHOW \\
+	\hline
+	R[2.11.2][N][F] & Riconoscimento del comando di SHOW & UC4.1 & Riconoscere tramite parse il comando di SHOW \\
+	\hline
+	R[2.11.3][N][F] & Invio della richiesta di SHOW & UC4.1 & Invia al server la richiesta di visualizzare la lista di mappe presenti nel database \\
+	\hline
+	R[2.11.4][N][F] & Stampa della lista di mappe & UC4.1 & Una volta ricevuta la risposta dal server contenente la lista delle mappe presenti, 
+	la stampa a video \\
+	\hline
+	%
+	R[2.12][N][F] & Gestione comando di CREATE & UC4.2 & Implementare un'interfaccia che crei una mappa nel database selezionato\\
+	\hline
+	R[2.12.1][N][F] & Comando DSL di CREATE & UC4.2 & Definire un comando DSL per l'operazione di CREATE \\
+	\hline
+	R[2.12.2][N][F] & Riconoscimento del comando di CREATE & UC4.2 & Riconoscere tramite parse il comando di CREATE \\
+	\hline
+	R[2.12.2.1][N][F] & Lettura del nome della mappa che si vuole creare & UC4.2 & Estrae dal comando il nome della mappa che l'utente vuole creare \\
+	\hline
+	R[2.12.3][N][F] & Invio della richiesta di CREATE & UC4.2 & Invia al server la richiesta di creare una mappa con il nome estrapolato dal comando \\
+	\hline
+	R[2.12.4][N][F] & Messaggio di creazione mappa avvenuta con successo & UC4.2 & Stampa il messaggio di creazione della mappa avvenuta con successo \\
+	\hline
+	R[2.12.5][N][F] & Messaggio di creazione mappa fallita & UC4.8 & Stampa il messaggio di creazione della mappa fallita \\
+	\hline
+	R[2.12.5.1][N][F] & Messaggio di creazione mappa fallita, permessi insufficienti & UC4.8 & Stampa il messaggio di creazione della mappa fallita, 
+	l'utente non possiede i permessi di scrittura \\
+	\hline
+	R[2.12.5.2][N][F] & Messaggio di creazione mappa fallita, nome mappa già presente & UC4.8 & Stampa il messaggio di creazione della mappa fallita, 
+	nome mappa già utilizzato \\
+	\hline
+	%
+	R[2.13][N][F] & Gestione comando di DELETE & UC4.3 & Implementare un'interfaccia che elimini una mappa nel database selezionato\\
+	\hline
+	R[2.13.1][N][F] & Comando DSL di DELETE & UC4.3 & Definire un comando DSL per l'operazione di DELETE \\
+	\hline
+	R[2.13.2][N][F] & Riconoscimento del comando di DELETE & UC4.3 & Riconoscere tramite parse il comando di DELETE \\
+	\hline
+	R[2.13.2.1][N][F] & Lettura del nome della mappa che si vuole rimuovere & UC4.3 & Estrae dal comando il nome della mappa che l'utente 
+	vuole rimuovere \\
+	\hline
+	R[2.13.3][N][F] & Invio della richiesta di DELETE & UC4.3 & Invia al server la richiesta di rimuovere la mappa con il nome estrapolato dal comando \\
+	\hline
+	R[2.13.4][N][F] & Messaggio di rimozione mappa avvenuta con successo & UC4.3 & Stampa il messaggio di rimozione della mappa avvenuta con successo \\
+	\hline
+	R[2.13.5][N][F] & Messaggio di rimozione mappa fallita & UC4.9 & Stampa il messaggio di rimozione della mappa fallita, permessi insufficienti \\
+	\hline
+	%
+	R[2.14][N][F] & Gestione comando di RENAME & UC4.4 & Implementare un'interfaccia che rinomini una mappa nel database selezionato\\
+	\hline
+	R[2.14.1][N][F] & Comando DSL di RENAME & UC4.4 & Definire un comando DSL per l'operazione di RENAME \\
+	\hline
+	R[2.14.2][N][F] & Riconoscimento del comando di RENAME & UC4.4 & Riconoscere tramite parse il comando di RENAME \\
+	\hline
+	R[2.14.2.1][N][F] & Lettura del nome della mappa che si vuole rinominare & UC4.4 & Estrae dal comando il nome della mappa che l'utente vuole 
+	rinominare \\
+	\hline
+	R[2.14.2.2][N][F] & Lettura del nuovo nome della mappa & UC4.4 & Estrae dal comando il nuove nome della mappa che l'utente vuole assegnare \\
+	\hline
+	R[2.14.3][N][F] & Invio della richiesta di RENAME & UC4.4 & Invia al server la richiesta di rinominare una mappa con il nome estrapolato dal comando, 
+	assegnando il nuovo nome \\
+	\hline
+	R[2.14.4][N][F] & Messaggio di rinomina mappa avvenuta con successo & UC4.4 & Stampa il messaggio di rinomina della mappa avvenuta con successo \\
+	\hline
+	R[2.14.5][N][F] & Messaggio di rinomina mappa fallita & UC4.10 & Stampa il messaggio di rinomina della mappa fallita \\
+	\hline
+	R[2.14.5.1][N][F] & Messaggio di rinomina mappa fallita, permessi insufficienti & UC4.10 & Stampa il messaggio di rinomina della mappa fallita, 
+	l'utente non possiede i permessi di scrittura \\
+	\hline
+	R[2.14.5.2][N][F] & Messaggio di rinomina mappa fallita, nome mappa già presente & UC4.10 & Stampa il messaggio di rinomina della mappa fallita, 
+	nuovo nome mappa già utilizzato \\
+	\hline
+	%
+	R[2.15][N][F] & Gestione comando di USE & UC4.5 & Implementare un'interfaccia che selezioni una mappa nel database in uso \\
+	\hline
+	R[2.15.1][N][F] & Comando DSL di USE & UC4.5 & Definire un comando DSL per l'operazione di USE \\
+	\hline
+	R[2.15.2][N][F] & Riconoscimento del comando di USE & UC4.5 & Riconoscere tramite parse il comando di USE \\
+	\hline
+	R[2.15.2.1][N][F] & Lettura del nome della mappa che si vuole utilizzare & UC4.5 & Estrae dal comando il nome della mappa che l'utente vuole 
+	utilizzare \\
+	\hline
+	R[2.15.3][N][F] & Invio della richiesta di USE & UC4.5 & Invia al server la richiesta di utilizzare la mappa con il nome estrapolato dal comando \\
+	\hline
+	R[2.15.4][N][F] & Messaggio di selezione mappa avvenuta con successo & UC4.5 & Stampa il messaggio di selezione della mappa avvenuta con successo \\
+	\hline
+	R[2.15.5][N][F] & Messaggio di selezione mappa fallita & UC4.8 & Stampa il messaggio di selezione della mappa fallita \\
+	\hline
+	R[2.15.5.1][N][F] & Messaggio di selezione mappa fallita, permessi insufficienti & UC4.11 & Stampa il messaggio di selezione della mappa fallita, 
+	l'utente non possiede i permessi di lettura sulla mappa desiderata \\
+	\hline
+	R[2.15.5.2][N][F] & Messaggio di selezione mappa fallita, mappa non presente & UC4.11 & Stampa il messaggio di selezione della mappa fallita, 
+	mappa non presente \\
+	\hline
+	%
+	R[2.16][O][F] & Gestione comando per visualizzare i permessi & UC4.6 & Implementare un'interfaccia che visualizzi i permessi a livello database \\
+	\hline
+	%
+	R[2.17][O][F] & Gestione comando per modificare i permessi & UC4.7 & Implementare un'interfaccia che permetta la modifica dei permessi a 
+	livello database \\
+	\hline
+	%
+	R[2.18][N][F] & Gestione comando KEYS & UC5.1 & Implementare un'interfaccia che visualizzi la lista delle chiavi presenti nella mappa \\
+	\hline
+	R[2.18.1][N][F] & Comando DSL di KEYS & UC5.1 & Definire un comando DSL che visualizzi la lista delle chiavi presenti nella mappa \\
+	\hline
+	R[2.18.2][N][F] & Riconoscimento del comando KEYS & UC5.1 & Riconoscere tramite parse il comando di KEYS \\
+	\hline
+	R[2.18.3][N][F] & Invio della richiesta di KEYS & UC5.1 & Inviare al server la richiesta di visualizzare la lista di chiavi presenti nella mappa 
+	selezionata \\
+	\hline
+	R[2.18.4][N][F] & Stampa della lista di chiavi & UC5.1 & Stampa la risposta del server contenente tutte le chiavi presenti nella mappa \\
+	\hline
+	%
+	R[2.19][N][F] & Gestione comando GET & UC5.2 & Implementare un'interfaccia che effettui la ricerca per chiave \\
+	\hline
+	R[2.19.1][N][F] & Comando DSL di GET & UC5.2 & Definire un comando DSL che restituisca il valore assegnato ad una chiave \\
+	\hline
+	R[2.19.2][N][F] & Riconoscimento del comando GET & UC5.2 & Riconoscere tramite parse il comando di GET \\
+	\hline
+	R[2.19.2.1][N][F] & Lettura della chiave dell'item che si vuole ricercare & UC5.2 & Estrapola dal comando inserito il nome dell'item che si vuole 
+	ricercare \\
+	\hline
+	R[2.19.3][N][F] & Invio della richiesta di GET & UC5.2 & Inviare al server la richiesta di ritornare il valore di un item con la chiave inserita \\
+	\hline
+	R[2.19.4][N][F] & Stampa il valore richiesto & UC5.2 & Stampa la risposta del server contente il valore dell'item ricercato per chiave \\
+	\hline
+	%
+	R[2.20][N][F] & Gestione comando INSERT & UC5.3 & Implementare un'interfaccia che inserisca un item con coppia chiave-valore \\
+	\hline
+	R[2.20.1][N][F] & Comando DSL di INSERT & UC5.3 & Definire un comando DSL che inserisca un item con dati chiave e valore \\
+	\hline
+	R[2.20.2][N][F] & Riconoscimento del comando di INSERT & UC5.3 & Riconoscere tramite parse il comando di INSERT \\
+	\hline
+	R[2.20.2.1][N][F] & Lettura della chiave da inserire & UC5.3 & Estrapola dal comando inserito la chiave da utilizzare per l'item \\
+	\hline
+	R[2.20.2.2][N][F] & Lettura del valore da inserire & UC5.3 & Estrapola dal comando inserito il valore da utilizzare per l'item  \\
+	\hline
+	R[2.20.3][N][F] & Invia richiesta di INSERT & UC5.3 & Invia al server la richiesta di inserire un item con dati chiave e valore \\
+	\hline
+	R[2.20.4][N][F] & Messaggio inserimento avvenuto con successo & UC5.3 & Stampa un messaggio che conferma l'avvenuto inserimento dell'item richiesto \\
+	\hline
+	R[2.20.5][N][F] & Messaggio inserimento fallito & UC5.7 & Stampa il messaggio di inserimento fallito \\
+	\hline
+	R[2.20.5.1][N][F] & Messaggio inserimento fallito, permessi insufficienti & UC5.7 & Stampa il messaggio di inserimento fallito, l'utente non 
+	possiede permessi di scrittura \\
+	\hline
+	R[2.20.5.2][N][F] & Messaggio inserimento fallito, chiave già presente & UC5.7 & Stampa il messaggio di inserimento fallito, la chiave che si vuole 
+	utilizzare è già presente nella mappa \\
+	\hline
+	%
+	R[2.21][N][F] & Gestione comando UPDATE & UC5.4 & Implementare un'interfaccia che aggiorni il valore dell'item con la chiave specificata \\
+	\hline
+	R[2.21.1][N][F] & Comando DSL di UPDATE & UC5.4 & Definire un comando DSL che aggiorni il valore di un dato item \\
+	\hline
+	R[2.21.2][N][F] & Riconoscimento del comando di UPDATE & UC5.4 & Riconoscere tramite parse il comando di UPDATE \\
+	\hline
+	R[2.21.2.1][N][F] & Lettura della chiave & UC5.4 & Estrapola dal comando inserito la chiave dell'item da modificare \\
+	\hline
+	R[2.21.2.2][N][F] & Lettura del nuovo valore  & UC5.4 & Estrapola dal comando inserito il nuovo valore da utilizzare per l'item  \\
+	\hline
+	R[2.21.3][N][F] & Invia richiesta di UPDATE & UC5.4 & Invia al server la richiesta di aggiornare il valore di un item \\
+	\hline
+	R[2.21.4][N][F] & Messaggio aggiornamento avvenuto con successo & UC5.4 & Stampa un messaggio che conferma l'avvenuto aggiornamento 
+	dell'item richiesto \\
+	\hline
+	R[2.21.5][N][F] & Messaggio aggiornamento fallito, permessi insufficienti & UC5.8 & Stampa il messaggio di aggiornamento fallito, l'utente non 
+	possiede permessi di scrittura \\
+	\hline
+	%
+	R[2.22][O][F] & Gestione comando APPEND & UC5.5 & Implementare un'interfaccia che aggiunga a fine valore i dati specificati \\
+	\hline
+	R[2.22.1][N][F] & Comando DSL di APPEND & UC5.5 & Definire un comando DSL che aggiunga in coda al valore di un dato item \\
+	\hline
+	R[2.22.2][N][F] & Riconoscimento del comando di APPEND & UC5.5 & Riconoscere tramite parse il comando di APPEND \\
+	\hline
+	R[2.22.2.1][N][F] & Lettura della chiave & UC5.5 & Estrapola dal comando inserito la chiave dell'item a cui si vuole aggiungere un valore \\
+	\hline
+	R[2.22.2.2][N][F] & Lettura del nuovo valore  & UC5.5 & Estrapola dal comando inserito il nuovo valore da aggiungere in coda al valore che l'item 
+	possiede già \\
+	\hline
+	R[2.22.3][N][F] & Invia richiesta di APPEND & UC5.5 & Invia al server la richiesta di aggiungere un valore al valore di un item \\
+	\hline
+	R[2.22.4][N][F] & Messaggio aggiunta avvenuta con successo & UC5.5 & Stampa un messaggio che conferma l'avvenuta aggiunta di valore al valore 
+	dell'item richiesto \\
+	\hline
+	R[2.22.5][N][F] & Messaggio aggiunta fallita, permessi insufficienti & UC5.8 & Stampa il messaggio di aggiunta fallita, l'utente non 
+	possiede permessi di scrittura \\
+	\hline
+	%
+	R[2.23][N][F] & Gestione comando REMOVE & UC5.6 & Implementare un'interfaccia che rimuova l'item con chiave specificata \\
+	\hline
+	R[2.23.1][N][F] & Comando DSL di REMOVE & UC5.6 & Definire un comando DSL che rimuova un item con chiave data \\
+	\hline
+	R[2.23.2][N][F] & Riconoscimento del comando di REMOVE & UC5.6 & Riconoscere tramite parse il comando di REMOVE \\
+	\hline
+	R[2.23.2.1][N][F] & Lettura della chiave dell'item da rimuovere & UC5.6 & Estrapola dal comando inserito la chiave dell'item  da rimuovere \\
+	\hline
+	R[2.23.3][N][F] & Invia richiesta di REMOVE & UC5.6 & Invia al server la richiesta di rimuovere l'item con chiave data \\
+	\hline
+	R[2.23.4][N][F] & Messaggio rimozione item avvenuta con successo & UC5.6 & Stampa un messaggio che conferma l'avvenuta rimozione dell'item richiesto \\
+	\hline
+	R[2.23.5][N][F] & Messaggio rimozione fallita & UC5.9 & Stampa il messaggio di rimozione fallita \\
+	\hline
+	R[2.23.5.1][N][F] & Messaggio rimozione fallita, permessi insufficienti & UC5.9 & Stampa il messaggio di rimozione fallita, l'utente non 
+	possiede permessi di scrittura \\
+	\hline
+	R[2.23.5.2][N][F] & Messaggio rimozione fallita, chiave non presente & UC5.9 & Stampa il messaggio di rimozione fallita, non esiste un item con la 
+	chiave inserita \\
+	%
+	
 	
 \bottomrule
 \caption{Requisiti funzionali}
