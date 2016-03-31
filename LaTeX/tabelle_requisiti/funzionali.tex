@@ -554,9 +554,6 @@
 	R[1.6.5.2.1][D][F] & Utilizzo actor MAIN per append valore item & UC5.5 \newline Capitolato
 	& Utilizzare un actor di tipo MAIN per accettare le richieste di append in coda al valore di un item provenienti dall'esterno \\
 	\hline
-	R[1.6.5.2.1.1][D][F] & Messaggio inviabile a actor MAIN  per append valore item & UC5.5 \newline Capitolato
-	& Definire un messaggio inviabile dall'esterno ad actor di tipo MAIN per richiedere l'append in coda al valore di un item nella mappa selezionata \\
-	\hline
 	R[1.6.5.2.2][D][F] & Utilizzo actor STOREFINDER per append valore item & UC5.5 \newline Capitolato
 	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di append in coda al valore di un item \\
 	\hline
@@ -614,9 +611,9 @@
 	%
 	R[2.1][N][F] & Gestione richiesta di connessione ad un server & UC1 & Implementare un'interfaccia per effettuare la connessione ad un server \\
 	\hline
-	R[2.1.1][N][F] & Comando DSL di connessione & UC1 \newline UC1.2 & Definire un comando DSL per l'operazione di connessione \\
+	R[2.1.1][N][F] & Comando DSL di connessione & UC1 \newline UC1.1 & Definire un comando DSL per l'operazione di connessione \\
 	\hline
-	R[2.1.2][N][F] & Riconoscimento del comando di connessione & UC1 & Riconoscere tramite parse il comando di connessione ad un server \\
+	R[2.1.2][N][F] & Riconoscimento del comando di connessione & UC1.1 & Riconoscere tramite parse il comando di connessione ad un server \\
 	\hline
 	R[2.1.2.1][N][F] & Lettura dell'indirizzo del server dal comando & UC1.2 & Estrarre dal comando l'indirizzo e la porta a cui mandare la richiesta 
 	di apertura di una connessione\\
@@ -1017,6 +1014,7 @@
 	\hline
 	R[2.23.5.2][N][F] & Messaggio rimozione fallita, chiave non presente & UC5.9 & Stampa il messaggio di rimozione fallita, non esiste un item con la 
 	chiave inserita \\
+	R[2.24][N][F] & Chiusura interfaccia client & UC8 & Implementare la chiusura dell'interfaccia client tramite un apposito comando \\
 	%
 	\hline
 	R[3][O][F] & Driver per Scala & Capitolato & Rilasciare un driver utilizzabile da applicazioni scritte nel linguaggio Scala, per interfacciarsi direttamente a istanze di \emph{Actorbase} \\
