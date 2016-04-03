@@ -75,7 +75,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.0
+			Versione 1.0.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -92,6 +92,8 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.0.2 & 2016-04-03 & \emph{Progettista} \newline Bonato Paolo & Accorpate le sezioni "Componenti", "Package" e "Classi" in "Componenti e classi". Riadattata la sezione "Metodo e formalismo di specifica" alla nuova struttura. Inserite le immagini 1 e 2. Apportate le correzioni indicate. \\
                 \noalign{\hrule height 0.5pt}
 				1.0.1 & 2016-03-26 & \emph{Progettisti} \newline Bonato Paolo \newline Biggeri Mattia \newline Padovan Tommaso \newline Tommasin Davide \newline Bortolazzo Matteo & Prima stesura di Architettura generale (sezinoe 3) e componenti (sezione 4)\\
 				\noalign{\hrule height 0.5pt}
@@ -115,7 +117,7 @@
 		di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
 	\subsection{Glossario}
 		Al fine di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il 
-      gruppo ha steso un documento interno che è il \emph{Glossario v1.0.3}. In esso saranno definiti, in modo
+      gruppo ha steso un documento interno che è il \emph{Glossario v1.3.0}. In esso saranno definiti, in modo
       chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
 	\subsection{Riferimenti}
 		\begin{itemize}
@@ -130,7 +132,7 @@
 		\end{itemize}
 	\subsubsection{Normativi}
 		\begin{itemize}
-			\item \textbf{Norme di progetto:} \emph{Norme di progetto v1.1.2}
+			\item \textbf{Norme di progetto:} \emph{Norme di progetto v1.3.3}
 			\item \textbf{Capitolato d'appalto Actorbase (C1):} \\ 
 			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
 		\end{itemize}
@@ -143,8 +145,8 @@
 		\begin{itemize}
 			\item \textbf{Concorrenza e distribuzione:} Ottimo supporto alla programmazione multi-threaded e distribuita, essenziale per la realizzazione di un prodotto responsive e scalabile.
 			\item \textbf{Supporto di Akka:} Il linguaggio supporta la libreria Akka che è richiesta dal capitolato.
-			\item \textbf{Preferenza del Committente:} Il Committente ha espresso la sua preferenza sull'utilizzo di Scala.
 		\end{itemize}
+		Inoltre il Committente ha espresso esplicitamente la sua preferenza sull'utilizzo di Scala.
 		
 	\subsection{Akka}
 		L'utilizzo della libreria Akka è reso obbligatorio dal capitolato ed è la base del modello ad attori che costituisce il progetto.
@@ -153,81 +155,67 @@
 	\section{Descrizione dell'architettura}
 		\subsection{Metodo e formalismo di specifica}
 			Nell'esposizione dell'architettura del prodotto si procederà con un approccio di tipo top-down, ovvero dal generale al particolare.
-			Inizialmente si descriverà la distinzione tra le componenti Client e Server con le rispettive dipendenze. Questa suddivisione verrà mantenuta nelle sezioni a seguire.
+			Inizialmente si descriveranno le tre componenti fondamentali: Client, Server e Driver; poi le componenti più piccole al loro interno, specificando i package e le classi che li compongono.
 			Per ogni package saranno descritti brevemente il tipo, l'obiettivo e la funzione e saranno specificati eventuali figli, classi ed interazioni con altri package.
 			Ogni classe sarà dotata di una breve descrizione e ne saranno specificate le responsabilità, le classi ereditate, le sottoclassi e le relazioni con altre classi.
 			Successivamente saranno mostrati e descritti i diagrammi delle attività che coinvolgono l'utente.
 			Infine si illustreranno degli esempi di utilizzo dei design pattern nell'architettura del sistema.
 		\subsection{Architettura generale}
-        	Il sistema ha un architettura generale di tipo client-server.
-            Il server ha un architettura di tipo event-driven basata sul modello ad attori ed espone delle API tramite socket TCP.
-            Il client ha un architettura di tipo Model-View-Controller con interfaccia da linea di comando e comunica con il server  grazie ad un driver tramite connessione TCP.
+        	Il sistema ha un'architettura generale di tipo client-server.
+            Il server ha un'architettura di tipo event-driven basata sul modello ad attori ed espone delle API tramite socket TCP.
+            L'architettura del Client segue il design pattern Model-View-Controller con interfaccia da linea di comando e comunica con il server  grazie ad un driver tramite connessione TCP.
             
-	\newpage 
-	\section{Componenti}
-		\subsection{Server}
+        \begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.35]{Packages_Generale.png}
+			\caption{Architettura generale, vista Package}
+		\end{figure}
+		
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.3]{Legenda.png}
+			\caption{Legenda}
+		\end{figure}
+            \subsubsection{Server}
         	Le componenti principali del server sono gli attori:
             \begin{itemize}
-				\item \textbf{Storekeeper:} Mantengono fisicamente in memoria le mappe chiave/valore
-                \item \textbf{Ninja:} Sono associati ad uno Storekeeper. Risiedono in nodi differenti da questi ultimi, ma in continuo aggiornamento con essi. Permettono di mantenere la consistenza del database anche in caso di caduta di uno Storekeeper; in questo caso un Ninja verrà eletto nuovo Storekeeper.
+				\item \textbf{Storekeeper:} Mantengono fisicamente in memoria le mappe chiave/valore.
+                \item \textbf{Ninja:} Sono associati ad uno Storekeeper. Permettono di mantenere la consistenza del database anche nell'eventualità di un guasto. Se si perde uno Storekeeper, il Ninja a lui associato ne prende il posto. Per questa ragione, si trovano necessariamente in una macchina differente, ma rimangono costantemente in aggiornamento.
                 \item \textbf{Storefinder:} Si occupano di ricevere richieste dall'esterno e instradarle ai rispettivi Storefinder, virtualmente ogni Storefinder definisce un indice sulla chiave della mappa. Il loro numero è veriabile e può essere configurato. Uno degli Storefinder è definito \textbf{main} e funge da punto di accesso al database.
                 \item \textbf{Warehousemen:} Si interfaciano con gli Storekeeper e trascrivono persistentemente le rispettive mappe su disco.
                 \item \textbf{Manager:} Ricevono le richieste di gestione degli attori di tipo Storekeeper, ad esempio sono responsabili del numero massimo di coppie chiave/valore contenute in un'istanza di Storekeeper.
 			\end{itemize}
             
-        \subsection{Client}
-        	Il client ha struttura MVC.
+        \subsubsection{Client}
+        	L'architettura del Client seguirà il design pattern MVC:
             \begin{itemize}
 				\item \textbf{Model:}
-                	Il Model è la componente che si occupa di comunicare con il server usando i metodi del driver. E notifica la view quando avviene un cambiamento nel suo stato.
+                	Il Model è la componente che si occupa di comunicare con il server usando i metodi del driver e di notificare la View quando avviene un cambiamento nel suo stato.
                 \item \textbf{View:}
                 	La View è la componente che interagisce con l'utente mediante interfaccia a linea di comando. L'utente può usare il DSL per interrogare il Model. La View esegue delle \emph{state query} sul model per avere le informazioni aggiornate.
                 \item \textbf{Controller:}
-                	Il Controller è la componenente che esegue il parsing dei comandi del DSL inseriti nella View e li notifica al Model.			
+                	Il Controller è la componente che esegue il parsing dei comandi del DSL inseriti nella View e li notifica al Model.			
 			\end{itemize}
         
-        \subsection{Driver}
+        \subsubsection{Driver}
         	Il Driver è una libreria, invocando i metodi della quale è possibile effettuare richieste TCP verso le API esposte dal Server.
-    
+            
 	\newpage 
-	\section{Package}
-		\begin{figure} [H]
-			\centering
-			\includegraphics[scale=0.3]{Packages_generale.png}
-			\caption{Architettura generale, vista Package}
-		\end{figure}
-	
-		\subsection{Lato server}
-			\subsubsection{package server 1}
-				% Immagine
+	\section{Componenti e classi}
+		\subsection{componente 1}
+			% Immagine
+			\subsubsection{Package}
 				% Descrizione
 				% Figli
 				% Classi
 				% Interazioni con altri package
-				
-		\subsection{Lato client}
-			\subsubsection{package client 1}
-				% Immagine
-				% Descrizione
-				% Figli
-				% Classi
-				% Interazioni con altri package
-	\newpage 
-	\section{Classi}
-		\subsection{Lato server}
-			\subsection{classe server 1}
+			\subsubsection{Classi}
 				% Descrizione
 				% Responsabilità
 				% Classi ereditate
 				% Sottoclassi
 				% Relazioni con altre classi
-		\subsection{Lato client}
-			\subsection{classe client 1}
-				% Descrizione
-				% Responsabilità
-				% Classi ereditate
-				% Sottoclassi
-				% Relazioni con altre classi
+			
 	\newpage 
 	\section{Diagrammi delle attività}
 	
