@@ -17,12 +17,17 @@
 \usepackage[]{appendix}
 \usepackage{amsmath}
 \usepackage{eurosym}
+\usepackage{ltxtable}
 
 \graphicspath{{Immagini/}}
 
 \newcolumntype{s}{>{\hsize=.21\hsize}X}
 \newcolumntype{f}{>{\hsize=.37\hsize}X}
 \newcolumntype{m}{>{\hsize=.42\hsize}X}
+
+
+\newcolumntype{L}{>{\hsize=.3\hsize}X}
+\newcolumntype{P}{>{\hsize=.125\hsize}X}
 
 
 
@@ -68,7 +73,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.1.5
+			Versione 1.1.6
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -85,11 +90,13 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 0.5pt}
+				1.1.6 & 2016-03-21 & \emph{Progettisti} \newline Biggeri Mattia Bonato Paolo& aggiunta introduzione e tabella valore metriche dei documenti in sezione 4.4.2, inserita completamente la sezione della pianificazione dei test, sezione 4.5 \\
+				\noalign{\hrule height 0.5pt}
 				1.1.5 & 2016-03-21 & \emph{Progettista} \newline Padovan Tommaso & Incremento sezione 2.3. Aggiunta dei
 				seguenti strumenti per l'applicazione delle metriche: Repo's Outpost, Camel Calculator e Gloss Buddy.
 				Correzione errore nella data della versione 1.1.3 nel Diario delle modifiche.\\
 				\noalign{\hrule height 0.5pt}
-				1.1.4 & 2016-03-21 & \emph{Analista} \newline Tommasin Davide & Controlo e sostituzione di termini all'interno della sezione di introduzione del documento
+				1.1.4 & 2016-03-21 & \emph{Analista} \newline Tommasin Davide & Controllo e sostituzione di termini all'interno della sezione di introduzione del documento
 				\\
 				\noalign{\hrule height 1.5pt}
 				1.1.3 & 2016-03-18 & \emph{Progettista} \newline Padovan Tommaso & Aggiunte le seguenti metriche
@@ -218,7 +225,7 @@
 					\item Range di accettazione: [35|100]
 					\item Range di ottimale: [45|100]
 				\end{itemize}
-				\item \textbf{Numero pagine e parole:} Questa metrica servirà principalmente per misurare l'incremento del documento durante il completamento delle varie fasi.
+				\item \textbf{Numero parole:} Questa metrica servirà principalmente per misurare l'incremento del documento durante il completamento delle varie fasi.
 				\item \textbf{Numero figure e tabelle su numero pagine:} Questa metrica verrà valutata solamente su i documenti esterni per verificarne la difficoltà di lettura.
 				Il gruppo si atterrà ai seguenti parametri:
 				\begin{itemize}
@@ -228,8 +235,8 @@
 				\item \textbf{Media parole per section:} Servirà ad evitare la costruzione di sezioni troppo grandi, in modo che tutti
 				gli argomenti siano facilmente trovabili sull'indice.
 				\begin{itemize}
-					\item Valori accettati: da decidere
-					\item Valori ottimali: da decidere
+					\item Valori accettati: [100|250]
+					\item Valori ottimali: [20|100]
 				\end{itemize}
 				\item \textbf{Numero di errori ortografici:} 
 				Garantisce l'assenza di errori ortografici rilevati dal correttore automatico, a meno di falsi positivi.
@@ -615,7 +622,6 @@
 				\item \textbf{Quality Assurance:} garantisce il raggiungimento degli obiettivi di qualità, in maniera preventiva. 
 				In questo modo si riduce drasticamente il ricorso a tecniche retrospettive, e con esse si riducono le iterazioni.
 			\end{itemize}
-		
 		\section{Appendice}
 			\subsection{Qualità}
 Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi atti a garantire la qualità del prodotto.
@@ -833,6 +839,28 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 					\item Che le ore di verifica siano almeno 30\% delle ore totali.
 					\item Che le riunioni e i brainstorming si siano svolti come definito nelle \emph{Norme di Progetto v1.1.1} sezione 4.2.3.
 				\end{itemize}
+			\subsubsection{metriche dei documenti}
+					\begin{table}[H]
+						\begin{tabularx}{\textwidth}{L P P P P P}
+							\noalign{\hrule height 1.5pt}
+							\rowcolor{orange!85} documenti & Gulpease & parole & figure per pagina & parole per section & errori ortografici\\
+							\noalign{\hrule height 1.5pt}
+								Norme di progetto & 44,03 & 4180 & 1,61 & 87,08 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Studio di fattibilità & 39,84 & 1471 & 0,5 & 49,03 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Analisi dei requisiti & 50,32 & 4404 & 2,15 & 38,3 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Piano di progetto & 45,01 & 4492 & 2,85 & 56,15 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Piano di qualifica & dopo & dopo & dopo & dopo & dopo \\
+							\noalign{\hrule height 0.5pt}
+								Specifica tecnica & dopo & dopo & dopo & dopo & dopo \\
+							\noalign{\hrule height 1.5pt}
+						\end{tabularx}
+						\caption{Tabella metriche dei documenti }
+						\label{SVBVTable}
+					\end{table}
 				
 		\subsection{Tracciamento componenti - requisiti}
 		
@@ -873,6 +901,41 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				risultati più critici.
 				
 			\subsubsection{Documenti}
+			Segue la tabella contenente il valore di tutte le metriche riguardanti i documenti rispetto agli stessi. I valori sono tutti consoni al livello di accettazione definito nella sezione 2.2 .
+					\begin{table}[H]
+						\begin{tabularx}{\textwidth}{L P P P P P}
+							\noalign{\hrule height 1.5pt}
+							\rowcolor{orange!85} documenti & Gulpease & parole & figure per pagina & parole per section & errori ortografici\\
+							\noalign{\hrule height 1.5pt}
+								Norme di progetto & 44,03 & 4180 & 1,61 & 87,08 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Studio di fattibilità & 39,84 & 1471 & 0,5 & 49,03 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Analisi dei requisiti & 50,32 & 4404 & 2,15 & 38,3 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Piano di progetto & 45,01 & 4492 & 2,85 & 56,15 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Piano di qualifica & dopo & dopo & dopo & dopo & dopo \\
+							\noalign{\hrule height 0.5pt}
+								Specifica tecnica & dopo & dopo & dopo & dopo & dopo \\
+							\noalign{\hrule height 1.5pt}
+						\end{tabularx}
+						\caption{Tabella metriche dei documenti }
+						\label{SVBVTable}
+					\end{table}
+	\subsection{Pianificazione dei test}
+		Di seguito saranno descritti i test di sistema, integrazione e validazione che sono previsti.
+		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.				
+	\subsubsection{Test di sistema}
+		Viene mostrata di seguito la tabella con tutti i test di sistema che consentono di verificare il sistema rispetto ai requisiti descritti nell'\emph{Analisi dei Requisiti v1.3.11}.
+		Per ogni comando testato sarà anche verificato il corretto riconoscimento e la corretta gestione degli errori.
+		I test di sistema sono nominati per associazione ai casi d'uso.
+		\LTXtable{\textwidth}{tabelle_test/test_sistema.tex}
+		
+	\subsubsection{Test di integrazione}
+		Viene mostrata di seguito la tabella contenente tutti i test di integrazione, atti a verificare il corretto funzionamento delle singole componenti del sistema descritte nella \emph{Specifica Tecnica v1.0.1}. 
+		\LTXtable{\textwidth}{tabelle_test/test_integrazione.tex}
+	
 	\subsection{Dettaglio dell'esito delle revisioni}
 			Il progetto prevede quattro revisioni formali a cui sottoporsi, per mezzo delle quali il Committente potrà segnalare 
 			le eventuali problematiche riscontrate. Ogni revisione prevede una valutazione globale del progetto ed una valutazione 
