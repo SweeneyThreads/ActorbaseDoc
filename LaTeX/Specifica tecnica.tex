@@ -57,7 +57,8 @@
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
 				Bonato Paolo \\
-				Biggeri Mattia
+				Biggeri Mattia \\
+				Tommasin Davide
 			\end{flushleft}
 		\end{minipage}
 		~
@@ -75,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.2
+			Versione 1.0.3
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -92,6 +93,8 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.0.3 & 2016-04-06 & \emph{Progettisti} \newline Biggeri Mattia \newline Tommasin Davide & Aggiunta sezione in appendice suoi Desing Pattern, contiene al momento la descrizione di: MVC, Event-driven, Command   \\
 				\noalign{\hrule height 0.5pt}
 				1.0.2 & 2016-04-03 & \emph{Progettista} \newline Bonato Paolo & Accorpate le sezioni "Componenti", "Package" e "Classi" in "Componenti e classi". Riadattata la sezione "Metodo e formalismo di specifica" alla nuova struttura. Inserite le immagini 1 e 2. Apportate le correzioni indicate. \\
                 \noalign{\hrule height 0.5pt}
@@ -232,6 +235,63 @@
 		
 	\newpage 
 	\section{Appendice}
+	\subsection{Descrizione Desing Pattern}
+	Segue, per ogni Desing Pattern utilizzato, la descrizione dello scopo, motivazione e applicabilità.
+	\subsubsection{Event-driven}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.65]{schemaevent-driven.jpg}
+					\caption{Diagramma del Desing Pattern Event-driven}
+				\end{figure}
+            \begin{itemize}
+				\item \textbf{Scopo:}
+					Produrre applicazioni molto scalabili e processare eventi asincroni disaccoppiati.
+                \item \textbf{Motivazione:} Gestire le richieste che vengono volte all' applicativo tramite eventi processati in modo asincrono.
+                \item \textbf{Applicabilità:}
+                	Gestione di eventi attraverso l'utilizzo di un mediatore e elaboratori di eventi		
+			\end{itemize}
+	\subsubsection{MVC}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.65]{schemaMVC.jpg}
+					\caption{Diagramma del Desing Pattern MVC}
+				\end{figure}
+            \begin{itemize}
+				\item \textbf{Scopo:}
+					Disaccoppiamento delle seguenti componenti:
+					\begin{itemize}
+						\item Model regole di accesso e dati di business
+						\item View rappresentazione grafica
+						\item Controller reazioni della UI agli input utente
+					\end{itemize}
+                \item \textbf{Motivazione:}
+                	Lo scopo di molti applicativi è di recuperare dati e mostrarli all'Utente. Si è visto che la migliore soluzione di questo scopo è dividere la modellazione del dominio, la presentazione e le reazioni basate sugli input degli utenti i tre classi separate, esistono vari desing pattern che svolgono questa separazione, uno di questi è MVC; 
+                \item \textbf{Applicabilità:}
+					\begin{itemize}
+						\item Applicazioni che devono presentare attraverso una UI un insieme di informazioni
+						\item Le persone responsabili dello sviluppo hanno compentenze differenti
+					\end{itemize}
+                	 		
+			\end{itemize}
+	\subsubsection{Command}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.65]{schemacomand.jpg}
+					\caption{Diagramma del Desing Pattern Command}
+				\end{figure}
+            \begin{itemize}
+				\item \textbf{Scopo:}Incapsulare una richiesta in un oggetto, cosicché i client siano indipendenti dalle richieste 
+                \item \textbf{Motivazione:}
+                Risolvere la necessità di gestire richieste di sui non si conoscono i particolari, tramite una classe astratta, Command, che definisce un interfaccia per eseguire la richiesta
+                \item \textbf{Applicabilità:}
+					\begin{itemize}
+						\item Parametrizzazione di oggetti sull'azione da eseguire
+						\item Specificare, accordare ed eseguire richieste molteplici volte
+						\item Supporto ad operazioni di Undo e Redo
+						\item Supporto a transazione, un comando equivale ad una operazione atomica
+					\end{itemize}		
+			\end{itemize}
+				
 	
 	\cleardoublepage
 	\addcontentsline{toc}{section}{\listfigurename}
