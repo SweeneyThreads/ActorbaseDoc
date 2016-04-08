@@ -57,7 +57,11 @@
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
 				Bonato Paolo \\
+				Bortolazzo Matteo \\
 				Biggeri Mattia \\
+				Maino Elia \\
+				Nicoletti Luca  \\
+				Padovan Tommaso \\
 				Tommasin Davide
 			\end{flushleft}
 		\end{minipage}
@@ -76,7 +80,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.3
+			Versione 0.0.5
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -94,13 +98,15 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 0.5pt}
-				1.0.3 & 2016-04-06 & \emph{Progettisti} \newline Biggeri Mattia \newline Tommasin Davide & Aggiunta sezione in appendice suoi Desing Pattern, contiene al momento la descrizione di: MVC, Event-driven, Command   \\
+				0.0.5 & 2016-04-08 & \emph{Progettisti} \newline Maino Elia \newline Nicoletti Luca \newline Bortolazzo Matteo & Stesura sezione riguardante le componenti dell'architettura lato server: diagrammi dei package e delle classi e descrizioni testuali   \\
 				\noalign{\hrule height 0.5pt}
-				1.0.2 & 2016-04-03 & \emph{Progettista} \newline Bonato Paolo & Accorpate le sezioni "Componenti", "Package" e "Classi" in "Componenti e classi". Riadattata la sezione "Metodo e formalismo di specifica" alla nuova struttura. Inserite le immagini 1 e 2. Apportate le correzioni indicate. \\
+				0.0.4 & 2016-04-06 & \emph{Progettisti} \newline Biggeri Mattia \newline Tommasin Davide & Aggiunta sezione in appendice suoi Desing Pattern, contiene al momento la descrizione di: MVC, Event-driven, Command   \\
+				\noalign{\hrule height 0.5pt}
+				0.0.3 & 2016-04-03 & \emph{Progettista} \newline Bonato Paolo & Accorpate le sezioni "Componenti", "Package" e "Classi" in "Componenti e classi". Riadattata la sezione "Metodo e formalismo di specifica" alla nuova struttura. Inserite le immagini 1 e 2. Apportate le correzioni indicate. \\
                 \noalign{\hrule height 0.5pt}
-				1.0.1 & 2016-03-26 & \emph{Progettisti} \newline Bonato Paolo \newline Biggeri Mattia \newline Padovan Tommaso \newline Tommasin Davide \newline Bortolazzo Matteo & Prima stesura di Architettura generale (sezinoe 3) e componenti (sezione 4)\\
+				0.0.2 & 2016-03-26 & \emph{Progettisti} \newline Bonato Paolo \newline Biggeri Mattia \newline Padovan Tommaso \newline Tommasin Davide \newline Bortolazzo Matteo & Prima stesura di Architettura generale (sezinoe 3) e componenti (sezione 4)\\
 				\noalign{\hrule height 0.5pt}
-				1.0.0 & 2016-03-24 & \emph{Analisti} \newline Bonato Paolo \newline Biggeri Mattia & Creazione scheletro documento, stesura introduzione, definizione di metodo e formalismo di specifica. \\
+				0.0.1 & 2016-03-24 & \emph{Analisti} \newline Bonato Paolo \newline Biggeri Mattia & Creazione scheletro documento, stesura introduzione, definizione di metodo e formalismo di specifica. \\
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
 			\caption{Diario delle modifiche \label{tab:table_label}}
@@ -146,31 +152,47 @@
 	\subsection{Scala}
 		Le possibili scelte dettate dal capitolato sono Java e Scala. Si è scelto di utilizzare Scala perché offre i seguenti vantaggi:
 		\begin{itemize}
-			\item \textbf{Concorrenza e distribuzione:} Ottimo supporto alla programmazione multi-threaded e distribuita, essenziale per la realizzazione di un prodotto responsive e scalabile.
-			\item \textbf{Supporto di Akka:} Il linguaggio supporta la libreria Akka che è richiesta dal capitolato.
+            \item \textbf{Completamente Object-Oriented:} A differenza di Java, Scala è completamente orientato agli oggetti. Non c'è distinizione del tipo: oggetto - tipo primitivo, ogni valore è semplicemente un oggetto.
+			\item \textbf{Staticamente tipato:} \'E un linguaggio tipato staticamente, questo permette di effettuare più facilmente i test. Inoltre Scala è in grado di stabilire il tipo di un oggetto per inferenza.
+            \item \textbf{Può eseguire codice Java:} Scala può eseguire codice scritto in Java. \'E dunque possibile utilizzare classi e librerie scritte in Java all'interno di programmi scritti in Scala. 
+            \item \textbf{Concorrenza e distribuzione:} Ottimo supporto alla programmazione multi-threaded e distribuita, essenziale per la realizzazione di un prodotto responsive e scalabile.
+			\item \textbf{Supporto alla definizione di DSL:} Scala supporta nativamente la definizione di DSL.
+            \item \textbf{Supporto di Akka:} Il linguaggio supporta la libreria Akka che è richiesta dal capitolato.
 		\end{itemize}
 		Inoltre il Committente ha espresso esplicitamente la sua preferenza sull'utilizzo di Scala.
-		
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.15]{scala.png}
+			\caption{Scala - logo}
+		\end{figure}	
 	\subsection{Akka}
-		L'utilizzo della libreria Akka è reso obbligatorio dal capitolato ed è la base del modello ad attori che costituisce il progetto.
+		L'utilizzo della libreria Akka oltre ad essere reso obbligatorio dal committente, fornisce un'eccellente base su cui sviluppare un sistema basato sul modello ad attori.
+        Akka permette di costruire facilmente applicazioni message-driven che siano estremamente concorrenti, distribuite e resilienti.         
+        La natura distribuita e asincrona degli attori messi a disposizione da Akka soddisfa pienamente i bisogni del sistema da implementare.
+	\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.45]{Akka.png}
+			\caption{Akka - logo}
+		\end{figure}	
+	
 	
 	\newpage 
 	\section{Descrizione dell'architettura}
 		\subsection{Metodo e formalismo di specifica}
-			Nell'esposizione dell'architettura del prodotto si procederà con un approccio di tipo top-down, ovvero dal generale al particolare.
-			Inizialmente si descriveranno le tre componenti fondamentali: Client, Server e Driver; poi le componenti più piccole al loro interno, specificando i package e le classi che li compongono.
+			Nell'esposizione dell'architettura del prodotto si procederà con un approccio di tipo top-down, ovvero dal generale al particolare. \\
+			Inizialmente si descriveranno le tre componenti fondamentali: Client, Server e Driver; poi le componenti più piccole al loro interno, specificando i package e le classi che li compongono. \\ \\
 			Per ogni package saranno descritti brevemente il tipo, l'obiettivo e la funzione e saranno specificati eventuali figli, classi ed interazioni con altri package.
-			Ogni classe sarà dotata di una breve descrizione e ne saranno specificate le responsabilità, le classi ereditate, le sottoclassi e le relazioni con altre classi.
-			Successivamente saranno mostrati e descritti i diagrammi delle attività che coinvolgono l'utente.
+			Ogni classe sarà dotata di una breve descrizione e ne saranno specificate le responsabilità, le classi ereditate, le sottoclassi e le relazioni con altre classi. \\
+			Successivamente saranno mostrati e descritti i diagrammi delle attività che coinvolgono l'utente. \\
 			Infine si illustreranno degli esempi di utilizzo dei design pattern nell'architettura del sistema.
 		\subsection{Architettura generale}
-        	Il sistema ha un'architettura generale di tipo client-server.
-            Il server ha un'architettura di tipo event-driven basata sul modello ad attori ed espone delle API tramite socket TCP.
+        	L'architettura generale del sistema è di tipo client-server. \\ \\
+            Il server ha un'architettura di tipo event-driven basata sul modello ad attori ed espone delle API tramite socket TCP. \\ \\
             L'architettura del Client segue il design pattern Model-View-Controller con interfaccia da linea di comando e comunica con il server  grazie ad un driver tramite connessione TCP.
             
         \begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.35]{Packages_Generale.png}
+			\includegraphics[scale=0.25]{Packages_Generale.png}
 			\caption{Architettura generale, vista Package}
 		\end{figure}
 		
@@ -180,15 +202,14 @@
 			\caption{Legenda}
 		\end{figure}
             \subsubsection{Server}
-        	Le componenti principali del server sono gli attori:
-            \begin{itemize}
-				\item \textbf{Storekeeper:} Mantengono fisicamente in memoria le mappe chiave/valore.
-                \item \textbf{Ninja:} Sono associati ad uno Storekeeper. Permettono di mantenere la consistenza del database anche nell'eventualità di un guasto. Se si perde uno Storekeeper, il Ninja a lui associato ne prende il posto. Per questa ragione, si trovano necessariamente in una macchina differente, ma rimangono costantemente in aggiornamento.
-                \item \textbf{Storefinder:} Si occupano di ricevere richieste dall'esterno e instradarle ai rispettivi Storefinder, virtualmente ogni Storefinder definisce un indice sulla chiave della mappa. Il loro numero è veriabile e può essere configurato. Uno degli Storefinder è definito \textbf{main} e funge da punto di accesso al database.
-                \item \textbf{Warehousemen:} Si interfaciano con gli Storekeeper e trascrivono persistentemente le rispettive mappe su disco.
-                \item \textbf{Manager:} Ricevono le richieste di gestione degli attori di tipo Storekeeper, ad esempio sono responsabili del numero massimo di coppie chiave/valore contenute in un'istanza di Storekeeper.
-			\end{itemize}
-            
+        	Il server di \emph{Actorbase} è composto da due package principali: il package \textbf{Core} e il package \textbf{API}. \\
+            Il package \textbf{Core} è a sua volta composto dal package \textbf{Actors}, contenente le classi che definiscono gli attori del sistema, e dal package \textbf{messages}, contenente i messaggi che gli attori possono inviarsi tra loro. \\
+            Il package \textbf{API} contiene le classi che forniscono una comunicazione con i client esterni.
+            \begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.35]{Server/Package/serverALL.png}
+			\caption{Server, vista Package}
+		\end{figure}
         \subsubsection{Client}
         	L'architettura del Client seguirà il design pattern MVC:
             \begin{itemize}
@@ -204,21 +225,265 @@
         	Il Driver è una libreria, invocando i metodi della quale è possibile effettuare richieste TCP verso le API esposte dal Server.
             
 	\newpage 
-	\section{Componenti e classi}
-		\subsection{componente 1}
-			% Immagine
-			\subsubsection{Package}
-				% Descrizione
-				% Figli
-				% Classi
-				% Interazioni con altri package
+	\section{Componenti}
+		\subsection{Actorbase}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.50]{Server/Package/actorbase.png}
+			\caption{Componente Actorbase}
+		\end{figure}
+			\subsubsection{Descrizione}
+				\'E il package principale del sistema. L'interazione tra i package \textbf{Server} e \textbf{Driver} definiscono una comunicazione su rete di tipo client-server. \\ Le classi definite nel package \textbf{Server} utilizzano ed estendono le classi della libreria Akka.
+			\subsubsection{Package Figli}
+				\begin{itemize}
+					\item Actorbase.Server
+					\item Actorbase.Client
+					\item Actorbase.Driver
+					\item Actorbase.Akka
+				\end{itemize}
+		\subsection{Actorbase.Server}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.50]{Server/Package/ServerLevel.png}
+			\caption{Componente Actorbase.Server}
+			\end{figure}
+			\subsubsection{Descrizione}
+				Package per la componente lato server del sistema. \'E composto dai packages \textbf{Core} ed \textbf{API} e dalla classe \emph{ActorbaseServer}.
+			\subsubsection{Package Figli}
+				\begin{itemize}
+					\item Actorbase.Server.Core
+					\item Actorbase.Server.API
+				\end{itemize}
 			\subsubsection{Classi}
-				% Descrizione
-				% Responsabilità
-				% Classi ereditate
-				% Sottoclassi
-				% Relazioni con altre classi
+			\begin{itemize}
+				\item Actorbase.Server.ActorbaseServer
+			\end{itemize}
+		\subsection{Actorbase.Server.API}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.70]{Server/Package/APILevel.png}
+			\caption{Componente Actorbase.Server.API}
+			\end{figure}
+			\subsubsection{Descrizione}
+				Package contenenti le classi che definiscono le API attraverso cui i client possono interfacciarsi all'istanza di un server del sistema.
+			\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Server.API.API
+			\end{itemize}
 			
+		\subsection{Actorbase.Server.Core}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.55]{Server/Package/CoreLevel.png}
+			\caption{Componente Actorbase.Server.Core}
+			\end{figure}
+			\subsubsection{Descrizione}
+				Il package contiene le componenti che costituiscono il nucleo del sistema logico lato server. \'E composto da due package: \textbf{Actors} e \textbf{Messages}
+			\subsubsection{Package figli}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Actors
+				\item Actorbase.Server.Core.Messages
+			\end{itemize}
+			
+		\subsection{Actorbase.Server.Core.Actors}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.50]{Server/Package/ActorsLevel.png}
+			\caption{Componente Actorbase.Server.Core.Actors}
+			\end{figure}
+			\subsubsection{Descrizione}
+				Il package contiene le componenti che costituiscono i diversi attori definiti nel sistema. I package che lo compongono definiscono le diverse categorie degli attori.
+			\subsubsection{Package figli}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Actors.DataManagement
+				\item Actorbase.Server.Core.Actors.Manager
+				\item Actorbase.Server.Core.Actors.StoreFinder
+			\end{itemize}
+			
+			\subsection{Actorbase.Server.Core.Actors.DataManagement}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.55]{Server/Package/DatamanagementLevel.png}
+			\caption{Componente Actorbase.Server.Core.Actors.DataManagement}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le classi che rappresentano gli attori che si occupano direttamente della gestione dei dati.
+			\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Actors.DataManagement.DataManager
+				\item Actorbase.Server.Core.Actors.DataManagement.WareHouseMan
+				\item Actorbase.Server.Core.Actors.DataManagement.UpdateActor
+				\item Actorbase.Server.Core.Actors.DataManagement.DeleteActor
+				\item Actorbase.Server.Core.Actors.DataManagement.InsertActor
+			\end{itemize}
+			
+		\subsection{Actorbase.Server.Core.Actors.Manager}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.65]{Server/Package/ManagerLevel.png}
+			\caption{Componente Actorbase.Server.Core.Actors.Manager}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le classi che rappresentano gli attori che si occupano della gestione di altri attori e dei vincoli presenti su di essi.
+			\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Actors.Manager.Manager
+			\end{itemize}
+			
+		\subsection{Actorbase.Server.Core.Actors.StoreFinder}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/Package/StorefinderLevel.png}
+			\caption{Componente Actorbase.Server.Core.Actors.StoreFinder}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le classi che rappresentano gli attori che si occupano dell'indicizzazione degli altri attori presenti e del corretto instradamento dei messaggi.
+			\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Actors.StoreFinder.StoreFinder
+				\item Actorbase.Server.Core.Actors.StoreFinder.Main
+				\item Actorbase.Server.Core.Actors.StoreFinder.HTTPBuilder
+				\item Actorbase.Server.Core.Actors.StoreFinder.MessageBuilder
+			\end{itemize}
+			\subsubsection{Interfacce}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Actors.StoreFinder.IndexesHandler
+			\end{itemize}
+		
+		\subsection{Actorbase.Server.Core.Messages}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.55]{Server/Package/MessagesLevel.png}
+			\caption{Componente Actorbase.Server.Core.Messages}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le componenti che rappresentano i messaggi che i diversi attori del sistema possono inviarsi tra loro.
+			\subsubsection{Package Figli}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages
+				\item Actorbase.Server.Core.Messages.PermissionMessages
+				\item Actorbase.Server.Core.Messages.LinkActorsMessages
+				\item Actorbase.Server.Core.Messages.MainOperationMessages
+				\item Actorbase.Server.Core.Messages.DataManagementMessages
+				\item Actorbase.Server.Core.Messages.ChangeInterfaceMessages
+			\end{itemize}
+			
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.55]{Server/Package/ConfigurationMessagesLevel.png}
+			\caption{Componente Actorbase.Server.Core.Messages.ConfigurationMessages}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi relativi ad operazioni di configurazione delle impostazioni del server.
+			\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxStoreFinderMsg
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxNinjaMsg
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxWarehousemanMsg
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.UpdatePropertiesMsg
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.ReadPropertiesMsg
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.SaveStateMsg
+			\end{itemize}
+			\subsubsection{Interfacce}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MainConfigurationMessage
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.StoreFinderConfigurationMessage
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.ManagerConfigurationMessage
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.DataManagerConfigurationMessage
+			\end{itemize}
+			
+			\subsection{Actorbase.Server.Core.Messages.PermissionMessages}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.65]{Server/Package/PermissionsMessagesLevel.png}
+			\caption{Componente Actorbase.Server.Core.Messages.PermissionMessages}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le interfacce che rappresentano i diversi gradi di permesso che un'operazione richiede. Un'operazione può infatti richiedere i permessi di lettura, scrittura o nessun permesso. Ogni messaggio relativo ad un'operazione richiedibile da un client estende una di queste interfacce.
+			\subsubsection{Interfacce}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.PermissionMessages.PermissionsNotRequiredInterface
+				\item Actorbase.Server.Core.Messages.PermissionMessages.ReadPermissionsInterface
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionsInterface
+			\end{itemize}
+			
+			\subsection{Actorbase.Server.Core.Messages.LinkActorsMessages}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.65]{Server/Package/LinkActorsMessagesLevel.png}
+			\caption{Componente Actorbase.Server.Core.Messages.LinkActorsMessages}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le classi che rappresentano i messaggi relativi alla gestione dei collegamenti tra diversi attori.
+			\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.LinkActorsMessages.UpdateStoreKeeperMsg
+				\item Actorbase.Server.Core.Messages.LinkActorsMessages.InsertStoreKeeperMsg
+			\end{itemize}
+			
+			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.55]{Server/Package/MainOperationsMessagesLevel.png}
+			\caption{Componente Actorbase.Server.Core.Messages.MainOperationMessages}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi relativi ad operazioni che non richiedono l'invio di ulteriori messaggi ad attori che gestiscono i dati direttamente.
+			\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.ShowDBMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.ShowMapMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.CreateDBMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.CreateMapMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.RenameDBMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.RenameMapMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.DeleteDBMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.DeleteMapMsg
+			\end{itemize}
+			\subsubsection{Interfacce}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
+			\end{itemize}
+			
+		\subsection{Actorbase.Server.Core.Messages.DataManagerOperationMessages}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.50]{Server/Package/DatamanagementMessagesLevel.png}
+			\caption{Componente Actorbase.Server.Core.Messages.DataManagerOperationMessages}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi relativi ad operazioni che richiedono l'invio di tali messaggi anche ad attori che gestiscono i dati direttamente.
+			\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.KeysMsg
+				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.FindMsg
+				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.InsertMsg
+				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.UpdateMsg
+				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.RemoveMsg
+			\end{itemize}
+			\subsubsection{Interfacce}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.DataManagerOperationMessage
+			\end{itemize}
+			
+			\subsection{Actorbase.Server.Core.Messages.ChangeInterfaceMessages}
+			\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.65]{Server/Package/ChangeInterfaceMessagesLevel.png}
+			\caption{Componente Actorbase.Server.Core.Messages.ChangeInterfaceMessages}
+			\end{figure}
+			\subsubsection{Descrizione}
+				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi inviabili per effettuare operazioni di cambio interfaccia per gli attori che supportano tale funzionalità.
+			\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ChangeInterfaceMessages.BecomeNinjaMsg
+				\item Actorbase.Server.Core.Messages.ChangeInterfaceMessages.BecomeStoreKeeperMsg
+			\end{itemize}
+			
+	\newpage
+	\section{Classi}	
+	
 	\newpage 
 	\section{Diagrammi delle attività}
 	
