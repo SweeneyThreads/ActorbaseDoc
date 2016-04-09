@@ -80,7 +80,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.5
+			Versione 0.0.6
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -97,6 +97,8 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				0.0.6 & 2016-04-09 & \emph{Progettisti} \newline Biggeri Mattia \newline Padovan Tommaso \newline Bonato Paolo & Stesura sezioni Driver, Diagrammi attività, Stime di fattibilità e bisogno di risorse;  aggiunta immagine nella sezione 3.2.3, aggiunto Singleton nelle descrizioni dei desing pattern, aggiornata leggenda.     \\
 				\noalign{\hrule height 0.5pt}
 				0.0.5 & 2016-04-08 & \emph{Progettisti} \newline Maino Elia \newline Nicoletti Luca \newline Bortolazzo Matteo & Stesura sezione riguardante le componenti dell'architettura lato server: diagrammi dei package e delle classi e descrizioni testuali   \\
 				\noalign{\hrule height 0.5pt}
@@ -138,6 +140,8 @@
 			\url{http://www.java.com/}
 			\item \textbf{Akka:} \\
 			\url{http://akka.io/}
+			\item \textbf{InelliJ:} \\
+			\url{http://www.jetbrains.com/idea/}
 		\end{itemize}
 	\subsubsection{Normativi}
 		\begin{itemize}
@@ -162,7 +166,7 @@
 		Inoltre il Committente ha espresso esplicitamente la sua preferenza sull'utilizzo di Scala.
 		\begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.15]{scala.png}
+			\includegraphics[scale=0.15]{immagini/ST/scala.png}
 			\caption{Scala - logo}
 		\end{figure}	
 	\subsection{Akka}
@@ -171,7 +175,7 @@
         La natura distribuita e asincrona degli attori messi a disposizione da Akka soddisfa pienamente i bisogni del sistema da implementare.
 	\begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.45]{Akka.png}
+			\includegraphics[scale=0.45]{immagini/ST/Akka.png}
 			\caption{Akka - logo}
 		\end{figure}	
 	
@@ -198,7 +202,7 @@
 		
 		\begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.3]{Legenda.png}
+			\includegraphics[scale=0.3]{ST/Legenda.png}
 			\caption{Legenda}
 		\end{figure}
             \subsubsection{Server}
@@ -223,9 +227,14 @@
         
         \subsubsection{Driver}
         	Il Driver è una libreria, invocando i metodi della quale è possibile effettuare richieste TCP verso le API esposte dal Server.
+        \begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.35]{ST/Client/GeneraleClient.png}
+        	\caption{Architettura generale Client e Driver}
+		\end{figure}
             
 	\newpage 
-	\section{Componenti}
+	\section{Componenti e Classi}
 		\subsection{Actorbase}
 			\begin{figure} [H]
 			\centering
@@ -481,17 +490,241 @@
 				\item Actorbase.Server.Core.Messages.ChangeInterfaceMessages.BecomeStoreKeeperMsg
 			\end{itemize}
 			
-	\newpage
-	\section{Classi}	
+			
+					\subsection{Actorbase.Driver}
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.5]{ST/Client/DriverSemplificato.png}
+        	\caption{Componente Actorbase.Driver}
+		\end{figure}
+		
+		\subsubsection{Descrizione}
+			Package per la componente Driver del sistema. Per la gestione dei comandi implementa il Design Pattern Command.
+			
+		\subsubsection{Package Figli}
+			\begin{itemize}
+				\item Actorbase.Driver.Components
+				\item Actorbase.Driver.Exceptions
+			\end{itemize}
+			
+		\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Driver.Driver
+				\item Actorbase.Driver.Connection
+			\end{itemize}
+			
+		\subsubsection{Interfacce}
+			\begin{itemize}
+				\item Actorbase.Driver.DriverInterface
+			\end{itemize}
+		
+		\subsection{Actorbase.Driver.Connection}
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.5]{ST/Client/ConnectionClasse.png}
+        	\caption{Classe Actorbase.Driver.Connection}
+		\end{figure}
+		
+		\subsubsection{Descrizione}
+			Classe \emph{singleton} che gestisce la comunicazione del Driver con il Server. Svolge il ruolo di \emph{Receiver}.
+		\subsubsection{Utilizzo}
+			Viene usata per aprire e chiudere la connessione con il Server, inviare i messaggi e per generare la prima parte del comando per le API.
+		\subsubsection{Relazione con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Driver.Commands.ServerCommand}: Relazione entrante, invio comando al Server.
+				\item \textbf{Actorbase.Driver.Exception}: Relazione uscente, creazione di eccezioni.
+			\end{itemize}
+		
+		\subsection{Actorbase.Driver.Driver}
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.5]{ST/Client/DriverClasse.png}
+        	\caption{Classe Actorbase.Driver.Driver e interfaccia Actorbase.Driver.DriverInterface}
+		\end{figure}
+		
+		\subsubsection{Descrizione}
+			Classe che gestisce la comunicazione mediante API. Svolge il ruolo di \emph{Invoker}.
+		\subsubsection{Utilizzo}
+			Espone i metodi per codifica e decodifica dei comandi delle API. Inoltre mantiene le informazioni relative ad eventuali DataBase o Mappe selezionate.
+		\subsubsection{Interfacce Estese}
+			Actorbase.Driver.DriverInterface
+		\subsubsection{Relazioni con altre classi}
+		\begin{itemize}
+			\item \textbf{Actorbase.Driver.Commands}: Relazione uscente, utilizzo del metodo Execute.
+			\item \textbf{Actorbase.Driver.Exceptions}: Relazione uscente, creazione di eccezioni.
+		\end{itemize}
+		
+		
+	\subsection{Actorbase.Driver.Commands}
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.40]{ST/Client/CommandsClasses.png}
+        	\caption{Package Actorbase.Driver.Commands}
+		\end{figure}
+		\subsubsection{Descrizione}
+			Package che contiene i la gerarchia di comandi dell'interfaccia \emph{Command}. Ognuno di essi rappresenta astrattamente una operazione che deve essere svolta a livello del Server. Sono presenti due gerarchie di interfacce, una per la tipologia di comandi (lato client, lato server, lettura, scrittura) e l'altra per la tipologia di "preselezioni" necessarie per eseguire il comando (DataBase selezionato, Mappa selezionata).
+			
+		\subsubsection{Gerarchia classi ed interfacce}
+		Al fine di rendere maggiormente comprensibile la descrizione di questo Package verrà descritta di seguito la gerarchia delle classi ed interfacce in esso contenuta.\\
+		\textbf{Actorbase.Driver.Commands.ParsedCommand}
+			\begin{itemize}
+				\item \textbf{Descrizione:} Interfaccia base che rappresenta un generico comando che il Driver sa trattare.
+				\item \textbf{Interfacce Figle:} Actorbase.Driver.Commands.ServerCommand
+			\end{itemize}
+
+		
+		\textbf{Actorbase.Driver.Commands.ServerCommand}
+			\begin{itemize}
+				\item \textbf{Descrizione:} Interfaccia base che rappresenta un comando lato Server.
+				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.ParsedCommand
+				\item \textbf{Interfacce Figlie:}
+					\begin{itemize}
+						\item Actorbase.Driver.Commands.ReadCommand
+						\item Actorbase.Driver.Commands.WriteCommand
+						\item Actorbase.Driver.Commands.ConnectionCommand
+					\end{itemize}
+			\end{itemize}
+		
+		\textbf{Actorbase.Driver.Commands.ReadCommand}
+		\begin{itemize}
+				\item \textbf{Descrizione:} Interfaccia base che rappresenta un comando per cui sono necessari i permessi di lettura sulla tabella selezionata
+				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.ServerCommand
+				\item \textbf{Classi Figlie:}
+					\begin{itemize}
+						\item \textbf{Actorbase.Driver.Commands.KeysCommand}:
+							Classe concreta che rappresenta il comando per mostrare la lista delle chiavi nella mappa selezionata.
+						\item \textbf{Actorbase.Driver.Commands.SelectCommand}:
+							Classe concreta che rappresenta il comando per selezionare il valore di una chiave nella mappa selezionata.
+						\item \textbf{Actorbase.Driver.Commands.ShowBDCommand}:
+							Classe concreta che rappresenta il comando per mostrare l'elenco dei DataBase di cui si hanno permessi di lettura.
+						\item \textbf{Actorbase.Driver.Commands.SelectDBCommand}:
+							Classe concreta che rappresenta il comando per selezionare un determinato DataBase.
+						\item \textbf{Actorbase.Driver.Commands.ShowMapCommand}:
+							Classe concreta che rappresenta il comando per mostrare la lista delle mappe nel DataBase selezionato.
+						\item \textbf{Actorbase.Driver.Commands.SelectMapCommand}:
+							Classe concreta che rappresenta il comando per selezionatare una determinata mappa.
+					\end{itemize}
+			\end{itemize}
+
+		\textbf{Actorbase.Driver.Commands.WriteCommand}
+		\begin{itemize}
+				\item \textbf{Descrizione:} Interfaccia base che rappresenta un comando per cui sono necessari i permessi di scrittura sulla tabella selezionata
+				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.ServerCommand
+				\item \textbf{Classi Figlie:}
+					\begin{itemize}
+						\item \textbf{Actorbase.Driver.Commands.InsertCommand}:
+							Classe concreta che rappresenta il comando per inserire una coppia chiave-valore nella mappa selezionata.
+						\item \textbf{Actorbase.Driver.Commands.UpdateCommand}:
+							Classe concreta che rappresenta il comando per aggiornare il valore di una chiave nella mappa selezionata.
+						\item \textbf{Actorbase.Driver.Commands.AppendCommand}:
+							Classe concreta che rappresenta il comando per appendere in coda al valore di una chiave nella mappa selezionata.
+						\item \textbf{Actorbase.Driver.Commands.RemoveCommand}:
+							Classe concreta che rappresenta il comando per rimuovere una coppia chiave-valore dalla mappa selezionata.
+						\item \textbf{Actorbase.Driver.Commands.CreateMapCommand}:
+							Classe concreta che rappresenta il comando per creare una nuova mappa nel DataBase selezionato.
+						\item \textbf{Actorbase.Driver.Commands.DeleteMapCommand}:
+							Classe concreta che rappresenta il comando per eliminare una mappa nel DataBase selezionato.
+						\item \textbf{Actorbase.Driver.Commands.RenameMapCommand}:
+							Classe concreta che rappresenta il comando per rinominare una mappa nel DataBase selezionato.
+						\item \textbf{Actorbase.Driver.Commands.CreateDBCommand}:
+							Classe concreta che rappresenta il comando per creare un nuovo DataBase.
+						\item \textbf{Actorbase.Driver.Commands.DeleteDBCommand}:
+							Classe concreta che rappresenta il comando per rimuovere un DataBase.
+						\item \textbf{Actorbase.Driver.Commands.RenameDBCommand}:
+							Classe concreta che rappresenta il comando per rinominare un DataBase.
+					\end{itemize}
+			\end{itemize}
+		
+		\textbf{Actorbase.Driver.Commands.ConnectionCommand}
+		\begin{itemize}
+				\item \textbf{Descrizione:} Interfaccia base che rappresenta un comando di connessione o disconnessione dal Server.
+				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.ServerCommand
+				\item \textbf{Classi Figlie:}
+					\begin{itemize}
+						\item \textbf{Actorbase.Driver.Commands.ConnectCommand}:
+							Classe concreta che rappresenta il comando per la connessione al server.
+						\item \textbf{Actorbase.Driver.Commands.DisconnectCommand}:
+							Classe concreta che rappresenta il comando per la disconnessione dal server.
+					\end{itemize}
+			\end{itemize}
+		
+		\textbf{Actorbase.Driver.Commands.DBSelectedCommand}
+		\begin{itemize}
+				\item \textbf{Descrizione:} Interfaccia base che rappresenta un generico comando che per cui è necessario avere un DataBase selezionato.
+				\item \textbf{Classi Figlie:}
+					\begin{itemize}
+						\item Actorbase.Driver.Commands.ShowMapCommand
+						\item Actorbase.Driver.Commands.SelectMapCommand
+						\item Actorbase.Driver.Commands.CreateCommand
+						\item Actorbase.Driver.Commands.DeleteCommand
+						\item Actorbase.Driver.Commands.RenameCommand
+					\end{itemize}
+			\end{itemize}
+
+
+		\textbf{Actorbase.Driver.Commands.MapSelectedCommand}
+		\begin{itemize}
+				\item \textbf{Descrizione:} Interfaccia base che rappresenta un generico comando che per cui è necessario avere una mappa selezionata.
+				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.DBSelectedCommand
+				\item \textbf{Classi Figlie:}
+					\begin{itemize}
+						\item Actorbase.Driver.Commands.KeysCommand
+						\item Actorbase.Driver.Commands.SelectCommand
+						\item Actorbase.Driver.Commands.InsertCommand
+						\item Actorbase.Driver.Commands.UpdateCommand
+						\item Actorbase.Driver.Commands.AppendCommand
+						\item Actorbase.Driver.Commands.RemoveCommand
+					\end{itemize}
+			\end{itemize}
 	
 	\newpage 
 	\section{Diagrammi delle attività}
-	
+		Segue la descrizione dei diagrammi delle attività che mostrano le possibili interazioni dell'utente con Actorbase. Il diagramma iniziale illustrerà le attività possibili che saranno successivamente mostrate in sotto diagrammi specifici, queste attività sono segnate nel diagramma principale con un fork.
+		\subsubsection{Diagramma attività principale}
+		
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.6]{ST/client/diagramma-attivita-generale.png}
+			\caption{Diagramma attività principale}
+		\end{figure}
+			Dopo aver avviato il client l'utente può svolgere tre tipi di operazione: connettersi ad un server, chiudere l'applicativo o svolgere un operazione offline. Se sceglie di connettersi può sempre chiudere l'applicativo e svolgere operazioni che non necessitano di essere connessi al server, può in più disconnettersi o svolgere operazioni sul server, non potrà però più connettersi ad un server finché non effettua la disconnessione dal sever corrente.
+			
+		\subsubsection{Offline Operation}
+			\begin{figure} [H]
+				\centering
+				\includegraphics[scale=0.6]{ST/client/diagramma-offline-operation.png}
+				\caption{Diagramma attività operazioni offline}
+			\end{figure}
+				L'utente sceglie se chiedere un aiuto generale, o riguardante un comando specifico, nel primo caso è sufficiente che digiti il comando di aiuto e lo confermi, altrimenti dovrà successivamente scrivere il comando del quale vuole avere chiarimenti e poi confermare.
+		\subsubsection{Connect to Server}
+			\begin{figure} [H]
+				\centering
+				\includegraphics[scale=0.6]{ST/client/diagramma-Connect-to-Server.png}
+				\caption{Diagramma attività connessione ad un server}
+			\end{figure}
+				Per effettuare una connessione l'utente dovrà digitare il commando di connessione e successivamente fornire i dati per la connessione, nello specifico: l'indirizzo IP al quale ci si vuole connettere, il nome utente e la password. Dopo di che è sufficiente che confermi il comando.
+		\subsubsection{Online Operation}
+			\begin{figure} [H]
+				\centering
+				\includegraphics[scale=0.4]{ST/client/diagramma-Online-Operation.png}
+				\caption{Diagramma attività operazioni online}
+			\end{figure}
+				L'utente sceglie che tipo di operazione vuole effettuare, se vuole effettuare un' operazione di rinomina su un database o una mappa è sufficiente che fornisca il comando di rinomina, il vecchio e il nuovo nome e che poi confermi l'operazione; se vuole effettuare un' operazione di selezione o di creazione o di cancellazione sia di un database che di una mappa, deve digitare il comando corretto e successivamente il nome del database o della mappa sulla quale vuole effettuare l'operazione dopo di che è sufficiente che confermi il comando; se vuole effettuare un' operazione di rimozione o selezione di un dato è necessario che digiti il comando desiderato, digiti la chiave completa e che confermi l'operazione; se vuole effettuare un inserimento di un dato o un aggiornamento di un dato deve inserire il comando corretto, digitare la chiave completa e confermare l'operazione.
 	\newpage 
 	\section{Design pattern}
 	
 	\newpage 
 	\section{Stime di fattibilità e di bisogno di risorse}
+	
+		L'architettura definita fino a questo punto è sufficiente per fornire una stima della fattibilità del prodotto e delle risorse richieste per la realizzazione. \\
+	Il gruppo inizialmente non aveva conoscenze sufficienti per stimare in modo appropriato la complessità dell'implementazione di un database basato sulla logica ad attori. Grazie al livello di dettaglio raggiunto sono stati fugati molti dei dubbi e delle incertezze a riguardo, confermando le previsioni sull'esito positivo del progetto. \\
+	Sono state inoltre individuate con chiarezza le risorse tecnologiche che verranno utilizzate:
+	\begin{itemize}
+		\item Akka: libreria per modello ad attori.
+		\item IntelliJ: framework per la stesura del codice.
+		\item JVM: piattaforma per il funzionamento di Scala.
+	\end{itemize}
+	Il gruppo in contemporanea si è dedicato allo studio delle nuove tecnologie raggiungendo un buon livello di conoscenza. L'insieme di queste risorse potrà garantire la realizzazione di tutte le componenti dell'architettura.
 	
 	\newpage 
 	\section{Tracciamento}
@@ -505,7 +738,7 @@
 	\subsubsection{Event-driven}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.65]{schemaevent-driven.jpg}
+					\includegraphics[scale=0.65]{immagini/ST/schemaevent-driven.jpg}
 					\caption{Diagramma del Desing Pattern Event-driven}
 				\end{figure}
             \begin{itemize}
@@ -518,7 +751,7 @@
 	\subsubsection{MVC}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.65]{schemaMVC.jpg}
+					\includegraphics[scale=0.65]{immagini/ST/schemaMVC.jpg}
 					\caption{Diagramma del Desing Pattern MVC}
 				\end{figure}
             \begin{itemize}
@@ -541,7 +774,7 @@
 	\subsubsection{Command}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.65]{schemacomand.jpg}
+					\includegraphics[scale=0.65]{immagini/ST/schemacomand.jpg}
 					\caption{Diagramma del Desing Pattern Command}
 				\end{figure}
             \begin{itemize}
@@ -557,6 +790,33 @@
 					\end{itemize}		
 			\end{itemize}
 				
+	\subsubsection{Singleton}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.65]{immagini/ST/Singleton.png}
+					\caption{Diagramma del Desing Pattern Command}
+				\end{figure}
+		\begin{itemize}
+			\item \textbf{Scopo:} Assicurare che una classe abbia una sola istanza con un unico punto di accesso globale.
+			\item \textbf{Motivazione:}È necessario assicurare che esista una sola istanza di alcune classi. Una classe Singleton ha la responsabilità sulle proprie istanze, in modo che nessuna altra istanza possa essere creata, e fornisce un punto di accesso unico.
+			\item \textbf{Applicabilità:}
+			\begin{itemize}
+				\item Deve esistere una ed una sola istanza di una classe in tutta l'applicazione, accessibile dai client in modo noto.
+				\item L'istanza deve essere estendibile con ereditarietà, consentendo ai client di non modificare il proprio codice.
+			\end{itemize}
+		\end{itemize}
+		
+		
+	\subsubsection{Singleton}
+		\begin{itemize}
+			\item \textbf{Scopo:} Assicurare che una classe abbia una sola istanza con un unico punto di accesso globale.
+			\item \textbf{Motivazione:}È necessario assicurare che esista una sola istanza di alcune classi. Una classe Singleton ha la responsabilità sulle proprie istanze, in modo che nessuna altra istanza possa essere creata, e fornisce un punto di accesso unico.
+			\item \textbf{Applicabilità:}
+			\begin{itemize}
+				\item Deve esistere una ed una sola istanza di una classe in tutta l'applicazione, accessibile dai client in modo noto.
+				\item L'istanza deve essere estendibile con ereditarietà, consentendo ai client di non modificare il proprio codice.
+			\end{itemize}
+		\end{itemize}
 	
 	\cleardoublepage
 	\addcontentsline{toc}{section}{\listfigurename}
