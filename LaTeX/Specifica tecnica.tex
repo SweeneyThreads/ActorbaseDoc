@@ -561,37 +561,64 @@
 		\begin{figure} [H]
 			\centering
 			\includegraphics[scale=0.40]{ST/Client/CommandsClasses.png}
-        	\caption{Package Actorbase.Driver.Commands}
+			\caption{Package Actorbase.Driver.Commands}
 		\end{figure}
 		\subsubsection{Descrizione}
 			Package che contiene i la gerarchia di comandi dell'interfaccia \emph{Command}. Ognuno di essi rappresenta astrattamente una operazione che deve essere svolta a livello del Server. Sono presenti due gerarchie di interfacce, una per la tipologia di comandi (lato client, lato server, lettura, scrittura) e l'altra per la tipologia di "preselezioni" necessarie per eseguire il comando (DataBase selezionato, Mappa selezionata).
-			
-		\subsubsection{Gerarchia classi ed interfacce}
-		Al fine di rendere maggiormente comprensibile la descrizione di questo Package verrà descritta di seguito la gerarchia delle classi ed interfacce in esso contenuta.\\
-		\textbf{Actorbase.Driver.Commands.ParsedCommand}
+		
+		\subsubsection{Interfacce}
 			\begin{itemize}
-				\item \textbf{Descrizione:} Interfaccia base che rappresenta un generico comando che il Driver sa trattare.
-				\item \textbf{Interfacce Figle:} Actorbase.Driver.Commands.ServerCommand
+				\item Actorbase.Driver.Commands.ServerCommand
+				\item Actorbase.Driver.Commands.ReadCommand
+				\item Actorbase.Driver.Commands.WriteCommand
+				\item Actorbase.Driver.Commands.ConnectionCommand
+				\item Actorbase.Driver.Commands.DBSelectedCommand
+				\item Actorbase.Driver.Commands.MapSelectedCommand
+			\end{itemize}
+
+		\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Driver.Commands.KeysCommand
+				\item Actorbase.Driver.Commands.SelectCommand
+				\item Actorbase.Driver.Commands.ShowBDCommand
+				\item Actorbase.Driver.Commands.SelectDBCommand
+				\item Actorbase.Driver.Commands.ShowMapCommand
+				\item Actorbase.Driver.Commands.SelectMapCommand
+				\item Actorbase.Driver.Commands.InsertCommand
+				\item Actorbase.Driver.Commands.UpdateCommand
+				\item Actorbase.Driver.Commands.AppendCommand
+				\item Actorbase.Driver.Commands.RemoveCommand
+				\item Actorbase.Driver.Commands.CreateMapCommand
+				\item Actorbase.Driver.Commands.DeleteMapCommand
+				\item Actorbase.Driver.Commands.RenameMapCommand
+				\item Actorbase.Driver.Commands.CreateDBCommand
+				\item Actorbase.Driver.Commands.DeleteDBCommand
+				\item Actorbase.Driver.Commands.RenameDBCommand
+				\item Actorbase.Driver.Commands.ConnectCommand
+				\item Actorbase.Driver.Commands.DisconnectCommand
 			\end{itemize}
 
 		
-		\textbf{Actorbase.Driver.Commands.ServerCommand}
-			\begin{itemize}
-				\item \textbf{Descrizione:} Interfaccia base che rappresenta un comando lato Server.
-				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.ParsedCommand
-				\item \textbf{Interfacce Figlie:}
-					\begin{itemize}
-						\item Actorbase.Driver.Commands.ReadCommand
-						\item Actorbase.Driver.Commands.WriteCommand
-						\item Actorbase.Driver.Commands.ConnectionCommand
-					\end{itemize}
-			\end{itemize}
+
+		\subsection{Actorbase.Driver.Commands.ParsedCommand}
+			\subsubsection{Descrizione} Interfaccia base che rappresenta un generico comando che il Driver sa trattare.
+			\subsubsection{Interfacce Figle} Actorbase.Driver.Commands.ServerCommand
+
 		
-		\textbf{Actorbase.Driver.Commands.ReadCommand}
-		\begin{itemize}
-				\item \textbf{Descrizione:} Interfaccia base che rappresenta un comando per cui sono necessari i permessi di lettura sulla tabella selezionata
-				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.ServerCommand
-				\item \textbf{Classi Figlie:}
+		\subsection{Actorbase.Driver.Commands.ServerCommand}
+			\subsubsection{Descrizione} Interfaccia base che rappresenta un comando lato Server.
+			\subsubsection{Interfacce Estese} Actorbase.Driver.Commands.ParsedCommand
+			\subsubsection{Interfacce Figlie}
+				\begin{itemize}
+					\item Actorbase.Driver.Commands.ReadCommand
+					\item Actorbase.Driver.Commands.WriteCommand
+					\item Actorbase.Driver.Commands.ConnectionCommand
+				\end{itemize}
+		
+		\subsection{Actorbase.Driver.Commands.ReadCommand}
+				\subsubsection{Descrizione} Interfaccia base che rappresenta un comando per cui sono necessari i permessi di lettura sulla tabella selezionata
+				\subsubsection{Interfacce Estese} Actorbase.Driver.Commands.ServerCommand
+				\subsubsection{Classi Figlie}
 					\begin{itemize}
 						\item \textbf{Actorbase.Driver.Commands.KeysCommand}:
 							Classe concreta che rappresenta il comando per mostrare la lista delle chiavi nella mappa selezionata.
@@ -606,54 +633,50 @@
 						\item \textbf{Actorbase.Driver.Commands.SelectMapCommand}:
 							Classe concreta che rappresenta il comando per selezionatare una determinata mappa.
 					\end{itemize}
-			\end{itemize}
 
-		\textbf{Actorbase.Driver.Commands.WriteCommand}
-		\begin{itemize}
-				\item \textbf{Descrizione:} Interfaccia base che rappresenta un comando per cui sono necessari i permessi di scrittura sulla tabella selezionata
-				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.ServerCommand
-				\item \textbf{Classi Figlie:}
-					\begin{itemize}
-						\item \textbf{Actorbase.Driver.Commands.InsertCommand}:
-							Classe concreta che rappresenta il comando per inserire una coppia chiave-valore nella mappa selezionata.
-						\item \textbf{Actorbase.Driver.Commands.UpdateCommand}:
-							Classe concreta che rappresenta il comando per aggiornare il valore di una chiave nella mappa selezionata.
-						\item \textbf{Actorbase.Driver.Commands.AppendCommand}:
-							Classe concreta che rappresenta il comando per appendere in coda al valore di una chiave nella mappa selezionata.
-						\item \textbf{Actorbase.Driver.Commands.RemoveCommand}:
-							Classe concreta che rappresenta il comando per rimuovere una coppia chiave-valore dalla mappa selezionata.
-						\item \textbf{Actorbase.Driver.Commands.CreateMapCommand}:
-							Classe concreta che rappresenta il comando per creare una nuova mappa nel DataBase selezionato.
-						\item \textbf{Actorbase.Driver.Commands.DeleteMapCommand}:
-							Classe concreta che rappresenta il comando per eliminare una mappa nel DataBase selezionato.
-						\item \textbf{Actorbase.Driver.Commands.RenameMapCommand}:
-							Classe concreta che rappresenta il comando per rinominare una mappa nel DataBase selezionato.
-						\item \textbf{Actorbase.Driver.Commands.CreateDBCommand}:
-							Classe concreta che rappresenta il comando per creare un nuovo DataBase.
-						\item \textbf{Actorbase.Driver.Commands.DeleteDBCommand}:
-							Classe concreta che rappresenta il comando per rimuovere un DataBase.
-						\item \textbf{Actorbase.Driver.Commands.RenameDBCommand}:
-							Classe concreta che rappresenta il comando per rinominare un DataBase.
-					\end{itemize}
-			\end{itemize}
+
+		\subsection{Actorbase.Driver.Commands.WriteCommand}
+			\subsubsection{Descrizione} Interfaccia base che rappresenta un comando per cui sono necessari i permessi di scrittura sulla tabella selezionata
+			\subsubsection{Interfacce Estese} Actorbase.Driver.Commands.ServerCommand
+			\subsubsection{Classi Figlie}
+				\begin{itemize}
+					\item \textbf{Actorbase.Driver.Commands.InsertCommand}:
+						Classe concreta che rappresenta il comando per inserire una coppia chiave-valore nella mappa selezionata.
+					\item \textbf{Actorbase.Driver.Commands.UpdateCommand}:
+						Classe concreta che rappresenta il comando per aggiornare il valore di una chiave nella mappa selezionata.
+					\item \textbf{Actorbase.Driver.Commands.AppendCommand}:
+						Classe concreta che rappresenta il comando per appendere in coda al valore di una chiave nella mappa selezionata.
+					\item \textbf{Actorbase.Driver.Commands.RemoveCommand}:
+						Classe concreta che rappresenta il comando per rimuovere una coppia chiave-valore dalla mappa selezionata.
+					\item \textbf{Actorbase.Driver.Commands.CreateMapCommand}:
+						Classe concreta che rappresenta il comando per creare una nuova mappa nel DataBase selezionato.
+					\item \textbf{Actorbase.Driver.Commands.DeleteMapCommand}:
+						Classe concreta che rappresenta il comando per eliminare una mappa nel DataBase selezionato.
+					\item \textbf{Actorbase.Driver.Commands.RenameMapCommand}:
+						Classe concreta che rappresenta il comando per rinominare una mappa nel DataBase selezionato.
+					\item \textbf{Actorbase.Driver.Commands.CreateDBCommand}:
+						Classe concreta che rappresenta il comando per creare un nuovo DataBase.
+					\item \textbf{Actorbase.Driver.Commands.DeleteDBCommand}:
+						Classe concreta che rappresenta il comando per rimuovere un DataBase.
+					\item \textbf{Actorbase.Driver.Commands.RenameDBCommand}:
+						Classe concreta che rappresenta il comando per rinominare un DataBase.
+				\end{itemize}
+
 		
-		\textbf{Actorbase.Driver.Commands.ConnectionCommand}
-		\begin{itemize}
-				\item \textbf{Descrizione:} Interfaccia base che rappresenta un comando di connessione o disconnessione dal Server.
-				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.ServerCommand
-				\item \textbf{Classi Figlie:}
-					\begin{itemize}
-						\item \textbf{Actorbase.Driver.Commands.ConnectCommand}:
-							Classe concreta che rappresenta il comando per la connessione al server.
-						\item \textbf{Actorbase.Driver.Commands.DisconnectCommand}:
-							Classe concreta che rappresenta il comando per la disconnessione dal server.
-					\end{itemize}
-			\end{itemize}
+		\subsection{Actorbase.Driver.Commands.ConnectionCommand}
+			\subsubsection{Descrizione} Interfaccia base che rappresenta un comando di connessione o disconnessione dal Server.
+			\subsubsection{Interfacce Estese} Actorbase.Driver.Commands.ServerCommand
+			\subsubsection{Classi Figlie}
+				\begin{itemize}
+					\item \textbf{Actorbase.Driver.Commands.ConnectCommand}:
+						Classe concreta che rappresenta il comando per la connessione al server.
+					\item \textbf{Actorbase.Driver.Commands.DisconnectCommand}:
+						Classe concreta che rappresenta il comando per la disconnessione dal server.
+				\end{itemize}
 		
-		\textbf{Actorbase.Driver.Commands.DBSelectedCommand}
-		\begin{itemize}
-				\item \textbf{Descrizione:} Interfaccia base che rappresenta un generico comando che per cui è necessario avere un DataBase selezionato.
-				\item \textbf{Classi Figlie:}
+		\subsection{Actorbase.Driver.Commands.DBSelectedCommand}
+				\subsubsection{Descrizione} Interfaccia base che rappresenta un generico comando che per cui è necessario avere un DataBase selezionato.
+				\subsubsection{Classi Figlie}
 					\begin{itemize}
 						\item Actorbase.Driver.Commands.ShowMapCommand
 						\item Actorbase.Driver.Commands.SelectMapCommand
@@ -661,14 +684,12 @@
 						\item Actorbase.Driver.Commands.DeleteCommand
 						\item Actorbase.Driver.Commands.RenameCommand
 					\end{itemize}
-			\end{itemize}
 
 
-		\textbf{Actorbase.Driver.Commands.MapSelectedCommand}
-		\begin{itemize}
-				\item \textbf{Descrizione:} Interfaccia base che rappresenta un generico comando che per cui è necessario avere una mappa selezionata.
-				\item \textbf{Interfacce Estese:} Actorbase.Driver.Commands.DBSelectedCommand
-				\item \textbf{Classi Figlie:}
+		\subsection{Actorbase.Driver.Commands.MapSelectedCommand}
+				\subsubsection{Descrizione} Interfaccia base che rappresenta un generico comando che per cui è necessario avere una mappa selezionata.
+				\subsubsection{Interfacce Estese} Actorbase.Driver.Commands.DBSelectedCommand
+				\subsubsection{Classi Figlie}
 					\begin{itemize}
 						\item Actorbase.Driver.Commands.KeysCommand
 						\item Actorbase.Driver.Commands.SelectCommand
@@ -677,7 +698,197 @@
 						\item Actorbase.Driver.Commands.AppendCommand
 						\item Actorbase.Driver.Commands.RemoveCommand
 					\end{itemize}
+
+	
+	\subsection{Actorbase.Client}
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.5]{ST/Client/ClientPackage.png}
+        	\caption{Package Actorbase.Client}
+		\end{figure}
+		\subsubsection{Descrizione}
+			Package per la componente Client del sistema. Implementa il Design Pattern Model View Controller.
+		\subsubsection{Package Figli}
+			\begin{itemize}
+				\item Actorbase.Client.Model
+				\item Actorbase.Client.View
+				\item Actorbase.Client.Controller
 			\end{itemize}
+			
+	\subsection{Actorbase.Client.Model}
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.42]{ST/Client/ModelClasses.png}
+        	\caption{Package Actorbase.Client.Model}
+		\end{figure}
+		\subsubsection{Descrizione}
+			Package per la componente Model del pattern MVC della componente Client.
+		\subsubsection{Interfacce}
+			\begin{itemize}
+				\item Actorbase.Client.Model.Status
+			\end{itemize}
+		\subsubsection{Classi}
+			\begin{itemize}
+				\item Actorbase.Client.Model.Model
+				\item Actorbase.Client.Model.Help
+				\item Actorbase.Client.Model.ParsingFault
+				\item Actorbase.Client.Model.Comunication
+				\item Actorbase.Client.Model.ModelStatus
+				\item Actorbase.Client.Model.ServerStatus
+				\item Actorbase.Client.Model.StringStatus
+				\item Actorbase.Client.Model.ListStringStatus
+				\item Actorbase.Client.Model.MessageErrorStatus
+				\item Actorbase.Client.Model.QueryResultStatus
+				\item Actorbase.Client.Model.ExceptionStatus
+				\item Actorbase.Client.Model.HelpStatus
+			\end{itemize}
+		
+		\subsection{Actorbase.Client.Model.Status}
+			\subsubsection{Descrizione}
+				Interfaccia base della gerarchia degli stati del Model.
+			\subsubsection{Utilizzo}
+				Rappresenta un generico stato che il Model può assumere, è la rappresentazione astratta della frazione di stato dell'intero sistema Actorbase che è richiesta dall'utente. Le sue classi figlie espongono tutte un metodo per poter restituire in forma di stringa le informazioni alla View.
+			\subsubsection{Classi Figlie}
+				\begin{itemize}
+					\item Actorbase.Client.Model.ServerStatus
+					\item Actorbase.Client.Model.ClientStatus		
+				\end{itemize}
+			
+		\subsection{Actorbase.Client.Model.ServerStatus}
+			\subsubsection{Descrizione}
+				Classe base per un generico stato restituito dal Server.
+			\subsubsection{Utilizzo}
+				Rappresenta un generico stato del Server che il Model può assumere.
+			\subsubsection{Interfacce Estese}
+				Actorbase.Client.Model.Status
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Model.Communication}: Relazione entrante, creazione.
+				\end{itemize}
+			\subsubsection{Classi Figlie}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Model.ListStringStatus}:
+						Stato che rappresenta un generico stato di tipo lista di stringhe.
+					\item \textbf{Actorbase.Client.Model.StringStatus}:
+						Stato che rappresenta un generico stato di tipo stringa.
+					\begin{itemize}
+						\item \textbf{Actorbase.Client.Model.MessageStatus}:
+							Stato che rappresenta un messaggio del server.
+						\item \textbf{Actorbase.Client.Model.ErrorStatus}:
+							Stato che rappresenta un errore a livello del server.
+						\item \textbf{Actorbase.Client.Model.QueryResultStatus}:
+							Stato che rappresenta il risultato di una query ritornato in forma di stringa.
+					\end{itemize}
+				\end{itemize}
+				
+			
+		\subsubsection{Actorbase.Client.Model.ClientStatus}
+			\subsubsection{Descrizione}
+				Classe base per un generico stato restituito dal Client stesso.
+			\subsubsection{Utilizzo}
+				Rappresenta un generico stato del Client che il Model può assumere.
+			\subsubsection{Interfacce Estese}
+				Actorbase.Client.Model.Status
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Model.Help}: Relazione entrante, creazione.
+					\item \textbf{Actorbase.Client.Model.ParsingFault}: Relazione entrante, creazione.
+				\end{itemize}
+			\subsubsection{Classi Figlie}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Model.ExceptionStatus}:
+						Stato che rappresenta una eccezione.
+					\item \textbf{Actorbase.Client.Model.HelpStatus}:
+						Stato che rappresenta una richiesta di help da parte dell'utente.
+				\end{itemize}
+			
+		\subsection{Actorbase.Client.Model.Model}
+			\subsubsection{Descrizione}
+				Classe base per la componente Model del Pattern MVC della componente Client.
+			\subsubsection{Utilizzo}
+				Fornisce un accesso unico al sottosistema delle classi ad esso composte.
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Model.Communication}: Relazione uscente, composizione.
+					\item \textbf{Actorbase.Client.Model.ModelStatus}: Relazione uscente, composizione.
+					\item \textbf{Actorbase.Client.Model.Help}: Relazione uscente, composizione.
+					\item \textbf{Actorbase.Client.Model.ParsingFault}:	Relazione uscente, composizione.
+					\item \textbf{Actorbase.Client.Controller}:	Relazione entrante, chiamata metodo per la ricezione del comando.	
+				\end{itemize}
+			
+		\subsection{Actorbase.Client.Model.Comunication}
+			\subsubsection{Descrizione}
+				Classe che gestisce la comunicazione con il server tramite Driver.
+			\subsubsection{Utilizzo}
+				Gestisce la comunicazione con il server tramite Driver, crea gli ServerStatus e chiama il metodo per modificare l'attributo status del Model.
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, composizione.
+					\item \textbf{Actorbase.Client.Model.ServerStatus}: Relazione uscente, creazione.
+					\item \textbf{Actorbase.Client.Model.ModelStatus}: Relazione uscente, impostazione dello status.
+					\item \textbf{Actorbase.Driver.Driver}: Relazione uscente, composizione.
+				\end{itemize}
+		
+		\subsection{Actorbase.Client.Model.ModelStatus}
+			\subsubsection{Descrizione}
+				Classe che gestisce l'attributo stato di Model.
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, composizione.
+					\item \textbf{Actorbase.Client.Model.Communication}: Relazione entrante, impostazione dello status.
+					\item \textbf{Actorbase.Client.Model.Help}: Relazione entrante, impostazione dello status.
+					\item \textbf{Actorbase.Client.Model.ParsingFault}:	Relazione entrante, impostazione dello status.
+				\end{itemize}
+				
+		\subsection{Actorbase.Client.Model.Help}
+			\subsubsection{Descrizione}
+				Classe che gestisce le richieste di aiuto.
+			\subsubsection{Utilizzo}
+				Gestisce le richieste di aiuto, crea gli HelpStatus e chiama il metodo per modificare l'attributo status del Model.
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, composizione.
+					\item \textbf{Actorbase.Client.Model.HelpStatus}: Relazione uscente, creazione.
+					\item \textbf{Actorbase.Client.Model.ModelStatus}: Relazione uscente, impostazione dello status.
+				\end{itemize}
+				
+		\subsection{Actorbase.Client.Model.ParsingFault}
+			\subsubsection{Descrizione}
+				Classe che gestisce le eccezioni.
+			\subsubsection{Utilizzo}
+				Gestisce le eccezioni, crea gli ExceptionStatus e chiama il metodo per modificare l'attributo status del Model.
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, composizione.
+					\item \textbf{Actorbase.Client.Model.ExceptionStatus}: Relazione uscente, creazione.
+					\item \textbf{Actorbase.Client.Model.ModelStatus}: Relazione uscente, impostazione dello status.
+				\end{itemize}
+		
+		\subsection{Actorbase.Client.View}
+			\begin{figure} [H]
+				\centering
+				\includegraphics[scale=0.6]{ST/Client/ViewClasses.png}
+   		     	\caption{Package Actorbase.Client.View}
+			\end{figure}
+			
+			\subsubsection{Descrizione}
+				Package per la componente View del pattern MVC della componente Client.
+			\subsubsection{Classi}
+				Actorbase.Client.View.View
+		
+		
+		\subsection{Actorbase.Client.View.View}	
+			\subsubsection{Descrizione}
+				Classe che gestisce l'interfaccia utente.
+			\subsubsection{Utilizzo}
+				Gestisce l'interfaccia utente, permette di inserire comandi e stamparne l'output a video.
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Controller.Controller}: Relazione entrante, richiesta comando inserito.
+					\item \textbf{Actorbase.Client.Controller.Controller}: Relazione uscente, segnalazione di cambio di stato.
+					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, ricezione segnale di cambio di stato.
+					\item \textbf{Actorbase.Client.Model.Model}: Relazione uscente, query sullo stato del Model.
+				\end{itemize}
 	
 	\newpage 
 	\section{Diagrammi delle attività}
