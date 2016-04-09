@@ -80,7 +80,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.6
+			Versione 0.0.7
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -97,6 +97,8 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+                \noalign{\hrule height 0.5pt}
+				0.0.5 & 2016-04-08 & \emph{Progettista} \newline Nicoletti Luca & Inseriti tutti i diagrammi di sequenza riguardanti l'implementazione di richieste lato server, sostituita immagine dei Packages generale. Inserita una breve spiegazione di ogni diagramma di sequenza\\
 				\noalign{\hrule height 0.5pt}
 				0.0.6 & 2016-04-09 & \emph{Progettisti} \newline Biggeri Mattia \newline Padovan Tommaso \newline Bonato Paolo & Stesura sezioni Driver, Diagrammi attività, Stime di fattibilità e bisogno di risorse;  aggiunta immagine nella sezione 3.2.3, aggiunto Singleton nelle descrizioni dei desing pattern, aggiornata leggenda.     \\
 				\noalign{\hrule height 0.5pt}
@@ -710,8 +712,103 @@
 				\caption{Diagramma attività operazioni online}
 			\end{figure}
 				L'utente sceglie che tipo di operazione vuole effettuare, se vuole effettuare un' operazione di rinomina su un database o una mappa è sufficiente che fornisca il comando di rinomina, il vecchio e il nuovo nome e che poi confermi l'operazione; se vuole effettuare un' operazione di selezione o di creazione o di cancellazione sia di un database che di una mappa, deve digitare il comando corretto e successivamente il nome del database o della mappa sulla quale vuole effettuare l'operazione dopo di che è sufficiente che confermi il comando; se vuole effettuare un' operazione di rimozione o selezione di un dato è necessario che digiti il comando desiderato, digiti la chiave completa e che confermi l'operazione; se vuole effettuare un inserimento di un dato o un aggiornamento di un dato deve inserire il comando corretto, digitare la chiave completa e confermare l'operazione.
+                
+                
 	\newpage 
-	\section{Design pattern}
+	\section{Diagrammi di sequenza}
+        In questa sezione verranno illustrati e descritti i principali diagrammi di sequenza realizzati. I diagrammi di sequenza realizzati illustrano come il lato server gestisce determinate
+       richieste provenienti dall'esterno.
+       
+       \subsection{Avvio}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/seq/AvvioMain.png}
+				\caption{Diagramma di sequenza - avvio del server principale.}
+			\end{figure}
+            Quando viene avviata la parte server, viene creato un oggetto di classe \textbf{Main}. La classe in questione crea un oggetto a sua volta, di classe \textbf{API} che apre una porta
+             per restare in ascolto di richieste di connessioni proveniente da un client.
+             
+       \subsection{Chiusura}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/seq/Chiusura.png}
+				\caption{Diagramma di sequenza - chiusura del server.}
+			\end{figure}
+            Una volta inserito il comando di chiusura sulla shell del server, l'attore principale invia un messaggio a tutti i suoi figli, richiedendo la loro chiusura. Gli \textbf{Storefinder} 
+            a loro volta, prima di effettuare il salvataggio delle configurazioni inviano un messaggio a tutti i loro figli: \textbf{Manager}, \textbf{Storekeeper}, \textbf{Ninja}, \textbf{Warehouseman}.
+            Questi ultimi effettuano tutti le loro operazioni di chiusura e salvataggio, e poi si interrompono.
+            Una volta chiusi tutti i figli, l'attore principale può finalmente chiudersi a sua volta.
+            
+        \subsection{Richiesta esterna}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/seq/CreazioneNinja.png}
+				\caption{Diagramma di sequenza - gestione di richiesta esterna ad alto livello.}
+			\end{figure}
+            In questo diagramma è possibile visuallizzare le principali funzioni che vengono chiamate per la gestione di una richiesta esterna. L'attore principale, una volta ricevuto un 
+            messaggio HTTP dalle API, lo inoltra ad un \textbf{MessagesBuilder}, lo gestisce (nei diagrammi seguenti verrà spiegato meglio nel dettaglio), e quando riceve una risposta, la 
+            inoltra ad un attore di tipo \textbf{HttpBuilder} che ricostruisce un messaggio HTTP da inoltrare alle API che a loro volta inoltreranno all'esterno.
+            
+        \subsection{Richiesta di creazione DB}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/seq/GestioneDB.png}
+				\caption{Diagramma di sequenza - gestione di richiesta di creazione DB.}
+			\end{figure}
+            In questo diagramma è possibile visualizzare quali attori vengono coinvolti nella creazione di un nuobo DB. Come in ogni richiesta, l'attore principale interpreta un \textbf{MessagesBuilder} 
+            prima di inoltrare il messaggio ai suoi attori figli, e un \textbf{HttpBuilder} prima di inviare la risposta alle \textbf{API}. Per la creazione di un DB, il \textbf{Main} non fa altro che 
+            creare un attore di tipo \textbf{Storefinder} per il DB desiderato.
+            
+        \subsection{Richiesta di find}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/seq/GestioneFind.png}
+				\caption{Diagramma di sequenza - gestione di richiesta di Find.}
+			\end{figure}
+            In questo diagramma, vengono mostrate le chiamate necessarie per gestire una richiesta Find proveniente da un client. Una volta arrivata allo \textbf{Storefinder}, esso inoltra la richiesta 
+            allo \textbf{Storekeeper} corretto, che interpreta la sua mappa interna e restituisce la risposta. Come nel diagramma generale, l'attore principale, prima di inviare la rispota alle 
+            \textbf{API} crea un \textbf{HttpBuilder} che trasforma la risposta in un messaggio HTTP.
+            
+        \subsection{Richiesta di aggiornamento item}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/seq/GestioneUpdateEntry.png}
+				\caption{Diagramma di sequenza - gestione di richiesta di aggiornamento item.}
+			\end{figure}
+            Allo stesso modo della gestione di una richiesta di Find, il messaggio parte dall'attore principale ed arriva allo \textbf{Storekeeper} corretto. Quando riceve il messaggio di 
+            aggiornamento esso inoltra il messaggio di modifica ai suoi attori \textbf{Ninja} e \textbf{Warehouseman} e successivamente aggiorna la sua mappa interna. Il \textbf{Ninja} aggiorna 
+            a sua volta la sua mappa interna, mentre il \textbf{Warehouseman} effettua i cambiamenti su disco. Entrambi mandano una conferma allo \textbf{Storekeeper}, che a sua volta risponde 
+            allo \textbf{Storefinder}.
+            
+            Allo stesso modo delle richieste generali, l'attore principale riceve la risposta dallo \textbf{Storefinder}, crea un \textbf{HttpBuilder} e poi manda la risposta alle \textbf{API}.
+            
+        \subsection{Creazione Ninja}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[scale=0.4]{ST/seq/CreazioneNinja.png}
+				\caption{Diagramma di sequenza - creazione di un attore Ninja.}
+			\end{figure}
+            Per creare un attore di tipo Ninja, uno \textbf{Storefinder} crea un attore di classe \textbf{Datamanager} e lo converte immediatamente in un Ninja, inviandogli il messaggio apposito 
+            per la sua trasformazione in Ninja.
+         
+         \subsection{Creazione Ninja}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/seq/CreazioneStorekeeper.png}
+				\caption{Diagramma di sequenza - creazione di un attore Storekeeper.}
+			\end{figure}
+            Allo stesso modo, per la creazione di uno \textbf{Storekeeper}, uno \textbf{Storefinder} crea un attore di classe \textbf{Datamanger} e ne cambia l'interfaccia in quella di 
+            uno \textbf{Storekeeper} inviandogli il messaggio apposito.
+            
+         \subsection{Sostituzione di uno Storekeeper}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/seq/SostituzioneStorekeeper.png}
+				\caption{Diagramma di sequenza - sostituzione di un attore Storekeeper.}
+			\end{figure}
+            In questo diagramma è possibile visualizzare in che modo un attore \textbf{Storekeeper} che si arresta inaspettatamente viene sostituito dal suo \textbf{Ninja} di supporto.
+            Come è possibile vedere nell'immagine, lo \textbf{Storefinder} manda un messaggio al \textbf{Ninja} per promuoverlo a \textbf{Storekeeper}. Successivamente crea un nuovo attore 
+            di tipo \textbf{Datamanager} e cambia la sua interfaccia in quella di un \textbf{Ninja}. Subito dopo notifica il nuovo \textbf{Ninja} e il \textbf{Warehouseman} del cambiamento.
 	
 	\newpage 
 	\section{Stime di fattibilità e di bisogno di risorse}
