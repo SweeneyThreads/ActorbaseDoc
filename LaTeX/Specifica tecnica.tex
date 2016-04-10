@@ -80,7 +80,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.8
+			Versione 0.0.10
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -97,6 +97,10 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+                \noalign{\hrule height 0.5pt}
+				0.0.10 & 2016-04-10 & \emph{Progettista} \newline Nicoletti Luca & Modificate e inserite le nuove immagini dei packages e delle classi per 
+                la sezione Server (4.2). Modificate le immagini nei diagrammi di sequenza (Sezione 6) e modificate le descrizioni di tutti in modo da 
+                uniformarle. Cambiate le immagini dei Design Pattern (Sezione 9.1)\\
 				\noalign{\hrule height 0.5pt}
 				0.0.9 & 2016-04-10 & \emph{Progettista} \newline Padovan Tommaso & Incremento sezione Componenti e Classi: allineata sezione Driver allo standard, stesura sezione Client. \\
 				\noalign{\hrule height 0.5pt}
@@ -1215,8 +1219,17 @@
                 
 	\newpage 
 	\section{Diagrammi di sequenza}
-        In questa sezione verranno illustrati e descritti i principali diagrammi di sequenza realizzati. I diagrammi di sequenza realizzati illustrano come il lato server gestisce determinate
-       richieste provenienti dall'esterno.
+        In questa sezione verranno illustrati e descritti i principali diagrammi di sequenza realizzati. Questi ultimi illustrano ad alto livello le azioni 
+        compiute dal server per gestire tutte le richieste provenienti dall'esterno. 
+        
+        Per esplicitare l'invio di un messaggio tra due attori, nei diagrammi viene chiamato il metodo \textit{receive()} dell'attore che riceve il messaggio 
+        da parte di chi lo invia.
+        Questo è dovuto al fatto che tutte le classi ereditano dall'interfaccia \textit{Actor} messa a disposizione da \textit{Akka} senza effettuare 
+        l'override del metodo per inviare i messaggi; mentre sovrascrivono il metodo di ricezione per gestire i messaggi in entrata.
+        
+        Trattandosi di diagrammi di sequenza non molto specifici, alcuni attori effettuano operazioni senza chiamare dei metodi specifici già 
+        dichiarati. Un esempio si può vedere nel diagramma riguardante la chiusura, in esso infatti, tutti gli attori effettuano una chiamata ad un metodo 
+        \textit{chiusura()}.
        
        \subsection{Avvio}
             \begin{figure} [H]
@@ -1224,8 +1237,8 @@
 				\includegraphics[width=\textwidth]{ST/seq/AvvioMain.png}
 				\caption{Diagramma di sequenza - avvio del server principale.}
 			\end{figure}
-            Quando viene avviata la parte server, viene creato un oggetto di classe \textbf{Main}. La classe in questione crea un oggetto a sua volta, di classe \textbf{API} che apre una porta
-             per restare in ascolto di richieste di connessioni proveniente da un client.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per avviare il server. Esse partono dall'apertura 
+            della shell, ed effettuano le prime operazioni necessarie avviando gli attori Main e API.
              
        \subsection{Chiusura}
             \begin{figure} [H]
@@ -1233,10 +1246,10 @@
 				\includegraphics[width=\textwidth]{ST/seq/Chiusura.png}
 				\caption{Diagramma di sequenza - chiusura del server.}
 			\end{figure}
-            Una volta inserito il comando di chiusura sulla shell del server, l'attore principale invia un messaggio a tutti i suoi figli, richiedendo la loro chiusura. Gli \textbf{Storefinder} 
-            a loro volta, prima di effettuare il salvataggio delle configurazioni inviano un messaggio a tutti i loro figli: \textbf{Manager}, \textbf{Storekeeper}, \textbf{Ninja}, \textbf{Warehouseman}.
-            Questi ultimi effettuano tutti le loro operazioni di chiusura e salvataggio, e poi si interrompono.
-            Una volta chiusi tutti i figli, l'attore principale può finalmente chiudersi a sua volta.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite alla chiusura del server. La classe ActorbaseServer 
+            quando viene inserito il comando di chiusura del server dalla shell di comando, chiude l'attore Main, che a sua volta, chiude tutti i suoi attori 
+            figli tramite il metodo di chiusura messo a disposizione dalla libreria \textit{Akka}. Una volta chiusi tutti i suoi figli (nel diagramma è espresso 
+            con l'invio di una richiesta di \textit{chiusura} ai suoi figli), l'attore Main termina, effettuando i salvataggi delle configurazioni necessarie.
             
         \subsection{Richiesta esterna}
             \begin{figure} [H]
@@ -1244,9 +1257,12 @@
 				\includegraphics[width=\textwidth]{ST/seq/CreazioneNinja.png}
 				\caption{Diagramma di sequenza - gestione di richiesta esterna ad alto livello.}
 			\end{figure}
-            In questo diagramma è possibile visuallizzare le principali funzioni che vengono chiamate per la gestione di una richiesta esterna. L'attore principale, una volta ricevuto un 
-            messaggio HTTP dalle API, lo inoltra ad un \textbf{MessagesBuilder}, lo gestisce (nei diagrammi seguenti verrà spiegato meglio nel dettaglio), e quando riceve una risposta, la 
-            inoltra ad un attore di tipo \textbf{HttpBuilder} che ricostruisce un messaggio HTTP da inoltrare alle API che a loro volta inoltreranno all'esterno.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite da quando le API ricevono una richiesta da un client 
+            esterno. Le API inviano la richiesta HTTP all'attore Main, che crea un attore MessagesBuilder che interpreta il messaggio, genera un messaggio tra quelli 
+            definiti nel package \textbf{Actorbase.Server.Core.Messages} e lo restituisce tramite una future al Main. Una volta ricevuta la risposta, l'attore Main 
+            gestisce il messaggio (nei diagrammi seguenti vengono specificate più nel dettaglio le operazioni effettuate in base al tipo di messaggio ricevuto). 
+            Una volta terminata la gestione del messaggio, crea un HTTPBuilder a cui manda la risposta da trasformare in HTTP, una volta trasformata la rimanda 
+            alle API, che la restituiscono al Client che ha effettuato la richiesta.
             
         \subsection{Richiesta di creazione DB}
             \begin{figure} [H]
@@ -1254,9 +1270,10 @@
 				\includegraphics[width=\textwidth]{ST/seq/GestioneDB.png}
 				\caption{Diagramma di sequenza - gestione di richiesta di creazione DB.}
 			\end{figure}
-            In questo diagramma è possibile visualizzare quali attori vengono coinvolti nella creazione di un nuobo DB. Come in ogni richiesta, l'attore principale interpreta un \textbf{MessagesBuilder} 
-            prima di inoltrare il messaggio ai suoi attori figli, e un \textbf{HttpBuilder} prima di inviare la risposta alle \textbf{API}. Per la creazione di un DB, il \textbf{Main} non fa altro che 
-            creare un attore di tipo \textbf{Storefinder} per il DB desiderato.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando il Main riceve una richiesta di creazione di un DB.
+            Come illustrato nella sezione precedente, viene trasformata la richiesta HTTP in un messaggio tramite un attore MessagesBuilder. Una volta ricevuto questo 
+            messaggio, l'attore Main crea un attore Storefinder a cui assegna quel DB. Genera la risposta da restituire al Client tramite HTTPBuilder e la spedisce 
+            all'esterno tramite API.
             
         \subsection{Richiesta di find}
             \begin{figure} [H]
@@ -1264,9 +1281,9 @@
 				\includegraphics[width=\textwidth]{ST/seq/GestioneFind.png}
 				\caption{Diagramma di sequenza - gestione di richiesta di Find.}
 			\end{figure}
-            In questo diagramma, vengono mostrate le chiamate necessarie per gestire una richiesta Find proveniente da un client. Una volta arrivata allo \textbf{Storefinder}, esso inoltra la richiesta 
-            allo \textbf{Storekeeper} corretto, che interpreta la sua mappa interna e restituisce la risposta. Come nel diagramma generale, l'attore principale, prima di inviare la rispota alle 
-            \textbf{API} crea un \textbf{HttpBuilder} che trasforma la risposta in un messaggio HTTP.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per gestire una richiesta di find. L'attore Main instrada 
+            il messaggio all'attore Storefinder corrispondente, il quale inoltra la richiesta all'attore Storekeeper di competenza, che interpreta la sua mappa e 
+            restituisce la risposta. L'attore Main risponde alle API come specificato nei diagrammi precedenti.
             
         \subsection{Richiesta di aggiornamento item}
             \begin{figure} [H]
@@ -1274,30 +1291,33 @@
 				\includegraphics[width=\textwidth]{ST/seq/GestioneUpdateEntry.png}
 				\caption{Diagramma di sequenza - gestione di richiesta di aggiornamento item.}
 			\end{figure}
-            Allo stesso modo della gestione di una richiesta di Find, il messaggio parte dall'attore principale ed arriva allo \textbf{Storekeeper} corretto. Quando riceve il messaggio di 
-            aggiornamento esso inoltra il messaggio di modifica ai suoi attori \textbf{Ninja} e \textbf{Warehouseman} e successivamente aggiorna la sua mappa interna. Il \textbf{Ninja} aggiorna 
-            a sua volta la sua mappa interna, mentre il \textbf{Warehouseman} effettua i cambiamenti su disco. Entrambi mandano una conferma allo \textbf{Storekeeper}, che a sua volta risponde 
-            allo \textbf{Storefinder}.
-            
-            Allo stesso modo delle richieste generali, l'attore principale riceve la risposta dallo \textbf{Storefinder}, crea un \textbf{HttpBuilder} e poi manda la risposta alle \textbf{API}.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per gestire una richiesta di aggiornamento di un item 
+            all'interno di una mappa. La richiesta, arrivata allo Storekeeper come nel caso precedentemente visto, viene gestita in locale (la mappa viene aggiornata).
+            Inoltre, in questo caso, l'attore Storefinder inoltra in messaggio di aggiornamento anche agli attori Ninja e Warehouseman corrispondendi allo Storekeeper 
+            corretto. L'attore Ninja aggiorna come lo Storekeeper la sua mappa interna, mentre l'attore Warehouseman si occupa di aggiornare l'item su disco, in modo 
+            da garantire persistenza dei dati. La risposta torna allo Storefinder, poi all'attore Main che come nei casi precedenti lo fa trasformare in HTTP e lo 
+            inoltra all'esterno tramite API.
             
         \subsection{Creazione Ninja}
             \begin{figure} [H]
 				\centering
-				\includegraphics[scale=0.4]{ST/seq/CreazioneNinja.png}
+				\includegraphics[width=\textwidth]{ST/seq/CreazioneNinja.png}
 				\caption{Diagramma di sequenza - creazione di un attore Ninja.}
 			\end{figure}
-            Per creare un attore di tipo Ninja, uno \textbf{Storefinder} crea un attore di classe \textbf{Datamanager} e lo converte immediatamente in un Ninja, inviandogli il messaggio apposito 
-            per la sua trasformazione in Ninja.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per la creazione di un attore di tipo Ninja. 
+            L'attore Storefinder crea un attore di tipo Datamanger, e immediatamente dopo gli invia un messaggio debito alla sua trasformazione. L'attore 
+            Datamanager non fa altro che chiamare un suo metodo, che tramite il metodo \textit{become()} fornito dalla libreria \textit{Akka} permette di 
+            cambiare il comportamento di un attore alla ricezione di un messaggio.
          
-         \subsection{Creazione Ninja}
+         \subsection{Creazione Storekeeper}
             \begin{figure} [H]
 				\centering
 				\includegraphics[width=\textwidth]{ST/seq/CreazioneStorekeeper.png}
 				\caption{Diagramma di sequenza - creazione di un attore Storekeeper.}
 			\end{figure}
-            Allo stesso modo, per la creazione di uno \textbf{Storekeeper}, uno \textbf{Storefinder} crea un attore di classe \textbf{Datamanger} e ne cambia l'interfaccia in quella di 
-            uno \textbf{Storekeeper} inviandogli il messaggio apposito.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per la creazione di un attore di tipo Storekeeper.
+            L'attore Storefinder crea un attore di tipo Datamanger, e immadiatamente dopo gli invia un messaggio debito alla sua trasformazione. L'attore 
+            Datamanager, come per il caso precedente, tramite il metodo \textit{become()} cambia il suo comportamento.
             
          \subsection{Sostituzione di uno Storekeeper}
             \begin{figure} [H]
@@ -1305,10 +1325,11 @@
 				\includegraphics[width=\textwidth]{ST/seq/SostituzioneStorekeeper.png}
 				\caption{Diagramma di sequenza - sostituzione di un attore Storekeeper.}
 			\end{figure}
-            In questo diagramma è possibile visualizzare in che modo un attore \textbf{Storekeeper} che si arresta inaspettatamente viene sostituito dal suo \textbf{Ninja} di supporto.
-            Come è possibile vedere nell'immagine, lo \textbf{Storefinder} manda un messaggio al \textbf{Ninja} per promuoverlo a \textbf{Storekeeper}. Successivamente crea un nuovo attore 
-            di tipo \textbf{Datamanager} e cambia la sua interfaccia in quella di un \textbf{Ninja}. Subito dopo notifica il nuovo \textbf{Ninja} e il \textbf{Warehouseman} del cambiamento.
-	
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando è necessario sostiuire uno Storekeeper che 
+            si è arrestato in modo anomalo. L'attore Storefinder manda un messaggio al Ninja di supporto dello Storekeeper morto in modo da fargli prendere il 
+            suo posto. Successivamente crea un nuovo attore Ninja (come spiegato nel diagramma di sequenza visto prima) e notifica gli attori già esistenti del 
+            cambio avvenuto.
+            
 	\newpage 
 	\section{Stime di fattibilità e di bisogno di risorse}
 	
@@ -1335,7 +1356,7 @@
 	\subsubsection{Event-driven}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.65]{immagini/ST/schemaevent-driven.jpg}
+					\includegraphics[scale=0.65]{immagini/ST/schemaevent-driven.png}
 					\caption{Diagramma del Desing Pattern Event-driven}
 				\end{figure}
             \begin{itemize}
@@ -1348,7 +1369,7 @@
 	\subsubsection{MVC}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.65]{immagini/ST/schemaMVC.jpg}
+					\includegraphics[scale=0.65]{immagini/ST/schemaMVC.png}
 					\caption{Diagramma del Desing Pattern MVC}
 				\end{figure}
             \begin{itemize}
@@ -1371,7 +1392,7 @@
 	\subsubsection{Command}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.65]{immagini/ST/schemacomand.jpg}
+					\includegraphics[scale=0.65]{immagini/ST/schemaCommand.png}
 					\caption{Diagramma del Desing Pattern Command}
 				\end{figure}
             \begin{itemize}
@@ -1390,7 +1411,7 @@
 	\subsubsection{Singleton}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.65]{immagini/ST/Singleton.png}
+					\includegraphics[scale=0.65]{immagini/ST/schemaSingleton.png}
 					\caption{Diagramma del Desing Pattern Command}
 				\end{figure}
 		\begin{itemize}
