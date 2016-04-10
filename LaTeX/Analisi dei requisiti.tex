@@ -67,7 +67,7 @@
 				\emph{Approvazione:} \\
 				Biggeri Mattia \\
 				\emph{Verifica:} \\
-				Bonato Paolo 
+				Bonato Paolo
 			\end{flushright}
 		\end{minipage}
 		
@@ -77,7 +77,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.3.11
+			Versione 1.4.11
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -94,6 +94,8 @@
 			\begin{tabularx}{\textwidth}{s f m X}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.4.11 & 2016-04-10 & \emph{Progettista} \newline Biggeri Mattia & correzioni da verifica \\
 				\noalign{\hrule height 0.5pt}
 				1.3.11 & 2016-03-31 & \emph{Progettista} \newline Maino Elia & Definito il tracciamento fonti-requisiti e requisiti-fonti in base alla riorganizzazione di requisiti e casi d'uso effettuata dopo la RR. Definita l'accettazione dei requisiti \\
 				\noalign{\hrule height 0.5pt}
@@ -579,7 +581,7 @@ R[2.3.4.3][D][F]  \\
 				\item L'utente ha richiesto un'operazione di importazione e questa è fallita, l'operazione non viene eseguita e l'utente riceve un messaggio di errore (UC 3.9)
 				\item L'utente ha richiesto la creazione di un nuovo database sul server, la creazione è fallita e l'utente riceve un messaggio di errore (UC 3.10)
 				\item L'utente ha richiesto l'eliminazione di un database dal server, l'eliminazione è fallita e l'utente riceve un messaggio di errore (UC 3.11)
-				\item L'utente ha richiesto la rinominazione di un database sul server, la rinominazione è fallita e l'utente riceve un messaggio di errore (UC 3.12)
+				\item L'utente ha richiesto la rinomina di un database sul server, la rinomina è fallita e l'utente riceve un messaggio di errore (UC 3.12)
 				\item L'utente ha richiesto un'operazione di selezione di un database non disponendo dei permessi di lettura per tale database, la selezione non viene effettuata e l'utente riceve un messaggio di errore (UC 3.13)
 \end{enumerate}				 \\
 				\noalign{\hrule height 0.5pt}
@@ -1060,11 +1062,11 @@ R[2.8.2.1][N][F]  \\
 			\caption{Caso d'uso UC 3.5.2 - Inserimento nome database da eliminare}
 		 \end{table}		 
 		 
-		\subsection{UC 3.6: Rinominazione database}
+		\subsection{UC 3.6: Rinomina database}
 	 \begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.25]{UC/"UC 3-6 Rinominazione database".png}
-				\caption{Diagramma di UC3.6: Rinominazione database}
+				\includegraphics[scale=0.25]{UC/"UC 3-6 Rinomina database".png}
+				\caption{Diagramma di UC3.6: Rinomina database}
 			\end{figure}
 	\textbf{Descrizione} 
 	\\ \\
@@ -1073,7 +1075,7 @@ R[2.8.2.1][N][F]  \\
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.6 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Rinominazione database\\
+				\textbf{Nome sintetico} & Rinomina database\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
@@ -1084,7 +1086,7 @@ R[2.8.2.1][N][F]  \\
 				\textbf{Post-condizione} & L'utente ha rinominato con successo il database selezionato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando di rinominazione database (UC 3.6.1)
+				\item L'utente inserisce il comando di rinomina database (UC 3.6.1)
 				\item L'utente inserisce il nome del database da rinominare (UC 3.6.2)
 				\item L'utente inserisce il nuovo nome per il database (UC 3.6.3) e preme invio
 				\end{enumerate} \\
@@ -1104,18 +1106,18 @@ R[2.9][D][F] \newline
 R[2.9.3][D][F] \newline
 R[2.9.4][D][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 3.6 - Rinominazione database}
+			\caption{Caso d'uso UC 3.6 - Rinomina database}
 		 \end{table}		 
 		 
-		 \subsection{UC 3.6.1: Inserimento comando di rinominazione database}
+		 \subsection{UC 3.6.1: Inserimento comando di rinomina database}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente intende rinominare un database presente sul server, a tal fine deve per prima cosa inserire il comando di rinominazione database.
+	L'utente intende rinominare un database presente sul server, a tal fine deve per prima cosa inserire il comando di rinomina database.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.6.1 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Inserimento comando di rinominazione database\\
+				\textbf{Nome sintetico} & Inserimento comando di rinomina database\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
@@ -1123,10 +1125,10 @@ R[2.9.4][D][F]  \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Pre-condizione} & L'utente intende rinominare un database\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di rinominazione database\\
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di rinomina database\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente scrive su terminale il comando di rinominazione database
+				\item L'utente scrive su terminale il comando di rinomina database
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
@@ -1134,7 +1136,7 @@ R[2.9.4][D][F]  \\
 				\textbf{Lista requisiti\newline dedotti} & R[2.9.1][D][F] \newline
 R[2.9.2][D][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 3.6.1 - Inserimento comando di rinominazione database}
+			\caption{Caso d'uso UC 3.6.1 - Inserimento comando di rinomina database}
 		 \end{table}		 
 		 
 		 \subsection{UC 3.6.2: Inserimento nome database da rinominare}
@@ -1151,7 +1153,7 @@ R[2.9.2][D][F]  \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende rinominare un database e ha inserito il comando di rinominazione database\\
+				\textbf{Pre-condizione} & L'utente intende rinominare un database e ha inserito il comando di rinomina database\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Post-condizione} & L'utente ha inserito con successo il nome del database da rinominare\\
 				\noalign{\hrule height 0.5pt}
@@ -1182,7 +1184,7 @@ R[2.9.2.1][D][F]  \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende rinominare un database e ha inserito il comando di rinominazione database seguito dal nome del database da rinominare\\
+				\textbf{Pre-condizione} & L'utente intende rinominare un database e ha inserito il comando di rinomina database seguito dal nome del database da rinominare\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Post-condizione} & L'utente ha inserito con successo il nuovo nome per il database\\
 				\noalign{\hrule height 0.5pt}
@@ -1434,21 +1436,21 @@ R[2.8.5.2][N][F]  \\
 			\caption{Caso d'uso UC 3.11 - Errore eliminazione fallita}
 		 \end{table}		
 		 
-		 \subsection{UC 3.12: Errore rinominazione fallita}
+		 \subsection{UC 3.12: Errore rinomina fallita}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha richiesto la rinominazione di un database, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
+	L'utente ha richiesto la rinomina di un database, l'operazione è fallita dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC3.12 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore rinominazione fallita\\
+				\textbf{Nome sintetico} & Errore rinomina fallita\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di rinominazione database\\
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di rinomina database\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, il database selezionato non è stato rinominato, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
 				\noalign{\hrule height 0.5pt}
@@ -1467,7 +1469,7 @@ R[2.9.5.1][D][F] \newline
 R[2.9.5.2][D][F] \newline
 R[2.9.5.3][D][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 3.12 - Errore rinominazione fallita}
+			\caption{Caso d'uso UC 3.12 - Errore rinomina fallita}
 		 \end{table}			
 		 
 		 
@@ -1812,11 +1814,11 @@ R[2.13.2.1][N][F]  \\
 			\caption{Caso d'uso UC 4.3.2 - Inserimento nome mappa da eliminare}
 		 \end{table}		 
 		 
-		\subsection{UC 4.4: Rinominazione mappa}
+		\subsection{UC 4.4: Rinomina mappa}
 	 \begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.25]{UC/"UC 4-4 Rinominazione mappa".png}
-				\caption{Diagramma di UC4.4: Rinominazione mappa}
+				\includegraphics[scale=0.25]{UC/"UC 4-4 Rinomina mappa".png}
+				\caption{Diagramma di UC4.4: Rinomina mappa}
 			\end{figure}
 	\textbf{Descrizione} 
 	\\ \\
@@ -1825,7 +1827,7 @@ R[2.13.2.1][N][F]  \\
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC4.4 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Rinominazione mappa\\
+				\textbf{Nome sintetico} & Rinomina mappa\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
@@ -1836,7 +1838,7 @@ R[2.13.2.1][N][F]  \\
 				\textbf{Post-condizione} & L'utente ha rinominato con successo la mappa selezionata\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando di rinominazione mappa (UC 4.4.1)
+				\item L'utente inserisce il comando di rinomina mappa (UC 4.4.1)
 				\item L'utente inserisce il nome della mappa da rinominare (UC 4.4.2)
 				\item L'utente inserisce il nuovo nome per la mappa (UC 4.4.3) e preme invio
 				\end{enumerate} \\
@@ -1856,18 +1858,18 @@ R[2.14][D][F] \newline
 R[2.14.3][D][F] \newline
 R[2.14.4][D][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.4 - Rinominazione mappa}
+			\caption{Caso d'uso UC 4.4 - Rinomina mappa}
 		 \end{table}		 
 		 
-		 \subsection{UC 4.4.1: Inserimento comando di rinominazione mappa}
+		 \subsection{UC 4.4.1: Inserimento comando di rinomina mappa}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente intende rinominare una mappa, a tal fine deve per prima cosa inserire il comando di rinominazione mappa.
+	L'utente intende rinominare una mappa, a tal fine deve per prima cosa inserire il comando di rinomina mappa.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC4.4.1 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Inserimento comando di rinominazione mappa\\
+				\textbf{Nome sintetico} & Inserimento comando di rinomina mappa\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
@@ -1875,10 +1877,10 @@ R[2.14.4][D][F]  \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Pre-condizione} & L'utente intende rinominare una mappa\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di rinominazione mappa\\
+				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di rinomina mappa\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente scrive su terminale il comando di rinominazione mappa
+				\item L'utente scrive su terminale il comando di rinomina mappa
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
@@ -1886,7 +1888,7 @@ R[2.14.4][D][F]  \\
 				\textbf{Lista requisiti\newline dedotti} & R[2.14.1][D][F] \newline
 R[2.14.2][D][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.4.1 - Inserimento comando di rinominazione mappa}
+			\caption{Caso d'uso UC 4.4.1 - Inserimento comando di rinomina mappa}
 		 \end{table}		 
 		 
 		 \subsection{UC 4.4.2: Inserimento nome mappa da rinominare}
@@ -1903,7 +1905,7 @@ R[2.14.2][D][F]  \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende rinominare una mappa e ha inserito il comando di rinominazione mappa\\
+				\textbf{Pre-condizione} & L'utente intende rinominare una mappa e ha inserito il comando di rinomina mappa\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Post-condizione} & L'utente ha inserito con successo il nome della mappa da rinominare\\
 				\noalign{\hrule height 0.5pt}
@@ -1934,7 +1936,7 @@ R[2.14.2.1][D][F]  \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende rinominare una mappa e ha inserito il comando di rinominazione mappa seguito dal nome della mappa da rinominare\\
+				\textbf{Pre-condizione} & L'utente intende rinominare una mappa e ha inserito il comando di rinomina mappa seguito dal nome della mappa da rinominare\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Post-condizione} & L'utente ha inserito con successo il nuovo nome per la mappa\\
 				\noalign{\hrule height 0.5pt}
@@ -2351,21 +2353,21 @@ R[2.13.5][N][F]  \\
 			\caption{Caso d'uso UC 4.9 - Errore eliminazione mappa fallita}
 		 \end{table}	
 		 
-		 \subsection{UC 4.10: Errore rinominazione mappa fallita}
+		 \subsection{UC 4.10: Errore rinomina mappa fallita}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha richiesto l'operazione di rinominazione di una mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
+	L'utente ha richiesto l'operazione di rinomina di una mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC4.10 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore rinominazione mappa fallita\\
+				\textbf{Nome sintetico} & Errore rinomina mappa fallita\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Utente autenticato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di rinominazione mappa sul database selezionato\\
+				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di rinomina mappa sul database selezionato\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessuna mappa è stato creata, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
 				\noalign{\hrule height 0.5pt}
@@ -2383,7 +2385,7 @@ R[2.14.5][D][F] \newline
 R[2.14.5.1][D][F] \newline
 R[2.14.5.2][D][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.10 - Errore rinominazione mappa fallita}
+			\caption{Caso d'uso UC 4.10 - Errore rinomina mappa fallita}
 		 \end{table}	
 		 
 		 \subsection{UC 4.11: Errore selezione mappa fallita}

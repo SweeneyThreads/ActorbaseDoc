@@ -382,19 +382,19 @@
 	& Gestire il caso in cui il nuovo nome della mappa da rinominare, inviato dal client non rispettasse le regole sintattiche 
 	dei nomi delle mappe \emph{Actorbase}\\
 	\hline
-	R[1.5.4.3][O][F] & Rinomina della mappa & UC4.4
+	R[1.5.4.3][D][F] & Rinomina della mappa & UC4.4
 	& Rinominare la mappa richiesta dal client con il nuovo nome inviato\\
 	\hline
-	R[1.5.4.3.1][N][F] & Utilizzo actor MAIN per rinomina mappa & UC4.4 \newline Capitolato
+	R[1.5.4.3.1][D][F] & Utilizzo actor MAIN per rinomina mappa & UC4.4 \newline Capitolato
 	& Utilizzare un actor di tipo MAIN per accettare le richieste di rinomina mappa provenienti dall'esterno \\
 	\hline
-	R[1.5.4.3.2][N][F] & Utilizzo actor STOREFINDER per rinomina mappa & UC4.4 \newline Capitolato
+	R[1.5.4.3.2][D][F] & Utilizzo actor STOREFINDER per rinomina mappa & UC4.4 \newline Capitolato
 	& Definire l'utilizzo e il comportamento di actor di tipo STOREFINDER nell'operazione di rinomina di una mappa \\
 	\hline
-	R[1.5.4.3.3][N][F] & Utilizzo actor STOREKEEPER rinomina mappa & UC4.4 \newline Capitolato
+	R[1.5.4.3.3][D][F] & Utilizzo actor STOREKEEPER rinomina mappa & UC4.4 \newline Capitolato
 	& Definire l'utilizzo e il comportamento di actor di tipo STOREKEEPER nell'operazione di rinomina di una mappa \\
 	\hline
-	R[1.5.4.3.4][N][F] & Utilizzo actor WAREHOUSEMAN rinomina mappa & UC4.4 \newline Capitolato
+	R[1.5.4.3.4][D][F] & Utilizzo actor WAREHOUSEMAN rinomina mappa & UC4.4 \newline Capitolato
 	& Definire l'utilizzo e il comportamento di actor di tipo WAREHOUSEMAN da associare ai relativi actor STOREKEEPER nell'operazione di rinomina di una mappa \\
 	\hline
 	R[1.5.4.3.5][O][F] &  Utilizzo actor NINJA rinomina mappa & UC4.4 \newline Capitolato
@@ -403,10 +403,10 @@
 	R[1.5.4.3.6][O][F] & Utilizzo actor MANAGER rinomina mappa & UC4.4 \newline Capitolato
 	& Definire l'utilizzo e il comportamento di actor di tipo MANAGER nell'operazione di rinomina di una mappa \\
 	\hline
-	R[1.5.4.4][O][F] & Rinomina mappa avvenuta con successo & UC4.4
+	R[1.5.4.4][D][F] & Rinomina mappa avvenuta con successo & UC4.4
 	& Informare il client nel caso in  cui la mappa richiesta fosse stata rinominata con successo\\
 	\hline
-	R[1.5.4.5][O][F] & Rinomina mappa fallita & UC4.10
+	R[1.5.4.5][D][F] & Rinomina mappa fallita & UC4.10
 	& Informare il client nel caso in la rinomina della mappa fosse fallita\\
 	\hline
 	R[1.5.5][N][F] & Gestione richiesta di selezione mappa & UC4.5
@@ -891,14 +891,14 @@
 	\hline
 	R[2.15.5][N][F] & Messaggio di selezione mappa fallita & UC4.8 & Stampa il messaggio di selezione della mappa fallita \\
 	\hline
-	R[2.15.5.1][N][F] & Messaggio di selezione mappa fallita, permessi insufficienti & UC4.11 & Stampa il messaggio di selezione della mappa fallita, 
+	R[2.15.5.1][D][F] & Messaggio di selezione mappa fallita, permessi insufficienti & UC4.11 & Stampa il messaggio di selezione della mappa fallita, 
 	l'utente non possiede i permessi di lettura sulla mappa desiderata \\
 	\hline
 	R[2.15.5.2][N][F] & Messaggio di selezione mappa fallita, mappa non presente & UC4.11 & Stampa il messaggio di selezione della mappa fallita, 
 	mappa non presente \\
 	\hline
 	%
-	R[2.16][D][F] & Gestione comando per visualizzare i permessi & UC4.6 \newline UC4.12 & Implementare un'interfaccia che visualizzi i permessi a livello database \\
+	R[2.16][O][F] & Gestione comando per visualizzare i permessi & UC4.6 \newline UC4.12 & Implementare un'interfaccia che visualizzi i permessi a livello database \\
 	\hline
 	%
 	R[2.17][D][F] & Gestione comando per modificare i permessi & UC4.7 \newline UC4.13 & Implementare un'interfaccia che permetta la modifica dei permessi a 
@@ -969,7 +969,7 @@
 	R[2.21.4][N][F] & Messaggio aggiornamento avvenuto con successo & UC5.4 & Stampa un messaggio che conferma l'avvenuto aggiornamento 
 	dell'item richiesto \\
 	\hline
-	R[2.21.5][N][F] & Messaggio aggiornamento fallito, permessi insufficienti & UC5.8 & Stampa il messaggio di aggiornamento fallito, l'utente non 
+	R[2.21.5][D][F] & Messaggio aggiornamento fallito, permessi insufficienti & UC5.8 & Stampa il messaggio di aggiornamento fallito, l'utente non 
 	possiede permessi di scrittura \\
 	\hline
 	%
@@ -1012,6 +1012,7 @@
 	\hline
 	R[2.23.5.2][N][F] & Messaggio rimozione fallita, chiave non presente & UC5.9 & Stampa il messaggio di rimozione fallita, non esiste un item con la 
 	chiave inserita \\
+	%
 	\hline
 	R[2.24][N][F] & Chiusura interfaccia client & UC8 & Implementare la chiusura dell'interfaccia client tramite un apposito comando \\
 	%
