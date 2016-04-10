@@ -98,6 +98,8 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 0.5pt}
+				0.0.9 & 2016-04-10 & \emph{Progettista} \newline Padovan Tommaso & Incremento sezione Componenti e Classi: allineata sezione Driver allo standard, stesura sezione Client. \\
+				\noalign{\hrule height 0.5pt}
 				0.0.8 & 2016-04-09 & \emph{Progettisti} \newline Bonato Paolo \newline Biggeri Mattia & Stesura sezione tracciamento componenti-requisiti.\\
                 \noalign{\hrule height 0.5pt}
 				0.0.7 & 2016-04-09 & \emph{Progettista} \newline Nicoletti Luca & Inseriti tutti i diagrammi di sequenza riguardanti l'implementazione di richieste lato server, sostituita immagine dei Packages generale. Inserita una breve spiegazione di ogni diagramma di sequenza\\
@@ -715,11 +717,6 @@
 			\end{itemize}
 		
 		\subsection{Actorbase.Driver.Connection}
-		\begin{figure} [H]
-			\centering
-			\includegraphics[scale=0.5]{ST/Client/ConnectionClasse.png}
-        	\caption{Classe Actorbase.Driver.Connection}
-		\end{figure}
 		
 		\subsubsection{Descrizione}
 			Classe \emph{singleton} che gestisce la comunicazione del Driver con il Server. Svolge il ruolo di \emph{Receiver}.
@@ -732,11 +729,6 @@
 			\end{itemize}
 		
 		\subsection{Actorbase.Driver.Driver}
-		\begin{figure} [H]
-			\centering
-			\includegraphics[scale=0.5]{ST/Client/DriverClasse.png}
-        	\caption{Classe Actorbase.Driver.Driver e interfaccia Actorbase.Driver.DriverInterface}
-		\end{figure}
 		
 		\subsubsection{Descrizione}
 			Classe che gestisce la comunicazione mediante API. Svolge il ruolo di \emph{Invoker}.
@@ -790,6 +782,12 @@
 				\item Actorbase.Driver.Commands.RenameDBCommand
 				\item Actorbase.Driver.Commands.ConnectCommand
 				\item Actorbase.Driver.Commands.DisconnectCommand
+			\end{itemize}
+		
+		\subsubsection{Relazioni con altre componenti}
+			\begin{itemize}
+				\item \textbf{Actorbase.Client.Model}: Relazione entrante, inclusione.
+				\item \textbf{Actorbase.Client.Controller}:	Relazione entrante, inclusione.
 			\end{itemize}
 
 		
@@ -936,6 +934,10 @@
 				\item Actorbase.Client.Model.ExceptionStatus
 				\item Actorbase.Client.Model.HelpStatus
 			\end{itemize}
+		\subsubsection{Relazioni con altre componenti}
+				\begin{itemize}
+					\item \textbf{Actorbase.Driver.Commands}: Relazione uscente, inclusione.
+				\end{itemize}	
 		
 		\subsection{Actorbase.Client.Model.Status}
 			\subsubsection{Descrizione}
@@ -1069,7 +1071,7 @@
 				Package per la componente View del pattern MVC della componente Client.
 			\subsubsection{Classi}
 				Actorbase.Client.View.View
-		
+
 		
 		\subsection{Actorbase.Client.View.View}	
 			\subsubsection{Descrizione}
@@ -1083,6 +1085,98 @@
 					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, ricezione segnale di cambio di stato.
 					\item \textbf{Actorbase.Client.Model.Model}: Relazione uscente, query sullo stato del Model.
 				\end{itemize}
+				
+				
+				
+		\subsection{Actorbase.Client.Controller}
+			\begin{figure} [H]
+				\centering
+				\includegraphics[scale=0.6]{ST/Client/ControllerSemplificato.png}
+   		     	\caption{Package Actorbase.Client.Controller}
+			\end{figure}
+			
+			\subsubsection{Descrizione}
+				Package per la componente Controller del pattern MVC della componente Client.
+			\subsubsection{Interfacce}
+				Actorbase.Client.Controller.Parser
+			\subsubsection{Classi}
+				\begin{itemize}
+					\item Actorbase.Client.Controller.CLIParser
+					\item Actorbase.Client.Controller.Controller		
+				\end{itemize}
+			\subsubsection{Package Figli}
+				Actorbase.Client.Controller.Exceptions
+			\subsubsection{Relazioni con altre componenti}
+				\begin{itemize}
+					\item \textbf{Actorbase.Driver.Commands}: Relazione uscente, inclusione.
+				\end{itemize}								
+					
+		\subsection{Actorbase.Client.Controller.Parser}
+			\subsubsection{Descrizione}
+				Interfaccia base per la gerarchia dei parser.
+			\subsubsection{Utilizzo}
+				Fornisce una interfaccia comune a qualsiasi parser.
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Controller.ClIParser}: Relazione entrante, realizzazione di interfaccia.
+				\end{itemize}
+		
+		\subsection{Actorbase.Client.Controller.CLIParser}
+			\subsubsection{Descrizione}
+				Classe concreta che rappresenta un parser della DSL di Actorbase.
+			\subsubsection{Utilizzo}
+				Mantiene una mappa dei comandi e delle relative norme, è in grado di trasformare un comando DSL inserito dall'utente nel rispettivo comando della gerarchia Actorbase.Driver.Commands.
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Controller.Parser}: Relazione entrante, realizzazione di interfaccia.
+					\item \textbf{Actorbase.Client.Controller.Controller}: Relazione entrante, aggregazione.
+					\item \textbf{Actorbase.Client.Controller.Exception}: Relazione uscente, importazione, crea le classi presenti nel package.
+				\end{itemize}
+				
+				
+		\subsection{Actorbase.Client.Controller.Controller}
+			\subsubsection{Descrizione}
+				Classe base per la componente Controller del Pattern MVC della componente Client.
+			\subsubsection{Utilizzo}
+				Viene notificata dalla View quando il suo stato cambia, si occupa di leggere il nuovo stato della View e modificare lo status del Model.
+			\subsubsection{Relazioni con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Controller.ClIParser}: Relazione uscente, aggregazione.
+					\item \textbf{Actorbase.Client.View.View}: Relazione uscente, query sullo stato.
+					\item \textbf{Actorbase.Client.View.View}: Relazione entrate, segnalazione di cambio stato.
+					\item \textbf{Actorbase.Client.Model.Model}: Relazione uscente, cambio stato.
+				\end{itemize}
+				
+		\subsection{Actorbase.Client.Controller.Exception}
+			\begin{figure} [H]
+				\centering
+				\includegraphics[scale=0.6]{ST/Client/ControllerExceptions.png}
+   		     	\caption{Package Actorbase.Client.Exceptions}
+			\end{figure}
+			\subsubsection{Descrizione}
+				Package che contiene le eccezioni che il può lanciare il Parser.
+			\subsubsection{Classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.Client.Controller.Exceptions.ParserException}:
+						Generica eccezione che può essere lanciata dal Parser.
+					\begin{itemize}
+						\item \textbf{Actorbase.Client.Controller.Exceptions.WrongCommandException}:
+							Generica eccezione riguardo a errata sintassi del comando.
+						\begin{itemize}
+							\item \textbf{Actorbase.Client.Controller.Exceptions.WrongArgumentTypeException}:
+								Eccezione lanciata nel caso in cui il tipo dell'argomento sia errato.
+							\item \textbf{Actorbase.Client.Controller.Exceptions.UnknownCommandException}:
+								Eccezione lanciata nel caso in cui il comando inserito sia inesistente.
+							\item \textbf{Actorbase.Client.Controller.Exceptions.WrongArgumentNumberException}:
+								Eccezione lanciata nel caso in cui ci sia un numero errato di parametri per il comando inserito.
+								\begin{itemize}
+									\item \textbf{Actorbase.Client.Controller.Exceptions.DetailedWrongArgumentNumberException}:
+										Eccezione lanciata nel caso in cui ci sia un numero errato di parametri per il comando inserito; fornisce anche il numero di parametri atteso e quello dei parametri inseriti dall'utente.
+								\end{itemize}
+						\end{itemize}						 
+					\end{itemize}
+				\end{itemize}
+							 
 	
 	\newpage 
 	\section{Diagrammi delle attività}
