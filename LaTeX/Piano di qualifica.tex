@@ -73,7 +73,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.1.6
+			Versione 1.1.7
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -89,6 +89,8 @@
 			\begin{tabularx}{\textwidth}{sfmX}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
+				\noalign{\hrule height 0.5pt}
+				1.1.7 & 2016-04-21 & \emph{Progettisti} \newline Biggeri Mattia & inserita tabella requisito test \\
 				\noalign{\hrule height 0.5pt}
 				1.1.6 & 2016-03-21 & \emph{Progettisti} \newline Biggeri Mattia \newline Bonato Paolo & aggiunta introduzione e tabella valore metriche dei documenti in sezione Documenti 4.4.2, inserita completamente la sezione della pianificazione dei test, sezione Pianificazione test 4.5 \\
 				\noalign{\hrule height 0.5pt}
@@ -235,7 +237,7 @@
 				gli argomenti siano facilmente trovabili sull'indice.
 				\begin{itemize}
 					\item Valori accettati: [100|250]
-					\item Valori ottimali: [20|100]
+					\item Valori ottimali: [0|100]
 				\end{itemize}
 				\item \textbf{Numero di errori ortografici:} 
 				Garantisce l'assenza di errori ortografici rilevati dal correttore automatico, a meno di falsi positivi.
@@ -926,10 +928,11 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 		Di seguito saranno descritti i test di sistema, integrazione e validazione che sono previsti.
 		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.				
 	\subsubsection{Test di sistema}
-		Viene mostrata di seguito la tabella con tutti i test di sistema che consentono di verificare il sistema rispetto ai requisiti descritti nell'\emph{Analisi dei Requisiti v1.3.11}.
+		Viene mostrata di seguito la tabella con tutti i test di sistema che consentono di verificare il sistema rispetto ai requisiti descritti nell'\emph{Analisi dei Requisiti v1.3.11} e la tabella che traccia ogni requisito al test.
 		Per ogni comando testato sarà anche verificato il corretto riconoscimento e la corretta gestione degli errori.
 		I test di sistema sono nominati per associazione ai casi d'uso.
 		\LTXtable{\textwidth}{tabelle_test/test_sistema.tex}
+		\LTXtable{\textwidth}{tabelle_test/requisiti_test_sistema.tex}
 		
 	\subsubsection{Test di integrazione}
 		Viene mostrata di seguito la tabella contenente tutti i test di integrazione, atti a verificare il corretto funzionamento delle singole componenti del sistema descritte nella \emph{Specifica Tecnica v1.0.1}. 
