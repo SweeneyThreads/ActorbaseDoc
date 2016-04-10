@@ -18,6 +18,9 @@
 \usepackage[table]{xcolor}
 \usepackage{float}
 \usepackage{geometry}
+\usepackage{ltxtable} 
+\usepackage{multirow}
+\usepackage{longtable}
 \geometry{margin=1in}
 
 \newcolumntype{s}{>{\hsize=.21\hsize}X}
@@ -65,7 +68,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.2.1
+			Versione 1.2.3
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -78,30 +81,7 @@
 	
 	\newpage
 	\section*{Diario delle modifiche}
-		\begin{table}[H]
-			\begin{tabularx}{\textwidth}{s f m X}
-				\noalign{\hrule height 1.5pt}
-				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
-				\noalign{\hrule height 0.5pt}
-				1.2.1 & 2016-03-21 & \emph{Analista} \newline Tommasin Davide & Controlo e sostituzione di termini all'interno della sezione di introduzione del documento
-				\\
-				\noalign{\hrule height 1.5pt}
-				1.2.0 & 2016-01-14 & \emph{Analista} \newline Tommasin Davide \newline \emph{Progettista} \newline Nicoletti Luca & Aggiunta Sezione 3: 
-				Capitolati non intrapresi. Nella sezione sono state inserite per ogni capitolato le ragioni principali per le 
-				quali essi sono stati scartati. \\
-				\noalign{\hrule height 0.5pt}
-				1.1.0 & 2016-01-14 & \emph{Verificatore} Tommasin Davide & Verificato il documento \\
-				\noalign{\hrule height 0.5pt}
-				1.0.2 & 2016-01-14 & \emph{Analista} Maino Elia & Stesura considerazioni finali \\
-				\noalign{\hrule height 0.5pt}
-				1.0.1 & 2016-01-13 & \emph{Analisti} Bonato Paolo, Bortolazzo Matteo, Maino Elia & 
-				Stesura sezioni riguardanti il dominio, costi e benefici \\
-				\noalign{\hrule height 0.5pt}
-				1.0.0 & 2016-01-12 & \emph{Analista} Maino Elia & Creazione scheletro del documento e stesura introduzione \\
-				\noalign{\hrule height 1.5pt}
-			\end{tabularx}
-			\caption{Diario delle modifiche \label{tab:table_label}}
-		\end{table}
+		\LTXtable{\textwidth}{Tabelle/tabelle_diario_modifiche/tabella_sf.tex}
 
 	\newpage	
 	\section{Introduzione}
