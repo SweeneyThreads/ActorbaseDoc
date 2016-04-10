@@ -80,7 +80,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.10
+			Versione 0.0.11
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -98,6 +98,8 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
                 \noalign{\hrule height 0.5pt}
+				0.0.11 & 2016-04-10 & \emph{Progettista} \newline Maino Elia & Completata la descrizione di classe e interfacce del componente server\\
+				\noalign{\hrule height 0.5pt}
 				0.0.10 & 2016-04-10 & \emph{Progettista} \newline Nicoletti Luca & Modificate e inserite le nuove immagini dei packages e delle classi per 
                 la sezione Server (4.2). Modificate le immagini nei diagrammi di sequenza (Sezione 6) e modificate le descrizioni di tutti in modo da 
                 uniformarle. Cambiate le immagini dei Design Pattern (Sezione 9.1)\\
@@ -291,18 +293,13 @@
 			\end{itemize}
 			
 			\subsection{Actorbase.Server.API.API}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[scale=0.70]{Server/Package/APILevel.png}
-			%\caption{Componente Actorbase.Server.API}
-			%\end{figure}
 			\subsubsection{Descrizione}
 				Classe \emph{singleton} che definisce l'insieme di API esposte dal server e il loro utilizzo.
 			\subsubsection{Utilizzo}
-				Viene utilizzata per gestire l'insieme di connessioni del server con l'esterno, e per accettarne di nuove. Inoltra le richieste provenienti dall'esterno all'actor Main e invia delle eventuali risposte ai client.
+				Viene utilizzata per gestire l'insieme di connessioni del server dall'esterno, e per accettarne di nuove. Inoltra le richieste provenienti dall'esterno all'actor Main e invia le risposte ai client.
 			\subsubsection{Relazione con altre classi}
 			\begin{itemize}
-				\item \textbf{Actorbase.Server.Core.Actors.StoreFinder.Main} 
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main} 
 			\end{itemize}
 			
 		\subsection{Actorbase.Server.Core}
@@ -326,108 +323,74 @@
 			\caption{Componente Actorbase.Server.Core.Actors}
 			\end{figure}
 			\subsubsection{Descrizione}
-				Il package contiene le componenti che costituiscono i diversi attori definiti nel sistema. I package che lo compongono definiscono le diverse categorie degli attori.
+				Il package contiene le componenti che costituiscono i diversi attori definiti nel sistema. Essi definiscono le diverse categorie di attori.
 			\subsubsection{Package figli}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.DataManagement
+				\item Actorbase.Server.Core.Actors.Datamanagement
 				\item Actorbase.Server.Core.Actors.Manager
-				\item Actorbase.Server.Core.Actors.StoreFinder
+				\item Actorbase.Server.Core.Actors.Storefinder
 			\end{itemize}
 			
-			\subsection{Actorbase.Server.Core.Actors.DataManagement}
+			\subsection{Actorbase.Server.Core.Actors.Datamanagement}
 			\begin{figure} [H]
 			\centering
 			\includegraphics[scale=0.55]{Server/Package/DatamanagementLevel.png}
-			\caption{Componente Actorbase.Server.Core.Actors.DataManagement}
+			\caption{Componente Actorbase.Server.Core.Actors.Datamanagement}
 			\end{figure}
 			\subsubsection{Descrizione}
 				All'interno di questo package sono definite le classi che rappresentano gli attori che si occupano direttamente della gestione dei dati.
 			\subsubsection{Classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.DataManagement.DataManager
-				\item Actorbase.Server.Core.Actors.DataManagement.WareHouseMan
-				\item Actorbase.Server.Core.Actors.DataManagement.UpdateActor
-				\item Actorbase.Server.Core.Actors.DataManagement.DeleteActor
-				\item Actorbase.Server.Core.Actors.DataManagement.InsertActor
+				\item Actorbase.Server.Core.Actors.Datamanagement.Datamanager
+				\item Actorbase.Server.Core.Actors.Datamanagement.Warehouseman
+				\item Actorbase.Server.Core.Actors.Datamanagement.UpdateActor
+				\item Actorbase.Server.Core.Actors.Datamanagement.DeleteActor
+				\item Actorbase.Server.Core.Actors.Datamanagement.InsertActor
 			\end{itemize}
 			
-		\subsection{Actorbase.Server.Core.Actors.DataManagement.DataManager}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[scale=0.55]{Server/Package/DatamanagementLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.DataManagement}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Datamanagement.Datamanager}
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo Datamanager.
 			\subsubsection{Utilizzo}
-				Si utilizza per mantenere in RAM una porzione di una mappa di un database. Un oggetto Datamanager possiede due interfacce diverse: una nel caso funzioni da copia principale dei dati (Storekeeper) e l'altra nel caso funzioni da copia di backup (Ninja).
+				Si utilizza per mantenere in RAM una porzione di una mappa di un database. Un oggetto Datamanager possiede due comportamenti diversi: uno nel caso funzioni da copia principale dei dati (Storekeeper) e l'altro nel caso funzioni da copia di backup (Ninja).
 			\subsubsection{Relazioni con altre classi}
-			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.StoreFinder
-			\end{itemize}
+				Nessuna.
 			
-		\subsection{Actorbase.Server.Core.Actors.DataManagement.WareHouseMan}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[scale=0.55]{Server/Package/DatamanagementLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.DataManagement}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Datamanagement.Warehouseman}
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo Warehouseman.
 			\subsubsection{Utilizzo}
-				Si utilizza per mantenere una copia di una porzione di una mappa di un database persistente in un file su disco.
+				Si utilizza per mantenere persistenza su disco di una porzione di una mappa di un database.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.StoreFinder
-				\item Actorbase.Server.Core.Actors.DataManagement.UpdateActor
-				\item Actorbase.Server.Core.Actors.DataManagement.DeleteActor
-				\item Actorbase.Server.Core.Actors.DataManagement.InsertActor
+				\item Actorbase.Server.Core.Actors.Datamanagement.UpdateActor
+				\item Actorbase.Server.Core.Actors.Datamanagement.DeleteActor
+				\item Actorbase.Server.Core.Actors.Datamanagement.InsertActor
 			\end{itemize}
 			
-		\subsection{Actorbase.Server.Core.Actors.DataManagement.UpdateActor}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[scale=0.55]{Server/Package/DatamanagementLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.DataManagement}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Datamanagement.UpdateActor}
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo UpdateActor.
 			\subsubsection{Utilizzo}
 				Si utilizza per aggiornare un item su un file su disco.
 			\subsubsection{Relazioni con altre classi}
-			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.DataManagement.WareHouseMan
-			\end{itemize}
+				Nessuna.
 			
-		\subsection{Actorbase.Server.Core.Actors.DataManagement.DeleteActor}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[scale=0.55]{Server/Package/DatamanagementLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.DataManagement}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Datamanagement.DeleteActor}
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo DeleteActor.
 			\subsubsection{Utilizzo}
 				Si utilizza per rimuovere un item su un file su disco. 
 			\subsubsection{Relazioni con altre classi}
-			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.DataManagement.WareHouseMan
-			\end{itemize}
+				Nessuna.
 			
-		\subsection{Actorbase.Server.Core.Actors.DataManagement.InsertActor}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[scale=0.55]{Server/Package/DatamanagementLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.DataManagement}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Datamanagement.InsertActor}
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo InsertActor.
 			\subsubsection{Utilizzo}
 				Si utilizza per inserire un item su un file su disco. 
 			\subsubsection{Relazioni con altre classi}
-			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.DataManagement.WareHouseMan
-			\end{itemize}
+				Nessuna.
 
 		\subsection{Actorbase.Server.Core.Actors.Manager}
 			\begin{figure} [H]
@@ -443,122 +406,98 @@
 			\end{itemize}
 			
 		\subsection{Actorbase.Server.Core.Actors.Manager.Manager}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[scale=0.65]{Server/Package/ManagerLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.Manager}
-			%\end{figure}
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo Manager.
 			\subsubsection{Utilizzo}
 				Un oggetto di tipo Manager è utilizzato per gestire vincoli su altri attori.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.StoreFinder
-				\item Actorbase.Server.Core.Actors.DataManagement.Datamanager
+				\item Actorbase.Server.Core.Actors.Datamanagement.Datamanager
 			\end{itemize}
 			
-		\subsection{Actorbase.Server.Core.Actors.StoreFinder}
+		\subsection{Actorbase.Server.Core.Actors.Storefinder}
 			\begin{figure} [H]
 			\centering
 			\includegraphics[width=\textwidth]{Server/Package/StorefinderLevel.png}
-			\caption{Componente Actorbase.Server.Core.Actors.StoreFinder}
+			\caption{Componente Actorbase.Server.Core.Actors.Storefinder}
 			\end{figure}
 			\subsubsection{Descrizione}
-				All'interno di questo package sono definite le classi che rappresentano gli attori che si occupano dell'indicizzazione degli altri attori presenti e del corretto instradamento dei messaggi.
+				All'interno di questo package sono definite le classi che rappresentano gli attori che si occupano dell'indicizzazione degli altri attori presenti e del corretto instradamento, creazione e gestione dei messaggi.
 			\subsubsection{Classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.StoreFinder
-				\item Actorbase.Server.Core.Actors.StoreFinder.Main
-				\item Actorbase.Server.Core.Actors.StoreFinder.HTTPBuilder
-				\item Actorbase.Server.Core.Actors.StoreFinder.MessageBuilder
+				\item Actorbase.Server.Core.Actors.Storefinder.Storefinder
+				\item Actorbase.Server.Core.Actors.Storefinder.Main
+				\item Actorbase.Server.Core.Actors.Storefinder.HTTPBuilder
+				\item Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder
 			\end{itemize}
 			\subsubsection{Interfacce}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.IndexesHandler
+				\item Actorbase.Server.Core.Actors.Storefinder.IndexesHandler
 			\end{itemize}
 
-		\subsection{Actorbase.Server.Core.Actors.StoreFinder.IndexesHandler}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[width=\textwidth]{Server/Package/StorefinderLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.StoreFinder}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Storefinder.IndexesHandler}
 			\subsubsection{Descrizione}
-				Interfaccia per gli attori che si occupano di indicizzare altri attori e di inviare messaggi e ricevere risposte da essi.
-			\subsubsection{Relazioni con altre classi}
+				Interfaccia per gli attori che si occupano di indicizzare altri attori e di inviare messaggi e ricevere risposte da essi. Definisce i contratti di metodi che permettono di leggere, salvare e ricostruire un insieme di indici.
+			\subsubsection{Classi figlie}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.Main
-				\item Actorbase.Server.Core.Actors.StoreFinder.StoreFinder
+				\item Actorbase.Server.Core.Actors.Storefinder.Main
+				\item Actorbase.Server.Core.Actors.Storefinder.Storefinder
 			\end{itemize}
 
-		\subsection{Actorbase.Server.Core.Actors.StoreFinder.StoreFinder}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[width=\textwidth]{Server/Package/StorefinderLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.StoreFinder}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Storefinder.Storefinder}
 			\subsubsection{Descrizione}
-				Classe che definisce un actor di tipo StoreFinder. Implementa l'interfaccia IndexesHandler.
+				Classe che definisce un actor di tipo Storefinder. Implementa l'interfaccia IndexesHandler.
 			\subsubsection{Utilizzo}
-				Uno StoreFinder indicizza un insieme di Datamanager rappresentanti diverse porzioni di una stessa mappa. Per ogni Datamanager indicizzato, inoltre, tiene traccia dei Datamanager Ninja e dei Warehouseman ad esso associati. Si occupa di inviare gli opportuni messaggi a tali tipologie di attori, di ricevere e instradare le risposte ricevute. 
-				\\ Uno StoreFinder inoltre si occupa della creazione e distruzione di attori di tipo Manager, DataManager, WareHouseMan.
+				Uno Storefinder indicizza un insieme di Datamanager rappresentanti diverse porzioni di una stessa mappa. Per ogni Datamanager indicizzato, inoltre, tiene traccia dei Datamanager Ninja e dei Warehouseman ad esso associati. Si occupa di inviare gli opportuni messaggi a tali tipologie di attori, di ricevere e instradare le risposte ricevute. 
+				\\ Uno Storefinder inoltre si occupa della creazione e distruzione di attori di tipo Manager, Datamanager, Warehouseman.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.Main
-				\item Actorbase.Server.Core.Actors.StoreFinder.IndexesHandler
-				\item Actorbase.Server.Core.Actors.Manager.Manager
-				\item Actorbase.Server.Core.Actors.DataManagement.DataManager
-				\item Actorbase.Server.Core.Actors.DataManagement.WareHouseMan
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.Manager.Manager:} relazione uscente, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Datamanager:} relazione uscente, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Warehouseman:} relazione uscente, creazione
+			\end{itemize}
+			\subsubsection{Interfacce implementate}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.IndexesHandler} 
 			\end{itemize}
 
-		\subsection{Actorbase.Server.Core.Actors.StoreFinder.Main}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[width=\textwidth]{Server/Package/StorefinderLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.StoreFinder}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Storefinder.Main}
 			\subsubsection{Descrizione}
-				Classe che definisce un actor di tipo Main. Implementa l'interfaccia IndexesHandler.
+				Classe \emph{singleton} che definisce un actor di tipo Main. Implementa l'interfaccia IndexesHandler.
 			\subsubsection{Utilizzo}
-				Il Main indicizza un insieme di StoreFinder, si occupa di inviare e ricevere messaggi HTTP da API. Crea attori di tipo StoreFinder, MessageBuilder, HTTPBuilder.
+				Il Main indicizza un insieme di Storefinder e con essi scambia messaggi, inoltre si occupa di inviare e ricevere messaggi HTTP da API. Crea attori di tipo Storefinder, MessagesBuilder, HTTPBuilder.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.StoreFinder
-				\item Actorbase.Server.Core.Actors.StoreFinder.IndexesHandler
-				\item Actorbase.Server.Core.Actors.StoreFinder.MessageBuilder
-				\item Actorbase.Server.Core.Actors.StoreFinder.HTTPBuilder
-				\item Actorbase.Server.Core.Actors.API.API
+				\item \textbf{Actorbase.Server.ActorbaseServer:} relazione entrante, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione uscente, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione uscente, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.HTTPBuilder:} relazione uscente, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.API.API:} relazione uscente, creazione
+			\end{itemize}
+			\subsubsection{Interfacce implementate}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.IndexesHandler} 
 			\end{itemize}
 
-		\subsection{Actorbase.Server.Core.Actors.StoreFinder.MessageBuilder}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[width=\textwidth]{Server/Package/StorefinderLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.StoreFinder}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder}
 			\subsubsection{Descrizione}
-				Classe che definisce un actor di tipo MessageBuilder.
+				Classe che definisce un actor di tipo MessagesBuilder.
 			\subsubsection{Utilizzo}
-				Costruisce uno dei messaggi definiti in Actorbase.Server.Core.Messages a partire da un messaggio HTTP, basandosi sui permessi del client che ha inviato il messaggio HTTP.
+				Costruisce uno dei messaggi definiti in \textbf{Actorbase.Server.Core.Messages} a partire da un messaggio HTTP, basandosi sui permessi del client che ha inviato il messaggio HTTP.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.Main
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione
 			\end{itemize}
 
-		\subsection{Actorbase.Server.Core.Actors.StoreFinder.HTTPBuilder}
-			%\begin{figure} [H]
-			%\centering
-			%\includegraphics[width=\textwidth]{Server/Package/StorefinderLevel.png}
-			%\caption{Componente Actorbase.Server.Core.Actors.StoreFinder}
-			%\end{figure}
+		\subsection{Actorbase.Server.Core.Actors.Storefinder.HTTPBuilder}
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo HTTPBuilder.
 			\subsubsection{Utilizzo}
-				Costruisce un messaggio HTTP invibile da API a un client a partire da un messaggio definito in Actorbase.Server.Core.Messages.
+				Costruisce un messaggio HTTP invibile da API a un client a partire da un messaggio definito in \textbf{Actorbase.Server.Core.Messages}.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.StoreFinder.Main
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione
 			\end{itemize}
 		
 		\subsection{Actorbase.Server.Core.Messages}
@@ -575,7 +514,7 @@
 				\item Actorbase.Server.Core.Messages.PermissionMessages
 				\item Actorbase.Server.Core.Messages.LinkActorsMessages
 				\item Actorbase.Server.Core.Messages.MainOperationMessages
-				\item Actorbase.Server.Core.Messages.DataManagementMessages
+				\item Actorbase.Server.Core.Messages.DatamanagementMessages
 				\item Actorbase.Server.Core.Messages.ChangeInterfaceMessages
 			\end{itemize}
 			
@@ -586,10 +525,10 @@
 			\caption{Componente Actorbase.Server.Core.Messages.ConfigurationMessages}
 			\end{figure}
 			\subsubsection{Descrizione}
-				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi relativi ad operazioni di configurazione delle impostazioni del server.
+				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi relativi ad avvisi di configurazione delle impostazioni del sistema.
 			\subsubsection{Classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxStoreFinderMsg
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxStorefinderMsg
 				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxNinjaMsg
 				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxWarehousemanMsg
 				\item Actorbase.Server.Core.Messages.ConfigurationMessages.UpdatePropertiesMsg
@@ -599,9 +538,120 @@
 			\subsubsection{Interfacce}
 			\begin{itemize}
 				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MainConfigurationMessage
-				\item Actorbase.Server.Core.Messages.ConfigurationMessages.StoreFinderConfigurationMessage
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.StorefinderConfigurationMessage
 				\item Actorbase.Server.Core.Messages.ConfigurationMessages.ManagerConfigurationMessage
-				\item Actorbase.Server.Core.Messages.ConfigurationMessages.DataManagerConfigurationMessage
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.DatamanagerConfigurationMessage
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.
+			MainConfigurationMessage}
+			\subsubsection{Descrizione}
+				Interfaccia per messaggi di configurazione per actor di tipo Main. 
+				Le classi che implementano questa interfaccia definiscono messaggi di configurazione che possono essere gestiti da actor di tipo Main.
+			\subsubsection{Classi figlie}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxStorefinderMsg
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.MaxStorefinderMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio MaxStorefinder.
+			\subsubsection{Utilizzo}
+				Un messaggio MaxStorefinder informa chi lo riceve di aggiornare l'impostazione relativa al numero di actor di tipo Storefinder creabili per mappa.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.ActorbaseServer:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce implementate}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MainConfigurationMessage
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.
+			StorefinderConfigurationMessage}
+			\subsubsection{Descrizione}
+				Interfaccia per messaggi di configurazione per actor di tipo Storefinder. 
+				Le classi che implementano questa interfaccia definiscono messaggi di configurazione che possono essere gestiti da actor di tipo Storefinder.
+			\subsubsection{Classi figlie}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxNinjaMsg
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MaxWarehousemanMsg
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.MaxNinjaMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio MaxNinjaMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio MaxNinjaMsg informa chi lo riceve di aggiornare l'impostazione relativa al numero di actor di tipo Ninja creabili per Datamanager.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.ActorbaseServer:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce implementate}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.StorefinderConfigurationMessage
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.MaxWarehousemanMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio MaxWarehouseman.
+			\subsubsection{Utilizzo}
+				Un messaggio MaxWarehouseman informa chi lo riceve di aggiornare l'impostazione relativa al numero di actor di tipo Warehouseman creabili per Datamanager.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.ActorbaseServer:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce implementate}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.StorefinderConfigurationMessage
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.
+			ManagerConfigurationMessage}
+			\subsubsection{Descrizione}
+				Interfaccia per messaggi di configurazione per actor di tipo Manager. 
+				Le classi che implementano questa interfaccia definiscono messaggi di configurazione che possono essere gestiti da actor di tipo Manager.
+			\subsubsection{Classi figlie}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.UpdatePropertiesMsg
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.UpdatePropertiesMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio UpdatePropertiesMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio UpdatePropertiesMsg informa chi lo riceve di aggiornare le impostazioni per actor Manager.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.ActorbaseServer:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce implementate}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.ManagerConfigurationMessage
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.
+			DatamanagerConfigurationMessage}
+			\subsubsection{Descrizione}
+				Interfaccia per messaggi di configurazione per actor di tipo Datamanager. 
+				Le classi che implementano questa interfaccia definiscono messaggi di configurazione che possono essere gestiti da actor di tipo Datamanager.
+			\subsubsection{Classi figlie}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.UpdatePropertiesMsg
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.ReadPropertiesMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio ReadPropertiesMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio ReadPropertiesMsg informa chi lo riceve di aggiornare le impostazioni per actor Datamanager.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.ActorbaseServer:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce implementate}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.ConfigurationMessages.DatamanagerConfigurationMessage
 			\end{itemize}
 			
 			\subsection{Actorbase.Server.Core.Messages.PermissionMessages}
@@ -611,12 +661,63 @@
 			\caption{Componente Actorbase.Server.Core.Messages.PermissionMessages}
 			\end{figure}
 			\subsubsection{Descrizione}
-				All'interno di questo package sono definite le interfacce che rappresentano i diversi gradi di permesso che un'operazione richiede. Un'operazione può infatti richiedere i permessi di lettura, scrittura o nessun permesso. Ogni messaggio relativo ad un'operazione richiedibile da un client estende una di queste interfacce.
+				All'interno di questo package sono definite le interfacce che rappresentano i diversi gradi di permesso che un'operazione richiede. Un'operazione può infatti richiedere i permessi di lettura, scrittura o nessun permesso. Ogni messaggio relativo ad un'operazione richiesta da un client estende una di queste interfacce.
 			\subsubsection{Interfacce}
 			\begin{itemize}
 				\item Actorbase.Server.Core.Messages.PermissionMessages.PermissionsNotRequiredInterface
 				\item Actorbase.Server.Core.Messages.PermissionMessages.ReadPermissionsInterface
 				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionsInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.PermissionMessages.
+			PermissionsNotRequiredInterface}
+			\subsubsection{Descrizione}
+				Interfaccia per messaggi che definiscono operazioni per le quali non sono richiesti specifici permessi.
+			\subsubsection{Classi figlie}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessage.ShowDBMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessage.ShowMapMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessage.CreateDBMsg
+			\end{itemize}
+			\subsubsection{Interfacce figlie}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.PermissionMessages.ReadPermissionsInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.PermissionMessages.ReadPermissionsInterface}
+			\subsubsection{Descrizione}
+				Interfaccia per messaggi che definiscono operazioni per le quali sono richiesti permessi di lettura.
+			\subsubsection{Classi figlie}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.DatamanagementMessage.KeysMsg
+				\item Actorbase.Server.Core.Messages.DatamanagementMessage.FindMsg
+			\end{itemize}
+			\subsubsection{Interfacce figlie}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionsInterface
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.PermissionMessages.PermissionsNotRequiredInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionsInterface}
+			\subsubsection{Descrizione}
+				Interfaccia per messaggi che definiscono operazioni per le quali sono richiesti permessi di scrittura.
+			\subsubsection{Classi figlie}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessage.CreateMapMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessage.RenameDBMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessage.RenameMapMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessage.DeleteDBMsg
+				\item Actorbase.Server.Core.Messages.MainOperationMessage.DeleteMapMsg
+				\item Actorbase.Server.Core.Messages.DatamanagementMessage.InsertMsg
+				\item Actorbase.Server.Core.Messages.DatamanagementMessage.UpdateMsg
+				\item Actorbase.Server.Core.Messages.DatamanagementMessage.RemoveMsg
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.PermissionMessages.ReadPermissionsInterface
 			\end{itemize}
 			
 			\subsection{Actorbase.Server.Core.Messages.LinkActorsMessages}
@@ -632,6 +733,26 @@
 				\item Actorbase.Server.Core.Messages.LinkActorsMessages.UpdateStoreKeeperMsg
 				\item Actorbase.Server.Core.Messages.LinkActorsMessages.InsertStoreKeeperMsg
 			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.LinkActorsMessages.UpdateStoreKeeperMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio UpdateStorekeeperMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio UpdateStorekeeperMsg informa il Manager che lo riceve di aggiornare il riferimento ad uno degli actor Datamanager Storekeeper della sua lista.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione entrante, creazione
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.LinkActorsMessages.InsertStoreKeeperMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio InsertStoreKeeperMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio InsertStoreKeeperMsg informa il Manager che lo riceve di aggiungere il riferimento ad un actor Datamenager Storekeeper alla sua lista.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione entrante, creazione
+			\end{itemize}
 			
 			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages}
 			\begin{figure} [H]
@@ -640,7 +761,7 @@
 			\caption{Componente Actorbase.Server.Core.Messages.MainOperationMessages}
 			\end{figure}
 			\subsubsection{Descrizione}
-				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi relativi ad operazioni che non richiedono l'invio di ulteriori messaggi ad attori che gestiscono i dati direttamente.
+				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi relativi ad operazioni che non richiedono l'inoltro del messaggio stesso.
 			\subsubsection{Classi}
 			\begin{itemize}
 				\item Actorbase.Server.Core.Messages.MainOperationMessages.ShowDBMsg
@@ -656,26 +777,221 @@
 			\begin{itemize}
 				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
 			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages.ShowDBMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio ShowDBMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio ShowDBMsg richiede la lista dei database presenti sul server.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.PermissionsNotRequiredInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages.ShowMapMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio ShowMapMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio ShowMapMsg richiede la lista delle mappe del database selezionato.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.PermissionsNotRequiredInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages.CreateDBMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio CreateDBMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio CreateDBMsg richiede la creazione di un nuovo database.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.PermissionsNotRequiredInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages.CreateMapMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio CreateMapMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio CreateMapMsg richiede la creazione di una nuova mappa nel database selezionato.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages.RenameDBMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio RenameDBMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio RenameDBMsg richiede la rinomina di un database presente sul server.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages.RenameMapMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio RenameMapMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio RenameMapMsg richiede la rinomina di una mappa del database selezionato.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages.DeleteDBMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio DeleteDBMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio DeleteDBMsg richiede l'eliminazione di un database dal server.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.MainOperationMessages.DeleteMapMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio DeleteMapMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio DeleteMapMsg richiede l'eliminazione di una mappa del database selezionato.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.MainOperationMessages.MainOperationMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionInterface
+			\end{itemize}
 			
-		\subsection{Actorbase.Server.Core.Messages.DataManagerOperationMessages}
+		\subsection{Actorbase.Server.Core.Messages.DatamanagementMessages}
 			\begin{figure} [H]
 			\centering
 			\includegraphics[scale=0.50]{Server/Package/DatamanagementMessagesLevel.png}
-			\caption{Componente Actorbase.Server.Core.Messages.DataManagerOperationMessages}
+			\caption{Componente Actorbase.Server.Core.Messages.DatamanagementOperationMessages}
 			\end{figure}
 			\subsubsection{Descrizione}
-				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi relativi ad operazioni che richiedono l'invio di tali messaggi anche ad attori che gestiscono i dati direttamente.
+				All'interno di questo package sono definite le classi e le interfacce che rappresentano messaggi relativi ad operazioni sui dati.
 			\subsubsection{Classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.KeysMsg
-				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.FindMsg
-				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.InsertMsg
-				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.UpdateMsg
-				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.RemoveMsg
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.KeysMsg
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.FindMsg
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.InsertMsg
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.UpdateMsg
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.RemoveMsg
 			\end{itemize}
 			\subsubsection{Interfacce}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Messages.DataManagerOperationMessages.DataManagerOperationMessage
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.DatamanagementMessage
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.DatamanagementOperationMessages.KeysMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio KeysMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio KeysMsg richiede la lista di chiavi della mappa selezionata.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.DatamanagementMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.ReadPermissionInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.DatamanagementOperationMessages.FindMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio FindMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio FindMsg richiede il valore dell'item con la chiave contenuta nel messaggio.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.DatamanagementMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.ReadPermissionInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.DatamanagementOperationMessages.InsertMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio InsertMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio InsertMsg richiede l'inserimento di un item con chiave e valore contenuti nel messaggio.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.DatamanagementMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.DatamanagementOperationMessages.UpdateMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio UpdateMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio UpdateMsg richiede l'aggiornamento di un item con chiave e valore contenuti nel messaggio.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.DatamanagementMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionInterface
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.DatamanagementOperationMessages.DeleteMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio DeleteMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio DeleteMsg richiede l'eliminazione dell'item con chiave contenuta nel messaggio.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+			\subsubsection{Interfacce estese}
+			\begin{itemize}
+				\item Actorbase.Server.Core.Messages.DatamanagementOperationMessages.DatamanagementMessage
+				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionInterface
 			\end{itemize}
 			
 			\subsection{Actorbase.Server.Core.Messages.ChangeInterfaceMessages}
@@ -688,8 +1004,29 @@
 				All'interno di questo package sono definite le classi e le interfacce che rappresentano i messaggi inviabili per effettuare operazioni di cambio interfaccia per gli attori che supportano tale funzionalità.
 			\subsubsection{Classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Messages.ChangeInterfaceMessages.BecomeNinjaMsg
-				\item Actorbase.Server.Core.Messages.ChangeInterfaceMessages.BecomeStoreKeeperMsg
+				\item Actorbase.Server.Core.Messages.ChangeInterfaceMessages.BecomeANinjaMsg
+				\item Actorbase.Server.Core.Messages.ChangeInterfaceMessages.BecomeAStoreKeeperMsg
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ChangeInterfaceMessages.BecomeANinjaMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio BecomeANinjaMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio BecomeANinjaMsg richiede ad un actor Datamanager di cambiare il suo comportamento in Ninja.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
+			\end{itemize}
+
+			\subsection{Actorbase.Server.Core.Messages.ChangeInterfaceMessages.
+			BecomeAStorekeeperMsg}
+			\subsubsection{Descrizione}
+				Classe che definisce un messaggio BecomeAStorekeeperMsg.
+			\subsubsection{Utilizzo}
+				Un messaggio BecomeAStorekeeperMsg richiede ad un actor Datamanager di cambiare il suo comportamento in Storekeeper.
+			\subsubsection{Relazioni con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
 			\end{itemize}
 			
 			
