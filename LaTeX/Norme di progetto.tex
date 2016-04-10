@@ -68,7 +68,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.3.4
+			Versione 1.3.5
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm]
@@ -86,6 +86,9 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
 				\noalign{\hrule height 1.5pt}
+				1.3.5 & 2016-04-10 & \emph{Progettista} \newline Nicoletti Luca  & Rivista la parte riguardante le repository. Cambiate le repository riguardanti il progetto e la sua documentazione.
+                Cambiata la sezione riguardante il tracciamento dei requisiti. Inserito il link al tool web sviluppato dal gruppo. \\
+				\noalign{\hrule height 0.5pt}
 				1.3.4 & 2016-04-07 & \emph{Progettista} \newline Nicoletti Luca  & Cambiato la norma riguardante il software utilizzato per il disegno di casi d'uso,
 diagrammi di package, sequenza e attività. \\
 				\noalign{\hrule height 0.5pt}
@@ -290,16 +293,20 @@ diagrammi di package, sequenza e attività. \\
 		 \end{table}
 
 		\subsubsection{Tecniche di tracciamento dei requisiti}
-			Tutti i requisiti e Casi d'uso\ped{\emph{G}} saranno inseriti in un Database, strutturato in modo funzionale
-			 dal gruppo. Nel presente Database verranno inserite anche le \emph{Milestones} definite
-			 dal responsabile di turno, in modo da poter collegare requisiti e \emph{Milestones}. Verranno
-			 creati degli appositi triggers per automatizzare la validazione dei requisiti tramite
-			  completamento manuale delle \emph{Milestones} presenti.
-			\\ \\
-			Il Database verrà scritto utilizzando il linguaggio SQL, sfruttando l'hosting gratuito
-			\emph{altervista} e utilizzando il servizio proprietario per la gestione di tale database.
-			\\ \\
-			Questo compito è di responsabilità dell'\emph{Amministratore}.
+        
+            Tutti i requisiti e Casi d'uso\ped{\emph{G}} saranno inseriti in un Database strutturato in modo funzionale dal gruppo. 
+            Per semplificare le interazioni con il database è stata messa a disposizione un'interfaccia web realizzata dai membri del gruppo.
+            Questa interfaccia permette di:
+            \begin{itemize}
+                \item navigare nell'albero dei requisiti;
+                \item segnare come completati i requisiti foglia; quando tutti i figli di un requisito sono marcati come completi, 
+                anch'esso viene marcato come completato;
+                \item per ogni requisiti è possibile scrivere delle note;
+                \item tenere traccia dei requisiti controllando il file di \emph{Analisi dei requisiti} presente sul \emph{Repository}
+                \item generare automaticamente il codice \LaTeX del tracciamento requisiti-fonti e fonti-requisiti.
+            \end{itemize}  
+            
+            Questo strumento è raggiungibile all'indirizzo: \newline \url{http://sweeneytreadaas.altervista.org/menuPrincipale/requirement/requisiti.php}.
 		\subsubsection{Gestione cambiamento requisiti}
 		Per quanto riguarda il cambiamento dei requisiti, nel Database verrà tenuta una tabella di backup dei "vecchi" requisiti,
 		nella loro forma di dichiarazione, con un puntatore al "nuovo" requisito, che invece avrà le specifiche aggiornate. È compito del
@@ -733,39 +740,42 @@ diagrammi di package, sequenza e attività. \\
 		\caption{Account GitHub SWEeneyThreads}
 	\end{figure}
 	\subsubsection{Repository}
-	Sono state previste diverse \emph{Repository} necessarie allo sviluppo del progetto: Actorbase,
-	RR, RP, RQ, RA. 	Actorbase conterrà tutti i file del prodotto da sviluppare, mentre le
-	 \emph{Repository} RR, RP, RQ e RA si riferiscono alle 4 consegne del progetto previste:
-	 revisione dei requisiti, revisione di progettazione, revisione di qualifica, revisione di
-	  accettazione. Effettuata la consegna del materiale, la \emph{Repository}
-	  \verb|Actorbase/| verrà copiata in quella corrispondente, che servirà quindi come
-	  backup della \emph{Baseline} a cui fa riferimento.
+	Sono state previste diverse \emph{Repository} necessarie allo sviluppo del progetto: Actorbase, ActorbaseDoc, RR, RP, RQ, RA e ConsegnaActorbase. 	
+    Actorbase conterrà tutti i file del prodotto da sviluppare, mentre le \emph{Repository} RR, RP, RQ e RA si riferiscono alle 4 consegne del 
+    progetto previste: revisione dei requisiti, revisione di progettazione, revisione di qualifica, revisione di accettazione.
+    ActorbaseDoc conterrà tutta la documentazione necessaria per il progetto.  
+    Effettuata la consegna del materiale, la \emph{Repository} \verb|Actorbase/| verrà copiata in quella corrispondente, che servirà quindi come 
+    backup della \emph{Baseline} a cui fa riferimento.
+    La \emph{Repository} ConsegnaActorbase servirà per effettuare le consegne, il link alla repository verrà consegnato al committente nel giorno delle 
+    consegne.
 	%immagine
   	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{"repositories".png}
 		\caption{Struttura dei repositories GitHub}
 	\end{figure}
-	In \verb|Actorbase/| saranno presenti le seguenti sottocartelle:
+	In \verb|ActorbaseDoc/| saranno presenti le seguenti sottocartelle:
 	\begin{itemize}
 		\item Documenti;
 		\item LaTeX;
-		\item Progetto.
 	\end{itemize}
-	\textbf{Documenti}
-	Nella cartella \verb|Actorbase/Documenti/| verranno inseriti tutti i pdf generati dal comando \verb|pdflatex nome-documento.tex|. Non
-	saranno presenti altri file in questa cartella. I documenti saranno divisi in \emph{Interni}, \emph{Esterni} e
-	\emph{Verbali} per questo saranno create delle sottodirectory: \verb|Actorbase/Documenti/Interni|, \verb|Actorbase/Documenti/Esterni|
-	e \verb|Actorbase/Documenti/Verbali|.
-	\textbf{LaTeX}
-	Nella cartella \verb|Actorbase/LaTeX/| saranno presenti tutti i file \verb|*.tex| pronti per la compilazione. In questa cartella verrà inserita
-	anche una cartella\\ \verb|Actorbase/LaTeX/Immagini/| contenente tutte le immagini necessarie alla compilazione dei file.
+	\textbf{Documenti} \\
+	Nella cartella \verb|ActorbaseDoc/Documenti/| verranno inseriti tutti i pdf generati dal comando \verb|pdflatex nome-documento.tex|. Non
+	saranno presenti altri file in questa cartella. I documenti saranno divisi in \emph{Interni} ed \emph{Esterni} per questo saranno create 
+    delle sottodirectory: \verb|ActorbaseDoc/Documenti/Interni| e \verb|ActorbaseDoc/Documenti/Esterni|.
+	\newline
+    \textbf{LaTeX} \\
+	Nella cartella \verb|ActorbaseDoc/LaTeX/| saranno presenti tutti i file \verb|*.tex| pronti per la compilazione. In questa cartella verrà inserita
+	anche una cartella\\ \verb|ActorbaseDoc/LaTeX/Immagini/| contenente tutte le immagini necessarie alla compilazione dei file.
 	Inoltre verrà aggiunta una cartella \verb|Actorbase/LaTeX/Templates/| contenente i templates per la stesura di documenti e per il
-	disegno appropriato di tabelle.
-	\textbf{Progetto}
-	La cartella \verb|Actorbase/Progetto/| contiene tutti i file che compongono il prodotto richiesto nel capitolato. Sarà  un progetto in
-	\emph{Scala} che seguirà gli standard sopra citati.
-	\textbf{Normative per i commit}
+	disegno appropriato di tabelle. 
+    Per le tabelle su più pagine, si terranno dei file separati dal file principale in cui sono incluse. Per questo è stata creata la tabella 
+    \verb|ActorbaseDoc/LaTeX/Tabelle|.
+    \newline
+	\textbf{Progetto} \\
+    Per il progetto in sé, è stata creata una repository a parte \verb|Actorbase| in modo da semplificare l'integrazione continua con \emph{Travis}.
+	\newline
+    \textbf{Normative per i commit} \\
 		Si è deciso di dare a tutti i membri del gruppo la possibilità di effettuare commit sul master-branch del repository
 		senza dover attendere l'approvazione di un account centrale. Tale scelta impone però la definizione di alcune norme
 		di commit da rispettare:

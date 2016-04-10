@@ -70,6 +70,7 @@
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
 				\emph{Verifica:} \\
+                    Bortolazzo Matteo\\
 				 
 			\end{flushright}
 		\end{minipage}
@@ -80,7 +81,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.11
+			Versione 0.1.0
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -98,6 +99,10 @@
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} Versione & Data & Autore & Descrizione \\
                 \noalign{\hrule height 0.5pt}
+				0.1.0 & 2016-04-10 & \emph{Progettista} \newline Nicoletti Luca & Sistemazione errori rilevati dalla verifica effettuata in versione 0.0.12 \\
+				\noalign{\hrule height 0.5pt}
+				0.0.12 & 2016-04-10 & \emph{Verificatore} \newline Bortolazzo Matteo & Verificato l'intero documento, segnalati vari errori in tutte le sezioni\\
+				\noalign{\hrule height 0.5pt}
 				0.0.11 & 2016-04-10 & \emph{Progettista} \newline Maino Elia & Completata la descrizione di classe e interfacce del componente server\\
 				\noalign{\hrule height 0.5pt}
 				0.0.10 & 2016-04-10 & \emph{Progettista} \newline Nicoletti Luca & Modificate e inserite le nuove immagini dei packages e delle classi per 
@@ -108,17 +113,22 @@
 				\noalign{\hrule height 0.5pt}
 				0.0.8 & 2016-04-09 & \emph{Progettisti} \newline Bonato Paolo \newline Biggeri Mattia & Stesura sezione tracciamento componenti-requisiti.\\
                 \noalign{\hrule height 0.5pt}
-				0.0.7 & 2016-04-09 & \emph{Progettista} \newline Nicoletti Luca & Inseriti tutti i diagrammi di sequenza riguardanti l'implementazione di richieste lato server, sostituita immagine dei Packages generale. Inserita una breve spiegazione di ogni diagramma di sequenza\\
+				0.0.7 & 2016-04-09 & \emph{Progettista} \newline Nicoletti Luca & Inseriti tutti i diagrammi di sequenza riguardanti l'implementazione 
+                di richieste lato server, sostituita immagine dei Packages generale. Inserita una breve spiegazione di ogni diagramma di sequenza\\
 				\noalign{\hrule height 0.5pt}
-				0.0.6 & 2016-04-09 & \emph{Progettisti} \newline Biggeri Mattia \newline Padovan Tommaso \newline Bonato Paolo & Stesura sezioni Driver, Diagrammi attività, Stime di fattibilità e bisogno di risorse;  aggiunta immagine nella sezione 3.2.3, aggiunto Singleton nelle descrizioni dei desing pattern, aggiornata leggenda.     \\
+				0.0.6 & 2016-04-09 & \emph{Progettisti} \newline Biggeri Mattia \newline Padovan Tommaso \newline Bonato Paolo & Stesura sezioni 
+                Driver, Diagrammi attività, Stime di fattibilità e bisogno di risorse;  aggiunta immagine nella sezione 3.2.3, aggiunto Singleton 
+                nelle descrizioni dei Design Pattern, aggiornata leggenda.\\
 				\noalign{\hrule height 0.5pt}
 				0.0.5 & 2016-04-08 & \emph{Progettisti} \newline Maino Elia \newline Nicoletti Luca \newline Bortolazzo Matteo & Stesura sezione riguardante le componenti dell'architettura lato server: diagrammi dei package e delle classi e descrizioni testuali   \\
 				\noalign{\hrule height 0.5pt}
-				0.0.4 & 2016-04-06 & \emph{Progettisti} \newline Biggeri Mattia \newline Tommasin Davide & Aggiunta sezione in appendice suoi Desing Pattern, contiene al momento la descrizione di: MVC, Event-driven, Command   \\
+				0.0.4 & 2016-04-06 & \emph{Progettisti} \newline Biggeri Mattia \newline Tommasin Davide & Aggiunta sezione 
+                in appendice suoi Design Pattern, contiene al momento la descrizione di: MVC, Event-driven, Command   \\
 				\noalign{\hrule height 0.5pt}
 				0.0.3 & 2016-04-03 & \emph{Progettista} \newline Bonato Paolo & Accorpate le sezioni "Componenti", "Package" e "Classi" in "Componenti e classi". Riadattata la sezione "Metodo e formalismo di specifica" alla nuova struttura. Inserite le immagini 1 e 2. Apportate le correzioni indicate. \\
                 \noalign{\hrule height 0.5pt}
-				0.0.2 & 2016-03-26 & \emph{Progettisti} \newline Bonato Paolo \newline Biggeri Mattia \newline Padovan Tommaso \newline Tommasin Davide \newline Bortolazzo Matteo & Prima stesura di Architettura generale (sezinoe 3) e componenti (sezione 4)\\
+				0.0.2 & 2016-03-26 & \emph{Progettisti} \newline Bonato Paolo \newline Biggeri Mattia \newline Padovan Tommaso 
+                \newline Tommasin Davide \newline Bortolazzo Matteo & Prima stesura di Architettura generale (sezione 3) e componenti (sezione 4)\\
 				\noalign{\hrule height 0.5pt}
 				0.0.1 & 2016-03-24 & \emph{Analisti} \newline Bonato Paolo \newline Biggeri Mattia & Creazione scheletro documento, stesura introduzione, definizione di metodo e formalismo di specifica. \\
 				\noalign{\hrule height 1.5pt}
@@ -134,7 +144,7 @@
 		Il documento definisce la progettazione ad alto livello del progetto Actorbase.
 		Verrà presentata l'architettura generale, le componenti, le classi e i design pattern utilizzati per realizzare il prodotto.
 	\subsection{Scopo del prodotto}
-		Il progetto consiste nella realizzazione di un DataBase NoSQL key-value basato sul modello ad 
+		Il progetto consiste nella realizzazione di un Database NoSQL key-value basato sul modello ad 
 		Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
 		applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
 		di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
@@ -152,12 +162,12 @@
 			\url{http://www.java.com/}
 			\item \textbf{Akka:} \\
 			\url{http://akka.io/}
-			\item \textbf{InelliJ:} \\
+			\item \textbf{IntelliJ:} \\
 			\url{http://www.jetbrains.com/idea/}
 		\end{itemize}
 	\subsubsection{Normativi}
 		\begin{itemize}
-			\item \textbf{Norme di progetto:} \emph{Norme di progetto v1.3.3}
+			\item \textbf{Norme di progetto:} \emph{Norme di progetto v1.3.5}
 			\item \textbf{Capitolato d'appalto Actorbase (C1):} \\ 
 			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
 		\end{itemize}
@@ -168,7 +178,7 @@
 	\subsection{Scala}
 		Le possibili scelte dettate dal capitolato sono Java e Scala. Si è scelto di utilizzare Scala perché offre i seguenti vantaggi:
 		\begin{itemize}
-            \item \textbf{Completamente Object-Oriented:} A differenza di Java, Scala è completamente orientato agli oggetti. Non c'è distinizione del tipo: oggetto - tipo primitivo, ogni valore è semplicemente un oggetto.
+            \item \textbf{Completamente Object-Oriented:} A differenza di Java, Scala è completamente orientato agli oggetti. Non c'è distinzione del tipo: oggetto - tipo primitivo, ogni valore è semplicemente un oggetto.
 			\item \textbf{Staticamente tipato:} \'E un linguaggio tipato staticamente, questo permette di effettuare più facilmente i test. Inoltre Scala è in grado di stabilire il tipo di un oggetto per inferenza.
             \item \textbf{Può eseguire codice Java:} Scala può eseguire codice scritto in Java. \'E dunque possibile utilizzare classi e librerie scritte in Java all'interno di programmi scritti in Scala. 
             \item \textbf{Concorrenza e distribuzione:} Ottimo supporto alla programmazione multi-threaded e distribuita, essenziale per la realizzazione di un prodotto responsive e scalabile.
@@ -254,7 +264,7 @@
 			\caption{Componente Actorbase}
 		\end{figure}
 			\subsubsection{Descrizione}
-				\'E il package principale del sistema. L'interazione tra i package \textbf{Server} e \textbf{Driver} definiscono una comunicazione su rete di tipo client-server. \\ Le classi definite nel package \textbf{Server} utilizzano ed estendono le classi della libreria Akka.
+				È il package principale del sistema. L'interazione tra i package \textbf{Server} e \textbf{Driver} definiscono una comunicazione su rete di tipo client-server. \\ Le classi definite nel package \textbf{Server} utilizzano ed estendono le classi della libreria Akka.
 			\subsubsection{Package Figli}
 				\begin{itemize}
 					\item Actorbase.Server
@@ -263,13 +273,13 @@
 					\item Actorbase.Akka
 				\end{itemize}
 		\subsection{Actorbase.Server}
-			\begin{figure} [H]
+			\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.50]{Server/Package/ServerLevel.png}
 			\caption{Componente Actorbase.Server}
 			\end{figure}
 			\subsubsection{Descrizione}
-				Package per la componente lato server del sistema. \'E composto dai packages \textbf{Core} ed \textbf{API} e dalla classe \emph{ActorbaseServer}.
+				Package per la componente lato server del sistema. È composto dai packages \textbf{Core} ed \textbf{API} e dalla classe \emph{ActorbaseServer}.
 			\subsubsection{Package Figli}
 				\begin{itemize}
 					\item Actorbase.Server.Core
@@ -352,7 +362,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo Datamanager.
 			\subsubsection{Utilizzo}
-				Si utilizza per mantenere in RAM una porzione di una mappa di un database. Un oggetto Datamanager possiede due comportamenti diversi: uno nel caso funzioni da copia principale dei dati (Storekeeper) e l'altro nel caso funzioni da copia di backup (Ninja).
+				Si utilizza per mantenere in RAM una porzione di una mappa di un Database. Un oggetto Datamanager possiede due comportamenti diversi: uno nel caso funzioni da copia principale dei dati (Storekeeper) e l'altro nel caso funzioni da copia di backup (Ninja).
 			\subsubsection{Relazioni con altre classi}
 				Nessuna.
 			
@@ -360,7 +370,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo Warehouseman.
 			\subsubsection{Utilizzo}
-				Si utilizza per mantenere persistenza su disco di una porzione di una mappa di un database.
+				Si utilizza per mantenere persistenza su disco di una porzione di una mappa di un Database.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item Actorbase.Server.Core.Actors.Datamanagement.UpdateActor
@@ -494,7 +504,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un actor di tipo HTTPBuilder.
 			\subsubsection{Utilizzo}
-				Costruisce un messaggio HTTP invibile da API a un client a partire da un messaggio definito in \textbf{Actorbase.Server.Core.Messages}.
+				Costruisce un messaggio HTTP che le API possono inviare a un client a partire da un messaggio definito in \textbf{Actorbase.Server.Core.Messages}.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione
@@ -543,8 +553,7 @@
 				\item Actorbase.Server.Core.Messages.ConfigurationMessages.DatamanagerConfigurationMessage
 			\end{itemize}
 
-			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.
-			MainConfigurationMessage}
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.\\ MainConfigurationMessage}
 			\subsubsection{Descrizione}
 				Interfaccia per messaggi di configurazione per actor di tipo Main. 
 				Le classi che implementano questa interfaccia definiscono messaggi di configurazione che possono essere gestiti da actor di tipo Main.
@@ -567,8 +576,7 @@
 				\item Actorbase.Server.Core.Messages.ConfigurationMessages.MainConfigurationMessage
 			\end{itemize}
 
-			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.
-			StorefinderConfigurationMessage}
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.\\ StorefinderConfigurationMessage}
 			\subsubsection{Descrizione}
 				Interfaccia per messaggi di configurazione per actor di tipo Storefinder. 
 				Le classi che implementano questa interfaccia definiscono messaggi di configurazione che possono essere gestiti da actor di tipo Storefinder.
@@ -594,9 +602,9 @@
 
 			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.MaxWarehousemanMsg}
 			\subsubsection{Descrizione}
-				Classe che definisce un messaggio MaxWarehouseman.
+				Classe che definisce un messaggio MaxWarehousemanMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio MaxWarehouseman informa chi lo riceve di aggiornare l'impostazione relativa al numero di actor di tipo Warehouseman creabili per Datamanager.
+				Un messaggio MaxWarehousemanMsg informa chi lo riceve di aggiornare l'impostazione relativa al numero di actor di tipo Warehouseman creabili per Datamanager.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.ActorbaseServer:} relazione entrante, creazione
@@ -606,8 +614,7 @@
 				\item Actorbase.Server.Core.Messages.ConfigurationMessages.StorefinderConfigurationMessage
 			\end{itemize}
 
-			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.
-			ManagerConfigurationMessage}
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.\\ ManagerConfigurationMessage}
 			\subsubsection{Descrizione}
 				Interfaccia per messaggi di configurazione per actor di tipo Manager. 
 				Le classi che implementano questa interfaccia definiscono messaggi di configurazione che possono essere gestiti da actor di tipo Manager.
@@ -630,8 +637,7 @@
 				\item Actorbase.Server.Core.Messages.ConfigurationMessages.ManagerConfigurationMessage
 			\end{itemize}
 
-			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.
-			DatamanagerConfigurationMessage}
+			\subsection{Actorbase.Server.Core.Messages.ConfigurationMessages.\\ DatamanagerConfigurationMessage}
 			\subsubsection{Descrizione}
 				Interfaccia per messaggi di configurazione per actor di tipo Datamanager. 
 				Le classi che implementano questa interfaccia definiscono messaggi di configurazione che possono essere gestiti da actor di tipo Datamanager.
@@ -669,8 +675,7 @@
 				\item Actorbase.Server.Core.Messages.PermissionMessages.WritePermissionsInterface
 			\end{itemize}
 
-			\subsection{Actorbase.Server.Core.Messages.PermissionMessages.
-			PermissionsNotRequiredInterface}
+			\subsection{Actorbase.Server.Core.Messages.PermissionMessages.\\ PermissionsNotRequiredInterface}
 			\subsubsection{Descrizione}
 				Interfaccia per messaggi che definiscono operazioni per le quali non sono richiesti specifici permessi.
 			\subsubsection{Classi figlie}
@@ -730,11 +735,11 @@
 				All'interno di questo package sono definite le classi che rappresentano i messaggi relativi alla gestione dei collegamenti tra diversi attori.
 			\subsubsection{Classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Messages.LinkActorsMessages.UpdateStoreKeeperMsg
-				\item Actorbase.Server.Core.Messages.LinkActorsMessages.InsertStoreKeeperMsg
+				\item Actorbase.Server.Core.Messages.LinkActorsMessages.UpdateStorekeeperMsg
+				\item Actorbase.Server.Core.Messages.LinkActorsMessages.InsertStorekeeperMsg
 			\end{itemize}
 
-			\subsection{Actorbase.Server.Core.Messages.LinkActorsMessages.UpdateStoreKeeperMsg}
+			\subsection{Actorbase.Server.Core.Messages.LinkActorsMessages.UpdateStorekeeperMsg}
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio UpdateStorekeeperMsg.
 			\subsubsection{Utilizzo}
@@ -744,11 +749,11 @@
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione entrante, creazione
 			\end{itemize}
 
-			\subsection{Actorbase.Server.Core.Messages.LinkActorsMessages.InsertStoreKeeperMsg}
+			\subsection{Actorbase.Server.Core.Messages.LinkActorsMessages.InsertStorekeeperMsg}
 			\subsubsection{Descrizione}
-				Classe che definisce un messaggio InsertStoreKeeperMsg.
+				Classe che definisce un messaggio InsertStorekeeperMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio InsertStoreKeeperMsg informa il Manager che lo riceve di aggiungere il riferimento ad un actor Datamenager Storekeeper alla sua lista.
+				Un messaggio InsertStorekeeperMsg informa il Manager che lo riceve di aggiungere il riferimento ad un actor Datamenager Storekeeper alla sua lista.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione entrante, creazione
@@ -782,7 +787,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio ShowDBMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio ShowDBMsg richiede la lista dei database presenti sul server.
+				Un messaggio ShowDBMsg richiede la lista dei Database presenti sul server.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
@@ -797,7 +802,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio ShowMapMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio ShowMapMsg richiede la lista delle mappe del database selezionato.
+				Un messaggio ShowMapMsg richiede la lista delle mappe del Database selezionato.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
@@ -812,7 +817,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio CreateDBMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio CreateDBMsg richiede la creazione di un nuovo database.
+				Un messaggio CreateDBMsg richiede la creazione di un nuovo Database.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
@@ -827,7 +832,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio CreateMapMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio CreateMapMsg richiede la creazione di una nuova mappa nel database selezionato.
+				Un messaggio CreateMapMsg richiede la creazione di una nuova mappa nel Database selezionato.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
@@ -842,7 +847,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio RenameDBMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio RenameDBMsg richiede la rinomina di un database presente sul server.
+				Un messaggio RenameDBMsg richiede la rinomina di un Database presente sul server.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
@@ -857,7 +862,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio RenameMapMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio RenameMapMsg richiede la rinomina di una mappa del database selezionato.
+				Un messaggio RenameMapMsg richiede la rinomina di una mappa del Database selezionato.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
@@ -872,7 +877,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio DeleteDBMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio DeleteDBMsg richiede l'eliminazione di un database dal server.
+				Un messaggio DeleteDBMsg richiede l'eliminazione di un Database dal server.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
@@ -887,7 +892,7 @@
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio DeleteMapMsg.
 			\subsubsection{Utilizzo}
-				Un messaggio DeleteMapMsg richiede l'eliminazione di una mappa del database selezionato.
+				Un messaggio DeleteMapMsg richiede l'eliminazione di una mappa del Database selezionato.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
@@ -1018,8 +1023,7 @@
 				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione entrante, creazione
 			\end{itemize}
 
-			\subsection{Actorbase.Server.Core.Messages.ChangeInterfaceMessages.
-			BecomeAStorekeeperMsg}
+			\subsection{Actorbase.Server.Core.Messages.ChangeInterfaceMessages.\\ BecomeAStorekeeperMsg}
 			\subsubsection{Descrizione}
 				Classe che definisce un messaggio BecomeAStorekeeperMsg.
 			\subsubsection{Utilizzo}
@@ -1065,8 +1069,8 @@
 			Viene usata per aprire e chiudere la connessione con il Server, inviare i messaggi e per generare la prima parte del comando per le API.
 		\subsubsection{Relazione con altre classi}
 			\begin{itemize}
-				\item \textbf{Actorbase.Driver.Commands.ServerCommand}: Relazione entrante, invio comando al Server.
-				\item \textbf{Actorbase.Driver.Exception}: Relazione uscente, creazione di eccezioni.
+				\item \textbf{Actorbase.Driver.Commands.ServerCommand:} Relazione entrante, invio comando al Server.
+				\item \textbf{Actorbase.Driver.Exception:} Relazione uscente, creazione di eccezioni.
 			\end{itemize}
 		
 		\subsection{Actorbase.Driver.Driver}
@@ -1074,13 +1078,13 @@
 		\subsubsection{Descrizione}
 			Classe che gestisce la comunicazione mediante API. Svolge il ruolo di \emph{Invoker}.
 		\subsubsection{Utilizzo}
-			Espone i metodi per codifica e decodifica dei comandi delle API. Inoltre mantiene le informazioni relative ad eventuali DataBase o Mappe selezionate.
+			Espone i metodi per codifica e decodifica dei comandi delle API. Inoltre mantiene le informazioni relative ad eventuali Database o Mappe selezionate.
 		\subsubsection{Interfacce Estese}
 			Actorbase.Driver.DriverInterface
 		\subsubsection{Relazioni con altre classi}
 		\begin{itemize}
-			\item \textbf{Actorbase.Driver.Commands}: Relazione uscente, utilizzo del metodo Execute.
-			\item \textbf{Actorbase.Driver.Exceptions}: Relazione uscente, creazione di eccezioni.
+			\item \textbf{Actorbase.Driver.Commands:} Relazione uscente, utilizzo del metodo Execute.
+			\item \textbf{Actorbase.Driver.Exceptions:} Relazione uscente, creazione di eccezioni.
 		\end{itemize}
 		
 		
@@ -1091,7 +1095,7 @@
 			\caption{Package Actorbase.Driver.Commands}
 		\end{figure}
 		\subsubsection{Descrizione}
-			Package che contiene i la gerarchia di comandi dell'interfaccia \emph{Command}. Ognuno di essi rappresenta astrattamente una operazione che deve essere svolta a livello del Server. Sono presenti due gerarchie di interfacce, una per la tipologia di comandi (lato client, lato server, lettura, scrittura) e l'altra per la tipologia di "preselezioni" necessarie per eseguire il comando (DataBase selezionato, Mappa selezionata).
+			Package che contiene la gerarchia di comandi dell'interfaccia \emph{Command}. Ognuno di essi rappresenta astrattamente una operazione che deve essere svolta a livello del Server. Sono presenti due gerarchie di interfacce, una per la tipologia di comandi (lato client, lato server, lettura, scrittura) e l'altra per la tipologia di "pre-selezioni" necessarie per eseguire il comando (Database selezionato, Mappa selezionata).
 		
 		\subsubsection{Interfacce}
 			\begin{itemize}
@@ -1107,7 +1111,7 @@
 			\begin{itemize}
 				\item Actorbase.Driver.Commands.KeysCommand
 				\item Actorbase.Driver.Commands.SelectCommand
-				\item Actorbase.Driver.Commands.ShowBDCommand
+				\item Actorbase.Driver.Commands.ShowDBCommand
 				\item Actorbase.Driver.Commands.SelectDBCommand
 				\item Actorbase.Driver.Commands.ShowMapCommand
 				\item Actorbase.Driver.Commands.SelectMapCommand
@@ -1127,8 +1131,8 @@
 		
 		\subsubsection{Relazioni con altre componenti}
 			\begin{itemize}
-				\item \textbf{Actorbase.Client.Model}: Relazione entrante, inclusione.
-				\item \textbf{Actorbase.Client.Controller}:	Relazione entrante, inclusione.
+				\item \textbf{Actorbase.Client.Model:} Relazione entrante, inclusione.
+				\item \textbf{Actorbase.Client.Controller:}	Relazione entrante, inclusione.
 			\end{itemize}
 
 		
@@ -1153,18 +1157,18 @@
 				\subsubsection{Interfacce Estese} Actorbase.Driver.Commands.ServerCommand
 				\subsubsection{Classi Figlie}
 					\begin{itemize}
-						\item \textbf{Actorbase.Driver.Commands.KeysCommand}:
+						\item \textbf{Actorbase.Driver.Commands.KeysCommand:}
 							Classe concreta che rappresenta il comando per mostrare la lista delle chiavi nella mappa selezionata.
-						\item \textbf{Actorbase.Driver.Commands.SelectCommand}:
+						\item \textbf{Actorbase.Driver.Commands.SelectCommand:}
 							Classe concreta che rappresenta il comando per selezionare il valore di una chiave nella mappa selezionata.
-						\item \textbf{Actorbase.Driver.Commands.ShowBDCommand}:
-							Classe concreta che rappresenta il comando per mostrare l'elenco dei DataBase di cui si hanno permessi di lettura.
-						\item \textbf{Actorbase.Driver.Commands.SelectDBCommand}:
-							Classe concreta che rappresenta il comando per selezionare un determinato DataBase.
-						\item \textbf{Actorbase.Driver.Commands.ShowMapCommand}:
-							Classe concreta che rappresenta il comando per mostrare la lista delle mappe nel DataBase selezionato.
-						\item \textbf{Actorbase.Driver.Commands.SelectMapCommand}:
-							Classe concreta che rappresenta il comando per selezionatare una determinata mappa.
+						\item \textbf{Actorbase.Driver.Commands.ShowBDCommand:}
+							Classe concreta che rappresenta il comando per mostrare l'elenco dei Database di cui si hanno permessi di lettura.
+						\item \textbf{Actorbase.Driver.Commands.SelectDBCommand:}
+							Classe concreta che rappresenta il comando per selezionare un determinato Database.
+						\item \textbf{Actorbase.Driver.Commands.ShowMapCommand:}
+							Classe concreta che rappresenta il comando per mostrare la lista delle mappe nel Database selezionato.
+						\item \textbf{Actorbase.Driver.Commands.SelectMapCommand:}
+							Classe concreta che rappresenta il comando per selezionare una determinata mappa.
 					\end{itemize}
 
 
@@ -1173,26 +1177,26 @@
 			\subsubsection{Interfacce Estese} Actorbase.Driver.Commands.ServerCommand
 			\subsubsection{Classi Figlie}
 				\begin{itemize}
-					\item \textbf{Actorbase.Driver.Commands.InsertCommand}:
+					\item \textbf{Actorbase.Driver.Commands.InsertCommand:}
 						Classe concreta che rappresenta il comando per inserire una coppia chiave-valore nella mappa selezionata.
-					\item \textbf{Actorbase.Driver.Commands.UpdateCommand}:
+					\item \textbf{Actorbase.Driver.Commands.UpdateCommand:}
 						Classe concreta che rappresenta il comando per aggiornare il valore di una chiave nella mappa selezionata.
-					\item \textbf{Actorbase.Driver.Commands.AppendCommand}:
+					\item \textbf{Actorbase.Driver.Commands.AppendCommand:}
 						Classe concreta che rappresenta il comando per appendere in coda al valore di una chiave nella mappa selezionata.
-					\item \textbf{Actorbase.Driver.Commands.RemoveCommand}:
+					\item \textbf{Actorbase.Driver.Commands.RemoveCommand:}
 						Classe concreta che rappresenta il comando per rimuovere una coppia chiave-valore dalla mappa selezionata.
-					\item \textbf{Actorbase.Driver.Commands.CreateMapCommand}:
-						Classe concreta che rappresenta il comando per creare una nuova mappa nel DataBase selezionato.
-					\item \textbf{Actorbase.Driver.Commands.DeleteMapCommand}:
-						Classe concreta che rappresenta il comando per eliminare una mappa nel DataBase selezionato.
-					\item \textbf{Actorbase.Driver.Commands.RenameMapCommand}:
-						Classe concreta che rappresenta il comando per rinominare una mappa nel DataBase selezionato.
-					\item \textbf{Actorbase.Driver.Commands.CreateDBCommand}:
-						Classe concreta che rappresenta il comando per creare un nuovo DataBase.
-					\item \textbf{Actorbase.Driver.Commands.DeleteDBCommand}:
-						Classe concreta che rappresenta il comando per rimuovere un DataBase.
-					\item \textbf{Actorbase.Driver.Commands.RenameDBCommand}:
-						Classe concreta che rappresenta il comando per rinominare un DataBase.
+					\item \textbf{Actorbase.Driver.Commands.CreateMapCommand:}
+						Classe concreta che rappresenta il comando per creare una nuova mappa nel Database selezionato.
+					\item \textbf{Actorbase.Driver.Commands.DeleteMapCommand:}
+						Classe concreta che rappresenta il comando per eliminare una mappa nel Database selezionato.
+					\item \textbf{Actorbase.Driver.Commands.RenameMapCommand:}
+						Classe concreta che rappresenta il comando per rinominare una mappa nel Database selezionato.
+					\item \textbf{Actorbase.Driver.Commands.CreateDBCommand:}
+						Classe concreta che rappresenta il comando per creare un nuovo Database.
+					\item \textbf{Actorbase.Driver.Commands.DeleteDBCommand:}
+						Classe concreta che rappresenta il comando per rimuovere un Database.
+					\item \textbf{Actorbase.Driver.Commands.RenameDBCommand:}
+						Classe concreta che rappresenta il comando per rinominare un Database.
 				\end{itemize}
 
 		
@@ -1201,14 +1205,14 @@
 			\subsubsection{Interfacce Estese} Actorbase.Driver.Commands.ServerCommand
 			\subsubsection{Classi Figlie}
 				\begin{itemize}
-					\item \textbf{Actorbase.Driver.Commands.ConnectCommand}:
+					\item \textbf{Actorbase.Driver.Commands.ConnectCommand:}
 						Classe concreta che rappresenta il comando per la connessione al server.
-					\item \textbf{Actorbase.Driver.Commands.DisconnectCommand}:
+					\item \textbf{Actorbase.Driver.Commands.DisconnectCommand:}
 						Classe concreta che rappresenta il comando per la disconnessione dal server.
 				\end{itemize}
 		
 		\subsection{Actorbase.Driver.Commands.DBSelectedCommand}
-				\subsubsection{Descrizione} Interfaccia base che rappresenta un generico comando che per cui è necessario avere un DataBase selezionato.
+				\subsubsection{Descrizione} Interfaccia base che rappresenta un generico comando per il quale è necessario avere un Database selezionato.
 				\subsubsection{Classi Figlie}
 					\begin{itemize}
 						\item Actorbase.Driver.Commands.ShowMapCommand
@@ -1220,7 +1224,7 @@
 
 
 		\subsection{Actorbase.Driver.Commands.MapSelectedCommand}
-				\subsubsection{Descrizione} Interfaccia base che rappresenta un generico comando che per cui è necessario avere una mappa selezionata.
+				\subsubsection{Descrizione} Interfaccia base che rappresenta un generico comando per il quale è necessario avere una mappa selezionata.
 				\subsubsection{Interfacce Estese} Actorbase.Driver.Commands.DBSelectedCommand
 				\subsubsection{Classi Figlie}
 					\begin{itemize}
@@ -1277,7 +1281,7 @@
 			\end{itemize}
 		\subsubsection{Relazioni con altre componenti}
 				\begin{itemize}
-					\item \textbf{Actorbase.Driver.Commands}: Relazione uscente, inclusione.
+					\item \textbf{Actorbase.Driver.Commands:} Relazione uscente, inclusione.
 				\end{itemize}	
 		
 		\subsection{Actorbase.Client.Model.Status}
@@ -1300,20 +1304,20 @@
 				Actorbase.Client.Model.Status
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Model.Communication}: Relazione entrante, creazione.
+					\item \textbf{Actorbase.Client.Model.Communication:} Relazione entrante, creazione.
 				\end{itemize}
 			\subsubsection{Classi Figlie}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Model.ListStringStatus}:
+					\item \textbf{Actorbase.Client.Model.ListStringStatus:}
 						Stato che rappresenta un generico stato di tipo lista di stringhe.
-					\item \textbf{Actorbase.Client.Model.StringStatus}:
+					\item \textbf{Actorbase.Client.Model.StringStatus:}
 						Stato che rappresenta un generico stato di tipo stringa.
 					\begin{itemize}
-						\item \textbf{Actorbase.Client.Model.MessageStatus}:
+						\item \textbf{Actorbase.Client.Model.MessageStatus:}
 							Stato che rappresenta un messaggio del server.
-						\item \textbf{Actorbase.Client.Model.ErrorStatus}:
+						\item \textbf{Actorbase.Client.Model.ErrorStatus:}
 							Stato che rappresenta un errore a livello del server.
-						\item \textbf{Actorbase.Client.Model.QueryResultStatus}:
+						\item \textbf{Actorbase.Client.Model.QueryResultStatus:}
 							Stato che rappresenta il risultato di una query ritornato in forma di stringa.
 					\end{itemize}
 				\end{itemize}
@@ -1328,14 +1332,14 @@
 				Actorbase.Client.Model.Status
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Model.Help}: Relazione entrante, creazione.
-					\item \textbf{Actorbase.Client.Model.ParsingFault}: Relazione entrante, creazione.
+					\item \textbf{Actorbase.Client.Model.Help:} Relazione entrante, creazione.
+					\item \textbf{Actorbase.Client.Model.ParsingFault:} Relazione entrante, creazione.
 				\end{itemize}
 			\subsubsection{Classi Figlie}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Model.ExceptionStatus}:
+					\item \textbf{Actorbase.Client.Model.ExceptionStatus:}
 						Stato che rappresenta una eccezione.
-					\item \textbf{Actorbase.Client.Model.HelpStatus}:
+					\item \textbf{Actorbase.Client.Model.HelpStatus:}
 						Stato che rappresenta una richiesta di help da parte dell'utente.
 				\end{itemize}
 			
@@ -1346,11 +1350,11 @@
 				Fornisce un accesso unico al sottosistema delle classi ad esso composte.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Model.Communication}: Relazione uscente, composizione.
-					\item \textbf{Actorbase.Client.Model.ModelStatus}: Relazione uscente, composizione.
-					\item \textbf{Actorbase.Client.Model.Help}: Relazione uscente, composizione.
-					\item \textbf{Actorbase.Client.Model.ParsingFault}:	Relazione uscente, composizione.
-					\item \textbf{Actorbase.Client.Controller}:	Relazione entrante, chiamata metodo per la ricezione del comando.	
+					\item \textbf{Actorbase.Client.Model.Communication:} Relazione uscente, composizione.
+					\item \textbf{Actorbase.Client.Model.ModelStatus:} Relazione uscente, composizione.
+					\item \textbf{Actorbase.Client.Model.Help:} Relazione uscente, composizione.
+					\item \textbf{Actorbase.Client.Model.ParsingFault:}	Relazione uscente, composizione.
+					\item \textbf{Actorbase.Client.Controller:}	Relazione entrante, chiamata metodo per la ricezione del comando.	
 				\end{itemize}
 			
 		\subsection{Actorbase.Client.Model.Comunication}
@@ -1360,10 +1364,10 @@
 				Gestisce la comunicazione con il server tramite Driver, crea gli ServerStatus e chiama il metodo per modificare l'attributo status del Model.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, composizione.
-					\item \textbf{Actorbase.Client.Model.ServerStatus}: Relazione uscente, creazione.
-					\item \textbf{Actorbase.Client.Model.ModelStatus}: Relazione uscente, impostazione dello status.
-					\item \textbf{Actorbase.Driver.Driver}: Relazione uscente, composizione.
+					\item \textbf{Actorbase.Client.Model.Model:} Relazione entrante, composizione.
+					\item \textbf{Actorbase.Client.Model.ServerStatus:} Relazione uscente, creazione.
+					\item \textbf{Actorbase.Client.Model.ModelStatus:} Relazione uscente, impostazione dello status.
+					\item \textbf{Actorbase.Driver.Driver:} Relazione uscente, composizione.
 				\end{itemize}
 		
 		\subsection{Actorbase.Client.Model.ModelStatus}
@@ -1371,10 +1375,10 @@
 				Classe che gestisce l'attributo stato di Model.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, composizione.
-					\item \textbf{Actorbase.Client.Model.Communication}: Relazione entrante, impostazione dello status.
-					\item \textbf{Actorbase.Client.Model.Help}: Relazione entrante, impostazione dello status.
-					\item \textbf{Actorbase.Client.Model.ParsingFault}:	Relazione entrante, impostazione dello status.
+					\item \textbf{Actorbase.Client.Model.Model:} Relazione entrante, composizione.
+					\item \textbf{Actorbase.Client.Model.Communication:} Relazione entrante, impostazione dello status.
+					\item \textbf{Actorbase.Client.Model.Help:} Relazione entrante, impostazione dello status.
+					\item \textbf{Actorbase.Client.Model.ParsingFault:}	Relazione entrante, impostazione dello status.
 				\end{itemize}
 				
 		\subsection{Actorbase.Client.Model.Help}
@@ -1384,9 +1388,9 @@
 				Gestisce le richieste di aiuto, crea gli HelpStatus e chiama il metodo per modificare l'attributo status del Model.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, composizione.
-					\item \textbf{Actorbase.Client.Model.HelpStatus}: Relazione uscente, creazione.
-					\item \textbf{Actorbase.Client.Model.ModelStatus}: Relazione uscente, impostazione dello status.
+					\item \textbf{Actorbase.Client.Model.Model:} Relazione entrante, composizione.
+					\item \textbf{Actorbase.Client.Model.HelpStatus:} Relazione uscente, creazione.
+					\item \textbf{Actorbase.Client.Model.ModelStatus:} Relazione uscente, impostazione dello status.
 				\end{itemize}
 				
 		\subsection{Actorbase.Client.Model.ParsingFault}
@@ -1396,9 +1400,9 @@
 				Gestisce le eccezioni, crea gli ExceptionStatus e chiama il metodo per modificare l'attributo status del Model.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, composizione.
-					\item \textbf{Actorbase.Client.Model.ExceptionStatus}: Relazione uscente, creazione.
-					\item \textbf{Actorbase.Client.Model.ModelStatus}: Relazione uscente, impostazione dello status.
+					\item \textbf{Actorbase.Client.Model.Model:} Relazione entrante, composizione.
+					\item \textbf{Actorbase.Client.Model.ExceptionStatus:} Relazione uscente, creazione.
+					\item \textbf{Actorbase.Client.Model.ModelStatus:} Relazione uscente, impostazione dello status.
 				\end{itemize}
 		
 		\subsection{Actorbase.Client.View}
@@ -1421,10 +1425,10 @@
 				Gestisce l'interfaccia utente, permette di inserire comandi e stamparne l'output a video.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Controller.Controller}: Relazione entrante, richiesta comando inserito.
-					\item \textbf{Actorbase.Client.Controller.Controller}: Relazione uscente, segnalazione di cambio di stato.
-					\item \textbf{Actorbase.Client.Model.Model}: Relazione entrante, ricezione segnale di cambio di stato.
-					\item \textbf{Actorbase.Client.Model.Model}: Relazione uscente, query sullo stato del Model.
+					\item \textbf{Actorbase.Client.Controller.Controller:} Relazione entrante, richiesta comando inserito.
+					\item \textbf{Actorbase.Client.Controller.Controller:} Relazione uscente, segnalazione di cambio di stato.
+					\item \textbf{Actorbase.Client.Model.Model:} Relazione entrante, ricezione segnale di cambio di stato.
+					\item \textbf{Actorbase.Client.Model.Model:} Relazione uscente, query sullo stato del Model.
 				\end{itemize}
 				
 				
@@ -1449,7 +1453,7 @@
 				Actorbase.Client.Controller.Exceptions
 			\subsubsection{Relazioni con altre componenti}
 				\begin{itemize}
-					\item \textbf{Actorbase.Driver.Commands}: Relazione uscente, inclusione.
+					\item \textbf{Actorbase.Driver.Commands:} Relazione uscente, inclusione.
 				\end{itemize}								
 					
 		\subsection{Actorbase.Client.Controller.Parser}
@@ -1459,7 +1463,7 @@
 				Fornisce una interfaccia comune a qualsiasi parser.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Controller.ClIParser}: Relazione entrante, realizzazione di interfaccia.
+					\item \textbf{Actorbase.Client.Controller.ClIParser:} Relazione entrante, realizzazione di interfaccia.
 				\end{itemize}
 		
 		\subsection{Actorbase.Client.Controller.CLIParser}
@@ -1469,9 +1473,9 @@
 				Mantiene una mappa dei comandi e delle relative norme, è in grado di trasformare un comando DSL inserito dall'utente nel rispettivo comando della gerarchia Actorbase.Driver.Commands.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Controller.Parser}: Relazione entrante, realizzazione di interfaccia.
-					\item \textbf{Actorbase.Client.Controller.Controller}: Relazione entrante, aggregazione.
-					\item \textbf{Actorbase.Client.Controller.Exception}: Relazione uscente, importazione, crea le classi presenti nel package.
+					\item \textbf{Actorbase.Client.Controller.Parser:} Relazione entrante, realizzazione di interfaccia.
+					\item \textbf{Actorbase.Client.Controller.Controller:} Relazione entrante, aggregazione.
+					\item \textbf{Actorbase.Client.Controller.Exception:} Relazione uscente, importazione, crea le classi presenti nel package.
 				\end{itemize}
 				
 				
@@ -1482,10 +1486,10 @@
 				Viene notificata dalla View quando il suo stato cambia, si occupa di leggere il nuovo stato della View e modificare lo status del Model.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Controller.ClIParser}: Relazione uscente, aggregazione.
-					\item \textbf{Actorbase.Client.View.View}: Relazione uscente, query sullo stato.
-					\item \textbf{Actorbase.Client.View.View}: Relazione entrate, segnalazione di cambio stato.
-					\item \textbf{Actorbase.Client.Model.Model}: Relazione uscente, cambio stato.
+					\item \textbf{Actorbase.Client.Controller.ClIParser:} Relazione uscente, aggregazione.
+					\item \textbf{Actorbase.Client.View.View:} Relazione uscente, query sullo stato.
+					\item \textbf{Actorbase.Client.View.View:} Relazione entrate, segnalazione di cambio stato.
+					\item \textbf{Actorbase.Client.Model.Model:} Relazione uscente, cambio stato.
 				\end{itemize}
 				
 		\subsection{Actorbase.Client.Controller.Exception}
@@ -1495,23 +1499,23 @@
    		     	\caption{Package Actorbase.Client.Exceptions}
 			\end{figure}
 			\subsubsection{Descrizione}
-				Package che contiene le eccezioni che il può lanciare il Parser.
+				Package che contiene le eccezioni che il Parser può lanciare.
 			\subsubsection{Classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.Client.Controller.Exceptions.ParserException}:
+					\item \textbf{Actorbase.Client.Controller.Exceptions.ParserException:}
 						Generica eccezione che può essere lanciata dal Parser.
 					\begin{itemize}
-						\item \textbf{Actorbase.Client.Controller.Exceptions.WrongCommandException}:
-							Generica eccezione riguardo a errata sintassi del comando.
+						\item \textbf{Actorbase.Client.Controller.Exceptions.WrongCommandException:}
+							Generica eccezione riguardante l'errata sintassi del comando.
 						\begin{itemize}
-							\item \textbf{Actorbase.Client.Controller.Exceptions.WrongArgumentTypeException}:
+							\item \textbf{Actorbase.Client.Controller.Exceptions.WrongArgumentTypeException:}
 								Eccezione lanciata nel caso in cui il tipo dell'argomento sia errato.
-							\item \textbf{Actorbase.Client.Controller.Exceptions.UnknownCommandException}:
+							\item \textbf{Actorbase.Client.Controller.Exceptions.UnknownCommandException:}
 								Eccezione lanciata nel caso in cui il comando inserito sia inesistente.
-							\item \textbf{Actorbase.Client.Controller.Exceptions.WrongArgumentNumberException}:
+							\item \textbf{Actorbase.Client.Controller.Exceptions.WrongArgumentNumberException:}
 								Eccezione lanciata nel caso in cui ci sia un numero errato di parametri per il comando inserito.
 								\begin{itemize}
-									\item \textbf{Actorbase.Client.Controller.Exceptions.DetailedWrongArgumentNumberException}:
+									\item \textbf{Actorbase.Client.Controller.Exceptions.DetailedWrongArgumentNumberException:}
 										Eccezione lanciata nel caso in cui ci sia un numero errato di parametri per il comando inserito; fornisce anche il numero di parametri atteso e quello dei parametri inseriti dall'utente.
 								\end{itemize}
 						\end{itemize}						 
@@ -1529,7 +1533,7 @@
 			\includegraphics[scale=0.6]{ST/client/diagramma-attivita-generale.png}
 			\caption{Diagramma attività principale}
 		\end{figure}
-			Dopo aver avviato il client l'utente può svolgere tre tipi di operazione: connettersi ad un server, chiudere l'applicativo o svolgere un operazione offline. Se sceglie di connettersi può sempre chiudere l'applicativo e svolgere operazioni che non necessitano di essere connessi al server, può in più disconnettersi o svolgere operazioni sul server, non potrà però più connettersi ad un server finché non effettua la disconnessione dal sever corrente.
+			Dopo aver avviato il client l'utente può svolgere tre tipi di operazione: connettersi ad un server, chiudere l'applicativo o svolgere un'operazione offline. Se sceglie di connettersi può sempre chiudere l'applicativo e svolgere operazioni che non necessitano di essere connessi al server, può in più disconnettersi o svolgere operazioni sul server, non potrà però più connettersi ad un server finché non effettua la disconnessione dal server corrente.
 			
 		\subsubsection{Offline Operation}
 			\begin{figure} [H]
@@ -1551,13 +1555,13 @@
 				\includegraphics[scale=0.4]{ST/client/diagramma-Online-Operation.png}
 				\caption{Diagramma attività operazioni online}
 			\end{figure}
-				L'utente sceglie che tipo di operazione vuole effettuare, se vuole effettuare un' operazione di rinomina su un database o una mappa è sufficiente che fornisca il comando di rinomina, il vecchio e il nuovo nome e che poi confermi l'operazione; se vuole effettuare un' operazione di selezione o di creazione o di cancellazione sia di un database che di una mappa, deve digitare il comando corretto e successivamente il nome del database o della mappa sulla quale vuole effettuare l'operazione dopo di che è sufficiente che confermi il comando; se vuole effettuare un' operazione di rimozione o selezione di un dato è necessario che digiti il comando desiderato, digiti la chiave completa e che confermi l'operazione; se vuole effettuare un inserimento di un dato o un aggiornamento di un dato deve inserire il comando corretto, digitare la chiave completa e confermare l'operazione.
+				L'utente sceglie che tipo di operazione vuole effettuare, se vuole effettuare un' operazione di rinomina su un Database o una mappa è sufficiente che fornisca il comando di rinomina, il vecchio e il nuovo nome e che poi confermi l'operazione; se vuole effettuare un' operazione di selezione o di creazione o di cancellazione sia di un Database che di una mappa, deve digitare il comando corretto e successivamente il nome del Database o della mappa sulla quale vuole effettuare l'operazione dopo di che è sufficiente che confermi il comando; se vuole effettuare un' operazione di rimozione o selezione di un dato è necessario che digiti il comando desiderato, digiti la chiave completa e che confermi l'operazione; se vuole effettuare un inserimento di un dato o un aggiornamento di un dato deve inserire il comando corretto, digitare la chiave completa e confermare l'operazione.
                 
                 
 	\newpage 
 	\section{Diagrammi di sequenza}
         In questa sezione verranno illustrati e descritti i principali diagrammi di sequenza realizzati. Questi ultimi illustrano ad alto livello le azioni 
-        compiute dal server per gestire tutte le richieste provenienti dall'esterno. 
+        compiute dal server e dal client per gestire tutte le richieste di un utente.
         
         Per esplicitare l'invio di un messaggio tra due attori, nei diagrammi viene chiamato il metodo \textit{receive()} dell'attore che riceve il messaggio 
         da parte di chi lo invia.
@@ -1642,7 +1646,7 @@
 				\caption{Diagramma di sequenza - creazione di un attore Ninja.}
 			\end{figure}
             Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per la creazione di un attore di tipo Ninja. 
-            L'attore Storefinder crea un attore di tipo Datamanger, e immediatamente dopo gli invia un messaggio debito alla sua trasformazione. L'attore 
+            L'attore Storefinder crea un attore di tipo Datamanger, e immediatamente dopo gli invia un messaggio dedito alla sua trasformazione. L'attore 
             Datamanager non fa altro che chiamare un suo metodo, che tramite il metodo \textit{become()} fornito dalla libreria \textit{Akka} permette di 
             cambiare il comportamento di un attore alla ricezione di un messaggio.
          
@@ -1653,7 +1657,7 @@
 				\caption{Diagramma di sequenza - creazione di un attore Storekeeper.}
 			\end{figure}
             Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per la creazione di un attore di tipo Storekeeper.
-            L'attore Storefinder crea un attore di tipo Datamanger, e immadiatamente dopo gli invia un messaggio debito alla sua trasformazione. L'attore 
+            L'attore Storefinder crea un attore di tipo Datamanger, e immadiatamente dopo gli invia un messaggio dedito alla sua trasformazione. L'attore 
             Datamanager, come per il caso precedente, tramite il metodo \textit{become()} cambia il suo comportamento.
             
          \subsection{Sostituzione di uno Storekeeper}
@@ -1667,11 +1671,21 @@
             suo posto. Successivamente crea un nuovo attore Ninja (come spiegato nel diagramma di sequenza visto prima) e notifica gli attori già esistenti del 
             cambio avvenuto.
             
+        \subsection{Sequenza di un comando in client e driver}
+            \begin{figure} [H]
+                \centering
+                \includegraphics[width=\textwidth]{ST/seq/sequenzaClient.png}
+                \caption{Diagramma di sequenza - sequenza di un comando in client e driver.}
+            \end{figure}
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando viene inserito un comando nella shell del client e viene premuto invio. \\
+            La view notifica che il suo stato è cambiato e il controller prende la stringa inserita dall'utente per tradurla in un comando. Successivamente manda il comando al model. \\
+            A questo punto la sequenza prevede due diversi flussi: se il comando riguarda il server viene inviato al driver che a sua volta lo invia al server per l'elaborazione. Quando il driver riceve una risposta, la ritorna al model del client che era rimasto in attesa. Se invece il comando non riguarda il server, come ad esempio il comando \texttt{HELP}, il model lo elabora al suo interno. In entrambi i casi alla fine viene generato ed impostato un nuovo stato del model e notificato il cambiamento. La  view quindi prende il nuovo stato e aggiorna il proprio di conseguenza, rendendolo visibile sulla shell per l'utente.
+
 	\newpage 
 	\section{Stime di fattibilità e di bisogno di risorse}
 	
 		L'architettura definita fino a questo punto è sufficiente per fornire una stima della fattibilità del prodotto e delle risorse richieste per la realizzazione. \\
-	Il gruppo inizialmente non aveva conoscenze sufficienti per stimare in modo appropriato la complessità dell'implementazione di un database basato sulla logica ad attori. Grazie al livello di dettaglio raggiunto sono stati fugati molti dei dubbi e delle incertezze a riguardo, confermando le previsioni sull'esito positivo del progetto. \\
+	Il gruppo inizialmente non aveva conoscenze sufficienti per stimare in modo appropriato la complessità dell'implementazione di un Database basato sulla logica ad attori. Grazie al livello di dettaglio raggiunto sono stati fugati molti dei dubbi e delle incertezze a riguardo, confermando le previsioni sull'esito positivo del progetto. \\
 	Sono state inoltre individuate con chiarezza le risorse tecnologiche che verranno utilizzate:
 	\begin{itemize}
 		\item Akka: libreria per modello ad attori.
@@ -1688,13 +1702,13 @@
 		
 	\newpage 
 	\section{Appendice}
-	\subsection{Descrizione Desing Pattern}
-	Segue, per ogni Desing Pattern utilizzato, la descrizione dello scopo, motivazione e applicabilità.
+	\subsection{Descrizione Design Pattern}
+	Segue, per ogni Design Pattern utilizzato, la descrizione dello scopo, motivazione e applicabilità.
 	\subsubsection{Event-driven}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.65]{immagini/ST/schemaevent-driven.png}
-					\caption{Diagramma del Desing Pattern Event-driven}
+					\caption{Diagramma del Design Pattern Event-driven}
 				\end{figure}
             \begin{itemize}
 				\item \textbf{Scopo:}
@@ -1707,7 +1721,7 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.65]{immagini/ST/schemaMVC.png}
-					\caption{Diagramma del Desing Pattern MVC}
+					\caption{Diagramma del Design Pattern MVC}
 				\end{figure}
             \begin{itemize}
 				\item \textbf{Scopo:}
@@ -1718,7 +1732,7 @@
 						\item Controller reazioni della UI agli input utente
 					\end{itemize}
                 \item \textbf{Motivazione:}
-                	Lo scopo di molti applicativi è di recuperare dati e mostrarli all'Utente. Si è visto che la migliore soluzione di questo scopo è dividere la modellazione del dominio, la presentazione e le reazioni basate sugli input degli utenti i tre classi separate, esistono vari desing pattern che svolgono questa separazione, uno di questi è MVC; 
+                	Lo scopo di molti applicativi è di recuperare dati e mostrarli all'Utente. Si è visto che la migliore soluzione di questo scopo è dividere la modellazione del dominio, la presentazione e le reazioni basate sugli input degli utenti i tre classi separate, esistono vari design pattern che svolgono questa separazione, uno di questi è MVC; 
                 \item \textbf{Applicabilità:}
 					\begin{itemize}
 						\item Applicazioni che devono presentare attraverso una UI un insieme di informazioni
@@ -1730,12 +1744,11 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.65]{immagini/ST/schemaCommand.png}
-					\caption{Diagramma del Desing Pattern Command}
+					\caption{Diagramma del Design Pattern Command}
 				\end{figure}
             \begin{itemize}
-				\item \textbf{Scopo:}Incapsulare una richiesta in un oggetto, cosicché i client siano indipendenti dalle richieste 
-                \item \textbf{Motivazione:}
-                Risolvere la necessità di gestire richieste di sui non si conoscono i particolari, tramite una classe astratta, Command, che definisce un interfaccia per eseguire la richiesta
+				\item \textbf{Scopo:} Incapsulare una richiesta in un oggetto, cosicché i client siano indipendenti dalle richieste 
+                \item \textbf{Motivazione:} Risolvere la necessità di gestire richieste di sui non si conoscono i particolari, tramite una classe astratta, Command, che definisce un interfaccia per eseguire la richiesta
                 \item \textbf{Applicabilità:}
 					\begin{itemize}
 						\item Parametrizzazione di oggetti sull'azione da eseguire
@@ -1749,23 +1762,11 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.65]{immagini/ST/schemaSingleton.png}
-					\caption{Diagramma del Desing Pattern Command}
+					\caption{Diagramma del Design Pattern Command}
 				\end{figure}
 		\begin{itemize}
 			\item \textbf{Scopo:} Assicurare che una classe abbia una sola istanza con un unico punto di accesso globale.
-			\item \textbf{Motivazione:}È necessario assicurare che esista una sola istanza di alcune classi. Una classe Singleton ha la responsabilità sulle proprie istanze, in modo che nessuna altra istanza possa essere creata, e fornisce un punto di accesso unico.
-			\item \textbf{Applicabilità:}
-			\begin{itemize}
-				\item Deve esistere una ed una sola istanza di una classe in tutta l'applicazione, accessibile dai client in modo noto.
-				\item L'istanza deve essere estendibile con ereditarietà, consentendo ai client di non modificare il proprio codice.
-			\end{itemize}
-		\end{itemize}
-		
-		
-	\subsubsection{Singleton}
-		\begin{itemize}
-			\item \textbf{Scopo:} Assicurare che una classe abbia una sola istanza con un unico punto di accesso globale.
-			\item \textbf{Motivazione:}È necessario assicurare che esista una sola istanza di alcune classi. Una classe Singleton ha la responsabilità sulle proprie istanze, in modo che nessuna altra istanza possa essere creata, e fornisce un punto di accesso unico.
+			\item \textbf{Motivazione:} È necessario assicurare che esista una sola istanza di alcune classi. Una classe Singleton ha la responsabilità sulle proprie istanze, in modo che nessuna altra istanza possa essere creata, e fornisce un punto di accesso unico.
 			\item \textbf{Applicabilità:}
 			\begin{itemize}
 				\item Deve esistere una ed una sola istanza di una classe in tutta l'applicazione, accessibile dai client in modo noto.
