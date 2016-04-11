@@ -15,14 +15,11 @@
 	\hline
 	R[1.1.1][N][F] & File configurazione impostazioni server & Decisione interna
 	& Definire un file di impostazioni del server \emph{Actorbase} \\
-	\hline
-	R[1.1.2][N][F] & File utenti server & Decisione interna
-	& Definire un file contenente la lista degli utenti che possono accedere al server \emph{Actorbase} attraverso un applicativo client \\
-	\hline
-	R[1.1.3][D][F] & File permessi utenti & Decisione interna
+	\hline	
+	R[1.1.2][D][F] & File permessi utenti & Decisione interna
 	& Definire un file contenente i permessi di accesso degli utenti ai diversi database presenti sul server \\
 	\hline
-	R[1.1.4][N][F] & File database distribuiti & Capitolato
+	R[1.1.3][N][F] & File database distribuiti & Capitolato
 	& Definire un file contenente una lista dei server su cui effettuare la distribuzione  \\
 	\hline
 	R[1.2][N][F] & Implementazione interfaccia CLI lato server & Capitolato
@@ -31,36 +28,32 @@
 	R[1.2.1][N][F] & Controllo configurazione server & Decisione interna
 	& Implementazione di un controllo sulla presenza di una configurazione \emph{Actorbase} sul server all'avvio dell'interfaccia server \\
 	\hline
-	R[1.2.2][N][F] & Configurazione iniziale impostazioni server & UC9
-	& Implementazione della modalità di configurazione iniziale di \emph{Actorbase} sul server su cui è stata avviato l'applicativo server 
-	nel caso in cui non fosse presente una configurazione \\
+	R[1.2.2][N][F] & Lettura permessi da file & UC9
+	& Implementazione della lettura del file contenente gli utenti e i permessi associati ad essi relativi ai database \\
+	\hline	
+	R[1.2.3][D][F] & Lettura proprietà Storekeeper da file & UC10
+	& Implementare della lettura delle proprietà dell'Attore Storekeeper da file, per esempio la grandezza massima della mappa \\
 	\hline
-	R[1.2.2.1][N][F] & Scelta porta connessione al server & UC9
-	& Implementazione della scelta della porta da utilizzare come ingresso alla connessione \\
+	R[1.2.4][D][F] & Lettura numero di attori da file & UC11, UC12, UC13
+	& Implementare la lettura da file del numero di attori specifici da creare \\
 	\hline
-	R[1.2.2.2][N][F] & Elaborazione dati di configurazione server inseriti & UC9
-	& Gestire i dati di configurazione server inseriti dall'utente durante il processo di configurazione e creare i relativi file di configurazione \\
+	R[1.2.4.1][D][F] & Lettura numero di Storefinder & UC11
+	& Implementare la lettura del numero di Storefinder da creare per ogni mappa \\
 	\hline
-	R[1.2.2.2.1][D][F] & Messaggio inizializzazione server & UC9
-	& Fornire all'utente un messaggio informativo sul processo di inizializzazione della configurazione \emph{Actorbase sul server} \\
+	R[1.2.4.2][D][F] & Lettura numero di Warehouseman & UC12
+	& Implementare la lettura del numero di Warehouseman da creare per ogni Storekeeper \\
 	\hline
-	R[1.2.2.2.2][D][F] & Configurazione server effettuata con successo & UC9
-	& Nel caso in cui i dati inseriti siano validi configurare una nuova istanza di \emph{Actorbase} sul server e informare l'utente del 
-	successo dell'operazione di configurazione\\
-	\hline
-	R[1.2.2.2.3][D][F] & Configurazione server fallita & UC12
-	& Nel caso in cui i dati inseriti non siano validi informare l'utente con un messaggio di errore esplicativo\\
-	\hline
-	R[1.2.3][N][F] & Riapertura configurazione esistente & UC10
-	& Implementare la riapertura automatica della configurazione presente nel caso sul server fosse già stata configurata un'istanza di 
-	\emph{Actorbase} e si avviasse l'interfaccia lato server \\
-	\hline
-	R[1.2.4][D][F] & Log delle operazioni sul terminale & UC10
-	& Implementare la visualizzazione automatica di messaggi di log sull'interfaccia da terminale lato server in relazione alle operazioni 
-	che vengono effettuate sullo stesso server \\
+	R[1.2.4.3][D][F] & Lettura numero di Ninja & UC13
+	& Implementare la lettura del numero di Ninja da creare per ogni Storekeeper \\
 	\hline
 	R[1.2.5][N][F] & Arresto del server & UC11
 	& Implementare l'arresto del server dall'interfaccia CLI lato server attraverso un apposito comando \\
+	\hline
+	R[1.2.6][N][F] & Gestione comandi errati & UC15
+	& Implementare la gestione dei comandi errati inseriti dall'utente \\
+	\hline
+	R[1.2.7][N][F] & Gestione errori file & UC16
+	& Implementare la gestione degli errori legati ai file come il file non trovato o il file formattato in modo errato \\
 	\hline
 	R[1.3][N][F] & Gestione richiesta connessione di un client & UC1
 	& Implementare un'interfaccia per la gestione di una richiesta di connessione da parte di un client che accetti un nome utente e una password\\

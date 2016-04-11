@@ -3463,136 +3463,255 @@ R[2.24][N][F] \\
 		 \subsection{Visione ad alto livello delle interazioni tramite interfaccia server}
 		 	\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.2]{UC/"Actorbase server".png}
+				\includegraphics[scale=0.2]{UC/"ActorbaseServer".png}
 				\caption{Interazioni tramite interfaccia server}
 			\end{figure}
-			Il diagramma in figura illustra l'interfaccia CLI lato server. Tale interfaccia va avviata per far partire il server principale di \emph{Actorbase}. Se l'interfaccia server viene avviata su un server non configurato si avvia automaticamente la procedura di configurazione del server. 
+			Il diagramma in figura illustra l'interfaccia CLI lato server. Tale interfaccia va avviata per far partire il server principale di \emph{Actorbase}.
 			\\ 
-			Se il server è già configurato, l'avvio dell'interfaccia server avvia automaticamente il server, e stampa il log delle varie operazioni che vengono effettuate su di esso.
+			L m'avvio dell'interfaccia server avvia automaticamente il server.
 			\\ 
 			Per arrestare il server, l'amministratore del server deve inserire l'apposito comando da questa interfaccia.
 			
-			 \subsection{UC 9: Configurazione iniziale del server}
+			 \subsection{UC 9: Comando aggiornamento permessi}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha avviato l'interfaccia server su un server in cui non è presente una configurazione \emph{Actorbase}. Il sistema rileva automaticamente l'assenza di configurazione e presenta all'utente la procedura di configurazione del server. 
+	L'utente ha inserito il comando per aggiornare i permessi degli utenti, il permessi sono presenti su file
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC9 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Configurazione iniziale del server \\
+				\textbf{Nome sintetico} & Comando lettura permessi \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Amministratore del server\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server che non presenta una configurazione\\
+				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il server presenta una configurazione \emph{Actorbase} e risulta correttamente avviato\\
+				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce la porta di accesso al server
+				\item L'utente inserisce il comando per leggere il file dei permessi
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & R[1.2.2][N][F] \newline
-R[1.2.2.1][N][F] \newline
-R[1.2.2.2][N][F] \newline
-R[1.2.2.2.1][D][F] \newline
-R[1.2.2.2.2][D][F]  \\
+				\textbf{Lista requisiti\newline dedotti} & 
+R[1.2.2][N][F] \newline \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 9 - Configurazione iniziale del server}
+			\caption{Caso d'uso UC 9 - Comando aggiornamento permessi}
 	\end{table}
 	
-	\subsection{UC 10: Visualizzazione log operazioni sul server}
+				 \subsection{UC 10: Comando aggiornamento proprietà Storekeeper}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha avviato correttamente un server contenente una configurazione \emph{Actorbase}, l'interfaccia mostra automaticamente il log delle varie operazioni che vengono effettuate sul server stesso.
+	L'utente ha inserito il comando per aggiornare le proprietà degli Storekeeper, i valori sono presenti su file
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC10 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Visualizzazione log operazioni sul server\\
+				\textbf{Nome sintetico} & Comando lettura proprietà Storekeeper \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Amministratore del server\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha inviato l'applicativo su un server configurato\\
+				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha ricevuto stampato su terminale il log delle operazioni effettuate sul server\\
+				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item Il sistema stampa il log delle operazioni sull'interfaccia terminale
+				\item L'utente inserisce il comando per aggiornare le proprietà degli Storekeeper
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & R[1.2.3][N][F] \newline
-R[1.2.4][D][F]  \\
+				\textbf{Lista requisiti\newline dedotti} & 
+R[1.2.3][D][F] \newline \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 10 - Visualizzazione log operazioni sul server}
+			\caption{Caso d'uso UC 10 - Comando aggiornamento proprietà Storekeeper}
 	\end{table}
 	
-	\subsection{UC 11: Arresto del server}
+	\subsection{UC 11: Comando aggiornamento numero Storefinder}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente intende arrestare \emph{Actorbase} sul server inserendo l'apposito comando.
+	L'utente ha inserito il comando per aggiornare il numero degli Storefinder per ogni mappa, il valore viene letto da file
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC11 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Arresto del server\\
+				\textbf{Nome sintetico} & Comando lettura numero Storefinder \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Amministratore del server\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & Il server è avviato e l'utente intende arrestarlo\\
+				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il server risulta correttamente arrestato\\
+				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando di arresto server e preme invio
+				\item L'utente inserisce il comando per aggiornare il numero di Storefinder per ogni mappa
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & R[1.2.5][N][F]  \\
+				\textbf{Lista requisiti\newline dedotti} & 
+R[1.2.4.1][D][F] \newline \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 11 - Arresto del server}
+			\caption{Caso d'uso UC 11 - Comando aggiornamento numero Storefinder}
 	\end{table}
 	
 	
-	\subsection{UC 12: Errore configurazione del server fallita}
+		\subsection{UC 12: Comando aggiornamento numero Warehouseman}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha inserito i dati di configurazione del server ma la procedura è fallita. Il sistema informa l'utente con un messaggio e lo invita a ripetere la configurazione.
+	L'utente ha inserito il comando per aggiornare il numero degli Warehouseman per ogni Storekeeper, il valore viene letto da file
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC12 \\
+				\textbf{Codice gerarchico} & UC11 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore configurazione del server fallita\\
+				\textbf{Nome sintetico} & Comando lettura numero Storefinder \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attore principale} & Amministratore del server\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & La configurazione del server è fallita\\
+				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha ricevuto un messaggio di errore informativo e può effettuare un nuovo tentativo di configurazione\\
+				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente riceve un messaggio di errore informativo
-				\item L'utente può effettuare una nuova configurazione
+				\item L'utente inserisce il comando per aggiornare il numero di Warehouseman per ogni Storekeeper
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & R[1.2.2.2.3][D][F]  \\
+				\textbf{Lista requisiti\newline dedotti} & 
+R[1.2.4.2][D][F] \newline \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 12 - Errore configurazione del server fallita}
+			\caption{Caso d'uso UC 12 - Comando aggiornamento numero Warehouseman}
+	\end{table}
+	
+	\subsection{UC 13: Comando aggiornamento numero Ninja}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha inserito il comando per aggiornare il numero degli Ninja per ogni Storekeeper, il valore viene letto da file
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC11 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Comando lettura numero Ninja \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando per aggiornare il numero di Ninja per ogni Storekeeper
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & 
+R[1.2.4.3][D][F] \newline \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 13 - Comando aggiornamento numero Ninja}
+	\end{table}
+		 
+	\subsection{UC 14: Comando d'arresto}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha inserito il comando per arrestare il sistema
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC11 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Comando per arrestare il sistema \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & Il server si spegne \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando per arrestare l'intero sistema
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & 
+R[1.2.5][N][F] \newline \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 14 - Comando d'arresto}
+	\end{table}
+	
+	\subsection{UC 15: Errore comando errato}
+	\textbf{Descrizione} 
+	\\ \\
+	La console visualizza un errore in caso il comando non esista
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC11 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore comando errato \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & La console visualizza l'errore \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente visualizza l'errore
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & 
+R[1.2.6][N][F] \newline \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 15 - Errore comando errato}
+	\end{table}
+	
+	
+		\subsection{UC 16: Errore lettura file}
+	\textbf{Descrizione} 
+	\\ \\
+	La console visualizza un errore in caso si verifichi un errore con i file
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC11 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Errore lettura file \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore del server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & La console visualizza l'errore \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente visualizza l'errore
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & 
+R[1.2.7][N][F] \newline \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 16 - Errore lettura file}
 	\end{table}
 		 
 		 
