@@ -1,4 +1,4 @@
-%Document-Author: Bonato Paolo + Biggeri Mattia
+%Document-Author: Bonato Paolo + Biggeri Mattia + Nicoletti Luca
 %Document-Date: 2016/03/24
 %Document-Description: Documento di Specifica tecnica del gruppo SWEeneyThreads 
 
@@ -81,7 +81,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.1.2
+			Versione 0.1.3
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -136,8 +136,8 @@
 		Le possibili scelte dettate dal capitolato sono Java e Scala. Si è scelto di utilizzare Scala perché offre i seguenti vantaggi:
 		\begin{itemize}
             \item \textbf{Completamente Object-Oriented:} A differenza di Java, Scala è completamente orientato agli oggetti. Non c'è distinzione del tipo: oggetto - tipo primitivo, ogni valore è semplicemente un oggetto.
-			\item \textbf{Staticamente tipato:} \'E un linguaggio tipato staticamente, questo permette di effettuare più facilmente i test. Inoltre Scala è in grado di stabilire il tipo di un oggetto per inferenza.
-            \item \textbf{Può eseguire codice Java:} Scala può eseguire codice scritto in Java. \'E dunque possibile utilizzare classi e librerie scritte in Java all'interno di programmi scritti in Scala. 
+			\item \textbf{Staticamente tipato:} È un linguaggio tipato staticamente, questo permette di effettuare più facilmente i test. Inoltre Scala è in grado di stabilire il tipo di un oggetto per inferenza.
+            \item \textbf{Può eseguire codice Java:} Scala può eseguire codice scritto in Java. È dunque possibile utilizzare classi e librerie scritte in Java all'interno di programmi scritti in Scala. 
             \item \textbf{Concorrenza e distribuzione:} Ottimo supporto alla programmazione multi-threaded e distribuita, essenziale per la realizzazione di un prodotto responsive e scalabile.
 			\item \textbf{Supporto alla definizione di DSL:} Scala supporta nativamente la definizione di DSL.
             \item \textbf{Supporto di Akka:} Il linguaggio supporta la libreria Akka che è richiesta dal capitolato.
@@ -266,7 +266,7 @@
 				Viene utilizzata per gestire l'insieme di connessioni del server dall'esterno, e per accettarne di nuove. Inoltra le richieste provenienti dall'esterno all'actor Main e invia le risposte ai client.
 			\subsubsection{Relazione con altre classi}
 			\begin{itemize}
-				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main} 
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione e aggregazione. 
 			\end{itemize}
 			
 		\subsection{Actorbase.Server.Core}
@@ -276,7 +276,7 @@
 			\caption{Componente Actorbase.Server.Core}
 			\end{figure}
 			\subsubsection{Descrizione}
-				Il package contiene le componenti che costituiscono il nucleo del sistema logico lato server. \'E composto da due package: \textbf{Actors} e \textbf{Messages}
+				Il package contiene le componenti che costituiscono il nucleo del sistema logico lato server. È composto da due package: \textbf{Actors} e \textbf{Messages}
 			\subsubsection{Package figli}
 			\begin{itemize}
 				\item Actorbase.Server.Core.Actors
@@ -321,7 +321,10 @@
 			\subsubsection{Utilizzo}
 				Si utilizza per mantenere in RAM una porzione di una mappa di un Database. Un oggetto Datamanager possiede due comportamenti diversi: uno nel caso funzioni da copia principale dei dati (Storekeeper) e l'altro nel caso funzioni da copia di backup (Ninja).
 			\subsubsection{Relazioni con altre classi}
-				Nessuna.
+				\begin{itemize}
+				    \item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione entrante, creazione e aggregazione;
+				    \item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Manager:} relazione entrante, aggregazione.
+			    \end{itemize}
 			
 		\subsection{Actorbase.Server.Core.Actors.Datamanagement.Warehouseman}
 			\subsubsection{Descrizione}
@@ -329,11 +332,12 @@
 			\subsubsection{Utilizzo}
 				Si utilizza per mantenere persistenza su disco di una porzione di una mappa di un Database.
 			\subsubsection{Relazioni con altre classi}
-			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.Datamanagement.UpdateActor
-				\item Actorbase.Server.Core.Actors.Datamanagement.DeleteActor
-				\item Actorbase.Server.Core.Actors.Datamanagement.InsertActor
-			\end{itemize}
+                \begin{itemize}
+				    \item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione entrante, creazione e aggregazione;
+                    \item \textbf{Actorbase.Server.Core.Actors.Datamanagement.UpdateActor:} relazione uscente, creazione;
+                    \item \textbf{Actorbase.Server.Core.Actors.Datamanagement.DeleteActor:} relazione uscente, creazione;
+                    \item \textbf{Actorbase.Server.Core.Actors.Datamanagement.InsertActor:} relazione uscente, creazione.
+                \end{itemize}
 			
 		\subsection{Actorbase.Server.Core.Actors.Datamanagement.UpdateActor}
 			\subsubsection{Descrizione}
@@ -341,7 +345,9 @@
 			\subsubsection{Utilizzo}
 				Si utilizza per aggiornare un item su un file su disco.
 			\subsubsection{Relazioni con altre classi}
-				Nessuna.
+				\begin{itemize}
+				    \item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Warehouseman:} relazione entrante, creazione.
+                \end{itemize}
 			
 		\subsection{Actorbase.Server.Core.Actors.Datamanagement.DeleteActor}
 			\subsubsection{Descrizione}
@@ -349,7 +355,9 @@
 			\subsubsection{Utilizzo}
 				Si utilizza per rimuovere un item su un file su disco. 
 			\subsubsection{Relazioni con altre classi}
-				Nessuna.
+				\begin{itemize}
+				    \item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Warehouseman:} relazione entrante, creazione.
+                \end{itemize}
 			
 		\subsection{Actorbase.Server.Core.Actors.Datamanagement.InsertActor}
 			\subsubsection{Descrizione}
@@ -357,7 +365,9 @@
 			\subsubsection{Utilizzo}
 				Si utilizza per inserire un item su un file su disco. 
 			\subsubsection{Relazioni con altre classi}
-				Nessuna.
+				\begin{itemize}
+				    \item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Warehouseman:} relazione entrante, creazione.
+                \end{itemize}
 
 		\subsection{Actorbase.Server.Core.Actors.Manager}
 			\begin{figure} [H]
@@ -379,7 +389,8 @@
 				Un oggetto di tipo Manager è utilizzato per gestire vincoli su altri attori.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item Actorbase.Server.Core.Actors.Datamanagement.Datamanager
+				\item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Datamanager:} relazione uscente, aggregazione;
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione entrante, aggregazione e creazione.
 			\end{itemize}
 			
 		\subsection{Actorbase.Server.Core.Actors.Storefinder}
@@ -419,10 +430,10 @@
 				\\ Uno Storefinder inoltre si occupa della creazione e distruzione di attori di tipo Manager, Datamanager, Warehouseman.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione
-				\item \textbf{Actorbase.Server.Core.Actors.Manager.Manager:} relazione uscente, creazione
-				\item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Datamanager:} relazione uscente, creazione
-				\item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Warehouseman:} relazione uscente, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione e aggregazione;
+				\item \textbf{Actorbase.Server.Core.Actors.Manager.Manager:} relazione uscente, creazione e aggregazione;
+				\item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Datamanager:} relazione uscente, creazione e aggregazione;
+				\item \textbf{Actorbase.Server.Core.Actors.Datamanagement.Warehouseman:} relazione uscente, creazione e aggregazione.
 			\end{itemize}
 			\subsubsection{Interfacce implementate}
 			\begin{itemize}
@@ -436,11 +447,11 @@
 				Il Main indicizza un insieme di Storefinder e con essi scambia messaggi, inoltre si occupa di inviare e ricevere messaggi HTTP da API. Crea attori di tipo Storefinder, MessagesBuilder, HTTPBuilder.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item \textbf{Actorbase.Server.ActorbaseServer:} relazione entrante, creazione
-				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione uscente, creazione
-				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione uscente, creazione
-				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.HTTPBuilder:} relazione uscente, creazione
-				\item \textbf{Actorbase.Server.Core.Actors.API.API:} relazione uscente, creazione
+				\item \textbf{Actorbase.Server.ActorbaseServer:} relazione entrante, creazione;
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Storefinder:} relazione uscente, creazione e aggregazione;
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.MessagesBuilder:} relazione uscente, creazione;
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.HTTPBuilder:} relazione uscente, creazione;
+				\item \textbf{Actorbase.Server.Core.Actors.API.API:} relazione uscente, creazione.
 			\end{itemize}
 			\subsubsection{Interfacce implementate}
 			\begin{itemize}
@@ -454,7 +465,7 @@
 				Costruisce uno dei messaggi definiti in \textbf{Actorbase.Server.Core.Messages} a partire da un messaggio HTTP, basandosi sui permessi del client che ha inviato il messaggio HTTP.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione.
 			\end{itemize}
 
 		\subsection{Actorbase.Server.Core.Actors.Storefinder.HTTPBuilder}
@@ -464,7 +475,7 @@
 				Costruisce un messaggio HTTP che le API possono inviare a un client a partire da un messaggio definito in \textbf{Actorbase.Server.Core.Messages}.
 			\subsubsection{Relazioni con altre classi}
 			\begin{itemize}
-				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione
+				\item \textbf{Actorbase.Server.Core.Actors.Storefinder.Main:} relazione entrante, creazione.
 			\end{itemize}
 		
 		\subsection{Actorbase.Server.Core.Messages}
