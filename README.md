@@ -6,7 +6,10 @@ Si è scelto di tenere qui il glossario dei termini, senza versione, in modo che
 
 ## A
 * **Actor:** Actor si riferisce agli attori all'interno del progetto Actorbase, non al ruolo dell'utente nell'interazione con il sistema. Un Actor può essere StoreKeeper, Ninja, StoreFinder, Manager.
+* **Akka:** Libreria per il linguaggio Scala che definisce un sistema di attori estendibili con nuove caratteristiche, permette di gestire concorrenza e distribuzione in modo trasparente.
 * **Ambiente di lavoro:** Quanto serve ai processi di produzione, è fatto persone, ruoli e procedure, infrastrutture.
+* **Application Programming Interface:** Una API esprimeun comonente software in termini delle sue operazioni, dei suoi input e dei suoi output. Permette di cambiare l'implementazione del componente senza compromettere l'interfaccia.
+* **API:** Vedi Application Programming Interface.
 * **Approccio sistematico:** Sapere perché si fa una cosa, approcciare un problema conoscendo i passi da svolgere. Essere sistematici porta sia all’efficacia che all’efficienza.
 * **Approccio disciplinato:** Approccio basato su delle regole fissate in partenza da rispettare in ogni situazione al fine di rendere possibile l’organizzazione di un lavoro di gruppo e la pianificazione di tempi e costi del lavoro.
 * **Approccio quantificabile:** Ottenere un sistema in cui si riesca a dare un costo affidabile alle operazioni da svolgere. La disciplina e la sistematicità rendono possibile la quantificazione del lavoro.
@@ -37,6 +40,8 @@ Si è scelto di tenere qui il glossario dei termini, senza versione, in modo che
 ## C
 
 * **Casi d'uso:** Un caso d'uso é uno specifico modo di utilizzare il sistema da parte di un attore per eseguire una certa funzionalitá del sistema stesso; Una sequenza di transizioni tramite la quale si ottiene un risultato di valore misurabile.
+* **CLI:** Vedi Command Line Interface.
+* **Command Line Interface:** Interfaccia utente da riga di comando, l'utente interagisce con essa come se interagisse con un terminale: inserisce testo e preme invio per confermare l'input, riceve testo come risposta dal sistema.
 * **Configuration:** E' un sistema in un suo istante; cambia a seconda di alcune svolte importanti (milestone).
 * **Configurazione:** Vedi Configuration.
 * **Ciclo di vita del software:** Gli stati che il prodotto assume dal concepimento al ritiro.
@@ -76,6 +81,8 @@ Si è scelto di tenere qui il glossario dei termini, senza versione, in modo che
 
 ## M
 
+* **Main:** Tipologia di attore che si occupa di fornire un punto di accesso primario al sistema di attori sottostante.
+* **Manager:** Tipologia di attore che si occupa di gestire altri attori e i vincoli presenti su di essi.
 * **Manutenibilità/Manutenzione:** Qualità fondamentale del sw che si presenta in diverse forme:
   * Correttiva: per correggere difetti eventualmente rilevati
   * Adattativa: per adattare il sistema alla variazione dei requisiti
@@ -84,6 +91,10 @@ Più risulta semplice eseguire queste operazioni più si considera il prodotto s
 * **Milestone:** Letteralmente pietre miliari, vengono tipicamente utilizzate nella pianificazione e gestione di progetti complessi al fine di importanti traguardi intermedi nello svolgimento del progetto stesso. Molto spesso sono rappresentate da eventi, cioè da attività con durata zero o di un giorno, e vengono evidenziate in maniera diversa dalle altre attività nell’ambito dei documenti di progetto.
 * **Modello di ciclo di vita:** Descrive come i processi si relazionano tra loro nel tempo rispetto agli stati di ciclo di vita, è la base concettuale intorno alla quale pianificare, organizzare, eseguire e controllare lo svolgimento delle attività necessarie. Esistono diversi possibili cicli di vita, non diversi per numero e significato degli stati ma diversi per le transizioni tra essi e le relative regole di attivazione.
 * **Modularità:** Fa si che i processi siano tra loro relazionati in modo chiaro e distinto.
+
+## N
+
+* **Ninja:** Tipologia di attore che si occupa di mantenere in memoria principale una copia di una porzione dei dati.
 
 ## O
 
@@ -124,9 +135,12 @@ Spesso un requisito lato utente si trasforma in molti requisiti lato soluzione.
 
 ## S
 
+* **Scala:** Linguaggio di programmazione ad oggetti e funzionale utilizzato dal gruppo.
 * **Servizio:** Mezzo per fornire valore all'utente, agevolando il raggiungimento dei suoi obiettivi, sollevandolo da costi e rischi.
 * **Software engineer:** Realizza parte di un sistema complesso con la consapevolezza che potrà essere usato, completato e modificato da altri. Deve guardare e comprendere il quadro generale nel quale il sistema cui contribuisce si colloca, deve operare compromessi intelligenti e lungimiranti tra visioni e spinte contrapposte.
 * **Standard di processo:** Sono fondamentalmente di due tipi: Standard come modello di azione e Standard come modello di valutazione. I primi definiscono e impongono/propongono delle procedure da seguire, i secondi cercano di identificare una “best practice” da usare come linea di valutazione dell’operato.
+* **Storefinder:** Tipologia di attore che si occupa di indicizzare gli attori che gestiscono i dati.
+* **Storekeeper:** Tipologia di attore che si occupa di mantenere in memoria principale una porzione dei dati.
 * **Standard ISO/IEC 12207:** Modello più noto e riferito, è ad alto livello e divide i processi in tre macro-aree:
   * Processi primari
   * Processi di supporto
@@ -153,5 +167,6 @@ Spesso un requisito lato utente si trasforma in molti requisiti lato soluzione.
 
 ## W
 
+* **Warehouseman:** Tipologia di attore che si occupa di mantenere in maniera persistente su disco una porzione dei dati.
 * **WBS:** Vedi Work Breakdown Structrure.
 * **Work Breakdown Structure:** Identifica l'elenco di tutte le attività di un progetto. Le WBS sono usate dal Project manager come supporto per le attività di cui è responsabile.
