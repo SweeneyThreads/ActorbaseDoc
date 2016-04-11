@@ -97,7 +97,7 @@
 			Questo documento descrive le scelte effettuate in merito alle strategie 
 			che il gruppo ha deciso di adottare per raggiungere obiettivi qualitativi e misurabili da 
 			applicare al proprio prodotto. Per soddisfare questi obiettivi sarà necessario attuare un 
-			processo di verifica\ped{\emph{G}} continuo sulle attività svolte in modo da poter rilevare ed eventualmente 
+			processo di verifica continuo sulle attività svolte in modo da poter rilevare ed eventualmente 
 			correggere anomalie e incongruenze in modo tempestivo per evitare danni e sprechi di risorse.
 		\subsection{Scopo del prodotto}
 			Il progetto consiste nella la realizzazione di un DataBase NoSQL key-value basato sul modello ad 
@@ -125,7 +125,7 @@
 					\item \textbf{\emph{CLOC (Count Lines Of Code)}}:\\ \url{cloc.sourceforge.net};
 					\item \textbf{\emph{ScalaTest}:}\\ \url{http://www.scalatest.org/}.
 				\end{itemize}
-	\section{Visione generale della strategia di verifica\ped{\emph{G}}}
+	\section{Visione generale della strategia di verifica}
 		
 			\subsection{Definizione obiettivi}
 			In questa sezione verranno descritti gli obiettivi di qualità relativi al prodotto che il 
@@ -134,7 +134,7 @@
 			Per la stesura di questo documento e per la definizione delle metriche e degli strumenti atti a garantire la qualità del prodotto abbiamo seguito quanto definito in Appendice 4.5.1 e 4.5.2. 
 	
 \subsection{Misure e metriche}
-			 Il processo di verifica\ped{\emph{G}}, per avere un valore informativo, deve essere quantificabile e le misure rilevate
+			 Il processo di verifica, per avere un valore informativo, deve essere quantificabile e le misure rilevate
  devono essere basate su metriche stabilite a priori. 
  A causa della scarsa esperienza del gruppo, alcune metriche stabilite all'inizio potrebbero risultare approssimative ma
  seguendo il modello incrementale esposto nel \emph{Piano di progetto} si potrà migliorarne la precisione e l'accuratezza.
@@ -143,7 +143,7 @@
 			\begin{itemize}
 				\item \textbf{Accettabile:} Superiore al minimo valore richiesto affinché il prodotto sia accettato.
 				\item \textbf{Ottimale:} Valori entro cui dovrebbe collocarsi la misurazione. Non sono vincolanti,
-				ma fortemente consigliati. Misurazioni al di fuori di questi valori necessitano una verifica\ped{\emph{G}} approfondita e nel
+				ma fortemente consigliati. Misurazioni al di fuori di questi valori necessitano una verifica approfondita e nel
 				caso non si trovi una maniera immediata per farli rientrare le cause di tale scostamento dovranno essere
 				discusse nella successiva riunione.
 			\end{itemize}
@@ -154,8 +154,8 @@
 				
 				Gli indici scelti sono:
 				\begin{itemize}
-					\item \textbf{SV (Schedule Variance):} É un indicatore di efficacia\ped{\emph{G}}, mostra se si è o meno in linea con la
-					pianificazione temporale rispetto alle attività nella baseline\ped{\emph{G}}. Una schedule variance positiva indica che il
+					\item \textbf{SV (Schedule Variance):} É un indicatore di efficacia, mostra se si è o meno in linea con la
+					pianificazione temporale rispetto alle attività nella baseline. Una schedule variance positiva indica che il
 					gruppo è in anticipo rispetto al Piano di progetto, che è in ritardo altrimenti.
 					\item \textbf{BV (Budget Variance):} Indica se la spesa sostenuta alla data corrente è superiore o inferiore a
 					quella preventivata. Una budget variance positiva indica che si è speso meno di quanto inizialmente previsto,
@@ -205,7 +205,7 @@
 					\item Range di accettazione: [35|100]
 					\item Range di ottimale: [45|100]
 				\end{itemize}
-				\item \textbf{Numero parole:} Questa metrica servirà principalmente per misurare l'incremento\ped{\emph{G}} del documento durante il completamento delle varie fasi.
+				\item \textbf{Numero parole:} Questa metrica servirà principalmente per misurare l'incremento del documento durante il completamento delle varie fasi.
 				\item \textbf{Numero figure e tabelle su numero pagine:} Questa metrica verrà valutata solamente su i documenti esterni per verificarne la difficoltà di lettura.
 				Il gruppo si atterrà ai seguenti parametri:
 				\begin{itemize}
@@ -228,7 +228,7 @@
 			
 			\subsubsection{Metriche per il software}
 				Questa sezione è da intendere come una dichiarazione di intenti e probabilmente verrà rivista quando inizieremo 
-				realmente la fase\ped{\emph{G}} di programmazione.
+				realmente la fase di programmazione.
 
 				Al fine di perseguire gli obbiettivi sulla qualità del software, applicheremo le seguenti metriche:
 				\begin{itemize}
@@ -310,7 +310,7 @@
 			
 			
 		\subsection{Strumenti e metodi per l'applicazione delle metriche}
-			Le risorse software che si utilizzeranno durante il processo di verifica\ped{\emph{G}} sono:
+			Le risorse software che si utilizzeranno durante il processo di verifica sono:
 			\begin{itemize}
 				\item \textbf{\emph{TexMaker}:} un ambiente grafico Open-Source per \LaTeX cross-platform, permette 
 				la compilazione rapida e la visualizzazione del PDF generato, sarà anche usato per il controllo ortografico;
@@ -319,8 +319,8 @@
 				\item \textbf{\emph{Scapegoat}:} un altro analizzatore statico che si concentra maggiormente sugli 
 				standard di stile e di coding (\url{https://github.com/sksamuel/scapegoat});
 				\item \textbf{\emph{CLOC (Count Lines Of Code)}:} misura alcune metriche riguardanti il codice 
-				sorgente in vari linguaggi, tra cui \emph{Scala\ped{\emph{G}}}, servirà a calcolare le linee di codice per linee di commento (\url{cloc.sourceforge.net});
-				\item \textbf{\emph{ScalaTest}:} framework per i test su Scala\ped{\emph{G}} (\url{http://www.scalatest.org/}).
+				sorgente in vari linguaggi, tra cui \emph{Scala}, servirà a calcolare le linee di codice per linee di commento (\url{cloc.sourceforge.net});
+				\item \textbf{\emph{ScalaTest}:} framework per i test su Scala (\url{http://www.scalatest.org/}).
 				
 				\item \textbf{Repo's Outpost:} tool su piattaforma web sviluppato dai componenti del gruppo,
 				disponibile (previo login) all'indirizzo: \\
@@ -351,14 +351,14 @@
 		\subsection{Metodi}
 			
 			\subsubsection{Analisi dei processi}
-				I processi compiuti durante una fase\ped{\emph{G}} verranno analizzati secondo il seguente protocollo:
+				I processi compiuti durante una fase verranno analizzati secondo il seguente protocollo:
 				\begin{itemize}
 					\item \textbf{Controllo delle metriche:}
-						Alla conclusione di ogni fase\ped{\emph{G}} del progetto si calcolano gli indici definiti nella sezione 2.2.1 confrontando 
+						Alla conclusione di ogni fase del progetto si calcolano gli indici definiti nella sezione 2.2.1 confrontando 
 						le macro-attività preventivate nel \emph{Piano di progetto} con i dati effettivi riscontrati dal sistema di ticketing.
 					\item \textbf{Analisi PDCA:}
-						Secondo il ciclo PDCA una fase\ped{\emph{G}} di progetto ha inizio con la pianificazione di come possono essere migliorati i processi. 
-						Durante la fase\ped{\emph{G}} vengono attuati i cambiamenti prefissati e alla fine viene effettuato un controllo. Se un processo 
+						Secondo il ciclo PDCA una fase di progetto ha inizio con la pianificazione di come possono essere migliorati i processi. 
+						Durante la fase vengono attuati i cambiamenti prefissati e alla fine viene effettuato un controllo. Se un processo 
 						risulta essere migliore viene adottato in modo definitivo, se invece risulta inalterato o addirittura peggiore i 
 						cambiamenti vengono scartati.
 				\end{itemize}
@@ -375,7 +375,7 @@
 		tipo possono essere dovuti a sviste o errori di copia nella stesura.
 					\item \textbf{Rispetto delle Norme di progetto:} I Verificatori sono tenuti a verificare che il documento
 					rispetti tutte le norme tipografiche e di struttura del documento riportate nelle \emph{Norme di progetto}. Porzioni
-					di questa verifica\ped{\emph{G}} sono automatizzabili, i Verificatori dovranno quindi usare tool ove possibile. 
+					di questa verifica sono automatizzabili, i Verificatori dovranno quindi usare tool ove possibile. 
 					\item \textbf{Inspection secondo checklist:} I Verificatori dovranno scorrere la lista di controllo e
 					verificare che non sia presenti gli errori comuni lì riportati.
 					\item \textbf{Verifica Glossario:} I Verificatori dovranno controllare che tutti i termini contenuti nel 
@@ -393,38 +393,38 @@
 					aggiornare la lista di controllo che verrà utilizzata per le successive inspection.
 				\end{itemize}		
 		\subsection{Organizzazione}
-			Il processo di verifica\ped{\emph{G}} inizia fin dal primo rilascio ufficiale nella repository di un documento vX.0.0, il risultato 
-			del processo di verifica\ped{\emph{G}} cambia la versione del documento, incrementandone la versione al secondo livello di profondità, 
+			Il processo di verifica inizia fin dal primo rilascio ufficiale nella repository di un documento vX.0.0, il risultato 
+			del processo di verifica cambia la versione del documento, incrementandone la versione al secondo livello di profondità, 
 			il documento quindi passa a vX.1.0. Ogni modifica apportata al documento ne aumenta la versione all'ultimo livello di 
-			profondità. Una volta completate le modifiche e le verifiche continue sui documenti, esso passa nella fase\ped{\emph{G}} di validazione\ped{\emph{G}},
+			profondità. Una volta completate le modifiche e le verifiche continue sui documenti, esso passa nella fase di validazione,
 			a carico del responsabile, che ne fa cambiare la versione al secondo livello di priorità. 
 			
 			Come descritto nelle \emph{Norme di progetto}, il primo valore in una versione verrà cambiato ad ogni consegna.
 			
 			Grazie al diario delle modifiche è più facile individuare dove concentrare l'attenzione nelle verifiche successive 
 			alla prima, in quanto sono segnate le sezioni che sono state aggiunte o che hanno subito dei cambiamenti dall'ultima
-			 verifica\ped{\emph{G}}, evitando cosi di controllare sempre tutto il documento ad ogni rilascio di versione, per cui ottimizzando 
+			 verifica, evitando cosi di controllare sempre tutto il documento ad ogni rilascio di versione, per cui ottimizzando 
 			 il tempo necessario al controllo.
 
 			Per ognuna delle 5 fasi del progetto descritte nel \emph{Piano di Progetto v 1.0.5}, sono necessarie diverse attività 
-			di verifica\ped{\emph{G}} a causa dei diversi output ottenuti:
+			di verifica a causa dei diversi output ottenuti:
 
 			\begin{itemize}
-				\item \textbf{Analisi:} Si devono seguire le attività di verifica\ped{\emph{G}} descritte nella sezione 2.9.2 e 2.9.1 sui processi 
+				\item \textbf{Analisi:} Si devono seguire le attività di verifica descritte nella sezione 2.9.2 e 2.9.1 sui processi 
 				e sui documenti attuati.
 			\end{itemize}
 			
-			Come detto in precedenza conclusa la verifica\ped{\emph{G}}, ha inizio il processo di approvazione. Durante questo processo è compito 
+			Come detto in precedenza conclusa la verifica, ha inizio il processo di approvazione. Durante questo processo è compito 
 			del Responsabile di Progetto accertarsi che i prodotti ottenuti siano conformi a quanto pianificato e progettato.
 		
 		
 		\subsection{Pianificazione strategica e temporale}
 			Avendo lo scopo di rispettare le scadenze riportate nel \emph{Piano di progetto}, è necessario che l'attività 
-			di verifica\ped{\emph{G}}, sia del codice che della documentazione, sia sistematica e ben organizzata; in questo modo 
+			di verifica, sia del codice che della documentazione, sia sistematica e ben organizzata; in questo modo 
 			l'individuazione, e quindi la correzione degli errori avverrà il prima possibile, limitando la diffusione 
 			degli stessi.\\
-			Per cercare di ridurre il numero degli errori, e quindi semplificare l'attività di verifica\ped{\emph{G}}, ogni fase\ped{\emph{G}} 
-			di codifica o documentazione sarà preceduta da una fase\ped{\emph{G}} di studio preliminare. Evitando le imprecisioni 
+			Per cercare di ridurre il numero degli errori, e quindi semplificare l'attività di verifica, ogni fase 
+			di codifica o documentazione sarà preceduta da una fase di studio preliminare. Evitando le imprecisioni 
 			di natura concettuale si ridurranno le correzioni necessarie.
 			
 			Di seguito vengono riportate le scadenze previste:
@@ -437,7 +437,7 @@
 		\subsection{Responsabilità}
 			Il \emph{Responsabile di progetto} ha il compito di:
 			\begin{itemize}
-				\item Accertarsi che le attività di verifica\ped{\emph{G}} vengano svolte sistematicamente secondo quanto 
+				\item Accertarsi che le attività di verifica vengano svolte sistematicamente secondo quanto 
 				riportato nelle \emph{Norme di progetto};
 				\item Accertarsi che vengano rispettati ruoli e competenze assegnate nel \emph{Piano di progetto};
 				\item Verificare che non ci siano conflitti di interesse tra redattori e \emph{Verificatori};
@@ -446,7 +446,7 @@
 			\end{itemize}
 			I \emph{Verificatori} hanno il compito di:
 			\begin{itemize}
-				\item Effettuare la verifica\ped{\emph{G}} dei documenti con strumenti e metodi proposti nel \emph{Piano di Qualifica};
+				\item Effettuare la verifica dei documenti con strumenti e metodi proposti nel \emph{Piano di Qualifica};
 				\item Attenersi rigidamente a quanto sancito nelle \emph{Norme di progetto};
 				\item Segnalare tempestivamente un errore, qualora riscontrato;
 				\item Sottoporre i documenti all'approvazione del \emph{Responsabile}, una volta giunti ad uno stadio finale.
@@ -460,7 +460,7 @@
 					\item \emph{Amministratore};
 					\item \emph{Analista};
 					\item \emph{Progettista};
-					\item \emph{Programmatore\ped{\emph{G}}};
+					\item \emph{Programmatore};
 					\item \emph{Verificatore}.
 				\end{itemize}
 			\subsubsection{Risorse software}
@@ -468,7 +468,7 @@
 				\begin{itemize}
 					\item alla gestione di documentazione in \LaTeX;
 					\item alla creazione di diagrammi UML;
-					\item allo sviluppo di codice \emph{Scala\ped{\emph{G}}};
+					\item allo sviluppo di codice \emph{Scala};
 					\item a semplificare ed automatizzare la verifica;
 					\item a semplificare ed automatizzare la pianificazione e la documentazione della stessa;
 					\item a semplificare ed automatizzare la comunicazione interna tra i membri del gruppo;
@@ -498,7 +498,7 @@
 					più comuni che permetta una indagine più mirata. I Verificatori, tramite questa tecnica, saranno in 
 					grado di stilare una lista di errori più frequenti, potendo così applicare successivamente la tecnica 
 					\emph{Inspection}. Il \emph{Walkthrough} è una tecnica onerosa e richiede l'intervento di più persone. 
-					Dopo una fase\ped{\emph{G}} iniziale in cui i Verificatori leggono il documento ed individuano potenziali errori essi 
+					Dopo una fase iniziale in cui i Verificatori leggono il documento ed individuano potenziali errori essi 
 					devono essere discussi in una riunione con altri componenti del gruppo per accertare che non siano dei 
 					falsi positivi.
 				\subsubsection{Inspection}
@@ -519,13 +519,13 @@
 				ai documenti ma solo al codice. Il suo obiettivo è rilevare errori o difetti di implementazione 
 				mediante l'uso di test che devono essere necessariamente ripetibili: solo un test che produca lo 
 				stesso output partendo dallo stesso ambiente e lo stesso input può è capace di riscontrare problemi. 
-				L'attore\ped{\emph{G}} che esegue un test deve definire a priori ed avere il pieno controllo su:
+				L'attore che esegue un test deve definire a priori ed avere il pieno controllo su:
 				\begin{itemize}
 					\item \textbf{Ambiente:} insieme di hardware a software come sistema operativo e altri programmi o 
 					processi in esecuzione;
 					\item \textbf{Specifiche:} definizione degli input e dei relativi output attesi, che sono ripetibili 
 					in quanto si postula di essere in un ambiente deterministico;
-					\item \textbf{Procedure:} descrizione delle azioni compiute dall'attore\ped{\emph{G}} (umano o computer che sia) 
+					\item \textbf{Procedure:} descrizione delle azioni compiute dall'attore (umano o computer che sia) 
 					per arrivare allo stato iniziale, far partire l'esecuzione, inserire gli input specificati e verificare 
 					che l'output sia uguale a quello atteso.
 				\end{itemize}
@@ -534,18 +534,18 @@
 				\begin{itemize}
 					\item \textbf{Test di unità:} Una unità viene definita come la più piccola quantità di software che conviene
 					testare singolarmente. Il fine di questi test è cercare di individuare eventuali errori presenti nelle singole
-					unità che compongono l'intero sistema. Essi vengono testati attraverso l'uso di stub\ped{\emph{G}}, driver\ped{\emph{G}} e logger. Queste
+					unità che compongono l'intero sistema. Essi vengono testati attraverso l'uso di stub, driver e logger. Queste
 					verifiche sono spesso le più onerose, ma anche quelle che portano alla luce il maggior numero di errori, quindi
 					quelle che producono il maggior valore.
-					\item \textbf{Test di integrazione:} Consiste nella verifica\ped{\emph{G}} di componenti del sistema che vengono aggiunti
+					\item \textbf{Test di integrazione:} Consiste nella verifica di componenti del sistema che vengono aggiunti
 					incrementalmente, è necessario dunque analizzare combinazioni di due o più unità di software. Hanno lo scopo di
 					individuare errori residui nella realizzazione dei singoli moduli, modifiche delle interfacce e comportamenti
 					inaspettati di componenti software preesistenti forniti da terze parti che non si conoscono a fondo. Per la
 					loro realizzazione è necessario usare spesso componenti fittizie non ancora sviluppate, ma che emulano il
 					comportamento atteso.
-					\item \textbf{Test di Sistema:} Consiste nella validazione\ped{\emph{G}} del prodotto software\ped{\emph{G}} una volta che siano stati
+					\item \textbf{Test di Sistema:} Consiste nella validazione del prodotto software una volta che siano stati
 					aggiunti tutti i componenti e lo si ritiene giunto ad una versione definitiva. Lo scopo principale è verificare
-					che ci sia totale copertura dei requisiti stabiliti nella fase\ped{\emph{G}} di Analisi di dettaglio. È obiettivo
+					che ci sia totale copertura dei requisiti stabiliti nella fase di Analisi di dettaglio. È obiettivo
 					fondamentale della qualità del processo fare in modo che giunti a questo punto l'esito del test sia comunque
 					positivo, in quanto garantito dal tracciamento dei requisiti.
 					\item \textbf{Test di regressione:} Consiste nell'eseguire nuovamente i test di unità e integrazione in
@@ -584,7 +584,7 @@
 			La qualità del prodotto viene garantita da:
 			\begin{itemize}
 				\item \textbf{Comprensione ed analisi del dominio};
-				\item \textbf{Verifica:} determina che l'output di una fase\ped{\emph{G}} sia consistente, completo e corretto. 
+				\item \textbf{Verifica:} determina che l'output di una fase sia consistente, completo e corretto. 
 				Deve essere eseguita costantemente per tutta la durata del progetto, ma cercando di essere minimamente invasiva;
 				\item \textbf{Validazione:} conferma oggettivamente che il prodotto sia conforme alle aspettative;
 				\item \textbf{Quality Assurance:} garantisce il raggiungimento degli obiettivi di qualità, in maniera preventiva. 
@@ -623,11 +623,11 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				\begin{itemize}
 					\item \textbf{Plan:} definire dettagliatamente cosa deve essere realizzato rispetto agli 
 					obiettivi di miglioramento, e come questi controlli saranno effettuati;
-					\item \textbf{Do:} fase\ped{\emph{G}} di esecuzione delle attività pianificate;
-					\item \textbf{Check:} vengono confrontati i dati in uscita dalla fase\ped{\emph{G}} \emph{Do} con quelli 
-					pianificati nella fase\ped{\emph{G}} \emph{Plan}, per intervenire in tempo e migliorare i risultati;
-					\item \textbf{Act:} fase\ped{\emph{G}} in cui si mette in pratica il miglioramento continuo dei processi
-					 utilizzando i risultati della verifica\ped{\emph{G}} per modificare gli aspetti critici dei processi in esame.
+					\item \textbf{Do:} fase di esecuzione delle attività pianificate;
+					\item \textbf{Check:} vengono confrontati i dati in uscita dalla fase \emph{Do} con quelli 
+					pianificati nella fase \emph{Plan}, per intervenire in tempo e migliorare i risultati;
+					\item \textbf{Act:} fase in cui si mette in pratica il miglioramento continuo dei processi
+					 utilizzando i risultati della verifica per modificare gli aspetti critici dei processi in esame.
 				\end{itemize}
 				\begin{figure}[H]
 					\centering
@@ -655,42 +655,42 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				le quali la funzionalità è l'unico ?requisito funzionale?  mentre le altre 5 sono ?requisiti di qualità?, ciascuna
 				caratteristica si suddivide in altre sotto caratteristiche che possono essere misurate qualitativamente:
 				\begin{itemize}
-					\item \textbf{Funzionalità:} capacità del prodotto software\ped{\emph{G}} di fornire funzioni che rispondano
+					\item \textbf{Funzionalità:} capacità del prodotto software di fornire funzioni che rispondano
 					a esigenze stabilite
 					\begin{itemize}
-						\item \textbf{Idoneità:} capacità del prodotto software\ped{\emph{G}} di fornire un insieme di funzioni per attività
+						\item \textbf{Idoneità:} capacità del prodotto software di fornire un insieme di funzioni per attività
 						specifiche già conosciute dall'utente;
-						\item \textbf{Accuratezza:} capacità del prodotto software\ped{\emph{G}} di fornire risultati esatti o concordi al grado di precisione necessario;
-						\item \textbf{Interoperabilità:} capacità del prodotto software\ped{\emph{G}} di interagire con uno o più sistemi 
+						\item \textbf{Accuratezza:} capacità del prodotto software di fornire risultati esatti o concordi al grado di precisione necessario;
+						\item \textbf{Interoperabilità:} capacità del prodotto software di interagire con uno o più sistemi 
 						precedentemente specificati;
-						\item \textbf{Sicurezza:} capacità del prodotto software\ped{\emph{G}} di proteggere dati e informazioni;
-						\item \textbf{Conformità funzionale:} capacità del prodotto software\ped{\emph{G}} di aderire a standard, convenzioni
+						\item \textbf{Sicurezza:} capacità del prodotto software di proteggere dati e informazioni;
+						\item \textbf{Conformità funzionale:} capacità del prodotto software di aderire a standard, convenzioni
 						o regolamentazioni e prescrizioni in materia di funzionalità.
 					\end{itemize}
 					
-					\item \textbf{Affidabilità:} capacità del prodotto software\ped{\emph{G}} di mantenere uno specifico livello di prestazioni
+					\item \textbf{Affidabilità:} capacità del prodotto software di mantenere uno specifico livello di prestazioni
 					quando usato
 					\begin{itemize}
-						\item \textbf{Maturità:} capacità del prodotto software\ped{\emph{G}} di non fallire a causa di errori nel software;
-						\item \textbf{Tolleranza agli errori:} capacità del prodotto software\ped{\emph{G}} di mantenere un adeguato livello di
+						\item \textbf{Maturità:} capacità del prodotto software di non fallire a causa di errori nel software;
+						\item \textbf{Tolleranza agli errori:} capacità del prodotto software di mantenere un adeguato livello di
 						prestazioni e funzioni in caso di errori software o di violazioni;
-						\item \textbf{Capacità di recupero:} capacità del prodotto software\ped{\emph{G}} di ristabilire un adeguato livello di
+						\item \textbf{Capacità di recupero:} capacità del prodotto software di ristabilire un adeguato livello di
 						performance e di recuperare i dati in caso di errori;
-						\item \textbf{Conformità di affidabilità:} capacità del prodotto software\ped{\emph{G}} di aderire a standard,
+						\item \textbf{Conformità di affidabilità:} capacità del prodotto software di aderire a standard,
 						convenzioni o regolamentazioni in materia di affidabilità.
 					\end{itemize}										
 					
 					\item \textbf{Usabilità:} capacità del software di essere capito, imparato, usato e apprezzato dall'utente
 					quando usato
 					\begin{itemize}
-						\item \textbf{Comprensibilità:} capacità del prodotto software\ped{\emph{G}} di far comprendere all'utente se il
+						\item \textbf{Comprensibilità:} capacità del prodotto software di far comprendere all'utente se il
 						prodotto è adatto ad uno specifico scopo;
-						\item \textbf{Apprendibilità:} capacità del prodotto software\ped{\emph{G}} di ridurre all'utente il tempo necessario
+						\item \textbf{Apprendibilità:} capacità del prodotto software di ridurre all'utente il tempo necessario
 						per apprendere le sue funzioni;
-						\item \textbf{Operabilità:} capacità del prodotto software\ped{\emph{G}} di essere utilizzato dall'utente in modo
+						\item \textbf{Operabilità:} capacità del prodotto software di essere utilizzato dall'utente in modo
 						controllato
-						\item \textbf{Attrattiva:} capacità del prodotto software\ped{\emph{G}} di creare interesse nell'utente;
-						\item \textbf{Conformità di usabilità:} capacità del prodotto software\ped{\emph{G}} di aderire a standard, convenzioni
+						\item \textbf{Attrattiva:} capacità del prodotto software di creare interesse nell'utente;
+						\item \textbf{Conformità di usabilità:} capacità del prodotto software di aderire a standard, convenzioni
 						o regolamentazioni in materia di usabilità.
 					\end{itemize}										
 					
@@ -699,38 +699,38 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 					\begin{itemize}
 						\item \textbf{Comportamento temporale:} capacità del software di fornire tempi di risposta e di
 						elaborazione adeguati sotto condizioni determinate;
-						\item \textbf{Utilizzo di risorse:} capacità del prodotto software\ped{\emph{G}} di utilizzare quantità e tipo di
+						\item \textbf{Utilizzo di risorse:} capacità del prodotto software di utilizzare quantità e tipo di
 						risorse adeguate durante la sua esecuzione;
-						\item \textbf{Conformità di efficienza\ped{\emph{G}}:} capacità del prodotto software\ped{\emph{G}} di aderire a standard,
-						convenzioni o regolamentazioni in materia di efficienza\ped{\emph{G}}.
+						\item \textbf{Conformità di efficienza:} capacità del prodotto software di aderire a standard,
+						convenzioni o regolamentazioni in materia di efficienza.
 					\end{itemize}										
 					
-					\item \textbf{Manutenibilità:} capacità del prodotto software\ped{\emph{G}} di essere modificato e ampliato.
+					\item \textbf{Manutenibilità:} capacità del prodotto software di essere modificato e ampliato.
 					\begin{itemize}
 						\item \textbf{Analizzabilità:} rappresenta la facilità con la quale è possibile analizzare il software alla
 						ricerca di carenze e difetti;
-						\item \textbf{Modificabilità:} capacità del prodotto software\ped{\emph{G}} di permettere l'implementazione di una
+						\item \textbf{Modificabilità:} capacità del prodotto software di permettere l'implementazione di una
 						specifica modifica o di un aggiornamento;
-						\item \textbf{Stabilità:} capacità del prodotto software\ped{\emph{G}} di evitare effetti indesiderati causati da uno o
+						\item \textbf{Stabilità:} capacità del prodotto software di evitare effetti indesiderati causati da uno o
 						più aggiornamenti o modifiche;
-						\item \textbf{Testabilità:} capacità del prodotto software\ped{\emph{G}} di consentire una facile validazione\ped{\emph{G}} di una
+						\item \textbf{Testabilità:} capacità del prodotto software di consentire una facile validazione di una
 						versione modificata del software;
-						\item \textbf{Conformità di manutenibilità:} capacità del prodotto software\ped{\emph{G}} di aderire a standard,
+						\item \textbf{Conformità di manutenibilità:} capacità del prodotto software di aderire a standard,
 						convenzioni o regolamentazioni in materia di manutenibilità.
 					\end{itemize}										
 					
-					\item \textbf{Portabilità:} capacità del prodotto software\ped{\emph{G}} di poter essere trasferito da un ambiente di lavoro
+					\item \textbf{Portabilità:} capacità del prodotto software di poter essere trasferito da un ambiente di lavoro
 					ad un altro sia dal punto di vista hardware che per quanto riguarda il sistema operativo
 					\begin{itemize}
-						\item \textbf{Adattabilità:} capacità del prodotto software\ped{\emph{G}} di essere adattato a diversi ambienti di
+						\item \textbf{Adattabilità:} capacità del prodotto software di essere adattato a diversi ambienti di
 						lavoro senza la necessità di effettuare modifiche aggiuntive;
-						\item \textbf{Installabilità:} capacità del prodotto software\ped{\emph{G}} di poter essere installato in specifici
+						\item \textbf{Installabilità:} capacità del prodotto software di poter essere installato in specifici
 						ambienti;
-						\item \textbf{Coesistenza:} capacità del prodotto software\ped{\emph{G}} di coesistere in ambienti comuni con altri
+						\item \textbf{Coesistenza:} capacità del prodotto software di coesistere in ambienti comuni con altri
 						software indipendenti condividendo risorse comuni;
-						\item \textbf{Sostituibilità:} capacità del prodotto software\ped{\emph{G}} di poter sostituire un software analogo o
+						\item \textbf{Sostituibilità:} capacità del prodotto software di poter sostituire un software analogo o
 						simile nello stesso ambiente;
-						\item \textbf{Conformità di portabilità:} capacità del prodotto software\ped{\emph{G}} di aderire a standard,
+						\item \textbf{Conformità di portabilità:} capacità del prodotto software di aderire a standard,
 						convenzioni o regolamentazioni in materia di portabilità.
 					\end{itemize}										
 					
@@ -745,7 +745,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 					\item \textbf{Efficacia:} la capacità del prodotto di consentire agli utenti di raggiungere gli obiettivi
 					specificati con precisione sufficiente e completezza. 
 					\item \textbf{Produttività:} la capacità di consentire agli utenti di utilizzare una quantità di risorse
-					appropriate in relazione all'efficacia\ped{\emph{G}} ottenuta in contesto d'uso definito. 
+					appropriate in relazione all'efficacia ottenuta in contesto d'uso definito. 
 					\item \textbf{Soddisfazione:} è la capacità del prodotto di soddisfare gli utenti. 
 					\item \textbf{Sicurezza:} rappresenta la capacità del prodotto di avere accettabili livelli di rischio per
 					quanto riguarda i danni alle persone, al software, ad apparecchiature o all'ambiente operativo d'uso. 
@@ -756,19 +756,19 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 					\includegraphics[scale=0.65]{immagini/Pdq/qualitainuso.png}
 					\caption{Caratteristiche della qualità d'uso.}
 				\end{figure}
-				\subsection{Resoconto delle attività di verifica\ped{\emph{G}}}
-				\subsubsection{Riassunto delle attività di verifica\ped{\emph{G}}}
+				\subsection{Resoconto delle attività di verifica}
+				\subsubsection{Riassunto delle attività di verifica}
 			Durante la stesura della documentazione sono stati verificati ad ogni modifica sostanziale la documentazione stessa, i
-			casi d'uso\ped{\emph{G}} e i requisiti; è stato in oltre verificato se i processi si sono svolti in maniera corretta.
+			casi d'uso e i requisiti; è stato in oltre verificato se i processi si sono svolti in maniera corretta.
 			\subsubsection{Documentazione}
 				I documenti sono stati verificati tramite walkthrough da due persone differenti seguendo il seguente protocollo:
 				\begin{itemize}
-					\item Verifica\ped{\emph{G}} della sintassi e della correzione ortografica
-					\item Verifica\ped{\emph{G}} della chiarezza espositiva
-					\item Verifica\ped{\emph{G}} del rispetto delle \emph{Norme Di Progetto v1.1.1} capitolo 3.1
-					\item Verifica\ped{\emph{G}} dell'uniformità dei termini rispetto allo stesso documento
-					\item Verifica\ped{\emph{G}} dell'uniformità dei termini rispetto agli altri documenti
-					\item Verifica\ped{\emph{G}} che i termini che lo necessitano siano stati inseriti nel glossario
+					\item Verifica della sintassi e della correzione ortografica
+					\item Verifica della chiarezza espositiva
+					\item Verifica del rispetto delle \emph{Norme Di Progetto v1.1.1} capitolo 3.1
+					\item Verifica dell'uniformità dei termini rispetto allo stesso documento
+					\item Verifica dell'uniformità dei termini rispetto agli altri documenti
+					\item Verifica che i termini che lo necessitano siano stati inseriti nel glossario
 					\item Produzione dei un file .txt contenente tutti gli errori al fine di mostrare le correzioni necessarie e
 					facilitare la stesura della checklist degli errori più frequenti
 				\end{itemize}
@@ -776,42 +776,42 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				stilata.
 			
 			\subsubsection{Casi d'uso}
-				I casi d'uso\ped{\emph{G}} sono stati verificati sempre tramite walkthrough ponendo l'attenzione sui seguenti punti:
+				I casi d'uso sono stati verificati sempre tramite walkthrough ponendo l'attenzione sui seguenti punti:
 				\begin{itemize}
 					\item Uniformità dei termini usati tra i vari UC
 					\item Uniformità tra l'immagine dei diagrammi e la spiegazione della suddetta
 					\item Correttezza del codice utilizzato rispetto a quanto definito nelle \emph{Norme Di Progetto v1.1.1} sezione
 					2.1.3
-					\item Uniformità dei casi d'uso\ped{\emph{G}} rispetto al capitolato
+					\item Uniformità dei casi d'uso rispetto al capitolato
 					\item Rispetto della struttura definita nelle \emph{Norme Di Progetto v1.1.1} sezione 2.3.1
 				\end{itemize}
 
-				I Casi d'uso\ped{\emph{G}} sono stati successivamente ricontrollati all'interno del documento di \emph{Analisi Dei Requisiti} come
+				I Casi d'uso sono stati successivamente ricontrollati all'interno del documento di \emph{Analisi Dei Requisiti} come
 				descritto nella sezione 4.2.2
 			\subsubsection{Requisiti}
 				I requisiti sono stati controllati tramite walkthrough seguendo il seguente protocollo:
 					\begin{itemize}
-						\item Verifica\ped{\emph{G}} che la fonte del requisito\ped{\emph{G}} sia corretta.
-						\item Nel caso in cui la fonte sia un UC, verifica\ped{\emph{G}} che sia l?UC corretto e valutazione
+						\item Verifica che la fonte del requisito sia corretta.
+						\item Nel caso in cui la fonte sia un UC, verifica che sia l?UC corretto e valutazione
 	 sulla possibilità di dedurre altri requisiti dallo stesso.
-						\item Verifica\ped{\emph{G}} uniformità dei termini tra i requisiti.
+						\item Verifica uniformità dei termini tra i requisiti.
 						\item Rispetto del codice e della struttura definiti nelle \emph{Norme di Progetto v1.1.1} sezione 2.1.2.
-						\item I Casi d'uso\ped{\emph{G}} sono stati successivamente ricontrollati all'interno del documento di \emph{Analisi Dei Requisiti} 
+						\item I Casi d'uso sono stati successivamente ricontrollati all'interno del documento di \emph{Analisi Dei Requisiti} 
 						come descritto in sezione 4.1.
 					\end{itemize}
 			\subsubsection{Processi}
 				I processi sono stati verificati dal responsabile grazie all'utilizzo di teamwork controllando le seguenti condizioni:
 				\begin{itemize}
-					\item Che la verifica\ped{\emph{G}} non sia stata effettuata dallo stesso che ha prodotto il materiale da verificare.
+					\item Che la verifica non sia stata effettuata dallo stesso che ha prodotto il materiale da verificare.
 					\item Che i documenti siano stati prodotti nell'ordine e nei tempi corretti.
-					\item Che le ore di verifica\ped{\emph{G}} siano almeno 30\% delle ore totali.
-					\item Che le riunioni e i brainstorming\ped{\emph{G}} si siano svolti come definito nelle \emph{Norme di Progetto v1.1.1} sezione 4.2.3.
+					\item Che le ore di verifica siano almeno 30\% delle ore totali.
+					\item Che le riunioni e i brainstorming si siano svolti come definito nelle \emph{Norme di Progetto v1.1.1} sezione 4.2.3.
 				\end{itemize}
 				
 		
 		\subsection{Dettaglio delle verifiche tramite analisi}
 			\subsubsection{Processi}
-				Vengono qui di seguito riportate le macro-attività della fase\ped{\emph{G}} di analisi con associati i relativi valori di SV e BV.
+				Vengono qui di seguito riportate le macro-attività della fase di analisi con associati i relativi valori di SV e BV.
 					\begin{table}[H]
 						\begin{tabularx}{\textwidth}{m f s X}
 							\noalign{\hrule height 1.5pt}
@@ -843,8 +843,8 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 						pianificazione dei processi.
 					\end{itemize}
 			
-				Durante la prima fase\ped{\emph{G}} di analisi le problematiche riscontrate sui processi sono dovute per la maggior parte 
-				all'inesperienza del gruppo. A questa fase\ped{\emph{G}} seguirà una pianificazione su come migliorare i processi che sono 
+				Durante la prima fase di analisi le problematiche riscontrate sui processi sono dovute per la maggior parte 
+				all'inesperienza del gruppo. A questa fase seguirà una pianificazione su come migliorare i processi che sono 
 				risultati più critici.
 				
 			\subsubsection{Documenti}
@@ -886,12 +886,12 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 						\label{SVBVTable}
 					\end{table}
 	\subsection{Pianificazione dei test}
-		Di seguito saranno descritti i test di sistema, integrazione e validazione\ped{\emph{G}} che sono previsti.
+		Di seguito saranno descritti i test di sistema, integrazione e validazione che sono previsti.
 		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.				
 	\subsubsection{Test di sistema}
-		Viene mostrata di seguito la tabella con tutti i test di sistema che consentono di verificare il sistema rispetto ai requisiti descritti nell'\emph{Analisi dei Requisiti v1.3.11} e la tabella che traccia ogni requisito\ped{\emph{G}} al test.
+		Viene mostrata di seguito la tabella con tutti i test di sistema che consentono di verificare il sistema rispetto ai requisiti descritti nell'\emph{Analisi dei Requisiti v1.3.11} e la tabella che traccia ogni requisito al test.
 		Per ogni comando testato sarà anche verificato il corretto riconoscimento e la corretta gestione degli errori.
-		I test di sistema sono nominati per associazione ai casi d'uso\ped{\emph{G}}.
+		I test di sistema sono nominati per associazione ai casi d'uso.
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_sistema.tex}
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/requisiti_test_sistema.tex}
 		
