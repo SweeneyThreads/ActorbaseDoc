@@ -76,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.1.8
+			Versione 1.5.1
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -157,8 +157,20 @@
 					gruppo è in anticipo rispetto al Piano di progetto, che è in ritardo altrimenti.
 					\item \textbf{BV (Budget Variance):} Indica se la spesa sostenuta alla data corrente è superiore o inferiore a
 					quella preventivata. Una budget variance positiva indica che si è speso meno di quanto inizialmente previsto,
-					viceversa altrimenti.		
-				\end{itemize}
+					viceversa altrimenti.	
+				
+				
+				\item \textbf{Livello di annidamento dei requisiti:}
+				Misura i livelli degli alberi dei requisiti. In questo modo si vuole dare una stima di quanto essi
+				siano organizzati gerarchicamente.
+				\begin{itemize}
+					\item Valori accettati: 2-10
+							\item Valori ottimali: 3-7
+				\end{itemize}	
+			\end{itemize}
+				
+				
+				
 				
 				
 			\subsubsection{Metriche per i documenti}
@@ -210,19 +222,7 @@
 					\item Range di accettazione: [0|0]
 					\item Range di ottimale: [0|0]
 				\end{itemize}
-				
-				\item \textbf{Livelli di annidamento dei requisiti:}
-				Misura i livelli degli alberi dei requisiti. In questo modo si vuole dare una stima di quanto essi
-				siano organizzati gerarchicamente.
-				\begin{itemize}
-					\item Valori accettati: da decidere
-							\item Valori ottimali: da decidere
-				\end{itemize}
-				
 			\end{itemize}
-				
-				
-				
 			
 			\subsubsection{Metriche per il software}
 				Questa sezione è da intendere come una dichiarazione di intenti e probabilmente verrà rivista quando inizieremo 
@@ -805,30 +805,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 					\item Che le ore di verifica siano almeno 30\% delle ore totali.
 					\item Che le riunioni e i brainstorming si siano svolti come definito nelle \emph{Norme di Progetto v1.1.1} sezione 4.2.3.
 				\end{itemize}
-			\subsubsection{metriche dei documenti}
-					\begin{table}[H]
-						\begin{tabularx}{\textwidth}{L P P P P P}
-							\noalign{\hrule height 1.5pt}
-							\rowcolor{orange!85} documenti & Gulpease & parole & figure per pagina & parole per section & errori ortografici\\
-							\noalign{\hrule height 1.5pt}
-								Norme di progetto & 44,03 & 4180 & 1,61 & 87,08 & 0 \\
-							\noalign{\hrule height 0.5pt}
-								Studio di fattibilità & 39,84 & 1471 & 0,5 & 49,03 & 0 \\
-							\noalign{\hrule height 0.5pt}
-								Analisi dei requisiti & 50,32 & 4404 & 2,15 & 38,3 & 0 \\
-							\noalign{\hrule height 0.5pt}
-								Piano di progetto & 45,01 & 4492 & 2,85 & 56,15 & 0 \\
-							\noalign{\hrule height 0.5pt}
-								Piano di qualifica & dopo & dopo & dopo & dopo & dopo \\
-							\noalign{\hrule height 0.5pt}
-								Specifica tecnica & dopo & dopo & dopo & dopo & dopo \\
-							\noalign{\hrule height 1.5pt}
-						\end{tabularx}
-						\caption{Tabella metriche dei documenti }
-						\label{SVBVTable}
-					\end{table}
 				
-		\subsection{Tracciamento componenti - requisiti}
 		
 		\subsection{Dettaglio delle verifiche tramite analisi}
 			\subsubsection{Processi}
@@ -853,6 +830,8 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 						\label{SVBVTable}
 					\end{table}
 					
+				Il livello di annidamento dei requisiti: 5.
+					
 				Da questi dati si può dedurre che:
 					\begin{itemize}
 						\item I tempi impiegati hanno subito delle leggere variazioni e grazie agli slack inseriti nel 
@@ -867,7 +846,22 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				risultati più critici.
 				
 			\subsubsection{Documenti}
-			Segue la tabella contenente il valore di tutte le metriche riguardanti i documenti rispetto agli stessi. I valori sono tutti consoni al livello di accettazione definito nella sezione 2.2 .
+			Segue la tabella contenente il valore delle metriche di tutti i documenti presentati. Questa tabella viene aggiornata ad ogni cambiamento di versione. La maggior parte dei valori è in range di ottimalità; eccetto i seguenti che sono in ogni caso in range di accettazione: \\
+\begin{itemize}
+	\item \textbf{Norme di Progetto vX.Y.Z:}
+		\begin{itemize}
+			\item \textbf{Gulpease:} L'indice Gulpease è comunque sufficientemente alto e, trattandosi di un documento interno, il gruppo ha ritenuto ciò non problematico.
+		\end{itemize}
+	\item \textbf{Piano di Qualifica vX.Y.Z:}
+		\begin{itemize}
+			\item \textbf{Gulpease:} Trattandosi di un documento tecnico contiene lunghi periodi e termini tecnici che ne diminuiscono la leggibilità.
+			\item \textbf{Lunghezza media sezioni:} Sono presenti molte sezioni descrittive che aumentano questa metrica.
+		\end{itemize}
+	\item \textbf{Studio di Fattibilità vX.Y.Z:}
+	\begin{itemize}
+		\item \textbf{Gulpease:} Trattandosi di un documento tecnico contiene lunghi periodi e termini tecnici che ne diminuiscono la leggibilità.
+	\end{itemize}
+\end{itemize}
 					\begin{table}[H]
 						\begin{tabularx}{\textwidth}{L P P P P P}
 							\noalign{\hrule height 1.5pt}

@@ -71,7 +71,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.3.6
+			Versione 1.5.0
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm]
@@ -246,11 +246,11 @@
             Questa interfaccia permette di:
             \begin{itemize}
                 \item navigare nell'albero dei requisiti;
-                \item segnare come completati i requisiti foglia; quando tutti i figli di un requisito sono marcati come completi, 
+                \item segnare come completati i requisiti foglia; quando tutti i figli di un requisito sono marcati come completati, 
                 anch'esso viene marcato come completato;
-                \item per ogni requisiti è possibile scrivere delle note;
+                \item per ogni requisito è possibile scrivere delle note;
                 \item tenere traccia dei requisiti controllando il file di \emph{Analisi dei requisiti} presente sul \emph{Repository}
-                \item generare automaticamente il codice \LaTeX del tracciamento requisiti-fonti e fonti-requisiti.
+                \item generare automaticamente il codice \LaTeX \ del tracciamento requisiti-fonti e fonti-requisiti.
             \end{itemize}  
             
             Questo strumento è raggiungibile all'indirizzo: \newline \url{http://sweeneytreadaas.altervista.org/menuPrincipale/requirement/requisiti.php}.
@@ -686,7 +686,7 @@
 		\includegraphics[scale=0.25]{Immagini/"sweeneygithub".png}
 		\caption{Account GitHub SWEeneyThreads}
 	\end{figure}
-	\subsubsection{Repository}
+		\subsubsection{Repository}
 	Sono state previste diverse \emph{Repository} necessarie allo sviluppo del progetto: Actorbase, ActorbaseDoc, RR, RP, RQ, RA e ConsegnaActorbase. 	
     Actorbase conterrà tutti i file del prodotto da sviluppare, mentre le \emph{Repository} RR, RP, RQ e RA si riferiscono alle 4 consegne del 
     progetto previste: revisione dei requisiti, revisione di progettazione, revisione di qualifica, revisione di accettazione.
@@ -699,7 +699,7 @@
   	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{"repositories".png}
-		\caption{Struttura dei repositories GitHub}
+		\caption{Struttura delle \emph{Repository GitHub}}
 	\end{figure}
 	In \verb|ActorbaseDoc/| saranno presenti le seguenti sottocartelle:
 	\begin{itemize}
@@ -707,14 +707,14 @@
 		\item LaTeX;
 	\end{itemize}
 	\textbf{Documenti} \\
-	Nella cartella \verb|ActorbaseDoc/Documenti/| verranno inseriti tutti i pdf generati dal comando \verb|pdflatex nome-documento.tex|. Non
+	Nella cartella \verb|ActorbaseDoc/Documenti/| verranno inseriti tutti i PDF generati dal comando \verb|pdflatex nome-documento.tex|. Non
 	saranno presenti altri file in questa cartella. I documenti saranno divisi in \emph{Interni} ed \emph{Esterni} per questo saranno create 
-    delle sottodirectory: \verb|ActorbaseDoc/Documenti/Interni| e \verb|ActorbaseDoc/Documenti/Esterni|.
+    delle sottocartelle: \verb|ActorbaseDoc/Documenti/Interni| e \verb|ActorbaseDoc/Documenti/Esterni|.
 	\newline
     \textbf{LaTeX} \\
 	Nella cartella \verb|ActorbaseDoc/LaTeX/| saranno presenti tutti i file \verb|*.tex| pronti per la compilazione. In questa cartella verrà inserita
 	anche una cartella\\ \verb|ActorbaseDoc/LaTeX/Immagini/| contenente tutte le immagini necessarie alla compilazione dei file.
-	Inoltre verrà aggiunta una cartella \verb|Actorbase/LaTeX/Templates/| contenente i templates per la stesura di documenti e per il
+	Inoltre verrà aggiunta una cartella \verb|Actorbase/LaTeX/Templates/| contenente i template per la stesura di documenti e per il
 	disegno appropriato di tabelle. 
     Per le tabelle su più pagine, si terranno dei file separati dal file principale in cui sono incluse. Per questo è stata creata la tabella 
     \verb|ActorbaseDoc/LaTeX/Tabelle|.
