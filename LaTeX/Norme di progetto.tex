@@ -73,7 +73,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.0
+			Versione 2.0.1
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm]
@@ -117,13 +117,12 @@
 			Al fine di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il
 	      	gruppo ha steso un documento interno che è il \emph{Glossario v2.0.0}. In esso saranno definiti, in modo
 	      	chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo. In ogni documento,
-	      	ogni occorrenza di un termine presente nel glossario, verrà contrassegnata con una G a pedice come la seguente:
+	      	ogni occorrenza di un termine presente nel glossario, verrà contrassegnata con una \emph{G} a pedice come la seguente:
 	      	\newline
 	      	\begin{center}
 	      		\ped{\textit{G.}}
 	      	\end{center}
-	      	e per questo è stato introdotto un nuovo comando in tutti i documenti: \\
-	      	\verb|\newcommand{\GLO}{\ped{\textit{G.}}}|.
+	      	L'inserimento della \emph{G} a pedice è automatizzato grazie ad una funzionalità della piattaforma \emph{SPitFire}, insieme di tool al supporto della documentazione e del tracciamento sviluppato dal gruppo. Essa permette di effettuare l'upload di un file .tex a cui si vogliono aggiungere le \emph{G} e di ottenere un file con le aggiunte corrette in corrispondenza dei termini del glossario. \emph{SPitFire} permette di salvare la lista dei termini di glossario semplicemente effettuando l'upload del file .tex del Glossario, ricava in automatico la lista delle parole e le utilizza per aggiungere le \emph{G} correttamente.
 		\subsection{Riferimenti}
 			\subsubsection{Informativi}
 				\begin{itemize}
@@ -144,6 +143,8 @@
 					\item GitHub: \\ \url{https://github.com/}
 					\item Texmaker: \\ \url{http://www.xm1math.net/texmaker/}
 					\item altervista: \\ \url{http://it.altervista.org/}
+					\item SPitFire: \\ \url{http://sweeneytreadaas.altervista.org/}
+					\item SweeneyThreads: \\ \url{http://sweeneythreads.github.io/}
 					\item Piano di progetto: \\ \emph{Piano di Progetto v2.0.0}
 					\item Piano di qualifica: \\ \emph{Piano di Qualifica v2.0.0}
 				\end{itemize}
@@ -172,9 +173,12 @@
 			\item \textbf{Individuazione dei rischi:} evidenziare lacune tecniche e di conoscenza del dominio
 			dei membri del gruppo, comprensione
 			dei punti critici, difficoltà nel determinare i requisiti obbligatori e opzionali e nella loro
-			classificazione;
+			classificazione.
 		\end{itemize}
+		Tale valutazione deve essere svolta per tutti i capitolati presenti, eventualmente con un maggior livello di dettaglio per quanto riguarda il \emph{capitolato C1}.
 
+		\subsection{Sviluppo}
+		
 		\subsubsection{Casi d'uso}
 			Come detto in precedenza alcuni requisiti possono essere ricavati dai Casi d'uso\ped{\emph{G}}, ad essi si
 			può fare riferimento anche con la dicitura \emph{use case} o con l'acronimo \emph{UC} nel caso
@@ -216,7 +220,17 @@
 			 I Casi d'uso\ped{\emph{G}} saranno espressi in forma tabellare nel documento di \emph{Analisi dei requisiti}
 			 nel seguente modo, in più, ogni caso d'uso sarà accompagnato da un diagramma UML che ne
 			 descrive il flusso di eventi.
-			 \begin{table}[H]
+			 \\ \\
+			 Di seguito si riporta un esempio di caso d'uso comprensivo di diagramma UML e di descrizione tabellare.
+			 \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{UC/"UC 1 Connessione".png}
+				\caption{Diagramma di UC1: Connessione al server}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'utente ha appena avviato l'interfaccia CLI dell'applicativo e intende connettersi ad un server contenente i database utilizzando il comando di connessione (UC 1.1). L'utente deve inserire l'indirizzo del server (UC 1.2) e successivamente l'username e la password necessari per l'accesso (UC 1.3), nel caso in cui il tentativo di connessione dovesse fallire, l'utente riceve un messaggio di errore informativo.
+	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC1 \\
 				\noalign{\hrule height 0.5pt}
@@ -230,95 +244,21 @@
 				\noalign{\hrule height 0.5pt}
 				\textbf{Post-condizione} & L'utente risulta connesso al server \\
 				\noalign{\hrule height 0.5pt}
-				\multirow{3}{*}{\textbf{Flusso eventi}} & 1. L'utente inserisce il comando \texttt{CONNECT} (UC 1.1) \\
-				& 2. L'utente inserisce l'indirizzo del server (UC 1.2) \\
-				& 3. L'utente inserisce username e password (UC 1.3) e preme invio \\
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente inserisce il comando di connessione (UC 1.1)
+				\item L'utente inserisce l'indirizzo del server (UC 1.2)
+				\item L'utente inserisce username e password (UC 1.3) e preme invio
+				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots
+				\textbf{Lista requisiti\newline dedotti} & \dots \\ 
 			\end{tabularx}
 			\caption{Caso d'uso UC 1 - Connessione al server}
-		 \end{table}
-
-		\subsubsection{Tecniche di tracciamento dei requisiti}
-        
-            Tutti i requisiti e Casi d'uso\ped{\emph{G}} saranno inseriti in un Database strutturato in modo funzionale dal gruppo. 
-            Per semplificare le interazioni con il database è stata messa a disposizione un'interfaccia web realizzata dai membri del gruppo.
-            Questa interfaccia permette di:
-            \begin{itemize}
-                \item navigare nell'albero dei requisiti;
-                \item segnare come completati i requisiti foglia; quando tutti i figli di un requisito sono marcati come completati, 
-                anch'esso viene marcato come completato;
-                \item per ogni requisito è possibile scrivere delle note;
-                \item tenere traccia dei requisiti controllando il file di \emph{Analisi dei requisiti} presente sul \emph{Repository}
-                \item generare automaticamente il codice \LaTeX \ del tracciamento requisiti-fonti e fonti-requisiti.
-            \end{itemize}  
-            
-            Questo strumento è raggiungibile all'indirizzo: \newline \url{http://sweeneytreadaas.altervista.org/menuPrincipale/requirement/requisiti.php}.
-		\subsubsection{Gestione cambiamento requisiti}
-		Per quanto riguarda il cambiamento dei requisiti, nel Database verrà tenuta una tabella di backup dei "vecchi" requisiti,
-		nella loro forma di dichiarazione, con un puntatore al "nuovo" requisito, che invece avrà le specifiche aggiornate. È compito del
-		\emph{Responsabile di progetto} mantenere aggiornata la tabella dei requisiti, copiando prima il requisito che necessita di cambiamento
-		nella tabella dei vecchi requisiti, e poi aggiornando il requisito stesso.
-
-		Tutto questo al fine unico di avere una tranciabilità del cambiamento dei requisiti visionabile a posteriori.
-		\subsection{Sviluppo}
-		\subsubsection{Codifica e convenzioni}
-		Di seguito sono riportate le norme che il gruppo andrà a seguire durante la stesura di codice, qualsiasi esso sia.
-		\subsubsection{\LaTeX}
-		Regole riguardanti \LaTeX :
-		\begin{itemize}
-			\item Ogni file deve iniziare con 3 righe di commento come quelle riportate in seguito:
-			%immagine
-			\begin{figure}[H]
-				\centering
-				\includegraphics[scale=0.4]{Immagini/"3commentsline".png}
-				\caption{\LaTeX \space - Commenti ad inizio file}
-			\end{figure}
-			\item Ogni file deve contenere nella prima parte tutti gli \verb|\usepackage{}| necessari
-			\item I commenti andranno inseriti in una riga vuota, eventualmente prima della riga di
-			codice a cui fanno riferimento
-			\item I commenti su più righe useranno il comando \\ \verb|\begin{comment} - \end{comment}|
-			\item Tra ogni \verb|\begin{PART}| e \verb|\end{PART}| tutto il testo e il codice andrà indentato:
-			%immagine
-			\begin{figure}[H]
-				\centering
-				\includegraphics[scale=0.4]{Immagini/"indent".png}
-				\caption{\LaTeX \space - Indentazione 1}
-			\end{figure}
-			\item Per quanto riguarda il comando personalizzato \verb|\newpage \section{}{}| o altre sezione \verb|\subsection{}|, \verb|\subsubsection{}|
-			verranno comunque indentate le parti innestate al loro interno come segue:
-			%immagine
-			\begin{figure}[H]
-				\centering
-				\includegraphics[scale=0.4]{Immagini/"indent2".png}
-				\caption{\LaTeX \space - Indentazione 2}
-			\end{figure}
-			\item Verrà utilizzato T1 come encoding del font: \\ \verb|\usepackage[T1]{fontenc}|
-			\item Verrà utilizzato utf8 come encoding dell'input: \\ \verb|\usepackage[utf8]{inputenc}|
-			\item Verrà utilizzato english, italian come parametro per babel: \\
-			\verb|\usepackage[english, italian]{babel}| in modo da usare inglese e italiano nello
-			stesso documento tenendo italiano come lingua principale
-			\item Prima di ogni immagine, verrà inserito un commento su una riga, come definito
-			sopra, per facilitarne l'individuazione:
-			%immagine
-			\begin{figure}[H]
-				\centering
-				\includegraphics[scale=0.4]{Immagini/"immagini".png}
-				\caption{\LaTeX \space - Commento prima di ogni immagine}
-			\end{figure}
-			\item A fine documento, come commento su più righe, andrà inserita la documentazione e la descrizione (anche breve) del file
-		\end{itemize}
-		
-		\subsubsection{\emph{Scala}}
-		Tutte le regole di indentazione, assegnazione dei nomi, scrittura delle parentesi, nominazione file, e documentazione sono quelle
-		definite dalla documentazione ufficiale di \emph{Scala}: \url{http://docs.scala-lang.org/style/}
-
-	\newpage
-	\section{Processi di supporto}
-	
-		\subsection{Tecniche di analisi e classificazione requisiti}
+		 \end{table} 
+		 
+		 
+		\subsubsection{Tecniche di analisi e classificazione requisiti}
 			Sempre compito degli \emph{Analisti}, sarà quello di stilare l'\emph{Analisi dei requisiti}. Essi potranno ricavarli
 			da eventuali Casi d'uso\ped{\emph{G}} emersi da Brainstorming o riunioni con il committente.
 	
@@ -329,9 +269,9 @@
 			\textbf{Codice} \\ \\ Un codice univoco ed espresso in modo gerarchico;\\ \\
 			\textbf{Importanza} \\ \\Può assumere i seguenti valori:
 			\begin{itemize}
-				\item \textbf{N:} Necessary (obbligatorio);
-				\item \textbf{D:} Desiderable (desiderabile, a valore aggiunto);
-				\item \textbf{O:} Optional (opzionale).
+				\item \textbf{N:} Necessario;
+				\item \textbf{D:} Desiderabile;
+				\item \textbf{O:} Opzionale.
 			\end{itemize}
 			\textbf{Tipo} \\ \\Può assumere i seguenti valori:
 			\begin{itemize}
@@ -352,6 +292,176 @@
 				\end{tabularx}
 			\end{table}
 			
+
+		\subsubsection{Gestione dei requisiti}
+        Per automatizzare il più possibile la gestione dei requisiti ed il relativo tracciamento il gruppo ha sviluppato una piattaforma accessibile via web denominata \emph{SPitFire}.
+        \begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{spitfire.png}
+				\caption{Pagina principale di SPitFire}
+			\end{figure}
+        \emph{SPitFire} si basa sul salvataggio dei dati in un database mySQL e permette di svolgere le seguenti operazioni sui requisiti:
+        \begin{itemize}
+        	\item Inserire un requisito tramite interfaccia web
+        	\item Visualizzare i requisiti presenti, navigando dai requisiti di livello superiore a quelli di livello inferiore
+        	\item Segnare il completamento di un requisito
+        	\item Importare i requisiti da una tabella .tex
+        	\item Esportare i requisiti in una tabella .tex
+        \end{itemize}
+        \begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{spitfire-opzioni-requisiti.png}
+				\caption{Opzioni di gestione dei requisiti offerte da \emph{SPitFire}}
+			\end{figure}
+			In particolare l'esportazione da database a file .tex e l'importazione da file .tex a database permettono di ridurre notevolmente il carico di lavoro degli analisti per quanto riguarda la semplice stesura della documentazione. Le tabelle dei requisiti presenti nel documento di \emph{Analisi dei requisiti} sono infatti generate in automatico.
+        
+        
+        \subsubsection{Tracciamento dei requisiti}
+            Il tracciamento dei requisiti è anch'esso automatizzato grazie alla piattaforma \emph{SPitFire}. 
+            \\ \\
+            Il tool individua automaticamente le dipendenze di tipo padre-figlio e genera in tal modo un albero dei requisiti navigabile semplicemente. Sono stati definiti dei trigger SQL per cui non risulta possibile segnare come completato un requisito che presenta requisiti figli incompleti. Inoltre il completamento di tutti i requisiti figli rende automatico il completamento del padre.
+            \\ \\
+            Il tracciamento tra fonti e requisiti è automatico: \emph{SPitFire} permette di generare le tabelle di tracciamento in formato .tex basandosi sui dati presenti nel database.
+            \begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{spitfire-tracciamento.png}
+				\caption{Tabelle di tracciamento generate da  \emph{SPitFire}}
+			\end{figure}
+		\subsubsection{Gestione cambiamento requisiti}
+		Per quanto riguarda il cambiamento dei requisiti, nel Database verrà tenuta una tabella di backup dei "vecchi" requisiti,
+		nella loro forma di dichiarazione, con un puntatore al "nuovo" requisito, che invece avrà le specifiche aggiornate. È compito del
+		\emph{Responsabile di progetto} mantenere aggiornata la tabella dei requisiti, copiando prima il requisito che necessita di cambiamento
+		nella tabella dei vecchi requisiti, e poi aggiornando il requisito stesso.
+		\\ \\
+		Inoltre \emph{SPitFire } individua automaticamente eventuali incongruenze tra i file \LaTeX presenti e le informazioni contenute nel database, in tal modo è semplice tenere traccia dei requisiti non aggiornati.
+
+		
+		\subsubsection{Progettazione architetturale}
+		La progettazione architetturale prevede la definizione delle componenti architetturali. La descrizione di ogni  componente package deve avvenire sia in forma testuale, che in forma di diagrammi UML. La descrizione di classi e interfacce può invece avvenire semplicemente a livello testuale.  \\
+		Nello specifico i diagrammi UML che il gruppo dovrà utilizzare in fase di progettazione sono i seguenti:
+		\begin{itemize}
+			\item Diagrammi dei package
+			\item Diagrammi delle classi
+			\item Diagrammi di attività
+			\item Diagrammi di sequenza
+		\end{itemize}
+		
+		\subsubsection{Definizione testuale delle componenti architetturali}
+		Per garantire uniformità nel documento di \emph{Specifica Tecnica}, i membri del gruppo dovranno rispettare una struttura definita per quanto riguarda la descrizione testuale di componenti architetturali, siano esse Package,  classi o interfacce. 
+		\paragraph{Componente package} 
+		La descrizione deve essere composta da al più i seguenti elementi:
+		\begin{itemize}
+			\item Descrizione
+			\item Package figli
+			\item Classi
+			\item Interfacce
+			\item Relazioni con altre componenti
+		\end{itemize}
+		
+		\paragraph{Componente classe/interfaccia} 
+		La descrizione deve essere composta da al più i seguenti elementi:
+		\begin{itemize}
+			\item Descrizione
+			\item Utilizzo
+			\item Classi estese
+			\item Interfacce implementate
+			\item Classi figlie
+			\item Relazioni con altre classi
+		\end{itemize}
+		
+		\subsubsection{Diagrammi delle componenti architetturali}
+		In linea con quanto definito per la stesura dei diagrammi dei casi d'uso, i diagrammi delle componenti dovranno essere realizzati utilizzando il software \emph{Astah Professional} alla versione 7.0 .
+		\paragraph{Diagrammi dei package} 
+		La distinzione tra package si basa principalmente sul colore, per tale motivo ogni qual volta si utilizzi una combinazione di colori differente, essa deve essere accompagnata da una legenda  descrittiva.
+		\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.5]{ST/Legenda.png}
+				\caption{Esempio di legenda per un diagramma dei package}
+			\end{figure}
+			In particolare è consigliato utilizzare colori diversi per distinguere:
+			\begin{itemize}
+				\item Componenti di livello diverso
+				\item Componenti interni da librerie esterne e framework
+			\end{itemize}
+			
+		\paragraph{Diagrammi delle classi}
+		Poiché i diagrammi delle classi raggiungono facilmente un elevato livello di complessità, i membri del gruppo devono assicurarsi di inserire nei documenti diagrammi che siano leggibili. Nel caso in cui un diagramma risultasse troppo dettagliato la sua immagine andrà inserita in repository ma non nel documento, in esso sarà necessario dividere il diagramma in più parti, ed inserire immagini distinte e leggibili per ognuna di esse.
+		
+		\paragraph{Diagrammi di attività e di sequenza}
+		Valgono le stesse norme di leggibilità definite per i diagrammi delle classi, inoltre ogni diagramma di attività o sequenza dovrà essere accompagnato da una descrizione testuale.
+		
+		\subsubsection{Design Pattern}
+		I membri del gruppo sono invitati ad utilizzare design pattern noti dove possibile in fase di progettazione. L'utilizzo di essi permetterà di avere un'architettura più comprensibile ed estendibile sia dal punto di vista del codice che dal punto di vista della documentazione che lo accompagna. \\ \\
+		Ogni volta che una parte dell'architettura del sistema si basa su un design pattern sarà necessario fornire una descrizione dello stesso in un'apposita sezione del documento di \emph{Specifica Tecnica}.		
+		
+				
+		
+		\subsubsection{Codifica in \LaTeX}
+		Regole riguardanti la stesura di codice \LaTeX :
+		\begin{itemize}
+			\item Ogni file deve iniziare con 3 righe di commento come quelle riportate in seguito:
+			%immagine
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=1]{Immagini/"3commentsline".png}
+				\caption{\LaTeX \space - Commenti ad inizio file}
+			\end{figure}
+			\item Ogni file deve contenere nella prima parte tutti gli \verb|\usepackage{}| necessari
+			\item I commenti andranno inseriti in una riga vuota, eventualmente prima della riga di
+			codice a cui fanno riferimento
+			\item I commenti su più righe useranno il comando \\ \verb|\begin{comment} - \end{comment}|
+			\item Tra ogni \verb|\begin{PART}| e \verb|\end{PART}| tutto il testo e il codice andrà indentato:
+			%immagine
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.8]{Immagini/"indent".png}
+				\caption{\LaTeX \space - Indentazione 1}
+			\end{figure}
+			\item Per quanto riguarda il comando personalizzato \verb|\newpage \section{}{}| o altre sezione \verb|\subsection{}|, \verb|\subsubsection{}|
+			verranno comunque indentate le parti innestate al loro interno come segue:
+			%immagine
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.8]{Immagini/"indent2".png}
+				\caption{\LaTeX \space - Indentazione 2}
+			\end{figure}
+			\item Verrà utilizzato T1 come encoding del font: \\ \verb|\usepackage[T1]{fontenc}|
+			\item Verrà utilizzato utf8 come encoding dell'input: \\ \verb|\usepackage[utf8]{inputenc}|
+			\item Verrà utilizzato english, italian come parametro per babel: \\
+			\verb|\usepackage[english, italian]{babel}| in modo da usare inglese e italiano nello
+			stesso documento tenendo italiano come lingua principale
+			\item Prima di ogni immagine, verrà inserito un commento su una riga, come definito
+			sopra, per facilitarne l'individuazione:
+			%immagine
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.8]{Immagini/"immagini".png}
+				\caption{\LaTeX \space - Commento prima di ogni immagine}
+			\end{figure}
+			\item A fine documento, come commento su più righe, andrà inserita la documentazione e la descrizione (anche breve) del file
+		\end{itemize}
+		
+		
+		\subsubsection{Codifica in \emph{Scala}}
+		Tutte le regole di indentazione, assegnazione dei nomi, scrittura delle parentesi, nomina file, e documentazione sono quelle
+		definite dalla documentazione ufficiale di \emph{Scala}: \url{http://docs.scala-lang.org/style/}
+		\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.5]{scala-style.png}
+				\caption{Scala Style Guide}
+			\end{figure}
+			
+		\subsubsection{Integrazione del software}
+		Per l'integrazione continua delle componenti del sistema ed il relativo testing il gruppo ha deciso di utilizzare \emph{Travis CI}. Sarà compito dei \emph{progettisti} definire il sistema di build.
+		\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.5]{travis.png}
+				\caption{Logo di Travis CI}
+			\end{figure}
+
+	\newpage
+	\section{Processi di supporto}
+	
 		\subsection{Documentazione}
 		In questo capitolo si descrivono le convenzioni definite e adottate dal gruppo riguardanti le
 		modalità di redazione, verifica e approvazione dei documenti.
@@ -708,23 +818,23 @@
 		\item Documenti;
 		\item LaTeX;
 	\end{itemize}
-	\textbf{Documenti} \\
-	Nella cartella \verb|ActorbaseDoc/Documenti/| verranno inseriti tutti i PDF generati dal comando \verb|pdflatex nome-documento.tex|. Non
+	\textbf{Documenti} \\ \\
+	Nella cartella \verb|ActorbaseDoc/Documenti/| verranno inseriti tutti i PDF generati dal comando \\ \verb|pdflatex nome-documento.tex|. Non
 	saranno presenti altri file in questa cartella. I documenti saranno divisi in \emph{Interni} ed \emph{Esterni} per questo saranno create 
     delle sottocartelle: \verb|ActorbaseDoc/Documenti/Interni| e \verb|ActorbaseDoc/Documenti/Esterni|.
-	\newline
-    \textbf{LaTeX} \\
+	\\ \\
+    \textbf{LaTeX} \\ \\
 	Nella cartella \verb|ActorbaseDoc/LaTeX/| saranno presenti tutti i file \verb|*.tex| pronti per la compilazione. In questa cartella verrà inserita
 	anche una cartella\\ \verb|ActorbaseDoc/LaTeX/Immagini/| contenente tutte le immagini necessarie alla compilazione dei file.
 	Inoltre verrà aggiunta una cartella \verb|Actorbase/LaTeX/Templates/| contenente i template per la stesura di documenti e per il
 	disegno appropriato di tabelle. 
     Per le tabelle su più pagine, si terranno dei file separati dal file principale in cui sono incluse. Per questo è stata creata la tabella 
     \verb|ActorbaseDoc/LaTeX/Tabelle|.
-    \newline
-	\textbf{Progetto} \\
+    \\ \\
+	\textbf{Progetto} \\ \\
     Per il progetto in sé, è stata creata una repository a parte \verb|Actorbase| in modo da semplificare l'integrazione continua con \emph{Travis}.
-	\newline
-    \textbf{Normative per i commit} \\
+	\\ \\
+    \textbf{Normative per i commit} \\ \\
 		Si è deciso di dare a tutti i membri del gruppo la possibilità di effettuare commit sul master-branch del repository
 		senza dover attendere l'approvazione di un account centrale. Tale scelta impone però la definizione di alcune norme
 		di commit da rispettare:
@@ -741,18 +851,26 @@
 	\subsubsection{Ruoli}
 		Per quanto riguarda i ruoli, il gruppo utilizzerà quelli definiti nelle slide 7-11 disponibili all'indirizzo:
 		\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/L04.pdf}. È stato deciso, unanimemente, che le rotazioni dei ruoli principali
-		come \emph{Amministratore} e \emph{Responsabile di progetto} avverrano ogni 2 settimane. Come stabilito, una persona può ricoprire
+		come \emph{Amministratore} e \emph{Responsabile di progetto} avverranno ogni 2 settimane. Come stabilito, una persona può ricoprire
 		contemporaneamente più ruoli, la rotazione di altri ruoli come \emph{Analista}, \emph{Progettista} e \emph{Programmatore} potrà avvenire
 		meno frequentemente, in quanto potrebbe risultare dannoso dover abbandonare un'attività di analisi o di programmazione prima della sua
 		conclusione.
-
+\\ \\
 		Il gruppo stabilisce la rotazione dei ruoli in base alle attività, ai task, e alla disponibilità fornita da ogni membro.
-
+\\ \\
 		È possibile ottenere in qualsiasi momento una panoramica dei ruoli assegnati tramite l'apposita sezione del
-		progetto creato su \emph{Teamwork}, all'indirizzo\\ \url{https://actorbase.teamwork.com/projects/188894/projectroles}.
+		progetto creato su \emph{Teamwork}, all'indirizzo\\ \url{https://actorbase.teamwork.com/projects/188894/projectroles}. 
+		%immagine
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.5]{ruoli.png}
+		\caption{Accesso alla sezione ruoli da Teamwork}
+	\end{figure}
+		Grazie a \emph{SPitFire} è inoltre possibile importare i ruoli definiti in \emph{Teamwork} in un progetto \emph{ProjectLibre} grazie ad un parser che automatizza tale operazione.
 	\subsubsection{Comunicazioni}
 	Le comunicazioni possono avvenire tra membri del gruppo (interne), o tra il gruppo e terzi (esterne). Gli
 	strumenti utilizzati differiscono a seconda della tipologia della comunicazione.
+	\\ \\
 	\textbf{Interne}
 	\begin{itemize}
 		\item \textbf{Chat:} Per le comunicazioni interne il gruppo ha deciso di adottare una chat di messaggistica
@@ -771,6 +889,7 @@
 		già tutti i membri del gruppo.
 	\end{itemize}
 	\textbf{Esterne}
+	\\ \\
 	Per tutte le comunicazioni esterne va utilizzata la mail ufficiale del gruppo: \href{mailto:sweeneythreads@gmail.com}{sweeneythreads@gmail.com}.
 	 \\ La gestione di tale indirizzo email spetta al \emph{Responsabile} che dunque risulta essere l'unico componente del gruppo a poter comunicare
 	con il committente i maniera ufficiale. Il \emph{Responsabile} ha il compito di informare gli altri membri del gruppo sulle
@@ -791,15 +910,18 @@
 		\item \textbf{Allegati:} L'aggiunta di allegati al messaggio è consentita con l'unico vincolo di inviare file che possiedono un nome
 		esplicativo o di specificare il contenuto dell'allegato nel corpo se il nome del file potrebbe essere poco comprensibile.
 	\end{itemize}
+	Inoltre il gruppo ha creato una pagina web di presentazione all'indirizzo \url{sweeneythreads.github.io}. Tale pagina, oltre a permettere un rapido accesso alla piattaforma di amministrazione \emph{SPitFire}, contiene diverse informazioni relative al gruppo e allo svolgimento del progetto: consegne effettuate, news, \dots
+	\\ \\
+	L'aggiornamento della pagina è compito del \emph{Responsabile}.
 	\subsubsection{Riunioni}
-		\textbf{Ufficiali} \\
-		Le riunioni sono divise in due: con o senza presenza del committente. Il gruppo si impegna a tenere almeno una riunione
+		\textbf{Ufficiali} \\ \\
+		Le riunioni possono essere due tipi: con la presenza del committente o senza la presenza del committente. Il gruppo si impegna a tenere almeno una riunione
 		ufficiale senza presenza del committente ogni due settimane. Le riunioni hanno una durata minima di due ore, che potrà
 		essere prolungata a piacere, in questo caso, nel verbale di riunione dovrà comparire di quanto si è superato il tempo
 		previsto durante la riunione, e il motivo del prolungamento. Queste modifiche sono a carico del \emph{Responsabile di progetto}.
 		I verbali prodotto andranno inseriti nella \emph{Repository} \verb|Actorbase/Documenti/Verbali|, che verrà suddivisa in due
 		sottocartelle per i verbali interni e quelli esterni.
-
+\\ \\
 		Le riunioni con presenza del committente, andranno concordate secondo le norme di comunicazioni esterne con quest'ultimo
 		e comunicate tramite i mezzi di comunicazione interni a tutti i membri del gruppo, ognuno dei quali è fortemente tenuto ad
 		essere presente. Potranno verificarsi casi in cui non tutti i membri del gruppo potranno presentarsi alle riunioni con
@@ -807,7 +929,8 @@
 		I quali sono tenuti a riferire quanto emerso dalle riunioni a tutti i restanti membri assenti. Nelle riunioni con il
 		committente può verificarsi un cambiamento riguardante ad un requisito, in questo caso il cambiamento va inserito nel
 		verbale, che deve essere messo a disposizione del committente nella cartella \verb|Actorbase/Documenti/Verbali/Esterni|.
-		\textbf{Non ufficiali} \\
+		\\ \\
+		\textbf{Non ufficiali} \\ \\
 		Le riunioni non ufficiali sono da considerarsi riunioni tra pochi membri del gruppo, ad esempio tra i due realizzatori di questo
 		stesso documento, o incontri occasionali avvenuti senza comunicazioni nei canali ufficiali. Queste riunioni non necessitano di
 		una stesura di un verbale; se da queste riunioni emergesse un grave errore, o una comunicazione importante, i membri presenti
