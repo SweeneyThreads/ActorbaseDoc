@@ -73,7 +73,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.1
+			Versione 2.0.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm]
@@ -682,6 +682,58 @@
 		Ogni documento prodotto può attraversare più volte ogni fase del suo ciclo di vita, allo stesso modo può non
 		attraversarle tutte. Quando si inizia una revisione formale su un documento già approvato questo ricomincia il
 		ciclo da capo con un numero di versione incrementato.
+		
+			\subsection{Meccanismi di controllo e rendicontazione}
+		
+			\subsubsection{Meccanismi di controllo}
+				All'interno dell'ambiente di lavoro sono stati predisposti meccanismi per:
+				\begin{itemize}
+					\item Controllare l'andamento delle attività ed eventuali ritardi;
+					\item Permettere un aggiornamento facilitato della pianificazione;
+					\item Rendicontare le ore di lavoro spese nelle varie attività.
+				\end{itemize}
+				
+			\subsubsection{Andamento delle attività}
+				Per monitorare i ritardi sulle attività e acquisire maggiore esperienza per stime future si adotta la 
+				funzione timer di Teamwork. Ogni componente del gruppo è invitato a tenere attivo il timer durante 
+				tutto lo svolgimento delle attività a lui assegnate. In questo modo si può avere una misurazione del 
+				tempo effettivo impiegato da ogni membro per svolgere le attività, che può poi essere confrontata con 
+				la stima fatta a priori.
+				%image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.4]{PdP/teamworkTimer}
+					\caption{Timer da attivare durante il lavoro svolto.}
+				\end{figure}
+				Inoltre per ogni attività è predisposta anche una \emph{due to date}, ovvero la data entro la quale la task deve 
+				essere soddisfatta. Teamwork segnala ogni attività nel riepilogo non completata entro la data di fine con 
+				una scritta rossa che riporta il ritardo. È facile per il responsabile individuare a colpo d'occhio le 
+				task in ritardo e provvedere a comunicare con il/i componenti del gruppo a cui essa è assegnata per capire 
+				le motivazioni del ritardo ed eventualmente rivedere le stime future.
+				%image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.4]{PdP/teamworkTaskinRitardo}
+					\caption{Visualizzazione data di scadenza di un task.}
+				\end{figure}
+				Se necessario è possibile impostare notifiche automatiche in prossimità o al superare di una scadenza.
+				Il sistema di ticketing adottato fornisce un calendario in cui vengono indicate le date stimate di inizio e fine
+				di ogni attività.\\
+				Ogni membro del gruppo può consultarlo liberamente per pianificare il proprio lavoro in base agli altri
+				impegni privati.
+				
+			\subsubsection{Controllo metriche di progetto}
+				L'introduzione delle metriche nel progetto fornisce una maniera il più possibile oggettiva e sistematica per
+				misurare le performance del gruppo. Dal punto di vista del controllo del progetto le metriche impiegate sono:
+				\begin{itemize}
+					\item Budget Variance
+					\item Schedule Variance
+				\end{itemize}
+				Questi indicatori permetto al team di:
+				\begin{itemize}
+					\item Identificare i problemi di costo/schedulazione prima che diventino criticità;
+					\item Aiutare il team a focalizzarsi sul completamento delle proprie attività.
+				\end{itemize}
 		%DA INSERIRE APPENA AVVIATO IL PDQ!
 		% IMPORTANTE RICORDARSI
 		%\subsection{Accertamento qualità}
