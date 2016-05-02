@@ -57,16 +57,13 @@
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
 				Nicoletti Luca\\
-				Padovan Tommaso \\
 			\end{flushleft}
 		\end{minipage}
 		~
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-                Maino Elia \\
 				\emph{Verifica:} \\
-                Padovan Tommaso
 			\end{flushright}
 		\end{minipage}
 		
@@ -76,7 +73,7 @@
 			\includegraphics[scale=0.8]{../sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.0
+			Versione 2.0.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -325,6 +322,7 @@
 					le tecnologie adottate, in tempo utile per permettere all'intero gruppo di documentarsi 
 					in maniera autonoma.
 			\subsubsection{Malfunzionamento degli strumenti utilizzati}
+			\label{MalfunzionamentoStrumenti}
 				\textbf{Probabilità:} Bassa.
 				\\ 
 				\textbf{Gravità:} Bassa.
@@ -353,6 +351,7 @@
 					dal capitolato d'appalto. Inoltre, il gruppo si sta già formando all'utilizzo delle
 					altre tecnologie previste per il corretto svolgimento di ogni fase.
 			\subsubsection{Variazione disponibilità}
+			\label{VariazioneDisponibilita}
 				\textbf{Probabilità:} Media.
 				\\ 
 				\textbf{Gravità:} Medio-alta.
@@ -388,6 +387,7 @@
 					La differenza di opinioni in forte contrasto tra due individui verrà esposta al resto del 
 					gruppo che deciderà, per maggioranza, la strada da intraprendere.
 		\subsection{Livello organizzativo}
+		\label{LivelloOrganizzativo}
 			\textbf{Probabilità:} Media.
 			\\ 
 			\textbf{Gravità:} Alta.
@@ -406,15 +406,12 @@
 				Inoltre il preventivo fornito è maggiorato (se pur non di molto)rispetto a quello calcolato, 
 				il che permette di avere delle ore bonus a disposizione in caso di ritardo.
 		\subsection{Livello dei requisiti}
-			\textbf{Probabilità:} Media.
-			\\ 
-			\textbf{Gravità:} Media.
-			\\ 
+			\textbf{Probabilità:} Media.\\ 
+			\textbf{Gravità:} Media.\\ 
 			\textbf{Descrizione:} Durante lo studio del capitolato e la stesura dei requisiti, è possibile che essi non vengano 
 				capiti totalmente dagli analisti. È anche possibile che alcuni aspetti vengano studiati in modo 
 				incompleto o peggio ancora in modo errato. Questo porterebbe a differenze tra le aspettative del 
-				committente e la visione del prodotto del gruppo di lavoro.
-			\\ 
+				committente e la visione del prodotto del gruppo di lavoro.\\ 
 			\textbf{Contromisure:} Per evitare che questo rischio si verifichi, durante le fasi di analisi si terranno più incontri 
 				con il committente, in modo da chiarire incertezze su requisiti, o correggere errate interpretazioni 
 				dei requisiti espressi. Inoltre, ogni documento verrà consegnato e valutato dal committente, ad ogni 
@@ -435,7 +432,9 @@
 				del gruppo.
 		\subsection{Attualizzazione dei rischi}
 			Questa sezione, tenuta per ultima perché incrementale, conterrà, per ogni fase, un'analisi dei rischi che maggiormente potranno
-			avere luogo durante tale fase.
+			avere luogo durante tale fase. Inoltre, ove opportuno, verranno inseriti ulteriori rischi riscontrati durante una qualche fase e 
+			non previsti in primo luogo. In caso un rischio previsto non si manifesti in alcuna fase, verrà presa in considerazione la sua rimozione.
+			
 			\subsubsection{Approccio al capitolato}
 				In questa fase, essendo la prima, la maggior parte dei rischi ha la maggiore possibilità di occorrenza. Questo è 
 				dovuto al fatto che per l'intero gruppo, è la prima esperienza in un lavoro di questo tipo. I rischi che maggiormente 
@@ -462,17 +461,32 @@
 				Questa fase è di breve durata, in quanto presenta solamente un esame più dettagliato del capitolato volto ad ottenere maggiori requisiti 
 				e a raffinare quelli già presenti.
 				In questa fase il rischio maggiormente presentabile è quello di valutazione dei requisiti per il quale verranno applicate le stesse 
-				operazioni di mitigazione svolte nella fase precedente. 
+				operazioni di mitigazione svolte nella fase precedente. Durante questa fase, il rischio di problemi tra componenti perde possibilità di 
+				occorrenza, in quanto il gruppo ha iniziato a conoscersi, e al momento non sono nati problemi di alcun tipo. 
 				
 			\subsubsection{Sviluppo}
 				Questa fase presenta svariati rischi: pur avendo superato quelli di valutazione di costi e tempi, resta quello di valutazione dei 
 				requisiti. Infatti, anche se in questa fase si progetta il prodotto che dovrà essere realizzato, alcuni requisiti saranno ancora 
 				raffinati, e altri (come quelli opzionali) verranno aggiunti.
 				
-				Oltre al rischio di valutazione dei requisiti, in questa fase si presentano fortemente i rischi relativi all'utilizzo di tecnologie 
-				non conosciute in maniera ottimale dal gruppo. Infatti, anche durante la fase di progettazione, il gruppo andrà ad utilizzare un 
-				linguaggio: \emph{UML}, che non è perfettamente conosciuto. In questa fase, si inizierà anche lo sviluppo vero e proprio del prodotto, che 
-				comporta l'utilizzo del linguaggio \emph{Scala}, anch'esso non conosciuto sufficientemente.
+				Il rischio a livello dei requisiti scompare dopo la terminazione di questa fase, in quanto i requisiti sono ormai completi e non 
+				presentano possibili variazioni future in quanto anche la progettazione ad alto livello del prodotto è stata definita.
+				In questa fase si presentano fortemente i rischi relativi all'utilizzo di tecnologie non conosciute in maniera ottimale dal gruppo. 
+				Infatti, anche durante la fase di progettazione, il gruppo andrà ad utilizzare un linguaggio: \emph{UML}, che non è perfettamente 
+				conosciuto. In questa fase, si inizierà anche lo sviluppo vero e proprio del prodotto, che comporta l'utilizzo del linguaggio 
+				\emph{Scala}, anch'esso non conosciuto sufficientemente.
+				
+				Durante lo svolgimento di questa fase il gruppo ha assistito al verificarsi del rischio 
+				\hyperref[MalfunzionamentoStrumenti]{Sezione 2.1.2 Malfunzionamento degli strumenti utilizzati}. 
+				In precedenza, durante la progettazione e la stesura delle \emph{Norme di progetto v1.0.0}, era stato scelto \emph{StarUML} come 
+				software di disegno per i diagrammi delle classi, dei package, di sequenza e di attività. Questo strumento si è rilevato  carente sotto 
+				più aspetti ed il gruppo si è trovato costretto a cambiarlo.
+				È stato scelto \emph{Astah Professional}, ma questo ha portato ad un aumento delle ore di investimento, in quanto ogni membro del gruppo 
+				ha dovuto leggersi della documentazione e apprendere come utilizzare il nuovo strumento di sviluppo selezionato.
+				
+				In questa fase inoltre si è presentato il rischio a \hyperref[LivelloOrganizzativo]{Livello organizzativo (2.3)} in quanto le ore effettivamente 
+				svolte dai membri del gruppo non hanno rispettato alla perfezione quelle previste nel \emph{Piano di progetto v1.0.0} come è possibile vedere 
+				nella \hyperref[Consuntivo]{Sezione 6 - Consuntivo}. Viene rilasciata a quest'ultima la spiegazione del motivo della variazione incontrata.
 				
 			\subsubsection{Aggiunte e ulteriore sviluppo}
                 Questa fase presente pochi rischi, ma ad alto impatto negativo. In questa fase si procederà allo sviluppo vero e proprio, quindi la conoscenza 
@@ -480,6 +494,11 @@
                 questo linguaggio non è sufficiente. Sarà necessario infatti effettuare svariate prove, provando il maggior numero possibile di costrutti del 
                 linguaggio per prenderne conoscenza e famigliarità. In questa fase i requisiti sono stati confermati, ma la scelta di andare ad implementarne 
                 alcuni tra quelli opzionali o desiderabili potrebbe comportare dei ritardi non desiderabili.
+				
+				Durante questa fase il rischio \hyperref[VariazioneDisponibilita]{Variazione disponibilità (2.2.2)} ha un alta possibilità di occorrenza in quanto 
+				più membri del gruppo sono stati abilitati ad avviare lo stage e potrebbero non essere più presenti alle riunioni o non poter fornire copertuta 
+				totale per le ore dichiarate in fase di progettazione. Per evitare il verificarsi di questo rischio, il gruppo si impegna a fissare le riunioni 
+				con largo anticipo, o spostare quelle già fissate in un momento in cui il maggior numero possibile di componenti offre disponibilità. 
                 
 %			\subsubsection{Conclusione}
 				
@@ -548,25 +567,50 @@
 				presentazione. Permette al gruppo di partecipare alla gara d'appalto per il capitolato scelto.
 			\end{itemize}
 			In questa macro-attività i ruoli principalmente coinvolti sono: \emph{Responsabile}, \emph{Amministratore} e \emph{Analista}.
-			\subsubsection{Gantt attività}
+			\subsubsection{Diagramma di Gantt}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.4]{gantt_approccio}
-					\caption{Gantt attività - fase di approccio al capitolato.}
+					\includegraphics[width=\textwidth]{gantt_approccio}
+					\caption{Diagramma di Gantt - fase di approccio al capitolato.}
 				\end{figure}
 			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.5]{wbs_approccio}
-					\caption{Work Breakdown Structure - fase di approccio al capitolato.}
+					\includegraphics[width=\textwidth]{wbs/wbs_approccio_1}
+					\caption{Work Breakdown Structure - fase di approccio al capitolato - norme di progetto. }
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_approccio_2}
+					\caption{Work Breakdown Structure - fase di approccio al capitolato - studio di fattibilità.}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_approccio_3}
+					\caption{Work Breakdown Structure - fase di approccio al capitolato - amalisi dei requisiti}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_approccio_4}
+					\caption{Work Breakdown Structure - fase di approccio al capitolato - piano di progetto.}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_approccio_5}
+					\caption{Work Breakdown Structure - fase di approccio al capitolato - glossario}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_approccio_6}
+					\caption{Work Breakdown Structure - fase di approccio al capitolato - piano di qualifica}
 				\end{figure}
 			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.6]{ro_approccio}
+					\includegraphics[width=\textwidth]{ro_approccio}
 					\caption{Ripartizione ore - fase di approccio al capitolato.}
 				\end{figure}
 
@@ -577,25 +621,45 @@
 			quelli presenti in sotto-requisiti più specifici, viene aggiornato il documento di \emph{Analisi dei requisiti}.
 			Le macro-attività sono le stesse della fase di \emph{Scelta ed approccio al capitolato}, escluso lo \emph{Studio di fattibilità}. 
 			In questa fase i ruoli maggiormente coinvolti sono: \emph{Responsabile}, \emph{Amministratore} e \emph{Analista}.
-			\subsubsection{Gantt attività}
+			\subsubsection{Diagramma di Gantt}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.5]{gantt_dettaglio}
-					\caption{Gantt attività - fase di Analisi di dettaglio.}
+					\includegraphics[width=\textwidth]{gantt_dettaglio}
+					\caption{Diagramma di Gantt - fase di Analisi di dettaglio.}
 				\end{figure}
 			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.5]{wbs_dettaglio}
-					\caption{Work Breakdown Structure - fase di Analisi di dettaglio.}
+					\includegraphics[width=\textwidth]{wbs/wbs_dettaglio_1}
+					\caption{Work Breakdown Structure - fase di Analisi di dettaglio - glossario}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_dettaglio_2}
+					\caption{Work Breakdown Structure - fase di Analisi di dettaglio - norme di progetto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_dettaglio_3}
+					\caption{Work Breakdown Structure - fase di Analisi di dettaglio - piano di progetto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_dettaglio_4}
+					\caption{Work Breakdown Structure - fase di Analisi di dettaglio - analisi dei requisiti}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_dettaglio_5}
+					\caption{Work Breakdown Structure - fase di Analisi di dettaglio - piano di qualifica}
 				\end{figure}
 			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.6]{ro_dettaglio}
+					\includegraphics[width=\textwidth]{ro_dettaglio}
 					\caption{Ripartizione ore - fase di esame dettagliato.}
 				\end{figure}
 				
@@ -616,25 +680,45 @@
 			In questo periodo i ruoli principalmente coinvolti sono: \emph{Responsabile}, \emph{Amministratore},
 			\emph{Progettista}, \emph{Verificatore} e  \emph{Analista}.
 
-			\subsubsection{Gantt attività}
+			\subsubsection{Diagramma di Gantt}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.4]{gantt_sviluppo}
-					\caption{Gantt attività - fase di sviluppo.}
+					\includegraphics[width=\textwidth]{gantt_sviluppo}
+					\caption{Diagramma di Gantt - fase di sviluppo.}
 				\end{figure}
 			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.3]{wbs_sviluppo}
-					\caption{Work Breakdown Structure - fase di sviluppo.}
+					\includegraphics[width=\textwidth]{wbs/wbs_sviluppo_1}
+					\caption{Work Breakdown Structure - fase di sviluppo - glossario}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_sviluppo_2}
+					\caption{Work Breakdown Structure - fase di sviluppo - analisi dei requisiti}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_sviluppo_3}
+					\caption{Work Breakdown Structure - fase di sviluppo - piano di qualifica}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_sviluppo_4}
+					\caption{Work Breakdown Structure - fase di sviluppo - piano di progetto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_sviluppo_5}
+					\caption{Work Breakdown Structure - fase di sviluppo - specifica tecnica}
 				\end{figure}
 			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.6]{ro_sviluppo}
+					\includegraphics[width=\textwidth]{ro_sviluppo}
 					\caption{Ripartizione ore - fase di sviluppo.}
 				\end{figure}
 				
@@ -659,25 +743,71 @@
 			In questa fase i ruoli principalmente coinvolti sono: \emph{Responsabile}, \emph{Amministratore},
 			\emph{Progettista} e \emph{Verificatore}.
 
-			\subsubsection{Gantt attività}
+			\subsubsection{Diagramma di Gantt}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.4]{gantt_incremento}
-					\caption{Gantt attività - fase di Incremento.}
+					\includegraphics[width=\textwidth]{gantt_incremento}
+					\caption{Diagramma di Gantt - fase di Incremento.}
 				\end{figure}
 			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.3]{wbs_incremento}
-					\caption{Work Breakdown Structure - fase di Incremento.}
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_1}
+					\caption{Work Breakdown Structure - fase di Incremento - analisi dei requisiti}
 				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_2}
+					\caption{Work Breakdown Structure - fase di Incremento - glossario}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_3}
+					\caption{Work Breakdown Structure - fase di Incremento - norme di progetto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_4}
+					\caption{Work Breakdown Structure - fase di Incremento - piano di progetto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_5}
+					\caption{Work Breakdown Structure - fase di Incremento - piano di qualifica}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_6}
+					\caption{Work Breakdown Structure - fase di Incremento - resoconto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_7}
+					\caption{Work Breakdown Structure - fase di Incremento - specifica tecnica}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_8}
+					\caption{Work Breakdown Structure - fase di Incremento - sviluppo}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_9}
+					\caption{Work Breakdown Structure - fase di Incremento - definizione di prodotto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_incremento_10}
+					\caption{Work Breakdown Structure - fase di Incremento - manuale utente}
+				\end{figure}
+				
 			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.6]{ro_incremento}
+					\includegraphics[width=\textwidth]{ro_incremento}
 					\caption{Ripartizione ore - fase di Incremento.}
 				\end{figure}
 				
@@ -695,25 +825,60 @@
 				\item \textbf{Incremento e verifica:} tutti i documenti verranno aggiornati in base al risultato della 
 				\emph{Revisione di qualifica} e preparati per la \emph{Revisione di accettazione}.
 			\end{itemize}
-			\subsubsection{Gantt attività}
+			\subsubsection{Diagramma di Gantt}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.4]{gantt_conclusione}
-					\caption{Gantt attività - fase di Conclusione.}
+					\includegraphics[width=\textwidth]{gantt_conclusione}
+					\caption{Diagramma di Gantt - fase di Conclusione.}
 				\end{figure}
 			\subsubsection{WBS attività}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.5]{wbs_conclusione}
-					\caption{Work Breakdown Structure - fase di Conclusione.}
+					\includegraphics[width=\textwidth]{wbs/wbs_conclusione_1}
+					\caption{Work Breakdown Structure - fase di Conclusione - norme di progetto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_conclusione_2}
+					\caption{Work Breakdown Structure - fase di Conclusione - glossario}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_conclusione_3}
+					\caption{Work Breakdown Structure - fase di Conclusione - piano di qualifica}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_conclusione_4}
+					\caption{Work Breakdown Structure - fase di Conclusione - piano di progetto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_conclusione_5}
+					\caption{Work Breakdown Structure - fase di Conclusione - definizione di prodotto}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_conclusione_6}
+					\caption{Work Breakdown Structure - fase di Conclusione - manuali}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_conclusione_8}
+					\caption{Work Breakdown Structure - fase di Conclusione - specifica tecnica}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{wbs/wbs_conclusione_7}
+					\caption{Work Breakdown Structure - fase di Conclusione - validazione e collaudo}
 				\end{figure}
 			\subsubsection{Ripartizione ore}
 				%Image
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.6]{ro_conclusione}
+					\includegraphics[width=\textwidth]{ro_conclusione}
 					\caption{Ripartizione ore - fase di Conclusione.}
 				\end{figure}
 
@@ -899,17 +1064,18 @@
 			\subsubsection{Totale ore rendicontate}
 				Le ore espresse qui sotto, ovvero le ore che sono incluse nel calcolo del preventivo, sono minori rispetto a quelle 
 				totali, in quanto non sono messe a carico del committente le ore appartenenti al periodo di \emph{Scelta ed approccio al capitolato}: 
-				considerate come ore di investimento.
+				considerate come ore di investimento; inoltre, per evitare di superare il monte ore previsto, alcune ore sono state rimosse da quelle 
+				rendicontate e spostate tra quelle di investimento in quanto esse superavano il limite massimo imposto dal progetto didattico. 
 				\begin{table}[H]
 					\begin{tabularx}{\textwidth}{ r t t t t t t | >{\centering\arraybackslash}t } 
 						\rowcolor{orange!85}& \multicolumn{6}{c}{Ore per ruoli} &  \\
 						\rowcolor{orange!85}Nominativo & Re & Am & An & Pt & Ve & Pr & Totali\\ 
 						\noalign{\hrule height 1.5pt}
 						\multicolumn{1}{r|}{Biggeri Mattia} & 4 & 7 & & 37 & 10 & 41 & 99\\
-						\multicolumn{1}{r|}{Bonato Paolo} & 4 & 9 & 2 & 33 & 55 & 7 & 110\\ 
+						\multicolumn{1}{r|}{Bonato Paolo} & 4 & 9 & 2 & 28 & 55 & 7 & 105\\ 
 						\multicolumn{1}{r|}{Bortolazzo Matteo} & 7 & 7 & 4 & 47 & 9 & 28 & 102\\ 
 						\multicolumn{1}{r|}{Maino Elia} & 4 & 2 & & 26 & 58 & 14 & 104\\
-						\multicolumn{1}{r|}{Nicoletti Luca} & 2 & & & 50 & 26 & 30 & 108\\
+						\multicolumn{1}{r|}{Nicoletti Luca} & 2 & & & 50 & 23 & 30 & 105\\
 						\multicolumn{1}{r|}{Padovan Tommaso} & & 7 & 9 & 15 & 41 & 30 & 102\\
 						\multicolumn{1}{r|}{Tommasin Davide} & 4 & 6 & 5 & 38 & 37 & 8 & 98\\
 						\noalign{\hrule height 1.5pt}						
@@ -1198,63 +1364,8 @@
 				un monte ore non nullo per rimediare ai danni causati dal verificarsi del rischio.
 
 	\newpage 
-	\section{Meccanismi di controllo e rendicontazione}
-	
-		\subsection{Controllo}
-		
-			\subsubsection{Meccanismi di controllo}
-				All'interno dell'ambiente di lavoro sono stati predisposti meccanismi per:
-				\begin{itemize}
-					\item Controllare l'andamento delle attività ed eventuali ritardi;
-					\item Permettere un aggiornamento facilitato della pianificazione;
-					\item Rendicontare le ore di lavoro spese nelle varie attività.
-				\end{itemize}
-				
-			\subsubsection{Andamento delle attività}
-				Per monitorare i ritardi sulle attività e acquisire maggiore esperienza per stime future si adotta la 
-				funzione timer di Teamwork. Ogni componente del gruppo è invitato a tenere attivo il timer durante 
-				tutto lo svolgimento delle attività a lui assegnate. In questo modo si può avere una misurazione del 
-				tempo effettivo impiegato da ogni membro per svolgere le attività, che può poi essere confrontata con 
-				la stima fatta a priori.
-				%image
-				\begin{figure}[H]
-					\centering
-					\includegraphics[scale=0.4]{teamworkTimer}
-					\caption{Timer da attivare durante il lavoro svolto.}
-				\end{figure}
-				Inoltre per ogni attività è predisposta anche una \emph{due to date}, ovvero la data entro la quale la task deve 
-				essere soddisfatta. Teamwork segnala ogni attività nel riepilogo non completata entro la data di fine con 
-				una scritta rossa che riporta il ritardo. È facile per il responsabile individuare a colpo d'occhio le 
-				task in ritardo e provvedere a comunicare con il/i componenti del gruppo a cui essa è assegnata per capire 
-				le motivazioni del ritardo ed eventualmente rivedere le stime future.
-				%image
-				\begin{figure}[H]
-					\centering
-					\includegraphics[scale=0.4]{teamworkTaskinRitardo}
-					\caption{Visualizzazione data di scadenza di un task.}
-				\end{figure}
-				Se necessario è possibile impostare notifiche automatiche in prossimità o al superare di una scadenza.
-				Il sistema di ticketing adottato fornisce un calendario in cui vengono indicate le date stimate di inizio e fine
-				di ogni attività.\\
-				Ogni membro del gruppo può consultarlo liberamente per pianificare il proprio lavoro in base agli altri
-				impegni privati.
-				
-			\subsubsection{Controllo metriche di progetto}
-				L'introduzione delle metriche nel progetto fornisce una maniera il più possibile oggettiva e sistematica per
-				misurare le performance del gruppo. Dal punto di vista del controllo del progetto le metriche impiegate sono:
-				\begin{itemize}
-					\item Budget Variance
-					\item Schedule Variance
-				\end{itemize}
-				Questi indicatori permetto al team di:
-				\begin{itemize}
-					\item Identificare i problemi di costo/schedulazione prima che diventino criticità;
-					\item Aiutare il team a focalizzarsi sul completamento delle proprie attività.
-				\end{itemize}
-
-
-	\newpage 
 	\section{Consuntivo}
+	\label{Consuntivo}
 	
 		Questa sezione, lasciata per ultima perché incrementale, riporta il prospetto economico con i 
 		costi effettivamente sostenuti. Per ogni fase verrà calcolato un conguaglio, ovvero la differenza
@@ -1266,7 +1377,7 @@
 		\end{itemize}
 		
 		\subsection{Scelta ed approccio al capitolato}
-			Si riporta di seguito il consuntivo della fase di \emph{Scelta ed approccio al capitolato}. \\
+			Si riporta di seguito il consuntivo di periodo della fase di \emph{Scelta ed approccio al capitolato}. \\
 			La tabella sottostante riporta le differenze delle ore tra preventivo e consuntivo, divise per ruolo. 
 			Un segno positivo indica che sono state necessarie più ore del previsto, un segno negativo indica che sono 
 			state impiegate meno ore di quelle presenti nel preventivo.
@@ -1298,7 +1409,7 @@
 				di lavoro in questa fase non sono a carico del committente e vengono quindi omesse dal preventivo.
 				
 		\subsection{Analisi di dettaglio}
-			Si riporta di seguito, come per la fase precedente, il consuntivo riguardante la fase di \emph{Analisi di dettaglio}. \\
+			Si riporta di seguito, come per la fase precedente, il consuntivo di periodo riguardante la fase di \emph{Analisi di dettaglio}. \\
 			La tabella sottostante riporta le differenze delle ore tra preventivo e consuntivo, divise per ruolo.
 			Il significato di segni positivi e negativi è lo stesso che nella \hyperref[DCSceltaCapitolato]{Tabella 20}.
 			
@@ -1329,27 +1440,59 @@
 			
 		
 			\subsection{Progettazione e sviluppo}
-                Si riporta di seguito il consuntivo della fase di \emph{Progettazione e sviluppo}. \\
+                Si riporta di seguito il consuntivo di periodo della fase di \emph{Progettazione e sviluppo}. \\
                 La tabella sottostante riporta la differenza di ore tra preventivo e consuntivo, divise per ruolo. Il significato dei segni
                 positivi e negativi è lo stesso che nella \hyperref[DCSceltaCapitolato]{Tabella 20}.
                 \begin{table}[H]
-				\begin{tabularx}{\textwidth}{Y Y Y}
-					\noalign{\hrule height 1.5pt}
-					\rowcolor{orange!85}Ruolo & Ore & Costo \\
-					\noalign{\hrule height 1.5pt}
-					Responsabile & -\space 1 & -\space 30 \\
-					Amministratore & -\space 1 & -\space 20 \\
-					Analista & +\space 2 & +\space 50 \\
-					Progettista & +\space 3 & +\space 66 \\
-					Verificatore & -\space 3 & -\space 45 \\
-					Programmatore & +\space 2 & +\space 30 \\
-					\noalign{\hrule height 0.5pt}
-					\textbf{Totali} & +\space 2 & +\space 51 \\
-					\noalign{\hrule height 1.5pt}
-				\end{tabularx}
-				\caption{Differenza consuntivo/preventivo - fase di Progettazione e sviluppo. } 
-				\label{ConsuntivoSviluppo}
-			\end{table}
+					\begin{tabularx}{\textwidth}{Y Y Y}
+						\noalign{\hrule height 1.5pt}
+						\rowcolor{orange!85}Ruolo & Ore & Costo \\
+						\noalign{\hrule height 1.5pt}
+						Responsabile & -\space 1 & -\space 30 \\
+						Amministratore & -\space 1 & -\space 20 \\
+						Analista & +\space 2 & +\space 50 \\
+						Progettista & +\space 3 & +\space 66 \\
+						Verificatore & -\space 3 & -\space 45 \\
+						Programmatore & +\space 2 & +\space 30 \\
+						\noalign{\hrule height 0.5pt}
+						\textbf{Totali} & +\space 2 & +\space 51 \\
+						\noalign{\hrule height 1.5pt}
+					\end{tabularx}
+					\caption{Differenza consuntivo/preventivo - fase di Progettazione e sviluppo. } 
+					\label{ConsuntivoSviluppo}
+				\end{table}
+				
+				Di seguito vengono riportati due grafici che rappresentano la differenza in ore e in costi tra preventivo e consuntivo di periodo della 
+				fase di \emph{progettazione e sviluppo}.
+				%image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{diff_pr}
+					\caption{Grafico differenza ore e costi.}
+				\end{figure}
+				
+				\subsubsection{Preventivo a finire}
+					Nella seguente tabella viene riportato il preventivo a finire (costruito rivalutando il preventivo iniziale alla luce delle risultanze 
+					di consuntivo di periodo).
+					\begin{table}[H]
+						\begin{tabularx}{\textwidth}{Y Y Y Y Y}
+							\noalign{\hrule height 1.5pt}
+							\rowcolor{orange!85}Ruolo & Ore previste & Variazione & Costo & Costo rivalutato\\
+							\noalign{\hrule height 1.5pt}
+							Responsabile & 25 & -\space1 & 750 & \cellcolor{green!55}720 \\
+							Amministratore & 38 & -\space1 & 760 & \cellcolor{green!55}740 \\
+							Analista & 20 & +\space2 & 500 & \cellcolor{red!55}550\\
+							Progettista & 246 & +\space3 & 5412 & \cellcolor{red!55}5478\\
+							Verificatore & 236 & -\space3 & 3540 & \cellcolor{green!55}3495\\
+							Programmatore & 158 & +\space2 & 2370 & \cellcolor{red!55}2400\\
+							\noalign{\hrule height 0.5pt}
+							\textbf{Totali} & 723 & +2 & 13332 & \cellcolor{red!55}13383\\
+							\noalign{\hrule height 1.5pt}
+						\end{tabularx}
+					\caption{Costo ore - totale aggiornato.}
+					\label{TCRendicontati}
+					\end{table}
+				
 				\subsubsection{Conclusioni}
                     Come è possibile notare dalla tabella, la realizzazione di questa fase discosta leggermente da quanto previsto. Trattandosi di una fase 
                     molto ampia, ricopriva infatti un monte ore di quasi 200 ore, non è stato facile rispettare quanto programmato. Sono state impiegate 
