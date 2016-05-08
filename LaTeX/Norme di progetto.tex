@@ -73,7 +73,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.2
+			Versione 2.0.3
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm]
@@ -417,7 +417,7 @@
 				\includegraphics[scale=0.8]{Immagini/"indent".png}
 				\caption{\LaTeX \space - Indentazione 1}
 			\end{figure}
-			\item Per quanto riguarda il comando personalizzato \verb|\newpage \section{}{}| o altre sezione \verb|\subsection{}|, \verb|\subsubsection{}|
+			\item Per quanto riguarda il comando personalizzato \verb|\newpage \section{}| o altre sezione \verb|\subsection{}|, \verb|\subsubsection{}|
 			verranno comunque indentate le parti innestate al loro interno come segue:
 			%immagine
 			\begin{figure}[H]
@@ -683,57 +683,105 @@
 		attraversarle tutte. Quando si inizia una revisione formale su un documento già approvato questo ricomincia il
 		ciclo da capo con un numero di versione incrementato.
 		
-			\subsection{Meccanismi di controllo e rendicontazione}
+				\subsection{Accertamento della qualità}
+			
+		\subsubsection{Analisi dei processi}
+			I processi compiuti durante una fase verranno analizzati secondo il seguente protocollo:
+			\begin{itemize}
+				\item \textbf{Controllo delle metriche:}
+					Alla conclusione di ogni fase del progetto si calcolano gli indici definiti nella sezione 2.2.1 confrontando 
+						le macro-attività preventivate nel \emph{Piano di progetto} con i dati effettivi riscontrati dal sistema di ticketing.
+				\item \textbf{Analisi PDCA:}
+					Secondo il ciclo PDCA una fase di progetto ha inizio con la pianificazione di come possono essere migliorati i processi. 
+					Durante la fase vengono attuati i cambiamenti prefissati e alla fine viene effettuato un controllo. Se un processo 
+					risulta essere migliore viene adottato in modo definitivo, se invece risulta inalterato o addirittura peggiore i 
+						cambiamenti vengono scartati.
+			\end{itemize}
+		\subsubsection{Analisi dei documenti}
+			Ogni documento redatto è verificato mediante il seguente protocollo:
+			\begin{itemize}
+				\item \textbf{Controllo sintattico:} Il testo deve venire sottoposto a controllo dell'ortografia con il tool
+				fornito dall'ambiente di sviluppo \LaTeX utilizzato. Alcuni errori non possono essere comunque rilevati da
+				meccanismi automatici, quindi al fine di ottenere correttezza sintattica e semantica i Verificatori
+				effettueranno un walkthrough al fine di ricercare errori sfuggiti al correttore ortografico.
+				\item \textbf{Controllo semantico:}
+		I Verificatori sono tenuti a leggere il documento, controllando che le frasi lette abbiano
+		senso compiuto e che siano pertinenti all'argomento trattato nella sezione. Errori di questo
+		tipo possono essere dovuti a sviste o errori di copia nella stesura.
+				\item \textbf{Rispetto delle Norme di progetto:} I Verificatori sono tenuti a verificare che il documento
+				rispetti tutte le norme tipografiche e di struttura del documento riportate nelle \emph{Norme di progetto}. Porzioni
+				di questa verifica sono automatizzabili, i Verificatori dovranno quindi usare tool ove possibile. 
+				\item \textbf{Inspection secondo checklist:} I Verificatori dovranno scorrere la lista di controllo e
+				verificare che non sia presenti gli errori comuni lì riportati.
+				\item \textbf{Verifica Glossario:} I Verificatori dovranno controllare che tutti i termini contenuti nel 
+				Glossario siano indicati all'interno dei documenti con la G a pedice. 
+				\item \textbf{Calcolo delle metriche:} I Verificatori dovranno calcolare le seguenti metriche per ogni documento:
+				\begin{itemize}
+					\item \textbf{Gulpease:}I verificatori calcoleranno l'indice Gulpease del documento tramite strumenti automatici forniti su \url{http://sweeneytreadaas.altervista.org/menuPrincipale/documentation_tools/}, in caso i risultati non siano soddisfacenti presenterà al redattore le sezioni peggiori;
+					\item \textbf{Numero figure e tabelle su numero pagine:}Tramite gli elenchi delle figure e delle tabelle sarà calcolato il rapporto tra la somma delle stesse e il numero di pagine, e se risulterà scadente il verificatore lo segnalerà al redattore del documento.
+					\item \textbf{Media parole per section:}La metrica sarà calcolata tramite strumenti automatici e in caso di valori non accettabili le sezioni peggiori saranno comunicate al redattore.
+				\end{itemize}
+				\item \textbf{Miglioramento:} Se nello svolgimento di uno qualunque dei punti precedenti un Verificatore
+					notasse nuove possibilità di automatizzazione dovrà segnalarle e si dovrà cercare o costruire uno strumento per
+					rendere effettiva tale automatizzazione. Inoltre durante le esecuzioni dei walkthrough, i verificatori sono
+					tenuti ad annotare gli errori più frequenti o potenzialmente dannosi rilevati. Tali errori andranno poi ad
+					aggiornare la lista di controllo che verrà utilizzata per le successive inspection.
+			\end{itemize}
 		
-			\subsubsection{Meccanismi di controllo}
-				All'interno dell'ambiente di lavoro sono stati predisposti meccanismi per:
-				\begin{itemize}
-					\item Controllare l'andamento delle attività ed eventuali ritardi;
-					\item Permettere un aggiornamento facilitato della pianificazione;
-					\item Rendicontare le ore di lavoro spese nelle varie attività.
-				\end{itemize}
+		\subsection{Gestione delle versioni}
+			Il processo di verifica inizia fin dal primo rilascio ufficiale nella repository di un documento vX.0.0, il risultato 
+			del processo di verifica cambia la versione del documento, incrementandone la versione al secondo livello di profondità, 
+			il documento quindi passa a vX.1.0. Ogni modifica apportata al documento ne aumenta la versione all'ultimo livello di 
+			profondità. Una volta completate le modifiche e le verifiche continue sui documenti, esso passa nella fase di validazione,
+			a carico del responsabile, che ne fa cambiare la versione al secondo livello di priorità. 
+			
+			Grazie al diario delle modifiche è più facile individuare dove concentrare l'attenzione nelle verifiche successive 
+			alla prima, in quanto sono segnate le sezioni che sono state aggiunte o che hanno subito dei cambiamenti dall'ultima
+			 verifica, evitando così di controllare sempre tutto il documento ad ogni rilascio di versione, per cui ottimizzando 
+			 il tempo necessario al controllo.
+
+			Per ognuna delle 5 fasi del progetto descritte nel \emph{Piano di Progetto v2.0.0}, sono necessarie diverse attività 
+			di verifica, descritte nella sezione Analisi del \emph{Piano di Qualifica v3.0.0}, a causa dei diversi output ottenuti:
+
+			\begin{itemize}
+				\item \textbf{Scelta ed approccio al capitolato:} Si devono eseguire le attività di verifica sui processi e sui documenti.
 				
-			\subsubsection{Andamento delle attività}
-				Per monitorare i ritardi sulle attività e acquisire maggiore esperienza per stime future si adotta la 
-				funzione timer di Teamwork. Ogni componente del gruppo è invitato a tenere attivo il timer durante 
-				tutto lo svolgimento delle attività a lui assegnate. In questo modo si può avere una misurazione del 
-				tempo effettivo impiegato da ogni membro per svolgere le attività, che può poi essere confrontata con 
-				la stima fatta a priori.
-				%image
-				\begin{figure}[H]
-					\centering
-					\includegraphics[scale=0.4]{PdP/teamworkTimer}
-					\caption{Timer da attivare durante il lavoro svolto.}
-				\end{figure}
-				Inoltre per ogni attività è predisposta anche una \emph{due to date}, ovvero la data entro la quale la task deve 
-				essere soddisfatta. Teamwork segnala ogni attività nel riepilogo non completata entro la data di fine con 
-				una scritta rossa che riporta il ritardo. È facile per il responsabile individuare a colpo d'occhio le 
-				task in ritardo e provvedere a comunicare con il/i componenti del gruppo a cui essa è assegnata per capire 
-				le motivazioni del ritardo ed eventualmente rivedere le stime future.
-				%image
-				\begin{figure}[H]
-					\centering
-					\includegraphics[scale=0.4]{PdP/teamworkTaskinRitardo}
-					\caption{Visualizzazione data di scadenza di un task.}
-				\end{figure}
-				Se necessario è possibile impostare notifiche automatiche in prossimità o al superare di una scadenza.
-				Il sistema di ticketing adottato fornisce un calendario in cui vengono indicate le date stimate di inizio e fine
-				di ogni attività.\\
-				Ogni membro del gruppo può consultarlo liberamente per pianificare il proprio lavoro in base agli altri
-				impegni privati.
+				\item \textbf{Analisi di dettaglio:} Si devono eseguire le attività di verifica sui processi e sui documenti.
 				
-			\subsubsection{Controllo metriche di progetto}
-				L'introduzione delle metriche nel progetto fornisce una maniera il più possibile oggettiva e sistematica per
-				misurare le performance del gruppo. Dal punto di vista del controllo del progetto le metriche impiegate sono:
-				\begin{itemize}
-					\item Budget Variance
-					\item Schedule Variance
-				\end{itemize}
-				Questi indicatori permetto al team di:
-				\begin{itemize}
-					\item Identificare i problemi di costo/schedulazione prima che diventino criticità;
-					\item Aiutare il team a focalizzarsi sul completamento delle proprie attività.
-				\end{itemize}
+				\item \textbf{Progettazione e sviluppo:} Si devono eseguire le attività di verifica sui processi, sui documenti e sul codice prodotto.
+				
+				\item \textbf{Sviluppo ulteriore ed incremento:} Si devono eseguire le attività di verifica sui processi, sui documenti e sul codice prodotto.
+				
+				\item \textbf{Progettazione e sviluppo:} Si devono eseguire le attività di verifica sui processi, sui manuali e sul prodotto finito.
+			\end{itemize}
+			
+			
+			Come detto in precedenza conclusa la verifica, ha inizio il processo di approvazione. Durante questo processo è compito 
+			del Responsabile di Progetto accertarsi che i prodotti ottenuti siano conformi a quanto pianificato e progettato.
+			
+				\subsection{Qualifica}
+		\subsubsection{Procedure di controllo qualità per i processi}
+			La qualità del processo viene garantita da:
+			\begin{itemize}
+				\item \textbf{Pianificazione:} i processi devono essere pianificati nel dettaglio, in maniera da determinare 
+				i punti e le tempistiche in cui effettuare controlli;
+				\item \textbf{Controllo:} i controlli pianificati devono essere eseguiti in maniera oggettiva e neutrale, 
+				quindi con strumenti automatici ovunque possibile;
+				\item \textbf{Miglioramento continuo:} l'adozione del principio di \emph{PDCA} aiuterà a migliorare i processi durante l'intera durata del progetto..
+			\end{itemize}
+		\subsubsection{Procedure di controllo qualità per il prodotto}
+			La qualità del prodotto viene garantita da:
+			\begin{itemize}
+				\item \textbf{Comprensione ed analisi del dominio};
+				\item \textbf{Verifica:} determina che l'output di una fase sia consistente, completo e corretto. 
+				Deve essere eseguita costantemente per tutta la durata del progetto, ma cercando di essere minimamente invasiva;
+				\item \textbf{Validazione:} conferma oggettivamente che il prodotto sia conforme alle aspettative;
+				\item \textbf{Quality Assurance:} garantisce il raggiungimento degli obiettivi di qualità, in maniera preventiva. 
+				In questo modo si riduce drasticamente il ricorso a tecniche retrospettive, e con esse si riducono le iterazioni.
+			\end{itemize}
+				
+						
+		
 		%DA INSERIRE APPENA AVVIATO IL PDQ!
 		% IMPORTANTE RICORDARSI
 		%\subsection{Accertamento qualità}
@@ -742,6 +790,59 @@
 		%Per quanto riguarda l'individuazione, il tracciamento e la risoluzione di bug e problemi il gruppo ha deciso di
 		%affidarsi ad il servizio di issue tracking \emph{YouTrack} offerto da \emph{JetBrains}. \\
 		%Per i progetti fino a dieci utenti, il servizio offre 10GB di spazio sul cloud dell'azienda in maniera gratuita.
+		
+				\subsection{Strumenti e metodi per l'applicazione delle metriche}
+			Le risorse software che si utilizzeranno durante il processo di verifica sono:
+			\begin{itemize}
+				\item \textbf{\emph{TexMaker}:} un ambiente grafico Open-Source per \LaTeX cross-platform, permette 
+				la compilazione rapida e la visualizzazione del PDF generato, sarà anche usato per il controllo ortografico;
+				\item \textbf{\emph{Scalastyle}:} analizzatore statico che rileva potenziali problemi nel codice, da utilizzare sia durante la produzione del codice, sia durante la sua verifica
+				 (\url{https://github.com/scalastyle/scalastyle});
+				\item \textbf{\emph{Scapegoat}:} un altro analizzatore statico che si concentra maggiormente sugli 
+				standard di stile e di coding (\url{https://github.com/sksamuel/scapegoat});
+				\item \textbf{\emph{CLOC (Count Lines Of Code)}:} misura alcune metriche riguardanti il codice 
+				sorgente in vari linguaggi, tra cui \emph{Scala}, servirà a calcolare le linee di codice per linee di commento (\url{cloc.sourceforge.net});
+				\item \textbf{\emph{ScalaTest}:} framework per i test su Scala (\url{http://www.scalatest.org/}).
+				
+				\item \textbf{Repo's Outpost:} tool su piattaforma web sviluppato dai componenti del gruppo,
+				disponibile (previo login) all'indirizzo: \\
+				\url{http://sweeneytreadaas.altervista.org/menuPrincipale/documentation_tools/documenti_latex.php} \\
+				Fornisce una \emph{dashboard} aggiornata in tempo reale che riporta le principali
+				metriche dei documenti presenti nel repository.
+				I valori sono evidenziati con diversi colori che ne caratterizzano ottimalità,
+				accettabilità o non accettabilità.
+				%immagine
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.35]{immagini/Pdq/repoOutpost.png}
+					\caption{Screenshot del tool Repo's Outpost}
+				\end{figure}
+				
+				\item \textbf{Camel Calculator:} tool su piattaforma web sviluppato dai componenti del gruppo,
+				disponibile (previo login) all'indirizzo: \\
+				\url{http://sweeneytreadaas.altervista.org/menuPrincipale/documentation_tools/metric_calc.php} \\
+				Permette di calcolare nel dettaglio le metriche di uno specifico documento. È possibile caricare
+				il file mediante diverse modalità, compresi dei link diretti per i documenti nel repository del gruppo.
+				
+				\item \textbf{Gloss Buddy:} tool su piattaforma web sviluppato dai componenti del gruppo,
+				disponibile (previo login) all'indirizzo: \\
+				\url{http://sweeneytreadaas.altervista.org/menuPrincipale/documentation_tools/glossario.php} \\
+				Marca i termini del glossario con la simbologia corretta.
+				
+			\end{itemize}
+			
+			\subsection{Comunicazione e risoluzione di anomalie}
+			Una anomalia è una violazione da parte di un documento, o unità di codice, di una o più delle seguenti condizioni:
+			\begin{itemize}
+				\item Conformità alla norme tipografiche o di codifica;
+				\item Appartenenza al range di accettabilità per tutte le metriche descritte nella sezione Visione generale della strategia di verifica del\emph{Piano di Qualifica v3.0.0};
+				\item Congruenza del prodotto con funzionalità indicate nell'\emph{analisi dei requisiti};
+				\item Congruenza del codice con il design del prodotto.
+			\end{itemize}
+			Se un \emph{Verificatore} dovesse trovare una anomalia egli è tenuto ad aprire un sotto-ticket all'interno 
+			della task-list a lui assegnata. Nel caso la risoluzione del ticket avesse la necessità di essere strutturato 
+			in sotto-attività sarà compito del \emph{Responsabile} aprire una nuova task-list ed assegnarla alle figure coinvolte.
+			
 
 	\newpage
 	\section{Processi organizzativi}
@@ -998,6 +1099,58 @@
 		Ad ogni \emph{Brainstorming} sarà anche scelto un \emph{Moderatore} che ricoprirà un ruolo di servizio. Ovvero dovrà far
 		rispettare le regole di base. Una volta finito il \emph{Brainstorming}, il \emph{Notaio} dovrà riorganizzare gli appunti
 		presi in un verbale ordinato.
+		
+		\subsection{Meccanismi di controllo e rendicontazione}
+		
+			\subsubsection{Meccanismi di controllo}
+				All'interno dell'ambiente di lavoro sono stati predisposti meccanismi per:
+				\begin{itemize}
+					\item Controllare l'andamento delle attività ed eventuali ritardi;
+					\item Permettere un aggiornamento facilitato della pianificazione;
+					\item Rendicontare le ore di lavoro spese nelle varie attività.
+				\end{itemize}
+				
+			\subsubsection{Andamento delle attività}
+				Per monitorare i ritardi sulle attività e acquisire maggiore esperienza per stime future si adotta la 
+				funzione timer di Teamwork. Ogni componente del gruppo è invitato a tenere attivo il timer durante 
+				tutto lo svolgimento delle attività a lui assegnate. In questo modo si può avere una misurazione del 
+				tempo effettivo impiegato da ogni membro per svolgere le attività, che può poi essere confrontata con 
+				la stima fatta a priori.
+				%image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.4]{PdP/teamworkTimer}
+					\caption{Timer da attivare durante il lavoro svolto.}
+				\end{figure}
+				Inoltre per ogni attività è predisposta anche una \emph{due to date}, ovvero la data entro la quale la task deve 
+				essere soddisfatta. Teamwork segnala ogni attività nel riepilogo non completata entro la data di fine con 
+				una scritta rossa che riporta il ritardo. È facile per il responsabile individuare a colpo d'occhio le 
+				task in ritardo e provvedere a comunicare con il/i componenti del gruppo a cui essa è assegnata per capire 
+				le motivazioni del ritardo ed eventualmente rivedere le stime future.
+				%image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[scale=0.4]{PdP/teamworkTaskinRitardo}
+					\caption{Visualizzazione data di scadenza di un task.}
+				\end{figure}
+				Se necessario è possibile impostare notifiche automatiche in prossimità o al superare di una scadenza.
+				Il sistema di ticketing adottato fornisce un calendario in cui vengono indicate le date stimate di inizio e fine
+				di ogni attività.\\
+				Ogni membro del gruppo può consultarlo liberamente per pianificare il proprio lavoro in base agli altri
+				impegni privati.
+				
+			\subsubsection{Controllo metriche di progetto}
+				L'introduzione delle metriche nel progetto fornisce una maniera il più possibile oggettiva e sistematica per
+				misurare le performance del gruppo. Dal punto di vista del controllo del progetto le metriche impiegate sono:
+				\begin{itemize}
+					\item Budget Variance
+					\item Schedule Variance
+				\end{itemize}
+				Questi indicatori permetto al team di:
+				\begin{itemize}
+					\item Identificare i problemi di costo/schedulazione prima che diventino criticità;
+					\item Aiutare il team a focalizzarsi sul completamento delle proprie attività.
+				\end{itemize}
 
 	\cleardoublepage
 	\addcontentsline{toc}{section}{\listfigurename}
