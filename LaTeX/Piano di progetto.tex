@@ -73,7 +73,7 @@
 			\includegraphics[scale=0.8]{../sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.2
+			Versione 2.0.3
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -496,7 +496,7 @@
                 alcuni tra quelli opzionali o desiderabili potrebbe comportare dei ritardi non desiderabili.
 				
 				Durante questa fase il rischio \hyperref[VariazioneDisponibilita]{Variazione disponibilità (2.2.2)} ha un alta possibilità di occorrenza in quanto 
-				più membri del gruppo sono stati abilitati ad avviare lo stage e potrebbero non essere più presenti alle riunioni o non poter fornire copertuta 
+				più membri del gruppo sono stati abilitati ad avviare lo stage e potrebbero non essere più presenti alle riunioni o non poter fornire copertura 
 				totale per le ore dichiarate in fase di progettazione. Per evitare il verificarsi di questo rischio, il gruppo si impegna a fissare le riunioni 
 				con largo anticipo, o spostare quelle già fissate in un momento in cui il maggior numero possibile di componenti offre disponibilità. 
                 
@@ -1291,12 +1291,12 @@
 						\noalign{\hrule height 1.5pt}
 						Responsabile & 35 & 1050 \\
 						Amministratore & 56 & 1120 \\
-						Analista & 95 & 2375\\
+						Analista & 103 & 2575\\
 						Progettista & 277 & 6094\\
 						Verificatore & 272 & 4080\\
 						Programmatore & 158 & 2370 \\
 						\noalign{\hrule height 0.5pt}
-						\textbf{Totali} & 893 & 17089 \\
+						\textbf{Totali} & 901 & 17289 \\
 						\noalign{\hrule height 1.5pt}
 					\end{tabularx}
 				\caption{Costo ore - totale con investimento. } 
@@ -1468,10 +1468,17 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{diff_pr}
-					\caption{Grafico differenza ore e costi.}
+					\caption{Grafico differenza ore e costi fase di Progettazione e sviluppo.}
 				\end{figure}
 				
-				\subsubsection{Preventivo a finire}
+					\subsubsection{Conclusioni}
+                    Come è possibile notare dalla tabella e dalle immagini, la realizzazione di questa fase discosta leggermente da quanto previsto. Trattandosi di una fase 
+                    molto ampia, ricopriva infatti un monte ore di quasi 200 ore, non è stato facile rispettare quanto programmato. Sono state impiegate 
+                    2 ore in più del previsto per il completamento di questa fase, che hanno portato ad un conguaglio negativo pari a 51\euro.
+                    Queste ore in più sono dovute ad un'analisi ed una progettazione più dettagliata di quanto previsto, e a dei test di utilizzo del 
+                    linguaggio \emph{Scala} che non erano stati presi in considerazione. 
+				
+				\subsubsection{Preventivo a finire parziale}
 					Nella seguente tabella viene riportato il preventivo a finire (costruito rivalutando il preventivo iniziale alla luce delle risultanze 
 					di consuntivo di periodo).
 					\begin{table}[H]
@@ -1489,20 +1496,71 @@
 							\textbf{Totali} & 723 & +2 & 13332 & \cellcolor{red!55}13383\\
 							\noalign{\hrule height 1.5pt}
 						\end{tabularx}
-					\caption{Costo ore - totale aggiornato.}
+					\caption{Costo ore - totale aggiornato fase Progettazione e sviluppo.}
 					\label{TCRendicontati}
 					\end{table}
+                    
+
+			\subsection{Sviluppo ulteriore ed incremento}
+                Si riporta di seguito il consuntivo di periodo della fase di \emph{Progettazione e sviluppo}. \\
+                La tabella sottostante riporta la differenza di ore tra preventivo e consuntivo, divise per ruolo. Il significato dei segni
+                positivi e negativi è lo stesso che nella \hyperref[DCSceltaCapitolato]{Tabella 20}.
+                \begin{table}[H]
+					\begin{tabularx}{\textwidth}{Y Y Y}
+						\noalign{\hrule height 1.5pt}
+						\rowcolor{orange!85}Ruolo & Ore & Costo \\
+						\noalign{\hrule height 1.5pt}
+						Responsabile & 0 & 0 \\
+						Amministratore & 0 & 0 \\
+						Analista & 0 & 0 \\
+						Progettista & +\space 1 & +\space 22 \\
+						Verificatore & +\space 2 & +\space 30 \\
+						Programmatore & -\space 4 & -\space 60 \\
+						\noalign{\hrule height 0.5pt}
+						\textbf{Totali} & -\space 1 & -\space 8 \\
+						\noalign{\hrule height 1.5pt}
+					\end{tabularx}
+					\caption{Differenza consuntivo/preventivo - fase di Sviluppo ulteriore ed incremento. } 
+					\label{ConsuntivoIncremento}
+				\end{table}
 				
-				\subsubsection{Conclusioni}
-                    Come è possibile notare dalla tabella, la realizzazione di questa fase discosta leggermente da quanto previsto. Trattandosi di una fase 
-                    molto ampia, ricopriva infatti un monte ore di quasi 200 ore, non è stato facile rispettare quanto programmato. Sono state impiegate 
-                    2 ore in più del previsto per il completamento di questa fase, che hanno portato ad un conguaglio negativo pari a 51\euro.
-                    Queste ore in più sono dovute ad un'analisi ed una progettazione più dettagliata di quanto previsto, e a dei test di utilizzo del 
-                    linguaggio \emph{Scala} che non erano stati presi in considerazione. 
+				Di seguito vengono riportati due grafici che rappresentano la differenza in ore e in costi tra preventivo e consuntivo di periodo della 
+				fase di \emph{progettazione e sviluppo}.
+				%image
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{diff_in}
+					\caption{Grafico differenza ore e costi fase di Sviluppo ulteriore ed incremento.}
+				\end{figure}	
+				
+					\subsubsection{Conclusioni}		
+						Come è possibile notare dalla tabella e dalle immagini, la realizzazione di questa fase discosta leggermente da quanto previsto. In particolare si evince che le attività di programmazione sono state sopravvalutate. L'apprendimento delle tecnologie per la programmazione è stato più rapido di quanto preventivato e questo ha permesso di risparmiare delle ore.
+Al contrario la realizzazione dei test da parte dei verificatori ha richiesto più tempo del previsto. In conclusione la fase è stata portata a termine con un leggero risparmio.
+				
+					\subsubsection{Preventivo a finire all'ultimo aggiornamento}
+					Nella seguente tabella viene riportato il preventivo a finire (costruito rivalutando il preventivo iniziale alla luce delle risultanze 
+					di consuntivo di periodo).
+					\begin{table}[H]
+						\begin{tabularx}{\textwidth}{Y Y Y Y Y}
+							\noalign{\hrule height 1.5pt}
+							\rowcolor{orange!85}Ruolo & Ore previste & Variazione & Costo & Costo rivalutato\\
+							\noalign{\hrule height 1.5pt}
+							Responsabile 	& 25  & -\space 1 & 750  & \cellcolor{green!55}720 \\
+							Amministratore 	& 38  & -\space 1 & 760  & \cellcolor{green!55}740 \\
+							Analista 		& 20  & +\space 2 & 500  & \cellcolor{red!55}550\\
+							Progettista 	& 246 & +\space 4 & 5412 & \cellcolor{red!55}5500\\
+							Verificatore 	& 236 & -\space 1 & 3540 & \cellcolor{green!55}3525\\
+							Programmatore 	& 158 & -\space 2 & 2370 & \cellcolor{green!55}2340\\
+							\noalign{\hrule height 0.5pt}
+							\textbf{Totali} & 723 & +1 & 13332 & \cellcolor{red!55}13375\\
+							\noalign{\hrule height 1.5pt}
+						\end{tabularx}
+					\caption{Costo ore - totale ultimo aggiornamento.}
+					\label{TCRendicontati}
+					\end{table}
+
                     
         %Da aggiungere man mano
-		%	\subsection{Sviluppo ulteriore ed incremento}
-		%		\subsubsection{Conclusioni}
 		%	\subsection{Conclusione}
 		%		\subsubsection{Conclusioni}
 
