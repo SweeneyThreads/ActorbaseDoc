@@ -327,7 +327,7 @@
 	R[1.5.3.1][D][F] & Controllo nome mappa da eliminare & UC4.3.2
 	& Implementare un controllo sul nome della mappa da eliminare\\
 	\hline
-	R[1.5.3.1.1][D][F] & Nome mappa da eliminare non valido & UC4.3.2 \newline UC4.9
+	R[1.5.3.1.1][D][F] & Nome mappa da eliminare non valido & UC4.3.2 \newline UC4.6
 	& Gestire il caso in cui il nome della mappa da eliminare, inviato dal client non rispettasse le regole sintattiche dei 
 	nomi delle mappe \emph{Actorbase}\\
 	\hline
@@ -355,7 +355,7 @@
 	R[1.5.3.3][N][F] & Eliminazione mappa avvenuta con successo & UC4.3
 	& Informare il client nel caso in cui la mappa richiesta fosse stata eliminata con successo dal server\\
 	\hline
-	R[1.5.3.4][N][F] & Eliminazione mappa fallita & UC4.9
+	R[1.5.3.4][N][F] & Eliminazione mappa fallita & UC4.6
 	& Informare il client nel caso in cui l'eliminazione della mappa richiesta fosse fallita\\
 	\hline
 	R[1.5.4][D][F] & Gestione richiesta rinomina mappa & UC4.4
@@ -364,14 +364,14 @@
 	R[1.5.4.1][D][F] & Controllo nome mappa da rinominare & UC4.4.2
 	& Implementare un controllo sul nome della mappa da rinominare\\
 	\hline
-	R[1.5.4.1.1][D][F] & Nome mappa da rinominare non valido & UC4.4.2 \newline UC4.10
+	R[1.5.4.1.1][D][F] & Nome mappa da rinominare non valido & UC4.4.2 \newline UC4.7
 	& Gestire il caso in cui il nome della mappa da rinominare, inviato dal client non rispettasse le regole sintattiche dei 
 	nomi delle mappe \emph{Actorbase}\\
 	\hline
 	R[1.5.4.2][D][F] & Controllo nuovo nome mappa da rinominare & UC4.4.3
 	& Implementare un controllo sul nuovo nome della mappa da rinominare\\
 	\hline
-	R[1.5.4.2.1][D][F] & Nuovo nome mappa da rinominare non valido & UC4.4.3 \newline UC4.10
+	R[1.5.4.2.1][D][F] & Nuovo nome mappa da rinominare non valido & UC4.4.3 \newline UC4.7
 	& Gestire il caso in cui il nuovo nome della mappa da rinominare, inviato dal client non rispettasse le regole sintattiche 
 	dei nomi delle mappe \emph{Actorbase}\\
 	\hline
@@ -399,7 +399,7 @@
 	R[1.5.4.4][D][F] & Rinomina mappa avvenuta con successo & UC4.4
 	& Informare il client nel caso in  cui la mappa richiesta fosse stata rinominata con successo\\
 	\hline
-	R[1.5.4.5][D][F] & Rinomina mappa fallita & UC4.10
+	R[1.5.4.5][D][F] & Rinomina mappa fallita & UC4.7
 	& Informare il client nel caso in la rinomina della mappa fosse fallita\\
 	\hline
 	R[1.5.5][N][F] & Gestione richiesta di selezione mappa & UC4.5
@@ -408,7 +408,7 @@
 	R[1.5.5.1][D][F] & Controllo nome mappa da selezionare & UC4.5.2
 	& Implementare un controllo sul nome della mappa da selezionare \\
 	\hline
-	R[1.5.5.1.1][D][F] & Nome mappa da selezionare non valido & UC4.5.2 \newline UC4.11
+	R[1.5.5.1.1][D][F] & Nome mappa da selezionare non valido & UC4.5.2 \newline UC4.8
 	& Gestire il caso in cui il nome della mappa da selezionare, inviato dal client non rispettasse le regole sintattiche dei 
 	nomi delle mappe \emph{Actorbase} \\
 	\hline
@@ -421,15 +421,8 @@
 	R[1.5.5.3][N][F] & Selezione mappa avvenuta con successo & UC4.5
 	& Informare il client nel caso in cui la mappa richiesta fosse stata selezionata con successo\\
 	\hline
-	R[1.5.5.4][N][F] & Messaggio selezione mappa fallita & UC4.11
+	R[1.5.5.4][N][F] & Messaggio selezione mappa fallita & UC4.8
 	& Informare il client nel caso in cui la selezione della mappa richiesta fosse fallita\\
-	\hline
-	R[1.5.6][O][F] & Gestione richiesta di visualizzazione permessi accesso al database & UC4.6 \newline UC4.12
-	& Implementare un'interfaccia per l'elaborazione di una richiesta di visualizzazione dei permessi di accesso al database 
-	selezionato da parte di un client\\
-	\hline
-	R[1.5.7][O][F] & Gestione richiesta modifica permessi di accesso al database & UC4.7 \newline UC4.13
-	& Implementare un'interfaccia per l'elaborazione di una richiesta di modifica dei permessi di accesso al database da parte di un client\\
 	\hline
 	R[1.6][N][F] & Gestione delle operazioni a livello mappa & UC5
 	& Implementare delle interfacce per consentire ad un client di eseguire le operazioni a livello mappa definite in UC5\\
@@ -841,7 +834,7 @@
 	\hline
 	R[2.13.4][N][F] & Messaggio di rimozione mappa avvenuta con successo & UC4.3 & Stampa il messaggio di rimozione della mappa avvenuta con successo \\
 	\hline
-	R[2.13.5][N][F] & Messaggio di rimozione mappa fallita & UC4.9 & Stampa il messaggio di rimozione della mappa fallita \\
+	R[2.13.5][N][F] & Messaggio di rimozione mappa fallita & UC4.6 & Stampa il messaggio di rimozione della mappa fallita \\
 	\hline
 	%
 	R[2.14][D][F] & Rinomina mappa & UC4.4 & Implementare un'interfaccia che rinomini una mappa nel database selezionato\\
@@ -860,12 +853,12 @@
 	\hline
 	R[2.14.4][D][F] & Messaggio di rinomina mappa avvenuta con successo & UC4.4 & Stampa il messaggio di rinomina della mappa avvenuta con successo \\
 	\hline
-	R[2.14.5][D][F] & Messaggio di rinomina mappa fallita & UC4.10 & Stampa il messaggio di rinomina della mappa fallita \\
+	R[2.14.5][D][F] & Messaggio di rinomina mappa fallita & UC4.7 & Stampa il messaggio di rinomina della mappa fallita \\
 	\hline
-	R[2.14.5.1][D][F] & Messaggio di rinomina mappa fallita, permessi insufficienti & UC4.10 & Stampa il messaggio di rinomina della mappa fallita, 
+	R[2.14.5.1][D][F] & Messaggio di rinomina mappa fallita, permessi insufficienti & UC4.7 & Stampa il messaggio di rinomina della mappa fallita, 
 	l'utente non possiede i permessi di scrittura \\
 	\hline
-	R[2.14.5.2][D][F] & Messaggio di rinomina mappa fallita, nome mappa già presente & UC4.10 & Stampa il messaggio di rinomina della mappa fallita, 
+	R[2.14.5.2][D][F] & Messaggio di rinomina mappa fallita, nome mappa già presente & UC4.7 & Stampa il messaggio di rinomina della mappa fallita, 
 	nuovo nome mappa già utilizzato \\
 	\hline
 	%
@@ -884,14 +877,14 @@
 	\hline
 	R[2.15.5][N][F] & Messaggio di selezione mappa fallita & UC4.8 & Stampa il messaggio di selezione della mappa fallita \\
 	\hline
-	R[2.15.5.1][D][F] & Messaggio di selezione mappa fallita, permessi insufficienti & UC4.11 & Stampa il messaggio di selezione della mappa fallita, 
+	R[2.15.5.1][D][F] & Messaggio di selezione mappa fallita, permessi insufficienti & UC4.8 & Stampa il messaggio di selezione della mappa fallita, 
 	l'utente non possiede i permessi di lettura sulla mappa desiderata \\
 	\hline
-	R[2.15.5.2][N][F] & Messaggio di selezione mappa fallita, mappa non presente & UC4.11 & Stampa il messaggio di selezione della mappa fallita, 
+	R[2.15.5.2][N][F] & Messaggio di selezione mappa fallita, mappa non presente & UC4.8 & Stampa il messaggio di selezione della mappa fallita, 
 	mappa non presente \\
 	\hline
 	%
-	R[2.16][O][F] & Gestione comando per visualizzare i permessi & UC4.6 \newline UC4.12 & Implementare un'interfaccia che visualizzi i permessi a livello database \\
+	R[2.16][O][F] & Gestione comando per visualizzare i permessi & UC4.6 \newline UC4.9 & Implementare un'interfaccia che visualizzi i permessi a livello database \\
 	\hline
 	%
 	R[2.17][D][F] & Gestione comando per modificare i permessi & UC4.7 \newline UC4.13 & Implementare un'interfaccia che permetta la modifica dei permessi a 

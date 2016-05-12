@@ -79,7 +79,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.0
+			Versione 2.0.1
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -185,7 +185,7 @@
 		\begin{itemize}
 			\item \textbf{Utente non autenticato:} è l'utente che ha avviato l'applicativo e interagisce con la CLI senza aver ancora effettuato con successo l'operazione di connessione al server;
 			\item \textbf{Utente autenticato:} è l'utente che ha già effettuato con successo l'operazione di connessione ad un server che utilizza \emph{Actorbase}. 
-			\item \textbf{Amministratore server:} è l'amministratore del server su cui è in funzione \emph{Actorbase}, gestisce il server dall'apposita interfaccia
+			\item \textbf{Amministratore:} è l'amministratore del server su cui è in funzione \emph{Actorbase}. Oltre a configurare i file necessari sul server, si occupa di gestire gli accessi al sistema (utenti e password) e i permessi di accesso ai dati. L'amministratore è un utente speciale con particolari username e password riservati dal sistema, quando l'amministratore si connette al server (dall'interfaccia client), ha la possibilità di effettuare le operazioni di gestione.
 		\end{itemize}
 		\emph{Actorbase} prevede un meccanismo di permessi per controllare l'accesso ai diversi database presenti sul server. Quando un utente crea un nuovo database riceve i permessi di amministrazione per esso: oltre a poter leggere e scrivere i dati, egli può cambiare i permessi di accesso a tale database per gli altri utenti del server. \\ 
 		Ricapitolando esistono tre permessi di accesso ad un singolo database (elencati in ordine di privilegi garantiti):
@@ -198,7 +198,7 @@
 		\subsection{Visione ad alto livello delle interazioni tramite interfaccia client}
 		 	\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.2]{UC/"Actorbase client".png}
+				\includegraphics[scale=0.23]{UC/"Actorbase client".png}
 				\caption{Interazioni tramite interfaccia client}
 			\end{figure}
 			Il diagramma in figura illustra le principali operazioni che un utente (autenticato e non) può
@@ -214,6 +214,15 @@
 				\item Operazioni a livello mappa (UC5)
 				\item Disconnessione dal server (UC6)
 				\item Chiusura dell'interfaccia (UC8)
+			\end{itemize}
+			Se l'utente autenticato è l'amministratore di sistema egli ha a disposizione le seguenti operazioni aggiuntive:
+			\begin{itemize}
+				\item Visualizzazione della lista di utenti che hanno accesso al server (UC9)
+				\item Aggiunta di un utente (UC10)
+				\item Rimozione di un utente (UC11)
+				\item Visualizzazione dei permessi di accesso relativi ad uno specifico utente (UC12)
+				\item Aggiunta di un permesso a un utente (UC13)
+				\item Rimozione di un permesso a un utente (UC14)
 			\end{itemize}
 	In ogni momento un utente può inserire un comando inesistente o non utilizzabile in quel determinato momento. In tal caso nessuna azione viene eseguita dal programma e l'utente riceve un messaggio di errore esplicativo seguito dalla possibilità di inserire un nuovo comando.	 
 	 
@@ -1493,13 +1502,11 @@ R[2.10.5.2][N][F]  \\
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & \begin{enumerate}
-				\item L'utente ha richiesto la creazione di una nuova mappa, la creazione è fallita e l'utente riceve un messaggio di errore (UC 4.8)
-				\item L'utente ha richiesto l'eliminazione di una mappa del database, l'operazione è fallita e l'utente riceve un messaggio di errore (UC 4.9)
-				\item L'utente ha tentato di rinominare una mappa, la rinomina è fallita e l'utente riceve un messaggio di errore (UC 4.10)
-				\item L'utente ha tentato di selezionare una mappa, la selezione è fallita e l'utente riceve un messaggio di errore (UC 4.11)
-				\item L'utente ha richiesto la visualizzazione dei permessi di accesso al database selezionato non disponendo dei permessi di amministrazione su tale database (UC 4.12)
-				\item L'utente ha richiesto una modifica dei permessi di accesso al database selezionato, la modifica è fallita e l'utente riceve un messaggio di errore (UC 4.13)
-\end{enumerate}				 \\
+				\item L'utente ha richiesto la creazione di una nuova mappa, la creazione è fallita e l'utente riceve un messaggio di errore (UC 4.6)
+				\item L'utente ha richiesto l'eliminazione di una mappa del database, l'operazione è fallita e l'utente riceve un messaggio di errore (UC 4.7)
+				\item L'utente ha tentato di rinominare una mappa, la rinomina è fallita e l'utente riceve un messaggio di errore (UC 4.8) 
+				\item L'utente ha tentato di selezionare una mappa, la selezione è fallita e l'utente riceve un messaggio di errore (UC 4.9)		
+				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Lista requisiti\newline dedotti} & R[1.5][N][F]  \\
 			\end{tabularx}
@@ -2016,245 +2023,16 @@ R[1.5.5.1.1][D][F] \newline
 R[2.15.2.1][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 4.5.2 - Inserimento nome mappa da selezionare}
-		 \end{table}		
-		 
-		 \subsection{UC 4.6: Visualizzazione permessi accesso}
-	 \begin{figure}[H]
-				\centering
-				\includegraphics[scale=0.3]{UC/"UC 4-6 Visualizzazione permessi".png}
-				\caption{Diagramma di UC4.6: Visualizzazione aiuto}
-			\end{figure}
-	\textbf{Descrizione} 
-	\\ \\
-L'utente avente i permessi di amministratore, vuole visualizzare i permessi di altri utenti. Ha a disposizione due possibilità: 
-	\begin{itemize}
-		\item Visualizzare la lista dei permessi relativi all'intero database
-		\item Visualizzare i permessi di accesso al database per un singolo utente
-	\end{itemize}
-	La prima modalità stampa sul terminale la lista completa degli utenti che hanno un qualche tipo di accesso al database selezionato, con relativi permessi di amministrazione, scrittura e lettura. \\
-	La modalità di visualizzazione permessi utente singolo richiede l'inserimento del nome dell'utente per cui si richiedono le informazioni, stampa sul terminale il nome dell'utente seguito dai suoi permessi.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.6 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Visualizzazione permessi accesso \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende visualizzare i permessi di uno o tutti gli utenti\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha visualizzato i permessi di uno o tutti gli utenti\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando relativo alla visualizzazione richiesta e preme invio
-				\item L'utente riceve le informazioni di visualizzazione permessi stampate sul terminale
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & R[1.5.6][O][F] \newline
-R[2.16][D][F]  \\
-			\end{tabularx}
-			\caption{Caso d'uso UC 4.6 - Visualizzazione permessi accesso}
-		 \end{table} 
-		 
-		 
-		 \subsection{UC 4.6.1: Visualizzazione lista permessi}
-	 \textbf{Descrizione}
-	 \\ \\
-	 L'utente sta effettuando l'operazione di visualizzazione dei permessi e intende inserire il comando di visualizzazione lista permessi.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r  X}
-				\textbf{Codice gerarchico} & UC4.6.1 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Visualizzazione lista permessi \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente vuole visualizzare i permessi di tutti gli utenti che hanno un qualche tipo di accesso al database selezionato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando di visualizzazione lista permessi\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando di visualizzazione lista permessi
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots
-			\end{tabularx}
-			\caption{Caso d'uso UC 4.6.1 - Visualizzazione lista permessi }
-		 \end{table} 	
-	 
-	 
-	 \subsection{UC 4.6.2: Visualizzazione permessi utente singolo}
-	 \textbf{Descrizione}
-	 \\ \\
-	 L'utente sta effettuando l'operazione di visualizzazione dei permessi e intende visualizzare i permessi di un singolo utente.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r  X}
-				\textbf{Codice gerarchico} & UC4.6.2 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Visualizzazione permessi utente singolo \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente vuole visualizzare i permessi di uno specifico utente\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha inserito correttamente il comando visualizzazione permessi utente singolo\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente scrive su terminale il comando di visualizzazione permessi seguito dal nome dell'utente di cui vuole visualizzare i permessi
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots
-			\end{tabularx}
-			\caption{Caso d'uso UC 4.6.2 - Visualizzazione permessi utente singolo}
-		 \end{table}
- 		 
-		 
-		 
-		 \subsection{UC 4.7: Modifica permessi accesso}
-	 \begin{figure}[H]
-				\centering
-				\includegraphics[scale=0.25]{UC/"UC 4-7 Modifica permessi".png}
-				\caption{Diagramma di UC 4.7: Modifica permessi accesso}
-			\end{figure}
-	\textbf{Descrizione} 
-	\\ \\
-L'utente avente i permessi di amministratore, vuole modificare i permessi di amministrazione, scrittura, lettura di un utente.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.7 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Modifica permessi accesso\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende modificare i permessi di un determinato utente\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha modificato con successo i permessi di un determinato utente\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando di modifica permessi (UC 4.7.1)
-				\item L'utente inserisce il nome dell'utente a cui verranno modificati i permessi (UC 4.7.2)
-				\item L'utente inserisce i valori dei nuovi permessi (UC 4.7.3) e preme invio
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & R[1.5.7][O][F] \newline
-R[2.17][D][F]  \\
-			\end{tabularx}
-			\caption{Caso d'uso UC 4.7 - Modifica permessi}
 		 \end{table}	
 		 
 		 
-		 \subsection{UC 4.7.1: Inserimento comando modifica permessi}
-	\textbf{Descrizione} 
-	\\ \\
-	L'utente avente permessi di amministratore, ha intenzione di modificare i permessi di un altro utente. Per effettuare l'operazione di modifica deve prima di tutto inserire il comando di modifica permessi da terminale.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.7.1 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Inserimento comando modifica permessi\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente intende modificare i permessi di un determinato utente\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha inserito con successo il comando di modifica permessi\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente scrive su terminale il comando di modifica permessi
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots
-			\end{tabularx}
-			\caption{Caso d'uso UC 4.7.1 - Inserimento comando modifica permessi}
-		 \end{table}		 
-		 
-		 \subsection{UC 4.7.2: Inserimento nome utente da modificare}
-	\textbf{Descrizione} 
-	\\ \\
-	L'utente ha inserito il comando per modificare i permessi, ora deve inserire il nome dell'utente a cui verranno modificati i permessi.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.7.2 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Inserimento nome utente da modificare\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\				
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} &  L'utente intende modificare i permessi di un determinato utente e ha inserito il comando di modifica permessi\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha inserito con successo il nome dell'utente a cui verranno modificati i permessi\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente scrive su terminale il nome dell'utente a cui verranno modificati i permessi 
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots
-			\end{tabularx}
-			\caption{Caso d'uso UC 4.7.2 - Inserimento nome utente da modificare}
-		 \end{table}
-		 
-		 \subsection{UC 4.7.3: Inserimento nuovi permessi}
-	\textbf{Descrizione} 
-	\\ \\
-	L'utente ha inserito il comando per modificare i permessi e il nome dell'utente a cui verranno modificati i permessi, ora deve inserire i valori dei nuovi permessi da assegnare all'utente.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.7.3 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Inserimento nuovi permessi\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\				
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} &  L'utente intende modificare i permessi di un determinato utente, ha inserito il comando di modifica permessi e il nome utente\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'utente ha inserito con successo i nuovi permessi\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente scrive su terminale il nuovi permessi da applicare all'utente precedentemente selezionato
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots
-			\end{tabularx}
-			\caption{Caso d'uso UC 4.7.3 - Inserimento nuovi permessi}
-		 \end{table}
-		 
-		 
-		 \subsection{UC 4.8: Errore creazione mappa fallita}
+		 \subsection{UC 4.6: Errore creazione mappa fallita}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente ha richiesto l'operazione di creazione di una nuova mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.8 \\
+				\textbf{Codice gerarchico} & UC4.6 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Errore creazione mappa fallita\\
 				\noalign{\hrule height 0.5pt}
@@ -2280,16 +2058,16 @@ R[2.12.5.1][N][F] \newline
 R[2.12.5.2][N][F] \newline
 R[2.15.5][N][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.8 - Errore creazione mappa fallita}
+			\caption{Caso d'uso UC 4.6 - Errore creazione mappa fallita}
 		 \end{table}	
 		 
-		 \subsection{UC 4.9: Errore eliminazione mappa fallita}
+		 \subsection{UC 4.7: Errore eliminazione mappa fallita}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente ha richiesto l'operazione di eliminazione di una mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.9 \\
+				\textbf{Codice gerarchico} & UC4.7 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Errore eliminazione mappa fallita\\
 				\noalign{\hrule height 0.5pt}
@@ -2312,16 +2090,16 @@ R[2.15.5][N][F]  \\
 R[1.5.3.4][N][F] \newline
 R[2.13.5][N][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.9 - Errore eliminazione mappa fallita}
+			\caption{Caso d'uso UC 4.7 - Errore eliminazione mappa fallita}
 		 \end{table}	
 		 
-		 \subsection{UC 4.10: Errore rinomina mappa fallita}
+		 \subsection{UC 4.8: Errore rinomina mappa fallita}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente ha richiesto l'operazione di rinomina di una mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.10 \\
+				\textbf{Codice gerarchico} & UC4.8 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Errore rinomina mappa fallita\\
 				\noalign{\hrule height 0.5pt}
@@ -2347,16 +2125,16 @@ R[2.14.5][D][F] \newline
 R[2.14.5.1][D][F] \newline
 R[2.14.5.2][D][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.10 - Errore rinomina mappa fallita}
+			\caption{Caso d'uso UC 4.8 - Errore rinomina mappa fallita}
 		 \end{table}	
 		 
-		 \subsection{UC 4.11: Errore selezione mappa fallita}
+		 \subsection{UC 4.9: Errore selezione mappa fallita}
 	\textbf{Descrizione} 
 	\\ \\
 	L'utente ha richiesto l'operazione di selezione di una mappa ma questa è fallita, l'utente riceve un messaggio di errore informativo e la possibilità di inserire un nuovo comando.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.11 \\
+				\textbf{Codice gerarchico} & UC4.9 \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Nome sintetico} & Errore selezione mappa fallita\\
 				\noalign{\hrule height 0.5pt}
@@ -2380,70 +2158,7 @@ R[1.5.5.4][N][F] \newline
 R[2.15.5.1][N][F] \newline
 R[2.15.5.2][N][F]  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 4.11 - Errore selezione mappa fallita}
-		 \end{table}	
-		 
-		  \subsection{UC 4.12: Errore permessi di amministrazione database insufficienti}
-	\textbf{Descrizione} 
-	\\ \\
-	L'utente ha richiesto la visualizzazione dei permessi di accesso al database selezionato non disponendo dei permessi amministrativi necessari. La visualizzazione fallisce e l'utente riceve un messaggio di errore informativo unito alla possibilità di richiedere una nuova operazione.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.12 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore permessi di amministrazione database insufficienti\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha richiesto la visualizzazione dei permessi di accesso al database\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, la lista dei permessi non è stata visualizzata, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente riceve un messaggio di errore informativo sul terminale
-				\item L'utente riceve la possibilità di inserire un nuovo comando
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & R[1.5.6][O][F] \newline
-R[2.16][D][F]  \\
-			\end{tabularx}
-			\caption{Caso d'uso UC 4.12 - Errore permessi di amministrazione database insufficienti}
-		 \end{table}	
-		 
-		
-		 \subsection{UC 4.13: Errore modifica permessi fallita}
-	\textbf{Descrizione} 
-	\\ \\
-	L'utente ha richiesto di modificare i permessi di un determinato utente, l'operazione è fallita perché ha inserito valori di permessi non validi dunque l'utente riceve un messaggio di errore informativo e la possibilità di richiedere una nuova operazione.
-	\begin{table}[H]
-			\begin{tabularx}{\textwidth}{r X}
-				\textbf{Codice gerarchico} & UC4.13 \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore modifica permessi fallita\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Utente autenticato\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Attori secondari} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha richiesto un'operazione di modifica permessi\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & L'operazione richiesta non è stata eseguita con successo, nessun permesso di un determinato utente è stato cambiato, l'utente ha ricevuto un messaggio di errore e ora può richiedere una nuova operazione\\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente riceve un messaggio di errore informativo sul terminale
-				\item L'utente riceve la possibilità di inserire un nuovo comando
-				\end{enumerate} \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Scenari alternativi} & Nessuno \\
-				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & R[1.5.7][O][F] \newline
-R[2.17][D][F]  \\
-			\end{tabularx}
-			\caption{Caso d'uso UC 4.13 - Errore modifica permessi fallita}
+			\caption{Caso d'uso UC 4.9 - Errore selezione mappa fallita}
 		 \end{table}	
 		 
 		 \subsection{UC 5: Operazioni a livello mappa}
@@ -3460,261 +3175,687 @@ R[2.24][N][F] \\
 			\caption{Caso d'uso UC 8 - Chiusura interfaccia client}
 	\end{table}
 		 
-		 
-		 \subsection{Visione ad alto livello delle interazioni tramite interfaccia server}
-		 	\begin{figure}[H]
-				\centering
-				\includegraphics[scale=0.4]{UC/"ActorbaseServer".png}
-				\caption{Interazioni tramite interfaccia server}
-			\end{figure}
-			Il diagramma in figura illustra l'interfaccia CLI lato server. Tale interfaccia va avviata per far partire il server principale di \emph{Actorbase}.
-			\\ 
-			L m'avvio dell'interfaccia server avvia automaticamente il server.
-			\\ 
-			Per arrestare il server, l'amministratore del server deve inserire l'apposito comando da questa interfaccia.
-			
-			 \subsection{UC 9: Comando aggiornamento permessi}
+		 \subsection{UC 9: Visualizzazione lista utenti}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha inserito il comando per aggiornare i permessi degli utenti, il permessi sono presenti su file
+	L'amministratore intende visualizzare la lista degli utenti che hanno accesso al server, inserisce il comando di visualizzazione lista utenti e il sistema stampa sul terminale la lista.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC9 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Comando lettura permessi \\
+				\textbf{Nome sintetico} & Visualizzazione lista utenti\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Amministratore del server\\
+				\textbf{Attore principale} & Amministratore\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\textbf{Pre-condizione} & L'amministratore intende visualizzare la lista degli utenti che hanno accesso al server\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
+				\textbf{Post-condizione} & L'amministratore riceve la lista degli utenti che hanno accesso al server stampata su terminale\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando per leggere il file dei permessi
+				\item L'amministratore inserisce il comando di visualizzazione lista utenti e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & 
-R[1.2.2][N][F] \newline \\
+				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 9 - Comando aggiornamento permessi}
-	\end{table}
-	
-				 \subsection{UC 10: Comando aggiornamento proprietà Storekeeper}
+			\caption{Caso d'uso UC 9 - Visualizzazione lista utenti}
+		 \end{table} 
+		 
+		 \subsection{UC 10: Aggiunta utente}
+		  \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"UC 10 Aggiunta utente".png}
+				\caption{Diagramma di UC10: Aggiunta utente}
+			\end{figure}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha inserito il comando per aggiornare le proprietà degli Storekeeper, i valori sono presenti su file
+	L'amministratore intende aggiungere un utente che possa accedere al server, per far questo inserisce il comando di aggiunta utente seguito dall'username e dalla password che tale utente dovrà poi utilizzare per accedere.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC10 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Comando lettura proprietà Storekeeper \\
+				\textbf{Nome sintetico} & Aggiunta utente\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Amministratore del server\\
+				\textbf{Attore principale} & Amministratore\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\textbf{Pre-condizione} & L'utente intende aggiungere un utente che abbia accesso al server\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
+				\textbf{Post-condizione} & L'utente risulta inserito correttamente\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando per aggiornare le proprietà degli Storekeeper
+				\item L'amministratore inserisce il comando di inserimento utente (UC10.1)
+				\item L'amministratore inserisce l'username dell'utente da inserire (UC10.2)
+				\item L'amministratore inserisce la password dell'utente da inserire (UC10.3) e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & 
-R[1.2.3][D][F] \newline \\
+				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 10 - Comando aggiornamento proprietà Storekeeper}
-	\end{table}
-	
-	\subsection{UC 11: Comando aggiornamento numero Storefinder}
+			\caption{Caso d'uso UC 10 - Aggiunta utente}
+		 \end{table} 
+		 
+		 \subsection{UC 10.1: Inserimento comando di aggiunta utente}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha inserito il comando per aggiornare il numero degli Storefinder per ogni mappa, il valore viene letto da file
+	L'amministratore intende aggiungere un utente, a tal fine deve per prima cosa inserire il comando di aggiunta utente.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC10.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di aggiunta utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende aggiungere un utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo il comando di aggiunta utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale il comando di aggiunta utente
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 10.1 - Inserimento comando di aggiunta utente}
+		 \end{table}		 
+		 
+		 \subsection{UC 10.2: Inserimento username utente da aggiungere}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende aggiungere un utente, ha inserito il comando per aggiungere un utente, ora deve inserire l'username dell'utente che vuole aggiungere.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC10.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento username utente da aggiungere\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende aggiungere un utente e ha inserito il comando di aggiunta utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo l'username dell'utente da aggiungere\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale l'username dell'utente da aggiungere
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 10.2 - Inserimento username utente da aggiungere}
+		 \end{table}		 
+		 
+		 \subsection{UC 10.3: Inserimento password utente da aggiungere}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende aggiungere un nuovo utente, ha inserito il comando per aggiungere un utente e l'username dell'utente da aggiungere, ora deve inserire la password che l'utente dovrà poi utilizzare per l'accesso.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC10.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento password utente da aggiungere\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende aggiungere un utente a e ha inserito il comando di aggiunta utente seguito dall'username\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo la password per l'utente da inserire\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale la password per l'utente da aggiungere
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 10.3 - Inserimento password utente da aggiungere}
+		 \end{table}	
+		 
+		 \subsection{UC 11: Rimozione utente}
+		  \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{UC/"UC 11 Rimozione utente".png}
+				\caption{Diagramma di UC11: Rimozione utente}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende rimuovere un utente che attualmente può accedere al server, per far questo inserisce il comando di rimozione utente seguito dall'username dell'utente.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC11 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Comando lettura numero Storefinder \\
+				\textbf{Nome sintetico} & Rimozione utente\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Amministratore del server\\
+				\textbf{Attore principale} & Amministratore\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\textbf{Pre-condizione} & L'amministratore intende rimuovere un utente che abbia accesso al server\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
+				\textbf{Post-condizione} & L'utente risulta rimosso correttamente\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando per aggiornare il numero di Storefinder per ogni mappa
+				\item L'amministratore inserisce il comando di rimozione utente (UC11.1)
+				\item L'amministratore inserisce l'username dell'utente da rimuovere (UC11.2) e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & 
-R[1.2.4.1][D][F] \newline \\
+				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 11 - Comando aggiornamento numero Storefinder}
-	\end{table}
-	
-	
-		\subsection{UC 12: Comando aggiornamento numero Warehouseman}
+			\caption{Caso d'uso UC 11 - Rimozione utente}
+		 \end{table} 
+		 
+		 \subsection{UC 11.1: Inserimento comando di rimozione utente}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha inserito il comando per aggiornare il numero degli Warehouseman per ogni Storekeeper, il valore viene letto da file
+	L'amministratore intende rimuovere un utente, a tal fine deve per prima cosa inserire il comando di rimozione  utente.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC11.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di rimozione utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende rimuovere un utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo il comando di rimozione utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale il comando di rimozione utente
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 11.1 - Inserimento comando di rimozione utente}
+		 \end{table}		 
+		 
+		 \subsection{UC 11.2: Inserimento username utente da rimuovere}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende rimuovere un utente, ha inserito il comando per rimuovere un utente, ora deve inserire l'username dell'utente che vuole rimuovere.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC11.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento username utente da rimuovere\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende rimuovere un utente e ha inserito il comando di rimozione utente \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo l'username dell'utente da rimuovere \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale l'username dell'utente da rimuovere
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 11.2 - Inserimento username utente da rimuovere}
+		 \end{table}		 	 
+		 
+		 
+		 \subsection{UC 12: Visualizzazione lista permessi utente}
+		  \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{UC/"UC 12 Visualizzazione lista permessi utente".png}
+				\caption{Diagramma di UC12: Visualizzazione lista permessi utente}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende visualizzare la lista dei permessi di un utente, per far questo deve inserire il comando di visualizzazione lista permessi seguito dall'username dell'utente di cui vuole ottenere informazioni. 
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC12 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Comando lettura numero Storefinder \\
+				\textbf{Nome sintetico} & Visualizzazione lista permessi utente\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Amministratore del server\\
+				\textbf{Attore principale} & Amministratore\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\textbf{Pre-condizione} & L'amministratore intende visualizzare la lista dei permessi di un utente\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
+				\textbf{Post-condizione} & L'amministratore riceve la lista dei permessi stampata su terminale\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando per aggiornare il numero di Warehouseman per ogni Storekeeper
+				\item L'amministratore inserisce il comando di visualizzazione lista permessi utente (UC12.1)
+				\item L'amministratore inserisce l'username dell'utente di cui vuole conoscere i permessi (UC12.2) e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & 
-R[1.2.4.2][D][F] \newline \\
+				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 12 - Comando aggiornamento numero Warehouseman}
-	\end{table}
-	
-	\subsection{UC 13: Comando aggiornamento numero Ninja}
+			\caption{Caso d'uso UC 12 - Visualizzazione lista permessi utente}
+		 \end{table} 
+		 
+		 \subsection{UC 12.1: Inserimento comando di visualizzazione lista permessi utente}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha inserito il comando per aggiornare il numero degli Ninja per ogni Storekeeper, il valore viene letto da file
+	L'amministratore intende visualizzare i permessi di un utente, a tal fine deve per prima cosa inserire il comando di visualizzazione lista permessi utente.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC12.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di visualizzazione lista permessi utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende visualizzare i permessi di un utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo il comando di visualizzazione lista permessi utentee\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale il comando di visualizzazione lista permessi utente
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 12.1 - Inserimento comando di visualizzazione lista permessi utente}
+		 \end{table}		 
+		 
+		 \subsection{UC 12.2: Inserimento username utente di cui visualizzare i permessi}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende visualizzare i permessi di un utente, ha inserito il comando di visualizzazione lista permessi utente, ora deve inserire l'username dell'utente di cui vuole visualizzare i permessi.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC12.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento username utente di cui visualizzare i permessi\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende visualizzare i permessi di un utente e ha inserito il comando di visualizzazione lista permessi utente \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo l'username dell'utente di cui vuole visualizzare i permessi \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale l'username dell'utente di cui vuole visualizzare i permessi
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 12.2 - Inserimento username utente di cui visualizzare i permessi}
+		 \end{table}		 	 
+		 
+		 
+		 
+		 \subsection{UC 13: Aggiunta permesso utente}
+		  \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{UC/"UC 13 Aggiunta permesso utente".png}
+				\caption{Diagramma di UC13: Aggiunta permesso utente}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende aggiungere un permesso a un utente, per far questo deve inserire il comando di aggiunta permesso seguito dall'username dell'utente a cui vuole aggiungere il permesso e il database a cui permettere l'accesso. 
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC13 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Comando lettura numero Ninja \\
+				\textbf{Nome sintetico} & Aggiunta permesso utente\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Amministratore del server\\
+				\textbf{Attore principale} & Amministratore\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\textbf{Pre-condizione} & L'amministratore intende aggiungere un permesso a un utente\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il server mostra l'esito del comando\\
+				\textbf{Post-condizione} & L'utente ha ricevuto il permesso per il database inserito\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando per aggiornare il numero di Ninja per ogni Storekeeper
+				\item L'amministratore inserisce il comando di aggiunta permesso (UC13.1)
+				\item L'amministratore inserisce l'username dell'utente a cui vuole aggiungere il permesso (UC13.2) 
+				\item L'amministratore inserisce il nome del database a cui vuole permettere l'accesso (UC13.3) e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & 
-R[1.2.4.3][D][F] \newline \\
+				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 13 - Comando aggiornamento numero Ninja}
-	\end{table}
+			\caption{Caso d'uso UC 13 - Aggiunta permesso utente}
+		 \end{table} 
 		 
-	\subsection{UC 14: Comando d'arresto}
+		 \subsection{UC 13.1: Inserimento comando di aggiunta permesso}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha inserito il comando per arrestare il sistema
+	L'amministratore intende aggiungere un permesso a un utente, per far questo deve inserire il comando di aggiunta permesso.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC13.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di aggiunta permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende aggiungere un permesso a un utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo il comando di aggiunta permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale il comando di aggiunta permesso
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 13.1 - Inserimento comando di aggiunta permesso}
+		 \end{table}		 
+		 
+		 \subsection{UC 13.2: Inserimento username utente a cui aggiungere il permesso}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende aggiungere un permesso a un utente, ha inserito il comando di aggiunta permesso, ora deve inserire l'username dell'utente a cui vuole aggiungere il permesso.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC13.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento username utente a cui aggiungere il permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende aggiungere un permesso a un utente, ha inserito il comando di aggiunta permesso \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo l'username dell'utente a cui vuole aggiungere il permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale l'username dell'utente a cui vuole aggiungere il permesso
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 13.2 - Inserimento username utente a cui aggiungere il permesso}
+		 \end{table}	
+		 
+		 \subsection{UC 13.3: Inserimento database di cui aggiungere il permesso}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende aggiungere un permesso a un utente, ha inserito il comando di aggiunta permesso e l'username dell'utente a cui vuole aggiungere il permesso. Ora deve inserire il nome del database di cui aggiungere il permesso di accesso.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC13.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento database di cui aggiungere il permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende aggiungere un permesso a un utente, ha inserito il comando di aggiunta permesso e l'username dell'utente a cui vuole aggiungere il permesso \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo il nome del database di cui aggiungere il permesso di accesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale il nome del database di cui aggiungere il permesso di accesso
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 13.3 - Inserimento database di cui aggiungere il permesso}
+		 \end{table}	
+		 
+		 \subsection{UC 14: Rimozione permesso utente}
+		  \begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.3]{UC/"UC 14 Rimozione permesso utente".png}
+				\caption{Diagramma di UC14: Rimozione permesso utente}
+			\end{figure}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende rimuovere un permesso a un utente, per far questo deve inserire il comando di rimozione permesso seguito dall'username dell'utente a cui vuole rimuovere il permesso e il database a cui impedire l'accesso. 
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC14 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Comando per arrestare il sistema \\
+				\textbf{Nome sintetico} & Rimozione permesso utente\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Amministratore del server\\
+				\textbf{Attore principale} & Amministratore\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\textbf{Pre-condizione} & L'amministratore intende rimuovere un permesso a un utente\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & Il server si spegne \\
+				\textbf{Post-condizione} & L'utente ha perso il permesso di accesso al database inserito\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente inserisce il comando per arrestare l'intero sistema
+				\item L'amministratore inserisce il comando di rimozione permesso (UC14.1)
+				\item L'amministratore inserisce l'username dell'utente a cui vuole rimuovere il permesso (UC14.2) 
+				\item L'amministratore inserisce il nome del database a cui vuole impedire l'accesso (UC14.3) e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & 
-R[1.2.5][N][F] \newline \\
+				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 14 - Comando d'arresto}
-	\end{table}
-	
-	\subsection{UC 15: Errore comando errato}
+			\caption{Caso d'uso UC 14 - Rimozione permesso utente}
+		 \end{table} 
+		 
+		 \subsection{UC 14.1: Inserimento comando di rimozione permesso}
 	\textbf{Descrizione} 
 	\\ \\
-	La console visualizza un errore in caso il comando non esista
+	L'amministratore intende rimuovere un permesso a un utente, per far questo deve inserire il comando di rimozione permesso.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC14.1 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento comando di rimozione permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende rimuovere un permesso a un utente\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo il comando di rimozione permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale il comando di rimozione permesso
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 14.1 - Inserimento comando di rimozione permesso}
+		 \end{table}		 
+		 
+		 \subsection{UC 14.2: Inserimento username utente a cui rimuovere il permesso}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende rimuovere un permesso a un utente, ha inserito il comando di rimozione permesso, ora deve inserire l'username dell'utente a cui vuole rimuovere il permesso.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC1r.2 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento username utente a cui rimuovere il permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende rimuovere un permesso a un utente, ha inserito il comando di rimozione permesso \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo l'username dell'utente a cui vuole rimuovere il permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale l'username dell'utente a cui vuole rimuovere il permesso
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 14.2 - Inserimento username utente a cui rimuovere il permesso}
+		 \end{table}	
+		 
+		 \subsection{UC 14.3: Inserimento database di cui rimuovere il permesso}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore intende rimuovere un permesso a un utente, ha inserito il comando di rimozione permesso e l'username dell'utente a cui vuole rimuovere il permesso. Ora deve inserire il nome del database di cui rimuovere il permesso di accesso.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC14.3 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Inserimento database di cui rimuovere il permesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Amministratore\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'amministratore intende rimuovere un permesso a un utente, ha inserito il comando di rimozione permesso e l'username dell'utente a cui vuole rimuovere il permesso \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'amministratore ha inserito con successo il nome del database di cui rimuovere il permesso di accesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'amministratore scrive su terminale il nome del database di cui rimuovere il permesso di accesso
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 14.3 - Inserimento database di cui rimuovere il permesso}
+		 \end{table}	
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 \subsection{Visione ad alto livello delle interazioni tramite interfaccia server}
+		 	\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.25]{UC/"Actorbase Server".png}
+				\caption{Interazioni tramite interfaccia server}
+			\end{figure}
+			Il diagramma in figura illustra l'interfaccia CLI lato server. Tale interfaccia va avviata per far partire il server principale di \emph{Actorbase}.
+			\\ 
+			L'avvio dell'interfaccia server avvia automaticamente il server. L'interfaccia server è un'interfaccia a riga di comando su cui è possibile visualizzare in tempo reale il log delle operazioni che vengono effettuate sul server (UC15)
+			\\ 
+			Per arrestare il server, l'amministratore del server deve inserire l'apposito comando da questa interfaccia (UC16).
+			
+			\subsection{UC 15: Visualizzazione log operazioni sul server}
+	\textbf{Descrizione} 
+	\\ \\
+	L'amministratore ha avviato il server di \emph{Actorbase}, il sistema stampa su console il log delle operazioni che vengono effettuate sul server.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC15 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore comando errato \\
+				\textbf{Nome sintetico} & Visualizzazione log operazioni sul server\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Amministratore del server\\
+				\textbf{Attore principale} & Amministratore\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\textbf{Pre-condizione} & L'amministratore ha avviato il server \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & La console visualizza l'errore \\
+				\textbf{Post-condizione} & L'amministratore riceve il log delle operazioni effettuate sul server stampato su console\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente visualizza l'errore
+				\item Il log viene stampato su schermo in tempo reale
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & 
-R[1.2.6][N][F] \newline \\
+				\textbf{Lista requisiti\newline dedotti} & \dots  \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 15 - Errore comando errato}
-	\end{table}
-	
-	
-		\subsection{UC 16: Errore lettura file}
+			\caption{Caso d'uso UC 15 - Visualizzazione log operazioni sul server}
+		 \end{table}	
+		 
+		 \subsection{UC 16: Arresto del server}
 	\textbf{Descrizione} 
 	\\ \\
-	La console visualizza un errore in caso si verifichi un errore con i file
+	L'amministratore ha deciso di arrestare il server, per far questo inserisce l'apposito comando dall'interfaccia del server.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC16 \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Nome sintetico} & Errore lettura file \\
+				\textbf{Nome sintetico} & Arresto del server \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Attore principale} & Amministratore del server\\
+				\textbf{Attore principale} & Amministratore\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Attori secondari} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Pre-condizione} & L'utente ha avviato l'applicativo su un server\\
+				\textbf{Pre-condizione} & L'amministratore intende arrestare il server\\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Post-condizione} & La console visualizza l'errore \\
+				\textbf{Post-condizione} & Il server è arrestato e l'interfaccia è stata chiusa\\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Flusso eventi} & \begin{enumerate}
-				\item L'utente visualizza l'errore
+				\item L'amministratore inserisce il comando di arresto e preme invio
 				\end{enumerate} \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & 
-R[1.2.7][N][F] \newline \\
+				\textbf{Lista requisiti\newline dedotti} & \dots \\
 			\end{tabularx}
-			\caption{Caso d'uso UC 16 - Errore lettura file}
+			\caption{Caso d'uso UC 16 - Arresto del server}
 	\end{table}
-		 
+			
 		 
 		 
 		 
