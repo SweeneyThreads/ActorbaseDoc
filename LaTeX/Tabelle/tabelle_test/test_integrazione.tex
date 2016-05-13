@@ -7,22 +7,16 @@
 			\rowcolor{orange!85}Test & Descrizione & Stato & Componente \\
 \endhead
 
-	TI.Server & Viene verificato che il Server riceva i comandi e restituisca output corretti. Vengono anche verificati l'avvio e l'arresto & N.E & Server \\
+	TI.server & Viene verificato che il Server riceva i comandi e restituisca output corretti. Vengono anche verificati l'avvio e l'arresto & Success & server \\
 	\hline
-	TI.API & Viene verificato che la componente API riceva ed invii correttamente  & N.E & API \\	
+	TI.utils & Viene verificato che le le classi di utilità interagiscano correttamente con il resto del sistema & Success & utils \\	
 	\hline	
-	TI.Core & Viene verificato che il Core elabori correttamente i comandi e gestisca correttamente le interazioni tra attori & N.E & Core \\
+	TI.actors & Viene verificato che all'interno del sistema di attori i messaggi vengano scambiati ed elaborati correttamente  & Success & actors \\
 	\hline	
-	TI.Driver & Viene verificato che il Driver riceva e invii correttamente e che i metodi esposti funzionino correttamente & N.E & Driver \\	
+	TI.driver & Viene verificato che il driver si connetta correttamente al server e che invii le stringe di query composte secondo la grammatica corretta & Success & driver \\	
 	\hline	 
-	TI.Client & Viene verificato che il Client riceva ed elabori correttamente gli input , chiami i metodi corrispondenti e mostri il giusto output & N.E & Client\\	
-	\hline	 
-	TI.Model & Viene verificato che il Model cambi correttamente il suo stato, che notifichi il cambiamento e che chiami i metodi corretti & N.E & Model\\	
-	\hline	 
-	TI.View & Viene verificato che la View notifichi correttamente il cambiamento del suo stato e lo aggiorni quando necessario & N.E & View\\	
-	\hline	 
-	TI.Controller & Viene verificato che il Controller elabori correttamente gli input e chiami i metodi corrispondenti & N.E & Controller\\	
-	\hline
+	TI.client & Viene verificato che all'apertura del client venga mostrato correttamente il messaggio di benvenuto, e che sia messa a disposizione una shell che permetta di inserire i comandi da inviare al Driver e ne stampi la risposta  corrispondente & Success & client	\\
+	\hline	
 	
 \bottomrule
 \caption{Test di integrazione con componente associata}
