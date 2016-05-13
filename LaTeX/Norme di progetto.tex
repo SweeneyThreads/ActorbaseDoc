@@ -73,7 +73,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.3
+			Versione 2.0.4
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm]
@@ -764,20 +764,47 @@
 			La qualità del processo viene garantita da:
 			\begin{itemize}
 				\item \textbf{Pianificazione:} i processi devono essere pianificati nel dettaglio, in maniera da determinare 
-				i punti e le tempistiche in cui effettuare controlli;
+				i punti e le tempistiche in cui effettuare controlli. 
 				\item \textbf{Controllo:} i controlli pianificati devono essere eseguiti in maniera oggettiva e neutrale, 
-				quindi con strumenti automatici ovunque possibile;
-				\item \textbf{Miglioramento continuo:} l'adozione del principio di \emph{PDCA} aiuterà a migliorare i processi durante l'intera durata del progetto..
+				quindi con strumenti automatici ovunque possibile. Alla fine di ogni fase di progetto è necessario calcolare
+				le metriche per i processi indicate nel \emph{Piano di Qualifica v4.0.0} e trarne delle conclusioni. 
+				\item \textbf{Miglioramento continuo:} l'adozione del principio di \emph{PDCA} implica che alle conclusioni
+				tratte dalle metriche seguano degli accorgimenti atti a contrastare le anomalie riscontrate. Tali accorgimenti
+				possono riguardare le pianificazioni delle fasi successive, l'adozione di tecnologie diverse e l'organizzazione,
+				ma vanno presi tenendo sempre conto dell'impatto che essi avranno sul budget a disposizione.
 			\end{itemize}
+			
+		\subsubsection{Procedure di controllo qualità per i documenti}
+			La qualità della documentazione viene garantita da:
+			\begin{itemize}
+				\item \textbf{Verifica:} le attività di verifica sui documenti non devono mai essere trascurate. Nelle prime fasi 
+				del progetto i verificatori dovranno sottoporre i documenti ad un'analisi di tipo \emph{Walkthrough}, per passare 
+				poi quando possibile all'\emph{Inspection}. Inoltre al termine di ogni fase è necessario verificare che le 
+				metriche indicate nel \emph{Piano di Qualifica v4.0.0} in sezione 2.2.2 siano entro il limite di accettabilità e 
+				provvedere ove opportuno.
+				\item \textbf{Validazione:} prende in considerazione l'intero documento ed è atta a dimostrare oggettivamente che 
+				sia conforme alle aspettative. Prima della presentazione al Committente il Responsabile di progetto 
+				ha il compito di approvare la documentazione.
+				\item \textbf{Quality Assurance:} il rispetto delle norme di progetto assicura il raggiungimento degli obiettivi 
+				di qualità prefissati, riducendo il ricorso a tecniche retrospettive, e con esse si riducono le iterazioni.
+			\end{itemize}
+			
 		\subsubsection{Procedure di controllo qualità per il prodotto}
 			La qualità del prodotto viene garantita da:
 			\begin{itemize}
-				\item \textbf{Comprensione ed analisi del dominio};
+				\item \textbf{Comprensione ed analisi del dominio} approfondita mediante la produzione della documentazione 
+				secondo norme.
 				\item \textbf{Verifica:} determina che l'output di una fase sia consistente, completo e corretto. 
-				Deve essere eseguita costantemente per tutta la durata del progetto, ma cercando di essere minimamente invasiva;
-				\item \textbf{Validazione:} conferma oggettivamente che il prodotto sia conforme alle aspettative;
-				\item \textbf{Quality Assurance:} garantisce il raggiungimento degli obiettivi di qualità, in maniera preventiva. 
-				In questo modo si riduce drasticamente il ricorso a tecniche retrospettive, e con esse si riducono le iterazioni.
+				Deve essere eseguita costantemente per tutta la durata del progetto, ma cercando di essere minimamente invasiva.
+				Consiste nel controllo delle metriche indicate nel \emph{Piano di Qualifica v4.0.0} in sezione 2.2.3 e nella
+				produzione dei test di sistema, di integrazione e di unità. In particolar modo le modifiche apportate al codice
+				sono sempre esaminate tramite i test, per evitare l'introduzione di errori. Questa norma preventiva è molto
+				importante in quanto l'individuazione degli errori è un attività particolarmente difficoltosa e costosa. 
+				\item \textbf{Validazione:} prende in considerazione l'intero prodotto ed è atta a dimostrare oggettivamente che 
+				sia conforme alle aspettative. Prima della presentazione al Committente il prodotto dovrà essere sottoposto a
+				dei test di validazione opportunamente prodotti.
+				\item \textbf{Quality Assurance:} il rispetto delle norme di progetto assicura il raggiungimento degli obiettivi 
+				di qualità prefissati, riducendo il ricorso a tecniche retrospettive, e con esse si riducono le iterazioni.
 			\end{itemize}
 				
 						
