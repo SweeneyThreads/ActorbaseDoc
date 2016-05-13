@@ -79,7 +79,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.1
+			Versione 2.0.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -3856,8 +3856,103 @@ R[2.24][N][F] \\
 			\caption{Caso d'uso UC 16 - Arresto del server}
 	\end{table}
 			
-		 
-		 
+			
+			
+			
+			
+			\subsection{Visione ad alto livello delle interazioni tramite driver}
+		 	\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.6]{UC/"Actorbase Driver".png}
+				\caption{Interazioni tramite driver}
+			\end{figure}
+			Il diagramma in figura illustra le interazioni che un utente può compiere con il sistema durante l'utilizzo del driver di \emph{Actorbase}. Il driver sarà uno strumento molto semplice da utilizzare, deve fornire semplici metodi per ottenere connessioni a server \emph{Actorbase} (UC 17), per effettuare interrogazioni sul database e ricevere risultati (UC 18).
+		 \subsection{UC 17: Acquisizione di una connessione tramite driver}
+		 \textbf{Descrizione} 
+	\\ \\
+	L'utente intende ottenere una nuova connessione ad un server di \emph{Actorbase}, il driver fornirà connessioni come oggetti, nascondendo all'utente i dettagli. Dunque per ottenere una connessione l'utente deve invocare il metodo di connessione fornendo i parametri necessari: indirizzo del server, porta, username e password. Il metodo ritorna all'utente un oggetto connessione tramite il quale l'utente potrà effettuare interrogazioni sul database.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC17 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Acquisizione di una connessione tramite driver\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente generico\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende ottenere una nuova connessione ad un server di \emph{Actorbase}\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha ricevuto un oggetto connessione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente chiama il metodo di connessione passando i parametri necessari
+				\item Il sistema fornisce un oggetto connessione
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & La connessione viene rifiutata, l'utente non riceve alcun oggetto (UC 19) \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 17 - Acquisizione di una connessione tramite driver}
+	\end{table}
+		 \subsection{UC 18: Interrogazione tramite driver}
+		 \textbf{Descrizione} 
+	\\ \\
+	L'utente possiede un oggetto connessione e intende utilizzarlo per effettuare interrogazioni sul database. L'utente invoca sull'oggetto connessione il metodo di query, passando come parametro la stringa di query e ricevendo una stringa di risposta.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC18 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Interrogazione tramite driver\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente generico\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente intende interrogare il database tramite un oggetto connessione in suo possesso\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente ha ricevuto una stringa di risposta all'interrogazione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente chiama il metodo di interrogazione passando come parametro la stringa di query
+				\item Il sistema risponde con una stringa di risposta
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 18 - Interrogazione tramite driver}
+	\end{table}
+	\subsection{UC 19: Connessione rifiutata}
+		 \textbf{Descrizione} 
+	\\ \\
+	L'utente ha richiesto al driver un oggetto connessione. Il driver non è stato in grado di costruire una connessione con i parametri inseriti dall'utente dunque non ritorna alcun oggetto all'utente.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC19 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Connessione rifiutata\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente generico\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente ha richiesto una connessione al driver\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & L'utente non ha ricevuto un oggetto connessione\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente riceve un valore nullo al posto dell'oggetto connessione richiesto
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & \dots \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 19 - Connessione rifiutata}
+	\end{table}
 		 
 		 
 		 
