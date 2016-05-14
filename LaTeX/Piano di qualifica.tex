@@ -78,7 +78,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.1
+			Versione 2.0.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -157,12 +157,10 @@
 					\item \textbf{PPC (Partial Planned Cost):} Indica il costo pianificato per lo svolgimento di un sottoinsieme
 					di attività. Si misura in euro e in ore.
 					\item \textbf{PV (Planned Value):} Indica il valore che si prevede ottenere dal completamento delle attività
-					pianificate. Nel caso particolare di questo progetto, che non prevede un guadagno monetario, tale valore
-					corrisponde alla spesa richiesta per il completamento delle attività.
+					pianificate. Per questo progetto tale valore corrisponde alla spesa richiesta per il completamento delle attività.
 					Si misura in euro e in ore.
 					\item \textbf{EV (Earned Value):} Indica il valore ottenuto tramite le attività completate alla data 
-					corrente. Nel caso particolare di questo progetto, che non prevede un guadagno monetario, tale valore
-					corrisponde alla spesa richiesta per il completamento delle attività.
+					corrente. Per questo progetto tale valore corrisponde alla spesa richiesta per il completamento delle attività.
 					Si misura in euro e in ore.
 					\item \textbf{AC (Actual Cost):} Indica il costo effettivamente sostenuto alla data corrente.
 					Si misura in euro e in ore. Aiuta a calcolare altre metriche.
@@ -911,9 +909,166 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 						\caption{Tabella metriche dei documenti }
 						\label{SVBVTable}
 					\end{table}
+
+	\subsection{Test di validazione}
+	In questa sezione vengono descritti i test di validazione che servono per accertarsi che il prodotto realizzato sia conforme alle attese. 
+	Per ogni test vengono descritti i vari passi che un utente deve eseguire per testare i requisiti ad esso associati.
+	Il client di Actorbase funziona tramite riga di comando, per questo motivo viene sempre riportata la sintassi dei comandi che si intendono verificare.
+	Viene richiesto di porre attenzione al rispetto degli spazi e all'utilizzo degli apici singoli "'" che identificano le chiavi.
+	Le parentesi uncinate "<>" invece non vanno riportate e servono unicamente a contraddistinguere i parametri scelti dall'utente dai comandi.
+	I comandi non sono case sensitive e possono essere scritti in maiuscolo o in minuscolo indifferentemente. 
+	Al contrario i parametri inseriti dall'utente vengono interpretati tenendo conto delle lettere maiuscole e minuscole.
+	
+	\subsubsection{Test TV1: Connessione}
+	L'utente vuole verificare che sia possibile connettersi al server di Actorbase tramite l'interfaccia del client. \\
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Accertarsi che il server sia in esecuzione all'indirizzo <host> desiderato. "localhost" di default.
+		\item Accertarsi che il server sia in ascolto sulla porta <port> desiderata. "8181" di default.
+		\item Accertarsi che sia disponibile nel database un utente con lo username <username> desiderato. "admin" di default.
+		\item Accertarsi che la password <password> inserita sia propria dell' utente <username> desiderato. "admin" di default.
+		\item Digitare nella console del client il comando di connessione utilizzando la sintassi: connect <host>:<port> <username> <password>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV2: Aiuto}
+	L'utente vuole verificare la funzionalità di aiuto, sia generico che per un dato comando.\\
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Digitare nella console del client il comando di aiuto utilizzando la sintassi: help
+		\item Eseguire il comando tramite il tasto invio.
+		\item Scegliere un comando <command> dalla lista dei comandi ritornati.
+		\item Digitare nella console del client il comando di help utilizzando la sintassi: help <command>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV3: Database disponibili}
+	L'utente vuole verificare la funzionalità di visualizzazione dei nomi dei database disponibili.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Digitare nella console del client il comando listdb utilizzando la sintassi: listdb
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV4: Creazione database}
+	L'utente vuole verificare la funzionalità di creazione di un nuovo database.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere un nome <dbname> per il database che si vuole creare.
+		\item Digitare nella console del client il comando di creazione database utilizzando la sintassi: createdb <dbname>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV5: Rimozione database}
+	L'utente vuole verificare la funzionalità di rimozione di un database.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere un database da eliminare tramite il suo nome <dbname>.
+		\item Digitare nella console del client il comando di rimozione database utilizzando la sintassi: deletedb <dbname>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV6: Selezione database}
+	L'utente vuole verificare la funzionalità di selezionare di un database.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere un database da selezionare tramite il suo nome <dbname>.
+		\item Digitare nella console del client il comando di selezione database utilizzando la sintassi: selectdb <dbname>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV7: Mappe disponibili}
+	L'utente vuole verificare la funzionalità di visualizzazione delle mappe del database selezionato.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Digitare nella console del client il comando listmap utilizzando la sintassi: listmap
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV8: Creazione mappa}
+	L'utente vuole verificare la funzionalità di creazione di una nuova mappa all'interno del database selezionato.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere un nome <mapname> per la mappa che si vuole creare.
+		\item Digitare nella console del client il comando di creazione mappa utilizzando la sintassi: createmap <mapname>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV9: Rimozione mappa}
+	L'utente vuole verificare la funzionalità di rimozione di una mappa dal database selezionato.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere una mappa da eliminare tramite il suo nome <mapname>.
+		\item Digitare nella console del client il comando di rimozione mappa utilizzando la sintassi: deletemap <mapname>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV10: Selezione mappa}
+	L'utente vuole verificare la funzionalità di selezione di una mappa del database selezionato.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere una mappa da selezionare tramite il suo nome <mapname>.
+		\item Digitare nella console del client il comando di selezione mappa utilizzando la sintassi: selectmap <mapname>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV11: Chiavi disponibili}
+	L'utente vuole verificare la funzionalità di visualizzazione dell'elenco delle chiavi della mappa selezionata.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Digitare nella console del client il comando keys utilizzando la sintassi: keys
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV12: Inserimento item}
+	L'utente vuole verificare la funzionalità di inserimento di un item nella mappa selezionata.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere una chiave <key> per l'item.
+		\item Scegliere un valore <value> da inserire.
+		\item Digitare nella console del client il comando di inserimento item utilizzando la sintassi: insert '<key>' <value>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV13: Ricerca item}
+	L'utente vuole verificare la funzionalità che permette di recuperare il valore associato ad una chiave.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere la chiave <key> del valore che si vuole recuperare.
+		\item Digitare nella console del client il comando di ricerca item utilizzando la sintassi: find '<key>'
+		\item Eseguire il comando tramite il tasto invio.	
+	\end{itemize}
+	
+	\subsubsection{Test TV14: Aggiornamento item}
+	L'utente vuole verificare la funzionalità di aggiornamento di un item della mappa selezionata.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere la chiave <key> del valore che si vuole aggiornare.
+		\item Scegliere il nuovo valore <value> che si vuole inserire.
+		\item Digitare nella console del client il comando di aggiornamento item utilizzando la sintassi: update '<key>' <value>
+		\item Eseguire il comando tramite il tasto invio.
+	\end{itemize}
+	
+	\subsubsection{Test TV15: Rimozione item}
+	L'utente vuole verificare la funzionalità di rimozione di un item dalla mappa selezionata.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Scegliere la chiave <key> dell'item che si vuole rimuovere.
+		\item Digitare nella console del client il comando di rimozione di un item utilizzando la sintassi: remove '<key>'
+	\end{itemize}
+	
+	\subsubsection{Test TV16: Disconnessione}
+	L'utente vuole verificare la funzionalità di disconnessione dal server.
+	Sono richiesti i seguenti passaggi:
+	\begin{itemize}
+		\item Digitare nella console del client il comando di disconnessione utilizzando la sintassi: disconnect
+	\end{itemize}
+
+	
 	\subsection{Pianificazione dei test}
-		Di seguito saranno descritti i test di sistema, integrazione e validazione che sono previsti.
-		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.				
+		Di seguito saranno descritti i test di sistema, integrazione e unità che sono previsti.
+		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.		
+					
 	\subsubsection{Test di sistema}
 		Viene mostrata di seguito la tabella con tutti i test di sistema che consentono di verificare il sistema rispetto ai requisiti descritti nell'\emph{Analisi dei Requisiti v1.3.11} e la tabella che traccia ogni requisito al test.
 		Per ogni comando testato sarà anche verificato il corretto riconoscimento e la corretta gestione degli errori.
@@ -922,8 +1077,14 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/requisiti_test_sistema.tex}
 		
 	\subsubsection{Test di integrazione}
-		Viene mostrata di seguito la tabella contenente tutti i test di integrazione, atti a verificare il corretto funzionamento delle singole componenti del sistema descritte nella \emph{Specifica Tecnica v1.0.0}. 
+		Viene mostrata di seguito la tabella contenente tutti i test di integrazione, atti a verificare il corretto funzionamento delle singole componenti del sistema descritte nella \emph{Specifica Tecnica v2.0.0}. 
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_integrazione.tex}
+	
+	\subsubsection{Test di unità}
+		Viene mostrata di seguito la tabella contenente tutti i test di unità. 
+		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_unita.tex}
+		
+		
 			
 			\subsection{Lista errori frequenti}
 			\begin{itemize}
