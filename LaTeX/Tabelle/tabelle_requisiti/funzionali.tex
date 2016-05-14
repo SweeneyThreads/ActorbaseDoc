@@ -28,32 +28,29 @@
 	R[1.2.1][N][F] & Controllo configurazione server & Decisione interna
 	& Implementazione di un controllo sulla presenza di una configurazione \emph{Actorbase} sul server all'avvio dell'interfaccia server \\
 	\hline
-	R[1.2.2][N][F] & Lettura permessi da file & UC9
+	R[1.2.2][N][F] & Lettura permessi da file & Decisione interna
 	& Implementazione della lettura del file contenente gli utenti e i permessi associati ad essi relativi ai database \\
 	\hline	
-	R[1.2.3][D][F] & Lettura proprietà Storekeeper da file & UC10
+	R[1.2.3][D][F] & Lettura proprietà Storekeeper da file & Decisione interna
 	& Implementare della lettura delle proprietà dell'Attore Storekeeper da file, per esempio la grandezza massima della mappa \\
 	\hline
-	R[1.2.4][D][F] & Lettura numero di attori da file & UC11, UC12, UC13
+	R[1.2.4][D][F] & Lettura numero di attori da file & Decisione interna
 	& Implementare la lettura da file del numero di attori specifici da creare \\
 	\hline
-	R[1.2.4.1][D][F] & Lettura numero di Storefinder & UC11
+	R[1.2.4.1][D][F] & Lettura numero di Storefinder & Decisione interna
 	& Implementare la lettura del numero di Storefinder da creare per ogni mappa \\
 	\hline
-	R[1.2.4.2][D][F] & Lettura numero di Warehouseman & UC12
+	R[1.2.4.2][D][F] & Lettura numero di Warehouseman & Decisione interna
 	& Implementare la lettura del numero di Warehouseman da creare per ogni Storekeeper \\
 	\hline
-	R[1.2.4.3][D][F] & Lettura numero di Ninja & UC13
+	R[1.2.4.3][D][F] & Lettura numero di Ninja & Decisione interna
 	& Implementare la lettura del numero di Ninja da creare per ogni Storekeeper \\
 	\hline
-	R[1.2.5][N][F] & Arresto del server & UC11
+	R[1.2.5][N][F] & Arresto del server & UC16
 	& Implementare l'arresto del server dall'interfaccia CLI lato server attraverso un apposito comando \\
 	\hline
-	R[1.2.6][N][F] & Gestione comandi errati & UC15
-	& Implementare la gestione dei comandi errati inseriti dall'utente \\
-	\hline
-	R[1.2.7][N][F] & Gestione errori file & UC16
-	& Implementare la gestione degli errori legati ai file come il file non trovato o il file formattato in modo errato \\
+	R[1.2.6][N][F] & Log del server & UC15
+	& Implementare la stampa del log delle operazioni sul server \\
 	\hline
 	R[1.3][N][F] & Gestione richiesta connessione di un client & UC1
 	& Implementare un'interfaccia per la gestione di una richiesta di connessione da parte di un client che accetti un nome utente e una password\\
@@ -591,6 +588,30 @@
 	R[1.6.6.4][N][F] & Rimozione item fallita & UC5.9
 	& Informare il client del fallimento dell'operazione di rimozione item\\
 	\hline
+	R[1.7][N][F] & Opzioni di amministrazione & UC9 \newline UC10 \newline UC11 \newline UC12 \newline UC13 \newline UC14
+	& Implementare la gestione di operazioni di amministrazione degli utenti e dei permessi\\
+	\hline
+	R[1.7.1][N][F] & Utente amministratore & UC9 \newline UC10 \newline UC11 \newline UC12 \newline UC13 \newline UC14
+	& Definire un utente amministratore che possa effettuare operazioni di amministrazione\\
+	\hline
+	R[1.7.2][N][F] & Gestione richiesta visualizzazione lista utenti & UC9 
+	& Gestire la richiesta di visualizzazione lista utenti da parte di un client amministratore\\
+	\hline
+	R[1.7.3][N][F] & Gestione richiesta aggiunta utente & UC10 \newline UC10.1 \newline UC10.2 \newline UC10.3
+	& Gestire la richiesta di aggiunta di un utente da parte di un client amministratore\\
+	\hline
+	R[1.7.4][N][F] & Gestione richiesta rimozione utente & UC11 \newline UC11.1 \newline UC11.2
+	& Gestire la richiesta di rimozione di un utente da parte di un client amministratore\\
+	\hline
+	R[1.7.5][N][F] & Gestione richiesta visualizzazione lista permessi utente & UC12 \newline UC12.1 \newline UC12.2
+	& Gestire la richiesta di visualizzazione lista permessi di un utente da parte di un client amministratore\\
+	\hline
+	R[1.7.6][N][F] & Gestione richiesta aggiunta permesso utente & UC13 \newline UC13.1 \newline UC13.2 \newline UC13.3
+	& Gestire la richiesta di aggiunta di un permesso ad un utente da parte di un client amministratore\\
+	\hline
+	R[1.7.7][N][F] & Gestione richiesta rimozione permesso utente & UC14 \newline UC14.1 \newline UC14.2 \newline UC14.3
+	& Gestire la richiesta di rimozione di un permesso ad un utente da parte di un client amministratore\\
+	\hline
 	%%%%
 	R[2][N][F] & Implementazione del sistema lato client & Capitolato & Implementazione della parte client di \emph{Actorbase} \\
 	\hline
@@ -998,139 +1019,49 @@
 	\hline
 	R[2.23.5.2][N][F] & Messaggio rimozione fallita, chiave non presente & UC5.9 & Stampa il messaggio di rimozione fallita, non esiste un item con la 
 	chiave inserita \\
-	%
 	\hline
 	R[2.24][N][F] & Chiusura interfaccia client & UC8 & Implementare la chiusura dell'interfaccia client tramite un apposito comando \\
+	\hline
+	R[2.25][N][F] & Operazioni di amministrazione & UC9 \newline UC10 \newline UC11 \newline UC12 \newline UC13 \newline UC14 & Implementare un'interfaccia che permetta di effettuare operazioni di amministrazione dal client \\
+	\hline
+	R[2.25.1][N][F] & Visualizzazione lista utenti & UC9  & Implementare un'interfaccia che permetta di visualizzare la lista degli utenti che hanno accesso al database dal client \\
+	\hline
+	R[2.25.2][N][F] & Comando DSL visualizzazione lista utenti & UC9  & Definire un comando DSL per visualizzare la lista degli utenti che hanno accesso al database dal client \\
+	\hline
+	R[2.25.3][N][F] & Aggiunta di un utente & UC10 \newline UC10.1 \newline UC10.2 \newline UC10.3  & Implementare un'interfaccia che permetta di aggiungere un utente con username e password \\
+	\hline
+	R[2.25.4][N][F] & Comando DSL aggiunta di un utente & UC10 \newline UC10.1 \newline UC10.2 \newline UC10.3 & Definire un comando DSL per aggiungere un utente con username e password  \\
+	\hline
+	R[2.25.5][N][F] & Rimozione di un utente & UC11 \newline UC11.1 \newline UC11.2  & Implementare un'interfaccia che permetta di rimuovere un utente che ha accesso al server \\
+	\hline
+	R[2.25.6][N][F] & Comando DSL rimozione di un utente & UC11 \newline UC11.1 \newline UC11.2 & Definire un comando DSL per rimuovere un utente tramite il suo username  \\
+	\hline
+	R[2.25.7][N][F] & Visualizzazione permessi utente & UC12 \newline UC12.1 \newline UC12.2  & Implementare un'interfaccia che permetta di visualizzare la lista di permessi di un utente \\
+	\hline
+	R[2.25.8][N][F] & Comando DSL rimozione di un utente & UC12 \newline UC12.1 \newline UC12.2 & Definire un comando DSL per visualizzare la lista di permessi di un utente \\
+	\hline
+	R[2.25.9][N][F] & Aggiunta permesso utente  & UC13 \newline UC13.1 \newline UC13.2 \newline UC13.3 & Implementare un'interfaccia che permetta di aggiungere un permesso ad un utente \\
+	\hline
+	R[2.25.10][N][F] & Comando DSL aggiunta permesso utente & UC13 \newline UC13.1 \newline UC13.2 \newline UC13.3 & Definire un comando DSL per aggiungere un permesso ad un utente per un determinato database \\
+	\hline
+	R[2.25.11][N][F] & Rimozione permesso utente  & UC14 \newline UC14.1 \newline UC14.2 \newline UC14.3 & Implementare un'interfaccia che permetta di rimuovere un permesso ad un utente \\
+	\hline
+	R[2.25.12][N][F] & Comando DSL rimozione permesso utente & UC14 \newline UC14.1 \newline UC14.2 \newline UC14.3 & Definire un comando DSL per rimuovere un permesso ad un utente per un determinato database \\
 	%
 	\hline
-	R[3][N][F] & Driver per Scala & Capitolato & Rilasciare un driver utilizzabile da applicazioni scritte nel linguaggio Scala, per interfacciarsi direttamente a istanze di \emph{Actorbase} \\
+	R[3][N][F] & Driver per Scala & Capitolato \newline UC17 \newline UC18 \newline UC19 & Rilasciare un driver utilizzabile da applicazioni scritte nel linguaggio Scala, per interfacciarsi direttamente a istanze di \emph{Actorbase} \\
 	\hline
-	R[3.1][N][F] & Effettuare la connessione ad un server & UC1 & Implementare la connessione ad un server \\
+	R[3.1][N][F] & Connessione tramite Driver & Capitolato \newline UC17 & Permettere all'utente di utilizzare il driver per ottenere una connessione ad un server \emph{Actorbase} \\
 	\hline
-	R[3.1.1][N][F] & Invio della richiesta di connessione al server & UC1 & Acquisito il comando dal client effettuare una richiesta di connessione al server specificato \\
+	R[3.1.1][N][F] & Connessione fallita tramite Driver & Capitolato \newline UC19 & Informare l'utente nel caso il tentativo di connessione tramite driver dovesse fallire \\
 	\hline
-	R[3.1.2][N][F] & Ricezione esito connessione & UC1 & Ricevere dal server la risposta sull'esito della connessione e ritornarla al client \\
+	R[3.2][N][F] & Interrogazione tramite Driver & Capitolato \newline UC18 & Permettere all'utente di utilizzare il driver per interrogare il database \\
 	\hline
-	%
-	R[3.2][N][F] & Effettuare la disconnessione dal server & UC6 & Implementare la disconnessione dal server \\
+	R[3.2.1][N][F] & Inserimento query tramite Driver  & Capitolato \newline UC18 & Permettere all'utente di inserire una query testuale per effettuare un'interrogazione sul database \\
 	\hline
-	R[3.2.1][N][F] & Invio della richiesta di chiusura connessione al server & UC6 & Invia al server una richiesta di chiusura della connessione \\
+	R[3.2.2][N][F] & Risultato query tramite Driver  & Capitolato \newline UC18 & Restituire all'utente il risultato di un'interrogazione al database effettuata utilizzando il driver \\
 	\hline
-	R[3.2.2][N][F] & Ricezione esito disconnessione & UC6 & Ricevere dal server la risposta sull'esito della disconnessione e ritornarla al client \\
-	\hline
-	%
-	R[3.3][D][F] & Esecuzione comando visualizzazione lista database & UC3.1 & Implementare l'esecuzione del comando di visualizzazione della lista dei database \\
-	\hline
-	R[3.3.1][D][F] & Invio comando di visualizzazione lista database & UC3.1 & Inviare al server il comando di visualizzazione della lista dei database \\
-	\hline
-	R[3.3.2][D][F] & Ricezione lista database dal server & UC3.1 & Ricevere dal server la lista dei database e ritornarla al client \\
-	\hline
-	%
-	R[3.4][N][F] & Esecuzione comando creazione database & UC3.4 & Implementare l'esecuzione del comando di creazione di un database \\
-	\hline
-	R[3.4.1][N][F] & Invio della richiesta di CREATEDB al server & UC3.4 & Inviare al server la richiesta di creare un database con il nome estrapolato dal comando \\
-	\hline
-	R[3.4.2][N][F] & Ricezione esito creazione database & UC3.4 & Ricevere dal server l'esito della creazione del database e ritornarlo al client \\
-	\hline
-	%
-	R[3.5][N][F] & Esecuzione comando eliminazione database & UC3.5 & Implementare l'esecuzione del comando di eliminazione di un database \\
-	\hline
-	R[3.5.1][N][F] & Invio della richiesta di DELETEDB al server & UC3.5 & Invia al server la richiesta di rimuovere il database con il nome estrapolato dal comando \\
-	\hline
-	R[3.5.2][N][F] & Ricezione esito eliminazione database & UC3.5 & Ricevere dal server l'esito della eliminazione del database e ritornarlo al client \\
-	\hline
-	%
-	R[3.6][D][F] & Esecuzione comando rinomina database & UC3.6 & Implementare l'esecuzione del comando di rinomina del database desiderato \\
-	\hline
-	R[3.6.1][D][F] & Invio della richiesta di RENAMEDB al server & UC3.6 & Invia al server la richiesta di rinominare il database con il nome estrapolato dal comando, fornendo il nuovo nome per il database \\
-	\hline
-	R[3.6.2][D][F] & Ricezione esito rinomina database & UC3.6 & Ricevere dal server l'esito della rinomina di un database ritornandolo al client \\
-	\hline
-	%
-	R[3.7][N][F] & Esecuzione comando selezione database & UC3.7 & Implementare l'esecuzione del comando di selezione di un database \\
-	\hline
-	R[3.7.1][N][F] & Invio della richiesta di USEDB al server & UC3.7 & Invia al server la richiesta di utilizzare il database con il nome estrapolato dal comando \\
-	\hline
-	R[3.7.2][N][F] & Ricezione esito selezione database & UC3.7 & Ricevere dal server l'esito della selezione di un database e ritornarlo al client \\
-	\hline
-	%
-	R[3.8][D][F] & Esecuzione comando visualizzazione lista mappe & UC4.1 & Implementare l'esecuzione del comando di visualizzazione dell'elenco delle mappe presenti nel database selezionato\\
-	\hline
-	R[3.8.1][D][F] & Invio della richiesta di SHOW al server & UC4.1 & Invia al server la richiesta di visualizzare la lista di mappe presenti nel database \\
-	\hline
-	R[3.8.2][D][F] & Ricezione lista mappe & UC4.1 & Ricevere dal server la lista delle mappe presenti nel database e restituirla al client \\
-	\hline
-	%
-	R[3.9][N][F] & Esecuzione comando creazione mappa & UC4.2 & Implementare l'esecuzione del comando di creazione di una mappa\\
-	\hline
-	R[3.9.1][N][F] & Invio della richiesta di CREATE al server & UC4.2 & Invia al server la richiesta di creare una mappa con il nome estrapolato dal comando \\
-	\hline
-	R[3.9.2][N][F] & Ricezione esito creazione mappa & UC4.2 & Ricevere dal server l'esito della creazione della mappa e restituirlo al client \\
-	\hline
-	%
-	R[3.10][N][F] & Esecuzione comando eliminazione mappa & UC4.3 & Implementare l'esecuzione del comando di eliminazione di una mappa nel database selezionato\\
-	\hline
-	R[3.10.1][N][F] & Invio della richiesta di DELETE al server & UC4.3 & Invia al server la richiesta di rimuovere la mappa con il nome estrapolato dal comando \\
-	\hline
-	R[3.10.2][N][F] & Ricezione esito eliminazione mappa & UC4.3 & Ricevere dal server l'esito della rimozione della mappa e restituirlo al client \\
-	\hline
-	%
-	R[3.11][D][F] & Esecuzione comando rinomina mappa & UC4.4 & Implementare l'esecuzione del comando di rinomina di una mappa nel database selezionato\\
-	\hline
-	R[3.11.1][D][F] & Invio della richiesta di RENAME al server & UC4.4 & Invia al server la richiesta di rinominare una mappa con il nome estrapolato dal comando, 
-	assegnando il nuovo nome \\
-	\hline
-	R[3.11.2][D][F] & Ricezione esito di rinomina mappa & UC4.4 & Ricevere dal server l'esito della rinomina della mappa e restituirlo al client \\
-	\hline
-	%
-	R[3.12][N][F] & Esecuzione comando di selezione mappa & UC4.5 & Implementare l'esecuzione del comando di selezione di una mappa \\
-	\hline
-	R[3.12.1][N][F] & Invio della richiesta di USE al server & UC4.5 & Invia al server la richiesta di utilizzare la mappa con il nome estrapolato dal comando \\
-	\hline
-	R[3.12.2][N][F] & Ricezione esito selezione mappa & UC4.5 & Ricevere l'esito della selezione di una mappa e restituirlo al client \\
-	\hline
-	%
-	R[3.13][D][F] & Esecuzione comando di visualizzazione lista chiavi & UC5.1 & Implementare l'esecuzione del comando di visualizzazione della lista delle chiavi presenti nella mappa \\
-	\hline
-	R[3.13.1][D][F] & Invio della richiesta di KEYS al server & UC5.1 & Inviare al server la richiesta di visualizzare la lista di chiavi presenti nella mappa 
-	selezionata \\
-	\hline
-	R[3.13.2][D][F] & Ricezione della lista di chiavi & UC5.1 & Ricevere dal server la lista delle chiavi e restituirla al client \\
-	\hline
-	%
-	R[3.14][N][F] & Esecuzione del comando di ricerca item & UC5.2 & Implementare l'esecuzione del comando di ricerca di un item nella mappa selezionata \\
-	\hline
-	R[3.14.1][N][F] & Invio della richiesta di GET al server & UC5.2 & Inviare al server la richiesta di ritornare il valore di un item con la chiave inserita \\
-	\hline
-	R[3.14.2][N][F] & Ricezione del valore dell'item & UC5.2 & Ricevere dal server il valore dell'item e restituirlo al client \\
-	\hline
-	%
-	R[3.15][N][F] & Esecuzione del comando di inserimento item & UC5.3 & Implementare l'esecuzione del comando di inserimento di un item con coppia chiave-valore \\
-	\hline
-	R[3.15.1][N][F] & Invia richiesta di INSERT al server & UC5.3 & Invia al server la richiesta di inserire un item con dati chiave e valore \\
-	\hline
-	R[3.15.2][N][F] & Ricezione esito inserimento item & UC5.3 & Ricevere dal server l'esito dell'inserimento dell'item e restituirlo al client \\
-	\hline
-	%
-	R[3.16][N][F] & Esecuzione del comando di aggiornamento item & UC5.4 & Implementare l'esecuzione del comando di aggiornamento del valore dell'item con la chiave specificata \\
-	\hline
-	R[3.16.1][N][F] & Invia richiesta di UPDATE al server & UC5.4 & Invia al server la richiesta di aggiornare il valore di un item \\
-	\hline
-	R[3.16.2][N][F] & Ricezione esito aggiornamento item & UC5.4 & Ricevere dal server l'esito dell'aggiornamento dell'item e restituirlo al client \\
-	\hline
-	%
-	R[3.17][D][F] & Esecuzione del comando di APPEND & UC5.5 & Implementare l'esecuzione del comando di APPEND in coda al valore di un item \\
-	\hline
-	R[3.17.1][D][F] & Invia richiesta di APPEND al server & UC5.5 & Invia al server la richiesta di aggiungere un valore al valore di un item \\
-	\hline
-	R[3.17.2][D][F] & Ricezione esito di append & UC5.5 & Ricevere dal server l'esito dell'append e restituirlo al client \\
-	\hline
-	%
-	R[3.18][N][F] & Esecuzione rimozione item & UC5.6 & Implementare l'esecuzione del comando di rimozione dell'item con chiave specificata \\
-	\hline
-	R[3.18.1][N][F] & Invia richiesta di REMOVE al server & UC5.6 & Invia al server la richiesta di rimuovere l'item con chiave data \\
-	\hline
-	R[3.18.2][N][F] & Ricezione esito rimozione item & UC5.6 & Ricevere dal server l'esito della rimozione dell'item e restituirlo al client \\
+	R[3.3][N][F] & Disconnessione tramite Driver  & Capitolato \newline UC20 & Permettere all'utente di terminare una connessione al database utilizzando il driver \\
 	\hline
 	
 \bottomrule

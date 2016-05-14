@@ -79,7 +79,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.2
+			Versione 2.0.3
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -166,8 +166,16 @@
 		Il prodotto si rivolge a sviluppatori di applicazioni moderne, che trattano enormi moli di dati (nell'
 		ordine dei Petabyte), che richiedono brevissimi tempi di risposta e che necessitano di un uptime 
 		del 100\%.
+		\\ \\
+		In ogni caso \emph{Actorbase} è un prodotto molto flessibile che può adattarsi a svariati utilizzi in cui sia richiesta semplicità di utilizzo lato client e performance elevate, scalabilità e persistenza lato server.
 	\subsection{Vincoli per l'utilizzo}
-		L'esecuzione di \emph{Actorbase} avviene attraverso la JVM (Java Virtual Machine), il corretto funzionamento di tutte le caratteristiche del prodotto è garantito su macchine che utilizzano la versione 8 o successive della JVM. 
+		L'esecuzione di \emph{Actorbase} avviene attraverso la JVM (Java Virtual Machine), il corretto funzionamento di tutte le caratteristiche del prodotto è garantito su macchine che utilizzano la versione 8 o successive della JVM. Il funzionamento su Java Virtual Machine non impone particolari vincoli per quanto riguarda il sistema operativo: \emph{Actorbase} può essere eseguito su Microsoft Windows, OS X o sistemi Linux. In ogni caso con versioni eccessivamente datate del SO si potrebbero riscontrare problematiche, a tal proposito si consiglia:
+		\begin{itemize}
+		\item Windows 7 o superiore
+		\item OS X 10.7 o superiore
+		\item Ubuntu 14.04 o superiore
+\end{itemize}
+		La completa esecuzione del applicativo client sono richiesti almeno 2GB di memoria RAM. Per quanto riguarda l'esecuzione del server, sono necessari 4GB di memoria RAM per macchina (8GB consigliati). 
 	
 	\newpage \section{Casi d'uso}
 		Di seguito viene riportata la descrizione accurata di tutti i casi d'uso individuati dal gruppo a seguito
@@ -3199,7 +3207,12 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
+				\textbf{Lista requisiti\newline dedotti} &  R[1.7][N][F] \newline
+R[1.7.1][N][F] \newline
+R[1.7.2][N][F] \newline
+R[2.25][N][F] \newline
+R[2.25.1][N][F] \newline
+R[2.25.2][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 9 - Visualizzazione lista utenti}
 		 \end{table} 
@@ -3235,7 +3248,12 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
+				\textbf{Lista requisiti\newline dedotti} &  R[1.7][N][F] \newline
+R[1.7.1][N][F] \newline
+R[1.7.3][N][F] \newline
+R[2.25][N][F] \newline
+R[2.25.3][N][F] \newline
+R[2.25.4][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 10 - Aggiunta utente}
 		 \end{table} 
@@ -3264,7 +3282,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.3][N][F] \newline
+R[2.25.3][N][F] \newline
+R[2.25.4][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 10.1 - Inserimento comando di aggiunta utente}
 		 \end{table}		 
@@ -3293,7 +3313,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.3][N][F] \newline
+R[2.25.3][N][F] \newline
+R[2.25.4][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 10.2 - Inserimento username utente da aggiungere}
 		 \end{table}		 
@@ -3322,7 +3344,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.3][N][F] \newline
+R[2.25.3][N][F] \newline
+R[2.25.4][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 10.3 - Inserimento password utente da aggiungere}
 		 \end{table}	
@@ -3357,7 +3381,12 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
+				\textbf{Lista requisiti\newline dedotti} &  R[1.7][N][F] \newline
+R[1.7.1][N][F] \newline
+R[1.7.4][N][F] \newline
+R[2.25][N][F] \newline
+R[2.25.5][N][F] \newline
+R[2.25.6][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 11 - Rimozione utente}
 		 \end{table} 
@@ -3386,7 +3415,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.4][N][F] \newline
+R[2.25.5][N][F] \newline
+R[2.25.6][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 11.1 - Inserimento comando di rimozione utente}
 		 \end{table}		 
@@ -3415,7 +3446,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.4][N][F] \newline
+R[2.25.5][N][F] \newline
+R[2.25.6][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 11.2 - Inserimento username utente da rimuovere}
 		 \end{table}		 	 
@@ -3451,7 +3484,12 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
+				\textbf{Lista requisiti\newline dedotti} &  R[1.7][N][F] \newline
+R[1.7.1][N][F] \newline
+R[1.7.5][N][F] \newline
+R[2.25][N][F] \newline
+R[2.25.7][N][F] \newline
+R[2.25.8][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 12 - Visualizzazione lista permessi utente}
 		 \end{table} 
@@ -3480,7 +3518,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.5][N][F] \newline
+R[2.25.7][N][F] \newline
+R[2.25.8][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 12.1 - Inserimento comando di visualizzazione lista permessi utente}
 		 \end{table}		 
@@ -3509,7 +3549,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.5][N][F] \newline
+R[2.25.7][N][F] \newline
+R[2.25.8][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 12.2 - Inserimento username utente di cui visualizzare i permessi}
 		 \end{table}		 	 
@@ -3547,7 +3589,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
+				\textbf{Lista requisiti\newline dedotti} &  R[1.7.6][N][F] \newline
+R[2.25.9][N][F] \newline
+R[2.25.10][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 13 - Aggiunta permesso utente}
 		 \end{table} 
@@ -3576,7 +3620,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.6][N][F] \newline
+R[2.25.9][N][F] \newline
+R[2.25.10][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 13.1 - Inserimento comando di aggiunta permesso}
 		 \end{table}		 
@@ -3605,7 +3651,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.6][N][F] \newline
+R[2.25.9][N][F] \newline
+R[2.25.10][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 13.2 - Inserimento username utente a cui aggiungere il permesso}
 		 \end{table}	
@@ -3634,7 +3682,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.6][N][F] \newline
+R[2.25.9][N][F] \newline
+R[2.25.10][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 13.3 - Inserimento database di cui aggiungere il permesso}
 		 \end{table}	
@@ -3670,7 +3720,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} &  \dots  \\
+				\textbf{Lista requisiti\newline dedotti} &  R[1.7.7][N][F] \newline
+R[2.25.11][N][F] \newline
+R[2.25.12][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 14 - Rimozione permesso utente}
 		 \end{table} 
@@ -3699,7 +3751,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.7][N][F] \newline
+R[2.25.11][N][F] \newline
+R[2.25.12][N][F]\\
 			\end{tabularx}
 			\caption{Caso d'uso UC 14.1 - Inserimento comando di rimozione permesso}
 		 \end{table}		 
@@ -3728,7 +3782,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.7][N][F] \newline
+R[2.25.11][N][F] \newline
+R[2.25.12][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 14.2 - Inserimento username utente a cui rimuovere il permesso}
 		 \end{table}	
@@ -3757,7 +3813,9 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.7.7][N][F] \newline
+R[2.25.11][N][F] \newline
+R[2.25.12][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 14.3 - Inserimento database di cui rimuovere il permesso}
 		 \end{table}	
@@ -3822,7 +3880,7 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots  \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.2.6][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 15 - Visualizzazione log operazioni sul server}
 		 \end{table}	
@@ -3851,7 +3909,7 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots \\
+				\textbf{Lista requisiti\newline dedotti} & R[1.2.5][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 16 - Arresto del server}
 	\end{table}
@@ -3863,7 +3921,7 @@ R[2.24][N][F] \\
 			\subsection{Visione ad alto livello delle interazioni tramite driver}
 		 	\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.6]{UC/"Actorbase Driver".png}
+				\includegraphics[scale=0.3]{UC/"Actorbase Driver".png}
 				\caption{Interazioni tramite driver}
 			\end{figure}
 			Il diagramma in figura illustra le interazioni che un utente può compiere con il sistema durante l'utilizzo del driver di \emph{Actorbase}. Il driver sarà uno strumento molto semplice da utilizzare, deve fornire semplici metodi per ottenere connessioni a server \emph{Actorbase} (UC 17), per effettuare interrogazioni sul database e ricevere risultati (UC 18).
@@ -3892,7 +3950,8 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & La connessione viene rifiutata, l'utente non riceve alcun oggetto (UC 19) \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots \\
+				\textbf{Lista requisiti\newline dedotti} & R[3][N][F] \newline
+R[3.1][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 17 - Acquisizione di una connessione tramite driver}
 	\end{table}
@@ -3921,7 +3980,10 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots \\
+				\textbf{Lista requisiti\newline dedotti} & R[3][N][F] \newline
+R[3.2][N][F] \newline
+R[3.2.1][N][F] \newline
+R[3.2.2][N][F] \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 18 - Interrogazione tramite driver}
 	\end{table}
@@ -3949,9 +4011,38 @@ R[2.24][N][F] \\
 				\noalign{\hrule height 0.5pt}
 				\textbf{Scenari alternativi} & Nessuno \\
 				\noalign{\hrule height 0.5pt}
-				\textbf{Lista requisiti\newline dedotti} & \dots \\
+				\textbf{Lista requisiti\newline dedotti} & R[3][N][F] \newline
+R[3.1.1][N][F]  \\
 			\end{tabularx}
 			\caption{Caso d'uso UC 19 - Connessione rifiutata}
+	\end{table}
+	\subsection{UC 20: Disconnessione tramite driver}
+		 \textbf{Descrizione} 
+	\\ \\
+	L'utente è in possesso di una connessione ad \emph{Actorbase} ed intende terminarla. Per tale motivo invoca la funzionalità di disconnessione offerta dal driver sulla connessione in possesso.
+	\begin{table}[H]
+			\begin{tabularx}{\textwidth}{r X}
+				\textbf{Codice gerarchico} & UC20 \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Nome sintetico} & Disconnessione tramite driver\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attore principale} & Utente generico\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Attori secondari} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Pre-condizione} & L'utente è in possesso di una connessione ed intende terminarla\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Post-condizione} & La connessione in possesso dell'utente non è più attiva\\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Flusso eventi} & \begin{enumerate}
+				\item L'utente invoca il metodo di disconnessione sull'oggetto connessione
+				\end{enumerate} \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Scenari alternativi} & Nessuno \\
+				\noalign{\hrule height 0.5pt}
+				\textbf{Lista requisiti\newline dedotti} & R[3.3][N][F] \\
+			\end{tabularx}
+			\caption{Caso d'uso UC 20 - Disconnessione tramite driver}
 	\end{table}
 		 
 		 
@@ -4015,12 +4106,8 @@ R[2.24][N][F] \\
 	\\ \\
 	Il gruppo ha deciso di non implementare immediatamente i requisiti dedotti dai seguenti casi d'uso:
 	\begin{itemize}
-	\item UC3.1 (visualizzazione lista database)
 	\item UC3.2, UC3.2.1, UC3.2.2 e UC3.8 (esportazione database)
 	\item UC3.3, UC3.3.1, UC3.3.2 e UC3.9 (importazione database)
-	\item UC4.1 (visualizzazione lista mappe)
-	\item UC4.6, UC4.6.1, UC4.6.2 e UC 4.12 (visualizzazione permessi accesso database da interfaccia client)
-	\item UC4.7, UC4.7.1, UC4.7.2, UC4.7.3 e UC4.13 (modifica permessi accesso database da interfaccia client)
 	\item UC5.1 (visualizzazione lista chiavi)
 	\item UC5.2.2 e UC5.2.4 (utilizzo di file come chiavi)
 	\item UC5.5, UC5.5.1, UC5.5.2 e UC5.5.3 (append di un valore a un item)
