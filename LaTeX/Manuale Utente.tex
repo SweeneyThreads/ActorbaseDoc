@@ -1,4 +1,4 @@
-%Document-Author: Davide Tommasin + Elia Maino
+%Document-Author: Davide Tommasin
 %Document-Date: 2016/05/12
 %Document-Description: Manuale Utente del gruppo SWEeneyThreads 
 
@@ -56,7 +56,6 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
-				Maino Elia \\
 				Tommasin Davide \\
 			\end{flushleft}
 		\end{minipage}
@@ -74,7 +73,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.0
+			Versione 1.0.1
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -103,11 +102,6 @@
       gruppo ha steso un documento interno che è il \emph{Glossario v2.0.0}. In esso saranno definiti, in modo
       chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
 	\subsection{Riferimenti}
-	\subsubsection{Informativi}	
-		\begin{itemize}
-			\item \textbf{Slide dell'insegnamento Ingegneria del software mod.A:} \\
-			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/E02.pdf}
-		\end{itemize}
 	\subsubsection{Normativi}
 		\begin{itemize}
 			\item \textbf{Norme di progetto:} \emph{Norme di progetto v2.0.0}
@@ -116,16 +110,120 @@
 		\end{itemize}
 	
 	\newpage
-	\section{Istruzioni per l'utilizzo}
-		\subsection{Requisiti di sitema}
-			\subsubsection{Requisiti Hardware}
-			\subsubsection{Requisiti Software}
-		\subsection{Installazione}
+	\section{Istruzioni per l'utilizzo}		
+		\subsection{Requisiti server}
+			Nei paragrafi sucessivi sono elencati i vari requisiti hardware e software necessari per poter utilizzare al meglio il prodotto, relativi alla parte server.
+			\subsubsection{Requisiti hardware}
+			Per il corretto funzionamento del database NoSQL \emph{Actorbase} è necessario un server avente come configurazione hardware minimale:
+			\begin{itemize}
+				\item Memoria RAM: 4GB o superiore;
+			\end{itemize}
+			Non viene richiesto l'utilizzo di uno specifico spazio su hard disk o l'uso di un particolare processore, anche se l'utilizzo di processori lenti e/o datati potrebbero rendere l'uso del programma meno fluido. 
+			\subsubsection{Requisiti software}
+			Per garantire il corretto funzionamento del database NoSQL \emph{Actorbase} lato server è necessario un computer con in esecuzione: 
+			\begin{itemize}
+				\item Sistema operativo: Windows 7 (x32bit, x64bit) / OS X 10.7 / Ubuntu 14.04 LTS
+				\item Java Virtual Machine (JVM) 8 o superiore
+			\end{itemize}
+			\subsection{Requisiti client}
+			Sucessivamente saranno elencati i requisiti hardware e software necessari per poter utilizzare al meglio il prodotto, relativi alla parte client.
+			\subsubsection{Requisiti hardware}
+			Per il corretto funzionamento del database NoSQL \emph{Actorbase} lato client si consiglia avere come configurazione hardware:
+			\begin{itemize}
+				\item Memoria RAM: 2GB o superiore;
+			\end{itemize}
+			Non viene richiesto l'utilizzo di uno specifico spazio su hard disk o l'uso di un particolare processore, anche se l'utilizzo di processori lenti e/o datati potrebbero rendere l'uso del programma meno fluido. 
+			\subsubsection{Requisiti software}
+			Per garantire il corretto funzionamento del database NoSQL \emph{Actorbase} lato client è necessario un computer con in esecuzione: 
+			\begin{itemize}
+				\item Sistema operativo: Windows 7 (x32bit, x64bit) / OS X 10.7 / Ubuntu 14.04 LTS;
+				\item Java Virtual Machine (JVM) 8 o superiore.
+			\end{itemize}
+			\subsection{Installazione}
 	
 	\newpage
 	\section{Guida alle funzionalità}
+	In questo capitolo verranno presentati i comandi più utili per l'utilizzazione del database NoSQL \emph{Actorbase}.
 	
-	
+		\subsection{Comandi di connessione, disconnessione e aiuto}
+			\subsubsection{connect}
+			Questo comando permette all'utente di connettersi ad un determinaro server, conoscendo l'indirizzo ip del server e avendo il proprio username e password.
+			\begin{center}
+				CONNECT indirizzoIP nomeUtente password 
+			\end{center}
+			\subsubsection{disconnect}
+			Questo comando è l'ultimo comando da utilizzare dopo aver utilizzato il database, serve per disconnettersi dal server precedentemente selezionato col comando "connect".
+			\begin{center}
+				DISCONNECT
+			\end{center}
+			\subsubsection{help}
+			Il comando "help" serve per avere informazioni dettagliate riguardo un comando da poter eseguire sul database. Questo comando puo essere di due tipologie:
+			\begin{itemize}
+				\item Help completo: stampa tutta la lista dei comandi con relativo esempio e spiegazione;
+				\begin{center}
+						HELP
+				\end{center}
+				\item Help specifico: stampa l'esempio e la spiegazione solo del comando interessato.
+				\begin{center}
+						HELP nomeComando
+				\end{center}
+			\end{itemize}
+		\subsection{Comandi di operazioni su database}
+			\subsubsection{listdb}
+			\begin{center}
+				LISTDB 
+			\end{center}
+			\subsubsection{selectdb}
+			\begin{center}
+				SELECTDB nomeDatabase
+			\end{center}
+			\subsubsection{createdb}
+			\begin{center}
+				CREATEDB nomeDatabase
+			\end{center}
+			\subsubsection{deletedb}
+			\begin{center}
+				DELETEDB nomeDatabase
+			\end{center}
+		\subsection{Comandi di operazioni sulle mappe}
+			\subsubsection{listmap}
+			\begin{center}
+				LISTMAP
+			\end{center}
+			\subsubsection{selectmap}
+			\begin{center}
+				SELECTMAP map
+			\end{center}
+			\subsubsection{createmap}
+			\begin{center}
+				CREATEMAP map
+			\end{center}
+			\subsubsection{deletemap}
+			\begin{center}
+				DELETEMAP map
+			\end{center}
+		\subsection{Comandi di operazioni sulle mappe}
+			\subsubsection{keys}
+			\begin{center}
+				KEYS
+			\end{center}
+			\subsubsection{find}
+			\begin{center}
+				FIND key
+			\end{center}
+			\subsubsection{remove}
+			\begin{center}
+				REMOVE key
+			\end{center}
+			\subsubsection{insert}
+			\begin{center}
+				INSERT key valore
+			\end{center}
+			\subsubsection{update}
+			\begin{center}
+				UPDATE key valore
+			\end{center}
+			
 	\cleardoublepage
 	\addcontentsline{toc}{chapter}{\listfigurename}
 	\listoffigures
