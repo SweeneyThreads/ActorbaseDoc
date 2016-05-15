@@ -1,5 +1,5 @@
-\newcolumntype{s}{>{\hsize=.30\hsize}X}
-\newcolumntype{f}{>{\hsize=.42\hsize}X}
+\newcolumntype{s}{>{\hsize=.15\hsize}X}
+\newcolumntype{f}{>{\hsize=.30\hsize}X}
 \newcolumntype{m}{>{\hsize=.18\hsize}X}
 
 \begin{longtable}{s X X f}  
@@ -8,13 +8,13 @@
 
 	%server.Server
 	TU1 &
-	Si verifica che il Server carichi correttamente gli utenti dal file "accounts.json", i permessi dal file "permissions.json" e la lista dei database &
+	Si verifica che il Server carichi correttamente l'albero degli attori da disco. &
 	server.Server.\{\newline loadUsers()\newline loadUsersPermissions()\newline loadDatabases()\newline \} &
 	Success  \\
 	\hline
 
 	TU2 &
-	Si verifica che il Server all'accensione istanzi un Dorkeeper in ascolto sulla porta impostata e che faccia partire l'ActorSystem ed il sistema di logging &
+	Si verifica che il Server all'accensione faccia partire l'ActorSystem, il sistema di logging e che instanzi i Doorkeeper in ascolto sulle porte impostate &
 	server.Server.main() & 
 	Success \\		
 	\hline	
@@ -27,13 +27,13 @@
 	\hline
 
 	TU4 &
-	Si verifica che il parser riconosca correttamente i comandi senza parametri (ovvero: listdb, listmap, keys, help) e ritorni il corretto messaggio &
+	Si verifica che il parser riconosca correttamente i comandi senza parametri (ovvero: listdb, listmap, keys, help, listuser) e ritorni il corretto messaggio &
 	server.ultil.Parser.\{\newline parseQuery()\newline parseCommandWithoutParam()\newline getMatch()\newline\} & 
 	Success \\	
 	\hline
 
 	TU5 &
-	Si verifica che il parser riconosca correttamente i comandi con un parametro (ovvero: selectdb <DBName>, createdb <DBName>, deletedb <DBName>, selectmap <mapName>, createmap <mapName>, deletemap <mapName>, help <commandName>) e ritorni il corretto messaggio &
+	Si verifica che il parser riconosca correttamente i comandi con un parametro (ovvero: selectdb <DBName>, createdb <DBName>, deletedb <DBName>, selectmap <mapName>, createmap <mapName>, deletemap <mapName>, help <commandName>, removeuser <userName>, listpermissions <userName>, setninja <number>, setwarehousemen <number>, setmaxrow <number>, setmaxstorekeeper <number>, setmaxstorefinder <number>) e ritorni il corretto messaggio &
 	server.ultil.Parser.\{\newline parseQuery()\newline parseCommandWithParam()\newline getMatch()\newline\} & 
 	Success \\	
 	\hline
@@ -45,13 +45,54 @@
 	\hline
 	
 	TU7 &
-	Si verifica che il parser riconosca correttamente i comandi a due parametri (ovvero: insert '<key>' <value>, update '<key>' <value>) e ritorni il corretto messaggio &
+	Si verifica che il parser riconosca correttamente i comandi a due parametri di cui il primo possono essere formati da più di una parola (ovvero: insert '<key>' <value>, update '<key>' <value>) e ritorni il corretto messaggio &
 	server.ultil.Parser.\{\newline parseQuery()\newline parseRowCommandTwoParams()\newline getMatch()\newline\} &  
 	Success \\	
 	\hline
+	
+	TU8 &
+	Si verifica che il parser riconosca correttamente i comandi con due parametri (ovvero: adduser <username> <password>, removepermission <username> <DBName>) e ritorni il corretto messaggio &
+	server.ultil.Parser.\{\newline
+	parseQuery()\newline
+	parseCommandsWithTwoParams()\newline
+	getMatch()\newline
+	\} &  
+	Success \\	
+	\hline
+	
+	TU9 &
+	Si verifica che il parser riconosca correttamente i comandi con tre parametri (ovvero: addpermission <userName> <DBName> <permissionType>) e ritorni il corretto messaggio &
+	server.ultil.Parser.\{\newline parseQuery()\newline parseCommandWithThreeParams()\newline getMatch()\newline\} &  
+	Success \\	
+	\hline
+	
+
+	%server.actors.Doorkeeper
+	TU10 &
+	Si verifica che l'attore Doorkeeper effettui correttamente il Bind con l'attore IO. &
+	 & 
+	Success \\ 
+	\hline
+	
+	TU11 &
+	Si verifica che l'attore Doorkeeper riceva correttamente il messaggio di bonud è produca il log corretto. &
+	server.actors.Doorkeeper\{\newline
+	receive()\newline
+	\}  & 
+	Success \\ 
+	\hline
+	
+	TU12 &
+	Si verifica che l'attore Doorkeeper riceva il messaggio di Connected, e che crei correttamente un attore Usermanager che gestisca la connessione. &
+	server.actors.Doorkeeper\{\newline
+	recive()\newline
+	\} & 
+	Success \\ 
+	\hline
+
 
 	%server.actors.Main
-	TU8 &
+	TU13 &
 	Si verifica che l'attore Main riceva i messaggi di tipo ListDatabaseMessage e ritorni la corretta lista dei DataBase, inoltre si verifica che in caso di DataBase inesistente ritorni un messaggio d'errore &
 	sever.actors.Main.\{\newline
 	receive()\newline
@@ -63,7 +104,7 @@
 	Success \\	
 	\hline
 
-	TU9 &
+	TU14 &
 	Si verifica che l'attore Main riceva i messaggi di tipo SelectDatabaseMessage e imposti correttamente nelle sue proprietà il nuovo database selezionato, inoltre si verifica che in caso di DataBase inesistente lasci le sue proprietà invariate e ritorni un messaggio d'errore &
 	sever.actors.Main.\{\newline
 	receive()\newline
@@ -75,7 +116,7 @@
 	Success \\	
 	\hline
 	
-	TU10 &
+	TU15 &
 	Si verifica che l'attore Main riceva i messaggi di tipo CreateDatabaseMessage, crei una nuova coppia nomeDatabase-Storemanager e la inserisca correttamente nella mappa presente nel server, inoltre si verifica che in caso di DataBase già esistente non ne crei uno nuovo con lo stesso nome e ritorni un messaggio d'errore &
 	sever.actors.Main.\{\newline
 	receive()\newline
@@ -87,7 +128,7 @@
 	Success \\	
 	\hline
 
-	TU11 &
+	TU16 &
 	Si verifica che l'attore Main riceva i messaggi di tipo DeleteDatabaseMessage e che effettivamente il DataBase venga rimosso dalla mappa presente nel server, inoltre si verifica che nel caso il database non esista ritorni un messaggio d'errore &
 	sever.actors.Main.\{\newline
 	receive()\newline
@@ -99,7 +140,7 @@
 	Success \\	
 	\hline
 
-	TU12 &
+	TU17 &
 	Si verifica che l'attore Main riceva i messaggi di tipo SelectMapMessage e imposti correttamente nelle sue proprietà la nuova mappa selezionata, inoltre si verifica che nel caso non sia stato precedentemente selezionato un DataBase o la mappa sia inesistente lasci le sue proprietà invariate e ritorni un messaggio d'errore &
 	sever.actors.Main.\{\newline
 	receive()\newline
@@ -110,7 +151,7 @@
 	Success \\	
 	\hline
 
-	TU13 &
+	TU18 &
 	Si verifica che l'attore Main riceva i messaggi di tipo CompleteHelp e SpecificHelp e ritorni la corretta descrizione del comando. &
 	sever.actors.Main.\{\newline
 	receive()\newline
@@ -121,8 +162,8 @@
 	Success \\	
 	\hline
 
-	TU14 &
-	Si verifica che l'attore Main riceva i messaggi di tipo RowMessage (ovvero: InsertRowMessage, UpdateRowMessage, RemoveRowMessage, FindRowMessage, ListKeysMessage e StorefinderRowMessage) e li inoltri al corretto Storefinder. &
+	TU19 &
+	Si verifica che l'attore Main riceva i messaggi di tipo RowMessage (ovvero: InsertRowMessage, UpdateRowMessage, RemoveRowMessage, FindRowMessagee e ListKeysMessage) e di tipo MapMessage (ovvero: CreateMapMessage, DeleteMapMessage, SelectMapMessage, ListMapMessage)e li inoltri al corretto Storefinder. &
 	sever.actors.Main.\{\newline
 	receive()\newline
 	handleQueryMessage()\newline
@@ -131,82 +172,204 @@
 	\}  & 
 	Success \\	
 	\hline
-	
-	
-	TU15 &
-	Si verifica che l'attore Main riceva i messaggi di tipo ListUserMessage, AddUserMessage, RemoveUserMessage e li gestisca correttamente. &
+
+
+	TU20 &
+	Si verifica, per ogni possibile messaggio utente che richiede i permessi di scrittura, inviato all'attore Main da un utente senza tali permessi non venga eseguito e venga ritornato un messaggio d'errore  &
 	sever.actors.Main.\{\newline
 	receive()\newline
 	handleQueryMessage()\newline
-	handleUserManagementMessage()\newline
+	handleUserMessage()\newline
+	handleHelpMessage()\newline
+	handleDatabaseMessage()\newline
+	handleMapMessage()\newline
+	handleRowMessage()\newline
+	checkPermissions()\newline
 	\}  & 
-	Not implemented \\	
+	Success \\	
+	\hline
+
+	TU21 &
+	Si verifica, per ogni possibile messaggio utente che richiede i permessi di lettura, inviato all'attore Main da un utente senza tali permessi non venga eseguito e venga ritornato un messaggio d'errore  &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleUserMessage()\newline
+	handleHelpMessage()\newline
+	handleDatabaseMessage()\newline
+	handleMapMessage()\newline
+	handleRowMessage()\newline
+	checkPermissions()\newline
+	\}  & 
+	Success \\	
 	\hline
 	
-	TU16 &
-	Si verifica che l'attore Main riceva i messaggi di tipo ListPermissionMessage, AddPermissionMessage, RemovePermissionMessage e li gestisca correttamente. &
+	TU22 &
+	Si verifica, per ogni possibile messaggio utente che richiede i permessi di amministratore, inviato all'attore Main da un utente senza tali permessi non venga eseguito e venga ritornato un messaggio d'errore  &
 	sever.actors.Main.\{\newline
 	receive()\newline
 	handleQueryMessage()\newline
+	handleUserMessage()\newline
+	handleHelpMessage()\newline
+	handleDatabaseMessage()\newline
+	handleMapMessage()\newline
+	handleRowMessage()\newline
+	checkPermissions()\newline
+	\}  & 
+	Success \\	
+	\hline
+	
+	TU23 &
+	Si verifica, per ogni possibile messaggio utente che non richiede permessi, inviato all'attore Main effettivamente venga eseguito anche da un utente senza permessi. &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleUserMessage()\newline
+	handleHelpMessage()\newline
+	handleDatabaseMessage()\newline
+	handleMapMessage()\newline
+	handleRowMessage()\newline
+	checkPermissions()\newline
+	\}  & 
+	Success \\	
+	\hline
+	
+	
+	TU24 &
+	Si verifica che l'attore Main riceva i messaggi di tipo ListUserMessage e che ritorni la corretta lista di utenti &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleAdminMessage()\newline
+	handleUserManagementMessage()\newline
+	handleRowMessage()\newline
+	\}  & 
+	Success \\	
+	\hline
+		
+	TU25 &
+	Si verifica che l'attore Main riceva i messaggi di tipo AddUserMessage e che effettivamente aggiunga il nuovo utente &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleAdminMessage()\newline
+	handleUserManagementMessage()\newline
+	handleRowMessage()\newline
+	\}  & 
+	Success \\	
+	\hline
+		
+	TU26 &
+	Si verifica che l'attore Main riceva i messaggi di tipo RemoveUserMessage e che effettivamente rimuova l'utente indicato &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleAdminMessage()\newline
+	handleUserManagementMessage()\newline
+	handleRowMessage()\newline
+	\}  & 
+	Success \\	
+	\hline
+		
+	TU27 &
+	Si verifica che l'attore Main riceva i messaggi di tipo ListPermissionMessage e che ritorni la corretta lista di permessi &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleAdminMessage()\newline
 	handlePermissionsManagementMessage()\newline
 	\}  & 
-	Not implemented \\	
+	Success \\	
 	\hline
-	
-	
-	
-	TU17 &
-	Si verifica che l'attore Main riceva i messaggi di tipo ActorPropriertiesMessage e li gestisca correttamente. &
+		
+	TU28 &
+	Si verifica che l'attore Main riceva i messaggi di tipo AddPermissionMessage e che effettivamente aggiunga i permessi indicati per l'utente e la mappa specificati. &
 	sever.actors.Main.\{\newline
 	receive()\newline
 	handleQueryMessage()\newline
-	handleActorPropriertiesMessageMessage()\newline
-	\}  & 
-	Not implemented \\	
-	\hline
-
-
-	
-	TU18 &
-	Si verifica, per oggi possibile messaggio utente che richiede i permessi di scrittura, inviato all'attore Main da un utente senza tali permessi non venga eseguito e venga ritornato un messaggio d'errore  &
-	sever.actors.Main.\{\newline
-	receive()\newline
-	handleQueryMessage()\newline
-	handleUserMessage()\newline
-	handleHelpMessage()\newline
-	handleDatabaseMessage()\newline
-	handleMapMessage()\newline
-	handleRowMessage()\newline
-	checkPermissions()\newline
+	handleAdminMessage()\newline
+	handlePermissionsManagementMessage()\newline
 	\}  & 
 	Success \\	
 	\hline
-
-	TU19 &
-	Si verifica, per oggi possibile messaggio utente che richiede i permessi di lettura, inviato all'attore Main da un utente senza tali permessi non venga eseguito e venga ritornato un messaggio d'errore  &
+		
+	TU29 &
+	Si verifica che l'attore Main riceva i messaggi di tipo RemovePermissionMessage e che effettivamente rimuova i permessi indicati per l'utente e la mappa specificati. &
 	sever.actors.Main.\{\newline
 	receive()\newline
 	handleQueryMessage()\newline
-	handleUserMessage()\newline
-	handleHelpMessage()\newline
-	handleDatabaseMessage()\newline
-	handleMapMessage()\newline
-	handleRowMessage()\newline
-	checkPermissions()\newline
+	handleAdminMessage()\newline
+	handlePermissionsManagementMessage()\newline
 	\}  & 
 	Success \\	
 	\hline
-	
+		
+	TU30 &
+	Si verifica che l'attore Main riceva i messaggi di tipo MaxRowsMessage e che imposti correttamente il massimo numero di righe per ogni Storekeeper. &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleAdminMessage()\newline
+	handleActorPropertiesMessageMessage()\newline
+	\}  & 
+	Success \\	
+	\hline
+		
+	TU31 &
+	Si verifica che l'attore Main riceva i messaggi di tipo MaxStorekeeperMessage e che imposti il massimo numero di Storekeeper per ogni Storefinder &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleAdminMessage()\newline
+	handleActorPropertiesMessageMessage()\newline
+	\}  & 
+	Success \\	
+	\hline
+		
+	TU32 &
+	Si verifica che l'attore Main riceva i messaggi di tipo MaxStorefinderMessage e che imposti il massimo numero di Storefinder per ogni Storemanager &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleAdminMessage()\newline
+	handleActorPropertiesMessageMessage()\newline
+	\}  & 
+	Success \\	
+	\hline
+		
+	TU33 &
+	Si verifica che l'attore Main riceva i messaggi di tipo SetNinjaMessage e che imposti il massimo numero di Ninja associati ad ogni Storekeeper &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleAdminMessage()\newline
+	handleActorPropertiesMessageMessage()\newline
+	\}  & 
+	Success \\	
+	\hline
+		
+	TU34 &
+	Si verifica che l'attore Main riceva i messaggi di tipo SetWarehousemanMessage e che imposti il massimo numero di Warehouseman associati ad ogni Storekeeper &
+	sever.actors.Main.\{\newline
+	receive()\newline
+	handleQueryMessage()\newline
+	handleAdminMessage()\newline
+	handleActorPropertiesMessageMessage()\newline
+	\}  & 
+	Success \\	
+	\hline
+		
+		
 	
 	%server.actors.Storefinder
-	TU20 &
+	TU35 &
 	Si verifica che l'attore Storefinder riceva solo messaggi di tipo RowMessage e, nel caso ne riceva di altro tipo, inserisca nel log un opportuno messaggio d'errore &
 	server.actors.Storefinder.receive() & 
 	Success \\	
 	\hline
 	
-	TU21 &
-	Si verifica che l'attore Storefinder riceva i messaggi di tipo ListKeysMessage e ritorni la corretta lista di chiavi della mappa attualmente selezionata, si verifica inoltre che ritorni un messaggio speciale nel caso in cui la mappa sia vuota &
+	TU36 &
+	Si verifica che l'attore Storefinder riceva i messaggi di tipo ListKeysMessage, inoltri lo stesso messaggio ad ogni suo Storekeeper e ritorni la concatenazione delle risposte, si verifica inoltre che ritorni un messaggio speciale nel caso in cui la mappa sia vuota &
 	server.actors.Storefinder.\{\newline
 	receive()\newline
 	handleRowMessage()\newline
@@ -215,7 +378,7 @@
 	Success \\	
 	\hline
 	
-	TU22 &
+	TU37 &
 	Si verifica che l'attore Storefinder riceva i messaggi di tipo InsertRowMessage, UpdateRowMessage, RemoveRowMessage, FindRowMessage e li inoltri al corretto Storekeeper &
 	server.actors.Storefinder.\{\newline
 	receive()\newline
@@ -226,8 +389,21 @@
 	Success \\	
 	\hline
 	
-	%server.actors.Storekeeper
-	TU23 &
+	TU38 &
+	Si verifica che l'attore Storefinder riceva i messaggi di tipo SetNinjaMessage, SetWarehousemanMessage, MaxRowsMessage, MaxStorekeeperMessage ed imposti coerentemente le sue proprietà. &
+	server.actors.Storefinder.\{\newline
+	receive()\newline
+	sendToStorekeeper()\newline
+	findActor()\newline
+	reply()\newline
+	\} & 
+	Success \\	
+	\hline
+	
+	
+	
+	%server.actors.Storekeeper as Storekeeper
+	TU39 &
 	Si verifica che l'attore Storekeeper riceva i messaggi di tipo InsertRowMessage e che effettivamente inserisca la coppia chiave-valore all'interno della mappa, inoltre si verifica che se la chiave è già presente non inserisca nulla e ritorni un messaggio d'errore &
 	server.actors.Storekeeper.\{\newline
 	receive()\newline
@@ -236,7 +412,7 @@
 	Success \\	
 	\hline
 	
-	TU24 &
+	TU40 &
 	Si verifica che l'attore Storekeeper riceva i messaggi di tipo UpdateRowMessage e che effettivamente aggiorni il valore della chiave indicata, inoltre si verifica che se la chiave non è presente nella mappa ritorni un messaggio d'errore  &
 	server.actors.Storekeeper.\{\newline
 	receive()\newline
@@ -246,7 +422,7 @@
 	Success \\	
 	\hline
 	
-	TU25 &
+	TU41 &
 	Si verifica che l'attore Storekeeper riceva i messaggi di tipo RemoveRowMessage e che effettivamente rimuova la riga di mappa indicizzata dalla chiave indicata, inoltre si verifica che se la chiave non è presente non rimuova nulla e ritorni un messaggio d'errore &
 	server.actors.Storekeeper.\{\newline
 	receive()\newline
@@ -256,7 +432,7 @@
 	Success \\	
 	\hline
 	
-	TU26 &
+	TU42 &
 	Si verifica che l'attore Storekeeper riceva i messaggi di tipo FindRowMessage e che ritorni il valore indicizzato dalla chiave indicata &
 	server.actors.Storekeeper.\{\newline
 	receive()\newline
@@ -266,7 +442,7 @@
 	Success \\	
 	\hline
 	
-	TU27 &
+	TU43 &
 	Si verifica che l'attore Storekeeper riceva i messaggi di tipo ListKeysMessage e che effettivamente ritorni la lista della chiavi presenti nella mappa selezionata &
 	server.actors.Storekeeper.\{\newline
 	receive()\newline
@@ -275,8 +451,51 @@
 	Success \\	
 	\hline
 	
-	TU28 &
-	Si verifica che l'attore Storekeeper (sotto forma di ninja) riceva i messaggi di tipo BecomeStorekeeperMessage e che effettivamente diventi uno Storekeeper. &
+	TU44 &
+	Si verifica che l'attore Storekeeper riceva i messaggi di tipo AddNinjaMessage e che aggiunga alla sua lista di Ninja quello contenuto nel messaggio. &
+	server.actors.Storekeeper.\{\newline
+	receive()\newline
+	handleLinkMessage()\newline
+	reply()\newline
+	\} & 
+	Success \\	
+	\hline
+	
+	TU45 &
+	Si verifica che l'attore Storekeeper riceva i messaggi di tipo RemoveNinjaMessage e che rimuova dalla sua lista di Ninja quello contenuto nel messaggio. &
+	server.actors.Storekeeper.\{\newline
+	receive()\newline
+	handleLinkMessage()\newline
+	reply()\newline
+	\} & 
+	Success \\	
+	\hline
+	
+	TU46 &
+	Si verifica che l'attore Storekeeper riceva i messaggi di tipo AddWarehousemanMessage e che aggiunga alla sua lista di Warehouseman quello contenuto nel messaggio. &
+	server.actors.Storekeeper.\{\newline
+	receive()\newline
+	handleLinkMessage()\newline
+	reply()\newline
+	\} & 
+	Success \\	
+	\hline
+	
+	TU47 &
+	Si verifica che l'attore Storekeeper riceva i messaggi di tipo RemoveWarehousemanMessage e che rimuova dalla sua lista di Warehouseman quello contenuto nel messaggio. &
+	server.actors.Storekeeper.\{\newline
+	receive()\newline
+	handleLinkMessage()\newline
+	reply()\newline
+	\} & 
+	Success \\	
+	\hline
+	
+	
+	
+	%server.actors.Storekeeper as Ninja	
+	TU48 &
+	Si verifica che l'attore Storekeeper (che agisce da Ninja) riceva i messaggi di tipo BecomeStorekeeperMessage e che effettivamente diventi uno Storekeeper. &
 	server.actors.Storekeeper.\{\newline
 	receive()\newline
 	receiveAsStorekeeper()\newline
@@ -284,8 +503,40 @@
 	Success \\	
 	\hline
 	
+	TU49 &
+	Si verifica che l'attore Storekeeper (che agisce da Ninja) riceva i messaggi di tipo InsertRowMessage e che effettivamente inserisca la coppia chiave-valore all'interno della mappa, inoltre si verifica che se la chiave è già presente non inserisca nulla e ritorni un messaggio d'errore &
+	server.actors.Storekeeper.\{\newline
+	receive()\newline
+	reply()\newline
+	\} & 
+	Success \\	
+	\hline
+	
+	TU50 &
+	Si verifica che l'attore Storekeeper (che agisce da Ninja) riceva i messaggi di tipo UpdateRowMessage e che effettivamente aggiorni il valore della chiave indicata, inoltre si verifica che se la chiave non è presente nella mappa ritorni un messaggio d'errore  &
+	server.actors.Storekeeper.\{\newline
+	receive()\newline
+	logAndReply()\newline
+	exists()\newline
+	\} & 
+	Success \\	
+	\hline
+	
+	TU51 &
+	Si verifica che l'attore Storekeeper (che agisce da Ninja) riceva i messaggi di tipo RemoveRowMessage e che effettivamente rimuova la riga di mappa indicizzata dalla chiave indicata, inoltre si verifica che se la chiave non è presente non rimuova nulla e ritorni un messaggio d'errore &
+	server.actors.Storekeeper.\{\newline
+	receive()\newline
+	logAndReply()\newline
+	exists()\newline
+	\} & 
+	Success \\	
+	\hline
+
+	
+	
+	
 	%server.actors.Storemanager
-	TU29 &
+	TU52 &
 	Si verifica che l'attore Storemanager riceva i messaggi di tipo AskMapMessage e risponda al corretto storefinder con il nome della mappa &
 	server.actors.Storemanager.\{\newline
 	receive()\newline
@@ -293,7 +544,7 @@
 	Success \\	
 	\hline
 	
-	TU30 &
+	TU53 &
 	Si verifica che l'attore Storemanager riceva i messaggi di tipo ListMapMessage e che ritorni la lista delle mappe presenti, inoltre si verifica che ritorni un messaggio speciale in cui non sia presente alcuna mappa &
 	server.actors.Storemanager.\{\newline
 	receive()\newline
@@ -303,7 +554,7 @@
 	Success \\	
 	\hline
 	
-	TU31 &
+	TU54 &
 	Si verifica che l'attore Storemanager riceva i messaggi di tipo CreateMapMessage e che effettivamente aggiunga la mappa indicata, inoltre si verifica che nel caso la mappa esista già non aggiunga la mappa indicata e ritorni un messaggio d'errore &
 	server.actors.Storemanager.\{\newline
 	receive()\newline
@@ -314,7 +565,7 @@
 	Success \\	
 	\hline
 	
-	TU32 &
+	TU55 &
 	Si verifica che l'attore Storemanager riceva i messaggi di tipo DeleteMapMessage e che effettivamente rimuova la mappa indicata, inoltre si verifica che nel caso la mappa non esista non la rimuova ritorni un messaggio d'errore &
 	server.actors.Storemanager.\{\newline
 	receive()\newline
@@ -325,7 +576,7 @@
 	Success \\	
 	\hline
 	
-	TU33 &
+	TU56 &
 	Si verifica che l'attore Storemanager riceva i messaggi di tipo StorefinderRowMessage, che lo inoltri al corretto Storefinder e che una volta ricevuta una risposta ne ritorni il risultato, si verifica inoltre che se la mappa indicata non esiste non faccia nulla e ritorni un messaggio d'errore &
 	server.actors.Storemanager.\{\newline
 	receive()\newline
@@ -339,15 +590,15 @@
 	
 	
 	%server.actors.Usermanager
-	TU34 &
-	Si verifica che l'attore Usermanager riceva stringhe di byte e le invii al parse se il primo byte è uguale ad 1, ritorni un messaggio d'errore altrimenti  &
+	TU57 &
+	Si verifica che l'attore Usermanager riceva stringhe di byte e le invii al parser se il primo byte è uguale ad 1, ritorni un messaggio d'errore altrimenti  &
 	server.actors.Usermanager.\{\newline
 	receive()\newline
 	\} & 
 	Success \\	
 	\hline
 	
-	TU35 &
+	TU58 &
 	Si verifica che l'attore Usermanager riceva i messaggi di tipo InvalidQueryMessage e risponda con un messaggio d'errore &
 	server.actors.Usermanager.\{\newline
 	receive()\newline
@@ -357,7 +608,7 @@
 	Success \\	
 	\hline
 	
-	TU36 &
+	TU59 &
 	Si verifica che l'attore Usermanager riceva i messaggi di tipo LoginMessage ed inserisca nell'ActorSystem un nuovo attore Main con i permessi associati all'username e password indicati &
 	server.actors.Usermanager.\{\newline
 	receive()\newline
@@ -369,8 +620,8 @@
 	Success \\	
 	\hline
 	
-	TU37 &
-	Si verifica che l'attore Usermanager riceva i messaggi di tipo QueryMessage diversi da LoginMessage e li inoltri al corretto attore Main, inoltre si verifica che nel caso l'utente a questo punto non sia connesso l'Usermanager ritorni un messaggio di errore &
+	TU60 &
+	Si verifica che l'attore Usermanager riceva i messaggi di tipo QueryMessage diversi da LoginMessage e li inoltri al proprio attore Main, inoltre si verifica che nel caso l'utente a questo punto non sia connesso l'Usermanager ritorni un messaggio di errore &
 	server.actors.Usermanager.\{\newline
 	receive()\newline
 	parseQuery()\newline
@@ -380,50 +631,125 @@
 	Success \\	
 	\hline
 	
+	%server.actors.Warehouseman
+	TU61 &
+	Si verifica che l'attore Warehouseman riceva i messaggi di tipo RowMessage ed aggiorni coerentemente i dati sul disco. &
+	server.actors.Warehouseman.\{\newline
+	receive()\newline
+	handleRowMessage()\newline
+	replyAndLog()\newline
+	reply()\newline
+	\} & 
+	Success \\	
+	\hline
+	
 	
 	%client.Client
-	TU38 &
-	Si verifica che il Driver crei correttamente un connessione e la ritorni &
-	  driver.Driver.connect(\newline host:String, \newline port:Integer, \newline username:String, \newline password:String \newline) & 
+	TU62 &
+	Si verifica che il Driver crei correttamente una connessione e la ritorni &
+	driver.Driver.connect(\newline host:String, \newline port:Integer, \newline username:String, \newline password:String \newline) & 
 	 Success \\ 
 	 \hline
 	 
-	TU39 &
+	TU63 &
 	Si verifica che la Connessione esegua correttamente il login al Server &
 	  driver.ConcreteConnection.login(\newline username:String, \newline password:String \newline) & 
 	 Success \\ 
 	 \hline
 	 
-	TU40 &
-	Si verifica che la Connessione esegua si chiuda correttamente &
+	TU64 &
+	Si verifica che la Connessione si chiuda correttamente &
 	  driver.ConcreteConnection. closeConnection() & 
 	 Success \\ 
 	 \hline
 	 
-	TU41 &
+	TU65 &
 	Si verifica che la Connessione invii correttamente le stringhe dei comandi al Server &
 	  driver.ConcreteConnection. executeQuery(\newline query:String \newline) & 
 	 Success \\ 
 	 \hline
 	 
-	TU42 &
+	TU66 &
 	Si verifica che il Client riconosca il comando di connessione e invii la richiesta corretta al Driver. &
 	  client.Client.checkLogin(ln:String) & 
 	 Success \\ 
 	 \hline
 	 
-	TU43 &
+	TU67 &
 	Si verifica che il Client (connesso) invii correttamente le stringhe dei comandi alla connessione. &
 	  client.Client.executeLine(ln:String) & 
 	 Success \\ 
 	 \hline
 	 
-	TU44 &
+	TU68 &
 	Si verifica che il Client riconosca il comando di disconnessione e chiuda la connessione. &
 	  client.Client.executeLine(ln:String) & 
 	 Success \\ 
 	 \hline
+	 
+	TU69 &
+	Si verifica che il Client riconosca il comando di uscita ed effettivamente termini l'applicazione. &
+	client.Client.executeLine()  & 
+	Success \\ 
+	\hline
 
+
+	%server.util.FileReader
+	TU70 &
+	Si verifica che il FileReader carichi correttamente da file la struttura dell'albero degli attori. &
+	server.util.FileReader.\{\newline
+	loadActorTree()\newline
+	\} & 
+	Success \\ 
+	\hline
+	
+	TU71 &
+	Si verifica che il FileReader scriva correttamente su file la struttura dell'albero degli attori. &
+	server.util.FileReader.\{\newline
+	dumpActorTree()\newline
+	\} & 
+	Success \\ 
+	\hline
+	
+	TU72 &
+	Si verifica che il FileReader carichi correttamente da file i dati. &
+	server.util.FileReader.\{\newline
+	loadData()\newline
+	\} & 
+	Success \\ 
+	\hline
+	
+	TU73 &
+	Si verifica che il FileReader scriva correttamente su file i dati. &
+	server.util.FileReader.\{\newline
+	dumpData()\newline
+	\} & 
+	Success \\ 
+	\hline
+	
+	%server.util.Helper
+	TU74 &
+	Si verifica che l'Helper ritorni correttamente l'aiuto generico. &
+	server.util.Helper.\{\newline
+	completeHelp()\newline
+	\} & 
+	Success \\ 
+	\hline
+	
+	TU75 &
+	Si verifica che l'Helper ritorni correttamente l'aiuto specifico del comando indicato. &
+	server.util.Helper.\{\newline
+	specificHelp()\newline
+	\} & 
+	Success \\ 
+	\hline
+	
+
+
+	
+	
+	
+	
 \bottomrule
 \caption{Test di unità}
 \end{longtable}   

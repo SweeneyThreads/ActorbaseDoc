@@ -910,175 +910,286 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 						\label{SVBVTable}
 					\end{table}
 
-	\subsection{Test di validazione}
-	In questa sezione vengono descritti i test di validazione che servono per accertarsi che il prodotto realizzato sia conforme alle attese. 
-	Per ogni test vengono descritti i vari passi che un utente deve eseguire per testare i requisiti ad esso associati.
-	Il client di Actorbase funziona tramite riga di comando, per questo motivo viene sempre riportata la sintassi dei comandi che si intendono verificare.
-	Viene richiesto di porre attenzione al rispetto degli spazi e all'utilizzo degli apici singoli "'" che identificano le chiavi.
-	Le parentesi uncinate "<>" invece non vanno riportate e servono unicamente a contraddistinguere i parametri scelti dall'utente dai comandi.
-	I comandi non sono case sensitive e possono essere scritti in maiuscolo o in minuscolo indifferentemente. 
-	Al contrario i parametri inseriti dall'utente vengono interpretati tenendo conto delle lettere maiuscole e minuscole.
-	
-	\subsubsection{Test TV1: Connessione}
-	L'utente vuole verificare che sia possibile connettersi al server di Actorbase tramite l'interfaccia del client. \\
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Accertarsi che il server sia in esecuzione all'indirizzo <host> desiderato. "localhost" di default.
-		\item Accertarsi che il server sia in ascolto sulla porta <port> desiderata. "8181" di default.
-		\item Accertarsi che sia disponibile nel database un utente con lo username <username> desiderato. "admin" di default.
-		\item Accertarsi che la password <password> inserita sia propria dell' utente <username> desiderato. "admin" di default.
-		\item Digitare nella console del client il comando di connessione utilizzando la sintassi: connect <host>:<port> <username> <password>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV2: Aiuto}
-	L'utente vuole verificare la funzionalità di aiuto, sia generico che per un dato comando.\\
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Digitare nella console del client il comando di aiuto utilizzando la sintassi: help
-		\item Eseguire il comando tramite il tasto invio.
-		\item Scegliere un comando <command> dalla lista dei comandi ritornati.
-		\item Digitare nella console del client il comando di help utilizzando la sintassi: help <command>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV3: Database disponibili}
-	L'utente vuole verificare la funzionalità di visualizzazione dei nomi dei database disponibili.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Digitare nella console del client il comando listdb utilizzando la sintassi: listdb
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV4: Creazione database}
-	L'utente vuole verificare la funzionalità di creazione di un nuovo database.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere un nome <dbname> per il database che si vuole creare.
-		\item Digitare nella console del client il comando di creazione database utilizzando la sintassi: createdb <dbname>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV5: Rimozione database}
-	L'utente vuole verificare la funzionalità di rimozione di un database.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere un database da eliminare tramite il suo nome <dbname>.
-		\item Digitare nella console del client il comando di rimozione database utilizzando la sintassi: deletedb <dbname>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV6: Selezione database}
-	L'utente vuole verificare la funzionalità di selezionare di un database.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere un database da selezionare tramite il suo nome <dbname>.
-		\item Digitare nella console del client il comando di selezione database utilizzando la sintassi: selectdb <dbname>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV7: Mappe disponibili}
-	L'utente vuole verificare la funzionalità di visualizzazione delle mappe del database selezionato.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Digitare nella console del client il comando listmap utilizzando la sintassi: listmap
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV8: Creazione mappa}
-	L'utente vuole verificare la funzionalità di creazione di una nuova mappa all'interno del database selezionato.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere un nome <mapname> per la mappa che si vuole creare.
-		\item Digitare nella console del client il comando di creazione mappa utilizzando la sintassi: createmap <mapname>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV9: Rimozione mappa}
-	L'utente vuole verificare la funzionalità di rimozione di una mappa dal database selezionato.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere una mappa da eliminare tramite il suo nome <mapname>.
-		\item Digitare nella console del client il comando di rimozione mappa utilizzando la sintassi: deletemap <mapname>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV10: Selezione mappa}
-	L'utente vuole verificare la funzionalità di selezione di una mappa del database selezionato.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere una mappa da selezionare tramite il suo nome <mapname>.
-		\item Digitare nella console del client il comando di selezione mappa utilizzando la sintassi: selectmap <mapname>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV11: Chiavi disponibili}
-	L'utente vuole verificare la funzionalità di visualizzazione dell'elenco delle chiavi della mappa selezionata.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Digitare nella console del client il comando keys utilizzando la sintassi: keys
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV12: Inserimento item}
-	L'utente vuole verificare la funzionalità di inserimento di un item nella mappa selezionata.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere una chiave <key> per l'item.
-		\item Scegliere un valore <value> da inserire.
-		\item Digitare nella console del client il comando di inserimento item utilizzando la sintassi: insert '<key>' <value>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV13: Ricerca item}
-	L'utente vuole verificare la funzionalità che permette di recuperare il valore associato ad una chiave.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere la chiave <key> del valore che si vuole recuperare.
-		\item Digitare nella console del client il comando di ricerca item utilizzando la sintassi: find '<key>'
-		\item Eseguire il comando tramite il tasto invio.	
-	\end{itemize}
-	
-	\subsubsection{Test TV14: Aggiornamento item}
-	L'utente vuole verificare la funzionalità di aggiornamento di un item della mappa selezionata.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere la chiave <key> del valore che si vuole aggiornare.
-		\item Scegliere il nuovo valore <value> che si vuole inserire.
-		\item Digitare nella console del client il comando di aggiornamento item utilizzando la sintassi: update '<key>' <value>
-		\item Eseguire il comando tramite il tasto invio.
-	\end{itemize}
-	
-	\subsubsection{Test TV15: Rimozione item}
-	L'utente vuole verificare la funzionalità di rimozione di un item dalla mappa selezionata.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Scegliere la chiave <key> dell'item che si vuole rimuovere.
-		\item Digitare nella console del client il comando di rimozione di un item utilizzando la sintassi: remove '<key>'
-	\end{itemize}
-	
-	\subsubsection{Test TV16: Disconnessione}
-	L'utente vuole verificare la funzionalità di disconnessione dal server.
-	Sono richiesti i seguenti passaggi:
-	\begin{itemize}
-		\item Digitare nella console del client il comando di disconnessione utilizzando la sintassi: disconnect
-	\end{itemize}
 
+
+	\subsection{Test di validazione}
+		In questa sezione vengono descritti i test di validazione che servono per accertare che il prodotto realizzato sia conforme alle attese. 
+		Per ogni test vengono descritti i vari passi che un utente deve eseguire per testare i requisiti ad esso associati.
+		Il client di Actorbase funziona tramite riga di comando, per questo motivo viene sempre riportata la sintassi dei comandi che si intendono verificare.
+		Viene richiesto di porre attenzione al rispetto degli spazi e all'utilizzo degli apici singoli, che identificano le chiavi.
+		Le parentesi uncinate "<>" invece non vanno riportate e servono unicamente a contraddistinguere i parametri scelti dall'utente dai comandi.
+		I comandi non sono case sensitive e possono essere scritti in maiuscolo o in minuscolo indifferentemente. 
+		Al contrario i parametri inseriti dall'utente vengono interpretati tenendo conto delle lettere maiuscole e minuscole.
+		
+		\subsubsection{Test TV1: Connessione}
+		L'utente vuole verificare che sia possibile connettersi al server di Actorbase tramite l'interfaccia del client. \\
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Accertarsi che il server sia in esecuzione all'indirizzo <host> desiderato. "localhost" di default.
+			\item Accertarsi che il server sia in ascolto sulla porta <port> desiderata. "8181" di default.
+			\item Accertarsi che sia disponibile nel database un utente con l'username <username> desiderato. "admin" di default.
+			\item Accertarsi che la password <password> inserita sia propria dell'utente <username> desiderato. "admin" di default.
+			\item Digitare nella console del client il comando di connessione utilizzando la sintassi: connect <host>:<port> <username> <password>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV2: Aiuto}
+		L'utente vuole verificare la funzionalità di aiuto, sia generico che per un dato comando.\\
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Digitare nella console del client il comando di aiuto utilizzando la sintassi: help
+			\item Eseguire il comando tramite il tasto invio.
+			\item Scegliere un comando <command> dalla lista dei comandi ritornati.
+			\item Digitare nella console del client il comando di help utilizzando la sintassi: help <command>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV3: Database disponibili}
+		L'utente vuole verificare la funzionalità di visualizzazione dei nomi dei database disponibili.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Digitare nella console del client il comando listdb utilizzando la sintassi: listdb
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV4: Creazione database}
+		L'utente vuole verificare la funzionalità di creazione di un nuovo database.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere un nome <dbname> per il database che si vuole creare.
+			\item Digitare nella console del client il comando di creazione database utilizzando la sintassi: createdb <dbname>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV5: Rimozione database}
+		L'utente vuole verificare la funzionalità di rimozione di un database.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere un database da eliminare tramite il suo nome <dbname>.
+			\item Digitare nella console del client il comando di rimozione database utilizzando la sintassi: deletedb <dbname>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV6: Selezione database}
+		L'utente vuole verificare la funzionalità di selezionare di un database.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere un database da selezionare tramite il suo nome <dbname>.
+			\item Digitare nella console del client il comando di selezione database utilizzando la sintassi: selectdb <dbname>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV7: Mappe disponibili}
+		L'utente vuole verificare la funzionalità di visualizzazione delle mappe del database selezionato.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Digitare nella console del client il comando listmap utilizzando la sintassi: listmap
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV8: Creazione mappa}
+		L'utente vuole verificare la funzionalità di creazione di una nuova mappa all'interno del database selezionato.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere un nome <mapname> per la mappa che si vuole creare.
+			\item Digitare nella console del client il comando di creazione mappa utilizzando la sintassi: createmap <mapname>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV9: Rimozione mappa}
+		L'utente vuole verificare la funzionalità di rimozione di una mappa dal database selezionato.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere una mappa da eliminare tramite il suo nome <mapname>.
+			\item Digitare nella console del client il comando di rimozione mappa utilizzando la sintassi: deletemap <mapname>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV10: Selezione mappa}
+		L'utente vuole verificare la funzionalità di selezione di una mappa del database selezionato.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere una mappa da selezionare tramite il suo nome <mapname>.
+			\item Digitare nella console del client il comando di selezione mappa utilizzando la sintassi: selectmap <mapname>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV11: Chiavi disponibili}
+		L'utente vuole verificare la funzionalità di visualizzazione dell'elenco delle chiavi della mappa selezionata.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Digitare nella console del client il comando keys utilizzando la sintassi: keys
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV12: Inserimento item}
+		L'utente vuole verificare la funzionalità di inserimento di un item nella mappa selezionata.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere una chiave <key> per l'item.
+			\item Scegliere un valore <value> da inserire.
+			\item Digitare nella console del client il comando di inserimento item utilizzando la sintassi: insert '<key>' <value>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV13: Ricerca item}
+		L'utente vuole verificare la funzionalità che permette di recuperare il valore associato ad una chiave.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere la chiave <key> del valore che si vuole recuperare.
+			\item Digitare nella console del client il comando di ricerca item utilizzando la sintassi: find '<key>'
+			\item Eseguire il comando tramite il tasto invio.	
+		\end{itemize}
+		
+		\subsubsection{Test TV14: Aggiornamento item}
+		L'utente vuole verificare la funzionalità di aggiornamento di un item della mappa selezionata.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere la chiave <key> del valore che si vuole aggiornare.
+			\item Scegliere il nuovo valore <value> che si vuole inserire.
+			\item Digitare nella console del client il comando di aggiornamento item utilizzando la sintassi: update '<key>' <value>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV15: Rimozione item}
+		L'utente vuole verificare la funzionalità di rimozione di un item dalla mappa selezionata.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere la chiave <key> dell'item che si vuole rimuovere.
+			\item Digitare nella console del client il comando di rimozione di un item utilizzando la sintassi: remove '<key>'
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV16: Disconnessione}
+		L'utente vuole verificare la funzionalità di disconnessione dal server.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Digitare nella console del client il comando di disconnessione utilizzando la sintassi: disconnect
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV17:  Visualizzazione utenti}
+		L'utente vuole verificare la funzionalità dell'amministratore per visualizzare la lista degli utenti.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Digitare nella console del client il comando per visualizzare la lista degli utenti utilizzando la sintassi: listusers
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV18:  Visualizzazione permessi}
+		L'utente vuole verificare la funzionalità dell'amministratore per visualizzare la lista dei permessi di un utente.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere un utente tramite il suo usename <username> di cui si vogliono visualizzare i permessi.
+			\item Digitare nella console del client il comando per visualizzare la lista dei permessi utilizzando la sintassi: userpermissions <username>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV19: Aggiunta utente}
+		L'utente vuole verificare la funzionalità dell'amministratore per aggiungere un utente.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere un nome <username> per l'utente che si vuole aggiungere.
+			\item Scegliere una password <password> per l'utente che si vuole aggiungere.
+			\item Digitare nella console del client il comando per aggiungere un utente utilizzando la sintassi: adduser <username>	<password>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV20: Aggiunta permessi}
+		L'utente vuole verificare la funzionalità dell'amministratore per aggiungere permessi ad un utente.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere il nome <username> dell'utente a cui si vogliono aggiungere permessi.
+			\item Scegliere un database <database> sul quale aggiungere i permessi all'utente.
+			\item Scegliere il tipo di permesso <permission> che si vuole aggiungere tra: "read" o "readwrite".
+			\item Digitare nella console del client il comando per aggiungere permessi ad un utente utilizzando la sintassi: addpermission <username> <database> <permission>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV21: Rimozione permessi}
+		L'utente vuole verificare la funzionalità dell'amministratore per rimuovere permessi ad un utente.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere il nome <username> dell'utente a cui si vogliono rimuovere i permessi.
+			\item Scegliere un database <database> sul quale rimuovere i permessi all'utente.
+			\item Digitare nella console del client il comando per rimuovere i permessi ad un utente utilizzando la sintassi: removepermission <username> <database>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV22: Rimozione utente}
+		L'utente vuole verificare la funzionalità dell'amministratore per rimuovere un utente.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere il nome <username> per l'utente che si vuole aggiungere.
+			\item Digitare nella console del client il comando per rimuovere un utente utilizzando la sintassi: removeuser <username>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV23: Impostazione Ninja}
+		L'utente vuole verificare la funzionalità dell'amministratore per impostare il numero di attori di tipo Ninja per ogni attore di tipo Storekeeper.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere il numero <number> di attori Ninja per ogni attore di tipo Storekeeper.
+			\item Digitare nella console del client il comando per impostare il numero di ninja utilizzando la sintassi: setninja <number>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV24: Impostazione Warehouseman}
+		L'utente vuole verificare la funzionalità dell'amministratore per impostare il numero di attori di tipo Warehouseman per ogni attore di tipo Storekeeper
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere il numero <number> di attori Warehouseman per ogni attore di tipo Storekeeper.
+			\item Digitare nella console del client il comando per impostare il numero di warehouseman utilizzando la sintassi: setwarehouseman <number>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV25: Impostazione item}
+		L'utente vuole verificare la funzionalità dell'amministratore per impostare il numero massimo di item per le mappe degli attori Storekeeper.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere il numero <number> di item massimo per la mappa gestita da un attore di tipo Storekeeper.
+			\item Digitare nella console del client il comando per impostare il numero di item utilizzando la sintassi: setmaxrow <number>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV26: Impostazione Storekeeper}
+		L'utente vuole verificare la funzionalità per impostare il numero massimo di attori di tipo Storekeeper per un attore di tipo Storefinder.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere il numero <number> di Storekeeper massimo per ogni Storefinder.
+			\item Digitare nella console del client il comando per impostare il numero di Storekeeper utilizzando la sintassi: setmaxstorekeeper <number>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+		
+		\subsubsection{Test TV27: Impostazione Storefinder}
+		L'utente vuole verificare la funzionalità per impostare il numero massimo di attori di tipo Storefinder per un attore di tipo Storemanager.
+		Sono richiesti i seguenti passaggi:
+		\begin{itemize}
+			\item Scegliere il numero <number> di Storefinder massimo per ogni Storemanager.
+			\item Digitare nella console del client il comando per impostare il numero di Storefinder utilizzando la sintassi: setmaxstorefinder <number>
+			\item Eseguire il comando tramite il tasto invio.
+		\end{itemize}
+
+
+	
 	
 	\subsection{Pianificazione dei test}
 		Di seguito saranno descritti i test di sistema, integrazione e unità che sono previsti.
-		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.		
+		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.
+		
 					
 	\subsubsection{Test di sistema}
-		Viene mostrata di seguito la tabella con tutti i test di sistema che consentono di verificare il sistema rispetto ai requisiti descritti nell'\emph{Analisi dei Requisiti v1.3.11} e la tabella che traccia ogni requisito al test.
+		Viene mostrata di seguito la tabella con tutti i test di sistema che consentono di verificare il sistema rispetto ai requisiti descritti nell'\emph{Analisi dei Requisiti v1.3.11}.
 		Per ogni comando testato sarà anche verificato il corretto riconoscimento e la corretta gestione degli errori.
-		I test di sistema sono nominati per associazione ai casi d'uso.
+		Ogni test di sistema è identificato da TS ed il numero del Caso d'uso ad esso associato.
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_sistema.tex}
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/requisiti_test_sistema.tex}
 		
 	\subsubsection{Test di integrazione}
 		Viene mostrata di seguito la tabella contenente tutti i test di integrazione, atti a verificare il corretto funzionamento delle singole componenti del sistema descritte nella \emph{Specifica Tecnica v2.0.0}. 
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_integrazione.tex}
+	
+	Viene mostrata la tabella che traccia ogni requisito al test.
 	
 	\subsubsection{Test di unità}
 		Viene mostrata di seguito la tabella contenente tutti i test di unità. 
