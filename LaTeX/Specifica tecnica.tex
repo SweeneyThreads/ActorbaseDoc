@@ -1208,7 +1208,7 @@
 				\begin{itemize}
 					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxRowMessage
 					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxNinjaMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxWarehousemanMessage
+					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetWarehousemanMessage
 					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorekeeperMessage
 					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorefinderMessage
 				\end{itemize}
@@ -1238,8 +1238,8 @@
 			\subsubsection{Classi figlie}
 				\begin{itemize}
 					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxRowMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxNinjaMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxWarehousemanMessage
+					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetNinjaMessage
+					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetWarehousemanMessage
 					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorekeeperMessage
 					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorefinderMessage
 				\end{itemize}
@@ -1258,7 +1258,7 @@
 					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.ActorPropertiesMessage
 				\end{itemize}
 		
-		\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxNinjaMessage}
+		\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetNinjaMessage}
 			\subsubsection{Descrizione}
 				Questa classe rappresenta un messaggio per modificare il numero di attori \textbf{Ninja} assegnati ad ogni \textbf{Storekeeper}.
 				
@@ -1279,7 +1279,7 @@
 					\item Actorbase.server.messages.query.admin.ActorPropertiesMessage
 				\end{itemize}
 
-		\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxWarehousemanMessage}
+		\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetWarehousemanMessage}
 			\subsubsection{Descrizione}
 				Questa classe rappresenta un messaggio per modificare il numero di attori \textbf{Warehouseman} assegnati ad ogni \textbf{Storekeeper}.
 				
@@ -2200,7 +2200,7 @@
 			\includegraphics[width=\textwidth]{ST/Attivita/attivitaPrincipale.jpg}
 			\caption{Diagramma attività principale}
 		\end{figure}
-		Dopo aver avviato il client l'utente inserire dei comandi. Se il comando è di connect ed il client non è connesso quest'ultimo si connette ed invia un comando di login al server, altrimenti stampa un messaggio di errore. Se il comando non è di connect ed il client è connesso quest'ultimo controlla che non sia ne un comando di disconnessione ne uno di chiusura ed invia il comando al server.
+		Dopo aver avviato il client l'utente inserire dei comandi. Se il comando è chiusura il client si spegne. S il comando è di connect ed il client non è connesso quest'ultimo si connette ed invia un comando di login al server, altrimenti stampa un messaggio di errore. Se il comando non è di connect ed il client è connesso quest'ultimo lo controlla. Se esso è un comando di disconnessione il client si disconnette dal server, altrimenti invia la richiesta.
 		
 	\newpage 
 	\section{Diagrammi di sequenza}
