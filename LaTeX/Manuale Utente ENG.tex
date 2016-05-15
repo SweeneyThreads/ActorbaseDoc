@@ -87,7 +87,7 @@
 	
 	\newpage
 	\section*{History log}
-		\LTXtable{\textwidth}{Tabelle/tabelle_diario_modifiche/tabella_manualeutente_eng.tex}	
+		\LTXtable{\textwidth}{Tabelle/tabelle_diario_modifiche/tabella_manualeutenteENG.tex}	
 
 	\newpage 
     \section{Introduction}
@@ -146,94 +146,95 @@
 
 
 
-	\section{Applicativo server}
-	L'applicativo server consente di avviare un'istanza \emph{Actorbase} server sulla macchina. Una volta avviato il esso permette ai client di effettuare connessioni alla macchina e di interrogare il database. 
+	\section{Server application}
+	The server application allows to run and manage an \emph{Actorbase} server instance on the machine. Once startes, the server allows clients to connect to the machine, and to query the database.
 	
-	\subsection{Configurazione del server}
-	La configurazione della macchina server avviene tramite la modifica del file \texttt{server.conf}. In esso vanno settati indirizzo IP e porta di connessione al server.
+	\subsection{Server configuration}
+	The server machine's configuration is made changing \texttt{server.conf} file. The configuration file allows the administrator to set the IP address and the connection port.
 	\\
-	Nel caso si tentasse di avviare l'applicativo server senza aver definito opportunamente i parametri di configurazione, il server mostrerà un messaggio di errore e non si avvierà.
+	If the user tries to run the server application without have defined the configuration parameters, the server will display an error message and won't start.
 	
-	\subsection{Interfaccia server}
-	Una volta modificato il file di configurazione è possibile avviare il server cliccando sull'apposita icona. L'applicativo server fornisce all'utente un'interfaccia da riga di comando che mostra in tempo reale il log delle operazioni effettuate sul server \emph{Actorbase}.  
+	\subsection{Server interface}
+	Once the administrator has modified the configuration file it is possible to start the application by click on the icon. The server application provides the user a command line interface which displays the operation log in real time.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{logServer.png}
-		\caption{Interfaccia di log del server}
+		\caption{Server's log interface}
 	\end{figure}
 	\newpage
 	
 
-	\section{Applicativo client}
-	L'applicativo client fornisce all'utente un interfaccia da riga di comando per connettersi ad un server \emph{Actorbase} ed effettuare interrogazioni sul database. Come per il server, l'avvio dell'interfaccia client avviene cliccando sull'apposita icona. Appena avviato il client presenta all'utente un banner di benvenuto seguito da una breve descrizione della configurazione software utilizzata (sistema operativo e JVM).
+	\section{Client application}
+	The client application provides the user a command line interface to connect to an \emph{Actorbase} server, and to query the database. To start the client, just double-click on the client's icon. Once strarted the clients presents the user a welcome banner, followed by a brief description of thr software configuration used (JVM version and operating system).
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{welcomeClient.png}
-		\caption{Informazioni di benvenuto applicativo client}
+		\caption{Client's welcome banner}
 	\end{figure}
-	L'interazione con l'interfaccia avviene tramite l'immissione di comandi testuali, essi possono essere composti da più campi separati da un carattere di spazio.
+	The interaction with the client interface is made with textual commands, they can be composed of multiple fields, separated by a space character.
 	
-	\subsection{Gestione della connessione}
-	Una volta avviato il client per prima cosa è necessario effettuare una connessione ad un server, la gestione della connessione si basa su due comandi: \texttt{connect} e \texttt{disconnect}. L'applicativo client fornito non permette di gestire più connessioni contemporaneamente.
+	\subsection{Connection management}
+	Once started the client, the first thing to do is connect to a server, the connection management is based on two commands: \texttt{connect} and \texttt{disconnect}. The application doesn't allow to manage more than one connection at time.
 	
-	\subsubsection{Comando \texttt{connect}}
-	Questo comando permette all'utente di connettersi ad un server, la struttura del comando è la seguente:
+	\subsubsection{\texttt{connect} command}
+	This command allows the user to connect to a server, the command structure is:
 	\\ \\
-	\texttt{actorbase>	connect indirizzo username password}
+	\texttt{actorbase>	connect address username password}
 	\\ \\
-	In particolare l'indirizzo del server deve essere fornito nel formato \texttt{indirizzoServer:porta}. \\ \\
-	Nel caso la richiesta di connessione abbia successo l'utente riceve un messaggio di conferma (\texttt{"You are connected!"}), in caso contrario un messaggio di errore (\texttt{"Connection failed!"}).
+	The server addres has to be written in the format \texttt{serverAddress:port}. \\ \\
+	In case of success, the user receives a confirm message (\texttt{"You are connected!"}), if not the user receives an error message (\texttt{"Connection failed!"}).
 	
-	\subsubsection{Comando \texttt{disconnect}}
-	Per effettuare la disconnessione dal server a cui si è connessi è necessario inserire il comando \texttt{disconnect} e premere invio.
+	\subsubsection{\texttt{disconnect} command}
+	To disconnect from the server, the user just has to insert the command \texttt{disconnect} and press entry.
 	
 
-	\subsection{Aiuto inline}
-	\'E possibile ottenere un aiuto per quanto riguarda le operazioni effettuabili, direttamente da riga di comando. Il comando \texttt{help} permette di ottenere sia un aiuto generico che un aiuto specifico.
+	\subsection{Inline help}
+	It is possible to obtain an help for the allowed operations, directly from the command line. The command \texttt{help} allows to obtain a generic help or a specific one.
 	
-	\subsubsection{Comando \texttt{help} generico}
-	Il comando di aiuto generico \texttt{help}, non richiede parametri ulteriori e stampa a video la lista dei comandi di \emph{Actorbase}. Ogni comando è seguito da una breve descrizione che ne illustra il funzionamento.
+	\subsubsection{Generic \texttt{help} command}
+	Generic help command doesn't requests more parameters and prints on screen the \emph{Actorbase} commands list. Each command is followed by a brief description which explains his behaviour.
 	
-	\subsubsection{Comando \texttt{help} specifico}
-	Il comando di aiuto specifico presenta la seguente struttura:
+	\subsubsection{Specific \texttt{help} command}
+	Specific help command has this structure:
 	\\ \\
-	\texttt{actorbase>	help nomeComando}
+	\texttt{actorbase>	help commandName}
 	\\ \\
-	Permette di richiedere informazioni per un comando specifico, ottenendone una breve descrizione.
+	It allows to request informations for a particulare command, and to obtain a description of it.
 	
-	\subsection{Comandi per operazioni a livello server}
-	Una volta connesso l'utente si trova a "livello server". A tale livello si possono effettuare operazioni sui database quali:
+	\subsection{Server level operations commands}
+	Once connected the user is at "server level". At that level the user can do operation on the databases like:
 	\begin{itemize}
-		\item Visualizzazione della lista di database
-		\item Selezione di un database
-		\item Creazione di un database
-		\item Rimozione di un database
+		\item Show the databases list
+		\item Select a database
+		\item Create a database
+		\item Remove a database
 	\end{itemize}
 	
-	\subsubsection{Comando \texttt{listdb}}
-	Questo comando permette di ottenere, stampata a video, la lista dei database di cui dispone di permessi di accesso (siano essi di visualizzazione o modifica). Tale comando non richiede parametri aggiuntivi.
+	\subsubsection{\texttt{listdb} command}
+	This command allows the user to obtain, printed on screen, the list of databases of which the user has some access permission. The command does not request additional parameters.
 	\\ \\
 	\texttt{actorbase>	listdb}
 
-	\subsubsection{Comando \texttt{selectdb}}
-	Questo comando permette di selezionare un database. Una volta selezionato un database l'utente può effettuare operazioni sulle mappe di esso. La struttura del comando di selezione database è la seguente:
+	\subsubsection{\texttt{selectdb} command}
+	This command allows the user to select a database. Once selected a database, the user can execute operation on the maps of it. The command structure is the sequent:
 	\\ \\
-	\texttt{actorbase>	selectdb nomeDatabase}
+	\texttt{actorbase>	selectdb databaseName}
 	\\ \\
-	Nel caso l'utente disponga dei permessi necessari alla selezione del database richiesto (\texttt{x}), riceve a video un messaggio di conferma: \texttt{"Database x selected"}. In caso contrario viene riportata un operazione non valida (\texttt{"Invalid operation"}).
+	In case the user has the requested permissions, he receives a confirmation message: \texttt{"Database x selected"}. If not an invalid operation is reported.
 
-	\subsubsection{Comando \texttt{createdb}}
-	Questo comando permette di creare un nuovo database col nome specificato, nel caso  un database con tale nome non fosse già presente.
+	\subsubsection{\texttt{createdb} command}
+	This commands allows the user to create a new database with the name specified, in case a database with that name isn't present already.
 	\\ \\
-	\texttt{actorbase>	createdb nomeDatabase}
+	\texttt{actorbase>	createdb databaseName}
 	\\ \\
-	Nel caso esista già un database con il nome inserito la creazione fallisce, l'utente riceve un messaggio di errore: \texttt{"A database with the requested name already exists"}.
+	If a database with the inserted name already exists the creation fails, the user receives an error message: \texttt{"A database with the requested name already exists"}.
 
-	\subsubsection{Comando \texttt{deletedb}}
-	Questo comando permette di eliminare un database dal server:
+	\subsubsection{\texttt{deletedb} command}
+	This command allows the user to delete a database from the server:
 	\\ \\
-	\texttt{actorbase>	deletedb nomeDatabase}
+	\texttt{actorbase>	deletedb databaseName}
 	\\ \\
+	If the user tries to 
 	Nel caso si tenti di rimuovere un database inesistente o di cui non si dispone dei permessi di modifica, l'utente riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
 	
 
@@ -246,26 +247,26 @@
 		\item Eliminazione di una mappa
 	\end{itemize}
 
-	\subsubsection{Comando \texttt{listmap}}
+	\subsubsection{\texttt{listmap} command}
 	Questo comando stampa una lista di tutte le mappe che compongono il database precedentemente selezionato.
 	\\ \\
 	\texttt{actorbase>	listmap}
 
-	\subsubsection{Comando \texttt{selectmap}}
+	\subsubsection{\texttt{selectmap} command}
 	Questo comando permette di selezionare una mappa, utilizzando la seguente sintassi:
 	\\ \\
 	\texttt{actorbase>	selectmap nomeMappa}
 	\\ \\
 	La selezione viene confermata in caso di successo con il messaggio \texttt{"Map x selected"}, altrimenti si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
 
-	\subsubsection{Comando \texttt{createmap}}
+	\subsubsection{\texttt{createmap} command}
 	Questo comando permette di creare una mappa con il nome inserito, all'interno del database selezionato.
 	\\ \\
 	\texttt{actorbase>	createmap nomeMappa}
 	\\ \\
 	La creazione viene confermata in caso di successo con il messaggio \texttt{"Map x created"}. Nel caso non si disponga dei permessi di modifica al database, o esista già una mappa con il nome inserito, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
 
-	\subsubsection{Comando \texttt{deletemap}}
+	\subsubsection{\texttt{deletemap} command}
 	Questo comando permette di eliminare una mappa dal database selezionato. 
 	\\ \\
 	\texttt{actorbase>	deletemap nomeMappa}
@@ -283,18 +284,18 @@
 		\item Rimozione di un item
 	\end{itemize}
 
-	\subsubsection{Comando \texttt{keys}}
+	\subsubsection{\texttt{keys} command}
 	Questo comando permette di visualizzare la lista di tutte le chiavi degli item che compongono la mappa selezionata.
 	\\ \\
 	\texttt{actorbase>	keys}
 
-	\subsubsection{Comando \texttt{find}}
+	\subsubsection{\texttt{find} command}
 	Questo comando permette di ottenere il valore di un item della mappa, effettuando la ricerca tramite la sua chiave.
 	\\ \\
 	\texttt{actorbase>	find key}
 	\\ \\
 	Nel caso sia presente un item corrispondente alla chiave inserita, si riceve il valore dell'item in formato stringa, stampato a video. Se l'item non viene trovato si riceve un messaggio di errore.
-	\subsubsection{Comando \texttt{remove}}
+	\subsubsection{\texttt{remove} command}
 	Questo comando permette di rimuovere un item dalla mappa, ricercandolo tramite la chiave.
 	\\ \\
 	\texttt{actorbase>	remove key}
@@ -302,14 +303,14 @@
 	L'eliminazione viene confermata in caso di successo con il messaggio \texttt{"Item removed"}. Nel caso non si disponga dei permessi di modifica al database, o l'item 
 	richiesto non esista, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
 
-	\subsubsection{Comando \texttt{insert}}
+	\subsubsection{\texttt{insert} command}
 	Questo comando permette di inserire un item (coppia chiave-valore) nella mappa:
 	\\ \\
 	\texttt{actorbase>	insert key value}
 	\\ \\
 	L'inserimento viene confermato in caso di successo con il messaggio \texttt{"Item inserted"}. Nel caso non si disponga dei permessi di modifica al database, o sia già presente un item con la chiave inserita, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
 	
-	\subsubsection{Comando \texttt{update}}
+	\subsubsection{\texttt{update} command}
 	Questo comando permette di aggiornare un item dalla mappa, ricercandolo tramite la chiave e inserendo il valore aggiornato.
 	\\ \\
 	\texttt{actorbase>	update key value}
