@@ -80,8 +80,8 @@
 		\begin{center}
 			Versione 1.0.5
 		\end{center}
-		% Date, change the \today to a set date if you want to be precise
-		{\large \today}\\[3cm] 
+		% Date, change the ->day to a set date if you want to be precise
+		{\large ->day}\\[3cm] 
 		% Fill the rest of the page with whitespace
 		\vfill  
 	\end{titlepage}
@@ -151,7 +151,7 @@
         La natura distribuita e asincrona degli attori messi a disposizione da Akka soddisfa pienamente i bisogni del sistema da implementare.
 	\begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.45]{immagini/ST/Akka.png}
+			\includegraphics[width=\textwidth]{immagini/ST/Akka.png}
 			\caption{Akka - logo}
 		\end{figure}	
 	
@@ -175,7 +175,7 @@
             
         \begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.25]{ST/generalLevel}
+			\includegraphics[width=\textwidth]{ST/generalLevel.jpg}
 			\caption{Architettura generale, vista Package}
 		\end{figure}
 		
@@ -231,7 +231,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.50]{TC/Server/serverLevel.png}
+				\includegraphics[width=\textwidth]{ST/Server/serverLevel.jpg}
 				\caption{Componente Actorbase.server}
 			\end{figure}
 			\subsubsection{Descrizione}
@@ -270,7 +270,7 @@
 		
 			\begin{figure} [H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/utilsLevel.png}
+				\includegraphics[width=\textwidth]{ST/Server/utilsLevel.jpg}
 				\caption{Componente Actorbase.server.utils}
 			\end{figure}
 			
@@ -389,7 +389,7 @@
 		
 			\begin{figure} [H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/actorsLevel.png}
+				\includegraphics[width=\textwidth]{ST/Server/actorsLevel.jpg}
 				\caption{Componente Actorbase.server.actors}
 			\end{figure}
 			
@@ -543,7 +543,7 @@
 		
 			\begin{figure} [H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/enumsLevel.png}
+				\includegraphics[width=\textwidth]{ST/Server/enumsLevel.jpg}
 				\caption{Componente Actorbase.server.enums}
 			\end{figure}
 			
@@ -725,7 +725,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.50]{TC/Server/messagesLevel.png}
+				\includegraphics[width=\textwidth]{ST/Server/messagesLevel.jpg}
 				\caption{Componente Actorbase.server.messages}
 			\end{figure}
 			
@@ -743,7 +743,7 @@
 		
 			\begin{figure} [H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/internalLevel.png}
+				\includegraphics[width=\textwidth]{ST/Server/internalLevel.jpg}
 				\caption{Componente Actorbase.server.messages.internal}
 			\end{figure}
 			
@@ -921,7 +921,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/queryLevel}
+				\includegraphics[width=\textwidth]{ST/Server/queryLevel}
 				\caption{Componente Actorbase.server.messages.query}
 			\end{figure}
 			
@@ -956,8 +956,8 @@
 			\subsubsection{Utilizzo}
 				Viene utilizzata da tutti gli attori, in particolar modo segue diversi percorsi in base alla sottoclasse concreta a cui appartiene.
 				Viene creato da un \textbf{Parser} sotto richiesta di un \textbf{Usermanager} ed inviato ad un \textbf{Main}. Da qui può fermarsi in 
-				qualsiasi punto della sequenza: \textbf{Storemanager} \space \rightarrow \space \textbf{Storefinder} 
-				\space \rightarrow \space \textbf{Storekeeper} \space \rightarrow \space \textbf{Warehouseman}.
+				qualsiasi punto della sequenza: \textbf{Storemanager} \space -> \space \textbf{Storefinder} 
+				\space -> \space \textbf{Storekeeper} \space -> \space \textbf{Warehouseman}.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
@@ -1015,7 +1015,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/errorMessagesLevel}
+				\includegraphics[width=\textwidth]{ST/Server/errorMessagesLevel}
 				\caption{Componente Actorbase.server.messages.query.ErrorMessages}
 			\end{figure}
 			
@@ -1074,7 +1074,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/permissionMessagesLevel}
+				\includegraphics[width=\textwidth]{ST/Server/permissionMessagesLevel}
 				\caption{Componente Actorbase.server.messages.query.PermissionMessages}
 			\end{figure}
 			
@@ -1154,7 +1154,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/adminLevel}
+				\includegraphics[width=\textwidth]{ST/Server/adminLevel}
 				\caption{Componente Actorbase.server.messages.query.admin}
 			\end{figure}
 			
@@ -1197,7 +1197,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/actorPropertiesMessagesLevel}
+				\includegraphics[width=\textwidth]{ST/Server/actorPropertiesLevel.jpg}
 				\caption{Componente Actorbase.server.messages.query.admin.ActorPropertiesMessages}
 			\end{figure}
 			
@@ -1343,7 +1343,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/userPermissionsManagementMessagesLevel}
+				\includegraphics[width=\textwidth]{ST/Server/userPermissionsManagementLevel.jpg}
 				\caption{Componente Actorbase.server.messages.query.admin.PermissionsManagementMessages}
 			\end{figure}
 			
@@ -1438,7 +1438,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/userManagementLevel}
+				\includegraphics[width=\textwidth]{ST/Server/userManagementLevel.jpg}
 				\caption{Componente Actorbase.server.messages.query.admin.UserManagementMessages}
 			\end{figure}
 			
@@ -1535,7 +1535,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/userLevel}
+				\includegraphics[width=\textwidth]{ST/Server/userLevel.jpg}
 				\caption{Componente Actorbase.server.messages.query.user}
 			\end{figure}
 			
@@ -1584,7 +1584,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/rowMessageLevel}
+				\includegraphics[width=\textwidth]{ST/Server/rowMessagesLevel.jpg}
 				\caption{Componente Actorbase.server.messages.query.user.RowMessages}
 			\end{figure}
 			
@@ -1744,7 +1744,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/mapMessagesLevel}
+				\includegraphics[width=\textwidth]{ST/Server/mapMessagesLevel.jpg}
 				\caption{Componente Actorbase.server.messages.query.user.MapMessages}
 			\end{figure}
 			
@@ -1877,7 +1877,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/databaseMessagesLevel}
+				\includegraphics[width=\textwidth]{ST/Server/databaseMessagesLevel.jpg}
 				\caption{Componente Actorbase.server.messages.query.user.DatabaseMessages}
 			\end{figure}
 			
@@ -2002,7 +2002,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.70]{ST/Server/helpMessagesLevel}
+				\includegraphics[width=\textwidth]{ST/Server/helpMessagesLevel.jpg}
 				\caption{Componente Actorbase.server.messages.query.user.HelpMessages}
 			\end{figure}
 			
@@ -2078,7 +2078,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.50]{TC/Client/clientLevel}
+				\includegraphics[width=\textwidth]{ST/Client/clientLevel.jpg}
 				\caption{Componente Actorbase.client}
 			\end{figure}
 			\subsubsection{Descrizione}
@@ -2123,7 +2123,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.50]{TC/Driver/driverLevel}
+				\includegraphics[width=\textwidth]{ST/Driver/driverLevel.jpg}
 				\caption{Componente Actorbase.driver}
 			\end{figure}
 			\subsubsection{Descrizione}
@@ -2192,43 +2192,19 @@
 		%%%%%%%%%%% OLD
 	\newpage 
 	\section{Diagrammi delle attività}
-		Segue la descrizione dei diagrammi delle attività che mostrano le possibili interazioni dell'utente con Actorbase. Il diagramma iniziale illustrerà le attività possibili che saranno successivamente mostrate in sotto diagrammi specifici, queste attività sono segnate nel diagramma principale con un fork.
+		Segue il diagramma delle attività che mostra l'interazione dell'utente con il client.
 		\subsubsection{Diagramma attività principale}
 		
 		\begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.6]{ST/client/diagramma-attivita-generale.png}
+			\includegraphics[width=\textwidth]{ST/Attivita/attivitaPrincipale.jpg}
 			\caption{Diagramma attività principale}
 		\end{figure}
-			Dopo aver avviato il client l'utente può svolgere tre tipi di operazione: connettersi ad un server, chiudere l'applicativo o svolgere un'operazione offline. Se sceglie di connettersi può sempre chiudere l'applicativo e svolgere operazioni che non necessitano di essere connessi al server, può in più disconnettersi o svolgere operazioni sul server, non potrà però più connettersi ad un server finché non effettua la disconnessione dal server corrente.
-			
-		\subsubsection{Offline Operation}
-			\begin{figure} [H]
-				\centering
-				\includegraphics[scale=0.6]{ST/client/diagramma-offline-operation.png}
-				\caption{Diagramma attività operazioni offline}
-			\end{figure}
-				L'utente sceglie se chiedere un aiuto generale, o riguardante un comando specifico, nel primo caso è sufficiente che digiti il comando di aiuto e lo confermi, altrimenti dovrà successivamente scrivere il comando del quale vuole avere chiarimenti e poi confermare.
-		\subsubsection{Connect to Server}
-			\begin{figure} [H]
-				\centering
-				\includegraphics[scale=0.6]{ST/client/diagramma-Connect-to-Server.png}
-				\caption{Diagramma attività connessione ad un server}
-			\end{figure}
-				Per effettuare una connessione l'utente dovrà digitare il commando di connessione e successivamente fornire i dati per la connessione, nello specifico: l'indirizzo IP al quale ci si vuole connettere, il nome utente e la password. Dopo di che è sufficiente che confermi il comando.
-		\subsubsection{Online Operation}
-			\begin{figure} [H]
-				\centering
-				\includegraphics[scale=0.4]{ST/client/diagramma-Online-Operation.png}
-				\caption{Diagramma attività operazioni online}
-			\end{figure}
-				L'utente sceglie che tipo di operazione vuole effettuare, se vuole effettuare un' operazione di rinomina su un Database o una mappa è sufficiente che fornisca il comando di rinomina, il vecchio e il nuovo nome e che poi confermi l'operazione; se vuole effettuare un' operazione di selezione o di creazione o di cancellazione sia di un Database che di una mappa, deve digitare il comando corretto e successivamente il nome del Database o della mappa sulla quale vuole effettuare l'operazione dopo di che è sufficiente che confermi il comando; se vuole effettuare un' operazione di rimozione o selezione di un dato è necessario che digiti il comando desiderato, digiti la chiave completa e che confermi l'operazione; se vuole effettuare un inserimento di un dato o un aggiornamento di un dato deve inserire il comando corretto, digitare la chiave completa e confermare l'operazione.
-                
-                
+		Dopo aver avviato il client l'utente inserire dei comandi. Se il comando è di connect ed il client non è connesso quest'ultimo si connette ed invia un comando di login al server, altrimenti stampa un messaggio di errore. Se il comando non è di connect ed il client è connesso quest'ultimo controlla che non sia ne un comando di disconnessione ne uno di chiusura ed invia il comando al server.
+		
 	\newpage 
 	\section{Diagrammi di sequenza}
-        In questa sezione verranno illustrati e descritti i principali diagrammi di sequenza realizzati. Questi ultimi illustrano ad alto livello le azioni 
-        compiute dal server e dal client per gestire tutte le richieste di un utente.
+        In questa sezione verranno illustrati e descritti i principali diagrammi di sequenza realizzati. Questi ultimi illustrano le azioni compiute dal server per l'avvio e la gestire le richieste utente.
         
         Per esplicitare l'invio di un messaggio tra due attori, nei diagrammi viene chiamato il metodo \textit{receive()} dell'attore che riceve il messaggio 
         da parte di chi lo invia.
@@ -2236,118 +2212,48 @@
         l'override del metodo per inviare i messaggi; mentre sovrascrivono il metodo di ricezione per gestire i messaggi in entrata.
         
         Trattandosi di diagrammi di sequenza non molto specifici, alcuni attori effettuano operazioni senza chiamare dei metodi specifici già 
-        dichiarati. Un esempio si può vedere nel diagramma riguardante la chiusura, in esso infatti, tutti gli attori effettuano una chiamata ad un metodo 
-        \textit{chiusura()}.
-       
+        dichiarati. 
        \subsection{Avvio}
             \begin{figure} [H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/seq/AvvioMain.png}
-				\caption{Diagramma di sequenza - avvio del server principale.}
+				\includegraphics[width=\textwidth]{ST/Sequenza/seqAvvio.jpg}
+				\caption{Diagramma di sequenza - avvio del server.}
 			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per avviare il server. Esse partono dall'apertura 
-            della shell, ed effettuano le prime operazioni necessarie avviando gli attori Main e API.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per avviare il server. Esso crea i vari Doorkeeper, i punti di accesso dall'esterno, che resteranno in ascolto di connessioni in entrata. Poi legge le configurazioni salvate su disco e carica i database.
              
-       \subsection{Chiusura}
+       \subsection{Nuova connessione}
             \begin{figure} [H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/seq/Chiusura.png}
-				\caption{Diagramma di sequenza - chiusura del server.}
+				\includegraphics[width=\textwidth]{ST/Sequenza/seqNuovaConnessione.jpg}
+				\caption{Diagramma di sequenza - nuova connessione al server.}
 			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite alla chiusura del server. La classe ActorbaseServer 
-            quando viene inserito il comando di chiusura del server dalla shell di comando, chiude l'attore Main, che a sua volta, chiude tutti i suoi attori 
-            figli tramite il metodo di chiusura messo a disposizione dalla libreria \textit{Akka}. Una volta chiusi tutti i suoi figli (nel diagramma è espresso 
-            con l'invio di una richiesta di \textit{chiusura} ai suoi figli), l'attore Main termina, effettuando i salvataggi delle configurazioni necessarie.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando un client si collega al socket TCP di un Doorkeeper. Per ogni nuova connessione l'attore Doorkeeper crea un attore Usermanager il quale crea un attore Main. Usermanager gestisce ogni richiesta proveniente dalla connessione a lui associata, nello specifico trasforma i comandi in forma testuale in messaggi da inoltrare al Main.
             
-        \subsection{Richiesta esterna}
+        \subsection{Comando utente}
             \begin{figure} [H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/seq/CreazioneNinja.png}
-				\caption{Diagramma di sequenza - gestione di richiesta esterna ad alto livello.}
+				\includegraphics[width=\textwidth]{ST/Sequenza/seqComandoUtente.jpg}
+				\caption{Diagramma di sequenza - gestione comando utente.}
 			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite da quando le API ricevono una richiesta da un client 
-            esterno. Le API inviano la richiesta HTTP all'attore Main, che crea un attore MessagesBuilder che interpreta il messaggio, genera un messaggio tra quelli 
-            definiti nel package \textbf{Actorbase.Server.Core.Messages} e lo restituisce tramite una future al Main. Una volta ricevuta la risposta, l'attore Main 
-            gestisce il messaggio (nei diagrammi seguenti vengono specificate più nel dettaglio le operazioni effettuate in base al tipo di messaggio ricevuto). 
-            Una volta terminata la gestione del messaggio, crea un HTTPBuilder a cui manda la risposta da trasformare in HTTP, una volta trasformata la rimanda 
-            alle API, che la restituiscono al Client che ha effettuato la richiesta.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite dagli attori Usermanager e Main alla ricezione di una richiesta dall'utente. 
+Usermanager, dopo aver convertito i byte ricevuti in una stringa, crea un messaggio che rappresenta la richiesta dall'utente ed lo invia al Main. Il Main controlla che l'utente abbia i permessi per il tipo di richiesta, in caso affermativo gestisce, anche indirettamente, il messaggio e risponde.             
             
-        \subsection{Richiesta di creazione DB}
+        \subsection{Richiesta di creazione mappa}
             \begin{figure} [H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/seq/GestioneDB.png}
-				\caption{Diagramma di sequenza - gestione di richiesta di creazione DB.}
+				\includegraphics[width=\textwidth]{ST/Sequenza/seqNuovaMappa.jpg}
+				\caption{Diagramma di sequenza - gestione di richiesta di creazione mappa.}
 			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando il Main riceve una richiesta di creazione di un DB.
-            Come illustrato nella sezione precedente, viene trasformata la richiesta HTTP in un messaggio tramite un attore MessagesBuilder. Una volta ricevuto questo 
-            messaggio, l'attore Main crea un attore Storefinder a cui assegna quel DB. Genera la risposta da restituire al Client tramite HTTPBuilder e la spedisce 
-            all'esterno tramite API.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando il Main riceve una richiesta di creazione di una mappa. Il Main alla ricezione di un messaggio, dopo aver controllato i permessi, ne controlla il tipo. Se è un messaggio di tipo mappa lo inoltra allo Storemanager che rappresenta il database precedentemente selezionato. Lo Storemanager crea un nuovo Storefinder che rappresenterà la mappa e risponde con l'esito che arriverà fino al client.
             
         \subsection{Richiesta di find}
             \begin{figure} [H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/seq/GestioneFind.png}
+				\includegraphics[width=\textwidth]{ST/Sequenza/seqFind.jpg}
 				\caption{Diagramma di sequenza - gestione di richiesta di Find.}
 			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per gestire una richiesta di find. L'attore Main instrada 
-            il messaggio all'attore Storefinder corrispondente, il quale inoltra la richiesta all'attore Storekeeper di competenza, che interpreta la sua mappa e 
-            restituisce la risposta. L'attore Main risponde alle API come specificato nei diagrammi precedenti.
-            
-        \subsection{Richiesta di aggiornamento item}
-            \begin{figure} [H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/seq/GestioneUpdateEntry.png}
-				\caption{Diagramma di sequenza - gestione di richiesta di aggiornamento item.}
-			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per gestire una richiesta di aggiornamento di un item 
-            all'interno di una mappa. La richiesta, arrivata allo Storekeeper come nel caso precedentemente visto, viene gestita in locale (la mappa viene aggiornata).
-            Inoltre, in questo caso, l'attore Storefinder inoltra in messaggio di aggiornamento anche agli attori Ninja e Warehouseman corrispondendi allo Storekeeper 
-            corretto. L'attore Ninja aggiorna come lo Storekeeper la sua mappa interna, mentre l'attore Warehouseman si occupa di aggiornare l'item su disco, in modo 
-            da garantire persistenza dei dati. La risposta torna allo Storefinder, poi all'attore Main che come nei casi precedenti lo fa trasformare in HTTP e lo 
-            inoltra all'esterno tramite API.
-            
-        \subsection{Creazione Ninja}
-            \begin{figure} [H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/seq/CreazioneNinja.png}
-				\caption{Diagramma di sequenza - creazione di un attore Ninja.}
-			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per la creazione di un attore di tipo Ninja. 
-            L'attore Storefinder crea un attore di tipo Datamanger, e immediatamente dopo gli invia un messaggio dedito alla sua trasformazione. L'attore 
-            Datamanager non fa altro che chiamare un suo metodo, che tramite il metodo \textit{become()} fornito dalla libreria \textit{Akka} permette di 
-            cambiare il comportamento di un attore alla ricezione di un messaggio.
-         
-         \subsection{Creazione Storekeeper}
-            \begin{figure} [H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/seq/CreazioneStorekeeper.png}
-				\caption{Diagramma di sequenza - creazione di un attore Storekeeper.}
-			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per la creazione di un attore di tipo Storekeeper.
-            L'attore Storefinder crea un attore di tipo Datamanger, e immadiatamente dopo gli invia un messaggio dedito alla sua trasformazione. L'attore 
-            Datamanager, come per il caso precedente, tramite il metodo \textit{become()} cambia il suo comportamento.
-            
-         \subsection{Sostituzione di uno Storekeeper}
-            \begin{figure} [H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/seq/SostituzioneStorekeeper.png}
-				\caption{Diagramma di sequenza - sostituzione di un attore Storekeeper.}
-			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando è necessario sostiuire uno Storekeeper che 
-            si è arrestato in modo anomalo. L'attore Storefinder manda un messaggio al Ninja di supporto dello Storekeeper morto in modo da fargli prendere il 
-            suo posto. Successivamente crea un nuovo attore Ninja (come spiegato nel diagramma di sequenza visto prima) e notifica gli attori già esistenti del 
-            cambio avvenuto.
-            
-        \subsection{Sequenza di un comando in client e driver}
-            \begin{figure} [H]
-                \centering
-                \includegraphics[width=\textwidth]{ST/seq/sequenzaClient.png}
-                \caption{Diagramma di sequenza - sequenza di un comando in client e driver.}
-            \end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando viene inserito un comando nella shell del client e viene premuto invio. \\
-            La view notifica che il suo stato è cambiato e il controller prende la stringa inserita dall'utente per tradurla in un comando. Successivamente manda il comando al model. \\
-            A questo punto la sequenza prevede due diversi flussi: se il comando riguarda il server viene inviato al driver che a sua volta lo invia al server per l'elaborazione. Quando il driver riceve una risposta, la ritorna al model del client che era rimasto in attesa. Se invece il comando non riguarda il server, come ad esempio il comando \texttt{HELP}, il model lo elabora al suo interno. In entrambi i casi alla fine viene generato ed impostato un nuovo stato del model e notificato il cambiamento. La  view quindi prende il nuovo stato e aggiorna il proprio di conseguenza, rendendolo visibile sulla shell per l'utente.
-
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per gestire una richiesta di find. Il messaggio rappresentante un comando find viene inoltrato fino allo Storekeeper responsabile dell'area di mappa richiesta. Lo Storekeeper risponderà con il valore delle chiave o con un messaggio di errore. La risposta verrà poi inoltrata all'indietro fino al client.            
+        
 	\newpage 
 	\section{Stime di fattibilità e di bisogno di risorse}
 	
@@ -2375,7 +2281,7 @@
 	\subsubsection{Event-driven}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.65]{immagini/ST/schemaevent-driven.png}
+					\includegraphics[width=\textwidth]{immagini/ST/schemaevent-driven.png}
 					\caption{Diagramma del Design Pattern Event-driven}
 				\end{figure}
             \begin{itemize}
@@ -2385,51 +2291,12 @@
                 \item \textbf{Applicabilità:}
                 	Gestione di eventi attraverso l'utilizzo di un mediatore e elaboratori di eventi		
 			\end{itemize}
-	\subsubsection{MVC}
-				\begin{figure}[H]
-					\centering
-					\includegraphics[scale=0.65]{immagini/ST/schemaMVC.png}
-					\caption{Diagramma del Design Pattern MVC}
-				\end{figure}
-            \begin{itemize}
-				\item \textbf{Scopo:}
-					Disaccoppiamento delle seguenti componenti:
-					\begin{itemize}
-						\item Model regole di accesso e dati di business
-						\item View rappresentazione grafica
-						\item Controller reazioni della UI agli input utente
-					\end{itemize}
-                \item \textbf{Motivazione:}
-                	Lo scopo di molti applicativi è di recuperare dati e mostrarli all'Utente. Si è visto che la migliore soluzione di questo scopo è dividere la modellazione del dominio, la presentazione e le reazioni basate sugli input degli utenti i tre classi separate, esistono vari design pattern che svolgono questa separazione, uno di questi è MVC; 
-                \item \textbf{Applicabilità:}
-					\begin{itemize}
-						\item Applicazioni che devono presentare attraverso una UI un insieme di informazioni
-						\item Le persone responsabili dello sviluppo hanno compentenze differenti
-					\end{itemize}
-                	 		
-			\end{itemize}
-	\subsubsection{Command}
-				\begin{figure}[H]
-					\centering
-					\includegraphics[scale=0.65]{immagini/ST/schemaCommand.png}
-					\caption{Diagramma del Design Pattern Command}
-				\end{figure}
-            \begin{itemize}
-				\item \textbf{Scopo:} Incapsulare una richiesta in un oggetto, cosicché i client siano indipendenti dalle richieste 
-                \item \textbf{Motivazione:} Risolvere la necessità di gestire richieste di sui non si conoscono i particolari, tramite una classe astratta, Command, che definisce un interfaccia per eseguire la richiesta
-                \item \textbf{Applicabilità:}
-					\begin{itemize}
-						\item Parametrizzazione di oggetti sull'azione da eseguire
-						\item Specificare, accordare ed eseguire richieste molteplici volte
-						\item Supporto ad operazioni di Undo e Redo
-						\item Supporto a transazione, un comando equivale ad una operazione atomica
-					\end{itemize}		
-			\end{itemize}
+	
 				
 	\subsubsection{Singleton}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[scale=0.65]{immagini/ST/schemaSingleton.png}
+					\includegraphics[width=\textwidth]{immagini/ST/schemaSingleton.png}
 					\caption{Diagramma del Design Pattern Command}
 				\end{figure}
 		\begin{itemize}
