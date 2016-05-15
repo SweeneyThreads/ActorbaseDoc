@@ -104,7 +104,7 @@
 	\subsection{Riferimenti}
 	\subsubsection{Normativi}
 		\begin{itemize}
-			\item \textbf{Norme di progetto:} \emph{Norme di progetto v2.0.0}
+			\item \textbf{Norme di progetto:} \emph{Norme di progetto v2.0.4}
 			\item \textbf{Capitolato d'appalto Actorbase (C1):} \\ 
 			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
 		\end{itemize}
@@ -170,56 +170,69 @@
 			\end{itemize}
 		\subsection{Comandi di operazioni su database}
 			\subsubsection{listdb}
+			Digitando il comando "listdb" verranno visualizzati tutti i database presenti all'interno dell'applicativo.
 			\begin{center}
 				LISTDB 
 			\end{center}
 			\subsubsection{selectdb}
+			Utilizzando questo comando si andrà a selezionare il database nel quale si vorrà fare operazioni di visualizzazione, inserimento, modifica e cancellazione.
 			\begin{center}
 				SELECTDB nomeDatabase
 			\end{center}
 			\subsubsection{createdb}
+			Il comando "createdb" ha la funzione di creare un nuovo database col nome specificato, se non gia esistente, altrimenti verrà visualizzato un messaggio d'errore.
 			\begin{center}
 				CREATEDB nomeDatabase
 			\end{center}
 			\subsubsection{deletedb}
+			Questo comando, avendo i permessi corretti, permette di eliminare un database esistente, se si proverà ad eliminare un database non esistente verrà visulizzato un errore.
 			\begin{center}
 				DELETEDB nomeDatabase
 			\end{center}
 		\subsection{Comandi di operazioni sulle mappe}
 			\subsubsection{listmap}
+			Il comando "listmap" visualizza una lista di tutte le mappe all'interno del database precedentemente selezionato utilizzando il comando "selectdb".
 			\begin{center}
 				LISTMAP
 			\end{center}
 			\subsubsection{selectmap}
+			Digitando questo comando si potrà selezionare una determinata mappa per poter andare a fare operazioni sulle chiavi e i valori al suo interno. 
 			\begin{center}
 				SELECTMAP map
 			\end{center}
 			\subsubsection{createmap}
+			Utilizzando il comando "createmap", se si posseggono i corretti permessi e se non esiste una mappa con lo stesso nome, creerà una mappa col nome specificato all'interno del database precedentemente selezionato.
 			\begin{center}
 				CREATEMAP map
 			\end{center}
 			\subsubsection{deletemap}
+			Il comando "deletemap" permette di eliminare una mappa all'interno di u database, se si proverà ad eliminare una mappa insesistente verrà visualizzato un adeguato messaggio d'errore.
 			\begin{center}
 				DELETEMAP map
 			\end{center}
 		\subsection{Comandi di operazioni sulle mappe}
 			\subsubsection{keys}
+			Questo comando permette di visualizzare tutte le chiavi, e non i rispettivi valori, all'interno di una mappa precedentemente selezionata col comando "selectmap".
 			\begin{center}
 				KEYS
 			\end{center}
 			\subsubsection{find}
+			Il comando "find" ritorna il valore associato alla chiave specificata.
 			\begin{center}
 				FIND key
 			\end{center}
 			\subsubsection{remove}
+			Se si posseggono i giusti permessi, questo comando permettere di rimuovere la chiave e il relativo valore dalla mappa selezionata in precedenza.
 			\begin{center}
 				REMOVE key
 			\end{center}
 			\subsubsection{insert}
+			Il comando "insert" permette di inserire una nuova chiave e il suo valore, se la chiave non è gia esistente, altrimenti verrà visualizzato un messaggio d'errore.
 			\begin{center}
 				INSERT key valore
 			\end{center}
 			\subsubsection{update}
+			Digitando il comando "update" si potrà aggiornare la chiave e il rispettivo valore all'interno di una mappa precedentemente selezionata.
 			\begin{center}
 				UPDATE key valore
 			\end{center}
