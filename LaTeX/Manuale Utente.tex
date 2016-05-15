@@ -64,7 +64,8 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-				\emph{Verifica:} 
+				\emph{Verifica:} \\
+				Nicoletti Luca
 			\end{flushright}
 		\end{minipage}
 		
@@ -112,9 +113,10 @@
 	\newpage
 
 	\section{Actorbase}
-	\emph{Actorbase} è un database NoSQL key-value basato sul modello matematico ad attori che garantisce un alto livello di scalabilità, resilienza e performance. Permette di gestire facilmente e flessibilmente i propri dati usufruendo dei principali vantaggi offerti dal modello ad attori, in modo supportare lo sviluppo di applicazioni moderne e performanti. 
+	\emph{Actorbase} è un database NoSQL key-value basato sul modello matematico ad attori che garantisce un alto livello di scalabilità, resilienza e prestazioni. Permette di gestire facilmente e flessibilmente i propri dati usufruendo dei principali vantaggi offerti dal modello ad attori, in modo
+	da supportare lo sviluppo di applicazioni moderne e performanti. 
 	\\ \\
-	\emph{Actorbase} fornisce un'interfaccia client da riga di comando che offre una facile gestione dei dati come stringhe, grazie ad essa è possibile comunicare rapidamente e intuitivamente con un server. 
+	\emph{Actorbase} fornisce un'interfaccia client a linea di comando che offre una facile gestione dei dati come stringhe, grazie ad essa è possibile comunicare rapidamente e intuitivamente con un server. 
 	\\ \\
 	Per una gestione più flessibile delle query è disponibile il driver per \emph{Scala}, integrabile con qualsiasi applicazione.
 	\begin{figure}[H]
@@ -152,7 +154,7 @@
 
 
 	\section{Applicativo server}
-	L'applicativo server consente di avviare un'istanza \emph{Actorbase} server sulla macchina. Una volta avviato il esso permette ai client di effettuare connessioni alla macchina e di interrogare il database. 
+	L'applicativo server consente di avviare un'istanza \emph{Actorbase} server sulla macchina. Una volta avviato permette ai client di effettuare connessioni alla macchina e di interrogare un database. 
 	
 	\subsection{Configurazione del server}
 	La configurazione della macchina server avviene tramite la modifica del file \texttt{server.conf}. In esso vanno settati indirizzo IP e porta di connessione al server.
@@ -160,7 +162,7 @@
 	Nel caso si tentasse di avviare l'applicativo server senza aver definito opportunamente i parametri di configurazione, il server mostrerà un messaggio di errore e non si avvierà.
 	
 	\subsection{Interfaccia server}
-	Una volta modificato il file di configurazione è possibile avviare il server cliccando sull'apposita icona. L'applicativo server fornisce all'utente un'interfaccia da riga di comando che mostra in tempo reale il log delle operazioni effettuate sul server \emph{Actorbase}.  
+	Una volta modificato il file di configurazione è possibile avviare il server cliccando sull'apposita icona. L'applicativo server fornisce all'utente un'interfaccia a linea dicomando che mostra in tempo reale il log delle operazioni effettuate sul server \emph{Actorbase}.  
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{logServer.png}
@@ -170,7 +172,7 @@
 	
 
 	\section{Applicativo client}
-	L'applicativo client fornisce all'utente un interfaccia da riga di comando per connettersi ad un server \emph{Actorbase} ed effettuare interrogazioni sul database. Come per il server, l'avvio dell'interfaccia client avviene cliccando sull'apposita icona. Appena avviato il client presenta all'utente un banner di benvenuto seguito da una breve descrizione della configurazione software utilizzata (sistema operativo e JVM).
+	L'applicativo client fornisce all'utente un interfaccia a linea dicomando per connettersi ad un server \emph{Actorbase} ed effettuare interrogazioni sul database. Come per il server, l'avvio dell'interfaccia client avviene cliccando sull'apposita icona. Appena avviato il client presenta all'utente un banner di benvenuto seguito da una breve descrizione della configurazione software utilizzata (sistema operativo e JVM).
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{welcomeClient.png}
@@ -184,7 +186,7 @@
 	\subsubsection{Comando \texttt{connect}}
 	Questo comando permette all'utente di connettersi ad un server, la struttura del comando è la seguente:
 	\\ \\
-	\texttt{actorbase>	connect indirizzo username password}
+	\texttt{actorbase>	connect <indirizzo> <username> <password>}
 	\\ \\
 	In particolare l'indirizzo del server deve essere fornito nel formato \texttt{indirizzoServer:porta}. \\ \\
 	Nel caso la richiesta di connessione abbia successo l'utente riceve un messaggio di conferma (\texttt{"You are connected!"}), in caso contrario un messaggio di errore (\texttt{"Connection failed!"}).
@@ -194,7 +196,7 @@
 	
 
 	\subsection{Aiuto inline}
-	\'E possibile ottenere un aiuto per quanto riguarda le operazioni effettuabili, direttamente da riga di comando. Il comando \texttt{help} permette di ottenere sia un aiuto generico che un aiuto specifico.
+	\'E possibile ottenere un aiuto per quanto riguarda le operazioni effettuabili, direttamente a linea dicomando. Il comando \texttt{help} permette di ottenere sia un aiuto generico che un aiuto specifico.
 	
 	\subsubsection{Comando \texttt{help} generico}
 	Il comando di aiuto generico \texttt{help}, non richiede parametri ulteriori e stampa a video la lista dei comandi di \emph{Actorbase}. Ogni comando è seguito da una breve descrizione che ne illustra il funzionamento.
@@ -202,12 +204,12 @@
 	\subsubsection{Comando \texttt{help} specifico}
 	Il comando di aiuto specifico presenta la seguente struttura:
 	\\ \\
-	\texttt{actorbase>	help nomeComando}
+	\texttt{actorbase>	help <nomeComando>}
 	\\ \\
 	Permette di richiedere informazioni per un comando specifico, ottenendone una breve descrizione.
 	
 	\subsection{Comandi per operazioni a livello server}
-	Una volta connesso l'utente si trova a "livello server". A tale livello si possono effettuare operazioni sui database quali:
+	Una volta connesso l'utente si trova a livello server. A tale livello si possono effettuare operazioni sui database quali:
 	\begin{itemize}
 		\item Visualizzazione della lista di database
 		\item Selezione di un database
@@ -223,27 +225,27 @@
 	\subsubsection{Comando \texttt{selectdb}}
 	Questo comando permette di selezionare un database. Una volta selezionato un database l'utente può effettuare operazioni sulle mappe di esso. La struttura del comando di selezione database è la seguente:
 	\\ \\
-	\texttt{actorbase>	selectdb nomeDatabase}
+	\texttt{actorbase>	selectdb <nomeDatabase>}
 	\\ \\
 	Nel caso l'utente disponga dei permessi necessari alla selezione del database richiesto (\texttt{x}), riceve a video un messaggio di conferma: \texttt{"Database x selected"}. In caso contrario viene riportata un operazione non valida (\texttt{"Invalid operation"}).
 
 	\subsubsection{Comando \texttt{createdb}}
 	Questo comando permette di creare un nuovo database col nome specificato, nel caso  un database con tale nome non fosse già presente.
 	\\ \\
-	\texttt{actorbase>	createdb nomeDatabase}
+	\texttt{actorbase>	createdb <nomeDatabase>}
 	\\ \\
 	Nel caso esista già un database con il nome inserito la creazione fallisce, l'utente riceve un messaggio di errore: \texttt{"A database with the requested name already exists"}.
 
 	\subsubsection{Comando \texttt{deletedb}}
 	Questo comando permette di eliminare un database dal server:
 	\\ \\
-	\texttt{actorbase>	deletedb nomeDatabase}
+	\texttt{actorbase>	deletedb <nomeDatabase>}
 	\\ \\
 	Nel caso si tenti di rimuovere un database inesistente o di cui non si dispone dei permessi di modifica, l'utente riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
 	
 
 	\subsection{Comandi per operazioni a livello database}
-	Una volta selezionato un database tramite il comando \texttt{selectdb}, l'utente si trova a "livello database". A tale livello si possono effettuare queste operazioni:
+	Una volta selezionato un database tramite il comando \texttt{selectdb}, l'utente si trova a livello database. A tale livello si possono effettuare queste operazioni:
 	\begin{itemize}
 		\item Visualizzazione della lista delle mappe che compongono il database
 		\item Selezione di una mappa
@@ -259,27 +261,32 @@
 	\subsubsection{Comando \texttt{selectmap}}
 	Questo comando permette di selezionare una mappa, utilizzando la seguente sintassi:
 	\\ \\
-	\texttt{actorbase>	selectmap nomeMappa}
+	\texttt{actorbase>	selectmap <nomeMappa>}
 	\\ \\
-	La selezione viene confermata in caso di successo con il messaggio \texttt{"Map x selected"}, altrimenti si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
+	La selezione viene confermata in caso di successo con il messaggio \texttt{"Map x selected"}, altrimenti si 
+	riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
 
 	\subsubsection{Comando \texttt{createmap}}
 	Questo comando permette di creare una mappa con il nome inserito, all'interno del database selezionato.
 	\\ \\
-	\texttt{actorbase>	createmap nomeMappa}
+	\texttt{actorbase>	createmap <nomeMappa>}
 	\\ \\
-	La creazione viene confermata in caso di successo con il messaggio \texttt{"Map x created"}. Nel caso non si disponga dei permessi di modifica al database, o esista già una mappa con il nome inserito, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
+	La creazione viene confermata in caso di successo con il messaggio \texttt{"Map x created"}. Nel caso non si 
+	disponga dei permessi di modifica al database, o esista già una mappa con il nome inserito, si riceve un messaggio 
+	di operazione non valida (\texttt{"Invalid operation"}).
 
 	\subsubsection{Comando \texttt{deletemap}}
 	Questo comando permette di eliminare una mappa dal database selezionato. 
 	\\ \\
-	\texttt{actorbase>	deletemap nomeMappa}
+	\texttt{actorbase>	deletemap <nomeMappa>}
 	\\ \\
-	L'eliminazione viene confermata in caso di successo con il messaggio \texttt{"Map x removed"}. Nel caso non si disponga dei permessi di modifica al database, o la mappa richiesta non esista, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
+	L'eliminazione viene confermata in caso di successo con il messaggio \texttt{"Map x removed"}. Nel caso non si disponga 
+	dei permessi di modifica al database, o la mappa richiesta non esista, si riceve un messaggio di operazione 
+	non valida (\texttt{"Invalid operation"}).
 	
 
 	\subsection{Comandi per operazioni a livello mappa}
-	Una volta selezionata una mappa tramite il comando \texttt{selectmap}, l'utente si trova a "livello mappa". A tale livello si possono effettuare queste operazioni:
+	Una volta selezionata una mappa tramite il comando \texttt{selectmap}, l'utente si trova a livello mappa. A tale livello si possono effettuare queste operazioni:
 	\begin{itemize}
 		\item Visualizzazione della lista delle chiavi
 		\item Ricerca di un item per chiave
@@ -296,13 +303,13 @@
 	\subsubsection{Comando \texttt{find}}
 	Questo comando permette di ottenere il valore di un item della mappa, effettuando la ricerca tramite la sua chiave.
 	\\ \\
-	\texttt{actorbase>	find key}
+	\texttt{actorbase>	find '<key>'}
 	\\ \\
 	Nel caso sia presente un item corrispondente alla chiave inserita, si riceve il valore dell'item in formato stringa, stampato a video. Se l'item non viene trovato si riceve un messaggio di errore.
 	\subsubsection{Comando \texttt{remove}}
 	Questo comando permette di rimuovere un item dalla mappa, ricercandolo tramite la chiave.
 	\\ \\
-	\texttt{actorbase>	remove key}
+	\texttt{actorbase>	remove '<key>'}
 	\\ \\
 	L'eliminazione viene confermata in caso di successo con il messaggio \texttt{"Item removed"}. Nel caso non si disponga dei permessi di modifica al database, o l'item 
 	richiesto non esista, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
@@ -310,14 +317,14 @@
 	\subsubsection{Comando \texttt{insert}}
 	Questo comando permette di inserire un item (coppia chiave-valore) nella mappa:
 	\\ \\
-	\texttt{actorbase>	insert key value}
+	\texttt{actorbase>	insert '<key>' <value>}
 	\\ \\
 	L'inserimento viene confermato in caso di successo con il messaggio \texttt{"Item inserted"}. Nel caso non si disponga dei permessi di modifica al database, o sia già presente un item con la chiave inserita, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
 	
 	\subsubsection{Comando \texttt{update}}
 	Questo comando permette di aggiornare un item dalla mappa, ricercandolo tramite la chiave e inserendo il valore aggiornato.
 	\\ \\
-	\texttt{actorbase>	update key value}
+	\texttt{actorbase>	update '<key>' <value>}
 	\\ \\
 	L'aggiornamento viene confermato in caso di successo con il messaggio \texttt{"Item updated"}. Nel caso non si disponga dei permessi di modifica al database, o l'item 
 	richiesto non esista, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
