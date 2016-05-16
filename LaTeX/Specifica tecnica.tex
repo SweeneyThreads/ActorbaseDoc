@@ -2282,7 +2282,12 @@ Usermanager, dopo aver convertito i byte ricevuti in una stringa, crea un messag
 				\caption{Diagramma di sequenza - gestione di richiesta di Find.}
 			\end{figure}
             Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per gestire una richiesta di find. Il messaggio rappresentante un comando find viene inoltrato fino allo Storekeeper responsabile dell'area di mappa richiesta. Lo Storekeeper risponderà con il valore delle chiave o con un messaggio di errore. La risposta verrà poi inoltrata all'indietro fino al client.            
-        
+	\section{Desing Pattern utilizzati}
+	Segue la descrizione delle parti dell'architettura che utilizzano desing pattern. I desing pattern sono descritti in appendice.
+	\subsection{Broker event-driven}
+	Il sistema ad attori di Akka è molto simile ad un architettura event-driven di tipologia broker, di conseguenza il server di Actorbase segue questa architettura, nella quale gli attori svolgono il ruolo di Event Processor mentre l'Actor System crea i suddetti attori e svolge anche la funzione di Event Channel.
+	\subsection{Singleton}
+	Le classi Server e Client seguono il desing pattern Singleton, realizzato definendo le classi come Object, cosi facendo Scala garantisce che ci sia una solo istanza di queste classi per ogni esecuzione del programma.        
 	\newpage 
 	\section{Stime di fattibilità e di bisogno di risorse}
 	
@@ -2307,7 +2312,7 @@ Usermanager, dopo aver convertito i byte ricevuti in una stringa, crea un messag
 	\section{Appendice}
 	\subsection{Descrizione Design Pattern}
 	Segue, per ogni Design Pattern utilizzato, la descrizione dello scopo, motivazione e applicabilità.
-	\subsubsection{Event-driven}
+	\subsubsection{Broker event-driven}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{immagini/ST/schemaevent-driven.png}
@@ -2318,7 +2323,7 @@ Usermanager, dopo aver convertito i byte ricevuti in una stringa, crea un messag
 					Produrre applicazioni molto scalabili e processare eventi asincroni disaccoppiati.
                 \item \textbf{Motivazione:} Gestire le richieste che vengono volte all' applicativo tramite eventi processati in modo asincrono.
                 \item \textbf{Applicabilità:}
-                	Gestione di eventi attraverso l'utilizzo di un mediatore e elaboratori di eventi		
+                	Gestione di eventi attraverso l'utilizzo di elaboratori di eventi e canali per passare gli eventi.		
 			\end{itemize}
 	
 				
