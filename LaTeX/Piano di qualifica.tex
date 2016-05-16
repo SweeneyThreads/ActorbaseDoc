@@ -298,22 +298,11 @@
 							\item Valori ottimali: da decidere
 						\end{itemize}
 						
-					\item \textbf{Linee di codice per metodo:}
-						È una misura della leggibilità del codice: valori troppo elevanti indicano che il corpo di un metodo
-						potrebbe essere scarsamente comprensibile.
-						\begin{itemize}
-							\item Valori accettati: da decidere
-							\item Valori ottimali: da decidere
-						\end{itemize}
 						
 					\item \textbf{Source Line Of Code (SLOC):}
 						Il numero di istruzioni presenti nel codice. Questa metrica fornisce una stima della complessità del programma.
 						È utile anche per dare una stima di quanto il codice incrementerà nel tempo, semplificando così la
 						pianificazione.
-						\begin{itemize}
-							\item Valori accettati: da decidere
-							\item Valori ottimali: da decidere
-						\end{itemize}
 					
 					\item \textbf{Complessità Ciclomatica:}
 						Una metrica sviluppata da Thomas J. McCabe che consente di stimare la complessità di un programma misurando
@@ -891,7 +880,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 					\begin{table}[H]
 						\begin{tabularx}{\textwidth}{L P P P P P}
 							\noalign{\hrule height 1.5pt}
-							\rowcolor{orange!85} documenti & Gulpease & parole & figure per pagina & parole per section & errori ortografici\\
+							\rowcolor{orange!85} Documento & Gulpease & parole & figure per pagina & parole per section & errori ortografici\\
 							\noalign{\hrule height 1.5pt}
 								Analisi dei requisiti & 50,11 & 4405 & 1,86 & 37,02 & 0 \\
 							\noalign{\hrule height 0.5pt}
@@ -909,13 +898,108 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 						\caption{Tabella metriche dei documenti }
 						\label{SVBVTable}
 					\end{table}
-	
-	
-	\section{Pianificazione dei test}
-		Di seguito saranno descritti i test di validazione, di sistema, di integrazione e di unità che sono previsti.
-		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.
 		
-			\subsection{Test di validazione}
+		\subsubsection{Software}
+			Vengono ora esposti i valori delle metriche calcolate sul codice prodotto. Tutti i valori vengono aggiornati ad ogni cambiamento di versione. Allo stato attuale sono tutti in range di accettabilità od ottimalità. \\
+			
+			Segue la tabella dei valori della complessità ciclomatica del codice fin'ora prodotto divisa per file.		
+		\begin{table}[H]
+			\begin{tabularx}{\textwidth}{m f f X}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85} File & Media Complessità Ciclomatica & Massima Complessità Ciclomatica\\
+				\noalign{\hrule height 1.5pt}
+					Parser & 6 & 11\\
+				\noalign{\hrule height 0.5pt}
+					Client & 3 & 3\\
+				\noalign{\hrule height 0.5pt}
+					FileReader & 6 & 7\\
+				\noalign{\hrule height 0.5pt}
+					Storekeeper & 5 & 13\\
+				\noalign{\hrule height 0.5pt}
+					Driver & 2 & 2\\
+				\noalign{\hrule height 0.5pt}
+					Usermanager & 5 & 6\\
+				\noalign{\hrule height 0.5pt}
+					Main & 6 & 13\\
+				\noalign{\hrule height 0.5pt}
+					Helper & 2 & 2\\
+				\noalign{\hrule height 0.5pt}
+					Storemanager & 7 & 9\\
+				\noalign{\hrule height 0.5pt}
+					Doorkeeper & 4 & 4\\
+				\noalign{\hrule height 0.5pt}
+					Connection & 3 & 3\\
+				\noalign{\hrule height 0.5pt}
+					Storefinder & 6 & 12\\
+				\noalign{\hrule height 0.5pt}
+					Warehouseman & 2 & 2\\
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Tabella metrica Complessità Ciclomatica }
+			\label{SVBVTable}
+		\end{table}
+		
+		\begin{itemize}
+			\item Media Totale: 4
+		\end{itemize}
+		
+		Segue la tabella dai valori del numero di parametri per classe e del numero di parametri per metodo del codice fin'ora prodotto divisa per file.
+		
+		\begin{table}[H]
+			\begin{tabularx}{\textwidth}{L L L L L}
+				\noalign{\hrule height 1.5pt}
+				\rowcolor{orange!85} File & Param. per classe & Max param. per metodo &  Media param. per metodo & Numero metodi\\
+				\noalign{\hrule height 1.5pt}
+					Parser & 0 & 4 & 2 & 8 \\
+				\noalign{\hrule height 0.5pt}
+					Client & 1 & 1 & 1 & 2 \\
+				\noalign{\hrule height 0.5pt}
+					FileReader & 1 & 1 & 1 & 2 \\
+				\noalign{\hrule height 0.5pt}
+					Storekeeper & 3	& 2	& 1	& 7 \\
+				\noalign{\hrule height 0.5pt}
+					Driver & 0 & 4 & 4 & 1 \\
+				\noalign{\hrule height 0.5pt}
+					Usermanager & 5	& 2	& 1	& 6 \\
+				\noalign{\hrule height 0.5pt}
+					Main & 9 & 2 & 1 & 15 \\
+				\noalign{\hrule height 0.5pt}
+					Helper & 1 & 1 & 1 & 2 \\
+				\noalign{\hrule height 0.5pt}
+					Storemanager & 4 & 2 & 1 & 5 \\
+				\noalign{\hrule height 0.5pt}
+					Doorkeeper & 1 & 0 & 0 & 1 \\
+				\noalign{\hrule height 0.5pt}
+					Connection & 7 & 2 & 2 & 3 \\
+				\noalign{\hrule height 0.5pt}
+					Storefinder & 4	& 2	& 1 & 5 \\
+				\noalign{\hrule height 0.5pt}
+					Warehouseman & 1 & 0 & 0 & 1 \\
+				\noalign{\hrule height 0.5pt}
+					Server & 6 & 1 & 1 & 4 \\	
+				\noalign{\hrule height 1.5pt}
+			\end{tabularx}
+			\caption{Tabella metrica parametri per classe e per metodo }
+			\label{SVBVTable}
+		\end{table}	
+		
+		\begin{itemize}
+			\item Media Parametri per classe: 3
+			\item Media Paramatri per metodo: 1
+		\end{itemize}
+		
+		
+		Seguono i valori di SLOC e percentuale di commenti:
+		\begin{itemize}
+			\item SLOC: 1427
+			\item Linee di commento: 376
+			\item Linee di commento su linee di codice: 0.27
+		\end{itemize}
+			
+
+
+
+	\subsection{Test di validazione}
 		In questa sezione vengono descritti i test di validazione che servono per accertare che il prodotto realizzato sia conforme alle attese. 
 		Per ogni test vengono descritti i vari passi che un utente deve eseguire per testare i requisiti ad esso associati.
 		Il client di Actorbase funziona tramite riga di comando, per questo motivo viene sempre riportata la sintassi dei comandi che si intendono verificare.
