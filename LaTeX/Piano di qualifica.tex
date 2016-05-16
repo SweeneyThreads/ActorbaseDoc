@@ -57,17 +57,17 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
-				Biggeri Mattia\\
-				Tommasin Davide\\
+				Mattia Biggeri\\
+				Paolo Bonato\\
+				Tommaso Padovan\\
 			\end{flushleft}
 		\end{minipage}
 		~
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-                Maino Elia \\
+                Paolo Bonato \\
 				\emph{Verifica:} \\
-				Bonato Paolo \\
                 Nicoletti Luca \\
 			\end{flushright}
 		\end{minipage}
@@ -78,7 +78,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.1.0
+			Versione 3.0.0
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -863,16 +863,16 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 			\subsection{Documenti}
 			Segue la tabella contenente il valore delle metriche di tutti i documenti presentati. Questa tabella viene aggiornata ad ogni cambiamento di versione. La maggior parte dei valori è in range di ottimalità; eccetto i seguenti che sono in ogni caso in range di accettazione: \\
 \begin{itemize}
-	\item \textbf{Norme di Progetto vX.Y.Z:}
+	\item \textbf{Norme di Progetto v3.0.0:}
 		\begin{itemize}
-			\item \textbf{Gulpease:} L'indice Gulpease è comunque sufficientemente alto e, trattandosi di un documento interno, il gruppo ha ritenuto ciò non problematico.
+			\item \textbf{Gulpease:} L'indice Gulpease è comunque sufficientemente basso e, trattandosi di un documento interno, il gruppo ha ritenuto ciò non problematico.
+			\item \textbf{Lunghezza media sezioni:} Sono presenti molte sezioni che descrivono parti di processi in maniera dettagliata, il gruppo ha preferito mantenere uno stile verboso per una maggiore chiarezza.
 		\end{itemize}
-	\item \textbf{Piano di Qualifica vX.Y.Z:}
+	\item \textbf{Piano di Qualifica v3.0.0:}
 		\begin{itemize}
-			\item \textbf{Gulpease:} Trattandosi di un documento tecnico contiene lunghi periodi e termini tecnici che ne diminuiscono la leggibilità.
 			\item \textbf{Lunghezza media sezioni:} Sono presenti molte sezioni descrittive che aumentano questa metrica.
 		\end{itemize}
-	\item \textbf{Studio di Fattibilità vX.Y.Z:}
+	\item \textbf{Studio di Fattibilità v3.0.0:}
 	\begin{itemize}
 		\item \textbf{Gulpease:} Trattandosi di un documento tecnico contiene lunghi periodi e termini tecnici che ne diminuiscono la leggibilità.
 	\end{itemize}
@@ -882,17 +882,21 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 							\noalign{\hrule height 1.5pt}
 							\rowcolor{orange!85} Documento & Gulpease & parole & figure per pagina & parole per section & errori ortografici\\
 							\noalign{\hrule height 1.5pt}
-								Analisi dei requisiti & 50,11 & 4405 & 1,86 & 37,02 & 0 \\
+								Analisi dei requisiti & 48,72 & 4956 & 1,86 & 38,72 & 0 \\
 							\noalign{\hrule height 0.5pt}
-								Norme di progetto & 43,78 & 4251 & 0,95 & 88,56 & 0 \\
+								Norme di progetto & 44,23 & 6875 & 0,94 & 102,61 & 0 \\
 							\noalign{\hrule height 0.5pt}
-								Piano di progetto & 45,28 & 4724 & 0,51 & 59,05 & 0 \\
+								Piano di progetto & 45,76 & 5072 & 2,01 & 65,03 & 0 \\
 							\noalign{\hrule height 0.5pt}
-								Piano di qualifica & 43,70 & 5409 & 0,58 & 115,09 & 0 \\
+								Piano di qualifica & 45,97 & 6495 & 0,74 & 101,48 & 0 \\
 							\noalign{\hrule height 0.5pt}
 								Studio di fattibilità & 39,84 & 1471 & 0,25 & 49,03 & 0 \\
 							\noalign{\hrule height 0.5pt}
-								Specifica tecnica & 89,35 & 5699 & 0,63 & 15,00 & 0 \\
+								Specifica tecnica & 88,63 & 6053 & 0,45 & 12.61 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Manuale utente & 47,38 & 1585 & 0,38 & 37,74 & 0 \\
+							\noalign{\hrule height 0.5pt}
+								Manuale utente ENG & 53,39 & 1472 & 0,38 & 36,80 & 0 \\
 							\noalign{\hrule height 1.5pt}
 						\end{tabularx}
 						\caption{Tabella metriche dei documenti }
