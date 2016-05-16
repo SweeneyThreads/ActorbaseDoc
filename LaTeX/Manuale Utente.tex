@@ -57,6 +57,7 @@
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
 				Maino Elia \newline
+				Bortolazzo Matteo \newline
 				Tommasin Davide \\
 			\end{flushleft}
 		\end{minipage}
@@ -328,6 +329,85 @@
 	\\ \\
 	L'aggiornamento viene confermato in caso di successo con il messaggio \texttt{"Item updated"}. Nel caso non si disponga dei permessi di modifica al database, o l'item 
 	richiesto non esista, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
+	
+	\subsection{Operazioni comandi amministratore}
+	Un utente loggato come amministratore può eseguire le seguenti operazioni:
+	\begin{itemize}
+		\item Lista utenti
+		\item Aggiunta utente
+		\item Rimozione utente
+		\item Lista permessi utente
+		\item Aggiunta permesso utente
+		\item Rimozione permesso utente
+		\item Impostazione numero massimo righe per Storekeeper
+		\item Impostazione numero Ninja per Storekeeper
+		\item Impostazione numero Warehouseman per Storekeeper
+		\item Impostazione numero massimo Storekeeper per Storefinder
+		\item Impostazione numero massimo Storefinder per Storemanager
+	\end{itemize}
+
+	\subsubsection{\texttt{listuser} command}
+	Questo comando mostra l'intera lista di utenti nel server:
+	\\ \\
+	\texttt{actorbase>	listmap}
+
+	\subsubsection{\texttt{adduser} command}
+	Questo comando aggiunge un utente al server server:
+	\\ \\
+	\texttt{actorbase>	adduser username password}
+	\\ \\
+	Se l'aggiunta è confermata il messaggio \texttt{"User x added"} viene mostrato, altrimenti un messaggio di errore contenente \texttt{"User already exists"} viene mostrato se un utente con quell'username è già presente.
+
+	\subsubsection{\texttt{removeuser} command}
+	Questo comando rimuove un utente al server server:
+	\\ \\
+	\texttt{actorbase>	removeuser username}
+	\\ \\
+	Se la rimozione è confermata il messaggio \texttt{"User x removed"} viene mostrato, altrimenti un messaggio di errore contenente \texttt{"User doesn't exists"} viene mostrato non esiste un utente con quell'username.
+	
+	\subsubsection{\texttt{listpermission} command}
+	Questo comando mostra tutti i permessi di un utente:
+	\\ \\
+	\texttt{actorbase> listpermission}
+
+	\subsubsection{\texttt{addpermission} command}
+	Questo comando permette di aggiungere un permesso per un database ad un utente :
+	\\ \\
+	\texttt{actorbase>	addpermission username database permissionType}
+	\\ \\	
+	Se l'aggiunta è confermata \texttt{"Permission x added to user"} viene visualizzato, altrimenti viene mostrato un messaggio contenente \texttt{"User doesn't exists"} se un utente con quell'username non esiste od uno contenente \texttt{"Database doesn't exists"} se un database con quel nome non esiste.
+
+	\subsubsection{\texttt{removepermission} command}
+	Questo comando permette di rimuovere un permesso per un database ad un utente:
+	\\ \\
+	\texttt{actorbase>	removepermission username database}
+	\\ \\
+	Se la rimozione è confermata \texttt{"Permission x added to user"} viene visualizzato, altrimenti viene mostrato un messaggio contenente \texttt{"A permission for that database doesn't exists"} se un permesso per quel database per l'utente non esiste.
+	
+	\subsubsection{\texttt{setmaxrows} command}
+	Questo comando permette di impostare il numero massimo di righe per Storekeeper:
+	\\ \\
+	\texttt{actorbase>	setmaxrows number}
+
+	\subsubsection{\texttt{setninja} command}
+	Questo comando permette di impostare il numero di Ninja per Storekeeper:
+	\\ \\
+	\texttt{actorbase>	setninja number}
+	
+	\subsubsection{\texttt{setwarehouseman} command}
+	Questo comando permette di impostare il numero di Warehouseman per Storekeeper:
+	\\ \\
+	\texttt{actorbase>	setwarehouseman number}
+	
+	\subsubsection{\texttt{setmaxstorekeeper} command}
+	Questo comando permette di impostare il numero massimo di Storekeeper per Storefinder:
+	\\ \\
+	\texttt{actorbase>	setmaxstorekeeper number}
+
+	\subsubsection{\texttt{setmaxstorefinder} command}
+	Questo comando permette di impostare il numero massimo di Storefinder per Storemanager:
+	\\ \\
+	\texttt{actorbase>	setmaxstorefinder number}
 			
 	\cleardoublepage
 	\addcontentsline{toc}{section}{\listfigurename}
