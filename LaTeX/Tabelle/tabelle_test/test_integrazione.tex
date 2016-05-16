@@ -1,21 +1,21 @@
 
 \newcolumntype{s}{>{\hsize=.27\hsize}X}
-\newcolumntype{f}{>{\hsize=.39\hsize}X}
+\newcolumntype{f}{>{\hsize=.50\hsize}X}
 \newcolumntype{m}{>{\hsize=.34\hsize}X}
 
 \begin{longtable}{m X s f}  
 			\rowcolor{orange!85}Test & Descrizione & Stato & Componente \\
 \endhead
 
-	TI.server & Viene verificato che il Server riceva i comandi e restituisca output corretti. Vengono anche verificati l'avvio e l'arresto & Success & server \\
+	TI.server & Viene verificato che il Server riceva i comandi e restituisca output corretti. Vengono anche verificati l'avvio e l'arresto & Success & Actorbase.server \\
 	\hline
-	TI.utils & Viene verificato che le le classi di utilità interagiscano correttamente con il resto del sistema & Success & utils \\	
+	TI.utils & Viene verificato che le le classi di utilità interagiscano correttamente con il resto del sistema & Success & Actorbase.server.utils \\	
 	\hline	
-	TI.actors & Viene verificato che all'interno del sistema di attori i messaggi vengano scambiati ed elaborati correttamente  & Success & actors \\
+	TI.actors & Viene verificato che all'interno del sistema di attori i messaggi vengano scambiati ed elaborati correttamente  & Success & Actorbase.server.actors \\
 	\hline	
-	TI.driver & Viene verificato che il driver si connetta correttamente al server e che invii le stringe di query composte secondo la grammatica corretta & Success & driver \\	
+	TI.driver & Viene verificato che il driver si connetta correttamente al server e che invii le stringe di query composte secondo la grammatica corretta & Success & Actorbase.driver \\	
 	\hline	 
-	TI.client & Viene verificato che all'apertura del client venga mostrato correttamente il messaggio di benvenuto, e che sia messa a disposizione una shell che permetta di inserire i comandi da inviare al Driver e ne stampi la risposta  corrispondente & Success & client	\\
+	TI.client & Viene verificato che all'apertura del client venga mostrato correttamente il messaggio di benvenuto, e che sia messa a disposizione una shell che permetta di inserire i comandi da inviare al Driver e ne stampi la risposta  corrispondente & Success & Actorbase.client	\\
 	\hline	
 	
 \bottomrule
