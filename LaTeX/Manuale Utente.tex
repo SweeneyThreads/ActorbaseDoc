@@ -57,6 +57,7 @@
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
 				Maino Elia \newline
+				Bortolazzo Matteo \newline
 				Tommasin Davide \\
 			\end{flushleft}
 		\end{minipage}
@@ -75,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.2
+			Versione 1.0.0
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -99,18 +100,6 @@
 		Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
 		applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
 		di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
-	\subsection{Glossario}
-		Al fine di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il 
-      gruppo ha steso un documento interno che è il \emph{Glossario v2.0.0}. In esso saranno definiti, in modo
-      chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
-	\subsection{Riferimenti}
-	\subsubsection{Normativi}
-		\begin{itemize}
-			\item \textbf{Norme di progetto:} \emph{Norme di progetto v3.0.0}
-			\item \textbf{Capitolato d'appalto Actorbase (C1):} \\ 
-			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
-		\end{itemize}
-	\newpage
 
 	\section{Actorbase}
 	\emph{Actorbase} è un database NoSQL key-value basato sul modello matematico ad attori che garantisce un alto livello di scalabilità, resilienza e prestazioni. Permette di gestire facilmente e flessibilmente i propri dati usufruendo dei principali vantaggi offerti dal modello ad attori, in modo
@@ -157,12 +146,12 @@
 	L'applicativo server consente di avviare un'istanza \emph{Actorbase} server sulla macchina. Una volta avviato permette ai client di effettuare connessioni alla macchina e di interrogare un database. 
 	
 	\subsection{Configurazione del server}
-	La configurazione della macchina server avviene tramite la modifica del file \texttt{server.conf}. In esso vanno settati indirizzo IP e porta di connessione al server.
+	La configurazione della macchina server avviene tramite la modifica del file \texttt{server.conf}. In esso vanno impostati indirizzo IP e porta di connessione al server.
 	\\
 	Nel caso si tentasse di avviare l'applicativo server senza aver definito opportunamente i parametri di configurazione, il server mostrerà un messaggio di errore e non si avvierà.
 	
 	\subsection{Interfaccia server}
-	Una volta modificato il file di configurazione è possibile avviare il server cliccando sull'apposita icona. L'applicativo server fornisce all'utente un'interfaccia a linea dicomando che mostra in tempo reale il log delle operazioni effettuate sul server \emph{Actorbase}.  
+	Una volta modificato il file di configurazione è possibile avviare il server cliccando sull'apposita icona. L'applicativo server fornisce all'utente un'interfaccia a linea di comando che mostra in tempo reale il log delle operazioni effettuate sul server \emph{Actorbase}.  
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{logServer.png}
@@ -172,7 +161,7 @@
 	
 
 	\section{Applicativo client}
-	L'applicativo client fornisce all'utente un interfaccia a linea dicomando per connettersi ad un server \emph{Actorbase} ed effettuare interrogazioni sul database. Come per il server, l'avvio dell'interfaccia client avviene cliccando sull'apposita icona. Appena avviato il client presenta all'utente un banner di benvenuto seguito da una breve descrizione della configurazione software utilizzata (sistema operativo e JVM).
+	L'applicativo client fornisce all'utente un interfaccia a linea di comando per connettersi ad un server \emph{Actorbase} ed effettuare interrogazioni sul database. Come per il server, l'avvio dell'interfaccia client avviene cliccando sull'apposita icona. Appena avviato il client presenta all'utente un banner di benvenuto seguito da una breve descrizione della configurazione software utilizzata (sistema operativo e JVM).
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{welcomeClient.png}
@@ -196,7 +185,7 @@
 	
 
 	\subsection{Aiuto inline}
-	\'E possibile ottenere un aiuto per quanto riguarda le operazioni effettuabili, direttamente a linea dicomando. Il comando \texttt{help} permette di ottenere sia un aiuto generico che un aiuto specifico.
+	\'E possibile ottenere un aiuto per quanto riguarda le operazioni effettuabili, direttamente a linea di comando. Il comando \texttt{help} permette di ottenere sia un aiuto generico che un aiuto specifico.
 	
 	\subsubsection{Comando \texttt{help} generico}
 	Il comando di aiuto generico \texttt{help}, non richiede parametri ulteriori e stampa a video la lista dei comandi di \emph{Actorbase}. Ogni comando è seguito da una breve descrizione che ne illustra il funzionamento.
@@ -328,6 +317,85 @@
 	\\ \\
 	L'aggiornamento viene confermato in caso di successo con il messaggio \texttt{"Item updated"}. Nel caso non si disponga dei permessi di modifica al database, o l'item 
 	richiesto non esista, si riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
+	
+	\subsection{Operazioni comandi amministratore}
+	Un utente autenticato come amministratore può eseguire le seguenti operazioni:
+	\begin{itemize}
+		\item Lista utenti
+		\item Aggiunta utente
+		\item Rimozione utente
+		\item Lista permessi utente
+		\item Aggiunta permesso utente
+		\item Rimozione permesso utente
+		\item Impostazione numero massimo righe per Storekeeper
+		\item Impostazione numero Ninja per Storekeeper
+		\item Impostazione numero Warehouseman per Storekeeper
+		\item Impostazione numero massimo Storekeeper per Storefinder
+		\item Impostazione numero massimo Storefinder per Storemanager
+	\end{itemize}
+
+	\subsubsection{\texttt{listuser} command}
+	Questo comando mostra l'intera lista di utenti nel server:
+	\\ \\
+	\texttt{actorbase>	listmap}
+
+	\subsubsection{\texttt{adduser} command}
+	Questo comando aggiunge un utente al server server:
+	\\ \\
+	\texttt{actorbase>	adduser username password}
+	\\ \\
+	Se l'aggiunta è confermata il messaggio \texttt{"User x added"} viene mostrato, altrimenti un messaggio di errore contenente \texttt{"User already exists"} viene mostrato se un utente con quell'username è già presente.
+
+	\subsubsection{\texttt{removeuser} command}
+	Questo comando rimuove un utente dal server:
+	\\ \\
+	\texttt{actorbase>	removeuser username}
+	\\ \\
+	Se la rimozione è confermata il messaggio \texttt{"User x removed"} viene mostrato, altrimenti un messaggio di errore contenente \texttt{"User doesn't exists"} viene mostrato se non esiste un utente con quell'username.
+	
+	\subsubsection{\texttt{listpermission} command}
+	Questo comando mostra tutti i permessi di un utente:
+	\\ \\
+	\texttt{actorbase> listpermission}
+
+	\subsubsection{\texttt{addpermission} command}
+	Questo comando permette di aggiungere un permesso per un database ad un utente :
+	\\ \\
+	\texttt{actorbase>	addpermission username database permissionType}
+	\\ \\	
+	Se l'aggiunta è confermata \texttt{"Permission x added to user"} viene visualizzato, altrimenti viene mostrato un messaggio contenente \texttt{"User doesn't exists"} se un utente con quell'username non esiste od uno contenente \texttt{"Database doesn't exists"} se un database con quel nome non esiste.
+
+	\subsubsection{\texttt{removepermission} command}
+	Questo comando permette di rimuovere un permesso per un database ad un utente:
+	\\ \\
+	\texttt{actorbase>	removepermission username database}
+	\\ \\
+	Se la rimozione è confermata \texttt{"Permission x added to user"} viene visualizzato, altrimenti viene mostrato un messaggio contenente \texttt{"A permission for that database doesn't exists"} se un permesso per quel database per l'utente non esiste.
+	
+	\subsubsection{\texttt{setmaxrows} command}
+	Questo comando permette di impostare il numero massimo di righe per Storekeeper:
+	\\ \\
+	\texttt{actorbase>	setmaxrows number}
+
+	\subsubsection{\texttt{setninja} command}
+	Questo comando permette di impostare il numero di Ninja per Storekeeper:
+	\\ \\
+	\texttt{actorbase>	setninja number}
+	
+	\subsubsection{\texttt{setwarehouseman} command}
+	Questo comando permette di impostare il numero di Warehouseman per Storekeeper:
+	\\ \\
+	\texttt{actorbase>	setwarehouseman number}
+	
+	\subsubsection{\texttt{setmaxstorekeeper} command}
+	Questo comando permette di impostare il numero massimo di Storekeeper per Storefinder:
+	\\ \\
+	\texttt{actorbase>	setmaxstorekeeper number}
+
+	\subsubsection{\texttt{setmaxstorefinder} command}
+	Questo comando permette di impostare il numero massimo di Storefinder per Storemanager:
+	\\ \\
+	\texttt{actorbase>	setmaxstorefinder number}
 			
 	\cleardoublepage
 	\addcontentsline{toc}{section}{\listfigurename}
