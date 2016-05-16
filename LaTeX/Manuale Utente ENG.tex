@@ -234,17 +234,16 @@
 	\\ \\
 	\texttt{actorbase>	deletedb databaseName}
 	\\ \\
-	If the user tries to 
-	Nel caso si tenti di rimuovere un database inesistente o di cui non si dispone dei permessi di modifica, l'utente riceve un messaggio di operazione non valida (\texttt{"Invalid operation"}).
+	If the user tries to remove a database than does not exist, or a database of which he does not have the modify permissions, the user receives an error message of invalid operation.
 	
 
-	\subsection{Comandi per operazioni a livello database}
-	Una volta selezionato un database tramite il comando \texttt{selectdb}, l'utente si trova a "livello database". A tale livello si possono effettuare queste operazioni:
+	\subsection{Database level operations commands}
+	Once the user has selected a database with the \texttt{selectdb} command, he is at "database level". At that level a user can do these operations:
 	\begin{itemize}
-		\item Visualizzazione della lista delle mappe che compongono il database
-		\item Selezione di una mappa
-		\item Creazione di una mappa
-		\item Eliminazione di una mappa
+		\item Display the list of the maps which compose the database
+		\item Map selection
+		\item Map creation
+		\item Map removal
 	\end{itemize}
 
 	\subsubsection{\texttt{listmap} command}
