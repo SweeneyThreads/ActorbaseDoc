@@ -463,15 +463,15 @@
 					
 				\end{itemize}
 				
-		\section{Appendice}
-			\subsection{Qualità}
+\appendix
+			\section{Qualità}
 Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi atti a garantire la qualità del prodotto.
 				\begin{figure}[H]
 					\centering
 					\includegraphics[scale=0.65]{immagini/Pdq/QualitaDelProdottoSoftware.PNG}
 					\caption{Influenze e dipendenze delle varie misure di qualità.}
 				\end{figure}
-			\subsubsection{Qualità di processo}
+			\subsection{Qualità di processo}
 				Per garantire la qualità del prodotto è necessario garantire anche quella dei processi necessari 
 				al suo completamento. A questo scopo si è deciso di adottare lo standard 
 				ISO/IEC 15504 denominato SPICE.
@@ -507,7 +507,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 					\includegraphics[scale=0.4]{immagini/Pdq/PDCA.png}
 					\caption{Fasi del principio PDCA.}
 				\end{figure}
-			\subsubsection{Qualità di prodotto}
+			\subsection{Qualità di prodotto}
 				Al fine di aumentare il valore del prodotto e di migliorarne il funzionamento è necessario fissare degli obbiettivi
 				qualitativi e garantire che saranno raggiunti.\\
 				Questi obbiettivi sono descritti nell'ISO/IEC 9126 dove sono anche descritte le metriche per misurare gli stessi.\\
@@ -629,11 +629,11 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 					\includegraphics[scale=0.65]{immagini/Pdq/qualitainuso.png}
 					\caption{Caratteristiche della qualità d'uso.}
 				\end{figure}
-				\subsection{Resoconto delle attività di verifica}
-				\subsubsection{Riassunto delle attività di verifica}
+				\section{Resoconto delle attività di verifica}
+				\subsection{Riassunto delle attività di verifica}
 			Durante la stesura della documentazione sono stati verificati ad ogni modifica sostanziale la documentazione stessa, i
 			casi d'uso e i requisiti; è stato in oltre verificato se i processi si sono svolti in maniera corretta.
-			\subsubsection{Documentazione}
+			\subsection{Documentazione}
 				I documenti sono stati verificati tramite walkthrough da due persone differenti seguendo il seguente protocollo:
 				\begin{itemize}
 					\item Verifica della sintassi e della correzione ortografica
@@ -648,7 +648,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				In seguito i documenti sono stati nuovamente verificati tramite inspection utilizzando la checklist precedentemente
 				stilata.
 			
-			\subsubsection{Casi d'uso}
+			\subsection{Casi d'uso}
 				I casi d'uso sono stati verificati sempre tramite walkthrough ponendo l'attenzione sui seguenti punti:
 				\begin{itemize}
 					\item Uniformità dei termini usati tra i vari UC
@@ -661,7 +661,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 
 				I Casi d'uso sono stati successivamente ricontrollati all'interno del documento di \emph{Analisi Dei Requisiti} come
 				descritto nella sezione 4.2.2
-			\subsubsection{Requisiti}
+			\subsection{Requisiti}
 				I requisiti sono stati controllati tramite walkthrough seguendo il seguente protocollo:
 					\begin{itemize}
 						\item Verifica che la fonte del requisito sia corretta.
@@ -672,7 +672,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 						\item I Casi d'uso sono stati successivamente ricontrollati all'interno del documento di \emph{Analisi Dei Requisiti} 
 						come descritto in sezione 4.1.
 					\end{itemize}
-			\subsubsection{Processi}
+			\subsection{Processi}
 				I processi sono stati verificati dal responsabile grazie all'utilizzo di teamwork controllando le seguenti condizioni:
 				\begin{itemize}
 					\item Che la verifica non sia stata effettuata dallo stesso che ha prodotto il materiale da verificare.
@@ -682,8 +682,8 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				\end{itemize}
 				
 		
-		\subsection{Dettaglio delle verifiche tramite analisi}
-			\subsubsection{Processi}
+		\section{Dettaglio delle verifiche tramite analisi}
+			\subsection{Processi}
 				Vengono qui di seguito riportati i valori delle metriche calcolati sulle fasi di progetto portate a termine.
 				\newline \newline Valore di BAC = 17457 \euro , 901 ore.
 				\newline Valore totale di SV= 0 \euro , 0 ore.
@@ -871,7 +871,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 %					\end{table}
 					
 				
-			\subsubsection{Documenti}
+			\subsection{Documenti}
 			Segue la tabella contenente il valore delle metriche di tutti i documenti presentati. Questa tabella viene aggiornata ad ogni cambiamento di versione. La maggior parte dei valori è in range di ottimalità; eccetto i seguenti che sono in ogni caso in range di accettazione: \\
 \begin{itemize}
 	\item \textbf{Norme di Progetto vX.Y.Z:}
@@ -909,10 +909,13 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 						\caption{Tabella metriche dei documenti }
 						\label{SVBVTable}
 					\end{table}
-
-
-
-	\subsection{Test di validazione}
+	
+	
+	\section{Pianificazione dei test}
+		Di seguito saranno descritti i test di validazione, di sistema, di integrazione e di unità che sono previsti.
+		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.
+		
+			\subsection{Test di validazione}
 		In questa sezione vengono descritti i test di validazione che servono per accertare che il prodotto realizzato sia conforme alle attese. 
 		Per ogni test vengono descritti i vari passi che un utente deve eseguire per testare i requisiti ad esso associati.
 		Il client di Actorbase funziona tramite riga di comando, per questo motivo viene sempre riportata la sintassi dei comandi che si intendono verificare.
@@ -1169,35 +1172,29 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 			\item Digitare nella console del client il comando per impostare il numero di Storefinder utilizzando la sintassi: setmaxstorefinder <number>
 			\item Eseguire il comando tramite il tasto invio.
 		\end{itemize}
-
-
-	
-	
-	\subsection{Pianificazione dei test}
-		Di seguito saranno descritti i test di sistema, integrazione e unità che sono previsti.
-		Nelle tabelle sottostanti la sigla N.E sta per non eseguito.
 		
 					
-	\subsubsection{Test di sistema}
+	\subsection{Test di sistema}
 		Viene mostrata di seguito la tabella con tutti i test di sistema che consentono di verificare il sistema rispetto ai requisiti descritti nell'\emph{Analisi dei Requisiti v1.3.11}.
 		Per ogni comando testato sarà anche verificato il corretto riconoscimento e la corretta gestione degli errori.
 		Ogni test di sistema è identificato da TS ed il numero del Caso d'uso ad esso associato.
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_sistema.tex}
+		Viene inoltre mostrata la tabella che traccia i requisiti sui test di sistema.
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/requisiti_test_sistema.tex}
 		
-	\subsubsection{Test di integrazione}
+	\subsection{Test di integrazione}
 		Viene mostrata di seguito la tabella contenente tutti i test di integrazione, atti a verificare il corretto funzionamento delle singole componenti del sistema descritte nella \emph{Specifica Tecnica v2.0.0}. 
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_integrazione.tex}
+		Viene inoltre mostrata la tabella che traccia i test di integrazione ai rispettivi requisiti
+		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_integrazione_requisiti.tex}
 	
-	Viene mostrata la tabella che traccia ogni requisito al test.
-	
-	\subsubsection{Test di unità}
+	\subsection{Test di unità}
 		Viene mostrata di seguito la tabella contenente tutti i test di unità. 
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_unita.tex}
 		
 		
 			
-			\subsection{Lista errori frequenti}
+			\section{Lista errori frequenti}
 			\begin{itemize}
 					\item \textbf{Norme stilistiche:}
 					\begin{itemize}
