@@ -81,7 +81,7 @@
 			Versione 1.0.5
 		\end{center}
 		% Date, change the ->day to a set date if you want to be precise
-		{\large ->day}\\[3cm] 
+		{\large \today} \\ [3cm] 
 		% Fill the rest of the page with whitespace
 		\vfill  
 	\end{titlepage}
@@ -138,8 +138,13 @@
             \item \textbf{Concorrenza e distribuzione:} Ottimo supporto alla programmazione multi-threaded e distribuita, essenziale per la realizzazione di un prodotto responsive e scalabile.
 			\item \textbf{Supporto alla definizione di DSL:} Scala supporta nativamente la definizione di DSL.
             \item \textbf{Supporto di Akka:} Il linguaggio supporta la libreria Akka che è richiesta dal capitolato.
+		\item \textbf{Preferenze del Committente:} Inoltre il Committente ha espresso esplicitamente la sua preferenza sull'utilizzo di Scala.
 		\end{itemize}
-		Inoltre il Committente ha espresso esplicitamente la sua preferenza sull'utilizzo di Scala.
+		Problematiche di scala:
+		\begin{itemize}
+		\item \textbf{Familiarità con la tecnologia:} Nessun membro ha mai avuto esperienza, prima del inizio del progetto, con questo linguaggio di programmazione.
+		\item \textbf{Leggibilità:} Alcuni costrutti risultano di difficile lettura.
+		\end{itemize}
 		\begin{figure} [H]
 			\centering
 			\includegraphics[scale=0.15]{immagini/ST/scala.png}
@@ -149,6 +154,7 @@
 		L'utilizzo della libreria Akka oltre ad essere reso obbligatorio dal committente, fornisce un'eccellente base su cui sviluppare un sistema basato sul modello ad attori.
         Akka permette di costruire facilmente applicazioni message-driven che siano estremamente concorrenti, distribuite e resilienti.         
         La natura distribuita e asincrona degli attori messi a disposizione da Akka soddisfa pienamente i bisogni del sistema da implementare.
+        Akka esegue l'ovveride di molti operatori rendendo difficile la comprensione agli utenti poco esperti. 
 	\begin{figure} [H]
 			\centering
 			\includegraphics[width=\textwidth]{immagini/ST/Akka.png}
@@ -157,6 +163,14 @@
 	
 	
 	\newpage 
+	\section{Legenda}
+	Tutti gli schemi dei package seguono la legenda sottostante. I livelli di annidamento sono da intendere per la totale struttura dei package e non solo per il singolo schema.
+		\begin{figure} [H]
+			\centering
+			\includegraphics[scale=0.3]{ST/Legenda}
+			\caption{Legenda}
+		\end{figure}
+		
 	\section{Descrizione dell'architettura}
 		\subsection{Metodo e formalismo di specifica}
 			Nell'esposizione dell'architettura del prodotto si procederà con un approccio di tipo top-down. \\
@@ -177,12 +191,6 @@
 			\centering
 			\includegraphics[width=\textwidth]{ST/generalLevel.jpg}
 			\caption{Architettura generale, vista Package}
-		\end{figure}
-		
-		\begin{figure} [H]
-			\centering
-			\includegraphics[scale=0.3]{ST/Legenda}
-			\caption{Legenda}
 		\end{figure}
 		
         \subsubsection{Server}
@@ -2043,7 +2051,7 @@
 		
 		\subsection{Actorbase.server.messages.query.user.HelpMessages.HelpMessage}
 			\subsubsection{Descrizione}
-				Trait che rappresenta i messaggi contenenti richieste perla visualizzazione di aiuti.
+				Trait che rappresenta i messaggi contenenti richieste per la visualizzazione di aiuti.
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzata per poter distinguere i messaggi contenenti richieste per la visualizzazione di aiuti.
@@ -2130,7 +2138,7 @@
 		
 		\subsection{Actorbase.client.Welcome}
 			\subsubsection{Descrizione}
-				Classe si supporto per stampare un messaggio di benvenuto sulla consola del client.
+				Classe si supporto per stampare un messaggio di benvenuto sulla console del client.
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzata dal client per stampare un messaggio di benvenuto all'avvio dell'interfaccia a linea di comando.
@@ -2221,7 +2229,7 @@
 			\includegraphics[width=\textwidth]{ST/Attivita/attivitaPrincipale.jpg}
 			\caption{Diagramma attività principale}
 		\end{figure}
-		Dopo aver avviato il client l'utente inserire dei comandi. Se il comando è chiusura il client si spegne. S il comando è di connect ed il client non è connesso quest'ultimo si connette ed invia un comando di login al server, altrimenti stampa un messaggio di errore. Se il comando non è di connect ed il client è connesso quest'ultimo lo controlla. Se esso è un comando di disconnessione il client si disconnette dal server, altrimenti invia la richiesta.
+		Dopo aver avviato il client l'utente può inserire dei comandi. Se il comando è di chiusura il client si spegne. Se il comando è di connect ed il client non è connesso quest'ultimo si connette ed invia un comando di login al server, altrimenti stampa un messaggio di errore. Se il comando non è di connect ed il client è connesso quest'ultimo lo controlla. Se esso è un comando di disconnessione il client si disconnette dal server, altrimenti invia la richiesta.
 		
 	\newpage 
 	\section{Diagrammi di sequenza}
@@ -2257,7 +2265,7 @@
 				\caption{Diagramma di sequenza - gestione comando utente.}
 			\end{figure}
             Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite dagli attori Usermanager e Main alla ricezione di una richiesta dall'utente. 
-Usermanager, dopo aver convertito i byte ricevuti in una stringa, crea un messaggio che rappresenta la richiesta dall'utente ed lo invia al Main. Il Main controlla che l'utente abbia i permessi per il tipo di richiesta, in caso affermativo gestisce, anche indirettamente, il messaggio e risponde.             
+Usermanager, dopo aver convertito i byte ricevuti in una stringa, crea un messaggio che rappresenta la richiesta dell'utente ed lo invia al Main. Il Main controlla che l'utente abbia i permessi per il tipo di richiesta, in caso affermativo gestisce, anche indirettamente, il messaggio e risponde.             
             
         \subsection{Richiesta di creazione mappa}
             \begin{figure} [H]
