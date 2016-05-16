@@ -54,16 +54,16 @@
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
 				Nicoletti Luca \\
-				Tommasin Davide\\
+				Bonato Paolo \\
 			\end{flushleft}
 		\end{minipage}
 		~
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-                Maino Elia \\
+				Bonato Paolo
 				\emph{Verifica:} \\
-                Bonato Paolo \\
+                Maino Elia \\
 			\end{flushright}
 		\end{minipage}
 
@@ -73,7 +73,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.4
+			Versione 3.0.0
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm]
@@ -97,7 +97,7 @@
 
 			Ogni membro è tenuto a leggere il documento e a rispettare le norme al fine di dare maggiore uniformità
 			allo svolgimento dei processi,
-			migliorandone l'efficacia, riducendo il numero di errori e i tempi di sviluppo.
+			migliorandone l'efficacia\ped{\emph{G}}, riducendo il numero di errori e i tempi di sviluppo.
 
 			Poiché il gruppo ha deciso di basarsi sulla struttura a processi \emph{ISO/IEC 12207}
 			la struttura di questo documento ne rispecchia
@@ -126,11 +126,11 @@
 		\subsection{Riferimenti}
 			\subsubsection{Informativi}
 				\begin{itemize}
-					\item Specifiche UTF-8: \\ \url{http://unicode.org/faq/utf_bom.html}
+					\item Specifiche UTF-8\ped{\emph{G}}: \\ \url{http://unicode.org/faq/utf_bom.html}
 					\item Licenza MIT: \\ \url{https://opensource.org/licenses/MIT}
-					\item Scala Programming Language: \\ \url{http://www.scala-lang.org/}
+					\item Scala\ped{\emph{G}} Programming Language: \\ \url{http://www.scala-lang.org/}
 					\item ISO/IEC 12207: \\ \url{http://www.iso.org/iso/catalogue_detail?csnumber=43447}
-					\item ISO 8601:2004: \\ \url{http://www.iso.org/iso/home/standards/iso8601.htm}
+					\item ISO 8601:2004\ped{\emph{G}}: \\ \url{http://www.iso.org/iso/home/standards/iso8601.htm}
 					\item \LaTeX: \\ \url{https://www.latex-project.org}
 					\item UML: \\ \url{http://www.uml.org}
 					\item Astah Professional: \\ \url{http://astah.net/}
@@ -229,7 +229,7 @@
 			\end{figure}
 	\textbf{Descrizione} 
 	\\ \\
-	L'utente ha appena avviato l'interfaccia CLI dell'applicativo e intende connettersi ad un server contenente i database utilizzando il comando di connessione (UC 1.1). L'utente deve inserire l'indirizzo del server (UC 1.2) e successivamente l'username e la password necessari per l'accesso (UC 1.3), nel caso in cui il tentativo di connessione dovesse fallire, l'utente riceve un messaggio di errore informativo.
+	L'utente ha appena avviato l'interfaccia CLI\ped{\emph{G}} dell'applicativo e intende connettersi ad un server contenente i database utilizzando il comando di connessione (UC 1.1). L'utente deve inserire l'indirizzo del server (UC 1.2) e successivamente l'username e la password necessari per l'accesso (UC 1.3), nel caso in cui il tentativo di connessione dovesse fallire, l'utente riceve un messaggio di errore informativo.
 	\begin{table}[H]
 			\begin{tabularx}{\textwidth}{r X}
 				\textbf{Codice gerarchico} & UC1 \\
@@ -260,9 +260,9 @@
 		 
 		\subsubsection{Tecniche di analisi e classificazione requisiti}
 			Sempre compito degli \emph{Analisti}, sarà quello di stilare l'\emph{Analisi dei requisiti}. Essi potranno ricavarli
-			da eventuali Casi d'uso\ped{\emph{G}} emersi da Brainstorming o riunioni con il committente.
+			da eventuali Casi d'uso\ped{\emph{G}} emersi da Brainstorming\ped{\emph{G}} o riunioni con il committente.
 	
-			I requisiti saranno elencati secondo un ordine. Ogni requisito seguirà la seguente codifica: \\
+			I requisiti saranno elencati secondo un ordine. Ogni requisito\ped{\emph{G}} seguirà la seguente codifica: \\
 			\begin{center}
 				R[Codice][Importanza][Tipo]
 			\end{center}
@@ -281,7 +281,7 @@
 				\item \textbf{V:} vincolo.
 			\end{itemize}
 			I requisiti saranno inseriti in una tabella, che includerà anche un nome per ogni attributo, una fonte
-			 e una breve descrizione. La forma tabellare di un requisito risulta quindi essere:
+			 e una breve descrizione. La forma tabellare di un requisito\ped{\emph{G}} risulta quindi essere:
 			\begin{table}[H]
 				\begin{tabularx}{\textwidth}{X X X X}
 					\noalign{\hrule height 1.5pt}
@@ -302,7 +302,7 @@
 			\end{figure}
         \emph{SPitFire} si basa sul salvataggio dei dati in un database mySQL e permette di svolgere le seguenti operazioni sui requisiti:
         \begin{itemize}
-        	\item Inserire un requisito tramite interfaccia web
+        	\item Inserire un requisito\ped{\emph{G}} tramite interfaccia web
         	\item Visualizzare i requisiti presenti, navigando dai requisiti di livello superiore a quelli di livello inferiore
         	\item Segnare il completamento di un requisito
         	\item Importare i requisiti da una tabella .tex
@@ -319,7 +319,7 @@
         \subsubsection{Tracciamento dei requisiti}
             Il tracciamento dei requisiti è anch'esso automatizzato grazie alla piattaforma \emph{SPitFire}. 
             \\ \\
-            Il tool individua automaticamente le dipendenze di tipo padre-figlio e genera in tal modo un albero dei requisiti navigabile semplicemente. Sono stati definiti dei trigger SQL per cui non risulta possibile segnare come completato un requisito che presenta requisiti figli incompleti. Inoltre il completamento di tutti i requisiti figli rende automatico il completamento del padre.
+            Il tool individua automaticamente le dipendenze di tipo padre-figlio e genera in tal modo un albero dei requisiti navigabile semplicemente. Sono stati definiti dei trigger SQL per cui non risulta possibile segnare come completato un requisito\ped{\emph{G}} che presenta requisiti figli incompleti. Inoltre il completamento di tutti i requisiti figli rende automatico il completamento del padre.
             \\ \\
             Il tracciamento tra fonti e requisiti è automatico: \emph{SPitFire} permette di generare le tabelle di tracciamento in formato .tex basandosi sui dati presenti nel database.
             \begin{figure}[H]
@@ -329,16 +329,16 @@
 			\end{figure}
 		\subsubsection{Gestione cambiamento requisiti}
 		Per quanto riguarda il cambiamento dei requisiti, nel Database verrà tenuta una tabella di backup dei "vecchi" requisiti,
-		nella loro forma di dichiarazione, con un puntatore al "nuovo" requisito, che invece avrà le specifiche aggiornate. È compito del
-		\emph{Responsabile di progetto} mantenere aggiornata la tabella dei requisiti, copiando prima il requisito che necessita di cambiamento
-		nella tabella dei vecchi requisiti, e poi aggiornando il requisito stesso.
+		nella loro forma di dichiarazione, con un puntatore al "nuovo" requisito\ped{\emph{G}}, che invece avrà le specifiche aggiornate. È compito del
+		\emph{Responsabile di progetto} mantenere aggiornata la tabella dei requisiti, copiando prima il requisito\ped{\emph{G}} che necessita di cambiamento
+		nella tabella dei vecchi requisiti, e poi aggiornando il requisito\ped{\emph{G}} stesso.
 		\\ \\
 		Inoltre \emph{SPitFire } individua automaticamente eventuali incongruenze tra i file \LaTeX presenti e le informazioni contenute nel database, in tal modo è semplice tenere traccia dei requisiti non aggiornati.
 
 		
 		\subsubsection{Progettazione architetturale}
 		La progettazione architetturale prevede la definizione delle componenti architetturali. La descrizione di ogni  componente package deve avvenire sia in forma testuale, che in forma di diagrammi UML. La descrizione di classi e interfacce può invece avvenire semplicemente a livello testuale.  \\
-		Nello specifico i diagrammi UML che il gruppo dovrà utilizzare in fase di progettazione sono i seguenti:
+		Nello specifico i diagrammi UML che il gruppo dovrà utilizzare in fase\ped{\emph{G}} di progettazione sono i seguenti:
 		\begin{itemize}
 			\item Diagrammi dei package
 			\item Diagrammi delle classi
@@ -370,7 +370,7 @@
 		\end{itemize}
 		
 		\subsubsection{Diagrammi delle componenti architetturali}
-		In linea con quanto definito per la stesura dei diagrammi dei casi d'uso, i diagrammi delle componenti dovranno essere realizzati utilizzando il software \emph{Astah Professional} alla versione 7.0 .
+		In linea con quanto definito per la stesura dei diagrammi dei casi d'uso\ped{\emph{G}}, i diagrammi delle componenti dovranno essere realizzati utilizzando il software \emph{Astah Professional} alla versione 7.0 .
 		\paragraph{Diagrammi dei package} 
 		La distinzione tra package si basa principalmente sul colore, per tale motivo ogni qual volta si utilizzi una combinazione di colori differente, essa deve essere accompagnata da una legenda  descrittiva.
 		\begin{figure}[H]
@@ -391,8 +391,8 @@
 		Valgono le stesse norme di leggibilità definite per i diagrammi delle classi, inoltre ogni diagramma di attività o sequenza dovrà essere accompagnato da una descrizione testuale.
 		
 		\subsubsection{Design Pattern}
-		I membri del gruppo sono invitati ad utilizzare design pattern noti dove possibile in fase di progettazione. L'utilizzo di essi permetterà di avere un'architettura più comprensibile ed estendibile sia dal punto di vista del codice che dal punto di vista della documentazione che lo accompagna. \\ \\
-		Ogni volta che una parte dell'architettura del sistema si basa su un design pattern sarà necessario fornire una descrizione dello stesso in un'apposita sezione del documento di \emph{Specifica Tecnica}.		
+		I membri del gruppo sono invitati ad utilizzare design pattern\ped{\emph{G}} noti dove possibile in fase\ped{\emph{G}} di progettazione. L'utilizzo di essi permetterà di avere un'architettura più comprensibile ed estendibile sia dal punto di vista del codice che dal punto di vista della documentazione che lo accompagna. \\ \\
+		Ogni volta che una parte dell'architettura del sistema si basa su un design pattern\ped{\emph{G}} sarà necessario fornire una descrizione dello stesso in un'apposita sezione del documento di \emph{Specifica Tecnica}.		
 		
 				
 		
@@ -444,7 +444,7 @@
 		
 		\subsubsection{Codifica in \emph{Scala}}
 		Tutte le regole di indentazione, assegnazione dei nomi, scrittura delle parentesi, nomina file, e documentazione sono quelle
-		definite dalla documentazione ufficiale di \emph{Scala}: \url{http://docs.scala-lang.org/style/}
+		definite dalla documentazione ufficiale di \emph{Scala\ped{\emph{G}}}: \url{http://docs.scala-lang.org/style/}
 		\begin{figure}[H]
 				\centering
 				\includegraphics[scale=0.5]{scala-style.png}
@@ -464,7 +464,7 @@
 	
 		\subsection{Documentazione}
 		In questo capitolo si descrivono le convenzioni definite e adottate dal gruppo riguardanti le
-		modalità di redazione, verifica e approvazione dei documenti.
+		modalità di redazione, verifica\ped{\emph{G}} e approvazione dei documenti.
 
 		Tutti i documenti formali prodotti da SWEeneyThreads sono scritti utilizzando il linguaggio \LaTeX,
 		compilati e forniti in formato PDF (per quanto riguarda le versioni digitali). Per la stesura dei
@@ -500,7 +500,7 @@
 		I cognomi e i nomi dei redattori, del responsabile e dei verificatori, verranno cambiati di versione in versione. Questo è possibile
 		grazie al versionamento dei documenti, infatti, i nomi di chi lavora al documento, fanno riferimento solo alla versione in cui il documento
 		è in un determinato momento. Questo comporta un cambiamento dei nomi dei responsabili di un documento di versione in versione. Il numero di nomi
-		è quindi variabile, in una fase ci possono essere 2 persone per la scrittura del documento, in quella successiva 3, o solamente una.
+		è quindi variabile, in una fase\ped{\emph{G}} ci possono essere 2 persone per la scrittura del documento, in quella successiva 3, o solamente una.
 		
 		\subsubsection{Indice}
 			In ogni documento sono presenti in ordine
@@ -576,7 +576,7 @@
 				\item Indirizzi web completi: comando \LaTeX \space \verb|\url|;
 				\item Indirizzi relativi: comando \LaTeX  \space \verb|\verb|.
 			\end{itemize}
-			\item \textbf{Date:} le date presenti nei documenti seguono lo standard ISO 8601:2004:
+			\item \textbf{Date:} le date presenti nei documenti seguono lo standard ISO 8601:2004\ped{\emph{G}}:
 			\begin{center}
 				AAAA - MM - GG
 			\end{center}
@@ -633,7 +633,7 @@
 		\textbf{Documenti formali}
 		Quando un documento riceve l'approvazione del \emph{Responsabile} viene definito formale e risulta idoneo
 		al rilascio all'esterno del gruppo. \\
-		Per risultare approvato un documento deve aver completato con successo il percorso di verifica e validazione
+		Per risultare approvato un documento deve aver completato con successo il percorso di verifica\ped{\emph{G}} e validazione
 		descritto nel \emph{Piano di Qualifica}.
 		\textbf{Documenti informali}
 		Un documento rimane informale finché non viene approvato dal \emph{Responsabile}, durante tale fase
@@ -647,7 +647,7 @@
 		Dove:
 		\begin{itemize}
 			\item X: è il numero principale di versione, viene incrementato ad ogni uscita formale del documento;
-			\item Y: viene incrementato quando il documento entra in una fase successiva del suo ciclo di vita;
+			\item Y: viene incrementato quando il documento entra in una fase\ped{\emph{G}} successiva del suo ciclo di vita;
 			\item Z: viene incrementato quando si apportano modifiche minori al documento.
 		\end{itemize}
 		All'interno di un documento quando si intende fare riferimento ad una specifica versione di un altro documento la
@@ -662,8 +662,8 @@
 		\subsubsection{Ciclo di vita dei documenti}
 		Ogni documento prodotto dal gruppo rispetta il seguente ciclo di vita:
 		\begin{itemize}
-			\item \textbf{Lavorazione/Modifica:} il documento entra in questa fase al momento della sua creazione e vi
-			rimane per tutto il tempo in cui il suo contenuto viene modificato. Prima di terminare la sua fase di modifica ed essere
+			\item \textbf{Lavorazione/Modifica:} il documento entra in questa fase\ped{\emph{G}} al momento della sua creazione e vi
+			rimane per tutto il tempo in cui il suo contenuto viene modificato. Prima di terminare la sua fase\ped{\emph{G}} di modifica ed essere
 			messo a disposizione dei verificatori, su ogni documento deve essere effettuato il controllo ortografico messo a disposizione
 			dal software \emph{TexMaKer}:
 			%Image
@@ -673,27 +673,27 @@
 				\caption{Controllo ortografico - strumento di TexMaKer}
 				\label{controlloOrtografico}
 			\end{figure}
-			\item \textbf{Verifica:} quando termina la fase di modifica, il documento passa nelle mani dei
+			\item \textbf{Verifica:} quando termina la fase\ped{\emph{G}} di modifica, il documento passa nelle mani dei
 			\emph{Verificatori}	che lo analizzano al fine di individuare eventuali errori o incongruenze sintattiche e semantiche;
 			\item \textbf{Approvazione:} dopo essere stato verificato il documento deve essere approvato dal
 			\emph{Responsabile}. Se il documento ottiene l'approvazione diventa ufficiale e raggiunge lo stato finale del
 			suo ciclo di vita per quanto riguarda la corrente versione.
 		\end{itemize}
-		Ogni documento prodotto può attraversare più volte ogni fase del suo ciclo di vita, allo stesso modo può non
+		Ogni documento prodotto può attraversare più volte ogni fase\ped{\emph{G}} del suo ciclo di vita, allo stesso modo può non
 		attraversarle tutte. Quando si inizia una revisione formale su un documento già approvato questo ricomincia il
 		ciclo da capo con un numero di versione incrementato.
 		
 				\subsection{Accertamento della qualità}
 			
 		\subsubsection{Analisi dei processi}
-			I processi compiuti durante una fase verranno analizzati secondo il seguente protocollo:
+			I processi compiuti durante una fase\ped{\emph{G}} verranno analizzati secondo il seguente protocollo:
 			\begin{itemize}
 				\item \textbf{Controllo delle metriche:}
-					Alla conclusione di ogni fase del progetto si calcolano gli indici definiti nella sezione 2.2.1 confrontando 
+					Alla conclusione di ogni fase\ped{\emph{G}} del progetto si calcolano gli indici definiti nella sezione 2.2.1 confrontando 
 						le macro-attività preventivate nel \emph{Piano di progetto} con i dati effettivi riscontrati dal sistema di ticketing.
 				\item \textbf{Analisi PDCA:}
-					Secondo il ciclo PDCA una fase di progetto ha inizio con la pianificazione di come possono essere migliorati i processi. 
-					Durante la fase vengono attuati i cambiamenti prefissati e alla fine viene effettuato un controllo. Se un processo 
+					Secondo il ciclo PDCA una fase\ped{\emph{G}} di progetto ha inizio con la pianificazione di come possono essere migliorati i processi. 
+					Durante la fase\ped{\emph{G}} vengono attuati i cambiamenti prefissati e alla fine viene effettuato un controllo. Se un processo 
 					risulta essere migliore viene adottato in modo definitivo, se invece risulta inalterato o addirittura peggiore i 
 						cambiamenti vengono scartati.
 			\end{itemize}
@@ -710,7 +710,7 @@
 		tipo possono essere dovuti a sviste o errori di copia nella stesura.
 				\item \textbf{Rispetto delle Norme di progetto:} I Verificatori sono tenuti a verificare che il documento
 				rispetti tutte le norme tipografiche e di struttura del documento riportate nelle \emph{Norme di progetto}. Porzioni
-				di questa verifica sono automatizzabili, i Verificatori dovranno quindi usare tool ove possibile. 
+				di questa verifica\ped{\emph{G}} sono automatizzabili, i Verificatori dovranno quindi usare tool ove possibile. 
 				\item \textbf{Inspection secondo checklist:} I Verificatori dovranno scorrere la lista di controllo e
 				verificare che non sia presenti gli errori comuni lì riportati.
 				\item \textbf{Verifica Glossario:} I Verificatori dovranno controllare che tutti i termini contenuti nel 
@@ -729,34 +729,34 @@
 			\end{itemize}
 		
 		\subsection{Gestione delle versioni}
-			Il processo di verifica inizia fin dal primo rilascio ufficiale nella repository di un documento vX.0.0, il risultato 
-			del processo di verifica cambia la versione del documento, incrementandone la versione al secondo livello di profondità, 
+			Il processo di verifica\ped{\emph{G}} inizia fin dal primo rilascio ufficiale nella repository di un documento vX.0.0, il risultato 
+			del processo di verifica\ped{\emph{G}} cambia la versione del documento, incrementandone la versione al secondo livello di profondità, 
 			il documento quindi passa a vX.1.0. Ogni modifica apportata al documento ne aumenta la versione all'ultimo livello di 
-			profondità. Una volta completate le modifiche e le verifiche continue sui documenti, esso passa nella fase di validazione,
+			profondità. Una volta completate le modifiche e le verifiche continue sui documenti, esso passa nella fase\ped{\emph{G}} di validazione\ped{\emph{G}},
 			a carico del responsabile, che ne fa cambiare la versione al secondo livello di priorità. 
 			
 			Grazie al diario delle modifiche è più facile individuare dove concentrare l'attenzione nelle verifiche successive 
 			alla prima, in quanto sono segnate le sezioni che sono state aggiunte o che hanno subito dei cambiamenti dall'ultima
-			 verifica, evitando così di controllare sempre tutto il documento ad ogni rilascio di versione, per cui ottimizzando 
+			 verifica\ped{\emph{G}}, evitando così di controllare sempre tutto il documento ad ogni rilascio di versione, per cui ottimizzando 
 			 il tempo necessario al controllo.
 
 			Per ognuna delle 5 fasi del progetto descritte nel \emph{Piano di Progetto v2.0.0}, sono necessarie diverse attività 
-			di verifica, descritte nella sezione Analisi del \emph{Piano di Qualifica v3.0.0}, a causa dei diversi output ottenuti:
+			di verifica\ped{\emph{G}}, descritte nella sezione Analisi del \emph{Piano di Qualifica v3.0.0}, a causa dei diversi output ottenuti:
 
 			\begin{itemize}
-				\item \textbf{Scelta ed approccio al capitolato:} Si devono eseguire le attività di verifica sui processi e sui documenti.
+				\item \textbf{Scelta ed approccio al capitolato:} Si devono eseguire le attività di verifica\ped{\emph{G}} sui processi e sui documenti.
 				
-				\item \textbf{Analisi di dettaglio:} Si devono eseguire le attività di verifica sui processi e sui documenti.
+				\item \textbf{Analisi di dettaglio:} Si devono eseguire le attività di verifica\ped{\emph{G}} sui processi e sui documenti.
 				
-				\item \textbf{Progettazione e sviluppo:} Si devono eseguire le attività di verifica sui processi, sui documenti e sul codice prodotto.
+				\item \textbf{Progettazione e sviluppo:} Si devono eseguire le attività di verifica\ped{\emph{G}} sui processi, sui documenti e sul codice prodotto.
 				
-				\item \textbf{Sviluppo ulteriore ed incremento:} Si devono eseguire le attività di verifica sui processi, sui documenti e sul codice prodotto.
+				\item \textbf{Sviluppo ulteriore ed incremento\ped{\emph{G}}:} Si devono eseguire le attività di verifica\ped{\emph{G}} sui processi, sui documenti e sul codice prodotto.
 				
-				\item \textbf{Progettazione e sviluppo:} Si devono eseguire le attività di verifica sui processi, sui manuali e sul prodotto finito.
+				\item \textbf{Progettazione e sviluppo:} Si devono eseguire le attività di verifica\ped{\emph{G}} sui processi, sui manuali e sul prodotto finito.
 			\end{itemize}
 			
 			
-			Come detto in precedenza conclusa la verifica, ha inizio il processo di approvazione. Durante questo processo è compito 
+			Come detto in precedenza conclusa la verifica\ped{\emph{G}}, ha inizio il processo di approvazione. Durante questo processo è compito 
 			del Responsabile di Progetto accertarsi che i prodotti ottenuti siano conformi a quanto pianificato e progettato.
 			
 				\subsection{Qualifica}
@@ -766,7 +766,7 @@
 				\item \textbf{Pianificazione:} i processi devono essere pianificati nel dettaglio, in maniera da determinare 
 				i punti e le tempistiche in cui effettuare controlli. 
 				\item \textbf{Controllo:} i controlli pianificati devono essere eseguiti in maniera oggettiva e neutrale, 
-				quindi con strumenti automatici ovunque possibile. Alla fine di ogni fase di progetto è necessario calcolare
+				quindi con strumenti automatici ovunque possibile. Alla fine di ogni fase\ped{\emph{G}} di progetto è necessario calcolare
 				le metriche per i processi indicate nel \emph{Piano di Qualifica v4.0.0} e trarne delle conclusioni. 
 				\item \textbf{Miglioramento continuo:} l'adozione del principio di \emph{PDCA} implica che alle conclusioni
 				tratte dalle metriche seguano degli accorgimenti atti a contrastare le anomalie riscontrate. Tali accorgimenti
@@ -777,9 +777,9 @@
 		\subsubsection{Procedure di controllo qualità per i documenti}
 			La qualità della documentazione viene garantita da:
 			\begin{itemize}
-				\item \textbf{Verifica:} le attività di verifica sui documenti non devono mai essere trascurate. Nelle prime fasi 
+				\item \textbf{Verifica:} le attività di verifica\ped{\emph{G}} sui documenti non devono mai essere trascurate. Nelle prime fasi 
 				del progetto i verificatori dovranno sottoporre i documenti ad un'analisi di tipo \emph{Walkthrough}, per passare 
-				poi quando possibile all'\emph{Inspection}. Inoltre al termine di ogni fase è necessario verificare che le 
+				poi quando possibile all'\emph{Inspection}. Inoltre al termine di ogni fase\ped{\emph{G}} è necessario verificare che le 
 				metriche indicate nel \emph{Piano di Qualifica v4.0.0} in sezione 2.2.2 siano entro il limite di accettabilità e 
 				provvedere ove opportuno.
 				\item \textbf{Validazione:} prende in considerazione l'intero documento ed è atta a dimostrare oggettivamente che 
@@ -794,7 +794,7 @@
 			\begin{itemize}
 				\item \textbf{Comprensione ed analisi del dominio} approfondita mediante la produzione della documentazione 
 				secondo norme.
-				\item \textbf{Verifica:} determina che l'output di una fase sia consistente, completo e corretto. 
+				\item \textbf{Verifica:} determina che l'output di una fase\ped{\emph{G}} sia consistente, completo e corretto. 
 				Deve essere eseguita costantemente per tutta la durata del progetto, ma cercando di essere minimamente invasiva.
 				Consiste nel controllo delle metriche indicate nel \emph{Piano di Qualifica v4.0.0} in sezione 2.2.3 e nella
 				produzione dei test di sistema, di integrazione e di unità. In particolar modo le modifiche apportate al codice
@@ -802,7 +802,7 @@
 				importante in quanto l'individuazione degli errori è un attività particolarmente difficoltosa e costosa. 
 				\item \textbf{Validazione:} prende in considerazione l'intero prodotto ed è atta a dimostrare oggettivamente che 
 				sia conforme alle aspettative. Prima della presentazione al Committente il prodotto dovrà essere sottoposto a
-				dei test di validazione opportunamente prodotti.
+				dei test di validazione\ped{\emph{G}} opportunamente prodotti.
 				\item \textbf{Quality Assurance:} il rispetto delle norme di progetto assicura il raggiungimento degli obiettivi 
 				di qualità prefissati, riducendo il ricorso a tecniche retrospettive, e con esse si riducono le iterazioni.
 			\end{itemize}
@@ -815,11 +815,11 @@
 		%\subsection{Qualifica}
 		%\subsection{Risoluzione di problemi}
 		%Per quanto riguarda l'individuazione, il tracciamento e la risoluzione di bug e problemi il gruppo ha deciso di
-		%affidarsi ad il servizio di issue tracking \emph{YouTrack} offerto da \emph{JetBrains}. \\
-		%Per i progetti fino a dieci utenti, il servizio offre 10GB di spazio sul cloud dell'azienda in maniera gratuita.
+		%affidarsi ad il servizio\ped{\emph{G}} di issue tracking \emph{YouTrack} offerto da \emph{JetBrains}. \\
+		%Per i progetti fino a dieci utenti, il servizio\ped{\emph{G}} offre 10GB di spazio sul cloud dell'azienda in maniera gratuita.
 		
 				\subsection{Strumenti e metodi per l'applicazione delle metriche}
-			Le risorse software che si utilizzeranno durante il processo di verifica sono:
+			Le risorse software che si utilizzeranno durante il processo di verifica\ped{\emph{G}} sono:
 			\begin{itemize}
 				\item \textbf{\emph{TexMaker}:} un ambiente grafico Open-Source per \LaTeX cross-platform, permette 
 				la compilazione rapida e la visualizzazione del PDF generato, sarà anche usato per il controllo ortografico;
@@ -828,8 +828,8 @@
 				\item \textbf{\emph{Scapegoat}:} un altro analizzatore statico che si concentra maggiormente sugli 
 				standard di stile e di coding (\url{https://github.com/sksamuel/scapegoat});
 				\item \textbf{\emph{CLOC (Count Lines Of Code)}:} misura alcune metriche riguardanti il codice 
-				sorgente in vari linguaggi, tra cui \emph{Scala}, servirà a calcolare le linee di codice per linee di commento (\url{cloc.sourceforge.net});
-				\item \textbf{\emph{ScalaTest}:} framework per i test su Scala (\url{http://www.scalatest.org/}).
+				sorgente in vari linguaggi, tra cui \emph{Scala\ped{\emph{G}}}, servirà a calcolare le linee di codice per linee di commento (\url{cloc.sourceforge.net});
+				\item \textbf{\emph{ScalaTest}:} framework per i test su Scala\ped{\emph{G}} (\url{http://www.scalatest.org/}).
 				
 				\item \textbf{Repo's Outpost:} tool su piattaforma web sviluppato dai componenti del gruppo,
 				disponibile (previo login) all'indirizzo: \\
@@ -862,7 +862,7 @@
 			Una anomalia è una violazione da parte di un documento, o unità di codice, di una o più delle seguenti condizioni:
 			\begin{itemize}
 				\item Conformità alla norme tipografiche o di codifica;
-				\item Appartenenza al range di accettabilità per tutte le metriche descritte nella sezione Visione generale della strategia di verifica del\emph{Piano di Qualifica v3.0.0};
+				\item Appartenenza al range di accettabilità per tutte le metriche descritte nella sezione Visione generale della strategia di verifica\ped{\emph{G}} del\emph{Piano di Qualifica v3.0.0};
 				\item Congruenza del prodotto con funzionalità indicate nell'\emph{analisi dei requisiti};
 				\item Congruenza del codice con il design del prodotto.
 			\end{itemize}
@@ -883,7 +883,7 @@
 		\begin{itemize}
 			\item Portabilità, in quanto basato su \emph{Java};
 			\item Open-source;
-			\item Genera automaticamente diagrammi di Gantt, WBS e PERT;
+			\item Genera automaticamente diagrammi di Gantt, WBS\ped{\emph{G}} e PERT;
 			\item Calcola automaticamente i costi, sia totali che per singola attività/risorsa,
 			aiutando a tenere sotto controllo il budget.
 		\end{itemize}
@@ -896,7 +896,7 @@
 		\item Fornisce 100Mb di storage e la possibilità di avere due progetti attivi, contemporaneamente;
 		\item Fornisce un analizzatore di rischi e benefici;
 		\item Genera automaticamente diagrammi di Gantt interattivi;
-		\item Include un ottimo Task management (priorità, task history, possibilità di aggiungere in automatico task ricorrenti);
+		\item Include un ottimo Task\ped{\emph{G}} management (priorità, task history, possibilità di aggiungere in automatico task ricorrenti);
 		\item Notifiche sms e \emph{Notification group}.
 	\end{itemize}
 
@@ -950,13 +950,13 @@
 		\caption{Zoho / Teamwork - Differenza strumenti \label{tab:table_label}}
 	\end{table}
 
-	Come task management \emph{Zoho} offre solamente delle To-do List, mentre \emph{Teamwork} ha anche le seguenti
+	Come task\ped{\emph{G}} management \emph{Zoho} offre solamente delle To-do List, mentre \emph{Teamwork} ha anche le seguenti
 	feature:
 	\begin{itemize}
 		\item Add Recurring Tasks;
 		\item Group Tasks by Projects;
 		\item Set Priorities;
-		\item Task History.
+		\item Task\ped{\emph{G}} History.
 	\end{itemize}
 	\emph{Zoho} offre alcune funzionalità in più in quanto a comunicazione real-time tra membri del gruppo,
 	ma questo risulta irrilevante per il nostro gruppo, in quanto per la comunicazione real-time viene
@@ -984,7 +984,7 @@
     progetto previste: revisione dei requisiti, revisione di progettazione, revisione di qualifica, revisione di accettazione.
     ActorbaseDoc conterrà tutta la documentazione necessaria per il progetto.  
     Effettuata la consegna del materiale, la \emph{Repository} \verb|Actorbase/| verrà copiata in quella corrispondente, che servirà quindi come 
-    backup della \emph{Baseline} a cui fa riferimento.
+    backup della \emph{Baseline\ped{\emph{G}}} a cui fa riferimento.
     La \emph{Repository} ConsegnaActorbase servirà per effettuare le consegne, il link alla repository verrà consegnato al committente nel giorno delle 
     consegne.
 	%immagine
@@ -1032,11 +1032,11 @@
 		Per quanto riguarda i ruoli, il gruppo utilizzerà quelli definiti nelle slide 7-11 disponibili all'indirizzo:
 		\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/L04.pdf}. È stato deciso, unanimemente, che le rotazioni dei ruoli principali
 		come \emph{Amministratore} e \emph{Responsabile di progetto} avverranno ogni 2 settimane. Come stabilito, una persona può ricoprire
-		contemporaneamente più ruoli, la rotazione di altri ruoli come \emph{Analista}, \emph{Progettista} e \emph{Programmatore} potrà avvenire
+		contemporaneamente più ruoli, la rotazione di altri ruoli come \emph{Analista}, \emph{Progettista} e \emph{Programmatore\ped{\emph{G}}} potrà avvenire
 		meno frequentemente, in quanto potrebbe risultare dannoso dover abbandonare un'attività di analisi o di programmazione prima della sua
 		conclusione.
 \\ \\
-		Il gruppo stabilisce la rotazione dei ruoli in base alle attività, ai task, e alla disponibilità fornita da ogni membro.
+		Il gruppo stabilisce la rotazione dei ruoli in base alle attività, ai task\ped{\emph{G}}, e alla disponibilità fornita da ogni membro.
 \\ \\
 		È possibile ottenere in qualsiasi momento una panoramica dei ruoli assegnati tramite l'apposita sezione del
 		progetto creato su \emph{Teamwork}, all'indirizzo\\ \url{https://actorbase.teamwork.com/projects/188894/projectroles}. 
@@ -1061,7 +1061,7 @@
 		temporanei, di documentazione o informativi. Sarà compito del \emph{Responsabile di progetto} prelevare file di documentazione
 		e riportarli nella repository adatta, e nel Drive del gruppo.
 
-		La scelta di \emph{Telegram} è dovuta alla possibilità di utilizzare il servizio sia da desktop che da mobile, e alla
+		La scelta di \emph{Telegram} è dovuta alla possibilità di utilizzare il servizio\ped{\emph{G}} sia da desktop che da mobile, e alla
 		possibilità di inviare qualsiasi tipo di file;
 		\item \textbf{Videoconferenze:} Per le videoconferenze di gruppo si utilizzerà \emph{Google Hangouts}.
 
@@ -1107,7 +1107,7 @@
 		essere presente. Potranno verificarsi casi in cui non tutti i membri del gruppo potranno presentarsi alle riunioni con
 		presenza del committente, ma non potrà verificarsi l'assenza del \emph{Responsabile di progetto} e dell'\emph{Amministratore}.
 		I quali sono tenuti a riferire quanto emerso dalle riunioni a tutti i restanti membri assenti. Nelle riunioni con il
-		committente può verificarsi un cambiamento riguardante ad un requisito, in questo caso il cambiamento va inserito nel
+		committente può verificarsi un cambiamento riguardante ad un requisito\ped{\emph{G}}, in questo caso il cambiamento va inserito nel
 		verbale, che deve essere messo a disposizione del committente nella cartella \verb|Actorbase/Documenti/Verbali/Esterni|.
 		\\ \\
 		\textbf{Non ufficiali} \\ \\
@@ -1117,20 +1117,20 @@
 		sono tenuti a richiedere una riunioni ufficiale straordinaria, che dovrà essere approvata dal'\emph{Amministratore}. In caso
 		contrario, tutte le scelte non rilevanti non necessitano di approvazione.
 		\textbf{Brainstorming} \\
-		I \emph{Brainstorming} vengono tenuti sotto richiesta di qualsiasi membro del gruppo, e approvati, se per motivazioni
-		valide, dal \emph{Responsabile di progetto}. Un \emph{Brainstorming}ha durata minima di un'ora e massima di due; durante il quale
+		I \emph{Brainstorming\ped{\emph{G}}} vengono tenuti sotto richiesta di qualsiasi membro del gruppo, e approvati, se per motivazioni
+		valide, dal \emph{Responsabile di progetto}. Un \emph{Brainstorming\ped{\emph{G}}}ha durata minima di un'ora e massima di due; durante il quale
 		ogni membro ricopre un ruolo di egual importanza rispetto agli altri, le decisioni vengono prese all'unisono o con la maggioranza
-		dei membri a favore, non è compito del \emph{Responsabile di progetto} approvare le soluzioni emerse da un \emph{Brainstorming}.
+		dei membri a favore, non è compito del \emph{Responsabile di progetto} approvare le soluzioni emerse da un \emph{Brainstorming\ped{\emph{G}}}.
 
-		Durante un \emph{Brainstorming} ci sarà un membro con il compito di scrivere le \emph{Minute}, ovvero un \emph{Notaio}.
-		Ad ogni \emph{Brainstorming} sarà anche scelto un \emph{Moderatore} che ricoprirà un ruolo di servizio. Ovvero dovrà far
-		rispettare le regole di base. Una volta finito il \emph{Brainstorming}, il \emph{Notaio} dovrà riorganizzare gli appunti
+		Durante un \emph{Brainstorming\ped{\emph{G}}} ci sarà un membro con il compito di scrivere le \emph{Minute}, ovvero un \emph{Notaio}.
+		Ad ogni \emph{Brainstorming\ped{\emph{G}}} sarà anche scelto un \emph{Moderatore} che ricoprirà un ruolo di servizio\ped{\emph{G}}. Ovvero dovrà far
+		rispettare le regole di base. Una volta finito il \emph{Brainstorming\ped{\emph{G}}}, il \emph{Notaio} dovrà riorganizzare gli appunti
 		presi in un verbale ordinato.
 		
 		\subsection{Meccanismi di controllo e rendicontazione}
 		
 			\subsubsection{Meccanismi di controllo}
-				All'interno dell'ambiente di lavoro sono stati predisposti meccanismi per:
+				All'interno dell'ambiente di lavoro\ped{\emph{G}} sono stati predisposti meccanismi per:
 				\begin{itemize}
 					\item Controllare l'andamento delle attività ed eventuali ritardi;
 					\item Permettere un aggiornamento facilitato della pianificazione;
@@ -1149,10 +1149,10 @@
 					\includegraphics[scale=0.4]{PdP/teamworkTimer}
 					\caption{Timer da attivare durante il lavoro svolto.}
 				\end{figure}
-				Inoltre per ogni attività è predisposta anche una \emph{due to date}, ovvero la data entro la quale la task deve 
+				Inoltre per ogni attività è predisposta anche una \emph{due to date}, ovvero la data entro la quale la task\ped{\emph{G}} deve 
 				essere soddisfatta. Teamwork segnala ogni attività nel riepilogo non completata entro la data di fine con 
 				una scritta rossa che riporta il ritardo. È facile per il responsabile individuare a colpo d'occhio le 
-				task in ritardo e provvedere a comunicare con il/i componenti del gruppo a cui essa è assegnata per capire 
+				task\ped{\emph{G}} in ritardo e provvedere a comunicare con il/i componenti del gruppo a cui essa è assegnata per capire 
 				le motivazioni del ritardo ed eventualmente rivedere le stime future.
 				%image
 				\begin{figure}[H]
