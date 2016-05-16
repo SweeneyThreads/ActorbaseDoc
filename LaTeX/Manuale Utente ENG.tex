@@ -64,7 +64,9 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-				\emph{Verifica:} 
+				Bonato Paolo\\
+				\emph{Verifica:} \\
+				Padovan Tommaso \\
 			\end{flushright}
 		\end{minipage}
 		
@@ -74,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.2
+			Versione 0.0.2
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -94,17 +96,7 @@
 	\subsection{Document's purpose}
 		The present document represents the user manual for the use of \emph{Actorbase}, a NoSQL database. All the user application's features will be described in detail. The manual is divided into three main sections, related to the main components of the product: Client, Server and Driver.
 	\subsection{Product's purpose}
-		The project's purpose is the development of a key-value NoSQL Database based on the actor model, with the goal of supply an appropriate technology for the development of modern applications which request very short response time, and which elaborate substantial amount of data. The development will lead to the release of the software under MIT license.
-	\subsection{Glossary}
-		In order to avoid language ambiguities and to maximize documents' comprehension, the group wrote \emph{Glossario v2.0.0}. In it will be defined, in a clear and concise way, the terms which could lead to ambiguities or text incomprehensions.
-	\subsection{References}
-	\subsubsection{Normative}
-		\begin{itemize}
-			\item \textbf{Norme di progetto:} \emph{Norme di progetto v3.0.0}
-			\item \textbf{Capitolato d'appalto Actorbase (C1):} \\ 
-			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
-		\end{itemize}
-	\newpage
+		The project's purpose is the development of a key-value NoSQL Database based on the actor model, with the goal of supply an appropriate technology for the development of modern applications which request very short response time, and which elaborate substantial amount of data. The development will lead to the release of the software under MIT license.	
 
 	\section{Actorbase}
 	\emph{Actorbase} is a key-value NoSQL database based on the actor model, which guarantees high level of scalability, resilience and performance. It allows to manage easily and flexibly your data, using the main advantages offered by the actor model, in order to support the development of modern and performing applications.
@@ -174,7 +166,7 @@
 	The interaction with the client interface is made with textual commands. They can be composed of multiple fields, separated by a space character.
 	
 	\subsection{Connection management}
-	Once the client is running, the first thing to do is to connect to a server. The connection management is based on two commands: \texttt{connect} and \texttt{disconnect}. The application doesn't allow to manage more than one connection at time.
+	Once the client is running the first thing to do is to connect to a server. The connection management is based on two commands: \texttt{connect} and \texttt{disconnect}. The application doesn't allow to manage more than one connection at time.
 	
 	\subsubsection{\texttt{connect} command}
 	This command allows the user to connect to a server, the command structure is:
@@ -191,13 +183,13 @@
 	To quit the client, the user just has to insert the command \texttt{quit} and press enter.
 
 	\subsection{Inline help}
-	It is possible to obtain an help for the allowed operations, directly from the command line. The command \texttt{help} allows to obtain a generic help or a specific one.
+	It is possible to obtain an help for the allowed operations directly from the command line. The command \texttt{help} allows the user to obtain a generic help or a specific one.
 	
 	\subsubsection{Generic \texttt{help} command}
-	Generic help command doesn't requests more parameters and prints on screen the \emph{Actorbase} commands list. Each command is followed by a brief description which explains his behaviour.
+	Generic help command doesn't request more parameters and prints on screen the \emph{Actorbase} commands list. Each command is followed by a brief description which explains his behaviour.
 	
 	\subsubsection{Specific \texttt{help} command}
-	Specific help command has this structure:
+	The specific help command has this structure:
 	\\ \\
 	\texttt{actorbase>	help commandName}
 	\\ \\
@@ -225,7 +217,7 @@
 	In case the user has the requested permissions, he receives a confirmation message: \texttt{"Database x selected"}. If not an invalid operation is reported.
 
 	\subsubsection{\texttt{createdb} command}
-	This commands allows the user to create a new database with the name specified, in case a database with that name isn't present already.
+	This commands allows the user to create a new database with the name specified, in case a database with that name isn't already in the server.
 	\\ \\
 	\texttt{actorbase>	createdb databaseName}
 	\\ \\
@@ -249,7 +241,7 @@
 	\end{itemize}
 
 	\subsubsection{\texttt{listmap} command}
-	The command show every map within the selected database.
+	The command show every map within the selected database:
 	\\ \\
 	\texttt{actorbase>	listmap}
 
@@ -261,18 +253,18 @@
 	If the selection is confirmed the message \texttt{"Map x selected"} is showed, otherwise an \texttt{"Invalid operation"} message is showed.
 
 	\subsubsection{\texttt{createmap} command}
-	This command allows to create a map with the specified name within the selected database.
+	This command allows to create a map with the specified name within the selected database:
 	\\ \\
 	\texttt{actorbase>	createmap nomeMappa}
 	\\ \\
 	If the creation is confirmed the message \texttt{"Map x created"} is showed, otherwise an \texttt{"Invalid operation"} message is showed if the user doesn't have write permissions on the database or if a map with that name already exists.
 	
 	\subsubsection{\texttt{deletemap} command}
-	This command allows to delete  a map within the selected database.
+	This command allows to delete  a map within the selected database:
 	\\ \\
 	\texttt{actorbase>	deletemap nomeMappa}
 	\\ \\
-	If the delete is confirmed the message \texttt{"Map x deleted"} is showed, otherwise an \texttt{"Invalid operation"} message is showed if the user doesn't have write permissions on the database or if a map with that name doesn't exists.
+	If the delete is confirmed the message \texttt{"Map x deleted"} is showed, otherwise an \texttt{"Invalid operation"} message is showed if the user doesn't have write permissions on the database or if a map with that name doesn't exist.
 	
 
 	\subsection{Map level operations commands}
@@ -350,7 +342,7 @@
 	\\ \\
 	\texttt{actorbase>	removeuser username}
 	\\ \\
-	If the remove is confirmed the message \texttt{"User x removed"} is showed, otherwise an \texttt{"User doesn't exists"} message is showed if an user with that username doesn't exists exists.
+	If the remove is confirmed the message \texttt{"User x removed"} is showed, otherwise an \texttt{"User doesn't exist"} message is showed if an user with that username doesn't exist.
 	
 	\subsubsection{\texttt{listpermission} command}
 	The command shows every user's permissions on the database.
@@ -362,14 +354,14 @@
 	\\ \\
 	\texttt{actorbase>	addpermission username database permissionType}
 	\\ \\
-	If the add is confirmed the message \texttt{"Permission x added to user"} is showed, otherwise an \texttt{"User doesn't exists"} message is showed if an user with that username doesn't exists or \texttt{"Database doesn't exists"} a database with that name doesn't exists.
+	If the add is confirmed the message \texttt{"Permission x added to user"} is showed, otherwise an \texttt{"User doesn't exist"} message is showed if an user with that username doesn't exist or \texttt{"Database doesn't exist"} a database with that name doesn't exist.
 
 	\subsubsection{\texttt{removepermission} command}
 	This command allows to remove a database permission to an user:
 	\\ \\
 	\texttt{actorbase>	removepermission username database}
 	\\ \\
-	If the remove is confirmed the message \texttt{"Permission x remove to user"} is showed, otherwise an \texttt{"A permission for that database doen't exists"} message is showed if a permission for that database of that user doesn't exits.
+	If the remove is confirmed the message \texttt{"Permission x remove to user"} is showed, otherwise an \texttt{"A permission for that database doesn't exists"} message is showed if a permission for that database of that user doesn't exits.
 	
 	\subsubsection{\texttt{setmaxrows} command}
 	This command allows to set the max number of rows for each Storekeeper:
