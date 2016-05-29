@@ -1,0 +1,2866 @@
+%Document-Author: Maino Elia
+%Document-Date: 2016/05/29
+%Document-Description: Documento di Definizione di prodotto del gruppo SWEeneyThreads 
+
+\documentclass[a4paper]{article}
+\usepackage[english, italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{eurosym}
+\usepackage{tabularx}
+\usepackage{pifont}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage[]{appendix}
+\usepackage{ltxtable} 
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{longtable}
+\usepackage{multirow}
+
+\graphicspath{{Immagini/}}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{s}{>{\hsize=.21\hsize}X}
+\newcolumntype{f}{>{\hsize=.37\hsize}X}
+\newcolumntype{m}{>{\hsize=.42\hsize}X}
+\newcolumntype{t}{>{\hsize=.1\hsize}X}
+\newcolumntype{r}{>{\hsize=.3\hsize}X}
+\newcolumntype{k}{>{\hsize=.4\hsize}X}
+
+\renewcommand{\abstractname}{Tabella contenuti}
+
+\begin{document}
+	
+	\begin{titlepage}
+		% Defines a new command for the horizontal lines, change thickness here
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+		\center  
+		
+		% HEADING SECTION
+		\textsc{\LARGE SWEeneyThreads}\\[1.5cm] 
+		\textsc{\Large Actorbase}\\[0.5cm] 
+		\textsc{\large a NoSQL DB based on the Actor model}\\[0.5cm]
+		
+		
+		% TITLE SECTION
+		\HRule \\[0.4cm]
+		{ \huge \bfseries Definizione di prodotto}\\[0.4cm] 
+		\HRule \\[1.5cm]
+		
+		% AUTHOR SECTION
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft} \large
+				\emph{Redattori:}\\
+				Maino Elia \\
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				\emph{Approvazione:} \\
+                    \dots \\
+				\emph{Verifica:} \\
+                    \dots \\
+				 
+			\end{flushright}
+		\end{minipage}
+		
+		%immagine
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{sweeney.png}
+		\end{figure}
+		\begin{center}
+			Versione 0.0.1
+		\end{center}
+		% Date, change the ->day to a set date if you want to be precise
+		{\large \today} \\ [3cm] 
+		% Fill the rest of the page with whitespace
+		\vfill  
+	\end{titlepage}
+	
+	
+	\tableofcontents
+	
+	\newpage 
+	\section*{Diario delle modifiche}
+		\LTXtable{\textwidth}{Tabelle/tabelle_diario_modifiche/tabella_definizione.tex}
+
+	\newpage \section{Introduzione}
+	\subsection{Scopo del documento}
+		Il documento illustra la progettazione di dettaglio del software \emph{Actorbase}.
+		Le decisioni architetturali definite nel documento di \emph{Specifica Tecnica} saranno sviluppate ad un livello di dettaglio superiore, tale da fornire uno strumento adeguato a guidare e supportare l'attività di programmazione del gruppo.
+	\subsection{Scopo del prodotto}
+		Il progetto consiste nella realizzazione di un Database NoSQL key-value basato sul modello ad 
+		Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
+		applicazioni che richiedono brevissimi tempi di risposta e che elaborano enormi quantità 
+		di dati. Lo sviluppo porterà al rilascio del software sotto licenza MIT.
+	\subsection{Glossario}
+		Al fine di evitare ambiguità di linguaggio e di massimizzare la comprensione dei documenti, il 
+      gruppo ha steso un documento interno che è il \emph{Glossario v2.0.0}. In esso saranno definiti, in modo
+      chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
+	\subsection{Riferimenti}
+		\begin{itemize}
+			\item \textbf{Slide dell'insegnamento Ingegneria del software mod.A:} \\
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/E02.pdf}
+			\item \textbf{Scala:} \\
+			\url{http://www.scala-lang.org/}
+			\item \textbf{Java:} \\
+			\url{http://www.java.com/}
+			\item \textbf{Akka:} \\
+			\url{http://akka.io/}
+			\item \textbf{IntelliJ:} \\
+			\url{http://www.jetbrains.com/idea/}
+		\end{itemize}
+	\textbf{Normativi}
+		\begin{itemize}
+			\item \textbf{Norme di progetto:} \emph{Norme di progetto v2.0.0}
+			\item \textbf{Capitolato d'appalto Actorbase (C1):} \\ 
+			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Progetto/C1p.pdf}
+		\end{itemize}
+		
+	\newpage	
+	
+	\section{Standard di progetto}
+		Di seguito si riportano gli standard di progettazione e documentazione a cui i membri del gruppo dovranno attenersi durante l'attività di progettazione di dettaglio e programmazione.
+	\subsection{Standard di progettazione}
+		Gli standard di progettazione architetturale sono definiti nei documenti di \emph{Specifica Tecnica 3.0.0} e \emph{Norme di Progetto 3.0.0, sez 2.2.6}.  
+	\subsection{Standard di codifica}
+		Gli standard di codifica sono definiti nel documento \emph{Norme di Progetto 3.0.0, sez 2.2.11}.
+	\subsection{Standard di documentazione del codice}
+		Gli standard relativi alla documentazione del codice prodotto sono definiti nel documento \emph{Norme di progetto 3.0.0, sez 2.2.11}.
+	\subsection{Strumenti di lavoro}
+		Gli strumenti di lavoro da utilizzare sono definiti nel documento \emph{Norme di Progetto 3.0.0}.
+		
+	\newpage
+	
+	\section{Specifica componenti}
+		In tale sezione verranno descritti il più dettagliatamente possibile i componenti architetturali definiti nel documento \emph{Specifica Tecnica}.
+		
+	\subsection{Actorbase}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.Server}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+	
+	\subsection{Actorbase.server.utils}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.utils.ServerDependencyInjector (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.utils.StandardServerInjector}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.utils.Parser}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.utils.FileManager}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.utils.Helper}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.utils.DatabaseNode}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.actors}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.actors.Doorkeeper}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.actors.Usermanager}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.actors.Main}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.actors.Storemanager}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+		
+	\subsection{Actorbase.server.actors.Storefinder}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.actors.Storekeeper}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.actors.Warehouseman}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.server.enums}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.enums.Permission (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+		
+	\subsection{Actorbase.server.enums.ReplyResult (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.enums.Read}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.enums.Write}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+	
+		Immagine UML.
+		\textbf{Descrizione}
+			Descrizione testuale.
+		\textbf{Utilizzo}
+			Descrizione testuale.
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\texttt{Firma del metodo}
+			\\
+			Descrizione del metodo.
+			\\ 
+			\textbf{Parametri}
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}		
+		
+	\subsection{Actorbase.server.enums.Done}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.enums.Error}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.enums.EnumPermission (enumeration)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.enums.EnumReplyResult (enumeration)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.internal}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.internal.AskMapMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.internal.BecomeAStorekeeperMsg}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.internal.SendMapMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.internal.LinkMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.internal.LinkMessages.LinkMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.internal.LinkMessages.AddNinjaMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.internal.LinkMessages.AddWarehousemanMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.internal.LinkMessages.RemoveNinjaMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.internal.LinkMessages.RemoveWarehousemanMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.QueryMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.LoginMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.ReplyMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.ErrorMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.ErrorMessages.ErrorMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.ErrorMessages.InvalidQueryMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.PermissionMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.PermissionMessages.AdminPermissionMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.PermissionMessages.NoPermissionMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.PermissionMessages.ReadMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.PermissionMessages.ReadWriteMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.admin}
+		Immagine UML del package e breve descrizione.
+		
+\subsection{Actorbase.server.messages.query.admin.AdminMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+		
+	\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages}
+		Immagine UML del package e breve descrizione.
+		
+\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.ActorPropertiesMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxRowMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxRowMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetNinjaMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.			
+			
+\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxNinjaMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.
+\newline SetWarehousemanMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.			
+			
+\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.
+\newline MaxWarehousemanMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorekeeperMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorefinderMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages.
+	\newline PermissionManagementMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages.
+\newline AddPermissionMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages.
+\newline RemovePermissionMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages.
+\newline ListPermissionMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.UserManagementMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+		
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.AddUserMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.		
+			
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.RemoveUserMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.ListUserMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.user}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.user.UserMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.user.RowMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.user.RowMessages.RowMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.user.RowMessages.InsertRowMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+		
+	\subsection{Actorbase.server.messages.query.user.RowMessages.UpdateRowMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.		
+			
+	\subsection{Actorbase.server.messages.query.user.RowMessages.RemoveRowMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.user.RowMessages.FindRowMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.		
+			
+	\subsection{Actorbase.server.messages.query.user.RowMessages.ListKeysMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.user.MapMessages.MapMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages.CreateMapMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages.DeleteMapMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages.SelectMapMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages.ListMapMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.DatabaseMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.CreateDatabaseMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.		
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.DeleteDatabaseMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.SelectDatabaseMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.		
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.ListDatabaseMessage}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.user.HelpMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.query.user.HelpMessages.HelpMessage (trait)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.user.HelpMessages.CompleteHelp}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.server.messages.query.user.HelpMessages.SpecificHelp}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
+			
+	\subsection{Actorbase.client}
+		Immagine UML del package e breve descrizione.
+	
+	\subsection{Actorbase.client.Client}	
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.client.Welcome}	
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.driver}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.driver.Connection (trait)}	
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.driver.ConcreteConnection}	
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\subsection{Actorbase.driver.Driver}	
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Descrizione testuale.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item Classe
+				\item \dots
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \dots
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			\texttt{Firma del metodo}
+			\\ \\
+			Descrizione del metodo.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+			\end{itemize}
+			
+	\newpage
+	
+	\section{Diagrammi di sequenza}
+	
+	\newpage
+	
+	\section{Tracciamento}
+	
+	\subsection{Tracciamento requisiti-classi}
+	
+	\subsection{Tracciamento classi-requisiti}
+	
+	\subsection{Tracciamento classi-test}
+
+		
+	\newpage 
+	
+	\cleardoublepage
+	\addcontentsline{toc}{section}{\listfigurename}
+	\listoffigures
+	
+	\cleardoublepage
+	\addcontentsline{toc}{section}{\listtablename}
+	\listoftables
+		
+\end{document}
