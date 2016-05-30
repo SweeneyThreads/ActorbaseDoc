@@ -22,7 +22,7 @@
 \usepackage{longtable}
 \usepackage{multirow}
 
-\graphicspath{{Immagini/}}
+\graphicspath{{Immagini/DP/}}
 
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 \newcolumntype{s}{>{\hsize=.21\hsize}X}
@@ -143,124 +143,166 @@
 		In tale sezione verranno descritti il più dettagliatamente possibile i componenti architetturali definiti nel documento \emph{Specifica Tecnica}.
 		
 	\subsection{Actorbase}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{generalLevel.png}
+			\caption{Actorbase architettura generale}
+		\end{figure}
+		L'architettura generale di \emph{Actorbase} è formata da tre componenti: Server, Client e Driver. 
+		Il Client utilizza metodi e oggetti forniti dal Driver per comunicare con il Server.
 		
 	\subsection{Actorbase.server}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Server/serverLevel.jpg}
+			\caption{Componente Actorbase.server}
+		\end{figure}
+		La componente server di \emph{Actorbase} è il nucleo dell'applicativo, è composta dai packages: utils, messages, actors ed enums e dalla classe Server.
 		
 	\subsection{Actorbase.server.Server}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Server/serverClass.jpg}
+			\caption{Classe Actorbase.server.Server}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe principale della parte Server del programma. \'E di fatto l'entry point dello stesso, gestisce la configurazione iniziale e avvia il sistema. Utilizza il design pattern Singleton.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Classe che fornisce un punto di accesso al programma, la sua esecuzione avvia il server sulla macchina in cui viene lanciata.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{system: ActorSystem } - Istanza di ActorSystem di Akka.
+				\item \texttt{log: LoggingAdapter } - Permette di ottenere un log per l'ActorSystem.
+				\item \texttt{fileReader: FileReader } - Accesso alla lettura di file.
+				\item \texttt{storemanagers: ConcurrentHashMap[String, ActorRef] } - Mappa contenente la lista di attori di tipo UserManager presenti nel sistema.
+				\item \texttt{users: ConcurrentHashMap[String, String] } - Mappa contenente la lista di utenti del sistema, le chiavi sono gli username degli utenti, i valori sono le password.
+				\item \texttt{permissions: ConcurrentHashMap[String, UserPermission] } - Mappa che contiene per ogni utente la lista dei database a cui ha accesso.
+				\item \texttt{timeout: Timeout } - Timeout di connessione.
 			\end{itemize}
 		\textbf{Metodi}
 			\\ \\
-			\texttt{Firma del metodo}
+			\texttt{main(args: Array[String]}
 			\\ \\
-			Descrizione del metodo.
+			Metodo main che permette di avviare l'applicativo lato server. Si occupa di impostare i valori dei campi dati e di invocare gli altri metodi di configurazione presenti nella classe.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{args: Array[String] } - Parametro standard del metodo main di \emph{Scala}.
 			\end{itemize}
-	
+			\texttt{loadDatabases(s: ActorSystem): Unit}
+			\\ \\
+			Il metodo permette di caricare la lista dei database in memoria, inserendoli nella mappa \emph{storemanagers}. Non ritorna alcun valore.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{s: ActorSystem } - ActorSystem da utilizzare per accedere agli attori necessari.
+			\end{itemize}
+			\texttt{loadUsers(): Unit}
+			\\ \\
+			Il metodo permette di caricare la lista di utenti in memoria, inserendoli nella mappa \emph{users}. Non ritorna alcun valore.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+			\texttt{loadUsersPermissions(): Unit}
+			\\ \\
+			Il metodo permette di caricare la lista di permessi degli utenti in memoria, inserendoli nella mappa \emph{permissions}. Non ritorna alcun valore.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
 	\subsection{Actorbase.server.utils}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/utilsLevel.jpg}
+			\caption{Componente Actorbase.server.utils}
+		\end{figure}
+		Package contenente le classi che effettuano operazioni varie a supporto delle varie componenti del server, e degli attori nello specifico.
 		
 	\subsection{Actorbase.server.utils.ServerDependencyInjector (trait)}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.6]{Server/ServerDependencyInjectorTrait.jpg}
+			\caption{Trait Actorbase.server.utils.ServerDependencyInjector}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Trait che espone i metodi necessari per le interrogazioni al server da parte del Main.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per delegare la chiamata ai metodi del Server ad un'interfaccia in modo da poter utilizzare server differenti in base alle necessità.
 			\\ \\
 		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Implementato da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item Actorbase.server.utils.StandardServerInjector
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
-			\texttt{Firma del metodo}
+			\texttt{getStoremanagers(): ConcurrentHashMap}
 			\\ \\
-			Descrizione del metodo.
+			Metodo che permette di ottenere la lista di Usermanager (contratto).
 			\\ \\
 			Lista parametri del metodo:
-			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
-			\end{itemize}
+			\\ \\
+			Nessuno.
 			
 	\subsection{Actorbase.server.utils.StandardServerInjector}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.6]{Server/StandardServerInjectorClass.jpg}
+			\caption{Trait Actorbase.server.utils.StandardServerInjector}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Implementazione del trait ServerDependencyInjector che utilizza il server da noi creato.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per delegare la chiamata ai metodi del Server.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item Actorbase.server.utils.ServerDependencyInjector
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
-			\texttt{Firma del metodo}
+			\texttt{getStoremanagers(): ConcurrentHashMap}
 			\\ \\
-			Descrizione del metodo.
+			Metodo che permette di ottenere la lista di Usermanager (implementazione).
 			\\ \\
 			Lista parametri del metodo:
-			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
-			\end{itemize}
+			\\ \\
+			Nessuno.
 			
 	\subsection{Actorbase.server.utils.Parser}
 		Immagine UML.
