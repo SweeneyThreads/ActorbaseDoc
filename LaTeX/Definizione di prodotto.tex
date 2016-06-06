@@ -76,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.2
+			Versione 0.0.3
 		\end{center}
 		% Date, change the ->day to a set date if you want to be precise
 		{\large \today} \\ [3cm] 
@@ -664,73 +664,141 @@
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che definisce l'attore di tipo \texttt{Doorkeeper}. Tale attore rappresenta il punto di ingresso al server, apre una porta nell'host e si mette in ascolto di eventuali richieste di connessione. Quando un nuovo client si connette, il \texttt{Doorkeeper} crea un nuovo attore di tipo \texttt{Usermanager} a cui delega la gestione delle richieste per quella determinata connessione.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per creare e gestire un punto di accesso generale al server.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{akka.actor.Actor}
+				\item \texttt{akka.actor.ActorLogging}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
-			\texttt{Firma del metodo}
+			Nessuno.
 			\\ \\
-			Descrizione del metodo.
+		\textbf{Costruttore: }\texttt{Doorkeeper(port: Integer)}
+			\\ \\
+			Costruisce un attore di tipo \texttt{Doorkeeper} a partire da un Integer rappresentante la porta da aprire.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{array: Array[Byte]} - L'array da utilizzare per generare l'oggetto.
 			\end{itemize}
+		\textbf{Metodo: }\texttt{receive}
+			\\ \\
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce i messaggi provenienti dall'attore TCP della libreria. In particolare gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{Bound messages} - effettua il log sullo stato della porta
+				\item \texttt{CommandFailed} - l'attore "uccide" se stesso nel caso ricevesse questo messaggio
+				\item \texttt{Connected messages} - crea un \texttt{Usermanager} per ogni connessione
+			\end{itemize}
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
 			
 	\subsection{Actorbase.server.actors.Usermanager}
 		Immagine UML.
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che definisce l'attore di tipo \texttt{Usermanager}. Tale attore gestisce le richieste TCP provenienti da uno specifico client: si occupa di comprendere il contenuto delle query, di inoltrare le richieste e di fornire le risposte al client.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato gestire una singola connessione al server.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.actors.ReplyActor}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{parser: Parser} - Parser per effettuare l'elaborazione delle richieste utente.
+				\item \texttt{conected: Boolean} - Booleano per controllare lo stato della connessione.
+				\item \texttt{mainActor: ActorRef} - Riferimento all'attore di tipo \texttt{Main} per la connessione gestita.
+				\item \texttt{builder: ByteStringBuilder} - Costruttore di stringhe a partire da Byte.
+				\item \texttt{tcpSender: ActorRef} - Riferimento all'attore di tipo \texttt{TCP}.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{Usermanager()}
 			\\ \\
-			\texttt{Firma del metodo}
+			Costruisce un attore di tipo \texttt{Usermanager} senza parametri.
 			\\ \\
-			Descrizione del metodo.
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{receive}
+			\\ \\
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce i pacchetti inviati dall'attore \texttt{TCP}, li salva in un buffer, effettua il parsing di essi e inoltra il risultato all'attore di tipo \texttt{Main}.
+			\begin{itemize}
+				\item \texttt{Received} - gestisce la ricezione di un pacchetto invocando il metodo \texttt{receiveData}.
+				\item \texttt{PeerClosed} - gestisce la disconnessione del client.
+			\end{itemize}
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{receiveData(data: ByteString): Unit}
+			\\ \\
+			Effettua il  buffer dei Byte provenienti dal client e controlla che il messaggio sia nella forma corretta.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{data: ByteString} - I Byte provenienti dal client.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{processRequest(request: ByteString): Unit}
+			\\ \\
+			Processa i Byte ricevuti nel metodo \texttt{receiveData} comprendendo il tipo di richiesta del client. Genera il corrispondente messaggio utilizzando il \texttt{Parser} e lo inoltra di conseguenza.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{request: ByteString} - Richiesta del client.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{handleQueryMessage(message: QueryMessage): Unit}
+			\\ \\
+			Gestisce un messaggio di tipo \texttt{QueryMessage} prodotto dal metodo \texttt{processRequest}. Nel caso si tratti di un \texttt{LoginMessage} gestisce personalmente la richiesta, altrimenti inoltra il messaggio all'attore \texttt{Main}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: QueryMessage} - Il messaggio da gestire.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{handleLogin(username: String, password: String): Unit}
+			\\ \\
+			Effettua l'operazione di login per il client, nel caso quest'ultimo non fosse già autenticato. Si occupa di controllare la correttezza dei dati di login (username e password) rispetto alla lista di utenti che hanno accesso al server. Infine comunica al client l'esito dell'operazione.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{username: String} - L'username dell'utente.
+				\item \texttt{password: String} - La password dell'utente.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{replyToClient(reply: String): Unit}
+			\\ \\
+			Invia il \texttt{ReplyMessage} al mittente originario (l'attore TCP).
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: String} - La stringa da inviare come risposta.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{handleLoginFuture(psw: String, username : String, password : String): Unit}
+			\\ \\
+			Implementa nel dettaglio la gestione del login differenziando la gestione di utenti normali da quella di un utente amministratore. Inoltre si occupa di generare la risposta per il client nel caso di login fallito.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{psw: String} - La password da gestire.
+				\item \texttt{password: String} - La password dell'utente.
+				\item \texttt{username: String} - L'username dell'utente.
 			\end{itemize}
 			
 	\subsection{Actorbase.server.actors.Main}
@@ -738,37 +806,225 @@
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che definisce l'attore di tipo \texttt{Main}. Tale attore si occupa di eseguire le richieste effettuate da un client. Processa autonomamente le query a livello database e le query amministratore, per tutte le altre query si occupa di inoltrarle all'attore appropriato. \'E l'unico attore che interagisce con l'attore di tipo \texttt{Usermanager}, tutte le risposte generate vengono inviate ad esso.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato eseguire le richieste utente ed ottenere le risposte.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.actors.ReplyActor}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{helper: Helper} - istanza della classe \texttt{Helper} per gestire le richieste di aiuto.
+				\item \texttt{selectedDatabase: String} - stringa che rappresenta il database selezionato dal client.
+				\item \texttt{selectedMap: String} - stringa che rappresenta la mappa selezionata dal client.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{Main(perms: util.HashMap[String, UserPermission] = null)}
 			\\ \\
-			\texttt{Firma del metodo}
-			\\ \\
-			Descrizione del metodo.
+			Costruisce un attore di tipo \texttt{Main} a partire da una mappa di permessi.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{perms: util.HashMap[String, UserPermission]} - la mappa di permessi.
 			\end{itemize}
+		\textbf{Metodo: }\texttt{receive}
+			\\ \\
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce solo messaggi di tipo \texttt{QueryMessage}.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{handleQueryMessage(message: QueryMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{QueryMessage}. Si occupa di differenziare tra messaggi \texttt{UserMessage} e \texttt{AdminMessage} chiamando per essi il metodo corretto.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{UserMessage}
+				\item \texttt{AdminMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: QueryMessage} - Il messaggio da processare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{handleUserMessage(message: UserMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{UserMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{HelpMessage}
+				\item \texttt{DatabaseMessage}
+				\item \texttt{MapMessage}
+				\item \texttt{RowMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: UserMessage} - Il messaggio da processare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{handleAdminMessage(message: AdminMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{AdminMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{UsersManagementMessage}
+				\item \texttt{PermissionsManagementMessage}
+				\item \texttt{SettingMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: AdminMessage} - Il messaggio da processare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{handleUserManagementMessage(message: UsersManagementMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{UsersManagementMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{ListUserMessage}
+				\item \texttt{AddUserMessage}
+				\item \texttt{RemoveUserMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: UsersManagementMessage} - Il messaggio da processare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{handlePermissionsManagementMessage(message: PermissionsManagementMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{PermissionsManagementMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{ListPermissionMessage}
+				\item \texttt{AddPermissionMessage}
+				\item \texttt{RemovePermissionMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: PermissionsManagementMessage} - Il messaggio da processare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{handleSettingMessage(message: SettingMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{SettingMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{RefreshSettingsMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: SettingMessage} - Il messaggio da processare.
+			\end{itemize}			
+		\textbf{Metodo: }\texttt{handleHelpMessage(message: HelpMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{HelpMessage}. Si occupa di elaborare una richiesta definita da un messaggio di help.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{CompleteHelpMessage} - risponde al messaggio generando una risposta di aiuto completo con l'utilizzo dell'istanza di \texttt{Helper}.
+				\item \texttt{SpecificHelpMessage} - risponde al messaggio generando una risposta di aiuto per il comando specifico con l'utilizzo dell'istanza di \texttt{Helper}.
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: HelpMessage} - Il messaggio da processare.
+			\end{itemize}			
+		\textbf{Metodo: }\texttt{handleDatabaseMessage(message: DatabaseMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{DatabaseMessage}. Si occupa di elaborare una richiesta a livello database.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{ListDatabaseMessage} - risponde al messaggio generando la lista dei database a cui il client ha accesso (almeno permessi di lettura).
+				\item \texttt{SelectDatabaseMessage} - seleziona il database richiesto, salvandolo in \texttt{selectedDatabase}.
+				\item \texttt{CreateDatabaseMessage} - crea un nuovo attore di tipo \texttt{MapManager} che rappresenti il database da creare. Gestisce anche il caso in cui il database da creare sia già presente.
+				\item \texttt{DeleteDatabaseMessage} - rimuove il database richiesto rimuovendo l'attore \texttt{MapManager} che lo rappresenta.
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: DatabaseMessage} - Il messaggio da processare.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{handleMapMessage(message: MapMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{MapMessage}. Si occupa di elaborare una richiesta a livello mappa.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{SelectMapMessage} - seleziona la mappa richiesta salvando il nome in \texttt{selectedMap}. Si occupa di richiederne l'esistenza al \texttt{MapManager}.
+				\item \texttt{MapMessage} - tutti gli altri \texttt{MapMessage} sono inoltrati al corretto MapManager.
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: MapMessage} - Il messaggio da processare.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{handleRowMessage(message: RowMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{RowMessage}. Si occupa di elaborare una richiesta a livello item. Controlla che vi siano un database e una mappa selezionati, in tal caso inoltra la richiesta al corretto \texttt{MapManager}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RowMessage} - Il messaggio da processare.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{checkPermissions(message: QueryMessage, dbName: String): Boolean}
+			\\ \\
+			Questo metodo controlla che l'utente abbia i permessi necessari ad eseguire la query. Nel caso l'utente fosse amministratore egli dispone di tutti i permessi automaticamente, altrimenti vengono controllati i permessi utenti. Nel caso i permessi risultino sufficienti ad effettuare la query il metodo ritorna \texttt{true}, altrimenti ritorna \texttt{false}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: QueryMessage} - Il messaggio contenente la query utente.
+				\item \texttt{dbName: String} - Il database selezionato dall'utente.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{handlePermissionsList(message: ListPermissionMessage): Unit}
+			\\ \\
+			Il metodo gestisce i messaggi di richiesta della lista dei permessi degli utenti.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: ListPermissionMessage} - Il messaggio da processare.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{handleAddPermission(message: AddPermissionMessage): Unit}
+			\\ \\
+			Il metodo gestisce i messaggi di aggiunta alla lista dei permessi degli utenti.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: AddPermissionMessage} - Il messaggio da processare.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{handleRemovePermissions(message: RemovePermissionMessage): Unit}
+			\\ \\
+			Il metodo gestisce i messaggi di rimozione dalla lista dei permessi degli utenti.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RemovePermissionMessage} - Il messaggio da processare.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{handleListUserMessage(message: ListUserMessage): Unit}
+			\\ \\
+			Il metodo gestisce i messaggi di richiesta della lista degli utenti.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: ListUserMessage} - Il messaggio da processare.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{handleAddUser(message: AddUserMessage, username: String, password : String): Unit}
+			\\ \\
+			Il metodo gestisce i messaggi di aggiunta alla lista degli utenti.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: AddUserMessage} - Il messaggio da processare.
+				\item \texttt{username: String} - L'username dell'utente da aggiungere.
+				\item \texttt{password : String} -La password dell'utente da aggiungere.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{handleRemoveUser(message: RemoveUserMessage, username: String): Unit}
+			\\ \\
+			Il metodo gestisce i messaggi di rimozione dalla lista degli utenti.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RemoveUserMessage} - Il messaggio da processare.
+				\item \texttt{username: String} - L'username dell'utente da rimuovere.
+			\end{itemize}	
+			
 			
 	\subsection{Actorbase.server.actors.Storemanager}
 		Immagine UML.
