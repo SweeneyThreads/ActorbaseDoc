@@ -76,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.1
+			Versione 0.0.2
 		\end{center}
 		% Date, change the ->day to a set date if you want to be precise
 		{\large \today} \\ [3cm] 
@@ -232,113 +232,111 @@
 		\end{figure}
 		Package contenente le classi che effettuano operazioni varie a supporto delle varie componenti del server, e degli attori nello specifico.
 		
-	\subsection{Actorbase.server.utils.ServerDependencyInjector (trait)}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.6]{Server/ServerDependencyInjectorTrait.jpg}
-			\caption{Trait Actorbase.server.utils.ServerDependencyInjector}
-		\end{figure}
-		\textbf{Descrizione}
-			\\ \\
-			Trait che espone i metodi necessari per le interrogazioni al server da parte del Main.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Viene utilizzato per delegare la chiamata ai metodi del Server ad un'interfaccia in modo da poter utilizzare server differenti in base alle necessità.
-			\\ \\
-		\textbf{Classi ereditate}
-			\\ \\
-			Nessuna.
-			\\ \\
-		\textbf{Implementato da}
-			\begin{itemize}
-				\item Actorbase.server.utils.StandardServerInjector
-			\end{itemize}
-		\textbf{Attributi}
-			\\ \\
-			Nessuno.
-			\\ \\
-		\textbf{Metodi}
-			\\ \\
-			\texttt{getStoremanagers(): ConcurrentHashMap}
-			\\ \\
-			Metodo che permette di ottenere la lista di Usermanager (contratto).
-			\\ \\
-			Lista parametri del metodo:
-			\\ \\
-			Nessuno.
-			
-	\subsection{Actorbase.server.utils.StandardServerInjector}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.6]{Server/StandardServerInjectorClass.jpg}
-			\caption{Trait Actorbase.server.utils.StandardServerInjector}
-		\end{figure}
-		\textbf{Descrizione}
-			\\ \\
-			Implementazione del trait ServerDependencyInjector che utilizza il server da noi creato.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Viene utilizzato per delegare la chiamata ai metodi del Server.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Actorbase.server.utils.ServerDependencyInjector
-			\end{itemize}
-		\textbf{Ereditata da}
-			\\ \\
-			Nessuna.
-			\\ \\
-		\textbf{Attributi}
-			\\ \\
-			Nessuno
-			\\ \\
-		\textbf{Metodi}
-			\\ \\
-			\texttt{getStoremanagers(): ConcurrentHashMap}
-			\\ \\
-			Metodo che permette di ottenere la lista di Usermanager (implementazione).
-			\\ \\
-			Lista parametri del metodo:
-			\\ \\
-			Nessuno.
 			
 	\subsection{Actorbase.server.utils.Parser}
 		Immagine UML.
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			La classe \texttt{Parser} definisce i metodi per trasformare stringhe in messaggi \texttt{QueryMessage} utilizzabili dagli attori del sistema.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzata da attori di tipo \texttt{Usermanager} per trasformare le richieste client in messaggi inviabili agli attori.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
+			\\ \\ 
+			Nessuno.
 			\\ \\
-			\texttt{Firma del metodo}
+			\textbf{Costruttore: }\texttt{Parser()}
 			\\ \\
-			Descrizione del metodo.
+			Costruttore senza parametri.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+			\textbf{Metodo: }\texttt{parseQuery(query: String) : QueryMessage}
+			\\ \\
+			Effettua il parsing della stringa in base al numero di parametri che la compongono (utilizzando i metodi per il parsing a seconda dei parametri) e genera un \texttt{QueryMessage} che viene ritornato.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{query: String } - Stringa da convertire in messaggio.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{getMatch(pattern:Regex, command:String): Regex.Match}
+			\\ \\
+			Effettua il match dell'espressione regolare sulla stringa passata e ritorna il risultato.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{pattern: Regex } - Pattern da utilizzare per il match.
+				\item \texttt{command: String} - La stringa su cui effettuare il match.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{parseCommandWithoutParam(command: String): QueryMessage}
+			\\ \\
+			Effettua il parsing di un comando senza parametri e ritorna il corrispondente \texttt{QueryMessage}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{command: String} - La stringa rappresentante il comando.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{parseCommandWithParam(command: String, arg: String): QueryMessage}
+			\\ \\
+			Effettua il parsing di un comando con un parametro e ritorna il corrispondente \texttt{QueryMessage}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{command: String} - La stringa rappresentante il comando.
+				\item \texttt{arg: String} - La stringa rappresentante il parametro.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{parseCommandWithTwoParams(command:String, arg1: String, arg2: String):QueryMessage}
+			\\ \\
+			Effettua il parsing di un comando con due parametri e ritorna il corrispondente \texttt{QueryMessage}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{command: String} - La stringa rappresentante il comando.
+				\item \texttt{arg1: String} - La stringa rappresentante il primo parametro.
+				\item \texttt{arg2: String} - La stringa rappresentante il secondo parametro.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{parseCommandWithThreeParams(command:String, arg1: String, arg2: String, arg3: String):QueryMessage}
+			\\ \\
+			Effettua il parsing di un comando con tre parametri e ritorna il corrispondente \texttt{QueryMessage}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{command: String} - La stringa rappresentante il comando.
+				\item \texttt{arg1: String} - La stringa rappresentante il primo parametro.
+				\item \texttt{arg2: String} - La stringa rappresentante il secondo parametro.
+				\item \texttt{arg3: String} - La stringa rappresentante il terzo parametro.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{parseRowCommandOneParam(command: String, key: String): QueryMessage}
+			\\ \\
+			Effettua il parsing di un comando al livello di item con un parametro (la chiave) e ritorna il corrispondente \texttt{QueryMessage}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{command: String} - La stringa rappresentante il comando a livello di item.
+				\item \texttt{key: String} - La stringa rappresentante la chiave.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{parseRowCommandTwoParams(command: String, key: String, value: String): QueryMessage}
+			\\ \\
+			Effettua il parsing di un comando al livello di item con due parametri (la chiave e il valore) e ritorna il corrispondente \texttt{QueryMessage}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{command: String} - La stringa rappresentante il comando a livello di item.
+				\item \texttt{key: String} - La stringa rappresentante la chiave.
+				\item \texttt{value: String} - La stringa rappresentante il valore.
 			\end{itemize}
 			
 	\subsection{Actorbase.server.utils.FileManager}
@@ -346,25 +344,23 @@
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che definisce i metodi per leggere e scrivere dati su disco.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzata da attori di tipo \texttt{Warehouseman} per gestire la persistenza dei dati.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
+				\item \texttt{path: String } - Il percorso su cui effettuare le letture e le scritture.
 				\item \dots
 			\end{itemize}
 		\textbf{Metodi}
@@ -383,73 +379,281 @@
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che fornisce i metodi per ottenere una descrizione dei comandi di \emph{Actorbase}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzata per soddisfare una richiesta di \texttt{help} da parte di un utente.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{helpMessages: LinkedHashMap[String, String] } - Mappa contenente i comandi come chiavi e le descrizioni degli stessi come valori.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Metodo: }\texttt{completeHelp(): String}
 			\\ \\
-			\texttt{Firma del metodo}
+			Il metodo costruisce una stringa contenente l'aiuto completo, basandosi sugli elementi della mappa \texttt{helpMessages}.
 			\\ \\
-			Descrizione del metodo.
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{specificHelp(command: String): String}
+			\\ \\
+			Il metodo costruisce una stringa contenente l'aiuto per un comando specifico, basandosi sugli elementi della mappa \texttt{helpMessages}.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{command: String } - Stringa rappresentante il comando per cui si vuole generare il messaggio di aiuto.
 			\end{itemize}
 			
-	\subsection{Actorbase.server.utils.DatabaseNode}
+	\subsection{Actorbase.server.utils.ConfigurationManager}
 		Immagine UML.
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che fornisce i metodi di lettura e scrittura dei file di configurazione del server.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzata per leggere le impostazioni del server dai file di configurazione all'avvio di esso. Inoltre viene utilizzata per scrivere modifiche alle configurazioni.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
-			\texttt{Firma del metodo}
+			Nessuno.
 			\\ \\
-			Descrizione del metodo.
+		\textbf{Metodo: }\texttt{readDoorkeepersSettings(fileName: String): util.HashMap[String, Integer]}
+			\\ \\
+			Il metodo legge dal file di configurazione gli indirizzi e le porte che attori di tipo \texttt{Doorkeeper} dovranno utilizzare per gestire le connessioni. Tali informazioni vengono ritornate con una mappa in cui le chiavi sono gli indirizzi e i valori sono le porte.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{fileName: String} - Nome del file che contiene la configurazione dei \texttt{Doorkeeper}.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{readActorsProperties(fileName: String): util.HashMap[ActorProperties, Integer]}
+			\\ \\
+			Il metodo legge dal file di configurazione le proprietà relative agli attori (come ad esempio il numero massimo di attori di tipo \texttt{Ninja}). Tali informazioni vengono ritornate con una mappa in cui le chiavi sono i nomi delle proprietà e i valori sono i valori di tali proprietà.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{fileName: String} - Nome del file che contiene la configurazione degli attori.
+			\end{itemize}
+			
+	\subsection{Actorbase.server.utils.ReplyBuilder}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Classe che fornisce i metodi di creazione delle stringhe da mandare in risposta a richieste client.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzata per costruire delle risposte in formato stringa a partire da messaggi. Tali risposte possono così essere inviate ad un client.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{buildReply(reply: ReplyMessage): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di stabilire se il messaggio è di tipo amministratore o utente e delegare di conseguenza l'elaborazione al metodo più appropriato.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{UserMessage}
+				\item \texttt{AdminMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{UserMessageReply(reply: ReplyMessage): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di stabilire che tipo di \texttt{UserMessage} si sia ricevuto.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{HelpMessage}
+				\item \texttt{DatabaseMessage}
+				\item \texttt{MapMessage}
+				\item \texttt{RowMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{AdminMessageReply(reply: ReplyMessage): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di stabilire che tipo di \texttt{AdminMessage} si sia ricevuto.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{UsersManagementMessage}
+				\item \texttt{PermissionsManagementMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{UserManagementMessageReply(reply: ReplyMessage): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{UsersManagementMessage}.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{ListUserMessage}
+				\item \texttt{AddUserMessage}
+				\item \texttt{RemoveUserMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{PermissionsManagementMessageReply(reply: ReplyMessage): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{PermissionManagementMessage}.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{ListPermissionMessage}
+				\item \texttt{AddPermissionMessage}
+				\item \texttt{RemovePermissionMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{HelpMessageReply(reply: ReplyMessage): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{HelpMessage} invocando gli opportuni metodi.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{HelpMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{DoneHelpMessageReply(question: QueryMessage, info: ReplyInfo): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{HelpMessage} maggiormente nel dettaglio.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{CompleteHelpMessage}
+				\item \texttt{SpecificHelpMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{DatabaseMessageReply(reply: ReplyMessage): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{DatabaseMessage}.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{ListDatabaseMessage}
+				\item \texttt{SelectDatabaseMessage}
+				\item \texttt{CreateDatabaseMessage}
+				\item \texttt{DeleteDatabaseMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{MapMessageReply(reply: ReplyMessage): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{MapMessage}.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{ListMapMessage}
+				\item \texttt{SelectMapMessage}
+				\item \texttt{CreateMapMessage}
+				\item \texttt{DeleteMapMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{RowMessageReply(reply: ReplyMessage): String}
+			\\ \\
+			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{RowMessage}.
+			Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{ListKeysMessage}
+				\item \texttt{FindRowMessage}
+				\item \texttt{InsertRowMessage}
+				\item \texttt{UpdateRowMessage}
+				\item \texttt{RemoveRowMessage}
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{unhandledMessage(actor: String, method: String): String}
+			\\ \\
+			Il metodo permette di costruire una stringa per i messaggi che non sono stati gestiti.
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{actor: String} - Il percorso dell'attore che non ha gestito il messaggio
+				\item \texttt{method: String} - Il nome del metodo in cui non è stato gestito il messaggio
+			\end{itemize}
+			
+	\subsection{Actorbase.server.utils.Serializer}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Classe che gestisce la serializzazione e la deserializzazione di oggetti.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzata per serializzare e deserializzare oggetti in Array di Byte in modo da poterli trattare come dati di \emph{Actorbase}.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{serialize(obj: Object): Array[Byte]}
+			\\ \\
+			Il metodo serializza un oggetto in un array di Byte.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{obj: Object} - L'oggetto da serializzare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{deserialize(array: Array[Byte]): Object}
+			\\ \\
+			Il metodo genera un Oggetto a partire da un array di Byte.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{array: Array[Byte]} - L'array da utilizzare per generare l'oggetto.
 			\end{itemize}
 			
 	\subsection{Actorbase.server.actors}
