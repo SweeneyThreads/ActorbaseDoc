@@ -76,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.3
+			Versione 0.0.4
 		\end{center}
 		% Date, change the ->day to a set date if you want to be precise
 		{\large \today} \\ [3cm] 
@@ -159,7 +159,7 @@
 		\end{figure}
 		La componente server di \emph{Actorbase} è il nucleo dell'applicativo, è composta dai packages: utils, messages, actors ed enums e dalla classe Server.
 		
-	\subsection{Actorbase.server.Server}
+	\subsection{Actorbase.server.Server (Object)}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.5]{Server/serverClass.jpg}
@@ -167,11 +167,11 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe principale della parte Server del programma. \'E di fatto l'entry point dello stesso, gestisce la configurazione iniziale e avvia il sistema. Utilizza il design pattern Singleton.
+			Classe principale della parte Server del programma. \'E di fatto l'entry point dello stesso, gestisce la configurazione iniziale e avvia il sistema. Utilizza il design pattern Singleton (Object).
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Classe che fornisce un punto di accesso al programma, la sua esecuzione avvia il server sulla macchina in cui viene lanciata.
+			Classe che fornisce un punto di accesso al programma, la sua esecuzione avvia il server sulla macchina in cui viene lanciata (contiene il metodo \texttt{main} per la componente server di \emph{Actorbase}).
 			\\ \\
 		\textbf{Classi ereditate}
 			\\ \\
@@ -183,17 +183,14 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{system: ActorSystem } - Istanza di ActorSystem di Akka.
-				\item \texttt{log: LoggingAdapter } - Permette di ottenere un log per l'ActorSystem.
-				\item \texttt{fileReader: FileReader } - Accesso alla lettura di file.
-				\item \texttt{storemanagers: ConcurrentHashMap[String, ActorRef] } - Mappa contenente la lista di attori di tipo UserManager presenti nel sistema.
-				\item \texttt{users: ConcurrentHashMap[String, String] } - Mappa contenente la lista di utenti del sistema, le chiavi sono gli username degli utenti, i valori sono le password.
-				\item \texttt{permissions: ConcurrentHashMap[String, UserPermission] } - Mappa che contiene per ogni utente la lista dei database a cui ha accesso.
-				\item \texttt{timeout: Timeout } - Timeout di connessione.
+				\item \texttt{val system: ActorSystem } - Istanza di ActorSystem di Akka.
+				\item \texttt{var log: LoggingAdapter } - Permette di ottenere un log per l'ActorSystem.
+				\item \texttt{implicit val timeout: Timeout } - Timeout di connessione.
+				\item \texttt{var clusterListener: ActorRef} - Cluster
+				\item \texttt{var sFclusterListener: ActorRef} - Cluster
+				\item \texttt{var sKclusterListener: ActorRef} - Cluster
 			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			\texttt{main(args: Array[String]}
+			\textbf{Metodo: }\texttt{main(args: Array[String]}
 			\\ \\
 			Metodo main che permette di avviare l'applicativo lato server. Si occupa di impostare i valori dei campi dati e di invocare gli altri metodi di configurazione presenti nella classe.
 			\\ \\
@@ -201,29 +198,118 @@
 			\begin{itemize}
 				\item \texttt{args: Array[String] } - Parametro standard del metodo main di \emph{Scala}.
 			\end{itemize}
-			\texttt{loadDatabases(s: ActorSystem): Unit}
+			\textbf{Metodo: }\texttt{private def loadDatabases(system: ActorSystem): Unit}
 			\\ \\
-			Il metodo permette di caricare la lista dei database in memoria, inserendoli nella mappa \emph{storemanagers}. Non ritorna alcun valore.
+			Il metodo carica i database da disco.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{s: ActorSystem } - ActorSystem da utilizzare per accedere agli attori necessari.
+				\item \texttt{system: ActorSystem } - ActorSystem da utilizzare per accedere agli attori necessari.
 			\end{itemize}
-			\texttt{loadUsers(): Unit}
+			\textbf{Metodo: }\texttt{private def createDoorkeepers(system: ActorSystem): Unit}
 			\\ \\
-			Il metodo permette di caricare la lista di utenti in memoria, inserendoli nella mappa \emph{users}. Non ritorna alcun valore.
+			Legge le impostazioni di configurazione degli attori \texttt{Doorkeeper} e si occupa della conseguente creazione degli attori stessi.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{system: ActorSystem } - ActorSystem da utilizzare per accedere agli attori necessari.
+			\end{itemize}
+			
+		\subsection{Actorbase.server.StaticSettings (Object)}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Classe statica che permette di accedere a dei dati (impostazioni) globali.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			La classe definisce i valori di alcune proprietà che devono essere utilizzati da diversi componenti del sistema, evitando il passaggio di tali dati tra le componenti. Alcuni dei dati che la classe contiene devono essere:
+			\begin{itemize}
+				\item Riferimento agli attori \texttt{MapManager} presenti
+				\item Numero massimo di righe per \texttt{Storemanager} (di tipo \texttt{Storekeeper})
+				\item Numero di attori \texttt{Ninja}
+				\item Numero di attori \texttt{Warehouseman}
+			\end{itemize}
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{var mapManagerRefs: ConcurrentHashMap[String, ActorRef]} - Riferimento ai \texttt{MapManger}.
+				\item \texttt{var maxRowNumber: Integer} - Numero massimo di righe.
+				\item \texttt{var ninjaNumber: Integer } - Numero di \texttt{Ninja}.
+				\item \texttt{var warehousemanNumber: Integer} - Numero di \texttt{Warehousean}.
+			\end{itemize}
+			
+		\subsection{Actorbase.server.ClusterListener }
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			La classe rappresenta l'attore responsabile di mantenere gli indirizzi dei nodi segnati come \emph{UP} nel cluster. Deve esserci un attore \texttt{ClusterListener} in ogni nodo del cluster. L'attore inoltre implementa una strategia Round Robin per selezionare un indirizzo dalla sua lista di nodi.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Questo attore viene utilizzato per gestire le funzionalità del Cluster.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{akka.actor.Actor}
+				\item \texttt{akka.actor.ActorLogging}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{private val cluster: Cluster} - L'istanza del cluster.
+				\item \texttt{private var nNodes: Integer } - Numero di nodi \emph{UP} nel cluster (inizialmente 0).
+				\item \texttt{var counter: Integer} - Contatore delle richieste (inizialmente a 0). Deve essere incrementato prima di ogni operazione.
+				\item \texttt{var addresses: ArrayList[Address]} - Lista degli indirizzi dei nodi del cluster.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{override def preStart(): Unit}
+			\\ \\
+			Override del metodo \texttt{preStart()} definito in \texttt{akka.actor.Actor}. Alla creazione dell'attore esso si sottoscrive al cluster e aggiunge l'indirizzo del suo nodo alla lista.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
 			Nessuno.
 			\\ \\
-			\texttt{loadUsersPermissions(): Unit}
+			\textbf{Metodo: }\texttt{override def postStop(): Unit}
 			\\ \\
-			Il metodo permette di caricare la lista di permessi degli utenti in memoria, inserendoli nella mappa \emph{permissions}. Non ritorna alcun valore.
+			Override del metodo \texttt{postStop()} definito in \texttt{akka.actor.Actor}. Allo stop l'attore deve rimuoversi dal cluster.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
 			Nessuno.
+			\\ \\
+			\textbf{Metodo: }\texttt{def receive}
+			\\ \\
+			Metodo di ricezione dei messaggi dell'attore, il metodo riceve messaggi dal cluster e il messaggio (stringa) \texttt{"next"} (richiesta di rotazione Round Robin). I messaggi ricevuti dal cluster vengono gestiti in modo da mantenere la lista dei nodi aggiornata. Il metodo gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{MemberUp}
+				\item \texttt{UnreachableMember}
+				\item \texttt{MemberRemoved}
+			\end{itemize}
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{def nextAddress(): Address}
+			\\ \\
+			Metodo che implementa la strategia Round Robin per selezionare un indirizzo.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			
 	\subsection{Actorbase.server.utils}
 		\begin{figure}[H]
 			\centering
@@ -1023,6 +1109,122 @@
 			\begin{itemize}
 				\item \texttt{message: RemoveUserMessage} - Il messaggio da processare.
 				\item \texttt{username: String} - L'username dell'utente da rimuovere.
+			\end{itemize}
+			
+	\subsection{Actorbase.server.actors.MapManager}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Classe che definisce l'attore di tipo \texttt{MapManager}. Questo tipo di attore rappresenta un singolo database di \emph{Actorbase}, gestisce le diverse mappe che lo compongono (attori \texttt{IndexManager}).
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Gestisce ad alto livello tutti i dati che compongono un database, attori di tipo \texttt{Main} inoltrano a lui le richieste per il database che rappresenta.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.actors.ReplyActor}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{var database: String} - Il nome del database che l'attore rappresenta. 
+				\item \texttt{val indexManagers: ConcurrentHashMap[String, ActorRef]} - La mappa contenente i nomi e i riferimenti alle mappe del database.
+			\end{itemize}
+		\textbf{Costruttore: }\texttt{MapManager(database: String)}
+			\\ \\
+			Costruisce un attore di tipo \texttt{MapManager}. Alla creazione un attore di questo tipo deve registrarsi alla lista di database presente in \texttt{StaticSettings}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{database: String} - Il nome del database che l'attore rappresenta.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{receive}
+			\\ \\
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{AskMapMessage} - Ricerca la mappa in \texttt{indexManagers} e risponde.
+				\item \texttt{MapMessage} - Chiama il metodo \texttt{handleMapMessage}.
+				\item \texttt{RowMessage} - Chiama il metodo \texttt{handleRowMessage}.
+			\end{itemize}
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{private def handleMapMessage(message: MapMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{MapMessage}. Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{ListMapMessage} - Crea e risponde con la lista di mappe che compongono il database.
+				\item \texttt{CreateMapMessage} - Crea un nuovo \texttt{IndexManager} rappresentante la mappa richiesta e lo aggiunge alla propria lista se la mappa non è già presente.
+				\item \texttt{DeleteMapMessage} - Elimina la mappa richiesta (se presente) eliminando l'attore \texttt{IndexManager} che la rappresenta.
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: MapMessage} - Il messaggio da processare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{private def handleRowMessage(message: RowMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{RowMessage}. Trova il corretto \texttt{IndexManager} a cui inoltrare il messaggio.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RowMessage} - Il messaggio da inoltrare.
+			\end{itemize}
+			
+	\subsection{Actorbase.server.actors.IndexManager}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Classe che definisce l'attore di tipo \texttt{IndexManager}. Questo tipo di attore rappresenta una singola mappa di \emph{Actorbase}. Gestisce i dati che compongono la mappa sia in memoria principale (RAM) che su disco, utilizzando attori di tipo \texttt{Storemanager} e \texttt{Warehouseman}.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Gestisce i dati che compongono la mappa sia in memoria principale (RAM) che su disco, utilizzando attori di tipo \texttt{Storemanager} e \texttt{Warehouseman}. Riceve le richieste da attori di tipo \texttt{MapManager}.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.actors.ReplyActor}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{val storemanager: ActorRef} - Il riferimento al primo \texttt{Storemanager} dell'albero. 
+				\item \texttt{val warehousemen: Array[ActorRef]} - Il riferimento ai \texttt{Warhouseman} che gestiscono la mappa su disco.
+			\end{itemize}
+		\textbf{Costruttore: }\texttt{IndexManager()}
+			\\ \\
+			Costruisce un attore di tipo \texttt{IndexManager}. Vengono inizializzati i riferimenti a \texttt{Storemanager} e \texttt{Warehouseman}.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{receive}
+			\\ \\
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{RowMessage} - Chiama il metodo \texttt{handleRowMessage}.
+			\end{itemize}
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{private def handleRowMessage(message: RowMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{RowMessage}. Inoltra il messaggio all'albero di \texttt{Storemanager} e ai \texttt{Warehouseman}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RowMessage} - Il messaggio da inoltrare.
 			\end{itemize}	
 			
 			
@@ -1031,148 +1233,268 @@
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che definisce l'attore di tipo \texttt{Storemanager}. Questo tipo di attore si occupa di mantenere i dati in memoria principale secondo una struttura gerarchica. Uno \texttt{Storemanager} può avere quattro tipologie di comportamento differenti:
+			\begin{itemize}
+				\item \texttt{Storekeeper}
+				\item \texttt{StorekeeperNinja}
+				\item \texttt{Storefinder}
+				\item \texttt{StorefinderNinja}
+			\end{itemize}
+		Alla creazione dell'attore è possibile impostare il comportamento attraverso un parametro. 
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato da un attore \texttt{Indexmanager} per gestire i dati in memoria principale.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.actors.ReplyActor}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{var map: ConcurrentHashMap[String,  Array[Byte]]} - Mappa contenente gli item. 
+				\item \texttt{var index: (String, String)} - Indice dei dati contenuti nell'attore (utilizzato per trovare l'attore corretto).
+				\item \texttt{var storemanagerType: StoremanagerType} - Tipo di comportamento.
+				\item \texttt{var ninjas: Array[ActorRef]} - Riferimento ai propri attori \texttt{Ninja}.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{Storemanager(var map: ConcurrentHashMap[String,  Array[Byte]], index: (String, String), storemanagerType: StoremanagerType, ninjas: Array[ActorRef]=null)}
 			\\ \\
-			\texttt{Firma del metodo}
-			\\ \\
-			Descrizione del metodo.
+			Costruisce un attore di tipo \texttt{Storemanager}.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{map: ConcurrentHashMap[String,  Array[Byte]]} - la mappa di item che l'attore dovrà gestire.
+				\item \texttt{index: (String, String)} - gli indici che identificano il range di valori gestiti dall'attore.
+				\item \texttt{storemanagerType: StoremanagerType} - il tipo di comportamento che l'attore deve avere.
+				\item \texttt{ninjas: Array[ActorRef]=null} - i riferimenti ai \texttt{Ninja} dell'attore (può essere \texttt{null} nel caso in cui si stia creando un \texttt{Ninja}).
 			\end{itemize}
-		
-	\subsection{Actorbase.server.actors.Storefinder}
+		\textbf{Metodo: }\texttt{override def preStart(): Unit}
+			\\ \\
+			Override del metodo \texttt{preStart()} di \texttt{akka.actor.Actor}. Il metodo effettua un controllo sul tipo di comportamento passato nel costruttore e invoca correttamente il metodo \texttt{become} di \emph{Akka} per cambiare il comportamento del metodo di ricezione messaggi (\texttt{receive}).
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+				Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{receive}
+			\\ \\
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Di default rappresenta la gestione dei messaggi come \texttt{Storekeeper}, riconosce messaggi di tipo \texttt{RowMessage}, invocando il metodo \texttt{handleRowMessageAsStorekeeper} per la gestione vera e propria.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{private def handleRowMessageAsStorekeeper(message: RowMessage): Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{RowMessage} quando l'attore si comporta come \texttt{Storekeeper}. Riconosce il messaggio e gestisce la richiesta completamente, producendo una risposta.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{InsertRowMessage} - Inserisce una riga nella mappa se c'è spazio, altrimenti richiede la propria divisione.
+				\item \texttt{UpdateRowMessage} - Aggiorna il valore della riga richiesta nella propria mappa.
+				\item \texttt{RemoveRowMessage} - Rimuove la riga richiesta dalla propria mappa.
+				\item \texttt{FindRowMessage} - Restituisce il valore della riga contenente la chiave richiesta.
+				\item \texttt{ListKeysMessage} - Restituisce la lista di tutte le chiavi che compongono la sua mappa.
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RowMessage} - Il messaggio da processare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{private def divideActor() : Unit}
+			\\ \\
+				Il metodo effettua la divisione dell'attore in due quando si raggiunge il numero massimo di item contenuti in esso. La divisione si effettua creando due \texttt{Storemanager} figli con comportamento da \texttt{Storekeeper} a cui si passa metà della mappa. Una volta creati i figli l'attore svuota la propria mappa e inizia a comportarsi da \texttt{Storefinder}.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+				Nessuno. 
+			\\ \\
+		\textbf{Metodo: }\texttt{private def receiveAsStoreFinder: Receive}
+			\\ \\
+			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore è \texttt{Storefinder}. Riconosce messaggi di tipo \texttt{RowMessage}, e passa la gestione di essi al metodo \texttt{handleRowMessageAsStorefinder}.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{private def handleRowMessageAsStorefinder(message: RowMessage) : Unit}
+			\\ \\
+			Processa messaggi di tipo \texttt{RowMessage} quando l'attore si comporta come \texttt{Storefinder}. Riconosce il messaggio e inoltra la richiesta ai figli.
+			Gestisce i seguenti tipi di messaggi:
+			\begin{itemize}
+				\item \texttt{InsertRowMessage} - Chiama il metodo \texttt{sendToStorekeeper}.
+				\item \texttt{UpdateRowMessage} - Chiama il metodo \texttt{sendToStorekeeper}.
+				\item \texttt{RemoveRowMessage} - Chiama il metodo \texttt{sendToStorekeeper}.
+				\item \texttt{FindRowMessage} - Chiama il metodo \texttt{sendToStorekeeper}.
+				\item \texttt{ListKeysMessage} - Inoltra la richiesta ai figli e costruisce la lista completa delle chiavi unificando le informazioni ricevute dai figli.
+			\end{itemize}
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RowMessage} - Il messaggio da processare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{private def sendToStorekeeper(key: String, message: RowMessage): Unit}
+			\\ \\
+			Il metodo si occupa di trovare inoltrare al figlio corretto il messaggio.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{key: String} - La chiave della richiesta da inoltrare.
+				\item \texttt{message: RowMessage} - Il messaggio da inoltrare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{private def findRightStorekeeper(key:String): Child}
+			\\ \\
+			Il metodo si occupa di trovare il figlio corretto confrontando la chiave con gli indici dei figli.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{key: String} - La chiave della richiesta da inoltrare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{private def receiveAsStorekeeperNinja: Receive}
+			\\ \\
+			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore è \texttt{StorekeeperNinja}. Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{RowMessage} - Chiama il metodo \texttt{handleRowMessagesAsStorekeeperNinja}.
+				\item \texttt{LinkMessage} - Chiama il metodo \texttt{handleLinkMessagesAsStorekeeperNinja}.
+			\end{itemize}
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\		
+		\textbf{Metodo: }\texttt{private def handleRowMessagesAsStorekeeperNinja(message: RowMessage): Unit}
+			\\ \\
+			Il comportamento del metodo è simile a quello di \texttt{handleRowMessageAsStorekeeper}, con la differenza che un Ninja si occupa solo di tenere i dati aggiornati dunque non vengono generate risposte alle richieste.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RowMessage} - Il messaggio da processare.
+			\end{itemize}			
+		\textbf{Metodo: }\texttt{private def handleLinkMessagesAsStorekeeperNinja(message: LinkMessage): Unit}
+			\\ \\
+			Gestisce la ricezione di messaggi di tipo \texttt{LinkMessage}. Nello specifico il metodo deve gestire un messaggio di tipo \texttt{BecomeStorefinderNinjaMessage} che modifica il comportamento dell'attore in \texttt{StorefinderNinja}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: LinkMessage} - Il messaggio da processare.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{private def receiveAsStorefinderNinja: Receive}
+			\\ \\
+			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore è \texttt{StorefinderNinja}. Gestisce i seguenti messaggi:
+			\begin{itemize}
+				\item \texttt{RowMessage} - Chiama il metodo \texttt{handleRowMessagesAsStorefinderNinja}.
+			\end{itemize}
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\	
+		\textbf{Metodo: }\texttt{private def handleRowMessagesAsStorefinderNinja(message: RowMessage): Unit}
+			\\ \\
+			Poiché uno \texttt{StrefinderNinja} è una semplice copia dello \texttt{Storefinder} originale, con cui condivide i figli, non è necessaria alcuna operazione alla ricezione di un messaggio di tipo \texttt{RowMessage}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RowMessage} - Il messaggio da processare.
+			\end{itemize}
+	
+	\subsection{Actorbase.server.actors.ReplyActor (trait)}
 		Immagine UML.
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Trait che definisce le funzionalità di risposta e log di un attore.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene esteso dagli attori che devono effettuare risposte strutturate e che vogliono eseguire il log delle proprie operazioni.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.actors.ClusterAwareActor}
+				\item \texttt{akka.actor.ActorLogging}
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.actors.Usermanager}
+				\item \texttt{Actorbase.server.actors.Main}
+				\item \texttt{Actorbase.server.actors.MapManager}
+				\item \texttt{Actorbase.server.actors.IndexManager}
+				\item \texttt{Actorbase.server.actors.Storemanager}
+				\item \texttt{Actorbase.server.actors.Warehouseman}
 			\end{itemize}
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{val replyBuilder: ReplyBuilder} - Il costruttore di risposte. 
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Metodo: }\texttt{def logAndReply(reply: ReplyMessage, sender: ActorRef = sender): Unit}
 			\\ \\
-			\texttt{Firma del metodo}
-			\\ \\
-			Descrizione del metodo.
+			Effettua il log dell'operazione rappresentata dal \texttt{ReplyMessage} utilizzando il metodo \texttt{writeLog} e invia il messaggio al \texttt{sender} utilizzando il metodo \texttt{reply}.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
-			\end{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio di cui effettuare il log.
+				\item \texttt{sender: ActorRef = sender} - Il sender a cui inoltrare il messaggio.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{def reply(reply: ReplyMessage, sender: ActorRef = sender): Unit}
+			\\ \\
+			Invia il messaggio al \texttt{sender}.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio di cui effettuare il log.
+				\item \texttt{sender: ActorRef = sender} - Il sender a cui inoltrare il messaggio.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{def writeLog(reply: ReplyMessage): Unit}
+			\\ \\
+			Effettua il log dell'operazione definita dal messaggio.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{reply: ReplyMessage} - Il messaggio di cui effettuare il log.
+			\end{itemize}	
+		\textbf{Metodo: }\texttt{def currentMethodName() : String}
+			\\ \\
+			Ritorna il nome del metodo attualmente in esecuzione.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
 			
-	\subsection{Actorbase.server.actors.Storekeeper}
+	\subsection{Actorbase.server.actors.ClusterAwareActor (trait)}
 		Immagine UML.
 		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Trait che definisce un attore che si interfaccia con il cluster.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Fornisce ad un attore il metodo \texttt{nextAddress}, dovrebbe essere esteso da tutti gli attori che necessitano di creare attori in altri nodi del cluster. La politica di selezione degli indirizzi è responsabilità del \texttt{ClusterListener} del nodo.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{akka.actor.Actor}
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.actors.ReplyActor}
 			\end{itemize}
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{implicit val timeout: Timeout} - Timeout per le futures. 
+				\item \texttt{var clusterListener: ActorRef} - Istanza del cluster listener. 
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Metodo: }\texttt{def nextAddress: Address}
 			\\ \\
-			\texttt{Firma del metodo}
-			\\ \\
-			Descrizione del metodo.
+			Ritorna un indirizzo di un nodo del cluster. Questo metodo invia un messaggio al \texttt{ClusterListener} dello stesso nodo di questo attore.
 			\\ \\
 			Lista parametri del metodo:
-			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
-			\end{itemize}
+			\\ \\
+			Nessuno.
+		
 			
 	\subsection{Actorbase.server.actors.Warehouseman}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			\texttt{Firma del metodo}
-			\\ \\
-			Descrizione del metodo.
-			\\ \\
-			Lista parametri del metodo:
-			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
-			\end{itemize}
+		TODO
 			
 	\subsection{Actorbase.server.enums}
 		Immagine UML del package e breve descrizione.
