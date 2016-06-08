@@ -425,40 +425,6 @@
 				\item \texttt{value: String} - La stringa rappresentante il valore.
 			\end{itemize}
 			
-	\subsection{Actorbase.server.utils.FileManager}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Classe che definisce i metodi per leggere e scrivere dati su disco.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Viene utilizzata da attori di tipo \texttt{Warehouseman} per gestire la persistenza dei dati.
-			\\ \\
-		\textbf{Classi ereditate}
-			\\ \\
-			Nessuna.
-			\\ \\
-		\textbf{Ereditata da}
-			\\ \\
-			Nessuno.
-			\\ \\
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{path: String } - Il percorso su cui effettuare le letture e le scritture.
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			\texttt{Firma del metodo}
-			\\ \\
-			Descrizione del metodo.
-			\\ \\
-			Lista parametri del metodo:
-			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
-			\end{itemize}
 			
 	\subsection{Actorbase.server.utils.Helper}
 		Immagine UML.
@@ -741,6 +707,289 @@
 			\begin{itemize}
 				\item \texttt{array: Array[Byte]} - L'array da utilizzare per generare l'oggetto.
 			\end{itemize}
+			
+		\subsection{Actorbase.server.utils.FileManager}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Interfaccia che dichiara i metodi per leggere e scrivere dati su disco.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzata da attori di tipo \texttt{Warehouseman} per gestire la persistenza dei dati.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.utils.fileManagerLibrary.SingleFileManager}
+			\end{itemize}
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{removeStrategy: RemoveStrategy } - La strategia con cui verranno rimosse le value dal/dai file in cui sono salvate.
+			\end{itemize}
+		\textbf{Metodo:} \texttt{InsertEntry(key: String, value: Array[Byte])}
+		\\ \\
+		Metodo astratto per salvare la chiave ed il valore specificato su disco.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{key: String} - La chiave da inserire.
+			\item \texttt{value: Array[Byte]} - Il valore da inserire.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{def UpdateEntry(key:String, value: Array[Byte])}
+		\\ \\
+		Metodo astratto per aggiornare il valore della chiave specificata su disco.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{key: String} - La chiave di cui modificare il valore.
+			\item \texttt{value: Array[Byte]} - Il nuovo valore da inserire.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{def RemoveEntry(key: String)}
+		\\ \\
+		Metodo astratto per rimuovere la chiave indicata ed il relativo valore da disco.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{key: String} - La chiave di da eliminare.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{def WriteMap(map: util.HashMap[String, Array[Byte]])}
+		\\ \\
+		Metodo astratto per salvare una intera mappa chiave-valore su disco.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{map: util.HashMap[String, Array[Byte]]} - La mappa da salvare su disco.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{def ReadMap():  ConcurrentHashMap[String, Array[Byte]]}
+		\\ \\
+		Metodo astratto per leggere una intera mappa da disco.
+		\\ \\
+		Lista parametri del metodo: Nessuno.	
+		
+		
+			
+	\subsection{Actorbase.server.utils.fileManagerLibrary.SingleFileManager}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+			\\ \\
+			Classe che implementa una semplice strategia per \texttt{Actorbase.server.utils.FileManager}.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzata da attori di tipo \texttt{Warehouseman} per gestire la persistenza dei dati. In questa semplice strategia si usano due soli file per salvare una mappa. Il primo (\texttt{keyMap}) è una \emph{HashMap} serializzata che indicizza puntatore all'inizio della value e la lunghezza della stessa rispetto alle chiavi. Il secondo (\texttt{valueFile}) è un file che contiene tutte le value in Byte concatenate.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+			 	\item \texttt{Actorbase.server.utils.FileManager}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{path : String } - Il path assoluto del file \texttt{keyMap} che contiene chiavi e bounds dei valori.
+				\item \texttt{valuesPath : String } - Il path assoluto del file \texttt{valueFile} che contiene i valori in Byte concatenati.
+				\item \texttt{removeStrategy : RemoveStrategy } - La strategia di rimozione dal file delle \emph{values}.			
+			\end{itemize}	
+		\textbf{Metodo:} \texttt{override def InsertEntry(key: String, value: Array[Byte])}
+		\\ \\
+		Prima inserisce la chiave e salva il puntatore all'inizio di dove sarà la value. Dopodiché inserisce la value nel \texttt{valueFile} appendendola alla fine.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{key: String} - La chiave de inserire.
+			\item \texttt{value: Array[Byte]} - Il valore da inserire.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{override def UpdateEntry(key: String, value: Array[Byte]}
+		\\ \\
+		Prima rimuove la chiave da aggiornare e poi la reinserisce con il nuovo valore mediante i metodi \texttt{InsertEntry} e \texttt{RemovetEntry}.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{key: String} - La chiave di cui modificare il valore.
+			\item \texttt{value: Array[Byte]} - Il nuovo valore da inserire. 
+		\end{itemize}
+		\textbf{Metodo:} \texttt{override def RemoveEntry(key: String)}
+		\\ \\
+		Prima rimuove la chiave selezionata e salva il puntatore all'inizio della value. Dopodiché rimuove il valore da \texttt{valueFile} secondo la strategia impostata.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{key: String} - La chiave da rimuovere.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{override def ReadMap(): ConcurrentHashMap[String, Array[Byte]]}
+		\\ \\
+		Legge una intera mappa da disco, la deserializza e la ritorna sotto forma di \emph{ConcurrentHashMap}.
+		\\ \\
+		Lista parametri del metodo:
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Metodo:} \texttt{WriteMap(map: util.HashMap[String, Array[Byte]])}
+		\\ \\
+		Salva su disco l'intera mappa sovrascrivendo i file precedentemente salvati.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{map: util.HashMap[String, Array[Byte]]} - La mappa da salvare su disco. 
+		\end{itemize}
+		\textbf{Metodo:} \texttt{private def insertKey(key: String, from: Long, off: Long)}
+		\\ \\
+		Inserisce una chiave nella mappa delle chiavi e la salva su disco.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{key: String} - La chiave da inserire.
+			\item \texttt{from: Long} - Il puntatore all'inizio della value.
+			\item \texttt{off: Long} - La lunghezza in Byte della value.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{private def removeKey(keyMap: ConcurrentHashMap[String,Bounds], key: String)}
+		\\ \\
+		Salva puntatore all'inizio della value e offset del valore puntato dalla chiave. Rimuove la chiave dalla mappa delle chiavi in RAM. Dopodiché scorre tutta la mappa per spostare indietro i puntatori agli inizi delle values che prima della rimozione avevano punto di inizio successivo a quello del valore della chiave rimossa.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{keyMap: ConcurrentHashMap[String,Bounds]} - La mappa delle chiavi.
+			\item \texttt{key: String} - La chiave da rimuovere.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{private def insertValue(file: RandomAccessFile, value: Array[Byte])}
+		\\ \\
+		Inserisce il valore specificato alla fine del file \texttt{valueFile}.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{file: RandomAccessFile} - Il file delle value.
+			\item \texttt{value: Array[Byte]} - Il valore da inserire.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{private def removeValue(file: RandomAccessFile, init: Long, off: Long)}
+		\\ \\
+		Rimuove la porzione indicata del file delle value secondo la strategia impostata.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{file: RandomAccessFile} - Il file dei valori.
+			\item \texttt{init: Long} - Il puntatore all'inizio della sezione da rimuovere.
+			\item \texttt{off: Long} - La lunghezza della sezione da rimuovere.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{private def readMap(): ConcurrentHashMap[String,Bounds]}
+		\\ \\
+		Legge su disco il file contenente la mappa delle chiavi, lo serializza e ritorna il risultato sotto forma di \emph{ConcurrentHashMap}
+		\\ \\
+		Lista parametri del metodo:
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Metodo:} \texttt{private def writeMap(map: ConcurrentHashMap[String,Bounds])}
+		\\ \\
+		Serializza la mappa delle chiavi e la salva su disco.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{map: ConcurrentHashMap[String,Bounds]} - La mappa delle chiavi.
+		\end{itemize}
+		
+	\subsection{Actorbase.server.utils.fileManagerLibrary.Bounds}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+		\\ \\
+		Classe che definisce una coppia di puntatori all'inizio di una value e lunghezza Byte.
+		\\ \\
+		\textbf{Utilizzo}
+		\\ \\
+		Viene utilizzata per definire una porzione del file delle value.
+		\\ \\
+		\textbf{Classi ereditate}
+		\\ \\
+		Nessuna.
+		\\ \\
+		\textbf{Ereditata da}
+		\\ \\
+		Nessuna.
+		\\ \\
+		\textbf{Attributi}
+		\begin{itemize}
+			\item \texttt{var init: Long} - Il puntatore all'inizio di una value.
+			\item \texttt{var offset: Long} - La lunghezza in Byte.
+		\end{itemize}	
+
+	
+	
+	\subsection{Actorbase.server.utils.fileManagerLibrary.RemoveStrategy}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+		\\ \\
+		Interfaccia che espone un metodo per rimuovere una sezione indicata di Byte da un file.
+		\\ \\
+		\textbf{Utilizzo}
+		\\ \\
+		Viene utilizzata per definire l'interfaccia del Design Pattern Strategy riguardo alla strategia di rimozione da array di Byte.
+		\\ \\
+		\textbf{Classi ereditate}
+		\\ \\
+		Nessuna.
+		\\ \\
+		\textbf{Ereditata da}
+		\begin{itemize}
+			\item \texttt{Actorbase.server.utils.fileManagerLibrary.SpoolerRemove}
+		\end{itemize}
+		\textbf{Attributi}
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Metodo:} \texttt{def remove(file: RandomAccessFile, init: Long, off: Long)}
+		\\ \\
+		Metodo astratto per rimuovere una sezione di Byte da un file.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{file: RandomAccessFile} - Il file da cui rimuovere.
+			\item \texttt{init: Long} - L'inizio della sezione da rimuovere.
+			\item \texttt{off: Long} - La lunghezza in Byte della sezione da rimuovere.
+		\end{itemize}
+		
+			
+	\subsection{Actorbase.server.utils.fileManagerLibrary.SpoolerRemove}
+		Immagine UML.
+		\\ \\
+		\textbf{Descrizione}
+		\\ \\
+		Classe che implementa una strategia di rimozione da array di Byte. In questa strategia se la sezione che deve essere rimossa non si trova alla fine allora semplicemente la sezione successiva del file viene spostata indietro (a blocchi di 8kB l'uno) della lunghezza della sezione da rimuovere.
+		\\ \\
+		\textbf{Utilizzo}
+		\\ \\
+		Viene utilizzata per rimuovere sezioni interne del file dei valori all'interno del \texttt{FileManager}.
+		\\ \\
+		\textbf{Classi ereditate}
+		\begin{itemize}
+		 \item \texttt{Actorbase.server.utils.fileManagerLibrary.RemoveStrategy}
+		\end{itemize}
+		\textbf{Ereditata da}
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Attributi}
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Metodo:} \texttt{override def remove(file: RandomAccessFile, init: Long, off: Long)}
+		\\ \\
+		Rimuove la sezione indicata di Byte da file.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{file: RandomAccessFile} - Il file da cui rimuovere.
+			\item \texttt{init: Long} - L'inizio della sezione da rimuovere.
+			\item \texttt{off: Long} - La lunghezza in Byte della sezione da rimuovere.
+		\end{itemize}
 			
 	\subsection{Actorbase.server.actors}
 		Immagine UML del package e breve descrizione.
@@ -1496,278 +1745,368 @@
 	\subsection{Actorbase.server.actors.Warehouseman}
 		TODO
 			
-	\subsection{Actorbase.server.enums}
+		\subsection{Actorbase.server.enums}
 		Immagine UML del package e breve descrizione.
-		
-	\subsection{Actorbase.server.enums.Permission (trait)}
-		Immagine UML.
 		\\ \\
+		Package contenente tutte le classi che rappresentano un'enumerazione.
+		
+		\subsection{Actorbase.server.enums.EnumPermission (object)}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Rappresenta un'enumerazione dei permessi utente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzata per rappresentare i permessi di un utente.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+		\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+		\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{val permissionsType: Seq}  - Lista dei permessi
 			\end{itemize}
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 		
-	\subsection{Actorbase.server.enums.ReplyResult (trait)}
-		Immagine UML.
-		\\ \\
+	\subsection{Actorbase.server.enums.UserPermission (trait)}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Trait che le classi che rappresentano permessi utente devono estendere.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Fornire un'interfaccia base per le classi che definiscono permessi utente.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+		\\ \\
+		Nessuna.
+		\\ \\
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.enums.EnumPermission.Read}
+				\item \texttt{Actorbase.server.enums.EnumPermission.Write}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+		\\ \\
+				Nessuno.
+		\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
-	\subsection{Actorbase.server.enums.Read}
-		Immagine UML.
-		\\ \\
+			
+	\subsection{Actorbase.server.enums.EnumPermission.Read}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Tipo che rappresenta i permessi di lettura.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Consente di definire un oggetto per i permessi di lettura. Viene utilizzato per definire operazioni che richiedono tali permessi.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.enums.EnumPermission.UserPermission}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+		\\ \\
+			Nessuno.
+		\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
-	\subsection{Actorbase.server.enums.Write}
-		Immagine UML.
-		\\ \\
+	\subsection{Actorbase.server.enums.EnumPermission.Write}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+				Tipo che rappresenta i permessi di scrittura.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Consente di definire un oggetto per i permessi di scrittura. Viene utilizzato per definire operazioni che richiedono tali permessi.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.enums.EnumPermission.UserPermission}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+		\\ \\
+		Nessuno.
+		\\ \
+		\textbf{Attributi}
+		\\ \\
+			Nessuno.
+		\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+			\subsection{Actorbase.server.enums.EnumReplyResult (object)}
+		\textbf{Descrizione}
+			\\ \\
+			Rappresenta un'enumerazione dei possibili risultati di un'operazione.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzata per rispondere il risultato di un'operazione a chi l'ha richiesta.
+			\\ \\
+		\textbf{Classi ereditate}
+		\\ \\
+			Nessuna.
+		\\ \\
+		\textbf{Ereditata da}
+		\\ \\
+			Nessuna.
+		\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{val replyResultType: Seq} - lista dei risultati possibili.
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+		
+				\subsection{Actorbase.server.enums.EnumReplyResult.ReplyResult (trait)}
+		\textbf{Descrizione}
+			\\ \\
+			Trait che le classi che rappresentano il risultato di un'operazione devono estendere..
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Rispondere all'attore che ha richiesto un'operazione il risultato definendo un'insieme di possibili risposte.
+			\\ \\
+		\textbf{Classi ereditate}
+		\\ \\
+		Nessuna.
+		\\ \\
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.enums.EnumReplyResult.Done}
+				\item \texttt{Actorbase.server.enums.EnumReplyResult.Error}
+			\end{itemize}
+		\textbf{Attributi}
+		\\ \\
+			Nessuno.
+		\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+		
+			
+	\subsection{Actorbase.server.enums.EnumReplyResult.Done}
+		\textbf{Descrizione}
+			\\ \\
+				Tipo che rappresenta un operazione avvenuta con successo.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+				Segnalare che l'operazione è avvenuta con successo.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.enums.EnumReplyResult.ReplyResult}
+			\end{itemize}
+		\textbf{Ereditata da}
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Attributi}
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.enums.EnumReplyResult.Error}
+		\textbf{Descrizione}
+			\\ \\
+			Tipo che rappresenta il risultato di un operazione completata in modo anomalo.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Segnalare che un operazione è stata completata in modo anomalo o non è stata completata.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.enums.EnumReplyResult.ReplyResult}
+			\end{itemize}
+		\textbf{Ereditata da}
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Attributi}
+		\\ \\
+			Nessuno.
+		\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+			\subsection{Actorbase.server.enums.EnumStoremanagerType (object)}
+		\textbf{Descrizione}
+			\\ \\
+			Rappresenta un enumerazione dei possibili comportamenti di uno \texttt{Storemanager}.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Permette di definire l'insieme di comportamenti di uno \texttt{Storemanager}, in modo da poter impostare un comportamento alla creazione di un attore di tale tipo.
+			\\ \\
+		\textbf{Classi ereditate}
+		\\ \\
+			Nessuna.
+		\\ \\
+		\textbf{Ereditata da}
+		\\ \\
+			Nessuna.
+		\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{val storemanagerTypes: Seq} - lista dei comportamenti di uno \texttt{Storemanager}.
 			\end{itemize}
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 	
-		Immagine UML.
+			
+				\subsection{Actorbase.server.enums.EnumStoremanagerType.StoremanagerType (trait)}
 		\textbf{Descrizione}
-			Descrizione testuale.
+			\\ \\
+			Trait che deve essere esteso dalle classi che definiscono il comportamento di uno \texttt{Storemanager}.
+			\\ \\
 		\textbf{Utilizzo}
-			Descrizione testuale.
+			\\ \\
+			Fornire una interfaccia base per i comportamenti dello \texttt{Storemanager}.
+			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\texttt{Firma del metodo}
-			\\
-			Descrizione del metodo.
-			\\ 
-			\textbf{Parametri}
-			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
-			\end{itemize}		
-		
-	\subsection{Actorbase.server.enums.Done}
-		Immagine UML.
 		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+		Nessuna.
+		\\ \\
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.enums.EnumStoremanagerType.StorefinderType}
+				\item \texttt{Actorbase.server.enums.EnumStoremanagerType.StorekeeperType}
+				\item \texttt{Actorbase.server.enums.EnumStoremanagerType.StorekeeperNinjaType}
+				\item \texttt{Actorbase.server.enums.EnumStoremanagerType.StorefinderNinjaType}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+		\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
-	\subsection{Actorbase.server.enums.Error}
-		Immagine UML.
-		\\ \\
+			\subsection{Actorbase.server.enums.EnumStoremanagerType.StorefinderType}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che rappresenta il comportamento \texttt{Storefinder} da parte di un attore \texttt{Storemanager}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Definire il comportamento \texttt{Storefinder} per un attore \texttt{Storemanager}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.enums.EnumStoremanagerType.StoremanagerType}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+		\\ \\
+		Nessuno.
+		\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+		\\ \\
+			Nessuno.
+		\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
-	\subsection{Actorbase.server.enums.EnumPermission (enumeration)}
-		Immagine UML.
-		\\ \\
+			\subsection{Actorbase.server.enums.EnumStoremanagerType.StorekeeperType}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che rappresenta il comportamento \texttt{Storekeeper} da parte di un attore \texttt{Storemanager}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Definire il comportamento \texttt{Storekeeper} per un attore \texttt{Storemanager}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.enums.EnumStoremanagerType.StoremanagerType}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+		\\ \\
+		Nessuno.
+		\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+		\\ \\
+			Nessuno.
+		\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
-	\subsection{Actorbase.server.enums.EnumReplyResult (enumeration)}
-		Immagine UML.
-		\\ \\
+			\subsection{Actorbase.server.enums.EnumStoremanagerType.StorekeeperNinjaType}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che rappresenta il comportamento \texttt{StorekeeperNinja} da parte di un attore \texttt{Storemanager}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Definire il comportamento \texttt{StorekeeperNinja} per un attore \texttt{Storemanager}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.enums.EnumStoremanagerType.StoremanagerType}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+		\\ \\
+		Nessuno.
+		\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+		\\ \\
+			Nessuno.
+		\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
+			
+			\subsection{Actorbase.server.enums.EnumStoremanagerType.StorefinderNinjaType}
+		\textbf{Descrizione}
+			\\ \\
+			Classe che rappresenta il comportamento \texttt{StorefinderNinja} da parte di un attore \texttt{Storemanager}.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Definire il comportamento \texttt{StorefinderNinja} per un attore \texttt{Storemanager}.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.enums.EnumStoremanagerType.StoremanagerType}
+			\end{itemize}
+		\textbf{Ereditata da}
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Attributi}
+		\\ \\
+			Nessuno.
+		\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
 			
 	\subsection{Actorbase.server.messages}
 		Immagine UML del package e breve descrizione.
@@ -1775,248 +2114,421 @@
 	\subsection{Actorbase.server.messages.internal}
 		Immagine UML del package e breve descrizione.
 		
+	\subsection{Actorbase.server.messages.internal.AskMessages (object)}
+		\textbf{Descrizione}
+			\\ \\
+			Un \texttt{AskMessage} definisce una richiesta di controllo dell'esistenza di un elemento.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Messaggi di questo tipo sono utilizzati per controllare se un elemento (un database, una mappa, ...) è presente.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.		
+		
 	\subsection{Actorbase.server.messages.internal.AskMapMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Un \texttt{AskMapMessage} definisce una richiesta di controllo dell'esistenza di una mappa.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Messaggi di questo tipo sono utilizzati per controllare se una mappa è presente.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
 			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{val mapName: String} - Il nome della mappa di cui si vuole controllare l'esistenza.
+			\end{itemize}
+		\textbf{Costruttore:} \texttt{AskMapMessage(mapName:String)}
+		\\ \\
+		Costruisce un \texttt{AskMapMessage} a partire dalla stringa contenente il nome della mappa.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{mapName: String} - Il nome della mappa.
+		\end{itemize}
+		
+	\subsection{Actorbase.server.messages.internal.AskDatabaseMessage}
+		\textbf{Descrizione}
+			\\ \\
+			Un \texttt{AskDatabaseMessage} definisce una richiesta di controllo dell'esistenza di un database.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Messaggi di questo tipo sono utilizzati per controllare se un database è presente.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{val dbName: String} - Il nome del database di cui si vuole controllare l'esistenza.
+			\end{itemize}
+		\textbf{Costruttore:} \texttt{AskDatabaseMessage(dbName: String)}
+		\\ \\
+		Costruisce un \texttt{AskDatabaseMessage} a partire dalla stringa contenente il nome del database.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{dbName: String} - Il nome del database.
+		\end{itemize}
 			
-	\subsection{Actorbase.server.messages.internal.BecomeAStorekeeperMsg}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.
-			
-	\subsection{Actorbase.server.messages.internal.SendMapMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages}
 		Immagine UML del package e breve descrizione.
 		
 	\subsection{Actorbase.server.messages.internal.LinkMessages.LinkMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Trait che ogni messaggio che definisce operazioni di collegamento tra attori deve estendere.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per fornire un'interfaccia comune per quanto riguarda la gestione di messaggi che riguardano il collegamento tra attori.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.AddNinjaMessage}
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.AddWarehousemanMessage}
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.RemoveNinjaMessage}
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.RemoveWarehousemanMessage}
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.BecomeStorefinderNinjaMessage}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages.AddNinjaMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Un \texttt{AddNinjaMessage} definisce una richiesta di aggiunta di un attore di tipo \texttt{Ninja}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per richiedere l'aggiunta di un attore di tipo \texttt{Ninja}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.LinkMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
 			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{val ref : ActorRef} - Il riferimento all'attore.
+			\end{itemize}
+		\textbf{Costruttore:} \texttt{AddNinjaMessage(ref : ActorRef)}
+		\\ \\
+		Costruisce un \texttt{AddNinjaMessage} a partire dal riferimento all'attore.
+		\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{ref : ActorRef} - Il riferimento all'attore.
+			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages.AddWarehousemanMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Un \texttt{AddWarehousemanMessage} definisce una richiesta di aggiunta di un attore di tipo \texttt{Warehouseman}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per richiedere l'aggiunta di un attore di tipo \texttt{Warehouseman}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.LinkMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
 			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{val ref : ActorRef} - Il riferimento all'attore.
+			\end{itemize}
+		\textbf{Costruttore:} \texttt{AddWarehousemanMessage(ref : ActorRef)}
+		\\ \\
+		Costruisce un \texttt{AddWarehousemanMessage} a partire dal riferimento all'attore.
+		\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{ref : ActorRef} - Il riferimento all'attore.
+			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages.RemoveNinjaMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Un \texttt{RemoveNinjaMessage} definisce una richiesta di rimozione di un attore di tipo \texttt{Ninja}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per richiedere la rimozione di un attore di tipo \texttt{Ninja}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.LinkMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{val ref : ActorRef} - Il riferimento all'attore.
 			\end{itemize}
+		\textbf{Costruttore:} \texttt{RemoveNinjaMessage(ref : ActorRef)}
+		\\ \\
+		Costruisce un \texttt{RemoveNinjaMessage} a partire dal riferimento all'attore.
+		\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{ref : ActorRef} - Il riferimento all'attore.
+			\end{itemize}
+			
+	\subsection{Actorbase.server.messages.internal.LinkMessages.RemoveWarehousemanMessage}
+		\textbf{Descrizione}
+			\\ \\
+			Un \texttt{RemoveWarehousemanMessage} definisce una richiesta di rimozione di un attore di tipo \texttt{Warehouseman}.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzato per richiedere la rimozione di un attore di tipo \texttt{Warehouseman}.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.LinkMessage}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{val ref : ActorRef} - Il riferimento all'attore.
+			\end{itemize}
+		\textbf{Costruttore:} \texttt{RemoveWarehousemanMessage(ref : ActorRef)}
+		\\ \\
+		Costruisce un \texttt{RemoveWarehousemanMessage} a partire dal riferimento all'attore.
+		\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{ref : ActorRef} - Il riferimento all'attore.
+			\end{itemize}
+			
+	\subsection{Actorbase.server.messages.internal.LinkMessages.BecomeStorefinderNinjaMessage}
+		\textbf{Descrizione}
+			\\ \\
+			Un \texttt{BecomeStorefinderNinjaMessage} definisce una richiesta di cambiamento del comportamento di uno \texttt{Storemanager} in \texttt{StorefinderNinja}.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzato da un attore \texttt{Storemanager} quando cambia comportamento e passa da \texttt{Storekeeper} a \texttt{Storefinder}, serve ad informare i suoi ninja del cambio.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.internal.LinkMessages.LinkMessage}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{val c : Array[ActorRef]} - I riferimenti agli attori figli dello \texttt{Storefinder} originale.
+				\item \texttt{val i : Array[(String, String)]} - I riferimenti agli indici degli attori figli dello \texttt{Storefinder} originale.
+				\item \texttt{val n : Array[Array[ActorRef]]} - I riferimenti ai ninja degli attori figli dello \texttt{Storefinder} originale.
+			\end{itemize}
+		\textbf{Costruttore:} \texttt{BecomeStorefinderNinjaMessage(c : Array[ActorRef], i : Array[(String, String)], n : Array[Array[ActorRef]])}
+		\\ \\
+		Costruisce un \texttt{BecomeStorefinderNinjaMessage} a partire dai dati rappresentanti i figli dello \texttt{Storefinder} originale.
+		\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{c : Array[ActorRef]} - I riferimenti agli attori figli dello \texttt{Storefinder} originale.
+				\item \texttt{i : Array[(String, String)]} - I riferimenti agli indici degli attori figli dello \texttt{Storefinder} originale.
+				\item \texttt{n : Array[Array[ActorRef]]} - I riferimenti ai ninja degli attori figli dello \texttt{Storefinder} originale.
+			\end{itemize}
+			
+	\subsection{Actorbase.server.messages.internal.ScalabilityMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.internal.ScalabilityMessages.ScalabilityMessage (trait)}
+		\textbf{Descrizione}
+			\\ \\
+			Trait che ogni messaggio che definisce operazioni relative alla scalabilità del sistema deve estendere.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzato per fornire un'interfaccia comune per quanto riguarda la gestione di messaggi che riguardano la scalabilità del sistema.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.internal.ScalabilityMessages.SendMapMessage}
+			\end{itemize}
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
-	\subsection{Actorbase.server.messages.internal.LinkMessages.RemoveWarehousemanMessage}
-		Immagine UML.
-		\\ \\
+	\subsection{Actorbase.server.messages.internal.ScalabilityMessages.SendMapMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Messaggio che definisce una richiesta di aggiunta di una mappa ad un attore preesistente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per passare mappe tra attori.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.internal.ScalabilityMessages.ScalabilityMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{val map: mutable.HashMap[String, Array[Byte]]} -La mappa che deve essere inviata.
 			\end{itemize}
+		\textbf{Costruttore:} \texttt{SendMapMessage (map: mutable.HashMap[String, Array[Byte]])}
+		\\ \\
+		Costruisce un \texttt{SendMapMessage} a partire dalla mappa che deve essere inviata.
+		\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{map: mutable.HashMap[String, Array[Byte]]} -La mappa che deve essere inviata.
+			\end{itemize}
+			
+	\subsection{Actorbase.server.messages.internal.StorageMessages}
+		Immagine UML del package e breve descrizione.
+		
+	\subsection{Actorbase.server.messages.internal.StorageMessages.StorageMessages (trait)}
+		\textbf{Descrizione}
+			\\ \\
+			Trait che ogni messaggio che definisce operazioni relative alla gestione dei dati su disco deve estendere.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzato per fornire un'interfaccia comune per quanto riguarda la gestione di messaggi che riguardano la gestione dei dati su disco
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.internal.StorageMessages.WriteMapMessage}
+				\item \texttt{Actorbase.server.messages.internal.StorageMessages.ReadMapMessage}
+			\end{itemize}
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
+			
+	\subsection{Actorbase.server.messages.internal.StorageMessages.WriteMapMessage}
+		\textbf{Descrizione}
+			\\ \\
+			Messaggio che definisce una richiesta di scrittura di una mappa su disco.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzato per scrivere una mappa su disco.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.internal.StorageMessages.StorageMessages}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{val map: mutable.HashMap[String, Array[Byte]]} -La mappa che deve essere scritta su disco.
+			\end{itemize}
+		\textbf{Costruttore:} \texttt{WriteMapMessage (map: HashMap[String, Array[Byte]])}
+		\\ \\
+		Costruisce un \texttt{WriteMapMessage} a partire dalla mappa che deve essere scritta.
+		\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{map: mutable.HashMap[String, Array[Byte]]} -La mappa che deve essere scritta.
+			\end{itemize}
+			
+	\subsection{Actorbase.server.messages.internal.StorageMessages.ReadMapMessage}
+		\textbf{Descrizione}
+			\\ \\
+			Messaggio che definisce una richiesta di lettura di una mappa da disco.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzato per leggere una mappa da disco.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.internal.StorageMessages.StorageMessages}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Costruttore:} \texttt{ReadMapMessage()}
+		\\ \\
+		Costruisce un \texttt{ReadMapMessage} senza parametri.
+		\\ \\
+		Nessuno.
 			
 	\subsection{Actorbase.server.messages.query}
 		Immagine UML del package e breve descrizione.
