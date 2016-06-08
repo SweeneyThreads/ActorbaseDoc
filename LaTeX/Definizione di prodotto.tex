@@ -3984,194 +3984,232 @@
 			Nessuno.	
 			
 	\subsection{Actorbase.client}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Client/clientLevel.jpg}
+			\caption{Componente Actorbase.client}
+		\end{figure}
+		La componente client di \emph{Actorbase} è un semplice client da riga di comando per interagire con il server attraverso il driver, è composta dalle classi Client e Welcome.
 	
 	\subsection{Actorbase.client.Client}	
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che rappresenta il client a riga di comando di \emph{Actorbase}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa classe viene utilizzata per inviare le stringhe inserite dall'utente al driver di \emph{Actorbase} e per visualizzare le risposte del server.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{private val connection: Connection } - attributo di tipo Connection, definito nel driver, che rappresenta la connessione con il server. Inizialmente nullo, la connessione viene fornita dal driver dopo aver eseguito l'accesso al server correttamente.
 			\end{itemize}
-		\textbf{Metodi}
+			\textbf{Metodo: }\texttt{def main(args: Array[String])}
 			\\ \\
-			\texttt{Firma del metodo}
-			\\ \\
-			Descrizione del metodo.
+			Metodo main del client che avvia il programma. All'avvio stampa il messaggio di benvenuto della classe Welcome, poi rimane in attesa di input da parte dell'utente.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{args: Array[String] } - Parametro standard del metodo main di \emph{Scala}.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{def executeLine(ln: String)}
+			\\ \\
+			Metodo executeLine del client che ha il compito di inviare al driver le stringhe inserite dall'utente tramite l'omonimo metodo della connection. Deve poter riconoscere la stringa di disconnessione, che chiama un metodo diverso della connection, e la stringa di chiusura, che termina il programma. Inoltre è necessario che le altre stringhe siano processate solo se esiste una connessione con il server.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{ln: String } - Stringa fornita in input dall'utente.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{def checkLogin(ln:String)}
+			\\ \\
+			Metodo checkLogin che riconosce tramite un'espressione regolare il comando di connessione. Una volta riconosciuto il comando di connessione chiama il metodo connect del Driver per ottenere una Connection nel caso in cui i dati siano corretti.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{ln: String } - Stringa fornita in input dall'utente.
 			\end{itemize}
 			
 	\subsection{Actorbase.client.Welcome}	
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che stampa un messaggio di benvenuto sulla console del client e alcuni dati riguardanti la macchina che si sta utilizzando.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Stampa di un messaggio di benvenuto per l'utente.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
-			\texttt{Firma del metodo}
+			Nessuno.
 			\\ \\
-			Descrizione del metodo.
+			\textbf{Metodo: }\texttt{def printWelcomeMessage(): Unit}
+			\\ \\
+			Stampa una stringa di benvenuto con il nome del prodotto e la dichiarazione di essere open-source. Inoltre recupera e stampa il nome e la versione del sistema operativo dell'utente, il nome dell'utente e la versione della JVM installata nella macchina dell'utente.
 			\\ \\
 			Lista parametri del metodo:
-			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
-			\end{itemize}
+			\\ \\
+				Nessuno.
+			\\ \\
 			
 	\subsection{Actorbase.driver}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Driver/driverLevel.jpg}
+			\caption{Componente Actorbase.driver}
+		\end{figure}
+		La componente driver di \emph{Actorbase} è un semplice driver per gestire le comunicazioni con il server. \'E composta dalle classi Driver, Connection e ConcreteConnection.
 		
 	\subsection{Actorbase.driver.Connection (trait)}	
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Interfaccia che definisce una connessione con il server di \emph{Actorbase}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa interfaccia espone i metodi che deve implementare una classe la concretizza.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.driver.ConcreteConnection}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
-			\texttt{Firma del metodo}
+			Nessuno.
 			\\ \\
-			Descrizione del metodo.
+			\textbf{Metodo: }\texttt{def closeConnection(): Unit}
+			\\ \\
+			Metodo astratto per chiudere la connessione con il server.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+			\textbf{Metodo: }\texttt{def executeQuery(query: String): String}
+			\\ \\
+			Metodo astratto per inviare una stringa al server. Ritorna una stringa che rappresenta la risposta del server.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{query: String } - Stringa da inviare al server.
 			\end{itemize}
 			
+			
 	\subsection{Actorbase.driver.ConcreteConnection}	
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Concretizzazione della classe Connection.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa classe riceve delle stringhe tramite il metodo executeLine. Queste stringhe vengono modificate ed inviate al Server. La classe ritorna le risposte alle query in formato di stringa.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.driver.Connection}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{private val socket: Socket} - Socket di java.net usato per la connessione con il server.
+				\item \texttt{private val out: PrintStream} - PrintStream di java.io usato per scrivere sul socket.
+				\item \texttt{private val in: InputStream} - InputStream di java.io usato per leggere dal socket.
+				\item \texttt{val host: String} - Nome dell'host.
+				\item \texttt{val port: Integer} - Numero della porta su cui impostare la connessione.
+				\item \texttt{val username: String} - Nome utente per effettuare il login al server.
+				\item \texttt{val password: String} - Password dell'utente per effettuare il login al server.
 			\end{itemize}
-		\textbf{Metodi}
+			\textbf{Costruttore: }\texttt{ConcreteConnection(val host: String, val port: Integer, val username: String, val password: String)}
 			\\ \\
-			\texttt{Firma del metodo}
-			\\ \\
-			Descrizione del metodo.
+			Costruisce un oggetto di tipo Concrete connection.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{host: String} - Nome dell'host.
+				\item \texttt{port: Integer} - Numero della porta su cui impostare la connessione.
+				\item \texttt{username: String} - Nome utente per effettuare il login al server.
+				\item \texttt{password: String} - Password dell'utente per effettuare il login al server.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{def closeConnection(): Unit}
+			\\ \\
+			Chiude la connessione con il server chiudendo il socket e tutti gli stream su di esso.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+			\textbf{Metodo: }\texttt{def executeQuery(query: String): String}
+			\\ \\
+			Prepara la stringa per essere inviata al server, aggiungendo i byte per il protocollo e per l'identificazione della richiesta. Dopo aver inviato la richiesta al server resta in attesa di una risposta per un tempo determinato.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{query: String} - Query da inviare al server.
+			\end{itemize}
+			\textbf{Metodo: }\texttt{private def login(username: String, password: String): Unit}
+			\\ \\
+			Questo metodo deve essere eseguito alla costruzione della classe. Il metodo prova a connettersi al server mandando il comando di login e attende una risposta. In caso di risposta negativa chiude la connessione.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{username: String} - Nome utente per autenticarsi nel server.
+				\item \texttt{password: String} - Password dell'utente per autenticarsi nel server.
 			\end{itemize}
 			
 	\subsection{Actorbase.driver.Driver}	
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Driver di \emph{Actorbase}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			La classe Driver crea un oggetto di tipo Connection e lo restituisce.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
-			\texttt{Firma del metodo}
+			Nessuno.
 			\\ \\
-			Descrizione del metodo.
+		\textbf{Metodo: }\texttt{def connect(host: String, port: Integer, username: String, password: String): Connection}
+			\\ \\
+			Questo metodo crea un oggetto di tipo Connection con i parametri passati e lo ritorna al chiamante. Se la connessione non è stata effettuata il metodo ritorna il valore nullo.
+			Il metodo deve anche gestire le eccezioni InterruptedException ed Exception.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{Nome parametro: tipo parametro } - Descrizione parametro
+				\item \texttt{host: String } - Nome dell'host da connettere al server.
+				\item \texttt{port: Integer } - Porta sulla quale aprire la connessione.
+				\item \texttt{username: String } - Nome dell'utente che vuole accedere al sistema.
+				\item \texttt{password: String } - Password dell'utente che vuole accedere al sistema.
 			\end{itemize}
 			
 	\newpage
