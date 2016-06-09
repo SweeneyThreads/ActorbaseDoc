@@ -76,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.4
+			Versione 0.0.11
 		\end{center}
 		% Date, change the ->day to a set date if you want to be precise
 		{\large \today} \\ [3cm] 
@@ -216,8 +216,11 @@
 			\end{itemize}
 			
 		\subsection{Actorbase.server.StaticSettings (Object)}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Server/staticSettingClass.jpg}
+			\caption{Classe Actorbase.server.StaticSettings}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe statica che permette di accedere a dei dati (impostazioni) globali.
@@ -241,15 +244,82 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{var mapManagerRefs: ConcurrentHashMap[String, ActorRef]} - Riferimento ai \texttt{MapManger}.
-				\item \texttt{var maxRowNumber: Integer} - Numero massimo di righe.
-				\item \texttt{var ninjaNumber: Integer } - Numero di \texttt{Ninja}.
-				\item \texttt{var warehousemanNumber: Integer} - Numero di \texttt{Warehousean}.
+				\item \texttt{private var mapManagerRefs: List} - Riferimento ai \texttt{MapManger}.
+				\item \texttt{private var maxRowNumber: Integer} - Numero massimo di righe.
+				\item \texttt{private var ninjaNumber: Integer } - Numero di \texttt{Ninja}.
+				\item \texttt{private var warehousemanNumber: Integer} - Numero di \texttt{Warehousean}.
 			\end{itemize}
+		\textbf{Metodo:} \texttt{mapManagerRefs(refs: List) : Unit}
+		\\ \\
+		Metodo per impostare la lista di riferimenti agli attori \texttt{MapManager}.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{refs: List} - La lista di riferimenti agli attori.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{mapManagerRefs() : List}
+		\\ \\
+		Metodo per ottenere la lista di riferimenti agli attori \texttt{MapManager}.
+		\\ \\
+		Lista parametri del metodo:
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Metodo:} \texttt{maxRowNumber(number: Integer) : Unit}
+		\\ \\
+		Metodo per impostare il numero massimo di righe di uno \texttt{Storemanager}.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{number: Integer} - L'intero rappresentante il numero massimo di righe.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{maxRowNumber() : Integer}
+		\\ \\
+		Metodo per ottenere il numero massimo di righe degli \texttt{Storemanager}.
+		\\ \\
+		Lista parametri del metodo:
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Metodo:} \texttt{ninjaNumber(number: Integer) : Unit}
+		\\ \\
+		Metodo per impostare il numero di attori di tipo \texttt{Ninja} che uno \texttt{Storemanager} deve avere.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{number: Integer} - L'intero rappresentante il numero di \texttt{Ninja}.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{ninjaNumber() : Integer}
+		\\ \\
+		Metodo per ottenere il numero di \texttt{Ninja}.
+		\\ \\
+		Lista parametri del metodo:
+		\\ \\
+		Nessuno.
+		\\ \\
+		\textbf{Metodo:} \texttt{warehousemanNumber(number: Integer) : Unit}
+		\\ \\
+		Metodo per impostare il numero di attori di tipo \texttt{Warehouseman} per mappa.
+		\\ \\
+		Lista parametri del metodo:
+		\begin{itemize}
+			\item \texttt{number: Integer} - L'intero rappresentante il numero di \texttt{Warehouseman}.
+		\end{itemize}
+		\textbf{Metodo:} \texttt{warehousemanNumber() : Integer}
+		\\ \\
+		Metodo per ottenere il numero di \texttt{Warehouseman}.
+		\\ \\
+		Lista parametri del metodo:
+		\\ \\
+		Nessuno.
+		\\ \\
 			
 		\subsection{Actorbase.server.ClusterListener }
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Server/clusterListenerClass.jpg}
+			\caption{Classe Actorbase.server.ClusterListener}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			La classe rappresenta l'attore responsabile di mantenere gli indirizzi dei nodi segnati come \emph{UP} nel cluster. Deve esserci un attore \texttt{ClusterListener} in ogni nodo del cluster. L'attore inoltre implementa una strategia Round Robin per selezionare un indirizzo dalla sua lista di nodi.
@@ -320,8 +390,11 @@
 		
 			
 	\subsection{Actorbase.server.utils.Parser}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/parserClass.jpg}
+			\caption{Componente Actorbase.server.utils.Parser}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			La classe \texttt{Parser} definisce i metodi per trasformare stringhe in messaggi \texttt{QueryMessage} utilizzabili dagli attori del sistema.
@@ -358,7 +431,7 @@
 			\begin{itemize}
 				\item \texttt{query: String } - Stringa da convertire in messaggio.
 			\end{itemize}
-			\textbf{Metodo: }\texttt{getMatch(pattern:Regex, command:String): Regex.Match}
+			\textbf{Metodo: }\texttt{private getMatch(pattern:Regex, command:String): Regex.Match}
 			\\ \\
 			Effettua il match dell'espressione regolare sulla stringa passata e ritorna il risultato.
 			\\ \\
@@ -367,7 +440,7 @@
 				\item \texttt{pattern: Regex } - Pattern da utilizzare per il match.
 				\item \texttt{command: String} - La stringa su cui effettuare il match.
 			\end{itemize}
-			\textbf{Metodo: }\texttt{parseCommandWithoutParam(command: String): QueryMessage}
+			\textbf{Metodo: }\texttt{private parseCommandWithoutParam(command: String): QueryMessage}
 			\\ \\
 			Effettua il parsing di un comando senza parametri e ritorna il corrispondente \texttt{QueryMessage}.
 			\\ \\
@@ -375,7 +448,7 @@
 			\begin{itemize}
 				\item \texttt{command: String} - La stringa rappresentante il comando.
 			\end{itemize}
-			\textbf{Metodo: }\texttt{parseCommandWithParam(command: String, arg: String): QueryMessage}
+			\textbf{Metodo: }\texttt{private parseCommandWithParam(command: String, arg: String): QueryMessage}
 			\\ \\
 			Effettua il parsing di un comando con un parametro e ritorna il corrispondente \texttt{QueryMessage}.
 			\\ \\
@@ -384,7 +457,7 @@
 				\item \texttt{command: String} - La stringa rappresentante il comando.
 				\item \texttt{arg: String} - La stringa rappresentante il parametro.
 			\end{itemize}
-			\textbf{Metodo: }\texttt{parseCommandWithTwoParams(command:String, arg1: String, arg2: String):QueryMessage}
+			\textbf{Metodo: }\texttt{private parseCommandWithTwoParams(command:String, arg1: String, arg2: String): QueryMessage}
 			\\ \\
 			Effettua il parsing di un comando con due parametri e ritorna il corrispondente \texttt{QueryMessage}.
 			\\ \\
@@ -394,7 +467,7 @@
 				\item \texttt{arg1: String} - La stringa rappresentante il primo parametro.
 				\item \texttt{arg2: String} - La stringa rappresentante il secondo parametro.
 			\end{itemize}
-			\textbf{Metodo: }\texttt{parseCommandWithThreeParams(command:String, arg1: String, arg2: String, arg3: String):QueryMessage}
+			\textbf{Metodo: }\texttt{private parseCommandWithThreeParams(command:String, arg1: String, arg2: String, arg3: String): QueryMessage}
 			\\ \\
 			Effettua il parsing di un comando con tre parametri e ritorna il corrispondente \texttt{QueryMessage}.
 			\\ \\
@@ -405,7 +478,7 @@
 				\item \texttt{arg2: String} - La stringa rappresentante il secondo parametro.
 				\item \texttt{arg3: String} - La stringa rappresentante il terzo parametro.
 			\end{itemize}
-			\textbf{Metodo: }\texttt{parseRowCommandOneParam(command: String, key: String): QueryMessage}
+			\textbf{Metodo: }\texttt{private parseRowCommandOneParam(command: String, key: String): QueryMessage}
 			\\ \\
 			Effettua il parsing di un comando al livello di item con un parametro (la chiave) e ritorna il corrispondente \texttt{QueryMessage}.
 			\\ \\
@@ -414,7 +487,7 @@
 				\item \texttt{command: String} - La stringa rappresentante il comando a livello di item.
 				\item \texttt{key: String} - La stringa rappresentante la chiave.
 			\end{itemize}
-			\textbf{Metodo: }\texttt{parseRowCommandTwoParams(command: String, key: String, value: String): QueryMessage}
+			\textbf{Metodo: }\texttt{private parseRowCommandTwoParams(command: String, key: String, value: String): QueryMessage}
 			\\ \\
 			Effettua il parsing di un comando al livello di item con due parametri (la chiave e il valore) e ritorna il corrispondente \texttt{QueryMessage}.
 			\\ \\
@@ -427,8 +500,11 @@
 			
 			
 	\subsection{Actorbase.server.utils.Helper}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.6]{Server/helperClass.jpg}
+			\caption{Componente Actorbase.server.utils.Helper}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che fornisce i metodi per ottenere una descrizione dei comandi di \emph{Actorbase}.
@@ -447,7 +523,7 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{helpMessages: LinkedHashMap[String, String] } - Mappa contenente i comandi come chiavi e le descrizioni degli stessi come valori.
+				\item \texttt{private helpMessages: LinkedHashMap[String, String] } - Mappa contenente i comandi come chiavi e le descrizioni degli stessi come valori.
 			\end{itemize}
 		\textbf{Metodo: }\texttt{completeHelp(): String}
 			\\ \\
@@ -467,8 +543,11 @@
 			\end{itemize}
 			
 	\subsection{Actorbase.server.utils.ConfigurationManager}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.6]{Server/confManClass.jpg}
+			\caption{Componente Actorbase.server.utils.ConfigurationManager}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che fornisce i metodi di lettura e scrittura dei file di configurazione del server.
@@ -507,8 +586,11 @@
 			\end{itemize}
 			
 	\subsection{Actorbase.server.utils.ReplyBuilder}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/replayBClass.jpg}
+			\caption{Componente Actorbase.server.utils.ReplyBuilder}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che fornisce i metodi di creazione delle stringhe da mandare in risposta a richieste client.
@@ -541,7 +623,7 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{UserMessageReply(reply: ReplyMessage): String}
+		\textbf{Metodo: }\texttt{private UserMessageReply(reply: ReplyMessage): String}
 			\\ \\
 			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di stabilire che tipo di \texttt{UserMessage} si sia ricevuto.
 			Gestisce i seguenti messaggi:
@@ -555,7 +637,7 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{AdminMessageReply(reply: ReplyMessage): String}
+		\textbf{Metodo: }\texttt{private AdminMessageReply(reply: ReplyMessage): String}
 			\\ \\
 			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di stabilire che tipo di \texttt{AdminMessage} si sia ricevuto.
 			Gestisce i seguenti messaggi:
@@ -567,7 +649,7 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{UserManagementMessageReply(reply: ReplyMessage): String}
+		\textbf{Metodo: }\texttt{private UserManagementMessageReply(reply: ReplyMessage): String}
 			\\ \\
 			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{UsersManagementMessage}.
 			Gestisce i seguenti messaggi:
@@ -580,7 +662,7 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{PermissionsManagementMessageReply(reply: ReplyMessage): String}
+		\textbf{Metodo: }\texttt{private PermissionsManagementMessageReply(reply: ReplyMessage): String}
 			\\ \\
 			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{PermissionManagementMessage}.
 			Gestisce i seguenti messaggi:
@@ -593,7 +675,7 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{HelpMessageReply(reply: ReplyMessage): String}
+		\textbf{Metodo: }\texttt{private HelpMessageReply(reply: ReplyMessage): String}
 			\\ \\
 			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{HelpMessage} invocando gli opportuni metodi.
 			Gestisce i seguenti messaggi:
@@ -604,7 +686,7 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{DoneHelpMessageReply(question: QueryMessage, info: ReplyInfo): String}
+		\textbf{Metodo: }\texttt{private DoneHelpMessageReply(question: QueryMessage, info: ReplyInfo): String}
 			\\ \\
 			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{HelpMessage} maggiormente nel dettaglio.
 			Gestisce i seguenti messaggi:
@@ -616,7 +698,7 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{DatabaseMessageReply(reply: ReplyMessage): String}
+		\textbf{Metodo: }\texttt{private DatabaseMessageReply(reply: ReplyMessage): String}
 			\\ \\
 			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{DatabaseMessage}.
 			Gestisce i seguenti messaggi:
@@ -630,7 +712,7 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{MapMessageReply(reply: ReplyMessage): String}
+		\textbf{Metodo: }\texttt{private MapMessageReply(reply: ReplyMessage): String}
 			\\ \\
 			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{MapMessage}.
 			Gestisce i seguenti messaggi:
@@ -644,7 +726,7 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{RowMessageReply(reply: ReplyMessage): String}
+		\textbf{Metodo: }\texttt{private RowMessageReply(reply: ReplyMessage): String}
 			\\ \\
 			Il metodo permette di costruire una stringa a partire da un \texttt{ReplyMessage}. In particolare questo metodo si occupa di gestire messaggi di tipo \texttt{RowMessage}.
 			Gestisce i seguenti messaggi:
@@ -669,8 +751,11 @@
 			\end{itemize}
 			
 	\subsection{Actorbase.server.utils.Serializer}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.6]{Server/serializerClass.jpg}
+			\caption{Componente Actorbase.server.utils.Serializer}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che gestisce la serializzazione e la deserializzazione di oggetti.
@@ -709,8 +794,11 @@
 			\end{itemize}
 			
 		\subsection{Actorbase.server.utils.FileManager}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.6]{Server/fmClass.jpg}
+			\caption{Componente Actorbase.server.utils.FileManager}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Interfaccia che dichiara i metodi per leggere e scrivere dati su disco.
@@ -771,11 +859,10 @@
 		\\ \\
 		Lista parametri del metodo: Nessuno.	
 		
-		
+		\subsection{Actorbase.server.utils.fileManagerLibrary}
+		Package contenente le classi che effettuano operazioni per gestire i file su disco. Le classi di questo package vengono usate principalmente dall'attore di tipo \texttt{Warehouseman} che si occupa della persistenza dei dati su disco.	
 			
 	\subsection{Actorbase.server.utils.fileManagerLibrary.SingleFileManager}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
 			Classe che implementa una semplice strategia per \texttt{Actorbase.server.utils.FileManager}.
@@ -896,8 +983,6 @@
 		\end{itemize}
 		
 	\subsection{Actorbase.server.utils.fileManagerLibrary.Bounds}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 		\\ \\
 		Classe che definisce una coppia di puntatori all'inizio di una value e lunghezza Byte.
@@ -923,8 +1008,6 @@
 	
 	
 	\subsection{Actorbase.server.utils.fileManagerLibrary.RemoveStrategy}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 		\\ \\
 		Interfaccia che espone un metodo per rimuovere una sezione indicata di Byte da un file.
@@ -958,8 +1041,6 @@
 		
 			
 	\subsection{Actorbase.server.utils.fileManagerLibrary.SpoolerRemove}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 		\\ \\
 		Classe che implementa una strategia di rimozione da array di Byte. In questa strategia se la sezione che deve essere rimossa non si trova alla fine allora semplicemente la sezione successiva del file viene spostata indietro (a blocchi di 8kB l'uno) della lunghezza della sezione da rimuovere.
@@ -992,11 +1073,19 @@
 		\end{itemize}
 			
 	\subsection{Actorbase.server.actors}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/actorsLevel.jpg}
+			\caption{Componente Actorbase.server.actors}
+		\end{figure}
+		Package contenente le classi che definiscono gli attori di \emph{Actorbase}. Gli attori sono le entità che compongono la logica vera e propria del sistema, gli attori definiti in questo package si scambiano i messaggi definiti in \texttt{Actorbase.server.messages}.
 		
 	\subsection{Actorbase.server.actors.Doorkeeper}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/doorkeeper.jpg}
+			\caption{Componente Actorbase.server.actors.Doorkeeper}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che definisce l'attore di tipo \texttt{Doorkeeper}. Tale attore rappresenta il punto di ingresso al server, apre una porta nell'host e si mette in ascolto di eventuali richieste di connessione. Quando un nuovo client si connette, il \texttt{Doorkeeper} crea un nuovo attore di tipo \texttt{Usermanager} a cui delega la gestione delle richieste per quella determinata connessione.
@@ -1039,8 +1128,11 @@
 			Nessuno.
 			
 	\subsection{Actorbase.server.actors.Usermanager}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/usermanager.jpg}
+			\caption{Componente Actorbase.server.actors.Usermanager}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che definisce l'attore di tipo \texttt{Usermanager}. Tale attore gestisce le richieste TCP provenienti da uno specifico client: si occupa di comprendere il contenuto delle query, di inoltrare le richieste e di fornire le risposte al client.
@@ -1059,11 +1151,11 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{parser: Parser} - Parser per effettuare l'elaborazione delle richieste utente.
-				\item \texttt{conected: Boolean} - Booleano per controllare lo stato della connessione.
-				\item \texttt{mainActor: ActorRef} - Riferimento all'attore di tipo \texttt{Main} per la connessione gestita.
-				\item \texttt{builder: ByteStringBuilder} - Costruttore di stringhe a partire da Byte.
-				\item \texttt{tcpSender: ActorRef} - Riferimento all'attore di tipo \texttt{TCP}.
+				\item \texttt{private parser: Parser} - Parser per effettuare l'elaborazione delle richieste utente.
+				\item \texttt{private connected: Boolean} - Booleano per controllare lo stato della connessione.
+				\item \texttt{private mainActor: ActorRef} - Riferimento all'attore di tipo \texttt{Main} per la connessione gestita.
+				\item \texttt{private builder: ByteStringBuilder} - Costruttore di stringhe a partire da Byte.
+				\item \texttt{private tcpSender: ActorRef} - Riferimento all'attore di tipo \texttt{TCP}.
 			\end{itemize}
 		\textbf{Costruttore: }\texttt{Usermanager()}
 			\\ \\
@@ -1084,7 +1176,7 @@
 			\\ \\
 			Nessuno.
 			\\ \\
-		\textbf{Metodo: }\texttt{receiveData(data: ByteString): Unit}
+		\textbf{Metodo: }\texttt{private receiveData(data: ByteString): Unit}
 			\\ \\
 			Effettua il  buffer dei Byte provenienti dal client e controlla che il messaggio sia nella forma corretta.
 			\\ \\
@@ -1092,7 +1184,7 @@
 			\begin{itemize}
 				\item \texttt{data: ByteString} - I Byte provenienti dal client.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{processRequest(request: ByteString): Unit}
+		\textbf{Metodo: }\texttt{private processRequest(request: ByteString): Unit}
 			\\ \\
 			Processa i Byte ricevuti nel metodo \texttt{receiveData} comprendendo il tipo di richiesta del client. Genera il corrispondente messaggio utilizzando il \texttt{Parser} e lo inoltra di conseguenza.
 			\\ \\
@@ -1100,7 +1192,7 @@
 			\begin{itemize}
 				\item \texttt{request: ByteString} - Richiesta del client.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{handleQueryMessage(message: QueryMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleQueryMessage(message: QueryMessage): Unit}
 			\\ \\
 			Gestisce un messaggio di tipo \texttt{QueryMessage} prodotto dal metodo \texttt{processRequest}. Nel caso si tratti di un \texttt{LoginMessage} gestisce personalmente la richiesta, altrimenti inoltra il messaggio all'attore \texttt{Main}.
 			\\ \\
@@ -1108,7 +1200,7 @@
 			\begin{itemize}
 				\item \texttt{message: QueryMessage} - Il messaggio da gestire.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{handleLogin(username: String, password: String): Unit}
+		\textbf{Metodo: }\texttt{private handleLogin(username: String, password: String): Unit}
 			\\ \\
 			Effettua l'operazione di login per il client, nel caso quest'ultimo non fosse già autenticato. Si occupa di controllare la correttezza dei dati di login (username e password) rispetto alla lista di utenti che hanno accesso al server. Infine comunica al client l'esito dell'operazione.
 			\\ \\
@@ -1117,7 +1209,7 @@
 				\item \texttt{username: String} - L'username dell'utente.
 				\item \texttt{password: String} - La password dell'utente.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{replyToClient(reply: String): Unit}
+		\textbf{Metodo: }\texttt{private replyToClient(reply: String): Unit}
 			\\ \\
 			Invia il \texttt{ReplyMessage} al mittente originario (l'attore TCP).
 			\\ \\
@@ -1125,7 +1217,7 @@
 			\begin{itemize}
 				\item \texttt{reply: String} - La stringa da inviare come risposta.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{handleLoginFuture(psw: String, username : String, password : String): Unit}
+		\textbf{Metodo: }\texttt{private handleLoginFuture(psw: String, username : String, password : String): Unit}
 			\\ \\
 			Implementa nel dettaglio la gestione del login differenziando la gestione di utenti normali da quella di un utente amministratore. Inoltre si occupa di generare la risposta per il client nel caso di login fallito.
 			\\ \\
@@ -1137,8 +1229,11 @@
 			\end{itemize}
 			
 	\subsection{Actorbase.server.actors.Main}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/main.jpg}
+			\caption{Componente Actorbase.server.actors.Main}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che definisce l'attore di tipo \texttt{Main}. Tale attore si occupa di eseguire le richieste effettuate da un client. Processa autonomamente le query a livello database e le query amministratore, per tutte le altre query si occupa di inoltrarle all'attore appropriato. \'E l'unico attore che interagisce con l'attore di tipo \texttt{Usermanager}, tutte le risposte generate vengono inviate ad esso.
@@ -1157,9 +1252,9 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{helper: Helper} - istanza della classe \texttt{Helper} per gestire le richieste di aiuto.
-				\item \texttt{selectedDatabase: String} - stringa che rappresenta il database selezionato dal client.
-				\item \texttt{selectedMap: String} - stringa che rappresenta la mappa selezionata dal client.
+				\item \texttt{private helper: Helper} - istanza della classe \texttt{Helper} per gestire le richieste di aiuto.
+				\item \texttt{private selectedDatabase: String} - stringa che rappresenta il database selezionato dal client.
+				\item \texttt{private selectedMap: String} - stringa che rappresenta la mappa selezionata dal client.
 			\end{itemize}
 		\textbf{Costruttore: }\texttt{Main(perms: util.HashMap[String, UserPermission] = null)}
 			\\ \\
@@ -1177,7 +1272,7 @@
 			\\ \\
 			Nessuno.
 			\\ \\
-		\textbf{Metodo: }\texttt{handleQueryMessage(message: QueryMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleQueryMessage(message: QueryMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{QueryMessage}. Si occupa di differenziare tra messaggi \texttt{UserMessage} e \texttt{AdminMessage} chiamando per essi il metodo corretto.
 			Gestisce i seguenti tipi di messaggi:
@@ -1189,7 +1284,7 @@
 			\begin{itemize}
 				\item \texttt{message: QueryMessage} - Il messaggio da processare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{handleUserMessage(message: UserMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleUserMessage(message: UserMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{UserMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
 			Gestisce i seguenti tipi di messaggi:
@@ -1203,7 +1298,7 @@
 			\begin{itemize}
 				\item \texttt{message: UserMessage} - Il messaggio da processare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{handleAdminMessage(message: AdminMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleAdminMessage(message: AdminMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{AdminMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
 			Gestisce i seguenti tipi di messaggi:
@@ -1216,7 +1311,7 @@
 			\begin{itemize}
 				\item \texttt{message: AdminMessage} - Il messaggio da processare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{handleUserManagementMessage(message: UsersManagementMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleUserManagementMessage(message: UsersManagementMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{UsersManagementMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
 			Gestisce i seguenti tipi di messaggi:
@@ -1229,7 +1324,7 @@
 			\begin{itemize}
 				\item \texttt{message: UsersManagementMessage} - Il messaggio da processare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{handlePermissionsManagementMessage(message: PermissionsManagementMessage): Unit}
+		\textbf{Metodo: }\texttt{private handlePermissionsManagementMessage(message: PermissionsManagementMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{PermissionsManagementMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
 			Gestisce i seguenti tipi di messaggi:
@@ -1242,7 +1337,7 @@
 			\begin{itemize}
 				\item \texttt{message: PermissionsManagementMessage} - Il messaggio da processare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{handleSettingMessage(message: SettingMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleSettingMessage(message: SettingMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{SettingMessage}. Si occupa di differenziare tra messaggi chiamando per essi il metodo corretto.
 			Gestisce i seguenti tipi di messaggi:
@@ -1253,7 +1348,7 @@
 			\begin{itemize}
 				\item \texttt{message: SettingMessage} - Il messaggio da processare.
 			\end{itemize}			
-		\textbf{Metodo: }\texttt{handleHelpMessage(message: HelpMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleHelpMessage(message: HelpMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{HelpMessage}. Si occupa di elaborare una richiesta definita da un messaggio di help.
 			Gestisce i seguenti tipi di messaggi:
@@ -1265,7 +1360,7 @@
 			\begin{itemize}
 				\item \texttt{message: HelpMessage} - Il messaggio da processare.
 			\end{itemize}			
-		\textbf{Metodo: }\texttt{handleDatabaseMessage(message: DatabaseMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleDatabaseMessage(message: DatabaseMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{DatabaseMessage}. Si occupa di elaborare una richiesta a livello database.
 			Gestisce i seguenti tipi di messaggi:
@@ -1279,7 +1374,7 @@
 			\begin{itemize}
 				\item \texttt{message: DatabaseMessage} - Il messaggio da processare.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{handleMapMessage(message: MapMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleMapMessage(message: MapMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{MapMessage}. Si occupa di elaborare una richiesta a livello mappa.
 			Gestisce i seguenti tipi di messaggi:
@@ -1291,7 +1386,7 @@
 			\begin{itemize}
 				\item \texttt{message: MapMessage} - Il messaggio da processare.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{handleRowMessage(message: RowMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleRowMessage(message: RowMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{RowMessage}. Si occupa di elaborare una richiesta a livello item. Controlla che vi siano un database e una mappa selezionati, in tal caso inoltra la richiesta al corretto \texttt{MapManager}.
 			\\ \\
@@ -1299,7 +1394,7 @@
 			\begin{itemize}
 				\item \texttt{message: RowMessage} - Il messaggio da processare.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{checkPermissions(message: QueryMessage, dbName: String): Boolean}
+		\textbf{Metodo: }\texttt{private checkPermissions(message: QueryMessage, dbName: String): Boolean}
 			\\ \\
 			Questo metodo controlla che l'utente abbia i permessi necessari ad eseguire la query. Nel caso l'utente fosse amministratore egli dispone di tutti i permessi automaticamente, altrimenti vengono controllati i permessi utenti. Nel caso i permessi risultino sufficienti ad effettuare la query il metodo ritorna \texttt{true}, altrimenti ritorna \texttt{false}.
 			\\ \\
@@ -1308,7 +1403,7 @@
 				\item \texttt{message: QueryMessage} - Il messaggio contenente la query utente.
 				\item \texttt{dbName: String} - Il database selezionato dall'utente.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{handlePermissionsList(message: ListPermissionMessage): Unit}
+		\textbf{Metodo: }\texttt{private handlePermissionsList(message: ListPermissionMessage): Unit}
 			\\ \\
 			Il metodo gestisce i messaggi di richiesta della lista dei permessi degli utenti.
 			\\ \\
@@ -1316,7 +1411,7 @@
 			\begin{itemize}
 				\item \texttt{message: ListPermissionMessage} - Il messaggio da processare.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{handleAddPermission(message: AddPermissionMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleAddPermission(message: AddPermissionMessage): Unit}
 			\\ \\
 			Il metodo gestisce i messaggi di aggiunta alla lista dei permessi degli utenti.
 			\\ \\
@@ -1324,7 +1419,7 @@
 			\begin{itemize}
 				\item \texttt{message: AddPermissionMessage} - Il messaggio da processare.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{handleRemovePermissions(message: RemovePermissionMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleRemovePermissions(message: RemovePermissionMessage): Unit}
 			\\ \\
 			Il metodo gestisce i messaggi di rimozione dalla lista dei permessi degli utenti.
 			\\ \\
@@ -1332,7 +1427,7 @@
 			\begin{itemize}
 				\item \texttt{message: RemovePermissionMessage} - Il messaggio da processare.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{handleListUserMessage(message: ListUserMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleListUserMessage(message: ListUserMessage): Unit}
 			\\ \\
 			Il metodo gestisce i messaggi di richiesta della lista degli utenti.
 			\\ \\
@@ -1340,7 +1435,7 @@
 			\begin{itemize}
 				\item \texttt{message: ListUserMessage} - Il messaggio da processare.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{handleAddUser(message: AddUserMessage, username: String, password : String): Unit}
+		\textbf{Metodo: }\texttt{private handleAddUser(message: AddUserMessage, username: String, password : String): Unit}
 			\\ \\
 			Il metodo gestisce i messaggi di aggiunta alla lista degli utenti.
 			\\ \\
@@ -1350,7 +1445,7 @@
 				\item \texttt{username: String} - L'username dell'utente da aggiungere.
 				\item \texttt{password : String} -La password dell'utente da aggiungere.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{handleRemoveUser(message: RemoveUserMessage, username: String): Unit}
+		\textbf{Metodo: }\texttt{private handleRemoveUser(message: RemoveUserMessage, username: String): Unit}
 			\\ \\
 			Il metodo gestisce i messaggi di rimozione dalla lista degli utenti.
 			\\ \\
@@ -1361,8 +1456,11 @@
 			\end{itemize}
 			
 	\subsection{Actorbase.server.actors.MapManager}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/mapmanager.jpg}
+			\caption{Componente Actorbase.server.actors.MapManager}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che definisce l'attore di tipo \texttt{MapManager}. Questo tipo di attore rappresenta un singolo database di \emph{Actorbase}, gestisce le diverse mappe che lo compongono (attori \texttt{IndexManager}).
@@ -1404,7 +1502,7 @@
 			\\ \\
 			Nessuno.
 			\\ \\
-		\textbf{Metodo: }\texttt{private def handleMapMessage(message: MapMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleMapMessage(message: MapMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{MapMessage}. Gestisce i seguenti tipi di messaggi:
 			\begin{itemize}
@@ -1416,7 +1514,7 @@
 			\begin{itemize}
 				\item \texttt{message: MapMessage} - Il messaggio da processare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{private def handleRowMessage(message: RowMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleRowMessage(message: RowMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{RowMessage}. Trova il corretto \texttt{IndexManager} a cui inoltrare il messaggio.
 			\\ \\
@@ -1426,8 +1524,11 @@
 			\end{itemize}
 			
 	\subsection{Actorbase.server.actors.IndexManager}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/indexmanager.jpg}
+			\caption{Componente Actorbase.server.actors.IndexManager}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che definisce l'attore di tipo \texttt{IndexManager}. Questo tipo di attore rappresenta una singola mappa di \emph{Actorbase}. Gestisce i dati che compongono la mappa sia in memoria principale (RAM) che su disco, utilizzando attori di tipo \texttt{Storemanager} e \texttt{Warehouseman}.
@@ -1467,7 +1568,7 @@
 			\\ \\
 			Nessuno.
 			\\ \\
-		\textbf{Metodo: }\texttt{private def handleRowMessage(message: RowMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleRowMessage(message: RowMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{RowMessage}. Inoltra il messaggio all'albero di \texttt{Storemanager} e ai \texttt{Warehouseman}.
 			\\ \\
@@ -1478,8 +1579,11 @@
 			
 			
 	\subsection{Actorbase.server.actors.Storemanager}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/storemanager.jpg}
+			\caption{Componente Actorbase.server.actors.Storemanager}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che definisce l'attore di tipo \texttt{Storemanager}. Questo tipo di attore si occupa di mantenere i dati in memoria principale secondo una struttura gerarchica. Uno \texttt{Storemanager} può avere quattro tipologie di comportamento differenti:
@@ -1505,10 +1609,10 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{var map: ConcurrentHashMap[String,  Array[Byte]]} - Mappa contenente gli item. 
-				\item \texttt{var index: (String, String)} - Indice dei dati contenuti nell'attore (utilizzato per trovare l'attore corretto).
-				\item \texttt{var storemanagerType: StoremanagerType} - Tipo di comportamento.
-				\item \texttt{var ninjas: Array[ActorRef]} - Riferimento ai propri attori \texttt{Ninja}.
+				\item \texttt{private var map: ConcurrentHashMap[String,  Array[Byte]]} - Mappa contenente gli item. 
+				\item \texttt{private var index: (String, String)} - Indice dei dati contenuti nell'attore (utilizzato per trovare l'attore corretto).
+				\item \texttt{private var storemanagerType: StoremanagerType} - Tipo di comportamento.
+				\item \texttt{private var ninjas: Array[ActorRef]} - Riferimento ai propri attori \texttt{Ninja}.
 			\end{itemize}
 		\textbf{Costruttore: }\texttt{Storemanager(var map: ConcurrentHashMap[String,  Array[Byte]], index: (String, String), storemanagerType: StoremanagerType, ninjas: Array[ActorRef]=null)}
 			\\ \\
@@ -1537,7 +1641,7 @@
 			\\ \\
 			Nessuno.
 			\\ \\
-		\textbf{Metodo: }\texttt{private def handleRowMessageAsStorekeeper(message: RowMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleRowMessageAsStorekeeper(message: RowMessage): Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{RowMessage} quando l'attore si comporta come \texttt{Storekeeper}. Riconosce il messaggio e gestisce la richiesta completamente, producendo una risposta.
 			Gestisce i seguenti tipi di messaggi:
@@ -1552,7 +1656,7 @@
 			\begin{itemize}
 				\item \texttt{message: RowMessage} - Il messaggio da processare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{private def divideActor() : Unit}
+		\textbf{Metodo: }\texttt{private divideActor() : Unit}
 			\\ \\
 				Il metodo effettua la divisione dell'attore in due quando si raggiunge il numero massimo di item contenuti in esso. La divisione si effettua creando due \texttt{Storemanager} figli con comportamento da \texttt{Storekeeper} a cui si passa metà della mappa. Una volta creati i figli l'attore svuota la propria mappa e inizia a comportarsi da \texttt{Storefinder}.
 			\\ \\
@@ -1560,7 +1664,7 @@
 			\\ \\
 				Nessuno. 
 			\\ \\
-		\textbf{Metodo: }\texttt{private def receiveAsStoreFinder: Receive}
+		\textbf{Metodo: }\texttt{private receiveAsStoreFinder: Receive}
 			\\ \\
 			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore è \texttt{Storefinder}. Riconosce messaggi di tipo \texttt{RowMessage}, e passa la gestione di essi al metodo \texttt{handleRowMessageAsStorefinder}.
 			\\ \\
@@ -1568,7 +1672,7 @@
 			\\ \\
 			Nessuno.
 			\\ \\
-		\textbf{Metodo: }\texttt{private def handleRowMessageAsStorefinder(message: RowMessage) : Unit}
+		\textbf{Metodo: }\texttt{private handleRowMessageAsStorefinder(message: RowMessage) : Unit}
 			\\ \\
 			Processa messaggi di tipo \texttt{RowMessage} quando l'attore si comporta come \texttt{Storefinder}. Riconosce il messaggio e inoltra la richiesta ai figli.
 			Gestisce i seguenti tipi di messaggi:
@@ -1583,7 +1687,7 @@
 			\begin{itemize}
 				\item \texttt{message: RowMessage} - Il messaggio da processare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{private def sendToStorekeeper(key: String, message: RowMessage): Unit}
+		\textbf{Metodo: }\texttt{private sendToStorekeeper(key: String, message: RowMessage): Unit}
 			\\ \\
 			Il metodo si occupa di trovare inoltrare al figlio corretto il messaggio.
 			\\ \\
@@ -1592,7 +1696,7 @@
 				\item \texttt{key: String} - La chiave della richiesta da inoltrare.
 				\item \texttt{message: RowMessage} - Il messaggio da inoltrare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{private def findRightStorekeeper(key:String): Child}
+		\textbf{Metodo: }\texttt{private findRightStorekeeper(key:String): Child}
 			\\ \\
 			Il metodo si occupa di trovare il figlio corretto confrontando la chiave con gli indici dei figli.
 			\\ \\
@@ -1600,7 +1704,7 @@
 			\begin{itemize}
 				\item \texttt{key: String} - La chiave della richiesta da inoltrare.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{private def receiveAsStorekeeperNinja: Receive}
+		\textbf{Metodo: }\texttt{private receiveAsStorekeeperNinja: Receive}
 			\\ \\
 			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore è \texttt{StorekeeperNinja}. Gestisce i seguenti messaggi:
 			\begin{itemize}
@@ -1611,7 +1715,7 @@
 			\\ \\
 			Nessuno.
 			\\ \\		
-		\textbf{Metodo: }\texttt{private def handleRowMessagesAsStorekeeperNinja(message: RowMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleRowMessagesAsStorekeeperNinja(message: RowMessage): Unit}
 			\\ \\
 			Il comportamento del metodo è simile a quello di \texttt{handleRowMessageAsStorekeeper}, con la differenza che un Ninja si occupa solo di tenere i dati aggiornati dunque non vengono generate risposte alle richieste.
 			\\ \\
@@ -1619,7 +1723,7 @@
 			\begin{itemize}
 				\item \texttt{message: RowMessage} - Il messaggio da processare.
 			\end{itemize}			
-		\textbf{Metodo: }\texttt{private def handleLinkMessagesAsStorekeeperNinja(message: LinkMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleLinkMessagesAsStorekeeperNinja(message: LinkMessage): Unit}
 			\\ \\
 			Gestisce la ricezione di messaggi di tipo \texttt{LinkMessage}. Nello specifico il metodo deve gestire un messaggio di tipo \texttt{BecomeStorefinderNinjaMessage} che modifica il comportamento dell'attore in \texttt{StorefinderNinja}.
 			\\ \\
@@ -1627,7 +1731,7 @@
 			\begin{itemize}
 				\item \texttt{message: LinkMessage} - Il messaggio da processare.
 			\end{itemize}	
-		\textbf{Metodo: }\texttt{private def receiveAsStorefinderNinja: Receive}
+		\textbf{Metodo: }\texttt{private receiveAsStorefinderNinja: Receive}
 			\\ \\
 			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore è \texttt{StorefinderNinja}. Gestisce i seguenti messaggi:
 			\begin{itemize}
@@ -1637,7 +1741,7 @@
 			\\ \\
 			Nessuno.
 			\\ \\	
-		\textbf{Metodo: }\texttt{private def handleRowMessagesAsStorefinderNinja(message: RowMessage): Unit}
+		\textbf{Metodo: }\texttt{private handleRowMessagesAsStorefinderNinja(message: RowMessage): Unit}
 			\\ \\
 			Poiché uno \texttt{StrefinderNinja} è una semplice copia dello \texttt{Storefinder} originale, con cui condivide i figli, non è necessaria alcuna operazione alla ricezione di un messaggio di tipo \texttt{RowMessage}.
 			\\ \\
@@ -1647,8 +1751,11 @@
 			\end{itemize}
 	
 	\subsection{Actorbase.server.actors.ReplyActor (trait)}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.6]{Server/replyactor.jpg}
+			\caption{Componente Actorbase.server.actors.ReplyActor}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Trait che definisce le funzionalità di risposta e log di un attore.
@@ -1710,8 +1817,11 @@
 			Nessuno.
 			
 	\subsection{Actorbase.server.actors.ClusterAwareActor (trait)}
-		Immagine UML.
-		\\ \\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.6]{Server/clusterawareactor.jpg}
+			\caption{Componente Actorbase.server.actors.ClusterAwareActor}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Trait che definisce un attore che si interfaccia con il cluster.
@@ -1743,12 +1853,19 @@
 		
 			
 	\subsection{Actorbase.server.actors.Warehouseman}
-		TODO
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.6]{Server/warehouseman.jpg}
+			\caption{Componente Actorbase.server.actors.Warehouseman}
+		\end{figure}
 			
 		\subsection{Actorbase.server.enums}
-		Immagine UML del package e breve descrizione.
-		\\ \\
-		Package contenente tutte le classi che rappresentano un'enumerazione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.6]{Server/enumsLevel.jpg}
+			\caption{Actorbase.server.enums}
+		\end{figure}
+		Package contenente tutte le classi che rappresentano un'enumerazione. Le classi definite in questo package servono come enumerazioni di alcune proprietà di \emph{Actorbase}.
 		
 		\subsection{Actorbase.server.enums.EnumPermission (object)}
 		\textbf{Descrizione}
@@ -2119,7 +2236,7 @@
 	\subsection{Actorbase.server.messages.internal}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.5]{Server/internalLevel.jpg}
+			\includegraphics[width=\textwidth]{Server/internalLevel.jpg}
 			\caption{Componente Actorbase.server.messages.internal}
 		\end{figure}
 		La componente internal di \emph{Actorbase} è la raccolta dei messaggi che vengono scambiati tra attori internamente al sistema, ovvero non sono collegati direttamente ad azione dell'utente. Svolgono attività di configurazione e influenzano il comportamento degli attori.
@@ -2794,559 +2911,385 @@
 			\\ \\
 			
 	\subsection{Actorbase.server.messages.query.ErrorMessages}
-		Immagine UML del package e breve descrizione.
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/errorMessagesLevel.jpg}
+			\caption{Componente Actorbase.server.messages.query.ErrorMessages}
+		\end{figure}
+		I messaggi contenuti in questo package sono utilizzati per gestire situazioni di errore e operazioni non valide.
 		
 	\subsection{Actorbase.server.messages.query.ErrorMessages.ErrorMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Trait che fornisce un'interfaccia di base a tutti i messaggi che modellano situazioni di errore.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene esteso da tutti i messaggi che modellano situazioni di errore.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.ErrorMessages.InvalidQueryMessage}
+				\item \texttt{Actorbase.server.messages.query.ErrorMessages.QueryErrorInfo}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.ErrorMessages.InvalidQueryMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Questo tipo di messaggio definisce una query non valida.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per informare che la query richiesta non è valida.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.ErrorMessages.ErrorMessage}
+				\item \texttt{Actorbase.server.messages.query.QueryMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
 			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Costruttore: } \texttt{InvalidQueryMessage()}
+			\\ \\
+			Il costruttore del messaggio costruisce un \texttt{InvalidQueryMessage} senza alcun parametro.
+			\\ \\
+			Lista parametri del metodo: Nessuno.
 			
-	\subsection{Actorbase.server.messages.query.PermissionMessages}
-		Immagine UML del package e breve descrizione.
-		
-	\subsection{Actorbase.server.messages.query.PermissionMessages.AdminPermissionMessage (trait)}
-		Immagine UML.
-		\\ \\
+	\subsection{Actorbase.server.messages.query.ErrorMessages.QueryErrorInfo}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Questo tipo di messaggio definisce una query non eseguita correttamente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene utilizzato per informare che la query richiesta non è stata eseguita correttamente.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.ErrorMessages.ErrorMessage}
+				\item \texttt{Actorbase.server.messages.query.ReplyInfo}
 			\end{itemize}
 		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Costruttore: } \texttt{QueryErrorInfo()}
+			\\ \\
+			Il costruttore del messaggio costruisce un \texttt{QueryErrorInfo} senza alcun parametro.
+			\\ \\
+			Lista parametri del metodo: Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.PermissionMessages}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/permissionMessagesLevel.jpg}
+			\caption{Componente Actorbase.server.messages.query.PermissionMessages}
+		\end{figure}
+		I \texttt{PermissionMessages} sono utilizzati per definire operazioni che trattano il livello di permessi degli utenti. Tutte le classi e interfacce contenute in questo package definiscono questo tipo di operazioni.
+		
+	\subsection{Actorbase.server.messages.query.PermissionMessages.AdminPermissionMessage (trait)}
+		\textbf{Descrizione}
+			\\ \\
+			Trait che definisce l'interfaccia di base per i messaggi che riguardano operazioni per cui sono richiesti i permessi di amministratore.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene esteso dai messaggi che trattano i permessi amministratore.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.admin.AdminMessage}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
 \subsection{Actorbase.server.messages.query.PermissionMessages.NoPermissionMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Trait che definisce l'interfaccia di base per i messaggi che riguardano operazioni per cui non sono richiesti permessi.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene esteso da tutti i messaggi che definiscono operazioni che non richiedono permessi.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.CreateDatabaseMessage}
+				\item \texttt{Actorbase.server.messages.query.user.HelpMessages.CompleteHelpMessage}
+				\item \texttt{Actorbase.server.messages.query.user.HelpMessages.SpecificHelpMessage}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
 \subsection{Actorbase.server.messages.query.PermissionMessages.ReadMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Trait che definisce l'interfaccia di base per i messaggi che riguardano operazioni per cui sono richiesti permessi di lettura.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene esteso da tutti i messaggi che definiscono operazioni che richiedono permessi di lettura.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.PermissionMessages.NoPermissionMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.SelectDatabaseMessage}
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.ListDatabaseMessage}
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.SelectMapMessage}
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.ListMapMessage}
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.FindRowMessage}
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.ListKeysMessage}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
 \subsection{Actorbase.server.messages.query.PermissionMessages.ReadWriteMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Trait che definisce l'interfaccia di base per i messaggi che riguardano operazioni per cui sono richiesti permessi di scrittura.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene esteso da tutti i messaggi che definiscono operazioni che richiedono permessi di dcrittura.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.PermissionMessages.ReadMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.DeleteDatabaseMessage}
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.CreateMapMessage}
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.DeleteMapMessage}
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.InsertRowMessage}
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.UpdateRowMessage}
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.RemoveRowMessage}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
+
 			
-	\subsection{Actorbase.server.messages.query.admin}
-		Immagine UML del package e breve descrizione.
+\subsection{Actorbase.server.messages.query.PermissionMessages.NoReadPermissionInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Messaggio che informa della mancanza dei permessi di lettura necessari.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzato in risposta a una richiesta di accesso ad un database, da parte di un client che non dispone dei permessi di lettura su tale database.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.query.ReplyInfo}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Costruttore: } \texttt{NoReadPermissionInfo()}
+			\\ \\
+			Il costruttore del messaggio costruisce un \texttt{NoReadPermissionInfo} senza alcun parametro.
+			\\ \\
+			Lista parametri del metodo: Nessuno.
+						
+\subsection{Actorbase.server.messages.query.PermissionMessages.NoWritePermissionInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Messaggio che informa della mancanza dei permessi di scrittura necessari.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzato in risposta a una richiesta di modifica ad un database o a una mappa, da parte di un client che non dispone dei permessi di scrittura su tale database.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.query.ReplyInfo}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Costruttore: } \texttt{NoWritePermissionInfo()}
+			\\ \\
+			Il costruttore del messaggio costruisce un \texttt{NoWritePermissionInfo} senza alcun parametro.
+			\\ \\
+			Lista parametri del metodo: Nessuno.
+			
+\subsection{Actorbase.server.messages.query.PermissionMessages.NoAdminPermissionInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Messaggio che informa della mancanza dei permessi di amministrazione necessari.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene utilizzato in risposta a una richiesta di operazione di amministrazione da parte di un client che non è amministratore.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.query.ReplyInfo}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Costruttore: } \texttt{NoAdminPermissionInfo()}
+			\\ \\
+			Il costruttore del messaggio costruisce un \texttt{NoAdminPermissionInfo} senza alcun parametro.
+			\\ \\
+			Lista parametri del metodo: Nessuno.
+			
+		\subsection{Actorbase.server.messages.query.admin}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/adminLevel.jpg}
+			\caption{Componente Actorbase.server.messages.query.admin}
+		\end{figure}
+		Questo package racchiude tutte le classi ed interfacce che rappresentano messaggi di amministrazione, ovvero richieste fatte da un amministratore al server.
 		
 \subsection{Actorbase.server.messages.query.admin.AdminMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Interfaccia di base per i messaggi di tipo \texttt{AdminMessage}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa interfaccia fornisce un tipo comune per tutti i messaggi che rappresentano dei comandi amministratore.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.admin.PermissionsManagementMessage}
+				\item \texttt{Actorbase.server.messages.query.admin.SettingMessage}
+				\item \texttt{Actorbase.server.messages.query.admin.UsersManagementMessage}
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
 			Nessuno.
-		
-	\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages}
-		Immagine UML del package e breve descrizione.
-		
-\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.ActorPropertiesMessage (trait)}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.
-			
-\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxRowMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.
-			
-\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxRowMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.
-			
-\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetNinjaMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.			
-			
-\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxNinjaMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.
-			
-\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.
-\newline SetWarehousemanMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.			
-			
-\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.
-\newline MaxWarehousemanMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.
-			
-\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorekeeperMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.
-			
-\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorefinderMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages}
-		Immagine UML del package e breve descrizione.
+		Questo package contiene i messaggi di gestione dei permessi degli utenti.
 		
 	\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages.
 	\newline PermissionManagementMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Interfaccia di base per i messaggi di tipo \texttt{PermissionManagementMessage}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa interfaccia fornisce un tipo comune per tutti i messaggi che rappresentano dei comandi amministratore riguardanti la gestione dei permessi.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.admin.AdminMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.admin.PermissionsManagementMessages.ListPermissionMessage}
+				\item \texttt{Actorbase.server.messages.query.admin.PermissionsManagementMessages.AddPermissionMessage}
+				\item \texttt{Actorbase.server.messages.query.admin.PermissionsManagementMessages.RemovePermissionMessage}		
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
 \subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages.
 \newline AddPermissionMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Messaggio per richiedere l'aggiunta di permessi ad un utente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene usato per modificare la tabella Master aggiungendo dei permessi all'utente specificato.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.admin.PermissionsManagementMessages.}
+				\\ \texttt{PermissionsManagementMessages}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{username : String } - L'username dell'utente a cui si vogliono aggiungere permessi.
 			\end{itemize}
 		\textbf{Metodi}
 			\\ \\
@@ -3354,30 +3297,25 @@
 			
 \subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages.
 \newline RemovePermissionMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Messaggio per richiedere la rimozione di permessi ad un utente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene usato per modificare la tabella Master rimuovendo dei permessi all'utente specificato.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+				\item \texttt{Actorbase.server.messages.query.admin.PermissionsManagementMessages.}
+				\\ \texttt{PermissionsManagementMessages}\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{username : String } - L'username dell'utente a cui si vogliono rimuovere permessi.
 			\end{itemize}
 		\textbf{Metodi}
 			\\ \\
@@ -3385,773 +3323,1476 @@
 			
 \subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages.
 \newline ListPermissionMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Messaggio per richiedere la lista dei permessi ad un utente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene usato per ottenere dalla tabella Master la lista dei permessi all'utente specificato.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+				\item \texttt{Actorbase.server.messages.query.admin.PermissionsManagementMessages.}
+				\\ \texttt{PermissionsManagementMessages}\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{username : String } - L'username dell'utente di cui si vogliono visualizzare i permessi.
 			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages.
+	\newline ListPermissionsInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Questa classe rappresenta la lista dei permessi assegnati ad un utente.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene usata per aggiungere le informazioni riguardanti la lista dei permessi assegnati ad un utente nei messaggi di ritorno.
+			\\ \\
+		textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{permissions: util.HashMap[String, UserPermission] } - La lista dei permessi assegnati ad un utente.
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+	
+	\subsection{Actorbase.server.messages.query.admin.SettingsMessages.RefreshSettingsMessage}
+		\textbf{Descrizione}
+			\\ \\
+			Messaggio per richiedere l'aggiornamento delle impostazioni dal file di configurazione.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene usato per richiedere l'aggiornamento delle impostazioni dal file di configurazione.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.query.admin.SettingsMessages.SettingsMessages}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages}
-		Immagine UML del package e breve descrizione.
+		Questo package contiene i messaggi di amministrazione degli utenti.
 		
-	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.UserManagementMessage (trait)}
-		Immagine UML.
-		\\ \\
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.
+	\newline UserManagementMessage (trait)}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Interfaccia di base per i messaggi di tipo UserManagementMessage.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa interfaccia fornisce un tipo comune per tutti i messaggi che rappresentano dei comandi amministratore per la gestione degli utenti.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.admin.AdminMessage.AdminMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.admin.UserManagementMessages.AddUserMessage}
+				\item \texttt{Actorbase.server.messages.query.admin.UserManagementMessages.RemoveUserMessage}
+				\item \texttt{Actorbase.server.messages.query.admin.UserManagementMessages.ListUserMessage}				
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
 		
-	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.AddUserMessage}
-		Immagine UML.
-		\\ \\
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.
+	\newline AddUserMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Messaggio per richiedere l'aggiunta di un utente, con la relativa password alla lista degli utenti che hanno accesso al server.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene usato per aggiungere un utente, con la relativa password alla lista degli utenti che hanno accesso al server.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.admin.UserManagementMessages.UserManagementMessages}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
-			\\ \\
-			Nessuno.		
-			
-	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.RemoveUserMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{username : String } - L'username che si vuole inserire.
+				\item \texttt{password : String } - La password.				
 			\end{itemize}
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.	
 			
-	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.ListUserMessage}
-		Immagine UML.
-		\\ \\
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.
+	\newline RemoveUserMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Messaggio per richiedere la rimozione di un utente dalla lista degli utenti che hanno accesso al server.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene usato per rimuovere un utente dalla lista degli utenti che hanno accesso al server.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.admin.UserManagementMessages.UserManagementMessages}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{username : String } - L'username che si vuole rimuovere.				
 			\end{itemize}
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.	
 			
-	\subsection{Actorbase.server.messages.query.user}
-		Immagine UML del package e breve descrizione.
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.
+	\newline ListUserMessage}
+		\textbf{Descrizione}
+			\\ \\
+			Messaggio per richiedere la lista degli utenti che hanno accesso al server.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene usato per richiedere la lista degli utenti che hanno accesso al server.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.query.admin.UserManagementMessages.UserManagementMessages}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.ListUserInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Questa classe rappresenta le informazioni riguardanti la lista degli utenti.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene usata per aggiungere le informazioni riguardanti la lista degli utenti.
+			\\ \\
+		textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{userList : List[String] } - La lista degli utenti.
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.NoUserInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Questa classe rappresenta la non esistenza di un determinato utente nella mappa 'users' del database 'master'.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene usata per segnalare la non esistenza di un determinato utente nella mappa 'users' del database 'master'.
+			\\ \\
+		textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.AddUserInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Questa classe rappresenta le informazioni riguardanti la risposta da mandare alla console quando un \emph{AddUserMessage} è stato elaborato.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene usata per aggiungere le informazioni riguardanti la risposta da mandare alla console quando un \emph{AddUserMessage} è stato elaborato.
+			\\ \\
+		textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.admin.UserManagementMessages.RemoveUserInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Questa classe rappresenta le informazioni riguardanti la risposta da mandare alla console quando un \emph{RemoveUserMessage} è stato elaborato.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene usata per aggiungere le informazioni riguardanti la risposta da mandare alla console quando un \emph{RemoveUserMessage} è stato elaborato.
+			\\ \\
+		textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+
+		
+		\subsection{Actorbase.server.messages.query.user}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Server/userLevel.jpg}
+			\caption{Componente Actorbase.server.messages.query.user}
+		\end{figure}
+		La componente user di \emph{Actorbase} raccoglie tutti i messaggi che rappresentano richieste che l'utente sottopone al database. Si dividono in messaggi a livello di database, di mappa, di riga e in messaggi di aiuto. Raccoglie inoltre i rispettivi messaggi di risposta.
 		
 	\subsection{Actorbase.server.messages.query.user.UserMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Interfaccia comune a tutti i messaggi di tipo query dell'utente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa interfaccia viene utilizzata per dare un tipo comune a tutti i messaggi di query dell'utente.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.RowMessage }
+				\item \texttt{Actorbase.server.messages.query.user.MapMessage }
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessage }
+				\item \texttt{Actorbase.server.messages.query.user.HelpMessage }
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.	
 			
 	\subsection{Actorbase.server.messages.query.user.RowMessages}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.4]{Server/RowMessagesLevel.jpg}
+			\caption{Componente Actorbase.server.messages.query.user.RowMessages}
+		\end{figure}
+		La componente RowMessages di \emph{Actorbase} raccoglie tutti i messaggi che rappresentano richieste a livello di riga di un utente. Raccoglie inoltre i rispettivi messaggi di risposta.
 		
 	\subsection{Actorbase.server.messages.query.user.RowMessages.RowMessage (trait)}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
+			Interfaccia comune a tutti i messaggi di query a livello di riga.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa interfaccia serve a dare un tipo comune a tutti i messaggi di query a livello di riga.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.UserMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.InsertRowMessage }
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.UpdateRowMessage }
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.RemoveRowMessage }
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.FindRowMessage }
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.ListKeysMessage }
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.StorefinderRowMessage }
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.	
 			
 	\subsection{Actorbase.server.messages.query.user.RowMessages.InsertRowMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
-			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta un messaggio di inserimento di una coppia chiave-valore all'interno di una mappa.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che riporta la chiave e il valore che l'utente vuole inserire.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.RowMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadWriteMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{key: String} - Chiave da inserire.
+				\item \texttt{value: Array[Byte]} - Valore da inserire.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{InsertRowMessage(key: String, value: Array[Byte])}
 			\\ \\
-			Nessuno.	
-		
-	\subsection{Actorbase.server.messages.query.user.RowMessages.UpdateRowMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
+		Metodo che costruisce un oggetto di tipo InsertRowMessage.
 			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
+		Lista parametri del metodo:
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{key: String} - Chiave da inserire.
+				\item \texttt{value: Array[Byte]} - Valore da inserire.
 			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Metodo: }\texttt{key(): String}
+			\\ \\
+		Metodo che restituisce l'attributo key della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{value: Array[Byte]}
+			\\ \\
+		Metodo che restituisce l'attributo value della classe.
+			\\ \\
+		Lista parametri del metodo:
 			\\ \\
 			Nessuno.		
+		
+	\subsection{Actorbase.server.messages.query.user.RowMessages.UpdateRowMessage}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta un messaggio di modifica di un valore all'interno di una mappa.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe è un messaggio che riporta la chiave della coppia da modificare e il nuovo valore che l'utente vuole inserire.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.RowMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadWriteMessage }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{key: String} - Chiave della coppia da modificare.
+				\item \texttt{value: Array[Byte]} - Nuovo valore da inserire.
+			\end{itemize}
+		\textbf{Costruttore: }\texttt{UpdateRowMessage(key: String, value: Array[Byte])}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo UpdateRowMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{key: String} - Chiave della coppia da modificare.
+				\item \texttt{value: Array[Byte]} - Nuovo valore da inserire.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{key(): String}
+			\\ \\
+		Metodo che restituisce l'attributo key della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{value: Array[Byte]}
+			\\ \\
+		Metodo che restituisce l'attributo value della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.user.RowMessages.RemoveRowMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta un messaggio di rimozione di una coppia chiave-valore da una mappa.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che riporta la chiave della coppia da rimuovere.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.RowMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadWriteMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{key: String} - Chiave della coppia da rimuovere.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{RemoveRowMessage(key: String)}
 			\\ \\
-			Nessuno.	
+		Metodo che costruisce un oggetto di tipo RemoveRowMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{key: String} - Chiave della coppia da rimuovere.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{key(): String}
+			\\ \\
+		Metodo che restituisce l'attributo key della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.user.RowMessages.FindRowMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta un messaggio di ricerca di una coppia chiave-valore di una mappa.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che riporta la chiave del valore richiesto.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.RowMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{key: String} - Chiave della coppia richiesta.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{FindRowMessage(key: String)}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo FindRowMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{key: String} - Chiave della coppia richiesta.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{key(): String}
+			\\ \\
+		Metodo che restituisce l'attributo key della classe.
+			\\ \\
+		Lista parametri del metodo:
 			\\ \\
 			Nessuno.		
 			
 	\subsection{Actorbase.server.messages.query.user.RowMessages.ListKeysMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta un messaggio di richiesta della lista delle chiavi della mappa.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che serve a richiedere l'intera lista delle chiavi della mappa.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.RowMessages.RowMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Costruttore: }\texttt{ListKeysMessage(key: String)}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo ListKeysMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.RowMessages.KeyAlreadyExistInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di chiave già esistente.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente che la chiave che si intende inserire è già presente nella mappa.
+			\\ \\
+		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
 			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.RowMessages.KeyDoesNotExistInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di chiave inesistente.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente che la chiave ricercata per operazioni di find, remove o update non esiste.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.RowMessages.ListKeyInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta alla richiesta di ricevere la lista delle chiavi della mappa.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a ritornare all'utente la lista delle chiavi della mappa.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{keys: List[String]} - Lista delle chiavi presenti nella mappa.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{ListKeyInfo(keys: List[String])}
 			\\ \\
-			Nessuno.	
+		Metodo che costruisce un oggetto di tipo ListKeyInfo.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{keys: List[String]} - Lista delle chiavi presenti nella mappa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{keys(): List[String]}
+			\\ \\
+		Metodo che restituisce l'attributo key della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.RowMessages.NoKeyInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di nessuna chiave nella mappa.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente, al seguito di una richiesta della lista delle chiavi, che non sono presenti chiavi nella mappa.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+	
+	\subsection{Actorbase.server.messages.query.user.RowMessages.FindInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta ad un ricerca di un utente.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a ritornare all'utente il valore ricercato tramite il comando find.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{value: Array[Byte]} - Valore ricercato dall'utente.
+			\end{itemize}
+		\textbf{Costruttore: }\texttt{FindInfo(value: Array[Byte])}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo FindInfo.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{value: Array[Byte]} - Valore ricercato dall'utente.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{value: Array[Byte]}
+			\\ \\
+		Metodo che restituisce l'attributo value della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.user.MapMessages}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.35]{Server/mapMessagesLevel.jpg}
+			\caption{Componente Actorbase.server.messages.query.user.MapMessages}
+		\end{figure}
+		La componente MapMessages di \emph{Actorbase} raccoglie tutti i messaggi che rappresentano richieste a livello di mappa di un utente. Raccoglie inoltre i rispettivi messaggi di risposta.
 		
 	\subsection{Actorbase.server.messages.query.user.MapMessages.MapMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Interfaccia comune a tutti i messaggi di query a livello di mappa.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa interfaccia serve a dare un tipo comune a tutti i messaggi di query a livello di mappa.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.UserMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.CreateMapMessage }
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.DeleteMapMessage }
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.SelectMapMessage }
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.ListMapMessage }
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.	
 			
 	\subsection{Actorbase.server.messages.query.user.MapMessages.CreateMapMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta la richiesta di creazione di una nuova mappa.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che riporta il nome della mappa che l'utente richiede di creare.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.MapMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadWriteMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{name: String } - Nome della mappa da creare.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{CreateMapMessage(name: String)}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo CreateMapMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{name: String } - Nome della mappa da creare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{name(): String}
+			\\ \\
+		Metodo che restituisce l'attributo name della classe.
+			\\ \\
+		Lista parametri del metodo:
 			\\ \\
 			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.user.MapMessages.DeleteMapMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta la richiesta di rimozione di una mappa.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che riporta il nome della mappa che l'utente richiede di rimuovere.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.MapMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadWriteMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{name: String } - Nome della mappa da eliminare.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{DeleteMapMessage(name: String)}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo DeleteMapMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{name: String } - Nome della mappa da eliminare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{name(): String}
+			\\ \\
+		Metodo che restituisce l'attributo name della classe.
+			\\ \\
+		Lista parametri del metodo:
 			\\ \\
 			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.user.MapMessages.SelectMapMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta la richiesta di selezione di una mappa.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che riporta il nome della mappa che l'utente richiede di selezionare.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.MapMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{name: String } - Nome della mappa da selezionare.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{SelectMapMessage(name: String)}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo SelectMapMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{name: String } - Nome della mappa da selezionare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{name(): String}
+			\\ \\
+		Metodo che restituisce l'attributo name della classe.
+			\\ \\
+		Lista parametri del metodo:
 			\\ \\
 			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.user.MapMessages.ListMapMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta la richiesta di visualizzare la lista delle mappe del database.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che rappresenta la richiesta dell'utente di visualizzare la lista delle mappe del database selezionato.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.MapMessages.MapMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages.MapAlreadyExistInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di mappa già esistente.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente che esiste già una mappa con lo stesso nome nel database selezionato.
+			\\ \\
+		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
 			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages.MapDoesNotExistInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di mappa inesistente.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente che la mappa richiesta tramite le operazioni di select o delete non esiste.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages.ListMapInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta alla richiesta di ricevere la lista delle mappe del database selezionato.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a ritornare all'utente la lista dei nomi delle mappe del database selezionato.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{maps: List[String]} - Lista dei nomi delle mappe del database.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{ListMapInfo(maps: List[String])}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo ListMapInfo.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{maps: List[String]} - Lista dei nomi delle mappe del database.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{maps: List[String]}
+			\\ \\
+		Metodo che restituisce l'attributo maps della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages.NoMapInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di nessuna mappa presente nel database.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente, in risposta alla richiesta di visualizzazione della lista delle mappe, che non ci sono mappe nel database.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.MapMessages.NoMapSelectedInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di nessuna mappa selezionata.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente che ha inviato una richiesta a livello di riga che non ha selezionato nessuna mappa.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
 			\\ \\
 			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.user.DatabaseMessages}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.35]{Server/databaseMessagesLevel.jpg}
+			\caption{Componente Actorbase.server.messages.query.user.DatabaseMessages}
+		\end{figure}
+		La componente DatabaseMessages di \emph{Actorbase} raccoglie tutti i messaggi che rappresentano richieste a livello di database di un utente. Raccoglie inoltre i rispettivi messaggi di risposta.
 		
 	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.DatabaseMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Interfaccia comune a tutti i messaggi di query a livello di database.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa interfaccia serve a dare un tipo comune a tutti i messaggi di query a livello di database.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.UserMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.CreateDatabaseMessage }
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.DeleteDatabaseMessage }
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.SelectDatabaseMessage }
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.ListDatabaseMessage }
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
 			\\ \\
 			Nessuno.
+			\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.	
 			
 	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.CreateDatabaseMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta la richiesta di creazione di un nuovo database.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che riporta il nome del database che l'utente richiede di creare.
+		Non sono necessari permessi particolari per creare un nuovo database.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.DatabaseMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.NoPermissionMessages }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{name: String } - Nome del database da creare.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{CreateDatabaseMessage(name: String)}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo CreateDatabaseMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{name: String } - Nome del database da creare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{name(): String}
+			\\ \\
+		Metodo che restituisce l'attributo name della classe.
+			\\ \\
+		Lista parametri del metodo:
 			\\ \\
 			Nessuno.		
 			
 	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.DeleteDatabaseMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta la richiesta di rimozione di un database.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che riporta il nome del database che l'utente richiede di rimuovere.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.DatabaseMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadWriteMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{name: String } - Nome del database da rimuovere.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{DeleteDatabaseMessage(name: String)}
 			\\ \\
-			Nessuno.	
-			
-			
-	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.SelectDatabaseMessage}
-		Immagine UML.
-		\\ \\
-		\textbf{Descrizione}
+		Metodo che costruisce un oggetto di tipo DeleteDatabaseMessage.
 			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Utilizzo}
-			\\ \\
-			Descrizione testuale.
-			\\ \\
-		\textbf{Classi ereditate}
+		Lista parametri del metodo:
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{name: String } - Nome del database da rimuovere.
 			\end{itemize}
-		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
-		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Metodo: }\texttt{name(): String}
+			\\ \\
+		Metodo che restituisce l'attributo name della classe.
+			\\ \\
+		Lista parametri del metodo:
 			\\ \\
 			Nessuno.		
 			
-	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.ListDatabaseMessage}
-		Immagine UML.
-		\\ \\
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.SelectDatabaseMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+		Classe che rappresenta la richiesta di selezione di un database.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+		Questa classe è un messaggio che riporta il nome del database che l'utente richiede di selezionare.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.DatabaseMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{name: String } - Nome del database da selezionare.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: }\texttt{SelectDatabaseMessage(name: String)}
 			\\ \\
-			Nessuno.	
+		Metodo che costruisce un oggetto di tipo SelectDatabaseMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{name: String } - Nome del database da selezionare.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{name(): String}
+			\\ \\
+		Metodo che restituisce l'attributo name della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.			
 			
-	\subsection{Actorbase.server.messages.query.user.HelpMessages}
-		Immagine UML del package e breve descrizione.
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.ListDatabaseMessage}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la richiesta di visualizzare la lista dei database disponibili.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe è un messaggio che riporta la richiesta dell'utente di visualizzare la lista dei database disponibili.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.DatabaseMessage }
+				\item \texttt{Actorbase.server.messages.PermissionMessages.ReadMessage }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.DBAlreadyExistInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di database già esistente.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente che esiste già un database con lo stesso nome.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.DBDoesNotExistInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di database inesistente.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente che il database richiesto tramite le operazione di select o delete non esiste.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.ListDBInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta alla richiesta di ricevere la lista dei database disponibili.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a ritornare all'utente la lista dei nomi dei database disponibili.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{dbs: List[String]} - Lista dei nomi dei database disponibili.
+			\end{itemize}
+		\textbf{Costruttore: }\texttt{ListDBInfo(maps: List[String])}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo ListDBInfo.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{dbs: List[String]} - Lista dei nomi dei database disponibili.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{dbs: List[String]}
+			\\ \\
+		Metodo che restituisce l'attributo dbs della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.NoDBInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di nessun database disponibile.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente, in risposta alla richiesta di visualizzazione della lista dei database, che non ci sono database disponibili.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.DatabaseMessages.NoDBSelectedInfo}
+		\textbf{Descrizione}
+			\\ \\
+		Classe che rappresenta la risposta di nessun database selezionato.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+		Questa classe serve a comunicare all'utente che ha inviato una richiesta a livello di mappa o riga che non ha selezionato nessuna database.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo }
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi }
+			\\ \\
+			Nessuno.
+			
+		\subsection{Actorbase.server.messages.query.user.HelpMessages}
+	 \begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{Server/helpMessagesLevel.jpg}
+				\caption{Componente Actorbase.server.messages.query.user.HelpMessages}
+			\end{figure}
+		Questo package contiene tutte le classi e interfacce che rappresentano messaggi per operazioni di richiesta aiuto.
 		
 	\subsection{Actorbase.server.messages.query.user.HelpMessages.HelpMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Interfaccia di base per i messaggi di tipo HelpMessage.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa interfaccia fornisce un tipo comune per tutti i messaggi che rappresentano dei comandi di aiuto.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.UserMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.HelpMessages.CompleteHelpMessage}
+				\item \texttt{Actorbase.server.messages.query.user.HelpMessages.SpecificHelpMessage}				
 			\end{itemize}
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.	
 			
 	\subsection{Actorbase.server.messages.query.user.HelpMessages.CompleteHelp}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Messaggio per richiedere l'aiuto completo.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene usato per richiedere l'aiuto completo.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.HelpMessages.HelpMessage}
+				\item \texttt{Actorbase.server.messages.query.PermissionMessages.NoPermissionMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
-			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.	
 			
 	\subsection{Actorbase.server.messages.query.user.HelpMessages.SpecificHelp}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Messaggio per richiedere l'aiuto specifico.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Viene usato per richiedere l'aiuto specifico.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.user.HelpMessages.HelpMessage}
+				\item \texttt{Actorbase.server.messages.query.PermissionMessages.NoPermissionMessage}
 			\end{itemize}
 		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.user.HelpMessages.CompleteHelpReplyInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Questa classe rappresenta le informazioni riguardanti la richiesta di aiuto completo.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene usata per aggiungere le informazioni riguardanti la richiesta di aiuto completo.
+			\\ \\
+		textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.ReplyInfo}
 			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{commands: String} - Le informazioni.
 			\end{itemize}
 		\textbf{Metodi}
 			\\ \\
-			Nessuno.	
+			Nessuno.
+
+	\subsection{Actorbase.server.messages.query.user.HelpMessages.SpecificHelpReplyInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Questa classe rappresenta le informazioni riguardanti la richiesta di aiuto specifico.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Viene usata per aggiungere le informazioni riguardanti la richiesta di aiuto specifico.
+			\\ \\
+		textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ReplyInfo}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{commands: String} - Le informazioni.
+			\end{itemize}
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+
 			
 	\subsection{Actorbase.client}
 		\begin{figure}[H]
@@ -4384,16 +5025,51 @@
 			
 	\newpage
 	
+
 	\section{Diagrammi di sequenza}
+	In questa sezione verranno illustrati e descritti i principali diagrammi di sequenza realizzati. 
+        
+        Per esplicitare l'invio di un messaggio tra due attori, nei diagrammi viene chiamato il metodo \textit{sendMessage()} dell'attore che manda il messaggio. Questo perché per mandare messaggi con Akka si usano punti esclamativi e di domanda
+        
+        Trattandosi di diagrammi di sequenza non molto specifici, alcuni attori effettuano operazioni senza chiamare dei metodi specifici già 
+        dichiarati. 
+        
+       \subsection{Ricezione messaggio}
+	\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Sequenza/seqComandoUtente.jpg}
+			\caption{Diagramma di sequenza per la ricezione di un messaggio}
+		\end{figure}
+		Nel diagramma è possibile visualizzare quali sono le operazioni che vengono eseguite dagli
+attori Usermanager e Main alla ricezione di una richiesta dall'utente. Usermanager, dopo aver convertito
+i byte bufferizzati ricevuti in una stringa, crea un messaggio che rappresenta la richiesta dell'utente ed lo invia al
+Main. Il Main controlla che l'utente abbia i permessi per il tipo di richiesta, in caso affermativo gestisce,
+anche indirettamente, il messaggio e risponde.
+
+\subsection{Ricezione comando a livello di riga}
+	\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Sequenza/seqRowMessage.jpg}
+			\caption{Diagramma di sequenza per la ricezione di un comando a livello riga}
+		\end{figure}
+		Nel diagramma è possibile visualizzare quali sono le operazioni che vengono eseguite dagli attori principali alla ricezione di una richiesta a livello di riga. Ogni attore capisce che è una richiesta a livello di riga e la gestisce mandandola all'attore figlio che potrebbe gestirla. In base a database selezionato, mappa selezionata e chiave, il messaggio arriva al corretto Storemanager. Il messaggio viene inoltra mandato ad ogni Warehouseman responsabile della mappa selezionata.
+		
+		\subsection{Scalabilità Storemanager}
+	\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Sequenza/seqDuplicazione.jpg}
+			\caption{Diagramma di sequenza per la scalabilità degli Storemanager}
+		\end{figure}
+		Nel diagramma è possibile visualizzare quali sono le operazioni che vengono eseguite da un attore Storemanager con comportamento Storekeeper quando la propria mappa raggiunge la grandezza massima impostata. Per prima cosa cambia comportamento, assumendo quello di uno Storefinder, crea due attori figli di tipo Storemanager con comportamento Storekeeper ed assegna a ciascuno una metà della propria mappa.1
 	
 	\newpage
 	
 	\section{Tracciamento}
 	
 	\subsection{Tracciamento requisiti-classi}
-	
+	\LTXtable{\textwidth}{Tabelle/tabelle_classi_requisiti/requisiti_classi.tex}
 	\subsection{Tracciamento classi-requisiti}
-	
+	\LTXtable{\textwidth}{Tabelle/tabelle_classi_requisiti/classi_requisiti.tex}
 	\subsection{Tracciamento classi-test}
 
 		
