@@ -1,0 +1,89 @@
+
+\newcolumntype{s}{>{\hsize=.37\hsize}X}
+\newcolumntype{f}{>{\hsize=.42\hsize}X}
+\newcolumntype{m}{>{\hsize=.21\hsize}X}
+
+\begin{longtable}{s X}  
+			\rowcolor{orange!85}Requisiti & Classi \\
+\endhead
+
+R[1.1][N][F] e figli & Actorbase.server.Server  \\
+\hline
+R[1.1.3][N][F]& Actorbase.server.ClusterListener,\newline Actorbase.server.actors.ClusterAwareActor \\
+\hline
+R[1.2][N][F] e figli & Actorbase.server.Server \\
+\hline
+R[1.3][N][F] e figli & Actorbase.server.actors.Usermanager,\newline Actorbase.server.utils.Parser,\newline Actorbase.server.messages.query.LoginMessage \\
+\hline
+R[1.4][N][F] e figli & Actorbase.server.actors.Main,\newline  Actorbase.server.messages.query.user.DatabaseMessage,\newline  Actorbase.server.utils.Parser \\
+\hline
+R[1.4.1.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor  \\
+\hline
+ R[1.4.4.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+ R[1.4.4.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+ R[1.4.5.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+ R[1.4.5.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+ R[1.4.7.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.4.7.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.5][N][F] e figli & Actorbase.server.actors.MapManager,\newline  Actorbase.server.messages.query.user.MapMessage,\newline  Actorbase.server.utils.Parser \\
+\hline
+R[1.5.1.2][D][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.5.2.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+ R[1.5.2.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.5.3.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.5.3.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.5.5.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.5.5.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.6][N][F] e figli & Actorbase.server.actors.Storemanager,\newline  Actorbase.server.messages.query.user.RowMessage,\newline  Actorbase.server.utils.Parser \\
+\hline
+R[1.6.1.2][D][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.6.2.3][N][F] & Actorbase.server.messages.query.ReplyMessage, Actorbase.server.utils.ReplyBuilder, Actorbase.server.actors.ReplyActor   \\
+\hline
+ R[1.6.2.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.6.3.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.6.3.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.6.4.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.6.4.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.6.6.3][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.6.6.4][N][F] & Actorbase.server.messages.query.ReplyMessage,\newline Actorbase.server.utils.ReplyBuilder,\newline Actorbase.server.actors.ReplyActor   \\
+\hline
+R[1.7][N][F] e figli & Actorbase.server.actors.Main  \\
+\hline
+R[2][N][F] e figli & Actorbase.client.Client  \\
+\hline
+R[3.1][N][F] e figli & Actorbase.driver.Driver  \\
+\hline
+R[3.2][N][F] e figli & Actorbase.driver.ConcreteConnection  \\
+\hline
+R[3.3][N][F] e figli & Actorbase.driver.Driver  \\
+\hline
+R[1.4.6.2][N][F] e figli & Actorbase.server.utils  \\
+\hline
+R[1.4.7.1][N][F] e figli & Actorbase.server.utils  \\
+\hline
+R[7][N][V] e figli & Actorbase.server.Server \\
+\hline
+R[8][N][V] e figli & Actorbase.server.actors.Storemanager  \\
+\bottomrule
+\caption{Requisito-componente}
+\end{longtable}
