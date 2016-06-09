@@ -2109,10 +2109,20 @@
 			Nessuno.	
 			
 	\subsection{Actorbase.server.messages}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Server/messagesLevel.jpg}
+			\caption{Componente Actorbase.server.messages}
+		\end{figure}
+		La componente messages di \emph{Actorbase} è la raccolta di tutti i messaggi che vengono scambiati tra attori. Comprende sia i messaggi interni al sistema che i messaggi che rappresentano le richieste di un utente.
 		
 	\subsection{Actorbase.server.messages.internal}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Server/internalLevel.jpg}
+			\caption{Componente Actorbase.server.messages.internal}
+		\end{figure}
+		La componente internal di \emph{Actorbase} è la raccolta dei messaggi che vengono scambiati tra attori internamente al sistema, ovvero non sono collegati direttamente ad azione dell'utente. Svolgono attività di configurazione e influenzano il comportamento degli attori.
 		
 	\subsection{Actorbase.server.messages.internal.AskMessages (object)}
 		\textbf{Descrizione}
@@ -2201,7 +2211,7 @@
 			
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages}
-		Immagine UML del package e breve descrizione.
+		I LinkMessages sono i messaggi usati per gestire i collegamenti tra attori. Questo tipo di messaggi deve contenere il riferimento all'attore che deve essere aggiunto o eliminato dalla mappa degli attori conosciuti. 
 		
 	\subsection{Actorbase.server.messages.internal.LinkMessages.LinkMessage (trait)}
 		\textbf{Descrizione}
@@ -2387,7 +2397,7 @@
 			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.ScalabilityMessages}
-		Immagine UML del package e breve descrizione.
+		Gli ScalabilityMessages sono messaggi usati per gestire le proprietà di scalabilità del sistema.
 		
 	\subsection{Actorbase.server.messages.internal.ScalabilityMessages.ScalabilityMessage (trait)}
 		\textbf{Descrizione}
@@ -2445,7 +2455,7 @@
 			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.StorageMessages}
-		Immagine UML del package e breve descrizione.
+		Gli StorageMessages sono messaggi usati per effettuare operazioni relative alla gestione dei dati su file.
 		
 	\subsection{Actorbase.server.messages.internal.StorageMessages.StorageMessages (trait)}
 		\textbf{Descrizione}
@@ -2531,97 +2541,257 @@
 		Nessuno.
 			
 	\subsection{Actorbase.server.messages.query}
-		Immagine UML del package e breve descrizione.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{Server/queryLevel.jpg}
+			\caption{Componente Actorbase.server.messages.query}
+		\end{figure}
+		La componente query di \emph{Actorbase} raccoglie tutti i messaggi che rappresentano richieste dirette di un utente e i messaggi di risposta a tali richieste. Comprende inoltre le richieste degli amministratori.
 		
 	\subsection{Actorbase.server.messages.query.QueryMessage (trait)}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Interfaccia di base dei messaggi di tipo query.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa interfaccia fornisce un tipo comune per tutti i messaggi che rappresentano una query ed è estesa dai messaggi concreti.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.query.LoginMessage }
+				\item \texttt{Actorbase.server.messages.query.user.UserMessage }
+			\end{itemize}
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+			
+	\subsection{Actorbase.server.messages.query.ServiceErrorInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Classe che rappresenta una risposta di errore nel servizio.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Questa classe viene utilizzata per comunicare un errore generale di servizio all'utente.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.ReplyErrorInfo }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{error: String } - Stringa che descrive l'errore da comunicare all'utente.
 			\end{itemize}
-		\textbf{Metodi}
+		\textbf{Costruttore: } \texttt{ServiceErrorInfo(error : String)}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo ServiceErrorInfo.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{error: String } - Stringa che descrive l'errore da comunicare all'utente.
+			\end{itemize}
+		\textbf{Metodo: } \texttt{error(): String}
+			\\ \\
+		Metodo che ritorna l'attributo error della classe.
+			\\ \\
+		Lista parametri del metodo:
 			\\ \\
 			Nessuno.
 			
 	\subsection{Actorbase.server.messages.query.LoginMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che rappresenta una richiesta di login da parte di un utente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa classe è un messaggio che viene creato quando viene riconosciuta una richiesta di login dal parser e serve a controllare le credenziali dell'utente che vuole accedere al sistema.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
-				\item Classe
-				\item \dots
+				\item \texttt{Actorbase.server.messages.query.QueryMessage }
 			\end{itemize}
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{username: String } - Username dell'utente che richiede di accedere al sistema.
+				\item \texttt{password: String } - Password dell'utente che richiede di accedere al sistema.
 			\end{itemize}
+		\textbf{Costruttore: } \texttt{LoginMessage(username: String, password: String)}
+			\\ \\
+		Metodo che costruisce un oggetto di tipo LoginMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{username: String } - Username dell'utente che richiede di accedere al sistema.
+				\item \texttt{password: String } - Password dell'utente che richiede di accedere al sistema.
+			\end{itemize}
+		\textbf{Metodo: } \texttt{username(): String}
+			\\ \\
+		Metodo che ritorna l'attributo username della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\		
+		\textbf{Metodo: } \texttt{password(): String}
+			\\ \\
+		Metodo che ritorna l'attributo password della classe.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+	
+	\subsection{Actorbase.server.messages.query.ReplyInfo (trait)}
+			\textbf{Descrizione}
+			\\ \\
+			Interfaccia di base dei messaggi di tipo ReplyInfo.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Questa interfaccia fornisce un tipo comune per tutti i messaggi che rappresentano informazioni aggiuntive sul risultato di una query dell'utente.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.query.ReplyErrorInfo }
+				\item \texttt{Actorbase.server.messages.query.ServiceErrorInfo }
+				\item \texttt{Actorbase.server.messages.query.ErrorMessages.QueryErrorInfo }
+				\item \texttt{Actorbase.server.messages.query.PermissionMessages.NoReadPermissionInfo }
+  				\item \texttt{Actorbase.server.messages.query.PermissionMessages.NoWritePermissionInfo }
+  				\item \texttt{Actorbase.server.messages.query.PermissionMessages.NoAdminPermissionInfo }
+  				\item \texttt{Actorbase.server.messages.query.admin.PermissionManagementMessages.ListPermissionsInfo }
+  				\item \texttt{Actorbase.server.messages.query.admin.UsersManagementMessages.ListUserInfo }
+  				\item \texttt{Actorbase.server.messages.query.admin.UsersManagementMessages.NoUserInfo }
+  				\item \texttt{Actorbase.server.messages.query.admin.UsersManagementMessages.AddUserInfo }
+  				\item \texttt{Actorbase.server.messages.query.admin.UsersManagementMessages.RemoveUserInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.RowMessages.KeyAlreadyExistInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.RowMessages.KeyDoesNotExistInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.RowMessages.ListKeyInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.RowMessages.NoKeyInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.RowMessages.FindInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.DBAlreadyExistInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.DBDoesNotExistInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.ListDBInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.NoDBInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.DatabaseMessages.NoDBSelectedInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.HelpMessages.CompleteHelpReplyInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.HelpMessages.SpecificHelpReplyInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.MapMessages.MapAlreadyExistInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.MapMessages.MapDoesNotExistInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.MapMessages.ListMapInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.MapMessages.NoMapInfo }
+  				\item \texttt{Actorbase.server.messages.query.user.MapMessages.NoMapSelectedInfo }
+			\end{itemize}
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
 		\textbf{Metodi}
 			\\ \\
 			Nessuno.
-			
+		
+	\subsection{Actorbase.server.messages.query.ReplyErrorInfo}
+		\textbf{Descrizione}
+			\\ \\
+			Classe che rappresenta una risposta di errore generale.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Questa classe viene utilizzata per rappresentare un errore generale e comunicarlo all'utente.
+			\\ \\
+		\textbf{Classi ereditate}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Ereditata da}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.messages.ServiceErrorInfo }
+			\end{itemize}
+		\textbf{Attributi}
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodi}
+			\\ \\
+			Nessuno.
+					
 	\subsection{Actorbase.server.messages.query.ReplyMessage}
-		Immagine UML.
-		\\ \\
 		\textbf{Descrizione}
 			\\ \\
-			Descrizione testuale.
+			Classe che rappresenta la risposta ad una richiesta dell'utente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Descrizione testuale.
+			Questa classe viene creata con le informazioni necessarie per rispondere all'utente in merito ad una richiesta.
 			\\ \\
 		\textbf{Classi ereditate}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Ereditata da}
-			\begin{itemize}
-				\item Classe
-				\item \dots
-			\end{itemize}
+			\\ \\
+			Nessuna.
+			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{Nome attributo: tipo attributo } - Descrizione attributo
-				\item \dots
+				\item \texttt{result: ReplyResult } - Esito della query.
+				\item \texttt{question: QueryMessage } - La query a cui rispondere.
+				\item \texttt{info: ReplyInfo = null } - Risultato della query, contenente i dati richiesti.
 			\end{itemize}
-		\textbf{Metodi}
+			\textbf{Costruttore: } \texttt{ReplyMessage(result: ReplyResult, question: QueryMessage, info: ReplyInfo = null)}
+			\\ \\
+			Metodo che costruisce un oggetto di tipo ReplyResult.
+			\\ \\
+			Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{result: ReplyResult } - Esito della query.
+				\item \texttt{question: QueryMessage } - La query a cui rispondere.
+				\item \texttt{info: ReplyInfo = null } - Risultato della query, contenente i dati richiesti.
+			\end{itemize}
+			\textbf{Metodo: } \texttt{result(): ReplyResult }
+			\\ \\
+			Metodo che ritorna l'attributo result della classe.
+			\\ \\
+			Lista parametri del metodo:
 			\\ \\
 			Nessuno.
+			\\ \\		
+			\textbf{Metodo: } \texttt{question(): QueryMessage}
+			\\ \\
+			Metodo che ritorna l'attributo question della classe.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+			\textbf{Metodo: } \texttt{info(): ReplyInfo}
+			\\ \\	
+			Metodo che ritorna l'attributo info della classe.
+			\\ \\
+			Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
 			
 	\subsection{Actorbase.server.messages.query.ErrorMessages}
 		Immagine UML del package e breve descrizione.
