@@ -1,0 +1,158 @@
+\newcolumntype{s}{>{\hsize=.15\hsize}X}
+\newcolumntype{f}{>{\hsize=.99\hsize}X}
+\newcolumntype{m}{>{\hsize=.18\hsize}X}
+
+\begin{longtable}{f s X }  
+	\rowcolor{orange!85} Metodi & Test \\
+\endhead
+client.Client.checkLogin(ln:String) & TU66 \\
+\hline
+client.Client.executeLine() & TU69 \\
+\hline
+client.Client.executeLine(ln:String) & TU67,\newline TU68 \\
+\hline
+driver.ConcreteConnection. closeConnection() & TU64 \\
+\hline
+driver.ConcreteConnection. executeQuery(\newline query:String \newline) & TU65 \\
+\hline
+driver.ConcreteConnection.login(\newline username:String, \newline password:String \newline) & TU63 \\
+\hline
+driver.Driver.connect(\newline host:String, \newline port:Integer, \newline username:String, \newline password:String \newline) & %client.Client
+TU62 \\
+\hline
+server.Server.loadUsers()\newline server.Server.loadUsersPermissions\newline server.Server.loadDatabases() & %server.Server
+TU1 \\
+\hline
+server.Server.main() & TU2 \\
+\hline
+server.actors.Doorkeeper.receive() & TU11 \\
+\hline
+server.actors.Doorkeeper.recive() & TU12 \\
+\hline
+server.actors.Storefinder.receive() & %server.actors.Storefinder
+TU35,\newline TU36,\newline TU37,\newline TU38 \\
+\hline
+server.actors.StorefinderhandleRowMessage() & TU36 \\
+\hline
+server.actors.Storefinderreply() & TU36,\newline TU37,\newline TU38  \\
+\hline
+server.actors.StorefindersendToStorekeeper()& TU37,\newline TU38 \\
+\hline
+server.actors.StorefinderfindActor()& TU37,\newline TU38 \\
+\hline
+server.actors.Storekeeper.receive()& TU44,\newline TU45,\newline TU46,\newline TU47,\newline  TU40,\newline TU41,\newline TU50,\newline TU51,\newline TU39,\newline TU43,\newline TU49,\newline TU42 \\%server.actors.Storekeeper as Storekeeper
+\hline
+server.actors.Storekeeper.handleLinkMessage()& TU44,\newline TU45,\newline TU46,\newline TU47 \\
+\hline
+server.actors.Storekeeper.reply() & TU44,\newline TU45,\newline TU46,\newline TU47,\newline TU39,\newline TU43,\newline TU49,\newline TU42 \\ %server.actors.Storekeeper as Storekeeper
+\hline
+server.actors.Storekeeper.logAndReply() & TU40,\newline TU41,\newline TU50,\newline TU51 \\
+\hline
+server.actors.Storekeeper.exists() & TU40,\newline TU41,\newline TU50,\newline TU51,\newline TU42  \\
+\hline
+server.actors.Storekeeper(as Ninja).receive() & %server.actors.Storekeeper as Ninja
+TU48 \\
+\hline
+server.actors.Storekeeper(as Ninja).receiveAsStorekeeper() & %server.actors.Storekeeper as Ninja
+TU48 \\
+\hline
+server.actors.Storemanager.receive() & %server.actors.Storemanager
+TU52,\newline TU54,\newline TU55,\newline TU53,\newline TU56\\
+\hline
+server.actors.Storemanager.handleMapMessage() & TU54,\newline TU55,\newline TU53 \\
+\hline
+server.actors.Storemanager.logAndReply() & TU54,\newline TU55 \\
+\hline
+server.actors.Storemanager.reply() & TU54,\newline TU55,\newline TU53,\newline TU56\\
+\hline
+server.actors.Storemanager.handleRowMessage() & TU56 \\
+\hline
+server.actors.Usermanager.receive() & %server.actors.Usermanager
+TU57,\newline TU60,\newline TU59,\newline TU58 \\
+\hline
+server.actors.Usermanager.parseQuery() & TU60,\newline  TU59,\newline  TU58\\
+\hline
+server.actors.Usermanager.handleQueryMessage() & TU60 \\
+\hline
+server.actors.Usermanager.reply() & TU60,\newline TU59,\newline TU58 \\
+\hline
+server.actors.Usermanager.handleQueryMessage() & TU59 \\
+\hline
+server.actors.Usermanager.handleLogin() & TU59 \\
+\hline
+server.actors.Warehouseman.receive() & %server.actors.Warehouseman
+TU61 \\
+\hline
+server.actors.Warehouseman.handleRowMessage() & %server.actors.Warehouseman
+TU61 \\
+\hline
+server.actors.Warehouseman.replyAndLog() & %server.actors.Warehouseman
+TU61 \\
+\hline
+server.actors.Warehouseman.reply() & %server.actors.Warehouseman
+TU61 \\
+\hline
+server.ultil.Parser.parseQuery() & TU8,\newline TU5,\newline TU9,\newline  TU4,\newline TU6,\newline TU7,\newline TU3 \\
+\hline
+server.ultil.Parser.parseCommandsWithTwoParams() & TU8 \\
+\hline
+server.ultil.Parser.getMatch() & TU8,\newline TU5,\newline TU9,\newline  TU4,\newline TU6,\newline  TU7,\newline TU3 \\
+\hline
+ server.ultil.Parser.parseCommandWithParam() & TU5 \\
+\hline
+ server.ultil.Parser.parseCommandWithThreeParams() & TU9 \\
+\hline
+server.ultil.Parser.parseCommandWithoutParam()& TU4 \\
+\hline
+server.ultil.Parser.parseRowCommandOneParam() & TU6 \\
+\hline
+server.ultil.Parser.parseRowCommandTwoParams() & TU7 \\
+\hline
+server.util.FileReader.dumpActorTree() & TU71 \\
+\hline
+server.util.FileReader.dumpData() & TU73 \\
+\hline
+server.util.FileReader.loadActorTree() & %server.util.FileReader
+TU70 \\
+\hline
+server.util.FileReader.loadData() & TU72 \\
+\hline
+server.util.Helper.completeHelp() & %server.util.Helper
+TU74 \\
+\hline
+server.util.Helper.specificHelp() & TU75 \\
+\hline
+sever.actors.Main.receive() & TU30,\newline TU31,\newline TU32,\newline TU33,\newline TU34,\newline TU27,\newline TU28,\newline TU29,\newline TU24,\newline TU25,\newline TU26,\newline TU13,\newline TU14,\newline TU15,\newline TU16,\newline  TU18,\newline TU20,\newline TU21,\newline TU22,\newline TU23,\newline  TU17,\newline  TU19 \\
+\hline
+sever.actors.Main.handleQueryMessage() & TU30,\newline TU31,\newline TU32,\newline TU33,\newline TU34,\newline TU27,\newline TU28,\newline TU29,\newline TU24,\newline TU25,\newline TU26,\newline TU13,\newline TU14,\newline TU15,\newline TU16,\newline  TU18,\newline TU20,\newline TU21,\newline TU22,\newline TU23,\newline  TU17,\newline  TU19  \\
+\hline
+sever.actors.Main.handleAdminMessage() & TU30,\newline TU31,\newline TU32,\newline TU33,\newline TU34,\newline TU27,\newline TU28,\newline TU29,\newline TU24,\newline TU25,\newline TU26 \\
+\hline
+sever.actors.Main.handleActorPropertiesMessageMessage() & TU30,\newline TU31,\newline TU32,\newline TU33,\newline TU34 \\
+\hline
+sever.actors.Main.handlePermissionsManagementMessage() & TU27,\newline TU28,\newline TU29 \\
+\hline
+sever.actors.Main.handleUserManagementMessage() & TU24,\newline TU25,\newline TU26 \\
+\hline
+sever.actors.Main.handleRowMessage() & TU24,\newline TU25,\newline TU26,\newline TU19,\newline  TU20,\newline TU21,\newline TU22,\newline TU23 \\
+\hline
+sever.actors.Main.handleUserMessage() & %server.actors.Main
+TU13,\newline TU14,\newline TU15,\newline TU16,\newline TU18,\newline  TU20,\newline TU21,\newline TU22,\newline TU23,\newline  TU17,\newline TU19  \\
+\hline
+sever.actors.Main.handleDatabaseMessage() & %server.actors.Main
+TU13,\newline TU14,\newline TU15,\newline TU16 \\
+\hline
+sever.actors.Main.isValidStoremanager() & %server.actors.Main
+TU13,\newline TU14,\newline TU15,\newline TU16 \\
+\hline
+sever.actors.Main.handleHelpMessage() & TU18,\newline TU20,\newline TU21,\newline TU22,\newline TU23 \\
+\hline
+sever.actors.Main.handleDatabaseMessage() & TU20,\newline TU21,\newline TU22,\newline TU23 \\
+\hline
+sever.actors.Main.handleMapMessage() & TU20,\newline TU21,\newline TU22,\newline TU23,\newline  TU17 \\
+\hline
+sever.actors.Main.checkPermissions() & TU20,\newline TU21,\newline TU22,\newline TU23 \\
+\hline	
+\bottomrule
+\caption{Test di unità}
+\end{longtable}   
