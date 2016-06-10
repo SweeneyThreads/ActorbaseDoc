@@ -1858,6 +1858,51 @@
 			\includegraphics[scale = 0.6]{Server/warehouseman.jpg}
 			\caption{Componente Actorbase.server.actors.Warehouseman}
 		\end{figure}
+		\textbf{Descrizione}
+			\\ \\
+			Classe che definisce un attore di tipo Warehouseman. Questo attore è associato ad una mappa o a parte di essa ed ha il compito di memorizzarla su disco.
+			\\ \\
+		\textbf{Utilizzo}
+			\\ \\
+			Riceve messaggi dagli Storekeeper attraverso l'Indexmanager. Effettua le operazioni di scrittura sulla mappa salvata su disco utilizzando i metodi del FileManager.
+			\\ \\
+		\textbf{Classi ereditate}
+			\begin{itemize}
+				\item \texttt{Actorbase.server.actors.ReplyActor}
+			\end{itemize}
+		\textbf{Ereditata da}
+			\\ \\
+			Nessuna.
+			\\ \\
+		\textbf{Attributi}
+			\begin{itemize}
+				\item \texttt{private val file: String} - Percorso del file in cui è memorizzata la mappa.
+				\item \texttt{private val fileManager: FileManager}	- Istanza di FileManager per le operazioni su disco.
+			\end{itemize}
+		\textbf{Costruttore: }\texttt{Warehouseman(file : String)}
+			\\ \\
+		Costruisce un attore di tipo Warehouseman. 
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{Warehouseman(file : String)} - Percorso del file in cui è memorizzata la mappa.
+			\end{itemize}
+		\textbf{Metodo: }\texttt{def receive()}
+			\\ \\
+		Implementazione del metodo receive di akka.Actor. Elabora solo messaggi di tipo RowMessage.
+			\\ \\
+		Lista parametri del metodo:
+			\\ \\
+			Nessuno.
+			\\ \\
+		\textbf{Metodo: }\texttt{private def handleRowMessages(message: RowMessage): Unit}
+			\\ \\
+		Gestisce i messaggi di tipo RowMessage Individuando il tipo corretto di messaggio e chiamando i metodi del fileManager per effettuare le operazioni richieste.
+			\\ \\
+		Lista parametri del metodo:
+			\begin{itemize}
+				\item \texttt{message: RowMessage} - Messaggio da elaborare.
+			\end{itemize}
 			
 		\subsection{Actorbase.server.enums}
 		\begin{figure}[H]
@@ -5070,7 +5115,8 @@ anche indirettamente, il messaggio e risponde.
 	\LTXtable{\textwidth}{Tabelle/tabelle_classi_requisiti/requisiti_classi.tex}
 	\subsection{Tracciamento classi-requisiti}
 	\LTXtable{\textwidth}{Tabelle/tabelle_classi_requisiti/classi_requisiti.tex}
-	\subsection{Tracciamento classi-test}
+	\subsection{Tracciamento metodi-test}
+	\LTXtable{\textwidth}{Tabelle/tabelle_test/metodi_testunita.tex}
 
 		
 	\newpage 
