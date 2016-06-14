@@ -57,6 +57,7 @@
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
 				Bortolazzo Matteo \\
+				Maino Elia \\
 				Nicoletti Luca  \\
 			\end{flushleft}
 		\end{minipage}
@@ -78,7 +79,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 1.0.5
+			Versione 2.0.1
 		\end{center}
 		% Date, change the ->day to a set date if you want to be precise
 		{\large \today} \\ [3cm] 
@@ -157,7 +158,7 @@
         Akka esegue l'ovveride di molti operatori rendendo difficile la comprensione agli utenti poco esperti. 
 	\begin{figure} [H]
 			\centering
-			\includegraphics[width=\textwidth]{immagini/ST/Akka.png}
+			\includegraphics[scale = 0.5]{immagini/ST/Akka.png}
 			\caption{Akka - logo}
 		\end{figure}	
 	
@@ -167,7 +168,7 @@
 	Tutti gli schemi dei package seguono la legenda sottostante. I livelli di annidamento sono da intendere per la totale struttura dei package e non solo per il singolo schema.
 		\begin{figure} [H]
 			\centering
-			\includegraphics[scale=0.3]{ST/Legenda}
+			\includegraphics[width=\textwidth]{ST/Legenda}
 			\caption{Legenda}
 		\end{figure}
 		
@@ -196,7 +197,7 @@
         \subsubsection{Server}
 		
         	Il Server di \emph{Actorbase} è composto da quattro package principali ed una classe: 
-			i package \textbf{utils}, \textbf{messages}, \textbf{actors} ed \textbf{enums} e la classe \textbf{Server}. \\
+			i package \textbf{utils}, \textbf{messages}, \textbf{actors} ed \textbf{enums} e le classi \textbf{Server}, \textbf{StaticSettings} e \textbf{ClusterListener}. \\
 			
 			Il package \textbf{utils} contiene delle classi di supporto che vengono utilizzate dai vari attori presenti per effettuare operazioni 
 			di vario genere. \\
@@ -244,7 +245,7 @@
 			\end{figure}
 			\subsubsection{Descrizione}
 				Package per la componente lato server del sistema. 
-				È composto dai package \textbf{utils}, \textbf{messages}, \textbf{actors} ed \textbf{enums} e dalla classe \textbf{Server}.\\
+				È composto dai package \textbf{utils}, \textbf{messages}, \textbf{actors} ed \textbf{enums} e dalle classi \textbf{Server}, \textbf{StaticSettings} e \textbf{ClusterListener}.\\
 				
 			\subsubsection{Package Figli}
 				\begin{itemize}
@@ -257,6 +258,8 @@
 			\subsubsection{Classi}
 				\begin{itemize}
 					\item Actorbase.server.Server
+					\item Actorbase.server.StaticSettings
+					\item Actorbase.server.ClusterListener
 				\end{itemize}
 				
 		\subsection{Actorbase.server.Server}
@@ -270,8 +273,8 @@
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
 					\item \textbf{Actorbase.server.actors.Doorkeeper:} relazione uscente, creazione.
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.utils.FileManager:} relazione uscente, creazione.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione uscente, creazione.
+					\item \textbf{Actorbase.server.StaticSettings:} relazione di utilizzo.
 				\end{itemize}
 				
 		\subsection{Actorbase.server.utils}
@@ -288,47 +291,17 @@
 			\subsubsection{Classi}
 				\begin{itemize}
 					\item Actorbase.server.utils.Parser
-					\item Actorbase.server.utils.FileManager
 					\item Actorbase.server.utils.Helper
-					\item Actorbase.server.utils.DatabaseNode
+					\item Actorbase.server.utils.ReplyBuilder
+					\item Actorbase.server.utils.Serializer
+					\item Actorbase.server.utils.ConfigurationManager
 				\end{itemize}
 				
 			\subsubsection{Trait}
 				\begin{itemize}
-					\item Actorbase.server.utils.ServerDependencyInjector
-					\item Actorbase.server.utils.StandardServerInjector
+					\item Actorbase.server.utils.FileManager
 				\end{itemize}
 				
-		\subsection{Actorbase.server.utils.ServerDependencyInjector}
-			\subsubsection{Descrizione}
-				Trait che espone i metodi necessari per le interrogazioni al server da parte del \textbf{Main}.
-				
-			\subsubsection{Utilizzo}
-				Viene utilizzato per delegare la chiamata ai metodi del Server ad un'interfaccia in modo da poter utilizzare server differenti in base 
-				alle necessità.
-				
-			\subsubsection{Relazione con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Main:} relazione entrante, aggregazione.
-				\end{itemize}
-				
-			\subsubsection{Classi figlie}
-				\begin{itemize}
-					\item Actorbase.server.utils.StandardServerInjector
-				\end{itemize}
-		
-		\subsection{Actorbase.server.utils.StandardServerInjector}
-			\subsubsection{Descrizione}
-				Implementazione del trait \textbf{ServerDependencyInjector} che utilizza il server da noi creato.
-				
-			\subsubsection{Utilizzo}
-				Viene utilizzato per delegare la chiamata ai metodi del Server ad un'interfaccia in modo da poter utilizzare server differenti in base 
-				alle necessità.				
-				
-			\subsubsection{Relazione con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Main:} relazione entrante, aggregazione.
-				\end{itemize}
 			
 		\subsection{Actorbase.server.utils.Parser}
 			\subsubsection{Descrizione}
@@ -343,6 +316,31 @@
 				\item \textbf{Actorbase.server.actors.Usermanager:} relazione entrante, creazione.
 				\item \textbf{Actorbase.server.messages.QueryMessages.QueryMessage:} relazione uscente, creazione. 
 			\end{itemize}
+			
+				\subsection{Actorbase.server.utils.ReplyBuilder}
+			\subsubsection{Descrizione}
+				Classe che costruisce stringhe di risposta da inviare al client a partire dai messaggi del sistema.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzata per costruire risposte in formato stringa.
+				
+			\subsubsection{Relazione con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.server.actors.ReplyActor:} relazione entrante, creazione.
+			\end{itemize}
+			
+						\subsection{Actorbase.server.utils.Serializer}
+			\subsubsection{Descrizione}
+				Classe che si occupa di gestire la serializzazione di oggetti in Byte e viceversa.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzata da attori \textbf{Main} e \textbf{Usermanager} per serializzare oggetti in array di byte memorizzabili da attori \textbf{Storemanager}.
+				
+			\subsubsection{Relazione con altre classi}
+			\begin{itemize}
+				\item \textbf{Actorbase.server.actors.Main:} relazione entrante, creazione.
+				\item \textbf{Actorbase.server.actors.Usermanager:} relazione entrante, creazione.
+			\end{itemize}
 		
 		\subsection{Actorbase.server.utils.FileManager}
 			\subsubsection{Descrizione}
@@ -353,9 +351,20 @@
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.Server:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.utils.DatabaseNode:} relazione uscente, creazione. 
+					\item \textbf{Actorbase.server.Server:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
+				\end{itemize}
+				
+				\subsection{Actorbase.server.utils.ConfigurationManager}
+			\subsubsection{Descrizione}
+				Classe che fornisce i metodi per leggere i file di configurazione di \emph{Actorbase}.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzata dalla classe \textbf{Server} per caricare le impostazioni all'avvio.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.Server:} relazione di utilizzo.
 				\end{itemize}
 				
 		\subsection{Actorbase.server.utils.Helper}
@@ -370,28 +379,7 @@
 				\begin{itemize}
 					\item \textbf{Actorbase.server.actors.Main:} relazione entrante, creazione. 
 				\end{itemize}
-			
-		\subsection{Actorbase.server.utils.DatabaseNode}
-			\subsubsection{Descrizione}
-				Classe utilizzata per costruire l'albero che rappresenta la struttura gerarchica delle componenti del database,
-				è costituita da un singolo nodo e tutti i suoi discendenti.
-				
-			\subsubsection{Utilizzo}
-				Viene utilizzata da tutti gli attori presenti nel database al momento della sua chiusura e apertura per salvare e ricostruire 
-				la struttura gerarchica.
-				
-			\subsubsection{Relazione con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.Server:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Main:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Doorkeeper:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.utils.FileManager:} relazione entrante, creazione.
-				\end{itemize}
+
 				
 		\subsection{Actorbase.server.actors}
 		
@@ -402,17 +390,23 @@
 			\end{figure}
 			
 			\subsubsection{Descrizione}
-				Package contenente tutti gli attori che compongono il database.
+				Package contenente tutti gli attori che compongono il database. Tutte le classi e le interfacce contenute in questo package rappresentano attori come definiti dalla libreria \textbf{Akka}.
 				
 			\subsubsection{Classi}
 				\begin{itemize}
-					\item Actorbase.server.actors.Main
 					\item Actorbase.server.actors.Doorkeeper
-					\item Actorbase.server.actors.Storekeeper
-					\item Actorbase.server.actors.Storefinder
-					\item Actorbase.server.actors.Warehouseman
 					\item Actorbase.server.actors.Usermanager
+					\item Actorbase.server.actors.Main
+					\item Actorbase.server.actors.MapManager
+					\item Actorbase.server.actors.IndexManager
 					\item Actorbase.server.actors.Storemanager
+					\item Actorbase.server.actors.Warehouseman
+				\end{itemize}
+				
+			\subsubsection{Trait}
+				\begin{itemize}
+					\item Actorbase.server.actors.ClusterAwareActor
+					\item Actorbase.server.actors.ReplyActor
 				\end{itemize}
 		
 		\subsection{Actorbase.server.actors.Doorkeeper}
@@ -427,12 +421,11 @@
 				\begin{itemize}
 					\item \textbf{Actorbase.server.Server:} relazione entrante, creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione uscente, creazione.
-					\item \textbf{Actorbase.server.utils.ReplyResult:} relazione di utilizzo.
 				\end{itemize}
 				
 		\subsection{Actorbase.server.actors.Usermanager}
 			\subsubsection{Descrizione}
-				Questo attore si preoccupa di trasformare le stringhe ricevute dal client in messaggi interpretabili da altri attori.
+				Questo attore si preoccupa di trasformare le stringhe ricevute dal client in messaggi interpretabili da altri attori, e viceversa.
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzato per gestire una connessione da parte di un client, crea un attore \textbf{Main} e invia le richieste 
@@ -443,14 +436,14 @@
 					\item \textbf{Actorbase.server.actors.Doorkeeper:} relazione entrante, creazione.
 					\item \textbf{Actorbase.server.actors.Main:} relazione uscente, creazione.
 					\item \textbf{Actorbase.server.utils.Parser:} relazione uscente, creazione.
-					\item \textbf{Actorbase.server.utils.ReplyResult:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.messages.query.QueryMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.utils.ReplyBuilder:} relazione di utilizzo.
 				\end{itemize}
 				
 		\subsection{Actorbase.server.actors.Main}
 			\subsubsection{Descrizione}
 				Questo attore è responsabile del controllo dei permessi delle richieste ricevute. Gestisce tutti i messaggi, elaborandoli o inoltrandoli 
-				se non di sua competenza.
+				se non di sua competenza. Gestisce  l'insieme di database rappresentato da attori \textbf{MapManager}.
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzato per controllare i permessi delle richieste ricevute, gestisce i messaggi a livello di database e di help
@@ -461,74 +454,64 @@
 				\begin{itemize}
 					\item \textbf{Actorbase.server.Server:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione uscente, creazione.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione uscente, creazione.
 					\item \textbf{Actorbase.server.utils.Helper:} relazione uscente, creazione.
-					\item \textbf{Actorbase.server.Permission:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.utils.ReplyResult:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.messages.query.QueryMessage:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.messages.query.ReplyMessage:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.messages.query.PermissionMessages.NoPermissionMessage:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.messages.query.PermissionMessages.AdminPermissionMessage:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.messages.internal.AskMapMessage:} relazione uscente, creazione e utilizzo.
-					\item \textbf{Actorbase.server.messages.internal.BecomeStorekeeperMessage:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.messages.internal.SendMapMessage:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.messages.internal.LinkMessages.LinkMessage:} relazione di utilizzo.
+				\end{itemize}
+				
+		\subsection{Actorbase.server.actors.MapManager}
+			\subsubsection{Descrizione}
+				Questo attore rappresenta un database di \emph{Actorbase}. Si occupa di indicizzare gli attori che rappresentano le mappe che compongono tale database.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzato per rappresentare un database, l'attore \textbf{Main} lo utilizza per instradare richieste verso uno specifico database. All'avvio il Server crea un \textbf{MapManager} per ogni database presente su disco.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.Server:} relazione entrante di creazione.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione uscente di creazione.
+					\item \textbf{Actorbase.server.messages.query.QueryMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.query.ReplyMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.query.PermissionMessages.NoPermissionMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.query.PermissionMessages.ReadMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.query.users.RowMessages.RowMessage:} relazione di utilizzo.
+				\end{itemize}
+				
+				\subsection{Actorbase.server.actors.IndexManager}
+			\subsubsection{Descrizione}
+				Questo attore rappresenta una mappa di \emph{Actorbase}. Si occupa di indicizzare gli attori che rappresentano le porzioni di dati di tale mappa, sia su RAM che su disco.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzato per rappresentare una mappa, attori di tipo \textbf{MapManager} creano, interrogano e distruggono questo tipo di attori a seconda delle richieste utente.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione entrante, creazione.
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione uscente, creazione.
+					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione uscente, creazione.
+					\item \textbf{Actorbase.server.messages.query.QueryMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.query.ReplyMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.query.PermissionMessages.NoPermissionMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.query.PermissionMessages.ReadMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.query.PermissionMessages.ReadWriteMessage:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.query.users.RowMessages.RowMessage:} relazione di utilizzo.
 				\end{itemize}
 				
 		\subsection{Actorbase.server.actors.Storemanager}
 			\subsubsection{Descrizione}
-				Questo attore rappresenta un database o una sua parte.
+				Questo attore rappresenta un una porzione di mappa in memoria principale, ha più comportamenti: sia come indicizzazione dei dati che come mantenimento di essi. 
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzato per gestire tutti i messaggi a livello mappa, e inoltra tutti gli altri messaggi che non sono di sua competenza.
+				Viene utilizzato per gestire le operazioni sugli item, attori di tipo \textbf{Storemanager} sono utilizzati dagli \textbf{IndexManager} per mantenere indicizzati i dati in memoria principale.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.Server:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione uscente, creazione.
-					\item \textbf{Actorbase.server.utils.ReplyResult:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione entrante, creazione.
 					\item \textbf{Actorbase.server.messages.query.user.UserMessage:} relazione di utilizzo.
-				\end{itemize}
-				
-		\subsection{Actorbase.server.actors.Storefinder}
-			\subsubsection{Descrizione}
-				Questo attore rappresenta una mappa o una sua parte.
-				
-			\subsubsection{Utilizzo}
-				Viene utilizzato per gestire gli \textbf{Storekeeper} a cui inoltra i messaggi.
-				
-			\subsubsection{Relazione con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione uscente, creazione.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione uscente, creazione.
-					\item \textbf{Actorbase.server.utils.ReplyResult:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.messages.query.users.RowMessages.RowMessage:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.message.internal.BecomeStorekeeperMessage:} relazione uscente, creazione e utilizzo.
-					\item \textbf{Actorbase.server.messages.internal.LinkMessages.LinkMessage:} relazione uscente, creazione e utilizzo.
-				\end{itemize}
-				
-		\subsection{Actorbase.server.actors.Storekeeper}
-			\subsubsection{Descrizione}
-				Questo attore contiene una parte di mappa. Esso ha anche funzionalità di backup, qualora uno \textbf{Storekeeper} morisse, 
-				un altro potrebbe subentrare al suo posto.
-				
-			\subsubsection{Utilizzo}
-				Viene utilizzato per memorizzare in memoria RAM le entry presenti in una mappa, gestisce i messaggi a livello di riga.
-				Quando un attore della stessa classe a cui esso è associato si spegne, esso diventa la copia ufficiale della parte di mappa 
-				da esso rappresentata.
-				
-			\subsubsection{Relazione con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.utils.ReplyResult:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.messages.query.users.RowMessages.RowMessage:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.message.internal.BecomeStorekeeperMessage:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.messages.internal.SendMapMessage:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.messages.internal.LinkMessages.LinkMessage:} relazione di utilizzo.
 				\end{itemize}
 		
 		\subsection{Actorbase.server.actors.Warehouseman}
@@ -540,11 +523,36 @@
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione.
-					\item \textbf{Actorbase.server.utils.ReplyResult:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.messages.query.users.RowMessages.RowMessage:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.messages.internal.SendMapMessage:} relazione uscente, creazione e utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.messages.internal.StorageMessages:} relazione uscente, creazione e utilizzo.
+				\end{itemize}
+				
+				\subsection{Actorbase.server.actors.ClusterAwareActor}
+			\subsubsection{Descrizione}
+				Interfaccia che definisce un attore che interagisce con altri nodi del cluster.
+				
+			\subsubsection{Utilizzo}
+				Viene estesa da attori che interagiscono con altri nodi del cluster, creando attori su di essi o interagendo con attori presenti su di essi. 
+				
+			\subsubsection{Interfacce figlie}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.ReplyActor}
+				\end{itemize}
+				
+		\subsection{Actorbase.server.actors.ReplyActor}
+			\subsubsection{Descrizione}
+				Interfaccia che definisce un attore che risponde con informazioni definite in \emph{Actorbase}.
+				
+			\subsubsection{Utilizzo}
+				Viene estesa da attori che rispondono con informazioni definite dal sistema. 
+				
+			\subsubsection{Classi figlie}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Main}
+					\item \textbf{Actorbase.server.actors.MapManager}
+					\item \textbf{Actorbase.server.actors.IndexManager}
+					\item \textbf{Actorbase.server.actors.Storemanager}
+					\item \textbf{Actorbase.server.actors.Warehouseman}
 				\end{itemize}
 				
 		\subsection{Actorbase.server.enums}
@@ -556,25 +564,32 @@
 			\end{figure}
 			
 			\subsubsection{Descrizione}
-				Package contenente le enumerazioni utilizzate dagli attori per distinguere i tipi di permessi e di risposte.
+				Package contenente le enumerazioni utilizzate dagli attori per distinguere i tipi di permessi e di risposte e altre informazioni e caratteristiche del sistema.
 				
-			\subsubsection{Classi}
+			\subsubsection{Package Figli}
 				\begin{itemize}
-					\item Actorbase.server.enums.Read
-					\item Actorbase.server.enums.ReadWrite
-					\item Actorbase.server.enums.Done
-					\item Actorbase.server.enums.Error
-					\item Actorbase.server.enums.EnumPermission
-					\item Actorbase.server.enums.EnumReplyResult
+					\item Actorbase.server.enums.EnumStoremanagerTypes
+					\item Actorbase.server.enums.EnumPermissions
+					\item Actorbase.server.enums.EnumReplyResults
 				\end{itemize}
+				
+				
+		\subsection{Actorbase.server.enums.EnumPermissions}
+			\subsubsection{Descrizione}
+				Package contenente le enumerazioni utilizzate dagli attori per distinguere i tipi di permessi.
 				
 			\subsubsection{Trait}
 				\begin{itemize}
-					\item Actorbase.server.utils.Permission
-					\item Actorbase.server.utils.ReplyResult
+					\item Actorbase.server.enums.EnumPermissions.Permission
 				\end{itemize}
+				
+			\subsubsection{Classi}
+			\begin{itemize}
+					\item Actorbase.server.enums.EnumPermissions.Read
+					\item Actorbase.server.enums.EnumPermissions.ReadWrite
+			\end{itemize}
 		
-		\subsection{Actorbase.server.enums.Permission}
+		\subsection{Actorbase.server.enums.EnumPermissions.Permission}
 			\subsubsection{Descrizione}
 				Trait per rappresentare i permessi che la richiesta di un utente può avere.
 				
@@ -589,36 +604,11 @@
 				
 			\subsubsection{Classi figlie}
 				\begin{itemize}
-					\item Actorbase.server.enums.Read.
-					\item Actorbase.server.enums.ReadWrite.
+					\item Actorbase.server.enums.EnumPermissions.Read.
+					\item Actorbase.server.enums.EnumPermissions.ReadWrite.
 				\end{itemize}
 				
-		\subsection{Actorbase.server.enums.ReplyResult}
-			\subsubsection{Descrizione}
-				Trait per rappresentare le risposte ed il loro stato (avvenuta con successo, errore). 
-				
-			\subsubsection{Utilizzo}
-				Viene utilizzata da tutti gli attori per indicare se la richiesta effettuata da un utente è andata a buon fine o no.
-				
-			\subsubsection{Relazione con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Doorkeeper:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.enums.EnumReplyResult:} relazione entrante, aggregazione.
-				\end{itemize}
-				
-			\subsubsection{Classi figlie}
-				\begin{itemize}
-					\item Actorbase.server.enums.Error.
-					\item Actorbase.server.enums.Done.
-				\end{itemize}				
-						
-		\subsection{Actorbase.server.enums.Read}
+				\subsection{Actorbase.server.enums.EnumPermissions.Read}
 			\subsubsection{Descrizione}
 				Questa classe rappresenta il permesso di lettura.
 				
@@ -632,10 +622,10 @@
 						
 			\subsubsection{Trait implementati}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.enums.Permission} 
+					\item \textbf{Actorbase.server.enums.EnumPermission.Permission} 
 				\end{itemize}
 				
-		\subsection{Actorbase.server.enums.Write}
+		\subsection{Actorbase.server.enums.EnumPermissions.ReadWrite}
 			\subsubsection{Descrizione}
 				Questa classe rappresenta il permesso di scrittura.
 				
@@ -649,10 +639,53 @@
 				
 			\subsubsection{Trait implementati}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.enums.Permission} 
+					\item \textbf{Actorbase.server.enums.EnumPermission.Permission} 
 				\end{itemize}
+				
+				
+			\subsection{Actorbase.server.enums.EnumReplyResults}
+			\subsubsection{Descrizione}
+				Package contenente le enumerazioni utilizzate dagli attori per distinguere i tipi di risultato di un'operazione.
+				
+			\subsubsection{Trait}
+				\begin{itemize}
+					\item Actorbase.server.enums.EnumReplyResults.ReplyResult
+				\end{itemize}
+				
+			\subsubsection{Classi}
+			\begin{itemize}
+					\item Actorbase.server.enums.EnumReplyResults.Done
+					\item Actorbase.server.enums.EnumReplyResults.Error
+			\end{itemize}				
+				
+				
+		\subsection{Actorbase.server.enums.EnumReplyResults.ReplyResult}
+			\subsubsection{Descrizione}
+				Trait per rappresentare le risposte ed il loro stato (avvenuta con successo, errore). 
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzata da tutti gli attori per indicare se la richiesta effettuata da un utente è andata a buon fine o no.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Doorkeeper:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
+				\end{itemize}
+				
+			\subsubsection{Classi figlie}
+				\begin{itemize}
+					\item Actorbase.server.enums.EnumReplyResults.Error.
+					\item Actorbase.server.enums.EnumReplyResults.Done.
+				\end{itemize}				
+						
+
 		
-		\subsection{Actorbase.server.enums.Done}
+		\subsection{Actorbase.server.enums.EnumReplyResults.Done}
 			\subsubsection{Descrizione}
 				Questa classe rappresenta l'avvenuto successo di una richiesta effettuata da un utente.
 				
@@ -663,8 +696,8 @@
 				\begin{itemize}
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Doorkeeper:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
@@ -672,10 +705,10 @@
 		
 			\subsubsection{Trait implementati}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.enums.ReplyResult} 
+					\item \textbf{Actorbase.server.enums.EnumReplyResults.ReplyResult} 
 				\end{itemize}
 				
-		\subsection{Actorbase.server.enums.Error}
+		\subsection{Actorbase.server.enums.EnumReplyResults.Error}
 			\subsubsection{Descrizione}
 				Questa classe rappresenta il verificarsi di un errore durante l'esecuzione di una richiesta effettuata da un utente.
 				
@@ -686,8 +719,8 @@
 				\begin{itemize}
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Doorkeeper:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
@@ -695,39 +728,126 @@
 				
 			\subsubsection{Trait implementati}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.enums.ReplyResult} 
+					\item \textbf{Actorbase.server.enums.EnumReplyResults.ReplyResult} 
+				\end{itemize}
+				
+	
+				\subsection{Actorbase.server.enums.EnumStoremanagerTypes}
+			\subsubsection{Descrizione}
+				Package contenente le enumerazioni utilizzate per definire il comportamento degli attori Storemanager.
+				
+			\subsubsection{Trait}
+				\begin{itemize}
+					\item Actorbase.server.enums.EnumStoremanagerTypes.StoremanagerType
+				\end{itemize}
+				
+			\subsubsection{Classi}
+			\begin{itemize}
+					\item Actorbase.server.enums.EnumStoremanagerTypes.StorefinderType
+					\item Actorbase.server.enums.EnumStoremanagerTypes.StorekeeperType
+					\item Actorbase.server.enums.EnumStoremanagerTypes.StorefinderNinjaType
+					\item Actorbase.server.enums.EnumStoremanagerTypes.StorekeeperNinjaType
+			\end{itemize}				
+				
+				
+		\subsection{Actorbase.server.enums.EnumStoremanagerTypes.StoremanagerType}
+			\subsubsection{Descrizione}
+				Trait per rappresentare il comportamento di uno \textbf{Storemanager}. 
+				
+			\subsubsection{Utilizzo}
+				Viene estesa da tutte le classi che rappresentano il comportamento di uno \textbf{Storemanager}.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
+				\end{itemize}
+				
+			\subsubsection{Classi figlie}
+				\begin{itemize}
+					\item Actorbase.server.enums.EnumStoremanagerTypes.StorefinderType
+					\item Actorbase.server.enums.EnumStoremanagerTypes.StorekeeperType
+					\item Actorbase.server.enums.EnumStoremanagerTypes.StorefinderNinjaType
+					\item Actorbase.server.enums.EnumStoremanagerTypes.StorekeeperNinjaType
+				\end{itemize}				
+						
+
+		
+		\subsection{Actorbase.server.enums.EnumStoremanagerTypes.StorefinderType}
+			\subsubsection{Descrizione}
+				Questa classe il comportamento Storefinder di un attore di tipo \textbf{Storemanager}.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzata per definire il comportamento Storefinder.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
 				\end{itemize}
 		
-		\subsection{Actorbase.server.enums.EnumPermission}
-			\subsubsection{Descrizione}
-				Questa classe contiene la lista dei permessi che un utente può avere.
-				
-			\subsubsection{Utilizzo}
-				Viene utilizzata dall'attore \textbf{Main} per effettuare i controlli dei permessi dei messaggi. 				
-				
-			\subsubsection{Relazione con altre classi}
+			\subsubsection{Trait implementati}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.enums.Permission:} relazione uscente, aggregazione.
+					\item \textbf{Actorbase.server.enums.EnumStoremanagerTypes.StoremanagerType} 
 				\end{itemize}
 				
-		\subsection{Actorbase.server.enums.EnumReplyResult}
+						\subsection{Actorbase.server.enums.EnumStoremanagerTypes.StorekeeperType}
 			\subsubsection{Descrizione}
-				Questa classe contiene la lista di tipi di risposta che una richiesta effettuata da un utente può avere.
+				Questa classe il comportamento Storekeeper di un attore di tipo \textbf{Storemanager}.
+				
 			\subsubsection{Utilizzo}
-				Viene utilizzata da tutti gli attori per accedere ai tipi di risposta che una richiesta effettuata da un utente può avere.
+				Viene utilizzata per definire il comportamento Storekeeper.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Doorkeeper:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.enums.ReplyResult:} relazione uscente, aggregazione.
 				\end{itemize}
+		
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.enums.EnumStoremanagerTypes.StoremanagerType} 
+				\end{itemize}
+				
+						\subsection{Actorbase.server.enums.EnumStoremanagerTypes.StorefinderNinjaType}
+			\subsubsection{Descrizione}
+				Questa classe il comportamento StorefinderNinja di un attore di tipo \textbf{Storemanager}.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzata per definire il comportamento StorefinderNinja.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
+				\end{itemize}
+		
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.enums.EnumStoremanagerTypes.StoremanagerType} 
+				\end{itemize}
+				
+						\subsection{Actorbase.server.enums.EnumStoremanagerTypes.StorekeeperNinjaType}
+			\subsubsection{Descrizione}
+				Questa classe il comportamento StorekeeperNinja di un attore di tipo \textbf{Storemanager}.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzata per definire il comportamento StorekeeperNinja.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
+				\end{itemize}
+		
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.enums.EnumStoremanagerTypes.StoremanagerType} 
+				\end{itemize}
+				
+				\newpage
+				
+				
+				
+				
+				
+		
+		
 				
 		\subsection{Actorbase.server.messages}
 		
@@ -756,59 +876,74 @@
 			\end{figure}
 			
 			\subsubsection{Descrizione}
-				Package contenente i messaggi che gli attori si scambiano non riguardanti richieste effettuate dagli utenti.
+				Package contenente i messaggi che gli attori si scambiano non riguardanti richieste effettuate dagli utenti ma riguardanti la struttura interna del sistema.
 				
 			\subsubsection{Package Figli}
 				\begin{itemize}
 					\item Actorbase.server.messages.internal.LinkMessages
+					\item Actorbase.server.messages.internal.AskMessages
+					\item Actorbase.server.messages.internal.ScalabilityMessages
+					\item Actorbase.server.messages.internal.StorageMessages
 				\end{itemize}
+				
+
+\subsection{Actorbase.server.messages.internal.AskMessages}		
+
+			\subsubsection{Descrizione}
+				Package contenente i messaggi che rappresentano richieste di esistenza di mappe o database all'interno del sistema.
 				
 			\subsubsection{Classi}
 				\begin{itemize}
-					\item Actorbase.server.messages.internal.AskMapMessage
-					\item Actorbase.server.messages.internal.BecomeStorekeeperMessage
-					\item Actorbase.server.messages.internal.SendMapMessage
+					\item Actorbase.server.messages.internal.AskMessages.AskMapMessage
+					\item Actorbase.server.messages.internal.AskMessages.AskDatabaseMessage
 				\end{itemize}
 			
-		\subsection{Actorbase.server.messages.internal.AskMapMessage}
+		\subsection{Actorbase.server.messages.internal.AskMessages.AskMapMessage}
 			\subsubsection{Descrizione}
-				Questa classe rappresenta un messaggio per verificare la presenza di una mappa in un \textbf{Storemanager}.
+				Questa classe rappresenta un messaggio per verificare la presenza di una mappa in un \textbf{MapManager}.
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da un \textbf{Main} ad uno \textbf{Storemanager}.
+				Viene inviato da un \textbf{Main} ad un \textbf{MapManager}.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
 					\item \textbf{Actorbase.server.actors.Main:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
 				\end{itemize}
 				
-		\subsection{Actorbase.server.messages.internal.BecomeAStorekeeperMsg}
+		\subsection{Actorbase.server.messages.internal.AskMessages.AskDatabaseMessage}
 			\subsubsection{Descrizione}
-				Questa classe rappresenta un messaggio per far cambiare l'implementazione di ricezione di messaggi di uno \textbf{Storekeeper} 
-				che precedentemente si comportava come un \textbf{Ninja}.
+				Questa classe rappresenta un messaggio per verificare la presenza di un database.
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da uno \textbf{Storefinder} ad uno \textbf{Storekeeper}.
+				Viene inviato da un \textbf{Usermanager} ad un \textbf{Main}.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
-				\end{itemize}
+					\item \textbf{Actorbase.server.actors.Usermanager:} relazione entrante, creazione e utilizzo.
+					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
+				\end{itemize}				
 				
-		\subsection{Actorbase.server.messages.internal.SendMapMessage}
+				
+				
+\subsection{Actorbase.server.messages.internal.ScalabilityMessages}		
+
+			\subsubsection{Descrizione}
+				Package contenente i messaggi che rappresentano richieste relative alla sclabilità del sistema.
+				
+			\subsubsection{Classi}
+				\begin{itemize}
+					\item Actorbase.server.messages.internal.ScalabilityMessages.SendMapMessage
+				\end{itemize}
+
+				
+		\subsection{Actorbase.server.messages.internal.ScalabilityMessages.SendMapMessage}
 			\subsubsection{Descrizione}
 				Questa classe rappresenta un messaggio contenente una mappa. 
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da un \textbf{Warehouseman} ad uno \textbf{Storekeeper}.
+				Viene inviato da un per mandare una mappa (più item) da un attore ad un altro.
 				
-			\subsubsection{Relazione con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
-				\end{itemize}
 				
 		\subsection{Actorbase.server.messages.internal.LinkMessages}
 			
@@ -821,6 +956,7 @@
 					\item Actorbase.server.messages.internal.LinkMessages.AddWarehousemanMessage
 					\item Actorbase.server.messages.internal.LinkMessages.RemoveNinjaMessage
 					\item Actorbase.server.messages.internal.LinkMessages.RemoveWarehousemanMessage
+					\item Actorbase.server.messages.internal.LinkMessages.BecomeStorefinderNinjaMessage
 				\end{itemize}
 			
 			\subsubsection{Trait}
@@ -833,12 +969,11 @@
 				Trait per la richiesta di aggiunta o rimozione di un attore da parte di un altro attore.
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da uno \textbf{Storefinder} ad uno \textbf{Storekeeper}.
+				Viene inviato da attori di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
 				\end{itemize}
 				
 			\subsubsection{Classi figlie}
@@ -852,15 +987,14 @@
 		\subsection{Actorbase.server.messages.internal.LinkMessages.AddNinjaMessage}
 			\subsubsection{Descrizione}
 				Questa classe rappresenta la richiesta di aggiunta di un \textbf{Ninja}, ovvero uno \textbf{Storekeeper} di backup, da 
-				parte di uno \textbf{Storefinder} ad uno \textbf{Storekeeper}.
+				parte di uno \textbf{Storemanager}.
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da uno \textbf{Storefinder} ad uno \textbf{Storekeeper}.
+				Viene inviato da attori di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
 				\end{itemize}
 				
 			\subsubsection{Trait implementati}
@@ -870,16 +1004,15 @@
 				
 		\subsection{Actorbase.server.messages.internal.LinkMessages.AddWarehousemanMessage}
 			\subsubsection{Descrizione}
-				Questa classe rappresenta la richiesta di aggiunta di un \textbf{Warehouseman} da parte di uno \textbf{Storefinder} 
-				ad uno \textbf{Storekeeper}.
+				Questa classe rappresenta la richiesta di aggiunta di un \textbf{Warehouseman} da 
+				parte di uno \textbf{Storemanager}.
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da uno \textbf{Storefinder} ad uno \textbf{Storekeeper}.
+				Viene inviato da attori di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
 				\end{itemize}
 				
 			\subsubsection{Trait implementati}
@@ -890,15 +1023,14 @@
 		\subsection{Actorbase.server.messages.internal.LinkMessages.RemoveNinjaMessage}
 			\subsubsection{Descrizione}
 				Questa classe rappresenta la richiesta di rimozione di un \textbf{Ninja}, ovvero uno \textbf{Storekeeper} di backup, da 
-				parte di uno \textbf{Storefinder} ad uno \textbf{Storekeeper}.
+				parte di uno \textbf{Storemanager}.
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da uno \textbf{Storefinder} ad uno \textbf{Storekeeper}.
+				Viene inviato da attori di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
 				\end{itemize}
 				
 			\subsubsection{Trait implementati}
@@ -908,22 +1040,123 @@
 				
 		\subsection{Actorbase.server.messages.internal.LinkMessages.RemoveWarehousemanMessage}
 			\subsubsection{Descrizione}
-				Questa classe rappresenta la richiesta di rimozione di un \textbf{Warehouseman} da parte di uno \textbf{Storefinder} 
-				ad uno \textbf{Storekeeper}.
+				Questa classe rappresenta la richiesta di rimozione di un \textbf{Warehouseman} da 
+				parte di uno \textbf{Storemanager}.
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da uno \textbf{Storefinder} ad uno \textbf{Storekeeper}.
+				Viene inviato da attori di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
 				\end{itemize}
 				
 			\subsubsection{Trait implementati}
 				\begin{itemize}
 					\item \textbf{Actorbase.server.messages.internal.LinkMessages.LinkMessage} 
 				\end{itemize}
+				
+				
+	\subsection{Actorbase.server.messages.internal.LinkMessages.BecomeStorefinderNinjaMessage}
+			\subsubsection{Descrizione}
+				Questa classe rappresenta la richiesta di cambio di comportamento in \textbf{StorefinderNInja} da 
+				parte di uno \textbf{Storemanager}.
+				
+			\subsubsection{Utilizzo}
+				Viene inviato da attori di tipo \textbf{Storemanager}.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
+				\end{itemize}
+				
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.messages.internal.LinkMessages.LinkMessage} 
+				\end{itemize}
+
+\subsection{Actorbase.server.messages.internal.StorageMessages}		
+
+			\subsubsection{Descrizione}
+				Package contenente i messaggi che rappresentano richieste relative alla gestione dei dati su disco.
+				
+			\subsubsection{Classi}
+				\begin{itemize}
+					\item Actorbase.server.messages.internal.StorageMessages.WriteMapMessage
+					\item Actorbase.server.messages.internal.StorageMessages.ReadMapMessage
+				\end{itemize}				
+				
+			\subsubsection{Trait}
+				\begin{itemize}
+					\item Actorbase.server.messages.internal.StorageMessages.StorageMessage
+				\end{itemize}				
+				
+				
+\subsection{Actorbase.server.messages.internal.StorageMessages.StorageMessage}
+			\subsubsection{Descrizione}
+				Trait che rappresenta i messaggi che gestiscono operazioni di gestione dei dati su disco.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzato da attori \textbf{Warehouseman} per gestire richieste di dati.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione entrante, creazione e utilizzo.
+				\end{itemize}
+				
+			\subsubsection{Classi figlie}
+				\begin{itemize}
+					\item Actorbase.server.messages.internal.StorageMessages.WriteMapMessage
+					\item Actorbase.server.messages.internal.StorageMessages.ReadMapMessage
+				\end{itemize}
+
+\subsection{Actorbase.server.messages.internal.StorageMessages.WriteMapMessage}
+			\subsubsection{Descrizione}
+				Classe che rappresenta un messaggio per scrivere una mappa su disco.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzato da attori \textbf{Warehouseman} per gestire le richieste di scrittura su disco.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione entrante, creazione e utilizzo.
+				\end{itemize}
+				
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item Actorbase.server.messages.internal.StorageMessages.StorageMessage
+				\end{itemize}				
+				
+				
+
+\subsection{Actorbase.server.messages.internal.StorageMessages.ReadMapMessage}
+			\subsubsection{Descrizione}
+				Classe che rappresenta un messaggio per leggere una mappa da disco.
+				
+			\subsubsection{Utilizzo}
+				Viene utilizzato da attori \textbf{Warehouseman} per gestire le richieste di lettura da disco.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione entrante, creazione e utilizzo.
+				\end{itemize}
+				
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item Actorbase.server.messages.internal.StorageMessages.StorageMessage
+				\end{itemize}				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 		\subsection{Actorbase.server.messages.query}
 		
