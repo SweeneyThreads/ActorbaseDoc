@@ -79,7 +79,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.1
+			Versione 2.0.2
 		\end{center}
 		% Date, change the ->day to a set date if you want to be precise
 		{\large \today} \\ [3cm] 
@@ -182,6 +182,7 @@
 			le classi ereditate, le sottoclassi e le relazioni con altre classi. \\
 			Successivamente saranno mostrati e descritti i diagrammi delle attività che coinvolgono l'utente. \\
 			Infine si illustreranno degli esempi di utilizzo dei design pattern nell'architettura del sistema.
+			
 		\subsection{Architettura generale}
         	L'architettura generale del sistema è di tipo client-server. \\ \\
             Il Server ha un'architettura di tipo event-driven basata sul modello ad attori e accetta connessioni in entrata tramite un socket TCP. \\ \\
@@ -871,7 +872,7 @@
 		
 			\begin{figure} [H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/Server/internalLevel.jpg}
+				\includegraphics[width=\textwidth]{ST/Server/internalLevel.png}
 				\caption{Componente Actorbase.server.messages.internal}
 			\end{figure}
 			
@@ -888,7 +889,12 @@
 				
 
 \subsection{Actorbase.server.messages.internal.AskMessages}		
-
+		
+			\begin{figure} [H]
+				\centering
+				\includegraphics[scale = 0.6]{ST/Server/AskMessages.png}
+				\caption{Componente Actorbase.server.messages.internal.AskMessages}
+			\end{figure}
 			\subsubsection{Descrizione}
 				Package contenente i messaggi che rappresentano richieste di esistenza di mappe o database all'interno del sistema.
 				
@@ -927,7 +933,11 @@
 				
 				
 \subsection{Actorbase.server.messages.internal.ScalabilityMessages}		
-
+			\begin{figure} [H]
+				\centering
+				\includegraphics[scale = 0.6]{ST/Server/ScalabilityMessages.png}
+				\caption{Componente Actorbase.server.messages.internal.ScalabilityMessages}
+			\end{figure}
 			\subsubsection{Descrizione}
 				Package contenente i messaggi che rappresentano richieste relative alla sclabilità del sistema.
 				
@@ -946,7 +956,11 @@
 				
 				
 		\subsection{Actorbase.server.messages.internal.LinkMessages}
-			
+						\begin{figure} [H]
+				\centering
+				\includegraphics[scale = 0.6]{ST/Server/LinkMessages.png}
+				\caption{Componente Actorbase.server.messages.internal.LinkMessages}
+			\end{figure}
 			\subsubsection{Descrizione}
 				Package contenente i messaggi che gli attori si scambiano non riguardanti richieste effettuate dagli utenti.
 				
@@ -1077,6 +1091,11 @@
 
 \subsection{Actorbase.server.messages.internal.StorageMessages}		
 
+			\begin{figure} [H]
+				\centering
+				\includegraphics[scale = 0.6]{ST/Server/StorageMessages.png}
+				\caption{Componente Actorbase.server.messages.internal.StorageMessages}
+			\end{figure}
 			\subsubsection{Descrizione}
 				Package contenente i messaggi che rappresentano richieste relative alla gestione dei dati su disco.
 				
@@ -1232,7 +1251,7 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/Server/errorMessagesLevel}
+				\includegraphics[scale = 0.6]{ST/Server/errorMessagesLevel.png}
 				\caption{Componente Actorbase.server.messages.query.ErrorMessages}
 			\end{figure}
 			
@@ -1255,7 +1274,7 @@
 				Trait per segnalare che la richiesta effettuata non è riconosciuta dal server.
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da uno \textbf{Usermanager}.
+				Viene esteso da tutti i messaggi utilizzati per segnalare una situazione di errore.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
@@ -1273,7 +1292,7 @@
 				Questa classe rappresenta un messaggio per segnalare che la richiesta effettuata non è riconosciuta dal server.
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da uno \textbf{Usermanager}.
+				Viene inviato per segnalare operazioni non riconosciute.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
@@ -1286,12 +1305,31 @@
 					\item \textbf{Actorbase.server.messages.query.QueryMessage}
 					\item \textbf{Actorbase.server.messages.query.ErrorMessages.ErrorMessage} 
 				\end{itemize}
+				
+			\subsection{Actorbase.server.messages.query.ErrorMessages.QueryErrorInfo}
+			\subsubsection{Descrizione}
+				Questa classe rappresenta un messaggio per segnalare che la richiesta effettuata non è stata eseguita correttamente dal server.
+				
+			\subsubsection{Utilizzo}
+				Viene inviato per segnalare operazioni non eseguite correttamente.
+				
+			\subsubsection{Relazione con altre classi}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.actors.Usermanager:} relazione entrante, creazione e utilizzo.
+					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante, creazione.
+				\end{itemize}
+			
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item \textbf{Actorbase.server.messages.query.QueryMessage}
+					\item \textbf{Actorbase.server.messages.query.ReplyMessages.ReplyInfo} 
+				\end{itemize}
 
 		\subsection{Actorbase.server.messages.query.PermissionMessages}
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/Server/permissionMessagesLevel}
+				\includegraphics[scale = 0.6]{ST/Server/permissionMessagesLevel}
 				\caption{Componente Actorbase.server.messages.query.PermissionMessages}
 			\end{figure}
 			
@@ -1368,6 +1406,11 @@
 				\end{itemize}
 				
 				\subsection{Actorbase.server.messages.query.ReplyMessages}	
+					\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/Server/ReplyMessageLevel.png}
+				\caption{Componente Actorbase.server.messages.query.ReplyMessages}
+			\end{figure}
 			\subsubsection{Descrizione}
 				Package contenente i messaggi che rappresentano le risposte tra gli attori.
 				
@@ -1382,11 +1425,48 @@
 					\item Actorbase.server.messages.query.ReplyMessages.ReplyErrorInfo
 				\end{itemize}
 				
+		\subsection{Actorbase.server.messages.query.ReplyMessages.ReplyInfo}
+			\subsubsection{Descrizione}
+				Trait che rappresenta una risposta tra attori del sistema contenente informazioni.
+				
+			\subsubsection{Utilizzo}
+				Trait che viene esteso da tutti i messaggi che rappresentano risposte informative tra attori.
+				
+			\subsubsection{Classi figlie}
+				\begin{itemize}
+					\item Actorbase.server.messages.query.ReplyMessages.ReplyMessage
+					\item Actorbase.server.messages.query.ReplyMessages.ReplyErrorInfo
+				\end{itemize}
+				
+			\subsection{Actorbase.server.messages.query.ReplyMessages.ReplyMessage}
+			\subsubsection{Descrizione}
+				Messaggio di risposta contenente delle informazioni (ReplyResult).
+				
+			\subsubsection{Utilizzo}
+				Viene inviato come risposta da tutti gli attori che devono rispondere con una qualche informazione.
+				
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item Actorbase.server.messages.query.ReplyMessages.ReplyInfo
+				\end{itemize}
+				
+					\subsection{Actorbase.server.messages.query.ReplyMessages.ReplyErrorInfo}
+			\subsubsection{Descrizione}
+				Messaggio di risposta contenente un errore.
+				
+			\subsubsection{Utilizzo}
+				Viene inviato come risposta da tutti gli attori che devono rispondere con un errore.
+				
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item Actorbase.server.messages.query.ReplyMessages.ReplyInfo
+				\end{itemize}
+				
 		\subsection{Actorbase.server.messages.query.admin}
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/Server/adminLevel}
+				\includegraphics[width=\textwidth]{ST/Server/adminLevel.png}
 				\caption{Componente Actorbase.server.messages.query.admin}
 			\end{figure}
 			
@@ -1426,17 +1506,60 @@
 				\end{itemize}
 		
 		\subsection{Actorbase.server.messages.query.admin.SettingMessages}
+					\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{ST/Server/levelSettingsMessages.png}
+				\caption{Componente Actorbase.server.messages.query.admin.SettingMessages}
+			\end{figure}
 			\subsubsection{Descrizione}
 				Package contenente i messaggi che permettono di gestire i le impostazioni del sistema.
-			\subsubsection{Classi}
+			\subsubsection{Trait}
 				\begin{itemize}
 					\item Actorbase.server.messages.query.admin.SettingMessages.SettingMessage
 				\end{itemize}
 				
-			\subsubsection{Trait}
+			\subsubsection{Classi}
 				\begin{itemize}
 					\item Actorbase.server.messages.query.admin.SettingMessages.RefreshSettingsMessage
 					\item Actorbase.server.messages.query.admin.SettingMessages.RefreshSettingsInfo
+					\end{itemize}
+					
+				\subsection{Actorbase.server.messages.query.admin.SettingMessages.SettingMessage}
+			\subsubsection{Descrizione}
+				Trait che tutti i messaggi amministrativi relativi alle impostazioni devono estendere.
+			\subsubsection{Utilizzo}
+				Viene esteso dai messaggi relativi alle impostazioni del sistema.
+			\subsubsection{Classi figlie}
+				\begin{itemize}
+					\item Actorbase.server.messages.query.admin.SettingMessages.RefreshSettingsMessage
+					\item Actorbase.server.messages.query.admin.SettingMessages.RefreshSettingsInfo
+				\end{itemize}
+				
+			\subsubsection{Trait estesi}
+				\begin{itemize}
+					\item Actorbase.server.messages.query.admin.AdminMessage
+					\end{itemize}
+					
+						\subsection{Actorbase.server.messages.query.admin.SettingMessages.RefreshSettingsMessage}
+			\subsubsection{Descrizione}
+				Messaggio che rappresenta una richiesta di aggiornamento delle impostazioni.
+			\subsubsection{Utilizzo}
+				Viene utilizzato per richiedere un refresh delle impostazioni da parte di diversi attori.
+				
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item Actorbase.server.messages.query.admin.SettingMessages.SettingMessage
+					\end{itemize}
+					
+\subsection{Actorbase.server.messages.query.admin.SettingMessages.RefreshSettingsInfo}
+			\subsubsection{Descrizione}
+				Messaggio che rappresenta una risposta ad una richiesta di aggiornamento delle impostazioni.
+			\subsubsection{Utilizzo}
+				Viene utilizzato per rispondere dell'esito di un'operazione di aggiornamento impostazioni.
+				
+			\subsubsection{Trait implementati}
+				\begin{itemize}
+					\item Actorbase.server.messages.query.admin.SettingMessages.SettingMessage
 					\end{itemize}
 				
 		\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages}
@@ -1638,12 +1761,16 @@
 				\begin{itemize}
 					\item Actorbase.server.messages.query.admin.UserManagementMessages.UserManagementMessage
 				\end{itemize}
+				
+				
+				
+				
 			
 		\subsection{Actorbase.server.messages.query.user}
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[width=\textwidth]{ST/Server/userLevel.jpg}
+				\includegraphics[scale = 0.7]{ST/Server/userLevel.jpg}
 				\caption{Componente Actorbase.server.messages.query.user}
 			\end{figure}
 			
@@ -1675,9 +1802,9 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Classi figlie}
@@ -1724,9 +1851,9 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Classi figlie}
@@ -1750,9 +1877,9 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
@@ -1772,9 +1899,9 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
@@ -1794,9 +1921,9 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
@@ -1816,9 +1943,9 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
@@ -1838,9 +1965,9 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
@@ -1884,8 +2011,8 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 				
@@ -1909,8 +2036,8 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
@@ -1930,8 +2057,8 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
@@ -1951,8 +2078,8 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
@@ -1972,8 +2099,8 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.IndexManager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
@@ -2017,7 +2144,7 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Classi figlie}
 				\begin{itemize}
@@ -2040,7 +2167,7 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
 				\begin{itemize}
@@ -2060,7 +2187,7 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
 				\begin{itemize}
@@ -2080,7 +2207,7 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
 				\begin{itemize}
@@ -2099,7 +2226,7 @@
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
 					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
 					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
+					\item \textbf{Actorbase.server.actors.MapManager:} relazione di utilizzo.
 				\end{itemize}
 			\subsubsection{Trait implementati}
 				\begin{itemize}
@@ -2296,8 +2423,7 @@
 					\item \textbf{Actorbase.driver.ConcreteConnection:} relazione uscente, creazione.
 				\end{itemize}
 		
-		
-		%%%%%%%%%%% OLD
+
 	\newpage 
 	\section{Diagrammi delle attività}
 		Segue il diagramma delle attività che mostra l'interazione dell'utente con il client.
@@ -2309,76 +2435,49 @@
 			\caption{Diagramma attività principale}
 		\end{figure}
 		Dopo aver avviato il client l'utente può inserire dei comandi. Se il comando è di chiusura il client si spegne. Se il comando è di connect ed il client non è connesso quest'ultimo si connette ed invia un comando di login al server, altrimenti stampa un messaggio di errore. Se il comando non è di connect ed il client è connesso quest'ultimo lo controlla. Se esso è un comando di disconnessione il client si disconnette dal server, altrimenti invia la richiesta.
+	
 		
 	\newpage 
-	\section{Diagrammi di sequenza}
-        In questa sezione verranno illustrati e descritti i principali diagrammi di sequenza realizzati. Questi ultimi illustrano le azioni compiute dal server per l'avvio e la gestire le richieste utente.
-        
-        Per esplicitare l'invio di un messaggio tra due attori, nei diagrammi viene chiamato il metodo \textit{receive()} dell'attore che riceve il messaggio 
-        da parte di chi lo invia.
-        Questo è dovuto al fatto che tutte le classi ereditano dall'interfaccia \textit{Actor} messa a disposizione da \textit{Akka} senza effettuare 
-        l'override del metodo per inviare i messaggi; mentre sovrascrivono il metodo di ricezione per gestire i messaggi in entrata.
-        
-        Trattandosi di diagrammi di sequenza non molto specifici, alcuni attori effettuano operazioni senza chiamare dei metodi specifici già 
-        dichiarati. 
-       \subsection{Avvio}
-            \begin{figure} [H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/Sequenza/seqAvvio.jpg}
-				\caption{Diagramma di sequenza - avvio del server.}
-			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per avviare il server. Esso crea i vari Doorkeeper, i punti di accesso dall'esterno, che resteranno in ascolto di connessioni in entrata. Poi legge le configurazioni salvate su disco e carica i database.
-             
-       \subsection{Nuova connessione}
-            \begin{figure} [H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/Sequenza/seqNuovaConnessione.jpg}
-				\caption{Diagramma di sequenza - nuova connessione al server.}
-			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando un client si collega al socket TCP di un Doorkeeper. Per ogni nuova connessione l'attore Doorkeeper crea un attore Usermanager il quale crea un attore Main. Usermanager gestisce ogni richiesta proveniente dalla connessione a lui associata, nello specifico trasforma i comandi in forma testuale in messaggi da inoltrare al Main.
-            
-        \subsection{Comando utente}
-            \begin{figure} [H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/Sequenza/seqComandoUtente.jpg}
-				\caption{Diagramma di sequenza - gestione comando utente.}
-			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite dagli attori Usermanager e Main alla ricezione di una richiesta dall'utente. 
-Usermanager, dopo aver convertito i byte ricevuti in una stringa, crea un messaggio che rappresenta la richiesta dell'utente ed lo invia al Main. Il Main controlla che l'utente abbia i permessi per il tipo di richiesta, in caso affermativo gestisce, anche indirettamente, il messaggio e risponde.             
-            
-        \subsection{Richiesta di creazione mappa}
-            \begin{figure} [H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/Sequenza/seqNuovaMappa.jpg}
-				\caption{Diagramma di sequenza - gestione di richiesta di creazione mappa.}
-			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando il Main riceve una richiesta di creazione di una mappa. Il Main alla ricezione di un messaggio, dopo aver controllato i permessi, ne controlla il tipo. Se è un messaggio di tipo mappa lo inoltra allo Storemanager che rappresenta il database precedentemente selezionato. Lo Storemanager crea un nuovo Storefinder che rappresenterà la mappa e risponde con l'esito che arriverà fino al client.
-            
-        \subsection{Richiesta di find}
-            \begin{figure} [H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/Sequenza/seqFind.jpg}
-				\caption{Diagramma di sequenza - gestione di richiesta di Find.}
-			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per gestire una richiesta di find. Il messaggio rappresentante un comando find viene inoltrato fino allo Storekeeper responsabile dell'area di mappa richiesta. Lo Storekeeper risponderà con il valore delle chiave o con un messaggio di errore. La risposta verrà poi inoltrata all'indietro fino al client.            
-	\section{Desing Pattern utilizzati}
-	Segue la descrizione delle parti dell'architettura che utilizzano desing pattern. I desing pattern sono descritti in appendice.
-	\subsection{Broker event-driven}
-	Il sistema ad attori di Akka è molto simile ad un architettura event-driven di tipologia broker, di conseguenza il server di Actorbase segue questa architettura, nella quale gli attori svolgono il ruolo di Event Processor mentre l'Actor System crea i suddetti attori e svolge anche la funzione di Event Channel.
-	\subsection{Singleton}
-	Le classi Server e Client seguono il desing pattern Singleton, realizzato definendo le classi come Object, cosi facendo Scala garantisce che ci sia una solo istanza di queste classi per ogni esecuzione del programma.        
-	\newpage 
-	\section{Stime di fattibilità e di bisogno di risorse}
 	
-		L'architettura definita fino a questo punto è sufficiente per fornire una stima della fattibilità del prodotto e delle risorse richieste per la realizzazione. \\
-	Il gruppo inizialmente non aveva conoscenze sufficienti per stimare in modo appropriato la complessità dell'implementazione di un Database basato sulla logica ad attori. Grazie al livello di dettaglio raggiunto sono stati fugati molti dei dubbi e delle incertezze a riguardo, confermando le previsioni sull'esito positivo del progetto. \\
-	Sono state inoltre individuate con chiarezza le risorse tecnologiche che verranno utilizzate:
-	\begin{itemize}
-		\item Akka: libreria per modello ad attori.
-		\item IntelliJ: framework per la stesura del codice.
-		\item JVM: piattaforma per il funzionamento di Scala.
-	\end{itemize}
-	Il gruppo in contemporanea si è dedicato allo studio delle nuove tecnologie raggiungendo un buon livello di conoscenza. L'insieme di queste risorse potrà garantire la realizzazione di tutte le componenti dell'architettura.
+\section{Struttura del sistema ad attori}	
+In questa sezione viene illustrata ad alto livello l'architettura della logica ad attori del sistema lato server, vero nucleo di \emph{Actorbase}.
+	\subsection{Struttura principale}
+					\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{immagini/ST/main}
+					\caption{Il sistema ad attori di Actorbase}
+				\end{figure}
+		La struttura del server può individuare negli attori TCP (forniti da Akka) e negli attori \textbf{Doorkeeper} i nodi iniziali. Un attore \textbf{Doorkeeper} apre un socket TCP e si mette in ascolto, quando viene stabilità una nuova connessione esso crea un attore di tipo \textbf{Usermanager} a cui ne delega la gestione.
+		\\ \\
+		Dunque ogni client connesso al server è rappresentato e gestito da un attore \textbf{Usermanager} dedicato che si occupa di gestire i messaggi inviati dal client, trasformandoli in messaggi gestibili dal sistema ad attori. Tali messaggi vengono prima di tutto gestiti da un attore di tipo \textbf{Main}. Esso effettua una prima analisi e gestione dei messaggi. Una volta che un messaggio arriva all'attore \textbf{Main}, infatti, viene interpretato e può essere gestito direttamente dall'attore o inoltrato alle componenti più basse del sistema.
+		
+	\subsection{Struttura di un database}
+					\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{immagini/ST/database}
+					\caption{Il sistema ad attori di Actorbase, struttura di un singolo database}
+				\end{figure}
+Un singolo database del sistema è rappresentato da un attore \textbf{MapManager}. Esso si occupa di gestire e indicizzare tutti gli attori di tipo \textbf{IndexManager}, rappresentanti le mappe che compongono tale database.
+\\ \\
+Ogni \textbf{IndexManager} indicizza e gestisce i dati che compongono la mappa in due modi: in memoria principale e su disco. La gestione in RAM avviene tramite l'utilizzo di attori di tipo \textbf{Storemanager} mentre della gestione dei dati su disco si occupano attori di tipo \textbf{Warehouseman}.
+
+	\subsection{Struttura di una mappa in memoria principale}
+					\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{immagini/ST/map}
+					\caption{Il sistema ad attori di Actorbase, struttura di una mappa in memoria principale}
+				\end{figure}
+Una mappa in memoria principale è rappresentata da un albero binario di attori \textbf{Storemanager}. Attori di tale tipo assumono un comportamento diverso nel caso in cui agiscano da indicizzatori di altri \textbf{Storemanager} o da contenitori dei dati veri e propri. Nel primo caso il comportamento adottato è quello dell'attore \textbf{Storefinder} (in rosso nel diagramma), nel secondo caso quello dell'attore \textbf{Storekeeper} (in blu nel diagramma).
+\\ \\
+Questa struttura permette di avere un sistema stabile e affidabile. Quando un attore raggiunge la sua capienza massima non si divide in due ma genera due figli e prosegue nella gestione dei messaggi che aveva in mailbox. In questo modo il padre non si accorge dello sdoppiamento del figlio, ne del suo cambio di comportamento. D'altro lato il figlio non rischia di perdere messaggi nell'operazione di sdoppiamento.
+
+	\subsection{Struttura degli attori di backup}
+					\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{immagini/ST/backup}
+					\caption{Il sistema ad attori di Actorbase, struttura degli attori di backup}
+				\end{figure}
+Ogni \textbf{Storefinder} e \textbf{Storekeeper} possiede un insieme di attori \textbf{Storemanager} che agiscono da copia delle proprie informazioni, il comportamento di tali attori è detto \textbf{Ninja}. Essi permettono di avere delle copie di backup che possono essere sostituite agli attori principali in caso di necessità. Inoltre possono essere usati per incrementare le performance del sistema delegando a loro la risoluzione di alcune query, alleggerendo così l'attore principale.
 	
 	\newpage 
 	\section{Tracciamento}
@@ -2409,7 +2508,7 @@ Usermanager, dopo aver convertito i byte ricevuti in una stringa, crea un messag
 	\subsubsection{Singleton}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[width=\textwidth]{immagini/ST/schemaSingleton.png}
+					\includegraphics[scale = 0.8]{immagini/ST/schemaSingleton.png}
 					\caption{Diagramma del Design Pattern Command}
 				\end{figure}
 		\begin{itemize}

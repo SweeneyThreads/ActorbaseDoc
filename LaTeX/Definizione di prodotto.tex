@@ -5078,6 +5078,22 @@
         
         Trattandosi di diagrammi di sequenza non molto specifici, alcuni attori effettuano operazioni senza chiamare dei metodi specifici già 
         dichiarati. 
+
+       \subsection{Avvio}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{Sequenza/seqAvvio.jpg}
+				\caption{Diagramma di sequenza - avvio del server.}
+			\end{figure}
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite per avviare il server. Esso crea i vari Doorkeeper, i punti di accesso dall'esterno, che resteranno in ascolto di connessioni in entrata. Poi legge le configurazioni salvate su disco e carica i database.
+             
+       \subsection{Nuova connessione}
+            \begin{figure} [H]
+				\centering
+				\includegraphics[width=\textwidth]{Sequenza/seqNuovaConnessione.jpg}
+				\caption{Diagramma di sequenza - nuova connessione al server.}
+			\end{figure}
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando un client si collega al socket TCP di un Doorkeeper. Per ogni nuova connessione l'attore Doorkeeper crea un attore Usermanager il quale crea un attore Main. Usermanager gestisce ogni richiesta proveniente dalla connessione a lui associata, nello specifico trasforma i comandi in forma testuale in messaggi da inoltrare al Main.
         
        \subsection{Ricezione messaggio}
 	\begin{figure}[H]
