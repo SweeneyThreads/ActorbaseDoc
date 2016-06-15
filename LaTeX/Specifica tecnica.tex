@@ -1174,6 +1174,7 @@
 				\begin{itemize}
 					\item Actorbase.server.messages.query.ErrorMessages
 					\item Actorbase.server.messages.query.PermissionMessages
+					\item Actorbase.server.messages.query.ReplyMessages
 					\item Actorbase.server.messages.query.user
 					\item Actorbase.server.messages.query.admin
 				\end{itemize}
@@ -1181,7 +1182,6 @@
 			\subsubsection{Classi}
 				\begin{itemize}
 					\item Actorbase.server.messages.query.LoginMessage
-					\item Actorbase.server.messages.query.ReplyMessage
 				\end{itemize}
 				
 			\subsubsection{Trait}
@@ -1192,38 +1192,30 @@
 		\subsection{Actorbase.server.messages.query.QueryMessage}
 		\label{QueryMessage}
 			\subsubsection{Descrizione}
-				Classe che rappresenta un messaggio contenente una richiesta effettuata da un utente.
+				Interfaccia che rappresenta un messaggio contenente una richiesta effettuata da un utente.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzata da tutti gli attori, in particolar modo segue diversi percorsi in base alla sottoclasse concreta a cui appartiene.
-				Viene creato da un \textbf{Parser} sotto richiesta di un \textbf{Usermanager} ed inviato ad un \textbf{Main}. Da qui può fermarsi in 
-				qualsiasi punto della sequenza: \textbf{Storemanager} \space -> \space \textbf{Storefinder} 
-				\space -> \space \textbf{Storekeeper} \space -> \space \textbf{Warehouseman}.
+				Viene estesa da tutti i messaggi che rappresentano una query utente ad \emph{Actorbase}.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
-					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.messages.query.ReplyMessage:} relazione entrante, aggregazione.
+					\item \textbf{Actorbase.server.messages.query.user.UserMessage:} relazione entrante, aggregazione.
+					\item \textbf{Actorbase.server.messages.query.user.AdminMessage:} relazione entrante, aggregazione.
+					\item \textbf{Actorbase.server.actors.Main:} relazione entrante, utilizzo.
+					\item \textbf{Actorbase.server.actors.Usermanager:} relazione entrante, utilizzo.
 				\end{itemize}
 			\subsubsection{Classi figlie}
 				\begin{itemize}
-					\item Actorbase.server.messages.query.LoginMessage
-					\item Actorbase.server.messages.query.ErrorMessages.InvalidQueryMessage
-					\item Actorbase.server.messages.query.admin.AdminMessage
+					\item Actorbase.server.messages.query.user.AdminMessage
 					\item Actorbase.server.messages.query.user.UserMessage
 				\end{itemize}
+				
 				
 		\subsection{Actorbase.server.messages.query.LoginMessage}
 			\subsubsection{Descrizione}
 				Classe che rappresenta un messaggio contenente la richiesta di login effettuata da parte di un utente.
 				
 			\subsubsection{Utilizzo}
-				Nel percorso esposto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} si ferma all'attore \textbf{Usermanager}.
+				Viene utilizzato per formulare una richiesta di login ad attori \textbf{Usermanager}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -1235,22 +1227,6 @@
 					\item Actorbase.server.messages.query.QueryMessage
 				\end{itemize}
 		
-		\subsection{Actorbase.server.messages.query.ReplyMEssage}
-			\subsubsection{Descrizione}
-				Classe che rappresenta un messaggio di risposta ad una richiesta effettuata da parte di un utente.
-				
-			\subsubsection{Utilizzo}
-				Effettua il percorso esposto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} in senso opposto.
-				
-			\subsubsection{Relazioni con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Main:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione entrante, creazione e utilizzo.
-				\end{itemize}
 				
 		\subsection{Actorbase.server.messages.query.ErrorMessages}
 		
@@ -1391,6 +1367,21 @@
 					\item Actorbase.server.messages.query.user.RowMessages.RemoveRowMessage
 				\end{itemize}
 				
+				\subsection{Actorbase.server.messages.query.ReplyMessages}	
+			\subsubsection{Descrizione}
+				Package contenente i messaggi che rappresentano le risposte tra gli attori.
+				
+			\subsubsection{Trait}
+				\begin{itemize}
+					\item Actorbase.server.messages.query.ReplyMessages.ReplyInfo
+				\end{itemize}
+				
+				\subsubsection{Classi}
+				\begin{itemize}
+					\item Actorbase.server.messages.query.ReplyMessages.ReplyMessage
+					\item Actorbase.server.messages.query.ReplyMessages.ReplyErrorInfo
+				\end{itemize}
+				
 		\subsection{Actorbase.server.messages.query.admin}
 		
 			\begin{figure}[H]
@@ -1404,7 +1395,7 @@
 				
 			\subsubsection{Package Figli}
 				\begin{itemize}
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages
+					\item Actorbase.server.messages.query.admin.SettingMessages
 					\item Actorbase.server.messages.query.admin.PermissionsManagementMessages
 					\item Actorbase.server.messages.query.admin.UserManagementMessages
 				\end{itemize}
@@ -1434,164 +1425,19 @@
 					\item Actorbase.server.messages.query.admin.UsersManagementMessage
 				\end{itemize}
 		
-		\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages}
-		
-			\begin{figure}[H]
-				\centering
-				\includegraphics[width=\textwidth]{ST/Server/actorPropertiesLevel.jpg}
-				\caption{Componente Actorbase.server.messages.query.admin.ActorPropertiesMessages}
-			\end{figure}
-			
+		\subsection{Actorbase.server.messages.query.admin.SettingMessages}
 			\subsubsection{Descrizione}
-				Package contenente i messaggi per modificare le proprietà degli attori che compongono il sistema.
-				
+				Package contenente i messaggi che permettono di gestire i le impostazioni del sistema.
 			\subsubsection{Classi}
 				\begin{itemize}
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxRowMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxNinjaMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetWarehousemanMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorekeeperMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorefinderMessage
+					\item Actorbase.server.messages.query.admin.SettingMessages.SettingMessage
 				\end{itemize}
 				
 			\subsubsection{Trait}
 				\begin{itemize}
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.ActorPropertiesMessage
-				\end{itemize}
-		
-		\subsection{Actorbase.server.messages.query.admin \newline .ActorPropertiesMessages.ActorPropertiesMessage}
-			\subsubsection{Descrizione}
-				Trait per identificare i messaggi per modificare le proprietà degli attori che compongono il sistema.
-				
-			\subsubsection{Utilizzo}
-				Viene utilizzato per poter distinguere i comandi per modificare le proprietà degli attori che compongono il sistema.
-				
-			\subsubsection{Relazioni con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storekeeper:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Warehouseman:} relazione entrante, creazione e utilizzo.
-				\end{itemize}
-			\subsubsection{Classi figlie}
-				\begin{itemize}
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxRowMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetNinjaMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetWarehousemanMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorekeeperMessage
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.MaxStorefinderMessage
-				\end{itemize}
-
-		\subsection{Actorbase.server.messages.query.admin \newline
-		.ActorPropertiesMessages.MaxRowMessage}
-		
-			\subsubsection{Descrizione}
-				Questa classe rappresenta un messaggio per modificare il numero di righe massimo di una mappa che uno \textbf{Storekeeper} può gestire.
-				
-			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore 
-				\textbf{Storekeeper}.
-				
-			\subsubsection{Trait implementati}
-				\begin{itemize}
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessages.ActorPropertiesMessage
-				\end{itemize}
-		
-<<<<<<< Updated upstream
-		\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetNinjaMessage}
-=======
-		\subsection{Actorbase.server.messages.query.admin \newline
-		.ActorPropertiesMessages.MaxNinjaMessage}
->>>>>>> Stashed changes
-			\subsubsection{Descrizione}
-				Questa classe rappresenta un messaggio per modificare il numero di attori \textbf{Ninja} assegnati ad ogni \textbf{Storekeeper}.
-				
-			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore 
-				\textbf{Storefinder}.
-				
-			\subsubsection{Relazioni con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-				\end{itemize}
-			\subsubsection{Trait implementati}
-				\begin{itemize}
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessage
-				\end{itemize}
-
-<<<<<<< Updated upstream
-		\subsection{Actorbase.server.messages.query.admin.ActorPropertiesMessages.SetWarehousemanMessage}
-=======
-		\subsection{Actorbase.server.messages.query.admin \newline
-		.ActorPropertiesMessages.MaxWarehousemanMessage}
->>>>>>> Stashed changes
-			\subsubsection{Descrizione}
-				Questa classe rappresenta un messaggio per modificare il numero di attori \textbf{Warehouseman} assegnati ad ogni \textbf{Storekeeper}.
-				
-			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore 
-				\textbf{Storefinder}.
-				
-			\subsubsection{Relazioni con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
-					\item \textbf{Actorbase.server.actors.Storefinder:} relazione entrante, creazione e utilizzo.
-				\end{itemize}
-			\subsubsection{Trait implementati}
-				\begin{itemize}
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessage
-				\end{itemize}
-		
-		\subsection{Actorbase.server.messages.query.admin \newline
-		.ActorPropertiesMessages.MaxStorekeeperMessage}
-			\subsubsection{Descrizione}
-				Questa classe rappresenta un messaggio per modificare il numero massimo di attori \textbf{Storekeeper} gestiti da ogni \textbf{Storefinder}.
-				
-			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore 
-				\textbf{Storemanager}.
-				
-			\subsubsection{Relazioni con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Storemanager:} relazione entrante, creazione e utilizzo.
-				\end{itemize}
-			\subsubsection{Trait implementati}
-				\begin{itemize}
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessage
-				\end{itemize}
-				
-		\subsection{Actorbase.server.messages.query.admin \newline
-		.ActorPropertiesMessages.MaxStorefinderMessage}
-			\subsubsection{Descrizione}
-				Questa classe rappresenta un messaggio per modificare il numero massimo di attori \textbf{Storefinder} gestiti da ogni \textbf{Usermanager}.
-				
-			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore 
-				\textbf{Main}.
-				
-			\subsubsection{Relazioni con altre classi}
-				\begin{itemize}
-					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
-					\item \textbf{Actorbase.server.actors.Usermanager:} relazione di utilizzo.
-					\item \textbf{Actorbase.server.actors.Main:} relazione di utilizzo.
-				\end{itemize}
-			\subsubsection{Trait implementati}
-				\begin{itemize}
-					\item Actorbase.server.messages.query.admin.ActorPropertiesMessage
-				\end{itemize}
+					\item Actorbase.server.messages.query.admin.SettingMessages.RefreshSettingsMessage
+					\item Actorbase.server.messages.query.admin.SettingMessages.RefreshSettingsInfo
+					\end{itemize}
 				
 		\subsection{Actorbase.server.messages.query.admin.PermissionsManagementMessages}
 		
