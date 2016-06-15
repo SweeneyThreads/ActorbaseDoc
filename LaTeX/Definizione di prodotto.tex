@@ -76,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 0.0.11
+			Versione 2.0.0
 		\end{center}
 		% Date, change the ->day to a set date if you want to be precise
 		{\large \today} \\ [3cm] 
@@ -106,7 +106,7 @@
       chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
 	\subsection{Riferimenti}
 		\begin{itemize}
-			\item \textbf{Slide dell'insegnamento Ingegneria del software mod.A:} \\
+			\item \textbf{Slide dell'insegnamento Ingegneria del software\ped{\emph{G}} mod.A:} \\
 			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/E02.pdf}
 			\item \textbf{Scala:} \\
 			\url{http://www.scala-lang.org/}
@@ -148,8 +148,8 @@
 			\includegraphics[width=\textwidth]{generalLevel.png}
 			\caption{Actorbase architettura generale}
 		\end{figure}
-		L'architettura generale di \emph{Actorbase} è formata da tre componenti: Server, Client e Driver. 
-		Il Client utilizza metodi e oggetti forniti dal Driver per comunicare con il Server.
+		L'architettura generale di \emph{Actorbase} è formata da tre componenti: Server, Client e Driver\ped{\emph{G}}. 
+		Il Client utilizza metodi e oggetti forniti dal Driver\ped{\emph{G}} per comunicare con il Server.
 		
 	\subsection{Actorbase.server}
 		\begin{figure}[H]
@@ -167,7 +167,7 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe principale della parte Server del programma. \'E di fatto l'entry point dello stesso, gestisce la configurazione iniziale e avvia il sistema. Utilizza il design pattern Singleton (Object).
+			Classe principale della parte Server del programma. \'E di fatto l'entry point dello stesso, gestisce la configurazione\ped{\emph{G}} iniziale e avvia il sistema. Utilizza il design pattern\ped{\emph{G}} Singleton (Object).
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
@@ -183,7 +183,7 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{val system: ActorSystem } - Istanza di ActorSystem di Akka.
+				\item \texttt{val system: ActorSystem } - Istanza di ActorSystem di Akka\ped{\emph{G}}.
 				\item \texttt{var log: LoggingAdapter } - Permette di ottenere un log per l'ActorSystem.
 				\item \texttt{implicit val timeout: Timeout } - Timeout di connessione.
 				\item \texttt{var clusterListener: ActorRef} - Cluster
@@ -192,11 +192,11 @@
 			\end{itemize}
 			\textbf{Metodo: }\texttt{main(args: Array[String]}
 			\\ \\
-			Metodo main che permette di avviare l'applicativo lato server. Si occupa di impostare i valori dei campi dati e di invocare gli altri metodi di configurazione presenti nella classe.
+			Metodo main\ped{\emph{G}} che permette di avviare l'applicativo lato server. Si occupa di impostare i valori dei campi dati e di invocare gli altri metodi di configurazione\ped{\emph{G}} presenti nella classe.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{args: Array[String] } - Parametro standard del metodo main di \emph{Scala}.
+				\item \texttt{args: Array[String] } - Parametro standard del metodo main\ped{\emph{G}} di \emph{Scala\ped{\emph{G}}}.
 			\end{itemize}
 			\textbf{Metodo: }\texttt{private def loadDatabases(system: ActorSystem): Unit}
 			\\ \\
@@ -208,7 +208,7 @@
 			\end{itemize}
 			\textbf{Metodo: }\texttt{private def createDoorkeepers(system: ActorSystem): Unit}
 			\\ \\
-			Legge le impostazioni di configurazione degli attori \texttt{Doorkeeper} e si occupa della conseguente creazione degli attori stessi.
+			Legge le impostazioni di configurazione\ped{\emph{G}} degli attori \texttt{Doorkeeper} e si occupa della conseguente creazione degli attori stessi.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -322,11 +322,11 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			La classe rappresenta l'attore responsabile di mantenere gli indirizzi dei nodi segnati come \emph{UP} nel cluster. Deve esserci un attore \texttt{ClusterListener} in ogni nodo del cluster. L'attore inoltre implementa una strategia Round Robin per selezionare un indirizzo dalla sua lista di nodi.
+			La classe rappresenta l'attore\ped{\emph{G}} responsabile di mantenere gli indirizzi dei nodi segnati come \emph{UP} nel cluster. Deve esserci un attore \texttt{ClusterListener} in ogni nodo del cluster. L'attore\ped{\emph{G}} inoltre implementa una strategia Round Robin per selezionare un indirizzo dalla sua lista di nodi.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Questo attore viene utilizzato per gestire le funzionalità del Cluster.
+			Questo attore\ped{\emph{G}} viene utilizzato per gestire le funzionalità del Cluster.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -346,7 +346,7 @@
 			\end{itemize}
 			\textbf{Metodo: }\texttt{override def preStart(): Unit}
 			\\ \\
-			Override del metodo \texttt{preStart()} definito in \texttt{akka.actor.Actor}. Alla creazione dell'attore esso si sottoscrive al cluster e aggiunge l'indirizzo del suo nodo alla lista.
+			Override del metodo \texttt{preStart()} definito in \texttt{akka.actor.Actor}. Alla creazione dell'attore\ped{\emph{G}} esso si sottoscrive al cluster e aggiunge l'indirizzo del suo nodo alla lista.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -354,7 +354,7 @@
 			\\ \\
 			\textbf{Metodo: }\texttt{override def postStop(): Unit}
 			\\ \\
-			Override del metodo \texttt{postStop()} definito in \texttt{akka.actor.Actor}. Allo stop l'attore deve rimuoversi dal cluster.
+			Override del metodo \texttt{postStop()} definito in \texttt{akka.actor.Actor}. Allo stop l'attore\ped{\emph{G}} deve rimuoversi dal cluster.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -362,7 +362,7 @@
 			\\ \\
 			\textbf{Metodo: }\texttt{def receive}
 			\\ \\
-			Metodo di ricezione dei messaggi dell'attore, il metodo riceve messaggi dal cluster e il messaggio (stringa) \texttt{"next"} (richiesta di rotazione Round Robin). I messaggi ricevuti dal cluster vengono gestiti in modo da mantenere la lista dei nodi aggiornata. Il metodo gestisce i seguenti messaggi:
+			Metodo di ricezione dei messaggi dell'attore\ped{\emph{G}}, il metodo riceve messaggi dal cluster e il messaggio (stringa) \texttt{"next"} (richiesta di rotazione Round Robin). I messaggi ricevuti dal cluster vengono gestiti in modo da mantenere la lista dei nodi aggiornata. Il metodo gestisce i seguenti messaggi:
 			\begin{itemize}
 				\item \texttt{MemberUp}
 				\item \texttt{UnreachableMember}
@@ -550,11 +550,11 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che fornisce i metodi di lettura e scrittura dei file di configurazione del server.
+			Classe che fornisce i metodi di lettura e scrittura dei file di configurazione\ped{\emph{G}} del server.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Viene utilizzata per leggere le impostazioni del server dai file di configurazione all'avvio di esso. Inoltre viene utilizzata per scrivere modifiche alle configurazioni.
+			Viene utilizzata per leggere le impostazioni del server dai file di configurazione\ped{\emph{G}} all'avvio di esso. Inoltre viene utilizzata per scrivere modifiche alle configurazioni.
 			\\ \\
 		\textbf{Classi ereditate}
 			\\ \\
@@ -570,19 +570,19 @@
 			\\ \\
 		\textbf{Metodo: }\texttt{readDoorkeepersSettings(fileName: String): util.HashMap[String, Integer]}
 			\\ \\
-			Il metodo legge dal file di configurazione gli indirizzi e le porte che attori di tipo \texttt{Doorkeeper} dovranno utilizzare per gestire le connessioni. Tali informazioni vengono ritornate con una mappa in cui le chiavi sono gli indirizzi e i valori sono le porte.
+			Il metodo legge dal file di configurazione\ped{\emph{G}} gli indirizzi e le porte che attori di tipo \texttt{Doorkeeper} dovranno utilizzare per gestire le connessioni. Tali informazioni vengono ritornate con una mappa in cui le chiavi sono gli indirizzi e i valori sono le porte.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{fileName: String} - Nome del file che contiene la configurazione dei \texttt{Doorkeeper}.
+				\item \texttt{fileName: String} - Nome del file che contiene la configurazione\ped{\emph{G}} dei \texttt{Doorkeeper}.
 			\end{itemize}
 		\textbf{Metodo: }\texttt{readActorsProperties(fileName: String): util.HashMap[ActorProperties, Integer]}
 			\\ \\
-			Il metodo legge dal file di configurazione le proprietà relative agli attori (come ad esempio il numero massimo di attori di tipo \texttt{Ninja}). Tali informazioni vengono ritornate con una mappa in cui le chiavi sono i nomi delle proprietà e i valori sono i valori di tali proprietà.
+			Il metodo legge dal file di configurazione\ped{\emph{G}} le proprietà relative agli attori (come ad esempio il numero massimo di attori di tipo \texttt{Ninja}). Tali informazioni vengono ritornate con una mappa in cui le chiavi sono i nomi delle proprietà e i valori sono i valori di tali proprietà.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{fileName: String} - Nome del file che contiene la configurazione degli attori.
+				\item \texttt{fileName: String} - Nome del file che contiene la configurazione\ped{\emph{G}} degli attori.
 			\end{itemize}
 			
 	\subsection{Actorbase.server.utils.ReplyBuilder}
@@ -741,12 +741,12 @@
 			\begin{itemize}
 				\item \texttt{reply: ReplyMessage} - Il messaggio da cui ricavare la stringa.
 			\end{itemize}
-		\textbf{Metodo: }\texttt{unhandledMessage(actor: String, method: String): String}
+		\textbf{Metodo: }\texttt{unhandledMessage(actor\ped{\emph{G}}: String, method: String): String}
 			\\ \\
 			Il metodo permette di costruire una stringa per i messaggi che non sono stati gestiti.
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{actor: String} - Il percorso dell'attore che non ha gestito il messaggio
+				\item \texttt{actor: String} - Il percorso dell'attore\ped{\emph{G}} che non ha gestito il messaggio
 				\item \texttt{method: String} - Il nome del metodo in cui non è stato gestito il messaggio
 			\end{itemize}
 			
@@ -860,7 +860,7 @@
 		Lista parametri del metodo: Nessuno.	
 		
 		\subsection{Actorbase.server.utils.fileManagerLibrary}
-		Package contenente le classi che effettuano operazioni per gestire i file su disco. Le classi di questo package vengono usate principalmente dall'attore di tipo \texttt{Warehouseman} che si occupa della persistenza dei dati su disco.	
+		Package contenente le classi che effettuano operazioni per gestire i file su disco. Le classi di questo package vengono usate principalmente dall'attore\ped{\emph{G}} di tipo \texttt{Warehouseman} che si occupa della persistenza dei dati su disco.	
 			
 	\subsection{Actorbase.server.utils.fileManagerLibrary.SingleFileManager}
 		\textbf{Descrizione}
@@ -1014,7 +1014,7 @@
 		\\ \\
 		\textbf{Utilizzo}
 		\\ \\
-		Viene utilizzata per definire l'interfaccia del Design Pattern Strategy riguardo alla strategia di rimozione da array di Byte.
+		Viene utilizzata per definire l'interfaccia del Design Pattern\ped{\emph{G}} Strategy riguardo alla strategia di rimozione da array di Byte.
 		\\ \\
 		\textbf{Classi ereditate}
 		\\ \\
@@ -1088,7 +1088,7 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che definisce l'attore di tipo \texttt{Doorkeeper}. Tale attore rappresenta il punto di ingresso al server, apre una porta nell'host e si mette in ascolto di eventuali richieste di connessione. Quando un nuovo client si connette, il \texttt{Doorkeeper} crea un nuovo attore di tipo \texttt{Usermanager} a cui delega la gestione delle richieste per quella determinata connessione.
+			Classe che definisce l'attore\ped{\emph{G}} di tipo \texttt{Doorkeeper}. Tale attore rappresenta il punto di ingresso al server, apre una porta nell'host e si mette in ascolto di eventuali richieste di connessione. Quando un nuovo client si connette, il \texttt{Doorkeeper} crea un nuovo attore di tipo \texttt{Usermanager} a cui delega la gestione delle richieste per quella determinata connessione.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
@@ -1109,7 +1109,7 @@
 			\\ \\
 		\textbf{Costruttore: }\texttt{Doorkeeper(port: Integer)}
 			\\ \\
-			Costruisce un attore di tipo \texttt{Doorkeeper} a partire da un Integer rappresentante la porta da aprire.
+			Costruisce un attore\ped{\emph{G}} di tipo \texttt{Doorkeeper} a partire da un Integer rappresentante la porta da aprire.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -1117,10 +1117,10 @@
 			\end{itemize}
 		\textbf{Metodo: }\texttt{receive}
 			\\ \\
-			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce i messaggi provenienti dall'attore TCP della libreria. In particolare gestisce i seguenti messaggi:
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka\ped{\emph{G}}}. Gestisce i messaggi provenienti dall'attore\ped{\emph{G}} TCP della libreria. In particolare gestisce i seguenti messaggi:
 			\begin{itemize}
 				\item \texttt{Bound messages} - effettua il log sullo stato della porta
-				\item \texttt{CommandFailed} - l'attore "uccide" se stesso nel caso ricevesse questo messaggio
+				\item \texttt{CommandFailed} - l'attore\ped{\emph{G}} "uccide" se stesso nel caso ricevesse questo messaggio
 				\item \texttt{Connected messages} - crea un \texttt{Usermanager} per ogni connessione
 			\end{itemize}
 			Lista parametri del metodo:
@@ -1135,7 +1135,7 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che definisce l'attore di tipo \texttt{Usermanager}. Tale attore gestisce le richieste TCP provenienti da uno specifico client: si occupa di comprendere il contenuto delle query, di inoltrare le richieste e di fornire le risposte al client.
+			Classe che definisce l'attore\ped{\emph{G}} di tipo \texttt{Usermanager}. Tale attore gestisce le richieste TCP provenienti da uno specifico client: si occupa di comprendere il contenuto delle query, di inoltrare le richieste e di fornire le risposte al client.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
@@ -1153,13 +1153,13 @@
 			\begin{itemize}
 				\item \texttt{private parser: Parser} - Parser per effettuare l'elaborazione delle richieste utente.
 				\item \texttt{private connected: Boolean} - Booleano per controllare lo stato della connessione.
-				\item \texttt{private mainActor: ActorRef} - Riferimento all'attore di tipo \texttt{Main} per la connessione gestita.
+				\item \texttt{private mainActor: ActorRef} - Riferimento all'attore\ped{\emph{G}} di tipo \texttt{Main} per la connessione gestita.
 				\item \texttt{private builder: ByteStringBuilder} - Costruttore di stringhe a partire da Byte.
-				\item \texttt{private tcpSender: ActorRef} - Riferimento all'attore di tipo \texttt{TCP}.
+				\item \texttt{private tcpSender: ActorRef} - Riferimento all'attore\ped{\emph{G}} di tipo \texttt{TCP}.
 			\end{itemize}
 		\textbf{Costruttore: }\texttt{Usermanager()}
 			\\ \\
-			Costruisce un attore di tipo \texttt{Usermanager} senza parametri.
+			Costruisce un attore\ped{\emph{G}} di tipo \texttt{Usermanager} senza parametri.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -1167,7 +1167,7 @@
 			\\ \\
 		\textbf{Metodo: }\texttt{receive}
 			\\ \\
-			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce i pacchetti inviati dall'attore \texttt{TCP}, li salva in un buffer, effettua il parsing di essi e inoltra il risultato all'attore di tipo \texttt{Main}.
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka\ped{\emph{G}}}. Gestisce i pacchetti inviati dall'attore\ped{\emph{G}} \texttt{TCP}, li salva in un buffer, effettua il parsing di essi e inoltra il risultato all'attore\ped{\emph{G}} di tipo \texttt{Main}.
 			\begin{itemize}
 				\item \texttt{Received} - gestisce la ricezione di un pacchetto invocando il metodo \texttt{receiveData}.
 				\item \texttt{PeerClosed} - gestisce la disconnessione del client.
@@ -1194,7 +1194,7 @@
 			\end{itemize}
 		\textbf{Metodo: }\texttt{private handleQueryMessage(message: QueryMessage): Unit}
 			\\ \\
-			Gestisce un messaggio di tipo \texttt{QueryMessage} prodotto dal metodo \texttt{processRequest}. Nel caso si tratti di un \texttt{LoginMessage} gestisce personalmente la richiesta, altrimenti inoltra il messaggio all'attore \texttt{Main}.
+			Gestisce un messaggio di tipo \texttt{QueryMessage} prodotto dal metodo \texttt{processRequest}. Nel caso si tratti di un \texttt{LoginMessage} gestisce personalmente la richiesta, altrimenti inoltra il messaggio all'attore\ped{\emph{G}} \texttt{Main}.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -1211,7 +1211,7 @@
 			\end{itemize}
 		\textbf{Metodo: }\texttt{private replyToClient(reply: String): Unit}
 			\\ \\
-			Invia il \texttt{ReplyMessage} al mittente originario (l'attore TCP).
+			Invia il \texttt{ReplyMessage} al mittente originario (l'attore\ped{\emph{G}} TCP).
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -1236,7 +1236,7 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che definisce l'attore di tipo \texttt{Main}. Tale attore si occupa di eseguire le richieste effettuate da un client. Processa autonomamente le query a livello database e le query amministratore, per tutte le altre query si occupa di inoltrarle all'attore appropriato. \'E l'unico attore che interagisce con l'attore di tipo \texttt{Usermanager}, tutte le risposte generate vengono inviate ad esso.
+			Classe che definisce l'attore\ped{\emph{G}} di tipo \texttt{Main}. Tale attore si occupa di eseguire le richieste effettuate da un client. Processa autonomamente le query a livello database e le query amministratore, per tutte le altre query si occupa di inoltrarle all'attore\ped{\emph{G}} appropriato. \'E l'unico attore che interagisce con l'attore\ped{\emph{G}} di tipo \texttt{Usermanager}, tutte le risposte generate vengono inviate ad esso.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
@@ -1258,7 +1258,7 @@
 			\end{itemize}
 		\textbf{Costruttore: }\texttt{Main(perms: util.HashMap[String, UserPermission] = null)}
 			\\ \\
-			Costruisce un attore di tipo \texttt{Main} a partire da una mappa di permessi.
+			Costruisce un attore\ped{\emph{G}} di tipo \texttt{Main} a partire da una mappa di permessi.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -1266,7 +1266,7 @@
 			\end{itemize}
 		\textbf{Metodo: }\texttt{receive}
 			\\ \\
-			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce solo messaggi di tipo \texttt{QueryMessage}.
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka\ped{\emph{G}}}. Gestisce solo messaggi di tipo \texttt{QueryMessage}.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -1367,8 +1367,8 @@
 			\begin{itemize}
 				\item \texttt{ListDatabaseMessage} - risponde al messaggio generando la lista dei database a cui il client ha accesso (almeno permessi di lettura).
 				\item \texttt{SelectDatabaseMessage} - seleziona il database richiesto, salvandolo in \texttt{selectedDatabase}.
-				\item \texttt{CreateDatabaseMessage} - crea un nuovo attore di tipo \texttt{MapManager} che rappresenti il database da creare. Gestisce anche il caso in cui il database da creare sia già presente.
-				\item \texttt{DeleteDatabaseMessage} - rimuove il database richiesto rimuovendo l'attore \texttt{MapManager} che lo rappresenta.
+				\item \texttt{CreateDatabaseMessage} - crea un nuovo attore\ped{\emph{G}} di tipo \texttt{MapManager} che rappresenti il database da creare. Gestisce anche il caso in cui il database da creare sia già presente.
+				\item \texttt{DeleteDatabaseMessage} - rimuove il database richiesto rimuovendo l'attore\ped{\emph{G}} \texttt{MapManager} che lo rappresenta.
 			\end{itemize}
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -1463,7 +1463,7 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che definisce l'attore di tipo \texttt{MapManager}. Questo tipo di attore rappresenta un singolo database di \emph{Actorbase}, gestisce le diverse mappe che lo compongono (attori \texttt{IndexManager}).
+			Classe che definisce l'attore\ped{\emph{G}} di tipo \texttt{MapManager}. Questo tipo di attore rappresenta un singolo database di \emph{Actorbase}, gestisce le diverse mappe che lo compongono (attori \texttt{IndexManager}).
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
@@ -1479,20 +1479,20 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{var database: String} - Il nome del database che l'attore rappresenta. 
+				\item \texttt{var database: String} - Il nome del database che l'attore\ped{\emph{G}} rappresenta. 
 				\item \texttt{val indexManagers: ConcurrentHashMap[String, ActorRef]} - La mappa contenente i nomi e i riferimenti alle mappe del database.
 			\end{itemize}
 		\textbf{Costruttore: }\texttt{MapManager(database: String)}
 			\\ \\
-			Costruisce un attore di tipo \texttt{MapManager}. Alla creazione un attore di questo tipo deve registrarsi alla lista di database presente in \texttt{StaticSettings}.
+			Costruisce un attore\ped{\emph{G}} di tipo \texttt{MapManager}. Alla creazione un attore\ped{\emph{G}} di questo tipo deve registrarsi alla lista di database presente in \texttt{StaticSettings}.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{database: String} - Il nome del database che l'attore rappresenta.
+				\item \texttt{database: String} - Il nome del database che l'attore\ped{\emph{G}} rappresenta.
 			\end{itemize}
 		\textbf{Metodo: }\texttt{receive}
 			\\ \\
-			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce i seguenti messaggi:
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka\ped{\emph{G}}}. Gestisce i seguenti messaggi:
 			\begin{itemize}
 				\item \texttt{AskMapMessage} - Ricerca la mappa in \texttt{indexManagers} e risponde.
 				\item \texttt{MapMessage} - Chiama il metodo \texttt{handleMapMessage}.
@@ -1508,7 +1508,7 @@
 			\begin{itemize}
 				\item \texttt{ListMapMessage} - Crea e risponde con la lista di mappe che compongono il database.
 				\item \texttt{CreateMapMessage} - Crea un nuovo \texttt{IndexManager} rappresentante la mappa richiesta e lo aggiunge alla propria lista se la mappa non è già presente.
-				\item \texttt{DeleteMapMessage} - Elimina la mappa richiesta (se presente) eliminando l'attore \texttt{IndexManager} che la rappresenta.
+				\item \texttt{DeleteMapMessage} - Elimina la mappa richiesta (se presente) eliminando l'attore\ped{\emph{G}} \texttt{IndexManager} che la rappresenta.
 			\end{itemize}
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -1531,7 +1531,7 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che definisce l'attore di tipo \texttt{IndexManager}. Questo tipo di attore rappresenta una singola mappa di \emph{Actorbase}. Gestisce i dati che compongono la mappa sia in memoria principale (RAM) che su disco, utilizzando attori di tipo \texttt{Storemanager} e \texttt{Warehouseman}.
+			Classe che definisce l'attore\ped{\emph{G}} di tipo \texttt{IndexManager}. Questo tipo di attore rappresenta una singola mappa di \emph{Actorbase}. Gestisce i dati che compongono la mappa sia in memoria principale (RAM) che su disco, utilizzando attori di tipo \texttt{Storemanager} e \texttt{Warehouseman}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
@@ -1552,7 +1552,7 @@
 			\end{itemize}
 		\textbf{Costruttore: }\texttt{IndexManager()}
 			\\ \\
-			Costruisce un attore di tipo \texttt{IndexManager}. Vengono inizializzati i riferimenti a \texttt{Storemanager} e \texttt{Warehouseman}.
+			Costruisce un attore\ped{\emph{G}} di tipo \texttt{IndexManager}. Vengono inizializzati i riferimenti a \texttt{Storemanager} e \texttt{Warehouseman}.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -1560,7 +1560,7 @@
 			\\ \\
 		\textbf{Metodo: }\texttt{receive}
 			\\ \\
-			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Gestisce i seguenti messaggi:
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka\ped{\emph{G}}}. Gestisce i seguenti messaggi:
 			\begin{itemize}
 				\item \texttt{RowMessage} - Chiama il metodo \texttt{handleRowMessage}.
 			\end{itemize}
@@ -1586,18 +1586,18 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che definisce l'attore di tipo \texttt{Storemanager}. Questo tipo di attore si occupa di mantenere i dati in memoria principale secondo una struttura gerarchica. Uno \texttt{Storemanager} può avere quattro tipologie di comportamento differenti:
+			Classe che definisce l'attore\ped{\emph{G}} di tipo \texttt{Storemanager}. Questo tipo di attore si occupa di mantenere i dati in memoria principale secondo una struttura gerarchica. Uno \texttt{Storemanager} può avere quattro tipologie di comportamento differenti:
 			\begin{itemize}
 				\item \texttt{Storekeeper}
 				\item \texttt{StorekeeperNinja}
 				\item \texttt{Storefinder}
 				\item \texttt{StorefinderNinja}
 			\end{itemize}
-		Alla creazione dell'attore è possibile impostare il comportamento attraverso un parametro. 
+		Alla creazione dell'attore\ped{\emph{G}} è possibile impostare il comportamento attraverso un parametro. 
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Viene utilizzato da un attore \texttt{Indexmanager} per gestire i dati in memoria principale.
+			Viene utilizzato da un attore\ped{\emph{G}} \texttt{Indexmanager} per gestire i dati in memoria principale.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -1610,24 +1610,24 @@
 		\textbf{Attributi}
 			\begin{itemize}
 				\item \texttt{private var map: ConcurrentHashMap[String,  Array[Byte]]} - Mappa contenente gli item. 
-				\item \texttt{private var index: (String, String)} - Indice dei dati contenuti nell'attore (utilizzato per trovare l'attore corretto).
+				\item \texttt{private var index: (String, String)} - Indice dei dati contenuti nell'attore\ped{\emph{G}} (utilizzato per trovare l'attore\ped{\emph{G}} corretto).
 				\item \texttt{private var storemanagerType: StoremanagerType} - Tipo di comportamento.
 				\item \texttt{private var ninjas: Array[ActorRef]} - Riferimento ai propri attori \texttt{Ninja}.
 			\end{itemize}
 		\textbf{Costruttore: }\texttt{Storemanager(var map: ConcurrentHashMap[String,  Array[Byte]], index: (String, String), storemanagerType: StoremanagerType, ninjas: Array[ActorRef]=null)}
 			\\ \\
-			Costruisce un attore di tipo \texttt{Storemanager}.
+			Costruisce un attore\ped{\emph{G}} di tipo \texttt{Storemanager}.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{map: ConcurrentHashMap[String,  Array[Byte]]} - la mappa di item che l'attore dovrà gestire.
-				\item \texttt{index: (String, String)} - gli indici che identificano il range di valori gestiti dall'attore.
-				\item \texttt{storemanagerType: StoremanagerType} - il tipo di comportamento che l'attore deve avere.
-				\item \texttt{ninjas: Array[ActorRef]=null} - i riferimenti ai \texttt{Ninja} dell'attore (può essere \texttt{null} nel caso in cui si stia creando un \texttt{Ninja}).
+				\item \texttt{map: ConcurrentHashMap[String,  Array[Byte]]} - la mappa di item che l'attore\ped{\emph{G}} dovrà gestire.
+				\item \texttt{index: (String, String)} - gli indici che identificano il range di valori gestiti dall'attore\ped{\emph{G}}.
+				\item \texttt{storemanagerType: StoremanagerType} - il tipo di comportamento che l'attore\ped{\emph{G}} deve avere.
+				\item \texttt{ninjas: Array[ActorRef]=null} - i riferimenti ai \texttt{Ninja} dell'attore\ped{\emph{G}} (può essere \texttt{null} nel caso in cui si stia creando un \texttt{Ninja}).
 			\end{itemize}
 		\textbf{Metodo: }\texttt{override def preStart(): Unit}
 			\\ \\
-			Override del metodo \texttt{preStart()} di \texttt{akka.actor.Actor}. Il metodo effettua un controllo sul tipo di comportamento passato nel costruttore e invoca correttamente il metodo \texttt{become} di \emph{Akka} per cambiare il comportamento del metodo di ricezione messaggi (\texttt{receive}).
+			Override del metodo \texttt{preStart()} di \texttt{akka.actor.Actor}. Il metodo effettua un controllo sul tipo di comportamento passato nel costruttore e invoca correttamente il metodo \texttt{become} di \emph{Akka\ped{\emph{G}}} per cambiare il comportamento del metodo di ricezione messaggi (\texttt{receive}).
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -1635,7 +1635,7 @@
 			\\ \\
 		\textbf{Metodo: }\texttt{receive}
 			\\ \\
-			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka}. Di default rappresenta la gestione dei messaggi come \texttt{Storekeeper}, riconosce messaggi di tipo \texttt{RowMessage}, invocando il metodo \texttt{handleRowMessageAsStorekeeper} per la gestione vera e propria.
+			Il metodo è un implementazione del metodo di ricezione messaggi definito in \emph{Akka\ped{\emph{G}}}. Di default rappresenta la gestione dei messaggi come \texttt{Storekeeper}, riconosce messaggi di tipo \texttt{RowMessage}, invocando il metodo \texttt{handleRowMessageAsStorekeeper} per la gestione vera e propria.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -1643,7 +1643,7 @@
 			\\ \\
 		\textbf{Metodo: }\texttt{private handleRowMessageAsStorekeeper(message: RowMessage): Unit}
 			\\ \\
-			Processa messaggi di tipo \texttt{RowMessage} quando l'attore si comporta come \texttt{Storekeeper}. Riconosce il messaggio e gestisce la richiesta completamente, producendo una risposta.
+			Processa messaggi di tipo \texttt{RowMessage} quando l'attore\ped{\emph{G}} si comporta come \texttt{Storekeeper}. Riconosce il messaggio e gestisce la richiesta completamente, producendo una risposta.
 			Gestisce i seguenti tipi di messaggi:
 			\begin{itemize}
 				\item \texttt{InsertRowMessage} - Inserisce una riga nella mappa se c'è spazio, altrimenti richiede la propria divisione.
@@ -1658,7 +1658,7 @@
 			\end{itemize}
 		\textbf{Metodo: }\texttt{private divideActor() : Unit}
 			\\ \\
-				Il metodo effettua la divisione dell'attore in due quando si raggiunge il numero massimo di item contenuti in esso. La divisione si effettua creando due \texttt{Storemanager} figli con comportamento da \texttt{Storekeeper} a cui si passa metà della mappa. Una volta creati i figli l'attore svuota la propria mappa e inizia a comportarsi da \texttt{Storefinder}.
+				Il metodo effettua la divisione dell'attore\ped{\emph{G}} in due quando si raggiunge il numero massimo di item contenuti in esso. La divisione si effettua creando due \texttt{Storemanager} figli con comportamento da \texttt{Storekeeper} a cui si passa metà della mappa. Una volta creati i figli l'attore\ped{\emph{G}} svuota la propria mappa e inizia a comportarsi da \texttt{Storefinder}.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -1666,7 +1666,7 @@
 			\\ \\
 		\textbf{Metodo: }\texttt{private receiveAsStoreFinder: Receive}
 			\\ \\
-			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore è \texttt{Storefinder}. Riconosce messaggi di tipo \texttt{RowMessage}, e passa la gestione di essi al metodo \texttt{handleRowMessageAsStorefinder}.
+			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore\ped{\emph{G}} è \texttt{Storefinder}. Riconosce messaggi di tipo \texttt{RowMessage}, e passa la gestione di essi al metodo \texttt{handleRowMessageAsStorefinder}.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -1674,7 +1674,7 @@
 			\\ \\
 		\textbf{Metodo: }\texttt{private handleRowMessageAsStorefinder(message: RowMessage) : Unit}
 			\\ \\
-			Processa messaggi di tipo \texttt{RowMessage} quando l'attore si comporta come \texttt{Storefinder}. Riconosce il messaggio e inoltra la richiesta ai figli.
+			Processa messaggi di tipo \texttt{RowMessage} quando l'attore\ped{\emph{G}} si comporta come \texttt{Storefinder}. Riconosce il messaggio e inoltra la richiesta ai figli.
 			Gestisce i seguenti tipi di messaggi:
 			\begin{itemize}
 				\item \texttt{InsertRowMessage} - Chiama il metodo \texttt{sendToStorekeeper}.
@@ -1706,7 +1706,7 @@
 			\end{itemize}
 		\textbf{Metodo: }\texttt{private receiveAsStorekeeperNinja: Receive}
 			\\ \\
-			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore è \texttt{StorekeeperNinja}. Gestisce i seguenti messaggi:
+			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore\ped{\emph{G}} è \texttt{StorekeeperNinja}. Gestisce i seguenti messaggi:
 			\begin{itemize}
 				\item \texttt{RowMessage} - Chiama il metodo \texttt{handleRowMessagesAsStorekeeperNinja}.
 				\item \texttt{LinkMessage} - Chiama il metodo \texttt{handleLinkMessagesAsStorekeeperNinja}.
@@ -1717,7 +1717,7 @@
 			\\ \\		
 		\textbf{Metodo: }\texttt{private handleRowMessagesAsStorekeeperNinja(message: RowMessage): Unit}
 			\\ \\
-			Il comportamento del metodo è simile a quello di \texttt{handleRowMessageAsStorekeeper}, con la differenza che un Ninja si occupa solo di tenere i dati aggiornati dunque non vengono generate risposte alle richieste.
+			Il comportamento del metodo è simile a quello di \texttt{handleRowMessageAsStorekeeper}, con la differenza che un Ninja\ped{\emph{G}} si occupa solo di tenere i dati aggiornati dunque non vengono generate risposte alle richieste.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -1725,7 +1725,7 @@
 			\end{itemize}			
 		\textbf{Metodo: }\texttt{private handleLinkMessagesAsStorekeeperNinja(message: LinkMessage): Unit}
 			\\ \\
-			Gestisce la ricezione di messaggi di tipo \texttt{LinkMessage}. Nello specifico il metodo deve gestire un messaggio di tipo \texttt{BecomeStorefinderNinjaMessage} che modifica il comportamento dell'attore in \texttt{StorefinderNinja}.
+			Gestisce la ricezione di messaggi di tipo \texttt{LinkMessage}. Nello specifico il metodo deve gestire un messaggio di tipo \texttt{BecomeStorefinderNinjaMessage} che modifica il comportamento dell'attore\ped{\emph{G}} in \texttt{StorefinderNinja}.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -1733,7 +1733,7 @@
 			\end{itemize}	
 		\textbf{Metodo: }\texttt{private receiveAsStorefinderNinja: Receive}
 			\\ \\
-			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore è \texttt{StorefinderNinja}. Gestisce i seguenti messaggi:
+			Metodo di ricezione dei messaggi utilizzato quando il comportamento dell'attore\ped{\emph{G}} è \texttt{StorefinderNinja}. Gestisce i seguenti messaggi:
 			\begin{itemize}
 				\item \texttt{RowMessage} - Chiama il metodo \texttt{handleRowMessagesAsStorefinderNinja}.
 			\end{itemize}
@@ -1758,7 +1758,7 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Trait che definisce le funzionalità di risposta e log di un attore.
+			Trait che definisce le funzionalità di risposta e log di un attore\ped{\emph{G}}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
@@ -1824,11 +1824,11 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Trait che definisce un attore che si interfaccia con il cluster.
+			Trait che definisce un attore\ped{\emph{G}} che si interfaccia con il cluster.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Fornisce ad un attore il metodo \texttt{nextAddress}, dovrebbe essere esteso da tutti gli attori che necessitano di creare attori in altri nodi del cluster. La politica di selezione degli indirizzi è responsabilità del \texttt{ClusterListener} del nodo.
+			Fornisce ad un attore\ped{\emph{G}} il metodo \texttt{nextAddress}, dovrebbe essere esteso da tutti gli attori che necessitano di creare attori in altri nodi del cluster. La politica di selezione degli indirizzi è responsabilità del \texttt{ClusterListener} del nodo.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -1845,7 +1845,7 @@
 			\end{itemize}
 		\textbf{Metodo: }\texttt{def nextAddress: Address}
 			\\ \\
-			Ritorna un indirizzo di un nodo del cluster. Questo metodo invia un messaggio al \texttt{ClusterListener} dello stesso nodo di questo attore.
+			Ritorna un indirizzo di un nodo del cluster. Questo metodo invia un messaggio al \texttt{ClusterListener} dello stesso nodo di questo attore\ped{\emph{G}}.
 			\\ \\
 			Lista parametri del metodo:
 			\\ \\
@@ -1860,11 +1860,11 @@
 		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che definisce un attore di tipo Warehouseman. Questo attore è associato ad una mappa o a parte di essa ed ha il compito di memorizzarla su disco.
+			Classe che definisce un attore\ped{\emph{G}} di tipo Warehouseman\ped{\emph{G}}. Questo attore\ped{\emph{G}} è associato ad una mappa o a parte di essa ed ha il compito di memorizzarla su disco.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Riceve messaggi dagli Storekeeper attraverso l'Indexmanager. Effettua le operazioni di scrittura sulla mappa salvata su disco utilizzando i metodi del FileManager.
+			Riceve messaggi dagli Storekeeper\ped{\emph{G}} attraverso l'Indexmanager. Effettua le operazioni di scrittura sulla mappa salvata su disco utilizzando i metodi del FileManager.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -1881,7 +1881,7 @@
 			\end{itemize}
 		\textbf{Costruttore: }\texttt{Warehouseman(file : String)}
 			\\ \\
-		Costruisce un attore di tipo Warehouseman. 
+		Costruisce un attore\ped{\emph{G}} di tipo Warehouseman\ped{\emph{G}}. 
 			\\ \\
 		Lista parametri del metodo:
 			\begin{itemize}
@@ -1889,7 +1889,7 @@
 			\end{itemize}
 		\textbf{Metodo: }\texttt{def receive()}
 			\\ \\
-		Implementazione del metodo receive di akka.Actor. Elabora solo messaggi di tipo RowMessage.
+		Implementazione del metodo receive di akka\ped{\emph{G}}.Actor. Elabora solo messaggi di tipo RowMessage.
 			\\ \\
 		Lista parametri del metodo:
 			\\ \\
@@ -2046,7 +2046,7 @@
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Rispondere all'attore che ha richiesto un'operazione il risultato definendo un'insieme di possibili risposte.
+			Rispondere all'attore\ped{\emph{G}} che ha richiesto un'operazione il risultato definendo un'insieme di possibili risposte.
 			\\ \\
 		\textbf{Classi ereditate}
 		\\ \\
@@ -2123,7 +2123,7 @@
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Permette di definire l'insieme di comportamenti di uno \texttt{Storemanager}, in modo da poter impostare un comportamento alla creazione di un attore di tale tipo.
+			Permette di definire l'insieme di comportamenti di uno \texttt{Storemanager}, in modo da poter impostare un comportamento alla creazione di un attore\ped{\emph{G}} di tale tipo.
 			\\ \\
 		\textbf{Classi ereditate}
 		\\ \\
@@ -2173,11 +2173,11 @@
 			\subsection{Actorbase.server.enums.EnumStoremanagerType.StorefinderType}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che rappresenta il comportamento \texttt{Storefinder} da parte di un attore \texttt{Storemanager}.
+			Classe che rappresenta il comportamento \texttt{Storefinder} da parte di un attore\ped{\emph{G}} \texttt{Storemanager}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Definire il comportamento \texttt{Storefinder} per un attore \texttt{Storemanager}.
+			Definire il comportamento \texttt{Storefinder} per un attore\ped{\emph{G}} \texttt{Storemanager}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2198,11 +2198,11 @@
 			\subsection{Actorbase.server.enums.EnumStoremanagerType.StorekeeperType}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che rappresenta il comportamento \texttt{Storekeeper} da parte di un attore \texttt{Storemanager}.
+			Classe che rappresenta il comportamento \texttt{Storekeeper} da parte di un attore\ped{\emph{G}} \texttt{Storemanager}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Definire il comportamento \texttt{Storekeeper} per un attore \texttt{Storemanager}.
+			Definire il comportamento \texttt{Storekeeper} per un attore\ped{\emph{G}} \texttt{Storemanager}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2223,11 +2223,11 @@
 			\subsection{Actorbase.server.enums.EnumStoremanagerType.StorekeeperNinjaType}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che rappresenta il comportamento \texttt{StorekeeperNinja} da parte di un attore \texttt{Storemanager}.
+			Classe che rappresenta il comportamento \texttt{StorekeeperNinja} da parte di un attore\ped{\emph{G}} \texttt{Storemanager}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Definire il comportamento \texttt{StorekeeperNinja} per un attore \texttt{Storemanager}.
+			Definire il comportamento \texttt{StorekeeperNinja} per un attore\ped{\emph{G}} \texttt{Storemanager}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2248,11 +2248,11 @@
 			\subsection{Actorbase.server.enums.EnumStoremanagerType.StorefinderNinjaType}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che rappresenta il comportamento \texttt{StorefinderNinja} da parte di un attore \texttt{Storemanager}.
+			Classe che rappresenta il comportamento \texttt{StorefinderNinja} da parte di un attore\ped{\emph{G}} \texttt{Storemanager}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Definire il comportamento \texttt{StorefinderNinja} per un attore \texttt{Storemanager}.
+			Definire il comportamento \texttt{StorefinderNinja} per un attore\ped{\emph{G}} \texttt{Storemanager}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2281,12 +2281,17 @@
 	\subsection{Actorbase.server.messages.internal}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=\textwidth]{Server/internalLevel.jpg}
+			\includegraphics[width=\textwidth]{Server/internalLevel.png}
 			\caption{Componente Actorbase.server.messages.internal}
 		\end{figure}
-		La componente internal di \emph{Actorbase} è la raccolta dei messaggi che vengono scambiati tra attori internamente al sistema, ovvero non sono collegati direttamente ad azione dell'utente. Svolgono attività di configurazione e influenzano il comportamento degli attori.
+		La componente internal di \emph{Actorbase} è la raccolta dei messaggi che vengono scambiati tra attori internamente al sistema, ovvero non sono collegati direttamente ad azione dell'utente. Svolgono attività di configurazione\ped{\emph{G}} e influenzano il comportamento degli attori.
 		
 	\subsection{Actorbase.server.messages.internal.AskMessages (object)}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.5]{Server/AskMessages.png}
+			\caption{Componente Actorbase.server.messages.internal.AskMessages}
+		\end{figure}
 		\textbf{Descrizione}
 			\\ \\
 			Un \texttt{AskMessage} definisce una richiesta di controllo dell'esistenza di un elemento.
@@ -2373,7 +2378,12 @@
 			
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages}
-		I LinkMessages sono i messaggi usati per gestire i collegamenti tra attori. Questo tipo di messaggi deve contenere il riferimento all'attore che deve essere aggiunto o eliminato dalla mappa degli attori conosciuti. 
+				\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/LinkMessages.png}
+			\caption{Componente Actorbase.server.messages.internal.LinkMessages}
+		\end{figure}
+		I LinkMessages sono i messaggi usati per gestire i collegamenti tra attori. Questo tipo di messaggi deve contenere il riferimento all'attore\ped{\emph{G}} che deve essere aggiunto o eliminato dalla mappa degli attori conosciuti. 
 		
 	\subsection{Actorbase.server.messages.internal.LinkMessages.LinkMessage (trait)}
 		\textbf{Descrizione}
@@ -2407,11 +2417,11 @@
 	\subsection{Actorbase.server.messages.internal.LinkMessages.AddNinjaMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Un \texttt{AddNinjaMessage} definisce una richiesta di aggiunta di un attore di tipo \texttt{Ninja}.
+			Un \texttt{AddNinjaMessage} definisce una richiesta di aggiunta di un attore\ped{\emph{G}} di tipo \texttt{Ninja}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Viene utilizzato per richiedere l'aggiunta di un attore di tipo \texttt{Ninja}.
+			Viene utilizzato per richiedere l'aggiunta di un attore\ped{\emph{G}} di tipo \texttt{Ninja}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2423,25 +2433,25 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{val ref : ActorRef} - Il riferimento all'attore.
+				\item \texttt{val ref : ActorRef} - Il riferimento all'attore\ped{\emph{G}}.
 			\end{itemize}
 		\textbf{Costruttore:} \texttt{AddNinjaMessage(ref : ActorRef)}
 		\\ \\
-		Costruisce un \texttt{AddNinjaMessage} a partire dal riferimento all'attore.
+		Costruisce un \texttt{AddNinjaMessage} a partire dal riferimento all'attore\ped{\emph{G}}.
 		\\ \\
 		Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{ref : ActorRef} - Il riferimento all'attore.
+				\item \texttt{ref : ActorRef} - Il riferimento all'attore\ped{\emph{G}}.
 			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages.AddWarehousemanMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Un \texttt{AddWarehousemanMessage} definisce una richiesta di aggiunta di un attore di tipo \texttt{Warehouseman}.
+			Un \texttt{AddWarehousemanMessage} definisce una richiesta di aggiunta di un attore\ped{\emph{G}} di tipo \texttt{Warehouseman}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Viene utilizzato per richiedere l'aggiunta di un attore di tipo \texttt{Warehouseman}.
+			Viene utilizzato per richiedere l'aggiunta di un attore\ped{\emph{G}} di tipo \texttt{Warehouseman}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2453,25 +2463,25 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{val ref : ActorRef} - Il riferimento all'attore.
+				\item \texttt{val ref : ActorRef} - Il riferimento all'attore\ped{\emph{G}}.
 			\end{itemize}
 		\textbf{Costruttore:} \texttt{AddWarehousemanMessage(ref : ActorRef)}
 		\\ \\
-		Costruisce un \texttt{AddWarehousemanMessage} a partire dal riferimento all'attore.
+		Costruisce un \texttt{AddWarehousemanMessage} a partire dal riferimento all'attore\ped{\emph{G}}.
 		\\ \\
 		Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{ref : ActorRef} - Il riferimento all'attore.
+				\item \texttt{ref : ActorRef} - Il riferimento all'attore\ped{\emph{G}}.
 			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages.RemoveNinjaMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Un \texttt{RemoveNinjaMessage} definisce una richiesta di rimozione di un attore di tipo \texttt{Ninja}.
+			Un \texttt{RemoveNinjaMessage} definisce una richiesta di rimozione di un attore\ped{\emph{G}} di tipo \texttt{Ninja}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Viene utilizzato per richiedere la rimozione di un attore di tipo \texttt{Ninja}.
+			Viene utilizzato per richiedere la rimozione di un attore\ped{\emph{G}} di tipo \texttt{Ninja}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2483,25 +2493,25 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{val ref : ActorRef} - Il riferimento all'attore.
+				\item \texttt{val ref : ActorRef} - Il riferimento all'attore\ped{\emph{G}}.
 			\end{itemize}
 		\textbf{Costruttore:} \texttt{RemoveNinjaMessage(ref : ActorRef)}
 		\\ \\
-		Costruisce un \texttt{RemoveNinjaMessage} a partire dal riferimento all'attore.
+		Costruisce un \texttt{RemoveNinjaMessage} a partire dal riferimento all'attore\ped{\emph{G}}.
 		\\ \\
 		Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{ref : ActorRef} - Il riferimento all'attore.
+				\item \texttt{ref : ActorRef} - Il riferimento all'attore\ped{\emph{G}}.
 			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages.RemoveWarehousemanMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Un \texttt{RemoveWarehousemanMessage} definisce una richiesta di rimozione di un attore di tipo \texttt{Warehouseman}.
+			Un \texttt{RemoveWarehousemanMessage} definisce una richiesta di rimozione di un attore\ped{\emph{G}} di tipo \texttt{Warehouseman}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Viene utilizzato per richiedere la rimozione di un attore di tipo \texttt{Warehouseman}.
+			Viene utilizzato per richiedere la rimozione di un attore\ped{\emph{G}} di tipo \texttt{Warehouseman}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2513,15 +2523,15 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{val ref : ActorRef} - Il riferimento all'attore.
+				\item \texttt{val ref : ActorRef} - Il riferimento all'attore\ped{\emph{G}}.
 			\end{itemize}
 		\textbf{Costruttore:} \texttt{RemoveWarehousemanMessage(ref : ActorRef)}
 		\\ \\
-		Costruisce un \texttt{RemoveWarehousemanMessage} a partire dal riferimento all'attore.
+		Costruisce un \texttt{RemoveWarehousemanMessage} a partire dal riferimento all'attore\ped{\emph{G}}.
 		\\ \\
 		Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{ref : ActorRef} - Il riferimento all'attore.
+				\item \texttt{ref : ActorRef} - Il riferimento all'attore\ped{\emph{G}}.
 			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.LinkMessages.BecomeStorefinderNinjaMessage}
@@ -2531,7 +2541,7 @@
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Viene utilizzato da un attore \texttt{Storemanager} quando cambia comportamento e passa da \texttt{Storekeeper} a \texttt{Storefinder}, serve ad informare i suoi ninja del cambio.
+			Viene utilizzato da un attore\ped{\emph{G}} \texttt{Storemanager} quando cambia comportamento e passa da \texttt{Storekeeper} a \texttt{Storefinder}, serve ad informare i suoi ninja\ped{\emph{G}} del cambio.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2545,7 +2555,7 @@
 			\begin{itemize}
 				\item \texttt{val c : Array[ActorRef]} - I riferimenti agli attori figli dello \texttt{Storefinder} originale.
 				\item \texttt{val i : Array[(String, String)]} - I riferimenti agli indici degli attori figli dello \texttt{Storefinder} originale.
-				\item \texttt{val n : Array[Array[ActorRef]]} - I riferimenti ai ninja degli attori figli dello \texttt{Storefinder} originale.
+				\item \texttt{val n : Array[Array[ActorRef]]} - I riferimenti ai ninja\ped{\emph{G}} degli attori figli dello \texttt{Storefinder} originale.
 			\end{itemize}
 		\textbf{Costruttore:} \texttt{BecomeStorefinderNinjaMessage(c : Array[ActorRef], i : Array[(String, String)], n : Array[Array[ActorRef]])}
 		\\ \\
@@ -2555,10 +2565,15 @@
 			\begin{itemize}
 				\item \texttt{c : Array[ActorRef]} - I riferimenti agli attori figli dello \texttt{Storefinder} originale.
 				\item \texttt{i : Array[(String, String)]} - I riferimenti agli indici degli attori figli dello \texttt{Storefinder} originale.
-				\item \texttt{n : Array[Array[ActorRef]]} - I riferimenti ai ninja degli attori figli dello \texttt{Storefinder} originale.
+				\item \texttt{n : Array[Array[ActorRef]]} - I riferimenti ai ninja\ped{\emph{G}} degli attori figli dello \texttt{Storefinder} originale.
 			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.ScalabilityMessages}
+					\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.6]{Server/ScalabilityMessages.png}
+			\caption{Componente Actorbase.server.messages.internal.ScalabilityMessages}
+		\end{figure}
 		Gli ScalabilityMessages sono messaggi usati per gestire le proprietà di scalabilità del sistema.
 		
 	\subsection{Actorbase.server.messages.internal.ScalabilityMessages.ScalabilityMessage (trait)}
@@ -2589,7 +2604,7 @@
 	\subsection{Actorbase.server.messages.internal.ScalabilityMessages.SendMapMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Messaggio che definisce una richiesta di aggiunta di una mappa ad un attore preesistente.
+			Messaggio che definisce una richiesta di aggiunta di una mappa ad un attore\ped{\emph{G}} preesistente.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
@@ -2617,6 +2632,11 @@
 			\end{itemize}
 			
 	\subsection{Actorbase.server.messages.internal.StorageMessages}
+						\begin{figure}[H]
+			\centering
+			\includegraphics[scale = 0.8]{Server/StorageMessages.png}
+			\caption{Componente Actorbase.server.messages.internal.StorageMessages}
+		\end{figure}
 		Gli StorageMessages sono messaggi usati per effettuare operazioni relative alla gestione dei dati su file.
 		
 	\subsection{Actorbase.server.messages.internal.StorageMessages.StorageMessages (trait)}
@@ -2739,11 +2759,11 @@
 	\subsection{Actorbase.server.messages.query.ServiceErrorInfo}
 		\textbf{Descrizione}
 			\\ \\
-			Classe che rappresenta una risposta di errore nel servizio.
+			Classe che rappresenta una risposta di errore nel servizio\ped{\emph{G}}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Questa classe viene utilizzata per comunicare un errore generale di servizio all'utente.
+			Questa classe viene utilizzata per comunicare un errore generale di servizio\ped{\emph{G}} all'utente.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -2820,7 +2840,15 @@
 			\\ \\
 			Nessuno.
 	
-	\subsection{Actorbase.server.messages.query.ReplyInfo (trait)}
+	\subsection{Actorbase.server.messages.query.ReplyMessages}
+			\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{Server/ReplyMessageLevel.png}
+			\caption{Componente Actorbase.server.messages.query.ReplyMessages}
+		\end{figure}
+		I messaggi contenuti in questo package definiscono le risposte che gli attori si possono inviare.
+	
+	\subsection{Actorbase.server.messages.query.ReplyMessages.ReplyInfo (trait)}
 			\textbf{Descrizione}
 			\\ \\
 			Interfaccia di base dei messaggi di tipo ReplyInfo.
@@ -2835,7 +2863,7 @@
 			\\ \\
 		\textbf{Ereditata da}
 			\begin{itemize}
-				\item \texttt{Actorbase.server.messages.query.ReplyErrorInfo }
+				\item \texttt{Actorbase.server.messages.query.ReplyMessages.ReplyErrorInfo }
 				\item \texttt{Actorbase.server.messages.query.ServiceErrorInfo }
 				\item \texttt{Actorbase.server.messages.query.ErrorMessages.QueryErrorInfo }
 				\item \texttt{Actorbase.server.messages.query.PermissionMessages.NoReadPermissionInfo }
@@ -2872,7 +2900,7 @@
 			\\ \\
 			Nessuno.
 		
-	\subsection{Actorbase.server.messages.query.ReplyErrorInfo}
+	\subsection{Actorbase.server.messages.query.ReplyMessages.ReplyErrorInfo}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che rappresenta una risposta di errore generale.
@@ -2897,7 +2925,7 @@
 			\\ \\
 			Nessuno.
 					
-	\subsection{Actorbase.server.messages.query.ReplyMessage}
+	\subsection{Actorbase.server.messages.query.ReplyMessages.ReplyMessage}
 		\textbf{Descrizione}
 			\\ \\
 			Classe che rappresenta la risposta ad una richiesta dell'utente.
@@ -2958,7 +2986,7 @@
 	\subsection{Actorbase.server.messages.query.ErrorMessages}
 			\begin{figure}[H]
 			\centering
-			\includegraphics[width=\textwidth]{Server/errorMessagesLevel.jpg}
+			\includegraphics[width=\textwidth]{Server/errorMessagesLevel.png}
 			\caption{Componente Actorbase.server.messages.query.ErrorMessages}
 		\end{figure}
 		I messaggi contenuti in questo package sono utilizzati per gestire situazioni di errore e operazioni non valide.
@@ -3250,7 +3278,7 @@
 		\subsection{Actorbase.server.messages.query.admin}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=\textwidth]{Server/adminLevel.jpg}
+			\includegraphics[width=\textwidth]{Server/adminLevel.png}
 			\caption{Componente Actorbase.server.messages.query.admin}
 		\end{figure}
 		Questo package racchiude tutte le classi ed interfacce che rappresentano messaggi di amministrazione, ovvero richieste fatte da un amministratore al server.
@@ -3421,11 +3449,11 @@
 	\subsection{Actorbase.server.messages.query.admin.SettingsMessages.RefreshSettingsMessage}
 		\textbf{Descrizione}
 			\\ \\
-			Messaggio per richiedere l'aggiornamento delle impostazioni dal file di configurazione.
+			Messaggio per richiedere l'aggiornamento delle impostazioni dal file di configurazione\ped{\emph{G}}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Viene usato per richiedere l'aggiornamento delle impostazioni dal file di configurazione.
+			Viene usato per richiedere l'aggiornamento delle impostazioni dal file di configurazione\ped{\emph{G}}.
 			\\ \\
 		\textbf{Classi ereditate}
 			\begin{itemize}
@@ -4845,7 +4873,7 @@
 			\includegraphics[scale=0.5]{Client/clientLevel.jpg}
 			\caption{Componente Actorbase.client}
 		\end{figure}
-		La componente client di \emph{Actorbase} è un semplice client da riga di comando per interagire con il server attraverso il driver, è composta dalle classi Client e Welcome.
+		La componente client di \emph{Actorbase} è un semplice client da riga di comando per interagire con il server attraverso il driver\ped{\emph{G}}, è composta dalle classi Client e Welcome.
 	
 	\subsection{Actorbase.client.Client}	
 		\textbf{Descrizione}
@@ -4854,7 +4882,7 @@
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			Questa classe viene utilizzata per inviare le stringhe inserite dall'utente al driver di \emph{Actorbase} e per visualizzare le risposte del server.
+			Questa classe viene utilizzata per inviare le stringhe inserite dall'utente al driver\ped{\emph{G}} di \emph{Actorbase} e per visualizzare le risposte del server.
 			\\ \\
 		\textbf{Classi ereditate}
 			\\ \\
@@ -4866,19 +4894,19 @@
 			\\ \\
 		\textbf{Attributi}
 			\begin{itemize}
-				\item \texttt{private val connection: Connection } - attributo di tipo Connection, definito nel driver, che rappresenta la connessione con il server. Inizialmente nullo, la connessione viene fornita dal driver dopo aver eseguito l'accesso al server correttamente.
+				\item \texttt{private val connection: Connection } - attributo di tipo Connection, definito nel driver\ped{\emph{G}}, che rappresenta la connessione con il server. Inizialmente nullo, la connessione viene fornita dal driver dopo aver eseguito l'accesso al server correttamente.
 			\end{itemize}
 			\textbf{Metodo: }\texttt{def main(args: Array[String])}
 			\\ \\
-			Metodo main del client che avvia il programma. All'avvio stampa il messaggio di benvenuto della classe Welcome, poi rimane in attesa di input da parte dell'utente.
+			Metodo main\ped{\emph{G}} del client che avvia il programma. All'avvio stampa il messaggio di benvenuto della classe Welcome, poi rimane in attesa di input da parte dell'utente.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
-				\item \texttt{args: Array[String] } - Parametro standard del metodo main di \emph{Scala}.
+				\item \texttt{args: Array[String] } - Parametro standard del metodo main\ped{\emph{G}} di \emph{Scala\ped{\emph{G}}}.
 			\end{itemize}
 			\textbf{Metodo: }\texttt{def executeLine(ln: String)}
 			\\ \\
-			Metodo executeLine del client che ha il compito di inviare al driver le stringhe inserite dall'utente tramite l'omonimo metodo della connection. Deve poter riconoscere la stringa di disconnessione, che chiama un metodo diverso della connection, e la stringa di chiusura, che termina il programma. Inoltre è necessario che le altre stringhe siano processate solo se esiste una connessione con il server.
+			Metodo executeLine del client che ha il compito di inviare al driver\ped{\emph{G}} le stringhe inserite dall'utente tramite l'omonimo metodo della connection. Deve poter riconoscere la stringa di disconnessione, che chiama un metodo diverso della connection, e la stringa di chiusura, che termina il programma. Inoltre è necessario che le altre stringhe siano processate solo se esiste una connessione con il server.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -4886,7 +4914,7 @@
 			\end{itemize}
 			\textbf{Metodo: }\texttt{def checkLogin(ln:String)}
 			\\ \\
-			Metodo checkLogin che riconosce tramite un'espressione regolare il comando di connessione. Una volta riconosciuto il comando di connessione chiama il metodo connect del Driver per ottenere una Connection nel caso in cui i dati siano corretti.
+			Metodo checkLogin che riconosce tramite un'espressione regolare il comando di connessione. Una volta riconosciuto il comando di connessione chiama il metodo connect del Driver\ped{\emph{G}} per ottenere una Connection nel caso in cui i dati siano corretti.
 			\\ \\
 			Lista parametri del metodo:
 			\begin{itemize}
@@ -4929,7 +4957,7 @@
 			\includegraphics[scale=0.5]{Driver/driverLevel.jpg}
 			\caption{Componente Actorbase.driver}
 		\end{figure}
-		La componente driver di \emph{Actorbase} è un semplice driver per gestire le comunicazioni con il server. \'E composta dalle classi Driver, Connection e ConcreteConnection.
+		La componente driver\ped{\emph{G}} di \emph{Actorbase} è un semplice driver\ped{\emph{G}} per gestire le comunicazioni con il server. \'E composta dalle classi Driver, Connection e ConcreteConnection.
 		
 	\subsection{Actorbase.driver.Connection (trait)}	
 		\textbf{Descrizione}
@@ -5037,11 +5065,11 @@
 	\subsection{Actorbase.driver.Driver}	
 		\textbf{Descrizione}
 			\\ \\
-			Driver di \emph{Actorbase}.
+			Driver\ped{\emph{G}} di \emph{Actorbase}.
 			\\ \\
 		\textbf{Utilizzo}
 			\\ \\
-			La classe Driver crea un oggetto di tipo Connection e lo restituisce.
+			La classe Driver\ped{\emph{G}} crea un oggetto di tipo Connection e lo restituisce.
 			\\ \\
 		\textbf{Classi ereditate}
 			\\ \\
@@ -5074,7 +5102,7 @@
 	\section{Diagrammi di sequenza}
 	In questa sezione verranno illustrati e descritti i principali diagrammi di sequenza realizzati. 
         
-        Per esplicitare l'invio di un messaggio tra due attori, nei diagrammi viene chiamato il metodo \textit{sendMessage()} dell'attore che manda il messaggio. Questo perché per mandare messaggi con Akka si usano punti esclamativi e di domanda
+        Per esplicitare l'invio di un messaggio tra due attori, nei diagrammi viene chiamato il metodo \textit{sendMessage()} dell'attore\ped{\emph{G}} che manda il messaggio. Questo perché per mandare messaggi con Akka\ped{\emph{G}} si usano punti esclamativi e di domanda
         
         Trattandosi di diagrammi di sequenza non molto specifici, alcuni attori effettuano operazioni senza chiamare dei metodi specifici già 
         dichiarati. 
@@ -5093,7 +5121,7 @@
 				\includegraphics[width=\textwidth]{Sequenza/seqNuovaConnessione.jpg}
 				\caption{Diagramma di sequenza - nuova connessione al server.}
 			\end{figure}
-            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando un client si collega al socket TCP di un Doorkeeper. Per ogni nuova connessione l'attore Doorkeeper crea un attore Usermanager il quale crea un attore Main. Usermanager gestisce ogni richiesta proveniente dalla connessione a lui associata, nello specifico trasforma i comandi in forma testuale in messaggi da inoltrare al Main.
+            Nel diagramma precedente è possibile visualizzare quali sono le operazioni che vengono eseguite quando un client si collega al socket TCP di un Doorkeeper. Per ogni nuova connessione l'attore\ped{\emph{G}} Doorkeeper crea un attore Usermanager il quale crea un attore Main\ped{\emph{G}}. Usermanager gestisce ogni richiesta proveniente dalla connessione a lui associata, nello specifico trasforma i comandi in forma testuale in messaggi da inoltrare al Main\ped{\emph{G}}.
         
        \subsection{Ricezione messaggio}
 	\begin{figure}[H]
@@ -5102,9 +5130,9 @@
 			\caption{Diagramma di sequenza per la ricezione di un messaggio}
 		\end{figure}
 		Nel diagramma è possibile visualizzare quali sono le operazioni che vengono eseguite dagli
-attori Usermanager e Main alla ricezione di una richiesta dall'utente. Usermanager, dopo aver convertito
+attori Usermanager e Main\ped{\emph{G}} alla ricezione di una richiesta dall'utente. Usermanager, dopo aver convertito
 i byte bufferizzati ricevuti in una stringa, crea un messaggio che rappresenta la richiesta dell'utente ed lo invia al
-Main. Il Main controlla che l'utente abbia i permessi per il tipo di richiesta, in caso affermativo gestisce,
+Main. Il Main\ped{\emph{G}} controlla che l'utente abbia i permessi per il tipo di richiesta, in caso affermativo gestisce,
 anche indirettamente, il messaggio e risponde.
 
 \subsection{Ricezione comando a livello di riga}
@@ -5113,7 +5141,7 @@ anche indirettamente, il messaggio e risponde.
 			\includegraphics[width=\textwidth]{Sequenza/seqRowMessage.jpg}
 			\caption{Diagramma di sequenza per la ricezione di un comando a livello riga}
 		\end{figure}
-		Nel diagramma è possibile visualizzare quali sono le operazioni che vengono eseguite dagli attori principali alla ricezione di una richiesta a livello di riga. Ogni attore capisce che è una richiesta a livello di riga e la gestisce mandandola all'attore figlio che potrebbe gestirla. In base a database selezionato, mappa selezionata e chiave, il messaggio arriva al corretto Storemanager. Il messaggio viene inoltra mandato ad ogni Warehouseman responsabile della mappa selezionata.
+		Nel diagramma è possibile visualizzare quali sono le operazioni che vengono eseguite dagli attori principali alla ricezione di una richiesta a livello di riga. Ogni attore\ped{\emph{G}} capisce che è una richiesta a livello di riga e la gestisce mandandola all'attore figlio che potrebbe gestirla. In base a database selezionato, mappa selezionata e chiave, il messaggio arriva al corretto Storemanager. Il messaggio viene inoltra mandato ad ogni Warehouseman\ped{\emph{G}} responsabile della mappa selezionata.
 		
 		\subsection{Scalabilità Storemanager}
 	\begin{figure}[H]
@@ -5121,7 +5149,7 @@ anche indirettamente, il messaggio e risponde.
 			\includegraphics[width=\textwidth]{Sequenza/seqDuplicazione.jpg}
 			\caption{Diagramma di sequenza per la scalabilità degli Storemanager}
 		\end{figure}
-		Nel diagramma è possibile visualizzare quali sono le operazioni che vengono eseguite da un attore Storemanager con comportamento Storekeeper quando la propria mappa raggiunge la grandezza massima impostata. Per prima cosa cambia comportamento, assumendo quello di uno Storefinder, crea due attori figli di tipo Storemanager con comportamento Storekeeper ed assegna a ciascuno una metà della propria mappa.1
+		Nel diagramma è possibile visualizzare quali sono le operazioni che vengono eseguite da un attore\ped{\emph{G}} Storemanager con comportamento Storekeeper\ped{\emph{G}} quando la propria mappa raggiunge la grandezza massima impostata. Per prima cosa cambia comportamento, assumendo quello di uno Storefinder\ped{\emph{G}}, crea due attori figli di tipo Storemanager con comportamento Storekeeper\ped{\emph{G}} ed assegna a ciascuno una metà della propria mappa.1
 	
 	\newpage
 	

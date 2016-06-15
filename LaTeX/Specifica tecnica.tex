@@ -65,7 +65,7 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-                    Bonato Paolo\\
+                    Tommasin Davide\\
 				\emph{Verifica:} \\
                     Padovan Tommaso\\
                     Tommasin Davide \\
@@ -79,7 +79,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 2.0.2
+			Versione 3.0.0
 		\end{center}
 		% Date, change the ->day to a set date if you want to be precise
 		{\large \today} \\ [3cm] 
@@ -97,7 +97,7 @@
 	\newpage \section{Introduzione}
 	\subsection{Scopo del documento}
 		Il documento illustra la progettazione attuale di Actorbase.
-		Verranno presentati l'architettura, le componenti, le classi e i design pattern utilizzati.
+		Verranno presentati l'architettura, le componenti, le classi e i design pattern\ped{\emph{G}} utilizzati.
 	\subsection{Scopo del prodotto}
 		Il progetto consiste nella realizzazione di un Database NoSQL key-value basato sul modello ad 
 		Attori con l'obiettivo di fornire una tecnologia adatta allo sviluppo di moderne 
@@ -109,7 +109,7 @@
       chiaro e conciso i termini che possono causare ambiguità o incomprensione del testo.
 	\subsection{Riferimenti}
 		\begin{itemize}
-			\item \textbf{Slide dell'insegnamento Ingegneria del software mod.A:} \\
+			\item \textbf{Slide dell'insegnamento Ingegneria del software\ped{\emph{G}} mod.A:} \\
 			\url{http://www.math.unipd.it/~tullio/IS-1/2015/Dispense/E02.pdf}
 			\item \textbf{Scala:} \\
 			\url{http://www.scala-lang.org/}
@@ -131,17 +131,17 @@
 	\newpage 
 	\section{Tecnologie utilizzate}
 	\subsection{Scala}
-		Le possibili scelte dettate dal capitolato sono Java e Scala. Si è scelto di utilizzare Scala perché offre i seguenti vantaggi:
+		Le possibili scelte dettate dal capitolato sono Java e Scala\ped{\emph{G}}. Si è scelto di utilizzare Scala perché offre i seguenti vantaggi:
 		\begin{itemize}
-            \item \textbf{Completamente Object-Oriented:} A differenza di Java, Scala è completamente orientato agli oggetti. Non c'è distinzione del tipo: oggetto - tipo primitivo, ogni valore è semplicemente un oggetto.
-			\item \textbf{Staticamente tipato:} È un linguaggio tipato staticamente, questo permette di effettuare più facilmente i test. Inoltre Scala è in grado di stabilire il tipo di un oggetto per inferenza.
-            \item \textbf{Può eseguire codice Java:} Scala può eseguire codice scritto in Java. È dunque possibile utilizzare classi e librerie scritte in Java all'interno di programmi scritti in Scala. 
+            \item \textbf{Completamente Object-Oriented:} A differenza di Java, Scala\ped{\emph{G}} è completamente orientato agli oggetti. Non c'è distinzione del tipo: oggetto - tipo primitivo, ogni valore è semplicemente un oggetto.
+			\item \textbf{Staticamente tipato:} È un linguaggio tipato staticamente, questo permette di effettuare più facilmente i test. Inoltre Scala\ped{\emph{G}} è in grado di stabilire il tipo di un oggetto per inferenza.
+            \item \textbf{Può eseguire codice Java:} Scala\ped{\emph{G}} può eseguire codice scritto in Java. È dunque possibile utilizzare classi e librerie scritte in Java all'interno di programmi scritti in Scala. 
             \item \textbf{Concorrenza e distribuzione:} Ottimo supporto alla programmazione multi-threaded e distribuita, essenziale per la realizzazione di un prodotto responsive e scalabile.
-			\item \textbf{Supporto alla definizione di DSL:} Scala supporta nativamente la definizione di DSL.
-            \item \textbf{Supporto di Akka:} Il linguaggio supporta la libreria Akka che è richiesta dal capitolato.
-		\item \textbf{Preferenze del Committente:} Inoltre il Committente ha espresso esplicitamente la sua preferenza sull'utilizzo di Scala.
+			\item \textbf{Supporto alla definizione di DSL:} Scala\ped{\emph{G}} supporta nativamente la definizione di DSL.
+            \item \textbf{Supporto di Akka\ped{\emph{G}}:} Il linguaggio supporta la libreria Akka che è richiesta dal capitolato.
+		\item \textbf{Preferenze del Committente:} Inoltre il Committente ha espresso esplicitamente la sua preferenza sull'utilizzo di Scala\ped{\emph{G}}.
 		\end{itemize}
-		Problematiche di scala:
+		Problematiche di scala\ped{\emph{G}}:
 		\begin{itemize}
 		\item \textbf{Familiarità con la tecnologia:} Nessun membro ha mai avuto esperienza, prima del inizio del progetto, con questo linguaggio di programmazione.
 		\item \textbf{Leggibilità:} Alcuni costrutti risultano di difficile lettura.
@@ -152,10 +152,10 @@
 			\caption{Scala - logo}
 		\end{figure}	
 	\subsection{Akka}
-		L'utilizzo della libreria Akka oltre ad essere reso obbligatorio dal committente, fornisce un'eccellente base su cui sviluppare un sistema basato sul modello ad attori.
-        Akka permette di costruire facilmente applicazioni message-driven che siano estremamente concorrenti, distribuite e resilienti.         
-        La natura distribuita e asincrona degli attori messi a disposizione da Akka soddisfa pienamente i bisogni del sistema da implementare.
-        Akka esegue l'ovveride di molti operatori rendendo difficile la comprensione agli utenti poco esperti. 
+		L'utilizzo della libreria Akka\ped{\emph{G}} oltre ad essere reso obbligatorio dal committente, fornisce un'eccellente base su cui sviluppare un sistema basato sul modello ad attori.
+        Akka\ped{\emph{G}} permette di costruire facilmente applicazioni message-driven che siano estremamente concorrenti, distribuite e resilienti.         
+        La natura distribuita e asincrona degli attori messi a disposizione da Akka\ped{\emph{G}} soddisfa pienamente i bisogni del sistema da implementare.
+        Akka\ped{\emph{G}} esegue l'ovveride di molti operatori rendendo difficile la comprensione agli utenti poco esperti. 
 	\begin{figure} [H]
 			\centering
 			\includegraphics[scale = 0.5]{immagini/ST/Akka.png}
@@ -181,13 +181,13 @@
 			interazioni con altri package. Ogni classe sarà dotata di una breve descrizione e ne saranno specificate le responsabilità, 
 			le classi ereditate, le sottoclassi e le relazioni con altre classi. \\
 			Successivamente saranno mostrati e descritti i diagrammi delle attività che coinvolgono l'utente. \\
-			Infine si illustreranno degli esempi di utilizzo dei design pattern nell'architettura del sistema.
+			Infine si illustreranno degli esempi di utilizzo dei design pattern\ped{\emph{G}} nell'architettura del sistema.
 			
 		\subsection{Architettura generale}
         	L'architettura generale del sistema è di tipo client-server. \\ \\
             Il Server ha un'architettura di tipo event-driven basata sul modello ad attori e accetta connessioni in entrata tramite un socket TCP. \\ \\
 			Il Client è un semplice programma che espone un'interfaccia a linea di comando per accettare comandi che vengono inoltrati al Server tramite 
-			il Driver.
+			il Driver\ped{\emph{G}}.
             
         \begin{figure} [H]
 			\centering
@@ -206,7 +206,7 @@
 			Il package \textbf{actors} contiene tutte le classi che definisco gli attori del sistema. \\
 			Il package \textbf{enums} contiene le enumerazioni utilizzate per vari scopi. \\
 			\\
-			\noindent La classe \textbf{Server} è l'entry point del programma e gestisce la configurazione iniziale all'avvio dello stesso.  
+			\noindent La classe \textbf{Server} è l'entry point del programma e gestisce la configurazione\ped{\emph{G}} iniziale all'avvio dello stesso.  
 			            
 		
         \subsubsection{Client}
@@ -215,7 +215,7 @@
 
         \subsubsection{Driver}
 		
-        	Il Driver è una libreria, invocando i metodi della quale è possibile effettuare richieste TCP sul socket su cui il
+        	Il Driver\ped{\emph{G}} è una libreria, invocando i metodi della quale è possibile effettuare richieste TCP sul socket su cui il
 			Server è in ascolto. \\
 			Contiene due classi e un'interfaccia: l'interfaccia \textbf{Connection}, le classi \textbf{Driver} e \textbf{ConcreteConnection}. 
 			Quest'ultima è una realizzazione dell'interfaccia \textbf{Connection}. 
@@ -265,8 +265,8 @@
 				
 		\subsection{Actorbase.server.Server}
 			\subsubsection{Descrizione}
-				Classe principale della parte \textbf{Server} del programma. È di fatto l'entry point dello stesso, gestisce la configurazione 
-				iniziale e avvia il sistema. Utilizza il design pattern \textbf{Singleton}.
+				Classe principale della parte \textbf{Server} del programma. È di fatto l'entry point dello stesso, gestisce la configurazione\ped{\emph{G}} 
+				iniziale e avvia il sistema. Utilizza il design pattern\ped{\emph{G}} \textbf{Singleton}.
 				
 			\subsubsection{Utilizzo}
 				Classe che fornisce un punto di accesso al programma, la sua esecuzione avvia il server sulla macchina in cui viene lanciata.
@@ -358,7 +358,7 @@
 				
 				\subsection{Actorbase.server.utils.ConfigurationManager}
 			\subsubsection{Descrizione}
-				Classe che fornisce i metodi per leggere i file di configurazione di \emph{Actorbase}.
+				Classe che fornisce i metodi per leggere i file di configurazione\ped{\emph{G}} di \emph{Actorbase}.
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzata dalla classe \textbf{Server} per caricare le impostazioni all'avvio.
@@ -373,7 +373,7 @@
 				Classe che mette a disposizione dei metodi per visualizzare la lista di comandi disponibili e la loro spiegazione.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzata dall'attore Main per recuperare la lista di comandi con la loro spiegazione, è anche possibile recuperare 
+				Viene utilizzata dall'attore\ped{\emph{G}} Main\ped{\emph{G}} per recuperare la lista di comandi con la loro spiegazione, è anche possibile recuperare 
 				la spiegazione di un singolo comando.
 				
 			\subsubsection{Relazione con altre classi}
@@ -412,7 +412,7 @@
 		
 		\subsection{Actorbase.server.actors.Doorkeeper}
 			\subsubsection{Descrizione}
-				Questo attore apre il socket su cui i client potranno connettersi, crea un attore \textbf{Usermanager} per ogni nuova 
+				Questo attore\ped{\emph{G}} apre il socket su cui i client potranno connettersi, crea un attore\ped{\emph{G}} \textbf{Usermanager} per ogni nuova 
 				connessione ed inoltra ogni messaggio ricevuto dal client e  all'\textbf{Usermanager} ad esso associato.
 				
 			\subsubsection{Utilizzo}
@@ -426,11 +426,11 @@
 				
 		\subsection{Actorbase.server.actors.Usermanager}
 			\subsubsection{Descrizione}
-				Questo attore si preoccupa di trasformare le stringhe ricevute dal client in messaggi interpretabili da altri attori, e viceversa.
+				Questo attore\ped{\emph{G}} si preoccupa di trasformare le stringhe ricevute dal client in messaggi interpretabili da altri attori, e viceversa.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzato per gestire una connessione da parte di un client, crea un attore \textbf{Main} e invia le richieste 
-				ricevute all'attore creato. 
+				Viene utilizzato per gestire una connessione da parte di un client, crea un attore\ped{\emph{G}} \textbf{Main} e invia le richieste 
+				ricevute all'attore\ped{\emph{G}} creato. 
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
@@ -443,7 +443,7 @@
 				
 		\subsection{Actorbase.server.actors.Main}
 			\subsubsection{Descrizione}
-				Questo attore è responsabile del controllo dei permessi delle richieste ricevute. Gestisce tutti i messaggi, elaborandoli o inoltrandoli 
+				Questo attore\ped{\emph{G}} è responsabile del controllo dei permessi delle richieste ricevute. Gestisce tutti i messaggi, elaborandoli o inoltrandoli 
 				se non di sua competenza. Gestisce  l'insieme di database rappresentato da attori \textbf{MapManager}.
 				
 			\subsubsection{Utilizzo}
@@ -466,10 +466,10 @@
 				
 		\subsection{Actorbase.server.actors.MapManager}
 			\subsubsection{Descrizione}
-				Questo attore rappresenta un database di \emph{Actorbase}. Si occupa di indicizzare gli attori che rappresentano le mappe che compongono tale database.
+				Questo attore\ped{\emph{G}} rappresenta un database di \emph{Actorbase}. Si occupa di indicizzare gli attori che rappresentano le mappe che compongono tale database.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzato per rappresentare un database, l'attore \textbf{Main} lo utilizza per instradare richieste verso uno specifico database. All'avvio il Server crea un \textbf{MapManager} per ogni database presente su disco.
+				Viene utilizzato per rappresentare un database, l'attore\ped{\emph{G}} \textbf{Main} lo utilizza per instradare richieste verso uno specifico database. All'avvio il Server crea un \textbf{MapManager} per ogni database presente su disco.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
@@ -484,7 +484,7 @@
 				
 				\subsection{Actorbase.server.actors.IndexManager}
 			\subsubsection{Descrizione}
-				Questo attore rappresenta una mappa di \emph{Actorbase}. Si occupa di indicizzare gli attori che rappresentano le porzioni di dati di tale mappa, sia su RAM che su disco.
+				Questo attore\ped{\emph{G}} rappresenta una mappa di \emph{Actorbase}. Si occupa di indicizzare gli attori che rappresentano le porzioni di dati di tale mappa, sia su RAM che su disco.
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzato per rappresentare una mappa, attori di tipo \textbf{MapManager} creano, interrogano e distruggono questo tipo di attori a seconda delle richieste utente.
@@ -504,7 +504,7 @@
 				
 		\subsection{Actorbase.server.actors.Storemanager}
 			\subsubsection{Descrizione}
-				Questo attore rappresenta un una porzione di mappa in memoria principale, ha più comportamenti: sia come indicizzazione dei dati che come mantenimento di essi. 
+				Questo attore\ped{\emph{G}} rappresenta un una porzione di mappa in memoria principale, ha più comportamenti: sia come indicizzazione dei dati che come mantenimento di essi. 
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzato per gestire le operazioni sugli item, attori di tipo \textbf{Storemanager} sono utilizzati dagli \textbf{IndexManager} per mantenere indicizzati i dati in memoria principale.
@@ -517,7 +517,7 @@
 		
 		\subsection{Actorbase.server.actors.Warehouseman}
 			\subsubsection{Descrizione}
-				Questo attore permette l'interazione del database con il filesystem.
+				Questo attore\ped{\emph{G}} permette l'interazione del database con il filesystem.
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzato per mantenere un backup del database su file presenti su disco. 
@@ -530,7 +530,7 @@
 				
 				\subsection{Actorbase.server.actors.ClusterAwareActor}
 			\subsubsection{Descrizione}
-				Interfaccia che definisce un attore che interagisce con altri nodi del cluster.
+				Interfaccia che definisce un attore\ped{\emph{G}} che interagisce con altri nodi del cluster.
 				
 			\subsubsection{Utilizzo}
 				Viene estesa da attori che interagiscono con altri nodi del cluster, creando attori su di essi o interagendo con attori presenti su di essi. 
@@ -542,7 +542,7 @@
 				
 		\subsection{Actorbase.server.actors.ReplyActor}
 			\subsubsection{Descrizione}
-				Interfaccia che definisce un attore che risponde con informazioni definite in \emph{Actorbase}.
+				Interfaccia che definisce un attore\ped{\emph{G}} che risponde con informazioni definite in \emph{Actorbase}.
 				
 			\subsubsection{Utilizzo}
 				Viene estesa da attori che rispondono con informazioni definite dal sistema. 
@@ -595,7 +595,7 @@
 				Trait per rappresentare i permessi che la richiesta di un utente può avere.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzata dall'attore \textbf{Main} per effettuare i controlli dei permessi dei messaggi. 				
+				Viene utilizzata dall'attore\ped{\emph{G}} \textbf{Main} per effettuare i controlli dei permessi dei messaggi. 				
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
@@ -614,7 +614,7 @@
 				Questa classe rappresenta il permesso di lettura.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzata dall'attore \textbf{Main} per effettuare i controlli dei permessi dei messaggi. 
+				Viene utilizzata dall'attore\ped{\emph{G}} \textbf{Main} per effettuare i controlli dei permessi dei messaggi. 
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
@@ -631,7 +631,7 @@
 				Questa classe rappresenta il permesso di scrittura.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzata dall'attore \textbf{Main} per effettuare i controlli dei permessi dei messaggi. 
+				Viene utilizzata dall'attore\ped{\emph{G}} \textbf{Main} per effettuare i controlli dei permessi dei messaggi. 
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
@@ -775,10 +775,10 @@
 		
 		\subsection{Actorbase.server.enums.EnumStoremanagerTypes.StorefinderType}
 			\subsubsection{Descrizione}
-				Questa classe il comportamento Storefinder di un attore di tipo \textbf{Storemanager}.
+				Questa classe il comportamento Storefinder\ped{\emph{G}} di un attore\ped{\emph{G}} di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzata per definire il comportamento Storefinder.
+				Viene utilizzata per definire il comportamento Storefinder\ped{\emph{G}}.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
@@ -792,10 +792,10 @@
 				
 						\subsection{Actorbase.server.enums.EnumStoremanagerTypes.StorekeeperType}
 			\subsubsection{Descrizione}
-				Questa classe il comportamento Storekeeper di un attore di tipo \textbf{Storemanager}.
+				Questa classe il comportamento Storekeeper\ped{\emph{G}} di un attore\ped{\emph{G}} di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzata per definire il comportamento Storekeeper.
+				Viene utilizzata per definire il comportamento Storekeeper\ped{\emph{G}}.
 				
 			\subsubsection{Relazione con altre classi}
 				\begin{itemize}
@@ -809,7 +809,7 @@
 				
 						\subsection{Actorbase.server.enums.EnumStoremanagerTypes.StorefinderNinjaType}
 			\subsubsection{Descrizione}
-				Questa classe il comportamento StorefinderNinja di un attore di tipo \textbf{Storemanager}.
+				Questa classe il comportamento StorefinderNinja di un attore\ped{\emph{G}} di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzata per definire il comportamento StorefinderNinja.
@@ -826,7 +826,7 @@
 				
 						\subsection{Actorbase.server.enums.EnumStoremanagerTypes.StorekeeperNinjaType}
 			\subsubsection{Descrizione}
-				Questa classe il comportamento StorekeeperNinja di un attore di tipo \textbf{Storemanager}.
+				Questa classe il comportamento StorekeeperNinja di un attore\ped{\emph{G}} di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzata per definire il comportamento StorekeeperNinja.
@@ -952,7 +952,7 @@
 				Questa classe rappresenta un messaggio contenente una mappa. 
 				
 			\subsubsection{Utilizzo}
-				Viene inviato da un per mandare una mappa (più item) da un attore ad un altro.
+				Viene inviato da un per mandare una mappa (più item) da un attore\ped{\emph{G}} ad un altro.
 				
 				
 		\subsection{Actorbase.server.messages.internal.LinkMessages}
@@ -980,7 +980,7 @@
 				
 		\subsection{Actorbase.server.messages.internal.LinkMessages.LinkMessage}
 			\subsubsection{Descrizione}
-				Trait per la richiesta di aggiunta o rimozione di un attore da parte di un altro attore.
+				Trait per la richiesta di aggiunta o rimozione di un attore\ped{\emph{G}} da parte di un altro attore.
 				
 			\subsubsection{Utilizzo}
 				Viene inviato da attori di tipo \textbf{Storemanager}.
@@ -1936,7 +1936,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di ricercare una riga in una mappa.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzato per richiedere una riga contenuta in un attore di tipo \textbf{Storemanager}.
+				Viene utilizzato per richiedere una riga contenuta in un attore\ped{\emph{G}} di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2159,7 +2159,7 @@
 				Classe che rappresenta un messaggio contenente la richiesta di creazione di un database.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzato per richiedere la creazione di un nuovo database ovvero di un attore \textbf{MapManager}.
+				Viene utilizzato per richiedere la creazione di un nuovo database ovvero di un attore\ped{\emph{G}} \textbf{MapManager}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2216,7 +2216,7 @@
 				Classe che rappresenta un messaggio contenente la richiesta di visualizzazione dell'intera lista di database presenti.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzato dall'attore \textbf{Main} per ottenere la lista di database (\textbf{MapManager}) presenti sul server.
+				Viene utilizzato dall'attore\ped{\emph{G}} \textbf{Main} per ottenere la lista di database (\textbf{MapManager}) presenti sul server.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2275,7 +2275,7 @@
 				Classe che rappresenta i messaggi contenenti richieste per la visualizzazione di tutti i comandi disponibili.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore \textbf{Main}.
+				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore\ped{\emph{G}} \textbf{Main}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2293,7 +2293,7 @@
 				Classe che rappresenta i messaggi contenenti richieste per la visualizzazione di aiuto riguardante un comando specifico.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore \textbf{Main}.
+				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore\ped{\emph{G}} \textbf{Main}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2315,7 +2315,7 @@
 			\end{figure}
 			\subsubsection{Descrizione}
 				Package per la componente lato client del sistema. 
-				È composto due classi che implementano il design pattern \textbf{Singleton}.
+				È composto due classi che implementano il design pattern\ped{\emph{G}} \textbf{Singleton}.
 				
 			\subsubsection{Classi}
 				\begin{itemize}
@@ -2326,10 +2326,10 @@
 		\subsection{Actorbase.client.Client}
 			\subsubsection{Descrizione}
 				Questa classe fornisce un'interfaccia a linea di comando e permette all'utente di inserire i comandi che verranno inviati al server. 
-				Questa classe implementa il design pattern \textbf{Singleton}.
+				Questa classe implementa il design pattern\ped{\emph{G}} \textbf{Singleton}.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzata per distinguere i comandi di connessione, disconnessione e altri comandi possibili. Inoltre utilizza il driver per comunicare 
+				Viene utilizzata per distinguere i comandi di connessione, disconnessione e altri comandi possibili. Inoltre utilizza il driver\ped{\emph{G}} per comunicare 
 				con il server.
 				
 			\subsubsection{Relazioni con altre classi}
@@ -2359,8 +2359,8 @@
 				\caption{Componente Actorbase.driver}
 			\end{figure}
 			\subsubsection{Descrizione}
-				Package per la componente driver del sistema. 
-				È composto una classe che implementa il design pattern \textbf{Singleton}, un trait e una sua implementazione.
+				Package per la componente driver\ped{\emph{G}} del sistema. 
+				È composto una classe che implementa il design pattern\ped{\emph{G}} \textbf{Singleton}, un trait e una sua implementazione.
 				
 			\subsubsection{Classi}
 				\begin{itemize}
@@ -2409,7 +2409,7 @@
 				
 		\subsection{Actorbase.driver.Driver}
 			\subsubsection{Descrizione}
-				Classe che implementa il design pattern \textbf{Singleton}, 
+				Classe che implementa il design pattern\ped{\emph{G}} \textbf{Singleton}, 
 				
 			\subsubsection{Utilizzo}
 				Viene utilizzato per creare una connessione che viene restituita al client. 
@@ -2444,9 +2444,9 @@ In questa sezione viene illustrata ad alto livello l'architettura della logica a
 					\includegraphics[width=\textwidth]{immagini/ST/main}
 					\caption{Il sistema ad attori di Actorbase}
 				\end{figure}
-		La struttura del server può individuare negli attori TCP (forniti da Akka) e negli attori \textbf{Doorkeeper} i nodi iniziali. Un attore \textbf{Doorkeeper} apre un socket TCP e si mette in ascolto, quando viene stabilità una nuova connessione esso crea un attore di tipo \textbf{Usermanager} a cui ne delega la gestione.
+		La struttura del server può individuare negli attori TCP (forniti da Akka\ped{\emph{G}}) e negli attori \textbf{Doorkeeper} i nodi iniziali. Un attore\ped{\emph{G}} \textbf{Doorkeeper} apre un socket TCP e si mette in ascolto, quando viene stabilità una nuova connessione esso crea un attore\ped{\emph{G}} di tipo \textbf{Usermanager} a cui ne delega la gestione.
 		\\ \\
-		Dunque ogni client connesso al server è rappresentato e gestito da un attore \textbf{Usermanager} dedicato che si occupa di gestire i messaggi inviati dal client, trasformandoli in messaggi gestibili dal sistema ad attori. Tali messaggi vengono prima di tutto gestiti da un attore di tipo \textbf{Main}. Esso effettua una prima analisi e gestione dei messaggi. Una volta che un messaggio arriva all'attore \textbf{Main}, infatti, viene interpretato e può essere gestito direttamente dall'attore o inoltrato alle componenti più basse del sistema.
+		Dunque ogni client connesso al server è rappresentato e gestito da un attore\ped{\emph{G}} \textbf{Usermanager} dedicato che si occupa di gestire i messaggi inviati dal client, trasformandoli in messaggi gestibili dal sistema ad attori. Tali messaggi vengono prima di tutto gestiti da un attore\ped{\emph{G}} di tipo \textbf{Main}. Esso effettua una prima analisi e gestione dei messaggi. Una volta che un messaggio arriva all'attore \textbf{Main}, infatti, viene interpretato e può essere gestito direttamente dall'attore o inoltrato alle componenti più basse del sistema.
 		
 	\subsection{Struttura di un database}
 					\begin{figure}[H]
@@ -2454,7 +2454,7 @@ In questa sezione viene illustrata ad alto livello l'architettura della logica a
 					\includegraphics[width=\textwidth]{immagini/ST/database}
 					\caption{Il sistema ad attori di Actorbase, struttura di un singolo database}
 				\end{figure}
-Un singolo database del sistema è rappresentato da un attore \textbf{MapManager}. Esso si occupa di gestire e indicizzare tutti gli attori di tipo \textbf{IndexManager}, rappresentanti le mappe che compongono tale database.
+Un singolo database del sistema è rappresentato da un attore\ped{\emph{G}} \textbf{MapManager}. Esso si occupa di gestire e indicizzare tutti gli attori di tipo \textbf{IndexManager}, rappresentanti le mappe che compongono tale database.
 \\ \\
 Ogni \textbf{IndexManager} indicizza e gestisce i dati che compongono la mappa in due modi: in memoria principale e su disco. La gestione in RAM avviene tramite l'utilizzo di attori di tipo \textbf{Storemanager} mentre della gestione dei dati su disco si occupano attori di tipo \textbf{Warehouseman}.
 
@@ -2464,9 +2464,9 @@ Ogni \textbf{IndexManager} indicizza e gestisce i dati che compongono la mappa i
 					\includegraphics[width=\textwidth]{immagini/ST/map}
 					\caption{Il sistema ad attori di Actorbase, struttura di una mappa in memoria principale}
 				\end{figure}
-Una mappa in memoria principale è rappresentata da un albero binario di attori \textbf{Storemanager}. Attori di tale tipo assumono un comportamento diverso nel caso in cui agiscano da indicizzatori di altri \textbf{Storemanager} o da contenitori dei dati veri e propri. Nel primo caso il comportamento adottato è quello dell'attore \textbf{Storefinder} (in rosso nel diagramma), nel secondo caso quello dell'attore \textbf{Storekeeper} (in blu nel diagramma).
+Una mappa in memoria principale è rappresentata da un albero binario di attori \textbf{Storemanager}. Attori di tale tipo assumono un comportamento diverso nel caso in cui agiscano da indicizzatori di altri \textbf{Storemanager} o da contenitori dei dati veri e propri. Nel primo caso il comportamento adottato è quello dell'attore\ped{\emph{G}} \textbf{Storefinder} (in rosso nel diagramma), nel secondo caso quello dell'attore\ped{\emph{G}} \textbf{Storekeeper} (in blu nel diagramma).
 \\ \\
-Questa struttura permette di avere un sistema stabile e affidabile. Quando un attore raggiunge la sua capienza massima non si divide in due ma genera due figli e prosegue nella gestione dei messaggi che aveva in mailbox. In questo modo il padre non si accorge dello sdoppiamento del figlio, ne del suo cambio di comportamento. D'altro lato il figlio non rischia di perdere messaggi nell'operazione di sdoppiamento.
+Questa struttura permette di avere un sistema stabile e affidabile. Quando un attore\ped{\emph{G}} raggiunge la sua capienza massima non si divide in due ma genera due figli e prosegue nella gestione dei messaggi che aveva in mailbox. In questo modo il padre non si accorge dello sdoppiamento del figlio, ne del suo cambio di comportamento. D'altro lato il figlio non rischia di perdere messaggi nell'operazione di sdoppiamento.
 
 	\subsection{Struttura degli attori di backup}
 					\begin{figure}[H]
@@ -2474,7 +2474,7 @@ Questa struttura permette di avere un sistema stabile e affidabile. Quando un at
 					\includegraphics[width=\textwidth]{immagini/ST/backup}
 					\caption{Il sistema ad attori di Actorbase, struttura degli attori di backup}
 				\end{figure}
-Ogni \textbf{Storefinder} e \textbf{Storekeeper} possiede un insieme di attori \textbf{Storemanager} che agiscono da copia delle proprie informazioni, il comportamento di tali attori è detto \textbf{Ninja}. Essi permettono di avere delle copie di backup che possono essere sostituite agli attori principali in caso di necessità. Inoltre possono essere usati per incrementare le performance del sistema delegando a loro la risoluzione di alcune query, alleggerendo così l'attore principale.
+Ogni \textbf{Storefinder} e \textbf{Storekeeper} possiede un insieme di attori \textbf{Storemanager} che agiscono da copia delle proprie informazioni, il comportamento di tali attori è detto \textbf{Ninja}. Essi permettono di avere delle copie di backup che possono essere sostituite agli attori principali in caso di necessità. Inoltre possono essere usati per incrementare le performance del sistema delegando a loro la risoluzione di alcune query, alleggerendo così l'attore\ped{\emph{G}} principale.
 	
 	\newpage 
 	\section{Tracciamento}
@@ -2486,7 +2486,7 @@ Ogni \textbf{Storefinder} e \textbf{Storekeeper} possiede un insieme di attori \
 	\newpage 
 	\section{Appendice}
 	\subsection{Descrizione Design Pattern}
-	Segue, per ogni Design Pattern utilizzato, la descrizione dello scopo, motivazione e applicabilità.
+	Segue, per ogni Design Pattern\ped{\emph{G}} utilizzato, la descrizione dello scopo, motivazione e applicabilità.
 	\subsubsection{Broker event-driven}
 				\begin{figure}[H]
 					\centering
