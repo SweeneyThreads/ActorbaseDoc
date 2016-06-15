@@ -1870,7 +1870,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di inserimento di una riga in una mappa.
 				
 			\subsubsection{Utilizzo}
-				Effettua l'intero percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage}.
+				Viene utilizzato per richiedere l'inserimento di una riga in uno \textbf{Storemanager}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -1892,7 +1892,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di modifica di una riga in una mappa.
 				
 			\subsubsection{Utilizzo}
-				Effettua l'intero percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage}.
+				Viene utilizzato per richiedere l'aggiornamento di una riga in uno \textbf{Storemanager}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -1914,7 +1914,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di rimozione di una riga in una mappa.
 				
 			\subsubsection{Utilizzo}
-				Effettua l'intero percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage}.
+				Viene utilizzato per richiedere la rimozione di una riga in uno \textbf{Storemanager}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -1936,7 +1936,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di ricercare una riga in una mappa.
 				
 			\subsubsection{Utilizzo}
-				Effettua l'intero percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage}.
+				Viene utilizzato per richiedere una riga contenuta in un attore di tipo \textbf{Storemanager}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -1958,7 +1958,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di visualizzazione di tutte le chiavi presenti in una mappa.
 				
 			\subsubsection{Utilizzo}
-				Effettua l'intero percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage}.
+				Viene utilizzato per richiedere ad uno \textbf{Storemanager} la lista delle chiavi delle righe che contiene.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2029,7 +2029,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di creazione di una mappa in un database.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} saltando l'attore \textbf{Storekeeper}.
+				Viene utilizzato per creare una mappa, quando un \texttt{MapManager} lo riceve crea un nuovo \textbf{IndexManager} per la mappa da creare.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2050,7 +2050,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di rimozione di una mappa in un database.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} saltando l'attore \textbf{Storekeeper}.
+				Viene utilizzato per rimuovere una mappa, quando un \texttt{MapManager} lo riceve elimina l'\textbf{Indexmanager} che rappresenta tale mappa.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2071,7 +2071,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di selezione di una mappa in un database.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} saltando l'attore \textbf{Storekeeper}.
+				Viene utilizzato per selezionare una mappa, un \textbf{MapManager} quando riceve questo messaggio controlla l'esistenza della mappa e risponde di conseguenza.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2092,7 +2092,7 @@
 				Classe che rappresenta un messaggio contente la richiesta di visualizzazione di tutte le mappe presenti in un database.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} saltando l'attore \textbf{Storekeeper}.
+				Questo messaggio viene utilizzato per richiedere ad un \textbf{MapManager} la lista delle mappe che indicizza.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2159,8 +2159,7 @@
 				Classe che rappresenta un messaggio contenente la richiesta di creazione di un database.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore \textbf{Main}.
-				Viene inoltre inoltrato ai \textbf{Warehouseman}.
+				Viene utilizzato per richiedere la creazione di un nuovo database ovvero di un attore \textbf{MapManager}.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2179,8 +2178,7 @@
 				Classe che rappresenta un messaggio contenente la richiesta di rimozione di un database.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore \textbf{Main}.
-				Viene inoltre inoltrato ai \textbf{Warehouseman}.
+				Viene utilizzato per richiedere l'eliminazione di un database e dunque del \textbf{MapManager} che lo rappresenta.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2199,8 +2197,7 @@
 				Classe che rappresenta un messaggio contenente la richiesta di selezione di un database.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore \textbf{Main}.
-				Viene inoltre inoltrato ai \textbf{Warehouseman}.
+				Viene utilizzato per verificare la presenza di un database e selezionarlo.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2219,7 +2216,7 @@
 				Classe che rappresenta un messaggio contenente la richiesta di visualizzazione dell'intera lista di database presenti.
 				
 			\subsubsection{Utilizzo}
-				Effettua il percorso descritto in \hyperref[QueryMessage]{Actorbase.server.messages.query.QueryMessage} fermandosi all'attore \textbf{Main}.
+				Viene utilizzato dall'attore \textbf{Main} per ottenere la lista di database (\textbf{MapManager}) presenti sul server.
 				
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
@@ -2260,7 +2257,7 @@
 				Trait che rappresenta i messaggi contenenti richieste per la visualizzazione di aiuti.
 				
 			\subsubsection{Utilizzo}
-				Viene utilizzata per poter distinguere i messaggi contenenti richieste per la visualizzazione di aiuti.
+				Viene utilizzata per poter distinguere i messaggi contenenti richieste per la visualizzazione di aiuto.
 			\subsubsection{Relazioni con altre classi}
 				\begin{itemize}
 					\item \textbf{Actorbase.server.utils.Parser:} relazione entrante di creazione.
