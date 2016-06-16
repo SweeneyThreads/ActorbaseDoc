@@ -57,18 +57,16 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushleft} \large
 				\emph{Redattori:}\\
-				Mattia Biggeri\\
 				Paolo Bonato\\
-				Tommaso Padovan\\
 			\end{flushleft}
 		\end{minipage}
 		~
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
 				\emph{Approvazione:} \\
-                Paolo Bonato \\
+                Davide Tommasin \\
 				\emph{Verifica:} \\
-                Nicoletti Luca \\
+                Tommaso Padovan \\
 			\end{flushright}
 		\end{minipage}
 		
@@ -78,7 +76,7 @@
 			\includegraphics[scale=0.8]{sweeney.png}
 		\end{figure}
 		\begin{center}
-			Versione 3.0.0
+			Versione 4.0.0
 		\end{center}
 		% Date, change the \today to a set date if you want to be precise
 		{\large \today}\\[3cm] 
@@ -676,7 +674,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				Vengono qui di seguito riportati i valori delle metriche calcolati sulle fasi di progetto portate a termine.
 				\newline \newline Valore di BAC = 17457 \euro , 901 ore.
 				\newline Valore totale di SV= 0 \euro , 0 ore.
-				\newline Valore totale di BV= -5 \euro , -1 ore.
+				\newline Valore totale di BV= 52 \euro , 1 ore.
 				\newline \newline Tabella con valori calcolati in euro:
 				\LTXtable{\textwidth}{Tabelle/tabelle_metriche_processi/tabella_fasi_euro.tex}		
 				
@@ -833,31 +831,42 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				Al contrario sono emerse difficoltà maggiori del previsto nella definizione e nella realizzazione dei test per il
 				software.
 					
-%					\begin{table}[H]
-%						\begin{tabularx}{\textwidth}{m f s X}
-%							\noalign{\hrule height 1.5pt}
-%							\rowcolor{orange!85} Macro-attività & SV & BV \\
-%							\noalign{\hrule height 1.5pt}
-%								Glossario 						& ore   & \euro \   \\
-%							\noalign{\hrule height 0.5pt}
-%								Norme di progetto 				& ore   & \euro \   \\
-%							\noalign{\hrule height 0.5pt}
-%								Piano di progetto 				& ore   & \euro \   \\
-%							\noalign{\hrule height 0.5pt}
-%								Specifica tecnica 				& ore   & \euro \   \\
-%							\noalign{\hrule height 0.5pt}
-%								Piano di qualifica 				& ore   & \euro \   \\
-%							\noalign{\hrule height 0.5pt}
-%								Definizione di prodotto 		& ore   & \euro \   \\
-%							\noalign{\hrule height 0.5pt}
-%								Manuali					 		& ore   & \euro \   \\
-%							\noalign{\hrule height 1.5pt}
-%								Totale 							& ore   & \euro \   \\
-%							\noalign{\hrule height 1.5pt}
-%						\end{tabularx}
-%						\caption{Tabella delle attività con SV e BV della fase di conclusione}
-%						\label{SVBVTableConclusione}
-%					\end{table}
+					\begin{table}[H]
+						\begin{tabularx}{\textwidth}{m f s X}
+							\noalign{\hrule height 1.5pt}
+							\rowcolor{orange!85} Macro-attività & SV & BV \\
+							\noalign{\hrule height 1.5pt}
+								Glossario 						& ore  0  & \euro \ 0   \\
+							\noalign{\hrule height 0.5pt}
+								Norme di progetto 				& ore  2  & \euro \ 55  \\
+							\noalign{\hrule height 0.5pt}
+								Piano di progetto 				& ore  2  & \euro \ 25  \\
+							\noalign{\hrule height 0.5pt}
+								Specifica tecnica 				& ore  1  & \euro \ 20  \\
+							\noalign{\hrule height 0.5pt}
+								Piano di qualifica 				& ore  2  & \euro \ 45  \\
+							\noalign{\hrule height 0.5pt}
+								Definizione di prodotto 		& ore -3  & \euro \ -58 \\
+							\noalign{\hrule height 0.5pt}
+								Manuali					 		& ore -2  & \euro \ -30 \\
+							\noalign{\hrule height 1.5pt}
+								Totale 							& ore  2  & \euro \ 57  \\
+							\noalign{\hrule height 1.5pt}
+						\end{tabularx}
+						\caption{Tabella delle attività con SV e BV della fase di conclusione}
+						\label{SVBVTableConclusione}
+					\end{table}
+					
+				Da questi dati si può dedurre che:
+					\begin{itemize}
+						\item I tempi impiegati hanno subito delle variazioni ma grazie agli slack inseriti nel \emph{Piano di progetto} non ci sono stati ritardi significativi.
+						\item Il costo effettivo ha subito un decremento significativo.
+					\end{itemize}
+			
+				Durante la fase di conclusione le attività hanno subito cambiamenti significativi. In particolare le
+				attività di definizione di prodotto e della produzione dei manuali sono state sottovalutate. 
+				Invece le ore previste per le altre attività sono state decisamente sopravvalutate, in quanto a questo
+				punto del progetto non erano richiesti interventi così dispendiosi.
 					
 				
 			\subsection{Documenti}
@@ -886,15 +895,15 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 							\noalign{\hrule height 0.5pt}
 								Norme di progetto & 44,23 & 6875 & 0,94 & 102,61 & 0 \\
 							\noalign{\hrule height 0.5pt}
-								Piano di progetto & 45,76 & 5072 & 2,01 & 65,03 & 0 \\
+								Piano di progetto & 46,09 & 5468 & 2,01 & 69,22 & 0 \\
 							\noalign{\hrule height 0.5pt}
 								Piano di qualifica & 45,97 & 6495 & 0,74 & 101,48 & 0 \\
 							\noalign{\hrule height 0.5pt}
 								Studio di fattibilità & 39,84 & 1471 & 0,25 & 49,03 & 0 \\
 							\noalign{\hrule height 0.5pt}
-								Specifica tecnica & 88,63 & 6053 & 0,45 & 12.61 & 0 \\
+								Specifica tecnica & 88,63 & 5930 & 0,45 & 10.93 & 0 \\
 							\noalign{\hrule height 0.5pt}
-								Manuale utente & 47,38 & 1585 & 0,38 & 37,74 & 0 \\
+								Manuale utente & 46,65 & 1529 & 0,38 & 39,21 & 0 \\
 							\noalign{\hrule height 0.5pt}
 								Manuale utente ENG & 53,39 & 1472 & 0,38 & 36,80 & 0 \\
 							\noalign{\hrule height 1.5pt}
@@ -902,9 +911,10 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 						\caption{Tabella metriche dei documenti }
 						\label{SVBVTable}
 					\end{table}
+						
 		
-		\subsubsection{Software}
-			Vengono ora esposti i valori delle metriche calcolate sul codice prodotto. Tutti i valori vengono aggiornati ad ogni cambiamento di versione. Allo stato attuale sono tutti in range di accettabilità od ottimalità. \\
+		\subsection{Software}
+			Vengono ora esposti i valori delle metriche calcolate sul codice prodotto. Tutti i valori vengono aggiornati ad ogni cambiamento di versione. Allo stato attuale sono tutti in range di accettabilità o di ottimalità. \\
 			
 			Segue la tabella dei valori della complessità ciclomatica del codice fin'ora prodotto divisa per file.		
 		\begin{table}[H]
@@ -916,9 +926,11 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				\noalign{\hrule height 0.5pt}
 					Client & 3 & 3\\
 				\noalign{\hrule height 0.5pt}
-					FileReader & 6 & 7\\
+					Server & 2 & 3\\
 				\noalign{\hrule height 0.5pt}
-					Storekeeper & 5 & 13\\
+					FileManager & 6 & 7\\
+				\noalign{\hrule height 0.5pt}
+					MapManager & 5 & 10\\
 				\noalign{\hrule height 0.5pt}
 					Driver & 2 & 2\\
 				\noalign{\hrule height 0.5pt}
@@ -934,9 +946,13 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				\noalign{\hrule height 0.5pt}
 					Connection & 3 & 3\\
 				\noalign{\hrule height 0.5pt}
-					Storefinder & 6 & 12\\
+					IndexManager & 4 & 9\\
 				\noalign{\hrule height 0.5pt}
-					Warehouseman & 2 & 2\\
+					Warehouseman & 2 & 4\\
+				\noalign{\hrule height 0.5pt}
+					ClusterListener & 4 & 4\\
+				\noalign{\hrule height 0.5pt}
+					ConfigurationManager & 4 & 7\\
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
 			\caption{Tabella metrica Complessità Ciclomatica }
@@ -950,7 +966,7 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 		Segue la tabella dai valori del numero di parametri per classe e del numero di parametri per metodo del codice fin'ora prodotto divisa per file.
 		
 		\begin{table}[H]
-			\begin{tabularx}{\textwidth}{L L L L L}
+			\begin{tabularx}{\textwidth}{L P L L L}
 				\noalign{\hrule height 1.5pt}
 				\rowcolor{orange!85} File & Param. per classe & Max param. per metodo &  Media param. per metodo & Numero metodi\\
 				\noalign{\hrule height 1.5pt}
@@ -958,9 +974,11 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				\noalign{\hrule height 0.5pt}
 					Client & 1 & 1 & 1 & 2 \\
 				\noalign{\hrule height 0.5pt}
-					FileReader & 1 & 1 & 1 & 2 \\
+					Server & 6 & 1 & 1 & 2 \\
 				\noalign{\hrule height 0.5pt}
-					Storekeeper & 3	& 2	& 1	& 7 \\
+					FileManager & 1 & 1 & 1 & 2 \\
+				\noalign{\hrule height 0.5pt}
+					MapManager  & 2	& 1	& 1	& 5 \\
 				\noalign{\hrule height 0.5pt}
 					Driver & 0 & 4 & 4 & 1 \\
 				\noalign{\hrule height 0.5pt}
@@ -976,11 +994,13 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 				\noalign{\hrule height 0.5pt}
 					Connection & 7 & 2 & 2 & 3 \\
 				\noalign{\hrule height 0.5pt}
-					Storefinder & 4	& 2	& 1 & 5 \\
+					IndexManager 	& 2	& 1	& 1 & 4 \\
 				\noalign{\hrule height 0.5pt}
-					Warehouseman & 1 & 0 & 0 & 1 \\
+					Warehouseman & 1 & 1 & 1 & 6 \\
 				\noalign{\hrule height 0.5pt}
-					Server & 6 & 1 & 1 & 4 \\	
+					ClusterListener & 2 & 1 & 1 & 8 \\
+				\noalign{\hrule height 0.5pt}
+					ConfigurationManager & 0 & 1 & 1 & 2 \\
 				\noalign{\hrule height 1.5pt}
 			\end{tabularx}
 			\caption{Tabella metrica parametri per classe e per metodo }
@@ -995,9 +1015,9 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 		
 		Seguono i valori di SLOC e percentuale di commenti:
 		\begin{itemize}
-			\item SLOC: 1427
-			\item Linee di commento: 376
-			\item Linee di commento su linee di codice: 0.27
+			\item SLOC: 3139
+			\item Linee di commento: 3947
+			\item Linee di commento su linee di codice: 1.26
 		\end{itemize}
 			
 
@@ -1267,12 +1287,19 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 		Per ogni comando testato sarà anche verificato il corretto riconoscimento e la corretta gestione degli errori.
 		Ogni test di sistema è identificato da TS ed il numero del Caso d'uso ad esso associato.
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_sistema.tex}
+		\subsubsection{Conclusioni}
+			I test di sistema sono stati eseguiti più volte e in varie situazioni individuando errori dovuti all'interazione tra le varie componenti. Gli errori sono stati risolti e i test risultano soddisfatti, e questo conferma il funzionamento del sistema e il soddisfacimento dei requisiti.
+		
 		Viene inoltre mostrata la tabella che traccia i requisiti sui test di sistema.
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/requisiti_test_sistema.tex}
 		
 	\subsection{Test di integrazione}
 		Viene mostrata di seguito la tabella contenente tutti i test di integrazione, atti a verificare il corretto funzionamento delle singole componenti del sistema descritte nella \emph{Specifica Tecnica v2.0.0}. 
+		
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_integrazione.tex}
+		\subsubsection{Conclusioni}
+		I test di integrazione sono stati eseguiti durante tutto lo sviluppo, una volta che le componenti hanno preso forma. Sono stati utili ad individuare errori dovuti alla dipendenza tra le singole classi. Tutti i test risultano soddisfatti, confermando che le componenti funzionano correttamente singolarmente. 
+		
 		Viene inoltre mostrata la tabella che traccia i test di integrazione ai rispettivi requisiti
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_integrazione_requisiti.tex}
 	
@@ -1280,6 +1307,8 @@ Riportiamo gli standard di riferimento per sviluppare le metriche e i metodi att
 		Viene mostrata di seguito la tabella contenente tutti i test di unità. 
 		\LTXtable{\textwidth}{Tabelle/tabelle_test/test_unita.tex}
 		
+	\subsubsection{Conclusioni}
+	I test di unità sono stati eseguiti durante l'intero sviluppo del prodotto. Sono stati utili ad evitare di introdurre errori nella modifica delle singole classi. Tutti i test risultano soddisfatti, confermando che le classi non contengono errori di programmazione al loro interno.
 		
 			
 			\section{Lista errori frequenti}
